@@ -27,7 +27,6 @@ public class BoardMapperTests {
 	@Test
 	public void testInsert() {
 		BoardVO board = new BoardVO();
-		board.setPost_id(4L);
 		board.setPost_title("새로 작성한 제목3");
 		board.setPost_content("새로 작성한 내용3");
 		board.setPost_writer("새로운 작성자3");
