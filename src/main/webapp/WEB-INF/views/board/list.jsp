@@ -214,7 +214,7 @@ body {
 					<c:forEach items="${list}" var="board">
 						<tr>
 							<td><c:out value="${board.post_id}" /></td>
-							<%-- <td><a href='/board/get?bno=<c:out value="${board.bno}"/>'><c:out value="${board.title}"/></a></td> --%>
+							<td><a href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out value="${board.post_title}"/></a></td>
 
 							<td><a class='move' href='<c:out value="${board.post_id}"/>'>
 									<c:out value="${board.post_title}" />
