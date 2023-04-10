@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 
 
-<title>bs4 inbox list - Bootdey.com</title>
+<title>ARCO - Community register</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
 	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
@@ -16,43 +16,6 @@
 body {
 	margin-top: 20px;
 	background: #FDFDFF
-}
-
-.badge {
-	border-radius: 8px;
-	padding: 4px 8px;
-	text-transform: uppercase;
-	font-size: .7142em;
-	line-height: 12px;
-	background-color: transparent;
-	border: 1px solid;
-	margin-bottom: 5px;
-	border-radius: .875rem;
-}
-
-.bg-green {
-	background-color: #50d38a !important;
-	color: #fff;
-}
-
-.bg-blush {
-	background-color: #ff758e !important;
-	color: #fff;
-}
-
-.bg-amber {
-	background-color: #FFC107 !important;
-	color: #fff;
-}
-
-.bg-red {
-	background-color: #ec3b57 !important;
-	color: #fff;
-}
-
-.bg-blue {
-	background-color: #60bafd !important;
-	color: #fff;
 }
 
 .card {
@@ -67,13 +30,34 @@ body {
 	box-shadow: none;
 }
 
+.page-link {
+	color: #000;
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
+
+.page-item.active .page-link {
+	z-index: 1;
+	color: #555;
+	font-weight: bold;
+	background-color: #f1f1f1;
+	border-color: #ccc;
+}
+
+.page-link:focus, .page-link:hover {
+	color: #000;
+	background-color: #fafafa;
+	border-color: #ccc;
+}
+
 .inbox .action_bar .delete_all {
 	margin-bottom: 0;
 	margin-top: 8px
 }
 
 .inbox .action_bar .btn, .inbox .action_bar .search {
-	margin: 0
+	margin-left: 200px;
+	margin-bottom: 15px;
 }
 
 .inbox .mail_list .list-group-item {
@@ -99,27 +83,6 @@ body {
 	margin-top: 11px
 }
 
-.inbox .mail_list .list-group-item .controls .checkbox {
-	display: inline-block
-}
-
-.inbox .mail_list .list-group-item .controls .checkbox label {
-	margin: 0;
-	padding: 10px
-}
-
-.inbox .mail_list .list-group-item .controls .favourite {
-	margin-left: 10px
-}
-
-.inbox .mail_list .list-group-item .thumb {
-	display: inline-block
-}
-
-.inbox .mail_list .list-group-item .thumb img {
-	width: 40px
-}
-
 .inbox .mail_list .list-group-item .media-heading a {
 	color: #555;
 	font-weight: normal
@@ -133,12 +96,6 @@ body {
 .inbox .mail_list .list-group-item .media-heading time {
 	font-size: 13px;
 	margin-right: 10px
-}
-
-.inbox .mail_list .list-group-item .media-heading .badge {
-	margin-bottom: 0;
-	border-radius: 50px;
-	font-weight: normal
 }
 
 .inbox .mail_list .list-group-item .msg {
@@ -185,6 +142,7 @@ body {
 				</div>
 				<div class="row clearfix">
 					<div class="col-md-12 col-lg-12 col-xl-12">
+
 						<form role="from" action="/board/register" method="post">
 							<div class="form-group">
 								<table class="table table-striped table-bordered table-hover">
@@ -219,8 +177,9 @@ body {
 													<div class="body">
 														<ul style="float: right;"
 															class="pagination pagination-primary m-b-0">
-															<li class="page-item"><a class="page-link"
-																href='/board/register'>글 등록</a></li>
+															<li class="page-item"><input
+																style='cursor: pointer;' class="page-link" type="submit"
+																value="글 등록"></li>
 														</ul>
 													</div>
 												</div>
