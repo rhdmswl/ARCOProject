@@ -182,10 +182,7 @@ body {
 							<div class="body">
 								<div class="row clearfix">
 									<div class="col-lg-1 col-md-2 col-3">
-										<div class="checkbox inlineblock delete_all">
-											<input id="deleteall" type="checkbox"> <label
-												for="deleteall"> All </label>
-										</div>
+
 									</div>
 									<div class="col-lg-5 col-md-4 col-6">
 										<div class="input-group search">
@@ -208,13 +205,7 @@ body {
 								<div class="media">
 									<div class="pull-left">
 										<div class="controls">
-											<div class="checkbox">
-												<input type="checkbox" id="basic_checkbox_1"> <label
-													for="basic_checkbox_1"></label>
-											</div>
-											<a href="javascript:void(0);"
-												class="favourite text-muted hidden-sm-down"
-												data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
+			
 										</div>
 										<div class="thumb hidden-sm-down m-r-20">
 											<img src="assets/images/xs/avatar1.jpg"
@@ -224,13 +215,12 @@ body {
 									<div class="media-body">
 										<div class="media-heading">
 											<a href="mail-single.html" class="m-r-10">Velit a labore</a>
-											<span class="badge bg-blue">Family</span> <small
+											 <small
 												class="float-right text-muted"><time
 													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
 												class="zmdi zmdi-attachment-alt"></i> </small>
 										</div>
-										<p class="msg">Lorem Ipsum is simply dumm dummy text of
-											the printing and typesetting industry.</p>
+
 									</div>
 								</div>
 							</li>
@@ -238,13 +228,7 @@ body {
 								<div class="media">
 									<div class="pull-left">
 										<div class="controls">
-											<div class="checkbox">
-												<input type="checkbox" id="basic_checkbox_2"> <label
-													for="basic_checkbox_2"></label>
-											</div>
-											<a href="javascript:void(0);"
-												class="favourite col-amber hidden-sm-down"
-												data-toggle="active"><i class="zmdi zmdi-star"></i></a>
+
 										</div>
 										<div class="thumb hidden-sm-down m-r-20">
 											<img src="assets/images/xs/avatar2.jpg"
@@ -254,13 +238,12 @@ body {
 									<div class="media-body">
 										<div class="media-heading">
 											<a href="mail-single.html" class="m-r-10">Simply dummy
-												text</a> <span class="badge bg-amber">Shop</span> <small
+												text</a> <small
 												class="float-right text-muted"><time
 													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
 												class="zmdi zmdi-attachment-alt"></i> </small>
 										</div>
-										<p class="msg">Lorem Ipsum is simply dummy text of the
-											printing and typesetting industry.</p>
+
 									</div>
 								</div>
 							</li>
@@ -268,13 +251,7 @@ body {
 								<div class="media">
 									<div class="pull-left">
 										<div class="controls">
-											<div class="checkbox">
-												<input type="checkbox" id="basic_checkbox_3"> <label
-													for="basic_checkbox_3"></label>
-											</div>
-											<a href="javascript:void(0);"
-												class="favourite text-muted hidden-sm-down"
-												data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
+
 										</div>
 										<div class="thumb hidden-sm-down m-r-20">
 											<img src="assets/images/xs/avatar3.jpg"
@@ -284,13 +261,12 @@ body {
 									<div class="media-body">
 										<div class="media-heading">
 											<a href="mail-single.html" class="m-r-10">Velit a labore</a>
-											<span class="badge bg-red">Google</span> <small
+											 <small
 												class="float-right text-muted"><time
 													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
 												class="zmdi zmdi-attachment-alt"></i> </small>
 										</div>
-										<p class="msg">If you are going to use a passage of Lorem
-											Ipsum, you need to be sure</p>
+
 									</div>
 								</div>
 							</li>
@@ -298,13 +274,7 @@ body {
 								<div class="media">
 									<div class="pull-left">
 										<div class="controls">
-											<div class="checkbox">
-												<input type="checkbox" id="basic_checkbox_4"> <label
-													for="basic_checkbox_4"></label>
-											</div>
-											<a href="javascript:void(0);"
-												class="favourite text-muted hidden-sm-down"
-												data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
+
 										</div>
 										<div class="thumb hidden-sm-down m-r-20">
 											<img src="assets/images/xs/avatar4.jpg"
@@ -314,13 +284,12 @@ body {
 									<div class="media-body">
 										<div class="media-heading">
 											<a href="mail-single.html" class="m-r-10">Variations of
-												passages</a> <span class="badge bg-blush">Themeforest</span> <small
+												passages</a> <small
 												class="float-right text-muted"><time
 													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
 												class="zmdi zmdi-attachment-alt"></i> </small>
 										</div>
-										<p class="msg">There are many variations of passages of
-											Lorem Ipsum available, but the majority</p>
+
 									</div>
 								</div>
 							</li>
@@ -328,13 +297,7 @@ body {
 								<div class="media">
 									<div class="pull-left">
 										<div class="controls">
-											<div class="checkbox">
-												<input type="checkbox" id="basic_checkbox_5"> <label
-													for="basic_checkbox_5"></label>
-											</div>
-											<a href="javascript:void(0);"
-												class="favourite text-muted hidden-sm-down"
-												data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
+
 										</div>
 										<div class="thumb hidden-sm-down m-r-20">
 											<img src="assets/images/xs/avatar5.jpg"
@@ -344,13 +307,12 @@ body {
 									<div class="media-body">
 										<div class="media-heading">
 											<a href="mail-single.html" class="m-r-10">Generators on
-												the Internet</a> <span class="badge bg-green">Work</span> <small
+												the Internet</a> <small
 												class="float-right text-muted"><time
 													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
 												class="zmdi zmdi-attachment-alt"></i> </small>
 										</div>
-										<p class="msg">LAll the Lorem Ipsum generators on the
-											Internet tend to repeat predefined chunks as necessary</p>
+
 									</div>
 								</div>
 							</li>
@@ -358,13 +320,7 @@ body {
 								<div class="media">
 									<div class="pull-left">
 										<div class="controls">
-											<div class="checkbox">
-												<input type="checkbox" id="basic_checkbox_6"> <label
-													for="basic_checkbox_6"></label>
-											</div>
-											<a href="javascript:void(0);"
-												class="favourite col-amber hidden-sm-down"
-												data-toggle="active"><i class="zmdi zmdi-star"></i></a>
+
 										</div>
 										<div class="thumb hidden-sm-down m-r-20">
 											<img src="assets/images/xs/avatar6.jpg"
@@ -374,13 +330,12 @@ body {
 									<div class="media-body">
 										<div class="media-heading">
 											<a href="mail-single.html" class="m-r-10">Contrary to
-												popular</a> <span class="badge bg-blush">Themeforest</span> <small
+												popular</a> <small
 												class="float-right text-muted"><time
 													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
 												class="zmdi zmdi-attachment-alt"></i> </small>
 										</div>
-										<p class="msg">Contrary to popular belief, Lorem Ipsum is
-											not simply random text. It has roots in a piece of classical</p>
+
 									</div>
 								</div>
 							</li>
@@ -388,13 +343,7 @@ body {
 								<div class="media">
 									<div class="pull-left">
 										<div class="controls">
-											<div class="checkbox">
-												<input type="checkbox" id="basic_checkbox_7"> <label
-													for="basic_checkbox_7"></label>
-											</div>
-											<a href="javascript:void(0);"
-												class="favourite col-amber hidden-sm-down"
-												data-toggle="active"><i class="zmdi zmdi-star"></i></a>
+
 										</div>
 										<div class="thumb hidden-sm-down m-r-20">
 											<img src="assets/images/xs/avatar7.jpg"
@@ -404,13 +353,12 @@ body {
 									<div class="media-body">
 										<div class="media-heading">
 											<a href="mail-single.html" class="m-r-10">Velit a labore</a>
-											<span class="badge bg-green">Work</span> <small
+											 <small
 												class="float-right text-muted"><time
 													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
 												class="zmdi zmdi-attachment-alt"></i> </small>
 										</div>
-										<p class="msg">Lorem Ipsum is simply dumm dummy text of
-											the printing and typesetting industry.</p>
+
 									</div>
 								</div>
 							</li>
@@ -418,13 +366,7 @@ body {
 								<div class="media">
 									<div class="pull-left">
 										<div class="controls">
-											<div class="checkbox">
-												<input type="checkbox" id="basic_checkbox_8" checked="">
-												<label for="basic_checkbox_8"></label>
-											</div>
-											<a href="javascript:void(0);"
-												class="favourite col-amber hidden-sm-down"
-												data-toggle="active"><i class="zmdi zmdi-star"></i></a>
+	
 										</div>
 										<div class="thumb hidden-sm-down m-r-20">
 											<img src="assets/images/xs/avatar8.jpg"
@@ -434,13 +376,12 @@ body {
 									<div class="media-body">
 										<div class="media-heading">
 											<a href="mail-single.html" class="m-r-10">Variations of
-												passages</a> <span class="badge bg-blush">Themeforest</span> <small
+												passages</a> <small
 												class="float-right text-muted"><time
 													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
 												class="zmdi zmdi-attachment-alt"></i> </small>
 										</div>
-										<p class="msg">There are many variations of passages of
-											Lorem Ipsum available, but the majority</p>
+
 									</div>
 								</div>
 							</li>
@@ -448,13 +389,7 @@ body {
 								<div class="media">
 									<div class="pull-left">
 										<div class="controls">
-											<div class="checkbox">
-												<input type="checkbox" id="basic_checkbox_9"> <label
-													for="basic_checkbox_9"></label>
-											</div>
-											<a href="javascript:void(0);"
-												class="favourite text-muted hidden-sm-down"
-												data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
+
 										</div>
 										<div class="thumb hidden-sm-down m-r-20">
 											<img src="assets/images/xs/avatar9.jpg"
@@ -464,13 +399,12 @@ body {
 									<div class="media-body">
 										<div class="media-heading">
 											<a href="mail-single.html" class="m-r-10">Generators on
-												the Internet</a> <span class="badge bg-green">Work</span> <small
+												the Internet</a> <small
 												class="float-right text-muted"><time
 													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
 												class="zmdi zmdi-attachment-alt"></i> </small>
 										</div>
-										<p class="msg">LAll the Lorem Ipsum generators on the
-											Internet tend to repeat predefined chunks as necessary</p>
+
 									</div>
 								</div>
 							</li>
@@ -478,13 +412,7 @@ body {
 								<div class="media">
 									<div class="pull-left">
 										<div class="controls">
-											<div class="checkbox">
-												<input type="checkbox" id="basic_checkbox_10"> <label
-													for="basic_checkbox_10"></label>
-											</div>
-											<a href="javascript:void(0);"
-												class="favourite text-muted hidden-sm-down"
-												data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
+
 										</div>
 										<div class="thumb hidden-sm-down m-r-20">
 											<img src="assets/images/xs/avatar10.jpg"
@@ -494,13 +422,12 @@ body {
 									<div class="media-body">
 										<div class="media-heading">
 											<a href="mail-single.html" class="m-r-10">Velit a labore</a>
-											<span class="badge bg-blue">Family</span> <small
+											 <small
 												class="float-right text-muted"><time
 													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
 												class="zmdi zmdi-attachment-alt"></i> </small>
 										</div>
-										<p class="msg">Lorem Ipsum is simply dumm dummy text of
-											the printing and typesetting industry.</p>
+
 									</div>
 								</div>
 							</li>
