@@ -12,4 +12,5 @@ public class CollectionReviewVO {
 	private String revComment;
 	private int revCount;
 	private int revStar;
+	
 }

@@ -14,7 +14,7 @@ public class JDBCTests {
 
 	static {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -23,8 +23,7 @@ public class JDBCTests {
 	@Test
 	public void testConnection() {
 
-		try (Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "YONGBB",
-				"1234")) {
+		try (Connection con = DriverManager.getConnection("jdbc:mysql://arcodb.cpmuwg7pndtk.ap-northeast-2.rds.amazonaws.com:3306/arcodb", "arco_admin", "arco1234")) {
 			log.info(con);
 		} catch (Exception e) {
 			fail(e.getMessage());

@@ -13,6 +13,7 @@ public interface CollectionMapper {
 	public float getCollectionGpsY(long seq);
 	public void updateAPI();
 	public void insertCollection(CollectionVO collection);
+	public void updateCollectionOthers(CollectionVO collection);
 	
 	
 }

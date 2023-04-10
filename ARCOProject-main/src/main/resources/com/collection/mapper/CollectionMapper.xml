@@ -13,10 +13,31 @@
 	
 	<insert id="insertCollection">
 	
-		insert into collection (seq, title, startDate, endDate, place, realmName, price, url, phone, gpsX, gpsY, imgUrl, placeAddr, sido, thumbnail)
-		values (seq_board.nextval, #{title}, #{content}, #{writer})
+		<!-- insert into collection (seq, title, startDate, endDate, realmName, gpsX, gpsY, thumbnail)
+		values (#{seq, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR}, #{startDate, jdbcType=VARCHAR}, #{endDate, jdbcType=VARCHAR}, #{realmName, jdbcType=VARCHAR}, 
+		#{gpsX, jdbcType=VARCHAR}, #{gpsY, jdbcType=VARCHAR}, #{thumbnail, jdbcType=VARCHAR}) -->
+		
+		insert into collection (seq, title, startDate, endDate, realmName, gpsX, gpsY, thumbnail, place, price, url, phone, placeAddr, area, imgUrl)
+		values (#{seq, jdbcType=BIGINT}, #{title, jdbcType=VARCHAR}, #{startDate, jdbcType=VARCHAR}, #{endDate, jdbcType=VARCHAR}, #{realmName, jdbcType=VARCHAR}, 
+		#{gpsX, jdbcType=DOUBLE}, #{gpsY, jdbcType=DOUBLE}, #{thumbnail, jdbcType=VARCHAR}, #{place, jdbcType=VARCHAR}, #{price, jdbcType=VARCHAR},
+		#{url, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{placeAddr, jdbcType=VARCHAR}, #{area, jdbcType=VARCHAR}, #{imgUrl, jdbcType=VARCHAR})
 	
 	</insert>
-
+	
+	<update id="updateCollectionOthers">
+		
+		update collection
+		set place = #{place, jdbcType=VARCHAR},
+		price = #{price, jdbcType=VARCHAR},
+		url = #{url, jdbcType=VARCHAR},
+		phone = #{phone, jdbcType=VARCHAR},
+		placeAddr = #{placeAddr, jdbcType=VARCHAR},
+		area =  #{area, jdbcType=VARCHAR}
+		where seq = #{seq}
+		
+		
+	</update>
+	
+	
 
 </mapper>
