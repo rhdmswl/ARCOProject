@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -200,238 +201,32 @@ body {
 				</div>
 				<div class="row clearfix">
 					<div class="col-md-12 col-lg-12 col-xl-12">
-						<ul class="mail_list list-group list-unstyled">
-							<li class="list-group-item">
-								<div class="media">
-									<div class="pull-left">
-										<div class="controls">
-			
-										</div>
-										<div class="thumb hidden-sm-down m-r-20">
-											<img src="assets/images/xs/avatar1.jpg"
-												class="rounded-circle" alt="">
-										</div>
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="mail-single.html" class="m-r-10">Velit a labore</a>
-											 <small
-												class="float-right text-muted"><time
-													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
-												class="zmdi zmdi-attachment-alt"></i> </small>
-										</div>
+							<table class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>#번호</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
+						</tr>
+					</thead>
 
-									</div>
-								</div>
-							</li>
-							<li class="list-group-item unread">
-								<div class="media">
-									<div class="pull-left">
-										<div class="controls">
+					<c:forEach items="${list}" var="board">
+						<tr>
+							<td><c:out value="${board.post_id}" /></td>
+							<%-- <td><a href='/board/get?bno=<c:out value="${board.bno}"/>'><c:out value="${board.title}"/></a></td> --%>
 
-										</div>
-										<div class="thumb hidden-sm-down m-r-20">
-											<img src="assets/images/xs/avatar2.jpg"
-												class="rounded-circle" alt="">
-										</div>
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="mail-single.html" class="m-r-10">Simply dummy
-												text</a> <small
-												class="float-right text-muted"><time
-													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
-												class="zmdi zmdi-attachment-alt"></i> </small>
-										</div>
+							<td><a class='move' href='<c:out value="${board.post_id}"/>'>
+									<c:out value="${board.post_title}" />
+									 <b> [ <c:out value="${board.post_com_count }" /> ]</b>
+							</a></td>
 
-									</div>
-								</div>
-							</li>
-							<li class="list-group-item">
-								<div class="media">
-									<div class="pull-left">
-										<div class="controls">
-
-										</div>
-										<div class="thumb hidden-sm-down m-r-20">
-											<img src="assets/images/xs/avatar3.jpg"
-												class="rounded-circle" alt="">
-										</div>
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="mail-single.html" class="m-r-10">Velit a labore</a>
-											 <small
-												class="float-right text-muted"><time
-													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
-												class="zmdi zmdi-attachment-alt"></i> </small>
-										</div>
-
-									</div>
-								</div>
-							</li>
-							<li class="list-group-item unread">
-								<div class="media">
-									<div class="pull-left">
-										<div class="controls">
-
-										</div>
-										<div class="thumb hidden-sm-down m-r-20">
-											<img src="assets/images/xs/avatar4.jpg"
-												class="rounded-circle" alt="">
-										</div>
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="mail-single.html" class="m-r-10">Variations of
-												passages</a> <small
-												class="float-right text-muted"><time
-													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
-												class="zmdi zmdi-attachment-alt"></i> </small>
-										</div>
-
-									</div>
-								</div>
-							</li>
-							<li class="list-group-item">
-								<div class="media">
-									<div class="pull-left">
-										<div class="controls">
-
-										</div>
-										<div class="thumb hidden-sm-down m-r-20">
-											<img src="assets/images/xs/avatar5.jpg"
-												class="rounded-circle" alt="">
-										</div>
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="mail-single.html" class="m-r-10">Generators on
-												the Internet</a> <small
-												class="float-right text-muted"><time
-													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
-												class="zmdi zmdi-attachment-alt"></i> </small>
-										</div>
-
-									</div>
-								</div>
-							</li>
-							<li class="list-group-item">
-								<div class="media">
-									<div class="pull-left">
-										<div class="controls">
-
-										</div>
-										<div class="thumb hidden-sm-down m-r-20">
-											<img src="assets/images/xs/avatar6.jpg"
-												class="rounded-circle" alt="">
-										</div>
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="mail-single.html" class="m-r-10">Contrary to
-												popular</a> <small
-												class="float-right text-muted"><time
-													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
-												class="zmdi zmdi-attachment-alt"></i> </small>
-										</div>
-
-									</div>
-								</div>
-							</li>
-							<li class="list-group-item">
-								<div class="media">
-									<div class="pull-left">
-										<div class="controls">
-
-										</div>
-										<div class="thumb hidden-sm-down m-r-20">
-											<img src="assets/images/xs/avatar7.jpg"
-												class="rounded-circle" alt="">
-										</div>
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="mail-single.html" class="m-r-10">Velit a labore</a>
-											 <small
-												class="float-right text-muted"><time
-													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
-												class="zmdi zmdi-attachment-alt"></i> </small>
-										</div>
-
-									</div>
-								</div>
-							</li>
-							<li class="list-group-item">
-								<div class="media">
-									<div class="pull-left">
-										<div class="controls">
-	
-										</div>
-										<div class="thumb hidden-sm-down m-r-20">
-											<img src="assets/images/xs/avatar8.jpg"
-												class="rounded-circle" alt="">
-										</div>
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="mail-single.html" class="m-r-10">Variations of
-												passages</a> <small
-												class="float-right text-muted"><time
-													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
-												class="zmdi zmdi-attachment-alt"></i> </small>
-										</div>
-
-									</div>
-								</div>
-							</li>
-							<li class="list-group-item">
-								<div class="media">
-									<div class="pull-left">
-										<div class="controls">
-
-										</div>
-										<div class="thumb hidden-sm-down m-r-20">
-											<img src="assets/images/xs/avatar9.jpg"
-												class="rounded-circle" alt="">
-										</div>
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="mail-single.html" class="m-r-10">Generators on
-												the Internet</a> <small
-												class="float-right text-muted"><time
-													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
-												class="zmdi zmdi-attachment-alt"></i> </small>
-										</div>
-
-									</div>
-								</div>
-							</li>
-							<li class="list-group-item">
-								<div class="media">
-									<div class="pull-left">
-										<div class="controls">
-
-										</div>
-										<div class="thumb hidden-sm-down m-r-20">
-											<img src="assets/images/xs/avatar10.jpg"
-												class="rounded-circle" alt="">
-										</div>
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="mail-single.html" class="m-r-10">Velit a labore</a>
-											 <small
-												class="float-right text-muted"><time
-													class="hidden-sm-down" datetime="2017">12:35 AM</time><i
-												class="zmdi zmdi-attachment-alt"></i> </small>
-										</div>
-
-									</div>
-								</div>
-							</li>
-						</ul>
+							<td><c:out value="${board.post_writer}" /></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+									value="${board.post_regdate}" /></td>
+						</tr>
+					</c:forEach>
+				</table>
 						<div class="card m-t-5">
 							<div class="body">
 								<ul class="pagination pagination-primary m-b-0">
