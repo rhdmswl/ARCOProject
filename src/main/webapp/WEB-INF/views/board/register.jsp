@@ -204,12 +204,26 @@ body {
 													class="form-control" rows="30" name='post_content'></textarea></th>
 										</tr>
 										<tr style="border-top: hidden;">
-											<th width='150' style="border-right: hidden;">
-												<button type="reset">목록으로</button>
-
-											</th>
-											<td align="right">
-												<button type="submit">글 등록</button>
+											<td style="padding-left: 5 px; border-right: hidden;">
+												<div class="card m-t-5">
+													<div class="body">
+														<ul class="pagination pagination-primary m-b-0">
+															<li class="page-item"><a class="page-link"
+																href='/board/list'>목록으로</a></li>
+														</ul>
+													</div>
+												</div>
+											</td>
+											<td style="padding-right: 5 px;">
+												<div class="card m-t-5">
+													<div class="body">
+														<ul style="float: right;"
+															class="pagination pagination-primary m-b-0">
+															<li class="page-item"><a class="page-link"
+																href='/board/register'>글 등록</a></li>
+														</ul>
+													</div>
+												</div>
 											</td>
 										</tr>
 									</thead>
