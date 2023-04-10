@@ -8,7 +8,8 @@
 <head>
 <meta charset="utf-8">
 
-<%@ include file="../includes/header.jsp"%>
+
+<%@ include file="../includes/header.jsp" %>
 
 <title>ARCO - Community List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -139,11 +140,11 @@ body {
 					<div class="col-lg-12">
 						<div class="card action_bar">
 							<div class="body">
-								<div class="row clearfix">
+								<div  class="row clearfix">
 									<div class="col-lg-1 col-md-2 col-3"></div>
-									<div class="col-lg-5 col-md-4 col-6">
-										<div class="input-group search">
-											<input type="text" class="form-control"
+									<div style="left:20%" class="col-lg-5 col-md-4 col-6">
+										<div  class="input-group search">
+											<input  type="text" class="form-control"
 												placeholder="Search..."> <span
 												class="input-group-addon"> <i
 												class="zmdi zmdi-search"></i>
