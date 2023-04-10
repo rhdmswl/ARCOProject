@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 
-<%@ include file="../includes/header.jsp" %>
 
 <title>ARCO - Community List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +18,43 @@
 body {
 	margin-top: 20px;
 	background: #FDFDFF
+}
+
+.badge {
+	border-radius: 8px;
+	padding: 4px 8px;
+	text-transform: uppercase;
+	font-size: .7142em;
+	line-height: 12px;
+	background-color: transparent;
+	border: 1px solid;
+	margin-bottom: 5px;
+	border-radius: .875rem;
+}
+
+.bg-green {
+	background-color: #50d38a !important;
+	color: #fff;
+}
+
+.bg-blush {
+	background-color: #ff758e !important;
+	color: #fff;
+}
+
+.bg-amber {
+	background-color: #FFC107 !important;
+	color: #fff;
+}
+
+.bg-red {
+	background-color: #ec3b57 !important;
+	color: #fff;
+}
+
+.bg-blue {
+	background-color: #60bafd !important;
+	color: #fff;
 }
 
 .card {
@@ -33,35 +69,13 @@ body {
 	box-shadow: none;
 }
 
-.page-link {
-  color: #000; 
-  background-color: #fff;
-  border: 1px solid #ccc; 
-}
-
-.page-item.active .page-link {
- z-index: 1;
- color: #555;
- font-weight:bold;
- background-color: #f1f1f1;
- border-color: #ccc;
- 
-}
-
-.page-link:focus, .page-link:hover {
-  color: #000;
-  background-color: #fafafa; 
-  border-color: #ccc;
-}
-
 .inbox .action_bar .delete_all {
 	margin-bottom: 0;
 	margin-top: 8px
 }
 
 .inbox .action_bar .btn, .inbox .action_bar .search {
-	margin-left: 200px;
-	margin-bottom: 15px;
+	margin: 0
 }
 
 .inbox .mail_list .list-group-item {
@@ -87,6 +101,27 @@ body {
 	margin-top: 11px
 }
 
+.inbox .mail_list .list-group-item .controls .checkbox {
+	display: inline-block
+}
+
+.inbox .mail_list .list-group-item .controls .checkbox label {
+	margin: 0;
+	padding: 10px
+}
+
+.inbox .mail_list .list-group-item .controls .favourite {
+	margin-left: 10px
+}
+
+.inbox .mail_list .list-group-item .thumb {
+	display: inline-block
+}
+
+.inbox .mail_list .list-group-item .thumb img {
+	width: 40px
+}
+
 .inbox .mail_list .list-group-item .media-heading a {
 	color: #555;
 	font-weight: normal
@@ -100,6 +135,12 @@ body {
 .inbox .mail_list .list-group-item .media-heading time {
 	font-size: 13px;
 	margin-right: 10px
+}
+
+.inbox .mail_list .list-group-item .media-heading .badge {
+	margin-bottom: 0;
+	border-radius: 50px;
+	font-weight: normal
 }
 
 .inbox .mail_list .list-group-item .msg {
@@ -131,7 +172,7 @@ body {
 </style>
 </head>
 <body>
-<link rel="stylesheet"
+	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 	<div class="container">
 		<section class="content inbox">
@@ -141,9 +182,7 @@ body {
 						<div class="card action_bar">
 							<div class="body">
 								<div class="row clearfix">
-									<div class="col-lg-1 col-md-2 col-3">
-
-									</div>
+									<div class="col-lg-1 col-md-2 col-3"></div>
 									<div class="col-lg-5 col-md-4 col-6">
 										<div class="input-group search">
 											<input type="text" class="form-control"
@@ -160,44 +199,64 @@ body {
 				</div>
 				<div class="row clearfix">
 					<div class="col-md-12 col-lg-12 col-xl-12">
-							<table class="table table-bordered table-hover">
-					<thead>
-						<tr>
-							<th>#번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-						</tr>
-					</thead>
+						<table class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>#번호</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>작성일</th>
+								</tr>
+							</thead>
 
-					<c:forEach items="${list}" var="board">
-						<tr>
-							<td><c:out value="${board.post_id}" /></td>
-							<td><a href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out value="${board.post_title}"/>
-							<b> [ <c:out value="${board.post_com_count }" /> ]</b></a></td>
+							<c:forEach items="${list}" var="board">
+								<tr>
+									<td><c:out value="${board.post_id}" /></td>
+									<td><a
+										href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out
+												value="${board.post_title}" /> <b> [ <c:out
+													value="${board.post_com_count }" /> ]
+										</b></a></td>
 
-							<td><c:out value="${board.post_writer}" /></td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${board.post_regdate}" /></td>
-						</tr>
-					</c:forEach>
-				</table>
-						<div class="card m-t-5">
-							<div class="body">
-								<ul class="pagination pagination-primary m-b-0">
-									<li class="page-item"><a class="page-link"
-										href="javascript:void(0);">Previous</a></li>
-									<li class="page-item"><a class="page-link"
-										href="javascript:void(0);">1</a></li>
-									<li class="page-item active"><a class="page-link"
-										href="javascript:void(0);">2</a></li>
-									<li class="page-item"><a class="page-link"
-										href="javascript:void(0);">3</a></li>
-									<li class="page-item"><a class="page-link"
-										href="javascript:void(0);">Next</a></li>
-								</ul>
-							</div>
-						</div>
+									<td><c:out value="${board.post_writer}" /></td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd"
+											value="${board.post_regdate}" /></td>
+								</tr>
+							</c:forEach>
+						</table>
+						<table class="table" style="border-top: hidden;">
+								<tr>
+									<td style="padding: 0px;">
+										<div class="card m-t-5">
+											<div class="body">
+												<ul class="pagination pagination-primary m-b-0">
+													<li class="page-item"><a class="page-link"
+														href="javascript:void(0);">Previous</a></li>
+													<li class="page-item"><a class="page-link"
+														href="javascript:void(0);">1</a></li>
+													<li class="page-item active"><a class="page-link"
+														href="javascript:void(0);">2</a></li>
+													<li class="page-item"><a class="page-link"
+														href="javascript:void(0);">3</a></li>
+													<li class="page-item"><a class="page-link"
+														href="javascript:void(0);">Next</a></li>
+												</ul>
+											</div>
+										</div>
+									</td>
+									<td style="padding: 0px;">
+										<div class="card m-t-5">
+											<div class="body">
+												<ul style="float: right;"
+													class="pagination pagination-primary m-b-0">
+													<li class="page-item"><a class="page-link"
+														href='/board/register'>글 등록</a></li>
+												</ul>
+											</div>
+										</div>
+									</td>
+								</tr>
+						</table>
 					</div>
 				</div>
 			</div>
@@ -207,7 +266,7 @@ body {
 	<script
 		src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-	
-</script>
+		
+	</script>
 </body>
 </html>
