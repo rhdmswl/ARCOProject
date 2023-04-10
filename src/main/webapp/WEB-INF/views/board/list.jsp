@@ -8,8 +8,7 @@
 <head>
 <meta charset="utf-8">
 
-
-<%@ include file="../includes/header.jsp" %>
+<%@ include file="../includes/header.jsp"%>
 
 <title>ARCO - Community List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +20,6 @@ body {
 	margin-top: 20px;
 	background: #FDFDFF
 }
-
 .card {
 	background: #fff;
 	margin-bottom: 30px;
@@ -33,13 +31,11 @@ body {
 	width: 100%;
 	box-shadow: none;
 }
-
 .page-link {
 	color: #000;
 	background-color: #fff;
 	border: 1px solid #ccc;
 }
-
 .page-item.active .page-link {
 	z-index: 1;
 	color: #555;
@@ -47,38 +43,31 @@ body {
 	background-color: #f1f1f1;
 	border-color: #ccc;
 }
-
 .page-link:focus, .page-link:hover {
 	color: #000;
 	background-color: #fafafa;
 	border-color: #ccc;
 }
-
 .inbox .action_bar .delete_all {
 	margin-bottom: 0;
 	margin-top: 8px
 }
-
 .inbox .action_bar .btn, .inbox .action_bar .search {
 	margin-left: 200px;
 	margin-bottom: 15px;
 }
-
 .inbox .mail_list .list-group-item {
 	border: 0;
 	padding: 15px;
 	margin-bottom: 1px
 }
-
 .inbox .mail_list .list-group-item:hover {
 	background: #eceeef
 }
-
 .inbox .mail_list .list-group-item .media {
 	margin: 0;
 	width: 100%
 }
-
 .inbox .mail_list .list-group-item .controls {
 	display: inline-block;
 	margin-right: 10px;
@@ -86,39 +75,31 @@ body {
 	text-align: center;
 	margin-top: 11px
 }
-
 .inbox .mail_list .list-group-item .media-heading a {
 	color: #555;
 	font-weight: normal
 }
-
 .inbox .mail_list .list-group-item .media-heading a:hover, .inbox .mail_list .list-group-item .media-heading a:focus
 	{
 	text-decoration: none
 }
-
 .inbox .mail_list .list-group-item .media-heading time {
 	font-size: 13px;
 	margin-right: 10px
 }
-
 .inbox .mail_list .list-group-item .msg {
 	margin-bottom: 0px
 }
-
 .inbox .mail_list .unread {
 	border-left: 2px solid
 }
-
 .inbox .mail_list .unread .media-heading a {
 	color: #333;
 	font-weight: 700
 }
-
 .inbox .btn-group {
 	box-shadow: none
 }
-
 .inbox .bg-gray {
 	background: #e6e6e6
 }
@@ -140,11 +121,11 @@ body {
 					<div class="col-lg-12">
 						<div class="card action_bar">
 							<div class="body">
-								<div  class="row clearfix">
+								<div class="row clearfix">
 									<div class="col-lg-1 col-md-2 col-3"></div>
-									<div style="left:20%" class="col-lg-5 col-md-4 col-6">
-										<div  class="input-group search">
-											<input  type="text" class="form-control"
+									<div class="col-lg-5 col-md-4 col-6">
+										<div style="left:10% ;" class="input-group search">
+											<input type="text" class="form-control"
 												placeholder="Search..."> <span
 												class="input-group-addon"> <i
 												class="zmdi zmdi-search"></i>
@@ -158,15 +139,6 @@ body {
 				</div>
 				<div class="row clearfix">
 					<div class="col-md-12 col-lg-12 col-xl-12">
-						<table class="table table-bordered table-hover">
-							<thead>
-								<tr>
-									<th>#번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일</th>
-								</tr>
-							</thead>
 							<table class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
