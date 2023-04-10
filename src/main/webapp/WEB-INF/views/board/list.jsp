@@ -214,12 +214,8 @@ body {
 					<c:forEach items="${list}" var="board">
 						<tr>
 							<td><c:out value="${board.post_id}" /></td>
-							<td><a href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out value="${board.post_title}"/></a></td>
-
-							<td><a class='move' href='<c:out value="${board.post_id}"/>'>
-									<c:out value="${board.post_title}" />
-									 <b> [ <c:out value="${board.post_com_count }" /> ]</b>
-							</a></td>
+							<td><a href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out value="${board.post_title}"/>
+							<b> [ <c:out value="${board.post_com_count }" /> ]</b></a></td>
 
 							<td><c:out value="${board.post_writer}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
