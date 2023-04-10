@@ -355,7 +355,7 @@ background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
 							<button class="custom-btn btn-1" data-oper='modify' 
 								onclick="location.href='/boardmodify?post_id=<c:out value="${board.post_id }"/>'">Modify</button>
 							<button class="custom-btn btn-1" data-oper='list'
-								onclick="loacation.href='/board/list'">List</button>
+								onclick="location.href='/board/list'">List</button>
 						</div>
 						
 						
