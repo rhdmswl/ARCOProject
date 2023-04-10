@@ -19,6 +19,7 @@
 		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://arcodb.cpmuwg7pndtk.ap-northeast-2.rds.amazonaws.com:3306/arcodb"></property>
 		<property name="username" value="arco_admin"></property>
 		<property name="password" value="arco1234"></property>
+		<property name="maxLifetime"  value="60000" />
 	</bean>
 
 	<!-- HikariCP Configuration -->
