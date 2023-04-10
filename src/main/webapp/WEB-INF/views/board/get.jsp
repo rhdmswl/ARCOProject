@@ -8,6 +8,7 @@
 <head>
 <meta charset="utf-8">
 
+<%@ include file="../includes/header.jsp" %>
 
 <title>ARCO - Community Post</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -291,38 +292,60 @@ Template sidebar
   width: 90%;
   margin: 40px auto;
   text-align: center;
+  line-height: -100px;
 }
+
 button {
   margin: 20px;
+  outline: none;
 }
+
 .custom-btn {
   width: 130px;
   height: 40px;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px 25px;
+  border: 2px solid #000;
   font-family: 'Lato', sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
-  outline: none;
 }
 
-/* 1 */
-.btn-1 {
-  background: rgb(6,14,131);
-  background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
-  border: none;
+/* 11 */
+.btn-11 {
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
-.btn-1:hover {
-   background: rgb(0,3,255);
-background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+
+.btn-11:hover {
+   background: #000;
+   color: #fff;
+}
+
+.btn-11:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.btn-11:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+@-webkit-keyframes shiny-btn1 {
+    0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
+    80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
+    81% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
+    100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
 }
 
 </style>
@@ -332,6 +355,7 @@ background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
 		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 		rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
 	<div class="container pb50">
 		<div class="row">
 			<div class="col-md-9 mb40">
@@ -352,9 +376,9 @@ background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
 						</div>
 						
 						<div class="frame">
-							<button class="custom-btn btn-1" data-oper='modify' 
+							<button class="custom-btn btn-11" data-oper='modify' 
 								onclick="location.href='/boardmodify?post_id=<c:out value="${board.post_id }"/>'">Modify</button>
-							<button class="custom-btn btn-1" data-oper='list'
+							<button class="custom-btn btn-11" data-oper='list'
 								onclick="location.href='/board/list'">List</button>
 						</div>
 						
@@ -413,14 +437,14 @@ background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
 								<textarea class="form-control" rows="5" placeholder="Comment"></textarea>
 							</div>
 							<div class="clearfix float-right">
-								<button type="button" class="custom-btn btn-1">Submit</button>
+								<button type="button" class="custom-btn btn-11">Submit</button>
 							</div>
 						</form>
 					</div>
 				</article>
 
 			</div>
-			<div class="col-md-3 mb40">
+<!-- 			<div class="col-md-3 mb40">
 				<div class="mb40">
 					<form>
 						<div class="input-group">
@@ -431,7 +455,7 @@ background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
 							</button>
 						</div>
 					</form>
-				</div>
+				</div> -->
 
 				<div class="mb40">
 					<h4 class="sidebar-title">Categories</h4>
