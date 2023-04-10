@@ -51,9 +51,9 @@ public class BoardControllerTests {
 	public void testRegister()throws Exception{
 		
 		String resultPage=mockMvc.perform(MockMvcRequestBuilders.post("/board/register")
-				.param("post_title", "컨트롤러 테스트 새글 제목")
-				.param("post_content", "컨트롤러 테스트 새글 내용")
-				.param("post_writer","test user")
+				.param("post_title", "페이지 구현 테스트")
+				.param("post_content", "페이지 구현 내용")
+				.param("post_writer","lyrics")
 				).andReturn().getModelAndView().getViewName();
 		
 		log.info(resultPage);
