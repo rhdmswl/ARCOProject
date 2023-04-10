@@ -8,6 +8,7 @@
 <head>
 <meta charset="utf-8">
 
+<%@ include file="../includes/header.jsp" %>
 
 <%@ include file="../includes/header.jsp" %>
 
