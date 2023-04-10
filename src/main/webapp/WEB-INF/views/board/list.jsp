@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 
 
-<title>bs4 inbox list - Bootdey.com</title>
+<title>ARCO - Community List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
 	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
