@@ -6,7 +6,7 @@
 
 	<select id="getList" resultType="com.arco.domain.BoardVO">
 	<![CDATA[
-		select * from post
+		select * from post ORDER BY post_id DESC
 	]]>
 	</select>
 
