@@ -11,15 +11,17 @@
 	</select>
 
 	<select id="read" resultType="com.arco.domain.BoardVO">
-		select * from post where post_id=#{post_id}
+		select * from post where
+		post_id=#{post_id}
 	</select>
 
 	<insert id="insert">
-		insert into post (post_id, post_title, post_content, post_writer)
+		insert into post (post_id, post_title, post_content,
+		post_writer)
 		values (
-		(select nextval('post_id') from dual), 
-		#{post_title}, 
-		#{post_content}, 
+		(select nextval('post_id') from dual),
+		#{post_title},
+		#{post_content},
 		#{post_writer}
 		)
 	</insert>
@@ -27,12 +29,21 @@
 	<delete id="delete">
 		delete from post where post_id = #{post_id}
 	</delete>
-	
+
 	<update id="update">
 		update post
 		set post_title=#{post_title},
 		post_content=#{post_content}
 		where post_id = #{post_id}
 	</update>
-	
+
+	<select id="getListWithPaging"
+		resultType="com.arco.domain.BoardVO">
+		<![CDATA[
+		SELECT *
+		FROM post
+		ORDER BY post_id DESC
+		LIMIT #{pageNum},10
+]]>
+	</select>
 </mapper>

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.arco.domain.BoardVO;
+import com.arco.domain.Criteria;
+import com.arco.domain.PageDTO;
 import com.arco.service.BoardService;
 
 import lombok.AllArgsConstructor;
@@ -26,17 +28,17 @@ public class BoardController {
 	private BoardService service;
 
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Criteria cri, Model model) {
+		log.info("list : "+cri);
+		
+		model.addAttribute("list", service.getList(cri));
 
-		log.info("list");
-
-		model.addAttribute("list", service.getList());
 	}
 
-	
-	@GetMapping("/register") public void register() { }
-	 
-	
+
+	@GetMapping("/register")
+	public void register() {
+	}		
 	
 	@PostMapping("/register")
 	public String register(BoardVO board, RedirectAttributes rttr) {
