@@ -17,11 +17,11 @@
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
 
-    <!-- Core Stylesheet -->
-    <link href="yummy-master/style.css" rel="stylesheet">
+<!--     Core Stylesheet
+    <link href="resources/yummy-master/style.css" rel="stylesheet">
 
-    <!-- Responsive CSS -->
-    <link href="css/responsive/responsive.css" rel="stylesheet">
+    Responsive CSS
+    <link href="resources/yummy-master/responsive/responsive.css" rel="stylesheet"> -->
     
     <style>
 

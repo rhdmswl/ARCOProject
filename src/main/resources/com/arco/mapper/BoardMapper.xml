@@ -31,8 +31,7 @@
 	<update id="update">
 		update post
 		set post_title=#{post_title},
-		post_content=#{post_content},
-		post_writer=#{post_writer}
+		post_content=#{post_content}
 		where post_id = #{post_id}
 	</update>
 	

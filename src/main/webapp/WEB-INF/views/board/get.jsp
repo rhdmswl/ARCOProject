@@ -376,10 +376,12 @@ button {
 						</div>
 						
 						<div class="frame">
-							<button class="custom-btn btn-11" data-oper='modify' 
-								onclick="location.href='/boardmodify?post_id=<c:out value="${board.post_id }"/>'">Modify</button>
-							<button class="custom-btn btn-11" data-oper='list'
-								onclick="location.href='/board/list'">List</button>
+							<button class="custom-btn btn-11" data-oper='modify'>Modify</button>
+							<button class="custom-btn btn-11" data-oper='list'>List</button>
+							
+							<form id='operForm' action="/board/modify" method="get">
+								<input type='hidden' id='post_id' name='post_id' value='<c:out value="${board.post_id}"/>'>
+							</form>
 						</div>
 						
 						
@@ -511,12 +513,25 @@ button {
 				</div> -->
 			</div>
 		</div>
-	</div>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			var operForm = $("#operForm");
+			
+			$("button[data-oper='modify']").on("click", function(e){
+				operForm.attr("action", "/board/modify").submit();
+			});
+			
+			$("button[data-oper='list']").on("click", function(e){
+				operForm.find('#post_id').remove();
+				operForm.attr("action", "/board/list")
+				operForm.submit();
+			});
+		});
 	
-</script>
+	</script>
 </body>
 </html>

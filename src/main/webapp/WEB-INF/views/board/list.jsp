@@ -18,7 +18,7 @@
 <style type="text/css">
 body {
 	margin-top: 20px;
-	background: #FDFDFF
+	background: #FFF
 }
 .card {
 	background: #fff;
@@ -109,11 +109,86 @@ body {
 		margin-top: 3px
 	}
 }
+
+.modal-content {
+    -webkit-border-radius: 0;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 0;
+    -moz-background-clip: padding;
+    border-radius: 6px;
+    background-clip: padding-box;
+    -webkit-box-shadow: 0 0 40px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 40px rgba(0,0,0,.5);
+    box-shadow: 0 0 40px rgba(0,0,0,.5);
+    color: #000;
+    background-color: #fff;
+    border: rgba(0,0,0,0);
+}
+
+.modal-message .modal-dialog {
+    width: 300px;
+}
+
+.modal-message .modal-body, .modal-message .modal-footer, .modal-message .modal-header, .modal-message .modal-title {
+    background: 0 0;
+    border: none;
+    margin: 0;
+    padding: 0 20px;
+    text-align: center!important;
+}
+
+.modal-message .modal-title {
+    font-size: 17px;
+    color: #737373;
+    margin-bottom: 3px;
+}
+
+.modal-message .modal-body {
+    color: #737373;
+}
+
+.modal-message .modal-header {
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 15px 0 8px;
+}
+
+.modal-message .modal-header .fa, 
+.modal-message .modal-header 
+.glyphicon, .modal-message 
+.modal-header .typcn, .modal-message .modal-header .wi {
+    font-size: 30px;
+}
+
+.modal-message .modal-footer {
+    margin: 25px 0 20px;
+    padding-bottom: 10px;
+}
+
+.modal-backdrop.in {
+    zoom: 1;
+    filter: alpha(opacity=75);
+    -webkit-opacity: .75;
+    -moz-opacity: .75;
+    opacity: .75;
+}
+
+.modal-backdrop {
+    background-color: #fff;
+}
+
+.modal-message.modal-success .modal-header {
+    color: #53a93f;
+    border-bottom: 3px solid #a0d468;
+}
+
+
 </style>
 </head>
 <body>
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<div class="container">
 		<section class="content inbox">
 			<div class="container-fluid">
@@ -124,7 +199,7 @@ body {
 								<div class="row clearfix">
 									<div class="col-lg-1 col-md-2 col-3"></div>
 									<div class="col-lg-5 col-md-4 col-6">
-										<div style="left:10% ;" class="input-group search">
+										<div style="left: 10%;" class="input-group search">
 											<input type="text" class="form-control"
 												placeholder="Search..."> <span
 												class="input-group-addon"> <i
@@ -139,16 +214,16 @@ body {
 				</div>
 				<div class="row clearfix">
 					<div class="col-md-12 col-lg-12 col-xl-12">
-							<table class="table table-striped table-bordered table-hover">
-								<thead>
-									<tr>
-										<th>#번호</th>
-										<th>제목</th>
-										<th>작성자</th>
-										<th>작성일</th>
-									</tr>
-								</thead>
-
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>#번호</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>작성일</th>
+								</tr>
+							</thead>
+              
 								<c:forEach items="${list}" var="board">
 									<tr>
 										<td><c:out value="${board.post_id}" /></td>
@@ -157,46 +232,64 @@ body {
 													value="${board.post_title}" /> <b> [ <c:out
 														value="${board.post_com_count }" /> ]
 											</b></a></td>
-
 										<td><c:out value="${board.post_writer}" /></td>
 										<td><fmt:formatDate pattern="yyyy-MM-dd"
 												value="${board.post_regdate}" /></td>
 									</tr>
 								</c:forEach>
 							</table>
-							<table class="table" style="border-top: hidden;">
-								<tr>
-									<td style="padding: 0px;">
-										<div class="card m-t-5">
-											<div class="body">
-												<ul class="pagination pagination-primary m-b-0">
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">Previous</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">1</a></li>
-													<li class="page-item active"><a class="page-link"
-														href="javascript:void(0);">2</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">3</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">Next</a></li>
-												</ul>
-											</div>
+						<table class="table" style="border-top: hidden;">
+							<tr>
+								<td style="padding: 0px;">
+									<div class="card m-t-5">
+										<div class="body">
+											<ul class="pagination pagination-primary m-b-0">
+												<li class="page-item"><a class="page-link"
+													href="javascript:void(0);">Previous</a></li>
+												<li class="page-item"><a class="page-link"
+													href="javascript:void(0);">1</a></li>
+												<li class="page-item active"><a class="page-link"
+													href="javascript:void(0);">2</a></li>
+												<li class="page-item"><a class="page-link"
+													href="javascript:void(0);">3</a></li>
+												<li class="page-item"><a class="page-link"
+													href="javascript:void(0);">Next</a></li>
+											</ul>
 										</div>
-									</td>
-									<td style="padding: 0px;">
-										<div class="card m-t-5">
-											<div class="body">
-												<ul style="float: right;"
-													class="pagination pagination-primary m-b-0">
-													<li class="page-item"><a class="page-link"
-														href='/board/register'>글 등록</a></li>
-												</ul>
-											</div>
+									</div>
+								</td>
+								<td style="padding: 0px;">
+									<div class="card m-t-5">
+										<div class="body">
+											<ul style="float: right;" class="regBtn">
+												<li class="page-item"><a class="page-link"
+													href='/board/register'>글 등록</a></li>
+											</ul>
 										</div>
-									</td>
-								</tr>
+									</div>
+								</td>
+							</tr>
 						</table>
+
+						<!-- Modal -->
+						<div id="modal-success" class="modal modal-message modal-success fade" tabindex=-1
+							aria-labelledby=myModalLabel role="dialog" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<i class="glyphicon glyphicon-check"></i>
+									</div>
+									<div class="modal-title" id="myModalLabel">Success</div>
+									<div class="modal-body">처리가 완료되었습니다.</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+									</div>
+								</div>
+								<!-- / .modal-content -->
+							</div>
+							<!-- / .modal-dialog -->
+						</div>
+						<!--End Success Modal Templates-->
 					</div>
 				</div>
 			</div>
@@ -204,10 +297,36 @@ body {
 	</div>
 
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script
-		src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.bundle.min.js"></script>
+
 	<script type="text/javascript">
-		
+		$(document).ready(
+				function() {
+
+					var result = '<c:out value="${result}"/>';
+
+					checkModal(result);
+
+					history.replaceState({}, null, null);
+
+					function checkModal(result) {
+						if (result === '' || history.state) {
+							return;
+						}
+						if (parseInt(result) > 0) {
+							$(".modal-body")
+									.html(
+											"게시글 " + parseInt(result)
+													+ " 번이 등록 되었습니다.");
+						}
+						$("#modal-success").modal("show");
+					}
+
+					/*  			$("#regBtn").on("click", function() {
+					 self.location = "/board/register";
+					 });   */
+				});
 	</script>
 </body>
 </html>
