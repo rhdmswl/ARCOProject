@@ -3,6 +3,7 @@ package com.arco.service;
 import java.util.List;
 
 import com.arco.domain.BoardVO;
+import com.arco.domain.Criteria;
 
 public interface BoardService {
 	
@@ -14,6 +15,6 @@ public interface BoardService {
 	
 	public boolean remove(Long post_id);
 	
-	public List<BoardVO> getList();
+	public List<BoardVO> getList(Criteria cri);
 	
 }

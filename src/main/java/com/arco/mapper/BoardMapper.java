@@ -3,10 +3,13 @@ package com.arco.mapper;
 import java.util.List;
 
 import com.arco.domain.BoardVO;
+import com.arco.domain.Criteria;
 
 public interface BoardMapper {
 	
 	public List<BoardVO> getList();
+	
+	public List<BoardVO> getListWithPaging(Criteria cri);
 	
 	public BoardVO read(Long post_id);
 	
