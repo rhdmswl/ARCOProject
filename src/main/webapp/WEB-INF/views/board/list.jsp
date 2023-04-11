@@ -223,22 +223,21 @@ body {
 									<th>작성일</th>
 								</tr>
 							</thead>
-
-							<c:forEach items="${list}" var="board">
-								<tr>
-									<td><c:out value="${board.post_id}" /></td>
-									<td><a
-										href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out
-												value="${board.post_title}" /> <b> [ <c:out
-													value="${board.post_com_count }" /> ]
-										</b></a></td>
-
-									<td><c:out value="${board.post_writer}" /></td>
-									<td><fmt:formatDate pattern="yyyy-MM-dd"
-											value="${board.post_regdate}" /></td>
-								</tr>
-							</c:forEach>
-						</table>
+              
+								<c:forEach items="${list}" var="board">
+									<tr>
+										<td><c:out value="${board.post_id}" /></td>
+										<td><a
+											href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out
+													value="${board.post_title}" /> <b> [ <c:out
+														value="${board.post_com_count }" /> ]
+											</b></a></td>
+										<td><c:out value="${board.post_writer}" /></td>
+										<td><fmt:formatDate pattern="yyyy-MM-dd"
+												value="${board.post_regdate}" /></td>
+									</tr>
+								</c:forEach>
+							</table>
 						<table class="table" style="border-top: hidden;">
 							<tr>
 								<td style="padding: 0px;">
