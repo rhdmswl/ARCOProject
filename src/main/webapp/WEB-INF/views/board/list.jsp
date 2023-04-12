@@ -15,6 +15,7 @@
 <link
 	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <style type="text/css">
 body {
 	margin-top: 20px;
@@ -37,7 +38,7 @@ body {
 	border: 1px solid #ccc;
 }
 .page-item.active .page-link {
-	z-index: 1;
+	/* z-index: 1; */
 	color: #555;
 	font-weight: bold;
 	background-color: #f1f1f1;
@@ -104,12 +105,6 @@ body {
 	background: #e6e6e6
 }
 
-@media only screen and (max-width: 767px) {
-	.inbox .mail_list .list-group-item .controls {
-		margin-top: 3px
-	}
-}
-
 .modal-content {
     -webkit-border-radius: 0;
     -webkit-background-clip: padding-box;
@@ -123,6 +118,7 @@ body {
     color: #000;
     background-color: #fff;
     border: rgba(0,0,0,0);
+    z-index: 500;
 }
 
 .modal-message .modal-dialog {
@@ -138,13 +134,14 @@ body {
 }
 
 .modal-message .modal-title {
-    font-size: 17px;
+    font-size: 14px;
     color: #737373;
     margin-bottom: 3px;
 }
 
 .modal-message .modal-body {
     color: #737373;
+    font-size: 14px;
 }
 
 .modal-message .modal-header {
@@ -177,20 +174,45 @@ body {
     background-color: #fff;
 }
 
-.modal-message.modal-success .modal-header {
+.modal-message.myModal .modal-header {
     color: #53a93f;
     border-bottom: 3px solid #a0d468;
 }
 
+@media only screen and (max-width: 767px) {
+	.inbox .mail_list .list-group-item .controls {
+		margin-top: 3px
+	}
+}
 
 </style>
 </head>
 <body>
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+			<div id="myModal" class="modal modal-message myModal fade"
+				tabindex=-1 aria-labelledby=myModalLabel role="dialog">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<i class="glyphicon glyphicon-check"></i>
+						</div>
+						<div class="modal-title" id="myModalLabel">Success</div>
+						<div class="modal-body">처리가 완료되었습니다.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success"
+								data-dismiss="modal">OK</button>
+						</div>
+					</div>
+					<!-- / .modal-content -->
+				</div>
+				<!-- / .modal-dialog -->
+			</div>
+			<!--End Success Modal Templates-->
 	<div class="container">
 		<section class="content inbox">
+			<!-- Modal -->
+
 			<div class="container-fluid">
 				<div class="row clearfix">
 					<div class="col-lg-12">
@@ -223,21 +245,21 @@ body {
 									<th>작성일</th>
 								</tr>
 							</thead>
-              
-								<c:forEach items="${list}" var="board">
-									<tr>
-										<td><c:out value="${board.post_id}" /></td>
-										<td><a
-											href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out
-													value="${board.post_title}" /> <b> [ <c:out
-														value="${board.post_com_count }" /> ]
-											</b></a></td>
-										<td><c:out value="${board.post_writer}" /></td>
-										<td><fmt:formatDate pattern="yyyy-MM-dd"
-												value="${board.post_regdate}" /></td>
-									</tr>
-								</c:forEach>
-							</table>
+
+							<c:forEach items="${list}" var="board">
+								<tr>
+									<td><c:out value="${board.post_id}" /></td>
+									<td><a
+										href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out
+												value="${board.post_title}" /> <b> [ <c:out
+													value="${board.post_com_count }" /> ]
+										</b></a></td>
+									<td><c:out value="${board.post_writer}" /></td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd"
+											value="${board.post_regdate}" /></td>
+								</tr>
+							</c:forEach>
+						</table>
 						<table class="table" style="border-top: hidden;">
 							<tr>
 								<td style="padding: 0px;">
@@ -271,25 +293,6 @@ body {
 							</tr>
 						</table>
 
-						<!-- Modal -->
-						<div id="modal-success" class="modal modal-message modal-success fade" tabindex=-1
-							aria-labelledby=myModalLabel role="dialog" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<i class="glyphicon glyphicon-check"></i>
-									</div>
-									<div class="modal-title" id="myModalLabel">Success</div>
-									<div class="modal-body">처리가 완료되었습니다.</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-									</div>
-								</div>
-								<!-- / .modal-content -->
-							</div>
-							<!-- / .modal-dialog -->
-						</div>
-						<!--End Success Modal Templates-->
 					</div>
 				</div>
 			</div>
@@ -298,10 +301,9 @@ body {
 
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.bundle.min.js"></script>
-
+	
 	<script type="text/javascript">
-		$(document).ready(
+	 	$(document).ready(
 				function() {
 
 					var result = '<c:out value="${result}"/>';
@@ -316,17 +318,16 @@ body {
 						}
 						if (parseInt(result) > 0) {
 							$(".modal-body")
-									.html(
-											"게시글 " + parseInt(result)
-													+ " 번이 등록 되었습니다.");
+									.html("게시글 " + parseInt(result) + " 번이 등록 되었습니다.");
 						}
-						$("#modal-success").modal("show");
+						$("#myModal").modal("show");
 					}
 
-					/*  			$("#regBtn").on("click", function() {
+					 			$("#regBtn").on("click", function() {
 					 self.location = "/board/register";
-					 });   */
+					 });   
 				});
+		
 	</script>
 </body>
 </html>
