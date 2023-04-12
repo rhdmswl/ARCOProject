@@ -381,6 +381,7 @@ button {
 							
 							<form id='operForm' action="/board/modify" method="get">
 								<input type='hidden' id='post_id' name='post_id' value='<c:out value="${board.post_id}"/>'>
+								<input type='hidden' id='post_id' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 							</form>
 						</div>
 						

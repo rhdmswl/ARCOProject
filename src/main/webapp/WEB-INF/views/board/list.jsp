@@ -15,12 +15,15 @@
 <link
 	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet">
 <style type="text/css">
 body {
 	margin-top: 20px;
 	background: #FFF
 }
+
 .card {
 	background: #fff;
 	margin-bottom: 30px;
@@ -32,11 +35,13 @@ body {
 	width: 100%;
 	box-shadow: none;
 }
+
 .page-link {
 	color: #000;
 	background-color: #fff;
 	border: 1px solid #ccc;
 }
+
 .page-item.active .page-link {
 	/* z-index: 1; */
 	color: #555;
@@ -44,31 +49,38 @@ body {
 	background-color: #f1f1f1;
 	border-color: #ccc;
 }
+
 .page-link:focus, .page-link:hover {
 	color: #000;
 	background-color: #fafafa;
 	border-color: #ccc;
 }
+
 .inbox .action_bar .delete_all {
 	margin-bottom: 0;
 	margin-top: 8px
 }
+
 .inbox .action_bar .btn, .inbox .action_bar .search {
 	margin-left: 200px;
 	margin-bottom: 15px;
 }
+
 .inbox .mail_list .list-group-item {
 	border: 0;
 	padding: 15px;
 	margin-bottom: 1px
 }
+
 .inbox .mail_list .list-group-item:hover {
 	background: #eceeef
 }
+
 .inbox .mail_list .list-group-item .media {
 	margin: 0;
 	width: 100%
 }
+
 .inbox .mail_list .list-group-item .controls {
 	display: inline-block;
 	margin-right: 10px;
@@ -76,107 +88,115 @@ body {
 	text-align: center;
 	margin-top: 11px
 }
+
 .inbox .mail_list .list-group-item .media-heading a {
 	color: #555;
 	font-weight: normal
 }
+
 .inbox .mail_list .list-group-item .media-heading a:hover, .inbox .mail_list .list-group-item .media-heading a:focus
 	{
 	text-decoration: none
 }
+
 .inbox .mail_list .list-group-item .media-heading time {
 	font-size: 13px;
 	margin-right: 10px
 }
+
 .inbox .mail_list .list-group-item .msg {
 	margin-bottom: 0px
 }
+
 .inbox .mail_list .unread {
 	border-left: 2px solid
 }
+
 .inbox .mail_list .unread .media-heading a {
 	color: #333;
 	font-weight: 700
 }
+
 .inbox .btn-group {
 	box-shadow: none
 }
+
 .inbox .bg-gray {
 	background: #e6e6e6
 }
 
 .modal-content {
-    -webkit-border-radius: 0;
-    -webkit-background-clip: padding-box;
-    -moz-border-radius: 0;
-    -moz-background-clip: padding;
-    border-radius: 6px;
-    background-clip: padding-box;
-    -webkit-box-shadow: 0 0 40px rgba(0,0,0,.5);
-    -moz-box-shadow: 0 0 40px rgba(0,0,0,.5);
-    box-shadow: 0 0 40px rgba(0,0,0,.5);
-    color: #000;
-    background-color: #fff;
-    border: rgba(0,0,0,0);
-    z-index: 500;
+	-webkit-border-radius: 0;
+	-webkit-background-clip: padding-box;
+	-moz-border-radius: 0;
+	-moz-background-clip: padding;
+	border-radius: 6px;
+	background-clip: padding-box;
+	-webkit-box-shadow: 0 0 40px rgba(0, 0, 0, .5);
+	-moz-box-shadow: 0 0 40px rgba(0, 0, 0, .5);
+	box-shadow: 0 0 40px rgba(0, 0, 0, .5);
+	color: #000;
+	background-color: #fff;
+	border: rgba(0, 0, 0, 0);
+	z-index: 500;
 }
 
 .modal-message .modal-dialog {
-    width: 300px;
+	width: 300px;
 }
 
-.modal-message .modal-body, .modal-message .modal-footer, .modal-message .modal-header, .modal-message .modal-title {
-    background: 0 0;
-    border: none;
-    margin: 0;
-    padding: 0 20px;
-    text-align: center!important;
+.modal-message .modal-body, .modal-message .modal-footer, .modal-message .modal-header,
+	.modal-message .modal-title {
+	background: 0 0;
+	border: none;
+	margin: 0;
+	padding: 0 20px;
+	text-align: center !important;
 }
 
 .modal-message .modal-title {
-    font-size: 14px;
-    color: #737373;
-    margin-bottom: 3px;
+	font-size: 14px;
+	color: #737373;
+	margin-bottom: 3px;
 }
 
 .modal-message .modal-body {
-    color: #737373;
-    font-size: 14px;
+	color: #737373;
+	font-size: 14px;
 }
 
 .modal-message .modal-header {
-    color: #fff;
-    margin-bottom: 10px;
-    padding: 15px 0 8px;
+	color: #fff;
+	margin-bottom: 10px;
+	padding: 15px 0 8px;
 }
 
-.modal-message .modal-header .fa, 
-.modal-message .modal-header 
+.modal-message .modal-header .fa, .modal-message .modal-header 
 .glyphicon, .modal-message 
 .modal-header .typcn, .modal-message .modal-header .wi {
-    font-size: 30px;
+	font-size: 30px;
 }
 
 .modal-message .modal-footer {
-    margin: 25px 0 20px;
-    padding-bottom: 10px;
+	margin: 25px 0 20px;
+	padding-bottom: 10px;
 }
 
 .modal-backdrop.in {
-    zoom: 1;
-    filter: alpha(opacity=75);
-    -webkit-opacity: .75;
-    -moz-opacity: .75;
-    opacity: .75;
+	zoom: 1;
+	filter: alpha(opacity = 75);
+	-webkit-opacity: .75;
+	-moz-opacity: .75;
+	opacity: .75;
 }
 
 .modal-backdrop {
-    background-color: #fff;
+	background-color: #fff;
 }
 
 .modal-message.myModal .modal-header {
-    color: #53a93f;
-    border-bottom: 3px solid #a0d468;
+	color: #53a93f;
+	border-bottom: 3px solid #a0d468;
 }
 
 @media only screen and (max-width: 767px) {
@@ -184,31 +204,29 @@ body {
 		margin-top: 3px
 	}
 }
-
 </style>
 </head>
 <body>
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-			<div id="myModal" class="modal modal-message myModal fade"
-				tabindex=-1 aria-labelledby=myModalLabel role="dialog">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header">
-							<i class="glyphicon glyphicon-check"></i>
-						</div>
-						<div class="modal-title" id="myModalLabel">Success</div>
-						<div class="modal-body">처리가 완료되었습니다.</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-success"
-								data-dismiss="modal">OK</button>
-						</div>
-					</div>
-					<!-- / .modal-content -->
+	<div id="myModal" class="modal modal-message myModal fade" tabindex=-1
+		aria-labelledby=myModalLabel role="dialog">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<i class="glyphicon glyphicon-check"></i>
 				</div>
-				<!-- / .modal-dialog -->
+				<div class="modal-title" id="myModalLabel">Success</div>
+				<div class="modal-body">처리가 완료되었습니다.</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+				</div>
 			</div>
-			<!--End Success Modal Templates-->
+			<!-- / .modal-content -->
+		</div>
+		<!-- / .modal-dialog -->
+	</div>
+	<!--End Success Modal Templates-->
 	<div class="container">
 		<section class="content inbox">
 			<!-- Modal -->
@@ -249,10 +267,9 @@ body {
 							<c:forEach items="${list}" var="board">
 								<tr>
 									<td><c:out value="${board.post_id}" /></td>
-									<td><a
-										href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out
-												value="${board.post_title}" /> <b> [ <c:out
-													value="${board.post_com_count }" /> ]
+									<td><a class='move' href='<c:out value="${board.post_id}"/>'>
+									<c:out value="${board.post_title}" /> 
+									<b> [ <c:out value="${board.post_com_count}" /> ]
 										</b></a></td>
 									<td><c:out value="${board.post_writer}" /></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd"
@@ -266,16 +283,19 @@ body {
 									<div class="card m-t-5">
 										<div class="body">
 											<ul class="pagination pagination-primary m-b-0">
-												<li class="page-item"><a class="page-link"
-													href="javascript:void(0);">Previous</a></li>
-												<li class="page-item"><a class="page-link"
-													href="javascript:void(0);">1</a></li>
-												<li class="page-item active"><a class="page-link"
-													href="javascript:void(0);">2</a></li>
-												<li class="page-item"><a class="page-link"
-													href="javascript:void(0);">3</a></li>
-												<li class="page-item"><a class="page-link"
-													href="javascript:void(0);">Next</a></li>
+												<c:if test="${pageMaker.prev}">
+													<li class="paginate_button previous"><a
+														class="page-link" href="${pageMaker.startPage-1}">Previous</a></li>
+												</c:if>
+												<c:forEach var="num" begin="${pageMaker.startPage}"
+													end="${pageMaker.endPage}">
+													<li class="paginate_button">
+													<a class="page-link" href="${num}">${num}</a></li>
+												</c:forEach>
+												<c:if test="${pageMaker.next}">
+													<li class="paginate_button next"><a class="page-link"
+														href="${pageMaker.endPage +1}">Next</a></li>
+												</c:if>
 											</ul>
 										</div>
 									</div>
@@ -292,18 +312,20 @@ body {
 								</td>
 							</tr>
 						</table>
-
 					</div>
 				</div>
 			</div>
 		</section>
 	</div>
-
+	<form id='actionForm' action="/board/list" method='get'>
+		<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+	</form>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	
+	<script
+		src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 	<script type="text/javascript">
-	 	$(document).ready(
+		$(document).ready(
 				function() {
 
 					var result = '<c:out value="${result}"/>';
@@ -318,16 +340,36 @@ body {
 						}
 						if (parseInt(result) > 0) {
 							$(".modal-body")
-									.html("게시글 " + parseInt(result) + " 번이 등록 되었습니다.");
+									.html(
+											"게시글 " + parseInt(result)
+													+ " 번이 등록 되었습니다.");
 						}
 						$("#myModal").modal("show");
 					}
 
-					 			$("#regBtn").on("click", function() {
-					 self.location = "/board/register";
-					 });   
+					$("#regBtn").on("click", function() {
+						self.location = "/board/register";
+					});
+					var actionForm = $("#actionForm");
+					
+					$(".paginate_button a").on(
+							"click",
+							function(e) {
+								e.preventDefault();
+								console.log('click');
+								actionForm.find("input[name='pageNum']").val(
+										$(this).attr("href"));
+								actionForm.submit();
+							});
+					
+					$(".move").on("click", function(e){
+					    e.preventDefault();
+					    actionForm.append("<input type='hidden' name='post_id' value='"+
+					            $(this).attr("href")+"'>");
+					    actionForm.attr("action", "/board/get");
+					    actionForm.submit();
+					});
 				});
-		
 	</script>
 </body>
 </html>
