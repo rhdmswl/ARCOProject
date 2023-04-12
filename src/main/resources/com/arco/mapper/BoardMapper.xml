@@ -61,6 +61,7 @@
 		<include refid="criteria"></include>
 		<![CDATA[
 		) as post_paging
+    where brd_id=#{brd_id}
 		ORDER BY post_id DESC
 		LIMIT #{pageNumForLimit},10
 		]]>
@@ -68,8 +69,12 @@
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
-		select count(*) from post
-		where post_id > 0
+		select count(*) from post 
+		where brd_id=#{brd_id} and
+
 		<!-- <include refid="criteria"></include> -->
+		
+		post_id>0
+
 	</select>
 </mapper>

@@ -411,7 +411,7 @@ button {
 
 							<div class="frame">
 								<button type="submit" class="custom-btn btn-11" data-oper='modify'>수정 완료</button>
-								<button class="custom-btn btn-11" data-oper='list'
+								<button class="custom-btn btn-11 move2" data-oper='list'
 									onclick="location.href='/board/list'">목록</button>
 							</div>
 						</div>
@@ -420,6 +420,7 @@ button {
 			</div>
 		</div>
 		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+		<input type='hidden' name='brd_id' value='<c:out value="${cri.brd_id}"/>'>
 	</form>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
@@ -441,9 +442,11 @@ button {
  				} else if(operation === 'list'){
  					formObj.attr("action", "/board/list").attr("method","get");
  					var pageNumTag = $("input[name='pageNum']").clone();
+ 					var brdIdTag = $("input[name='brd_id']").clone();
  					
  					formObj.empty();
  					formObj.append(pageNumTag);
+ 					formObj.append(brdIdTag);
  				}
  				formObj.submit();
  			});

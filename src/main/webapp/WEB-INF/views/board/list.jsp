@@ -303,7 +303,7 @@ body {
 												<c:forEach var="num" begin="${pageMaker.startPage}"
 													end="${pageMaker.endPage}">
 													<li class="paginate_button">
-													<a class="page-link" href="${num}">${num}</a></li>
+													<a class="page-link move2" href="${num}">${num}</a></li>
 												</c:forEach>
 												<c:if test="${pageMaker.next}">
 													<li class="paginate_button next"><a class="page-link"
@@ -335,6 +335,7 @@ body {
 		<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
 		<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
 		<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
+		<input type='hidden' name='brd_id' value='${pageMaker.cri.brd_id}'>
 	</form>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -393,6 +394,12 @@ body {
 						
 						searchForm.submit();
 					})
+          
+					$(".move2").on("click", function(e){
+					    e.preventDefault();
+					    actionForm.attr("action", "/board/list");
+					    actionForm.submit();
+					});
 				});
 		
 	</script>
