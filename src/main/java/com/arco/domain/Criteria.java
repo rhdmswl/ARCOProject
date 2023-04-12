@@ -11,6 +11,9 @@ public class Criteria {
 	private int pageNum;
 	private int pageNumForLimit;
 	
+	private String type;
+	private String keyword;
+	
 	public Criteria() {
 		this(1);
 	}
@@ -22,5 +25,8 @@ public class Criteria {
 	public void setpageNumForLimit() {
 		this.pageNumForLimit=((pageNum-1)*10);
 	}
+	
+	public String[] getTypeArr() {
+		return type == null ? new String[] {} : type.split("");
+	}
 }
-
