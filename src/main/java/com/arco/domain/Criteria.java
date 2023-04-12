@@ -15,7 +15,7 @@ public class Criteria {
 	private String keyword;
 	
 	private int brd_id;
-	
+
 	public Criteria() {
 		this(1);
 	}
