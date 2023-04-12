@@ -48,6 +48,19 @@
 					<when test="type=='C'.toString()">
 						where post_content like concat('%', #{keyword}, '%')
 					</when>
+					<when test="type=='TC'.toString()">
+						where post_title like concat('%', #{keyword}, '%')
+						or post_content like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TW'.toString()">
+						where post_title like concat('%', #{keyword}, '%')
+						or post_writer like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TCW'.toString()">
+						where post_title like concat('%', #{keyword}, '%')
+						or post_content like concat('%', #{keyword}, '%')
+						or post_writer like concat('%', #{keyword}, '%')
+					</when>
 			</choose>
 	</sql>
 	
