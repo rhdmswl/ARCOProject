@@ -391,6 +391,7 @@ button {
 							
 							<form id='operForm_modi' action="/board/modify" method="get">
 								<input type='hidden' id='post_id' name='post_id' value='<c:out value="${board.post_id}"/>'>
+								<input type='hidden' id='post_id' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 							</form>
 							<form id='operForm_remo' action="/board/remove" method="post">
 								<input type='hidden' id='post_id' name='post_id' value='<c:out value="${board.post_id}"/>'>
