@@ -45,7 +45,7 @@ body {
 	/* z-index: 1; */
 	color: #555;
 	font-weight: bold;
-	background-color: #f1f1f1;
+	background-color: #e0e0e0;
 	border-color: #ccc;
 }
 .page-link:focus, .page-link:hover {

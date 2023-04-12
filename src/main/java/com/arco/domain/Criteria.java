@@ -9,17 +9,17 @@ import lombok.ToString;
 @ToString
 public class Criteria {
 	private int pageNum;
+	private int pageNumForLimit;
 	
 	public Criteria() {
-		this(2);
+		this(1);
 	}
 	
 	public Criteria(int pageNum) {
-		this.pageNum=((pageNum-1)*10);
+		this.pageNum=pageNum;
 	}
 	
-	public int getpageNum() {
-		return (this.pageNum-1)*10;
+	public void setpageNumForLimit() {
+		this.pageNumForLimit=((pageNum-1)*10);
 	}
-
 }
