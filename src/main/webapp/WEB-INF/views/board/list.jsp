@@ -293,7 +293,7 @@ body {
 												<c:forEach var="num" begin="${pageMaker.startPage}"
 													end="${pageMaker.endPage}">
 													<li class="paginate_button">
-													<a class="page-link" href="${num}">${num}</a></li>
+													<a class="page-link move2" href="${num}">${num}</a></li>
 												</c:forEach>
 												<c:if test="${pageMaker.next}">
 													<li class="paginate_button next"><a class="page-link"
@@ -322,6 +322,7 @@ body {
 	</div>
 	<form id='actionForm' action="/board/list" method='get'>
 		<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+		<input type='hidden' name='brd_id' value='${pageMaker.cri.brd_id}'>
 	</form>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -366,6 +367,12 @@ body {
 					    actionForm.append("<input type='hidden' name='post_id' value='"+
 					            $(this).attr("href")+"'>");
 					    actionForm.attr("action", "/board/get");
+					    actionForm.submit();
+					});
+					
+					$(".move2").on("click", function(e){
+					    e.preventDefault();
+					    actionForm.attr("action", "/board/list");
 					    actionForm.submit();
 					});
 				});

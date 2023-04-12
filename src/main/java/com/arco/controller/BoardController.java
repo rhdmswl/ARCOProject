@@ -71,6 +71,7 @@ public class BoardController {
 		}
 		
 		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("brd_id", cri.getBrd_id());
 		
 		return "redirect:/board/list";
 	}
@@ -82,6 +83,7 @@ public class BoardController {
 			rttr.addFlashAttribute("result", "succes");
 		}
 		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("brd_id", cri.getBrd_id());
 		return "redirect:/board/list";
 	}
 }
