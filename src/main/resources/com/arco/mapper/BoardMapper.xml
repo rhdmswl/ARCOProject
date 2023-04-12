@@ -55,13 +55,13 @@
 		<![CDATA[
 		SELECT *
 		FROM (
-			SELECT post_id, post_title, post_writer, post_content, post_regdate
+			SELECT post_id, post_title, post_writer, post_content, post_regdate,brd_id
 			FROM post
 		]]>
 		<include refid="criteria"></include>
 		<![CDATA[
 		) as post_paging
-    where brd_id=#{brd_id}
+    	where brd_id=#{brd_id}
 		ORDER BY post_id DESC
 		LIMIT #{pageNumForLimit},10
 		]]>
