@@ -43,7 +43,7 @@
 		SELECT *
 		FROM post
 		ORDER BY post_id DESC
-		LIMIT #{pageNum},10
+		LIMIT #{pageNumForLimit},10
 ]]>
 	</select>
 </mapper>
