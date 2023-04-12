@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.collection.mapper.CollectionMapper">
+
+
+	<select id="getCollectionList"
+		resultType="com.collection.domain.CollectionVO">
+
+
+	</select>
+
+	<insert id="insertCollection">
+
+		insert into collection2 (seq, title, startDate, endDate, place, realmName,
+		gpsX, gpsY, thumbnail)
+		values (#{seq}, #{title}, #{startDate}, #{endDate}, #{place}, #{realmName},
+		#{thumbnail})
+
+	</insert>
+
+
+</mapper>
