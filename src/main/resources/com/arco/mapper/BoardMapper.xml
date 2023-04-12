@@ -38,47 +38,29 @@
 	</update>
 
 	<sql id="criteria">
-					<if test="type=='T'.toString()">
-						where post_title
-						like concat('%', #{keyword}, '%')
-					</if>
-					<if test="type=='W'.toString()">
-						where post_writer
-						like concat('%', #{keyword}, '%')
-					</if>
-					<if test="type=='C'.toString()">
-						where post_content
-						like concat('%', #{keyword}, '%')
-					</if>
-					<if test="type=='TC'.toString()">
-						where post_title
-						like concat('%', #{keyword}, '%')
-						or post_content
-        				like concat('%',#{keyword},'%')
-					</if>
-					<if test="type=='TW'.toString()">
-						where post_title
-						like concat('%', #{keyword}, '%')
-						or post_writer
-        				like concat('%',#{keyword},'%')
-					</if>
-					<if test="type=='TWC'.toString()">
-						where post_title
-						like concat('%', #{keyword}, '%')
-						or post_content
-        				like concat('%',#{keyword},'%')
-        				or post_writer
-        				like concat('%',#{keyword},'%')
-					</if>
+			<choose>
+					<when test="type=='T'.toString()">
+						where post_title like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='W'.toString()">
+						where post_writer like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='C'.toString()">
+						where post_content like concat('%', #{keyword}, '%')
+					</when>
+			</choose>
 	</sql>
 	
 	<select id="getListWithPaging" resultType="com.arco.domain.BoardVO">
 		<![CDATA[
 		SELECT *
-		FROM post
+		FROM (
+			SELECT post_id, post_title, post_writer, post_content, post_regdate
+			FROM post
 		]]>
 		<include refid="criteria"></include>
 		<![CDATA[
+		) as post_paging
 		ORDER BY post_id DESC
 		LIMIT #{pageNumForLimit},10
 		]]>
@@ -86,11 +68,8 @@
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
-		select count(*) from post 
-		where 
-		
-		<include refid="criteria"></include>
-		
-		post_id>0
+		select count(*) from post
+		where post_id > 0
+		<!-- <include refid="criteria"></include> -->
 	</select>
 </mapper>

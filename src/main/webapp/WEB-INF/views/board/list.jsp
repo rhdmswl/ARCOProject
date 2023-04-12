@@ -242,13 +242,22 @@ body {
 								<div class="row clearfix">
 									<div class="col-lg-1 col-md-2 col-3"></div>
 									<div class="col-lg-5 col-md-4 col-6">
-										<div style="left: 10%;" class="input-group search">
-											<input type="text" class="form-control"
-												placeholder="Search..."> <span
-												class="input-group-addon"> <i
-												class="zmdi zmdi-search"></i>
-											</span>
-										</div>
+										<form id="searchForm" action="/board/list" method='get' style="left: 10%;" class="input-group search">
+											<select class="form-control" name='type'>
+												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>--</option>
+												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
+												<option value="C" <c:out value="${pageMaker.cri.type eq 'C' ? 'selected' : ''}"/>>내용</option>
+												<option value="W" <c:out value="${pageMaker.cri.type eq 'W' ? 'selected' : ''}"/>>작성자</option>
+												<option value="TC" <c:out value="${pageMaker.cri.type eq 'TC' ? 'selected' : ''}"/>>제목/내용</option>
+												<option value="TW" <c:out value="${pageMaker.cri.type eq 'TW' ? 'selected' : ''}"/>>제목/작성자</option>
+												<option value="TWC" <c:out value="${pageMaker.cri.type eq 'TWC' ? 'selected' : ''}"/>>제목/작성자/내용</option>
+											</select>
+											<input type='text' name="keyword" class="form-control" placeholder="Search..." value='<c:out value="${pageMaker.cri.type}"/>'>
+											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
+											<input type='hidden' name="pageNumForLimit" value="${pageMaker.cri.pageNumForLimit}">
+											
+											<button type="submit" class="searchButton"><span class="input-group-addon"><i class="zmdi zmdi-search"></i></span></button>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -280,6 +289,7 @@ body {
 								</tr>
 							</c:forEach>
 						</table>
+						
 						<table class="table" style="border-top: hidden;">
 							<tr>
 								<td style="padding: 0px;">
@@ -322,6 +332,9 @@ body {
 	</div>
 	<form id='actionForm' action="/board/list" method='get'>
 		<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+		<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
+		<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
+		<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
 	</form>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -368,6 +381,18 @@ body {
 					    actionForm.attr("action", "/board/get");
 					    actionForm.submit();
 					});
+					
+					var searchForm = $("#searchForm");
+					
+					$("#searchForm searchButton").on("click", function(e){
+						
+						e.preventDefault();
+						let val = $("input[name='keyword']").val();
+						searchForm.find("input[name='keyword']").val(val);
+						/* searchForm.find("input[name='pageNum']").val("1"); */
+						
+						searchForm.submit();
+					})
 				});
 		
 	</script>
