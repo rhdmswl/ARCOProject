@@ -317,7 +317,6 @@ button {
   background: transparent;
   cursor: pointer;
   position: relative;
-  left: 200px;
   display: inline-block;
 }
 
