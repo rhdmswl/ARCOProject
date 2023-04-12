@@ -419,6 +419,7 @@ button {
 				</div>
 			</div>
 		</div>
+		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 	</form>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
@@ -438,8 +439,11 @@ button {
  				if(operation === 'remove'){
  					formObj.attr("action", "/board/remove");
  				} else if(operation === 'list'){
- 					self.location= "/board/list";
- 					return;
+ 					formObj.attr("action", "/board/list").attr("method","get");
+ 					var pageNumTag = $("input[name='pageNum']").clone();
+ 					
+ 					formObj.empty();
+ 					formObj.append(pageNumTag);
  				}
  				formObj.submit();
  			});
