@@ -16,6 +16,9 @@
 	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 <style type="text/css">
 body {
 	margin-top: 20px;
@@ -31,6 +34,7 @@ body {
 	position: relative;
 	width: 100%;
 	box-shadow: none;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 .page-link {
 	color: #000;
@@ -78,7 +82,7 @@ body {
 }
 .inbox .mail_list .list-group-item .media-heading a {
 	color: #555;
-	font-weight: normal
+	font-weight: normal;
 }
 .inbox .mail_list .list-group-item .media-heading a:hover, .inbox .mail_list .list-group-item .media-heading a:focus
 	{
@@ -236,7 +240,7 @@ body {
 				</div>
 				<div class="row clearfix">
 					<div class="col-md-12 col-lg-12 col-xl-12">
-						<table class="table table-bordered table-hover">
+						<table class="table table-bordered table-hover" style="font-family: 'Nanum Gothic', sans-serif;">
 							<thead>
 								<tr>
 									<th>#번호</th>
@@ -250,7 +254,7 @@ body {
 								<tr>
 									<td><c:out value="${board.post_id}" /></td>
 									<td><a
-										href='/board/get?post_id=<c:out value="${board.post_id}"/>'><c:out
+										href='/board/get?post_id=<c:out value="${board.post_id}"/>' style="color:black;"><c:out
 												value="${board.post_title}" /> <b> [ <c:out
 													value="${board.post_com_count }" /> ]
 										</b></a></td>
