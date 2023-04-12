@@ -15,9 +15,10 @@
 <link
 	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	rel="stylesheet">
-<link
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
-	rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 <style type="text/css">
 body {
 	margin-top: 20px;
@@ -34,6 +35,7 @@ body {
 	position: relative;
 	width: 100%;
 	box-shadow: none;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 .page-link {
@@ -91,7 +93,7 @@ body {
 
 .inbox .mail_list .list-group-item .media-heading a {
 	color: #555;
-	font-weight: normal
+	font-weight: normal;
 }
 
 .inbox .mail_list .list-group-item .media-heading a:hover, .inbox .mail_list .list-group-item .media-heading a:focus
@@ -126,19 +128,19 @@ body {
 }
 
 .modal-content {
-	-webkit-border-radius: 0;
-	-webkit-background-clip: padding-box;
-	-moz-border-radius: 0;
-	-moz-background-clip: padding;
-	border-radius: 6px;
-	background-clip: padding-box;
-	-webkit-box-shadow: 0 0 40px rgba(0, 0, 0, .5);
-	-moz-box-shadow: 0 0 40px rgba(0, 0, 0, .5);
-	box-shadow: 0 0 40px rgba(0, 0, 0, .5);
-	color: #000;
-	background-color: #fff;
-	border: rgba(0, 0, 0, 0);
-	z-index: 500;
+    -webkit-border-radius: 0;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 0;
+    -moz-background-clip: padding;
+    border-radius: 6px;
+    background-clip: padding-box;
+    -webkit-box-shadow: 0 0 40px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 40px rgba(0,0,0,.5);
+    box-shadow: 0 0 40px rgba(0,0,0,.5);
+    color: #000;
+    background-color: #fff;
+    border: rgba(0,0,0,0);
+    z-index: 500;
 }
 
 .modal-message .modal-dialog {
@@ -155,14 +157,14 @@ body {
 }
 
 .modal-message .modal-title {
-	font-size: 14px;
-	color: #737373;
-	margin-bottom: 3px;
+    font-size: 14px;
+    color: #737373;
+    margin-bottom: 3px;
 }
 
 .modal-message .modal-body {
-	color: #737373;
-	font-size: 14px;
+    color: #737373;
+    font-size: 14px;
 }
 
 .modal-message .modal-header {
@@ -195,8 +197,8 @@ body {
 }
 
 .modal-message.myModal .modal-header {
-	color: #53a93f;
-	border-bottom: 3px solid #a0d468;
+    color: #53a93f;
+    border-bottom: 3px solid #a0d468;
 }
 
 @media only screen and (max-width: 767px) {
@@ -209,24 +211,25 @@ body {
 <body>
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-	<div id="myModal" class="modal modal-message myModal fade" tabindex=-1
-		aria-labelledby=myModalLabel role="dialog">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<i class="glyphicon glyphicon-check"></i>
+			<div id="myModal" class="modal modal-message myModal fade"
+				tabindex=-1 aria-labelledby=myModalLabel role="dialog">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<i class="glyphicon glyphicon-check"></i>
+						</div>
+						<div class="modal-title" id="myModalLabel">Success</div>
+						<div class="modal-body">처리가 완료되었습니다.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success"
+								data-dismiss="modal">OK</button>
+						</div>
+					</div>
+					<!-- / .modal-content -->
 				</div>
-				<div class="modal-title" id="myModalLabel">Success</div>
-				<div class="modal-body">처리가 완료되었습니다.</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-				</div>
+				<!-- / .modal-dialog -->
 			</div>
-			<!-- / .modal-content -->
-		</div>
-		<!-- / .modal-dialog -->
-	</div>
-	<!--End Success Modal Templates-->
+			<!--End Success Modal Templates-->
 	<div class="container">
 		<section class="content inbox">
 			<!-- Modal -->
@@ -254,7 +257,7 @@ body {
 				</div>
 				<div class="row clearfix">
 					<div class="col-md-12 col-lg-12 col-xl-12">
-						<table class="table table-bordered table-hover">
+						<table class="table table-bordered table-hover" style="font-family: 'Nanum Gothic', sans-serif;">
 							<thead>
 								<tr>
 									<th>#번호</th>
@@ -267,7 +270,7 @@ body {
 							<c:forEach items="${list}" var="board">
 								<tr>
 									<td><c:out value="${board.post_id}" /></td>
-									<td><a class='move' href='<c:out value="${board.post_id}"/>'>
+									<td><a class='move' href='<c:out value="${board.post_id}"/>'style="color:black;">
 									<c:out value="${board.post_title}" /> 
 									<b> [ <c:out value="${board.post_com_count}" /> ]
 										</b></a></td>
@@ -321,11 +324,9 @@ body {
 		<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 	</form>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script
-		src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(
+	 	$(document).ready(
 				function() {
 
 					var result = '<c:out value="${result}"/>';
@@ -340,9 +341,7 @@ body {
 						}
 						if (parseInt(result) > 0) {
 							$(".modal-body")
-									.html(
-											"게시글 " + parseInt(result)
-													+ " 번이 등록 되었습니다.");
+									.html("게시글 " + parseInt(result) + " 번이 등록 되었습니다.");
 						}
 						$("#myModal").modal("show");
 					}
@@ -370,6 +369,7 @@ body {
 					    actionForm.submit();
 					});
 				});
+		
 	</script>
 </body>
 </html>

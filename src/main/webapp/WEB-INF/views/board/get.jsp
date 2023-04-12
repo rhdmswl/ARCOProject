@@ -15,6 +15,9 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 <style type="text/css">
 body {
 	margin-top: 20px;
@@ -51,6 +54,7 @@ Blog post entries
 	font-size: .95rem;
 	font-weight: 500;
 	margin-bottom: 15px;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 .entry-thumb {
@@ -140,7 +144,8 @@ Blog post entries
 }
 
 .post-content .post-title {
-	font-weight: 500;
+	font-weight: 700;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 .post-meta {
@@ -208,8 +213,9 @@ Blog post entries
 }
 
 .postbox {
-	margin-bottom: 120px !important;
-
+	margin-top: 40px;
+	margin-bottom: 60px !important;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 .mb40 {
@@ -226,7 +232,7 @@ Blog post entries
 
 .categories li a:before {
 	content: "\f0da";
-	font-family: 'FontAwesome';
+	font-family: 'Nanum Gothic', sans-serif;
 	margin-right: 5px;
 }
 /*
@@ -296,19 +302,22 @@ Template sidebar
 }
 
 button {
-  margin: 20px;
+  margin: 10px;
   outline: none;
 }
 
 .custom-btn {
   width: 130px;
   height: 40px;
-  border: 2px solid #000;
-  font-family: 'Lato', sans-serif;
+  border: 1px solid #000;
+  border-radius: 20px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 14px;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
   position: relative;
+  left: 200px;
   display: inline-block;
 }
 
@@ -361,7 +370,7 @@ button {
 			<div class="col-md-9 mb40">
 				<article>
 					<div class="post-content">
-						<h3 class=><c:out value="${board.post_title}"/></h3>
+						<h3 class="post-title"><c:out value="${board.post_title}"/></h3>
 						
 						<ul class="post-meta list-inline">
 							<li class="list-inline-item"><i class="fa fa-user-circle-o" ></i>
@@ -371,15 +380,19 @@ button {
 								<a href="#"><fmt:formatDate pattern = "yyyy-MM-dd" value="${board.post_regdate}"/></a></li>
 
 						</ul>
-						<div class="postbox" style="box-sizing: border-box; width:100%; height:200%;">
+						<div class="postbox" style="box-sizing: border-box; width:100%; height:300px;">
 								<c:out value="${board.post_content}"/>
 						</div>
 						
 						<div class="frame">
-							<button class="custom-btn btn-11" data-oper='modify'>Modify</button>
-							<button class="custom-btn btn-11" data-oper='list'>List</button>
+							<button class="custom-btn btn-11" data-oper='modify'>수정</button>
+							<button class="custom-btn btn-11" data-oper='list'>목록</button>
+							<button class="custom-btn btn-11" data-oper='remove'>삭제</button>
 							
-							<form id='operForm' action="/board/modify" method="get">
+							<form id='operForm_modi' action="/board/modify" method="get">
+								<input type='hidden' id='post_id' name='post_id' value='<c:out value="${board.post_id}"/>'>
+							</form>
+							<form id='operForm_remo' action="/board/remove" method="post">
 								<input type='hidden' id='post_id' name='post_id' value='<c:out value="${board.post_id}"/>'>
 								<input type='hidden' id='post_id' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 							</form>
@@ -520,16 +533,22 @@ button {
 	<script type="text/javascript">
 		$(document).ready(function(){
 			
-			var operForm = $("#operForm");
+			var operForm_modi = $("#operForm_modi");
 			
 			$("button[data-oper='modify']").on("click", function(e){
-				operForm.attr("action", "/board/modify").submit();
+				operForm_modi.attr("action", "/board/modify").submit();
 			});
 			
 			$("button[data-oper='list']").on("click", function(e){
-				operForm.find('#post_id').remove();
-				operForm.attr("action", "/board/list")
-				operForm.submit();
+				operForm_modi.find('#post_id').remove();
+				operForm_modi.attr("action", "/board/list")
+				operForm_modi.submit();
+			});
+			
+			var operForm_remo = $("#operForm_remo");
+			
+			$("button[data-oper='remove']").on("click", function(e){
+				operForm_remo.attr("action", "/board/remove").submit();
 			});
 		});
 	

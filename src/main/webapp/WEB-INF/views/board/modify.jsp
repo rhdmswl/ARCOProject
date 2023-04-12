@@ -15,6 +15,10 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
 <style type="text/css">
 body {
 	margin-top: 20px;
@@ -51,6 +55,7 @@ Blog post entries
 	font-size: .95rem;
 	font-weight: 500;
 	margin-bottom: 15px;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 .entry-thumb {
@@ -140,6 +145,7 @@ Blog post entries
 }
 
 .post-content .post-title {
+	font-family: 'Nanum Gothic', sans-serif;
 	font-weight: 500;
 }
 
@@ -193,6 +199,7 @@ Blog post entries
 }
 
 .post-content a h2 {
+	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 1.5rem;
 	color: #333;
 	margin-bottom: 0px;
@@ -204,11 +211,13 @@ Blog post entries
 
 .post-masonry h4 {
 	text-transform: capitalize;
+	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 1rem;
 	font-weight: 700;
 }
 
 .post-title {
+	font-family: 'Nanum Gothic', sans-serif;
 	margin-left: 140px;
 	width: 100%;
 }
@@ -216,11 +225,12 @@ Blog post entries
 .postbox {
 	margin-bottom: 60px !important;
 	margin-left: 140px;
-	box-sizing: border-box; 
 	width:100%; 
-	overflow:visible; 
-	text-overflow:ellipsis; 
 	height:400px;
+	text-align: left;
+	vertical-align:top;
+	font-family: 'Nanum Gothic', sans-serif;
+	resize: none;
 }
 
 .mb40 {
@@ -237,7 +247,7 @@ Blog post entries
 
 .categories li a:before {
 	content: "\f0da";
-	font-family: 'FontAwesome';
+	font-family: 'Nanum Gothic', sans-serif;
 	margin-right: 5px;
 }
 /*
@@ -303,24 +313,25 @@ Template sidebar
 	width: 100%;
 	margin: 40px auto;
 	line-height: -100px;
-	margin-left: 270px;
 }
 
 button {
-	margin: 20px;
+	margin: 10px;
 	outline: none;
 }
 
 .custom-btn {
 	width: 130px;
 	height: 40px;
-	border: 2px solid #000;
-	font-family: 'Lato', sans-serif;
-	font-size: 13px;
+	border: 1px solid #000;
+	border-radius: 20px;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 14px;
 	font-weight: 500;
 	background: transparent;
 	cursor: pointer;
 	position: relative;
+	left: 380px;
 	display: inline-block;
 }
 
@@ -395,15 +406,11 @@ button {
 											value="${board.post_regdate}" /></a></li>
 							</ul>
 							<div class="postbox">
-								<textarea class="form-control"
-									style="box-sizing: border-box; width:100%; overflow:visible; text-overflow:ellipsis; height:400px;" name='post_content'>
-									<c:out value="${board.post_content}" />
-								</textarea>
+								<textarea class="form-control" style="width:100%; height:400px;" name='post_content'><c:out value="${board.post_content}" /></textarea>
 							</div>
 
 							<div class="frame">
-								<button type="submit" class="custom-btn btn-11" data-oper='modify'>수정</button>
-								<button type="submit" class="custom-btn btn-11" data-oper='remove'>삭제</button>
+								<button type="submit" class="custom-btn btn-11" data-oper='modify'>수정 완료</button>
 								<button class="custom-btn btn-11" data-oper='list'
 									onclick="location.href='/board/list'">목록</button>
 							</div>
