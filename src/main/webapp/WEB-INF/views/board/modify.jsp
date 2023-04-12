@@ -331,7 +331,8 @@ button {
 	background: transparent;
 	cursor: pointer;
 	position: relative;
-	left: 380px;
+	left: 50%;
+	right: 50%;
 	display: inline-block;
 }
 
@@ -387,7 +388,6 @@ button {
 								<input class="form-control" name='post_id'
 									value='<c:out value="${board.post_id}"/>' readonly="readonly">
 							</div>
-						
 						
 							<div class="form-group">
 								<h3 class="post-title">
