@@ -23,3 +23,4 @@ public class Criteria {
 		this.pageNumForLimit=((pageNum-1)*10);
 	}
 }
+
