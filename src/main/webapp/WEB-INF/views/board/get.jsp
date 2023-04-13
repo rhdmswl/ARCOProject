@@ -412,10 +412,10 @@ button {
 						<form role="form">
 							<div class="form-group">
 								<label>Comment</label>
-								<textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+								<textarea id="com_content" name ="com_content" class="form-control" rows="3"></textarea>
 							</div>
 							<div class="clearfix float-right">
-								<button type="button" class="custom-btn btn-11" onclick="writeReply()">댓글 작성</button>
+								<button id="Comment_regist" type="button" class="custom-btn btn-11">댓글 등록</button>
 							</div>
 						</form>
 					</div>
@@ -494,11 +494,32 @@ button {
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="/resources/js/reply.js"> </script>
-   
-    
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var operForm_modi = $("#operForm_modi");
+			var post_idValue = '<c:out value="${board.post_id}"/>';
+			var replyUL = $(".chat");
+			        
+			showList(1);
+			        
+			function showList(page) {
+				replyService.getList({post_id:post_idValue, page:page||1}, function(list) {
+				var str = "";
+				if(list == null || list.length==0) {
+			    	console.log(list[i]);
+			    	replyUL.html("");
+			    	return;
+			    }
+				for(var i=0, len=list.length || 0; i<len; i++) {
+					str+= "<li class='left cleafix' data rno='"+list[i].com_id+"'>";
+					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
+					str+= "        <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
+					str+= "            <p>"+list[i].com_content+"</p></div></li>";
+					}
+				
+				replyUL.html(str);
+				});
+			}
 			
 			$("button[data-oper='modify']").on("click", function(e){
 				operForm_modi.attr("action", "/board/modify").submit();
@@ -516,32 +537,18 @@ button {
 				operForm_remo.attr("action", "/board/remove").submit();
 			});
 			
-			 $(document).ready(function() {
-			        var post_idValue = '<c:out value="${board.post_id}"/>';
-			        var replyUL = $(".chat");
-			        
-			        showList(1);
-			        
-			        function showList(page) {
-			            replyService.getList({post_id:post_idValue, page:page||1}, function(list) {
-			                var str = "";
-			                if(list == null || list.length==0) {
-			                    console.log(list[i]);
-			                	replyUL.html("");
-			                    return;
-			                }
-			                for(var i=0, len=list.length || 0; i<len; i++) {
-			                	str+= "<li class='left cleafix' data rno='"+list[i].com_id+"'>";
-			                    str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
-			                    str+= "        <small class='pull-right text-muted'>" + list[i].com_date+"</small></div>";
-			                    str+= "            <p>"+list[i].com_content+"</p></div></li>";
-			                }
-			                
-			                replyUL.html(str);
-			            });
-			        }
-			    });
+			$('#Comment_regist').on("click",function(e) {
+				console.log(post_idValue);
+				console.log($('#com_content').val());
+				var reply={
+						com_content:$('#com_content').val(),
+						post_id:post_idValue
+				};
+				replyService.add(reply, function(result){alert(result); showList(1);} );
+			});
 		});
+
+		
 	</script>
 	
 	
