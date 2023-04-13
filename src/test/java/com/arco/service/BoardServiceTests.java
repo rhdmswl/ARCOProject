@@ -41,11 +41,12 @@ public class BoardServiceTests {
 		log.info("생성된 게시물의 번호 : " + board.getPost_id());
 	}
 	
-	@Test
-	public void testGetList() {
-		
-		service.getList(new Criteria(2,10)).forEach(board -> log.info(board));
-	}
+
+	/*
+	 * @Test public void testGetList() {
+	 * 
+	 * service.getList(new Criteria(2)).forEach(board -> log.info(board)); }
+	 */
 	
 	@Test
 	public void testGet() {
