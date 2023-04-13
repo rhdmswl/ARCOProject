@@ -29,7 +29,6 @@
 		SELECT *
 		FROM comment
 		where post_id=#{post_id}
-		ORDER BY com_id DESC
 		
 	</select>
 	<select id="getCountBypost_id" resultType="int">
