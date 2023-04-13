@@ -5,12 +5,6 @@
 
 <mapper namespace="com.collection.mapper.CollectionMapper">
 	
-	
-	<select id="getCollectionList" resultType="com.collection.domain.CollectionVO">
-		
-	
-	</select>
-	
 	<insert id="insertCollection">
 	
 		<!-- insert into collection (seq, title, startDate, endDate, realmName, gpsX, gpsY, thumbnail)
@@ -24,7 +18,7 @@
 	
 	</insert>
 	
-	<update id="updateCollectionOthers">
+	<!-- <update id="updateCollectionOthers">
 		
 		update collection
 		set place = #{place, jdbcType=VARCHAR},
@@ -36,7 +30,24 @@
 		where seq = #{seq}
 		
 		
-	</update>
+	</update> -->
+	
+<!-- 	<select id="getCollectionImgTitle">
+	
+		select imgUrl from collection
+		order by desc endDate 
+		limit 5
+	
+	</select> -->
+	
+	<select id="getCollectionList" resultType="com.collection.domain.CollectionVO">
+		select * from collection
+		order by endDate desc  
+	</select>
+	
+	<select id="getCollection" resultType="com.collection.domain.CollectionVO">
+		select * from collection where seq = #{seq}
+	</select>
 	
 	
 

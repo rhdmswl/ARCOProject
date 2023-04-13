@@ -1,9 +1,11 @@
 package com.collection.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.collection.domain.CollectionVO;
 import com.collection.service.CollectionService;
@@ -24,20 +26,28 @@ public class CollectionController {
 		service.insert(collection);
 	}
 	
-	@PostMapping("/registerOthers")
-	public void resisterOthers(CollectionVO collection) {
-		service.insertOthers(collection);
-	}
+//	@PostMapping("/registerOthers")
+//	public void resisterOthers(CollectionVO collection) {
+//		service.insertOthers(collection);
+//	}
 	
 	@GetMapping("/index")
-	public String idex() {
+	public String index(Model model) {
+		model.addAttribute("list", service.getList());
 		return "index";
 	}
 	
 	@GetMapping("/get")
-	public String get() {
-		return "single";
+	public String get(@RequestParam("seq") long seq, Model model) {
+		log.info("/get");
+		model.addAttribute("collection", service.get(seq));
+		return "get";
 	}
 	
+	@GetMapping("/list")
+	public String getList(Model model) {
+		model.addAttribute("list", service.getList());
+		return "list";
+	}	
 	
 }

@@ -1,5 +1,7 @@
 package com.collection.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,11 +27,29 @@ public class CollectionServiceImpl implements CollectionService {
 	}
 
 	@Override
-	public void insertOthers(CollectionVO collection) {
-		log.info("insert : " + collection);
-		mapper.updateCollectionOthers(collection);
-		
+	public List<CollectionVO> getList() {
+		return mapper.getCollectionList();
 	}
+
+	@Override
+	public CollectionVO get(long seq) {
+		log.info(seq);
+		return mapper.getCollection(seq);
+	}
+	
+
+	/*
+	 * @Override public String[] getCollectionImgTitle() {
+	 * return mapper.getCollectionImgTitle(); }
+	 */
+
+	/*
+	 * @Override public void insertOthers(CollectionVO collection) {
+	 * log.info("insert : " + collection);
+	 * mapper.updateCollectionOthers(collection);
+	 * 
+	 * }
+	 */
 
 	
 

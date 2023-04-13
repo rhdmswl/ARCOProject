@@ -48,11 +48,11 @@ public class CollectionControllerTests {
 	public void testRegister() throws Exception {
 
 		StringBuilder urlBuilder = new StringBuilder("http://www.culture.go.kr/openapi/rest/publicperformancedisplays/period"); /* URL */
-		urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=RWSgJIZJGBT%2Ffvaa0MRUzKHyhOGU4o8aFquLScMfTvtKypjNwb9U4oJ9KbK9UvkBNPiovUrxZGj4K%2Fa651ZaXA%3D%3D");
+		urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=egRwJCG3SGkAZ82SPT3oRYlbbuZGTU6yDn5oUNHoj07yCst4ynaHqJnigaas910jwFhHr23p3IHHgi5kgOOaDw%3D%3D");
 //		urlBuilder.append("&" + URLEncoder.encode("keyword", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8"));
 //		urlBuilder.append("&" + URLEncoder.encode("sortStdr", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 1:등록일, 2:공연명, 3:지역 */
 		urlBuilder.append("&" + URLEncoder.encode("ComMsgHeader", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
-		urlBuilder.append("&" + URLEncoder.encode("RequestTime", "UTF-8") + "="  + URLEncoder.encode("20230410:00000000", "UTF-8")); /* Optional 필드 */
+		urlBuilder.append("&" + URLEncoder.encode("RequestTime", "UTF-8") + "="  + URLEncoder.encode("20230412:00000000", "UTF-8")); /* Optional 필드 */
 		urlBuilder.append("&" + URLEncoder.encode("CallBackURI", "UTF-8") + "="  + URLEncoder.encode("", "UTF-8")); /* Optional 필드 */
 		urlBuilder.append("&" + URLEncoder.encode("MsgBody", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
 		urlBuilder.append("&" + URLEncoder.encode("from", "UTF-8") + "=" + URLEncoder.encode("20230101", "UTF-8")); /**/
@@ -129,11 +129,11 @@ public class CollectionControllerTests {
 				String imgUrl = "";
 
 				StringBuilder urlBuilder2 = new StringBuilder("http://www.culture.go.kr/openapi/rest/publicperformancedisplays/d/"); /* URL */
-				urlBuilder2.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=RWSgJIZJGBT%2Ffvaa0MRUzKHyhOGU4o8aFquLScMfTvtKypjNwb9U4oJ9KbK9UvkBNPiovUrxZGj4K%2Fa651ZaXA%3D%3D");
+				urlBuilder2.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=egRwJCG3SGkAZ82SPT3oRYlbbuZGTU6yDn5oUNHoj07yCst4ynaHqJnigaas910jwFhHr23p3IHHgi5kgOOaDw%3D%3D");
 //						urlBuilder.append("&" + URLEncoder.encode("keyword", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8"));
 //						urlBuilder.append("&" + URLEncoder.encode("sortStdr", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 1:등록일, 2:공연명, 3:지역 */
 				urlBuilder2.append("&" + URLEncoder.encode("ComMsgHeader", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
-				urlBuilder2.append("&" + URLEncoder.encode("RequestTime", "UTF-8") + "=" + URLEncoder.encode("00000000:00000000", "UTF-8")); /* Optional 필드 */
+				urlBuilder2.append("&" + URLEncoder.encode("RequestTime", "UTF-8") + "=" + URLEncoder.encode("20230412:00000000", "UTF-8")); /* Optional 필드 */
 				urlBuilder2.append("&" + URLEncoder.encode("CallBackURI", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /* Optional 필드 */
 				urlBuilder2.append("&" + URLEncoder.encode("MsgBody", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
 				urlBuilder2.append("&" + URLEncoder.encode("seq", "UTF-8") + "=" + URLEncoder.encode(seq_, "UTF-8")); /**/
