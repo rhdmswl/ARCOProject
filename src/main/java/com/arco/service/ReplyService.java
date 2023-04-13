@@ -8,8 +8,8 @@ import com.arco.domain.ReplyVO;
 public interface ReplyService {
 
 	public int register(ReplyVO vo);
-	public ReplyVO get(Long rno);
+	public ReplyVO get(Long com_id);
 	public int modify(ReplyVO vo);
-	public int remove(Long rno);
-	public List<ReplyVO> getList(Criteria cri, Long bno);
+	public int remove(Long com_id);
+	public List<ReplyVO> getList(Criteria cri, Long post_id);
 }
