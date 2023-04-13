@@ -17,11 +17,12 @@ public class Criteria {
 	private int brd_id;
 
 	public Criteria() {
-		this(1);
+		this(1, 10);
 	}
 	
-	public Criteria(int pageNum) {
+	public Criteria(int pageNum, int pageNumForLimit) {
 		this.pageNum=pageNum;
+		this.pageNumForLimit = pageNumForLimit;
 	}
 	
 	public void setpageNumForLimit() {

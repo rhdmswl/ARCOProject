@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.arco.domain.Criteria;
+import com.arco.domain.ReplyVO;
+import com.arco.service.ReplyService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -35,11 +37,11 @@ public class ReplyController {
 			produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> create(@RequestBody ReplyVO vo) {
 		
-		log.info("ReplyVO: {}", vo);
+		log.info("ReplyVO:" + vo);
 		
 		int insertCount = service.register(vo);
 		
-		log.info("Reply INSERT COUNT: {}", insertCount);
+		log.info("Reply INSERT COUNT:" + insertCount);
 		
 		return insertCount == 1 
 				? new ResponseEntity<>("success", HttpStatus.OK)
@@ -47,54 +49,54 @@ public class ReplyController {
 	}
 	
 	// 특정 게시물 댓글 목록 확인
-	@GetMapping(value = "/pages/{post_id}/{page}",
+	@GetMapping(value = "/pages/{post_id}/{pageNum}",
 			produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<ReplyVO>> getList(
-			@PathVariable("page") int page, @PathVariable("post_id") Long post_id) {
+			@PathVariable("pageNum") int pageNum, @PathVariable("post_id") Long post_id) {
 		
 		log.info("getList......");
-		Criteria cri = new Criteria(page, 10);
+		Criteria cri = new Criteria(pageNum, 10);
 		log.info(cri);
 		
-		return new ResponseEntity<>(service.getList(cri, bno), HttpStatus.OK);
+		return new ResponseEntity<>(service.getList(cri, post_id), HttpStatus.OK);
 	}
 	
 	
 	// 댓글 조회
-	@GetMapping(value = "/{reply_id}",
+	@GetMapping(value = "/{com_id}",
 			produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<ReplyVO> get(@PathVariable("reply_id") Long reply_id) {
+	public ResponseEntity<ReplyVO> get(@PathVariable("com_id") Long com_id) {
 		
-		log.info("get : {}", reply_id);
+		log.info("get : " + com_id);
 		
-		return new ResponseEntity<>(service.get(reply_id), HttpStatus.OK);
+		return new ResponseEntity<>(service.get(com_id), HttpStatus.OK);
 	}
 	
 	
 	// 댓글 삭제
-	@DeleteMapping(value = "/{reply_id}",
+	@DeleteMapping(value = "/{com_id}",
 			produces = {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> remove(@PathVariable("reply_id") Long reply_id) {
+	public ResponseEntity<String> remove(@PathVariable("com_id") Long com_id) {
 		
-		log.info("remove : {}", reply_id);
+		log.info("remove : " + com_id);
 		
-		return service.remove(reply_id) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
+		return service.remove(com_id) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	
 	// 댓글 수정
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
-			value = "/{reply_id}",
+			value = "/{com_id}",
 			consumes = "application/json",
 			produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> modify(
-			@RequestBody ReplyVO vo, @PathVariable("reply_id") Long reply_id) {
+			@RequestBody ReplyVO vo, @PathVariable("com_id") Long com_id) {
 		
-		vo.setReply_id(reply_id);
+		vo.setCom_id(com_id);
 		
-		log.info("reply_id : {}", reply_id);
-		log.info("modify : {}", vo);
+		log.info("com_id : " + com_id);
+		log.info("modify : " + vo);
 		
 		return service.modify(vo) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
