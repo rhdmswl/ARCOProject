@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arco.mapper.ReplyMapper">
+
+	<insert id="insert">
+		insert into comment (com_id, post_id, com_content, com_writer)
+		values (
+		(select nextval('com_id') from dual), #{post_id}, #{com_content},
+		#{com_writer})
+	</insert>
+
+	<select id="read" resultType="com.arco.domain.ReplyVO">
+		select * from comment where com_id=#{com_id}
+	</select>
+
+	<delete id="delete">
+		delete from comment where com_id=#{com_id}
+	</delete>
+
+	<update id="update">
+		update comment set com_content=#{com_content} where com_id=#{com_id}
+	</update>
+
+	<select id="getListWithPaging"
+		resultType="com.arco.domain.ReplyVO">
+		SELECT *
+		FROM comment
+		where post_id=#{post_id}
+		ORDER BY com_id DESC
+		
+	</select>
+	<select id="getCountBypost_id" resultType="int">
+<![CDATA[
+	select count(com_id) from comment where post_id = #{post_id}
+]]>
+
+	</select>
+
+
+</mapper>
