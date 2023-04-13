@@ -404,58 +404,18 @@ button {
 						<hr class="mb40">
 						<h4 class="mb40 text-uppercase font500">Comments</h4>
 						<div class="media mb40">
-							<i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
 							<div class="media-body">
-								<h5 class="mt-0 font400 clearfix">
-									<a href="#" class="float-right">Reply</a> Jane Doe
-								</h5>
-								Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-								vestibulum in vulputate at, tempus viverra turpis. Fusce
-								condimentum nunc ac nisi vulputate fringilla. Donec lacinia
-								congue felis in faucibus.
+							<ul class="chat">
+							</ul>
 							</div>
 						</div>
-						<div class="media mb40">
-							<i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
-							<div class="media-body">
-								<h5 class="mt-0 font400 clearfix">
-									<a href="#" class="float-right">Reply</a> Jane Doe
-								</h5>
-								Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-								vestibulum in vulputate at, tempus viverra turpis. Fusce
-								condimentum nunc ac nisi vulputate fringilla. Donec lacinia
-								congue felis in faucibus.
-							</div>
-						</div>
-						<div class="media mb40">
-							<i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
-							<div class="media-body">
-								<h5 class="mt-0 font400 clearfix">
-									<a href="#" class="float-right">Reply</a> Jane Doe
-								</h5>
-								Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-								vestibulum in vulputate at, tempus viverra turpis. Fusce
-								condimentum nunc ac nisi vulputate fringilla. Donec lacinia
-								congue felis in faucibus.
-							</div>
-						</div>
-						<hr class="mb40">
-						<h4 class="mb40 text-uppercase font500">Post a comment</h4>
 						<form role="form">
 							<div class="form-group">
-								<label>Name</label> <input type="text" class="form-control"
-									placeholder="John Doe">
-							</div>
-							<div class="form-group">
-								<label>Email</label> <input type="email" class="form-control"
-									placeholder="john@doe.com">
-							</div>
-							<div class="form-group">
 								<label>Comment</label>
-								<textarea class="form-control" rows="5" placeholder="Comment"></textarea>
+								<textarea class="form-control" rows="3" placeholder="Comment"></textarea>
 							</div>
 							<div class="clearfix float-right">
-								<button type="button" class="custom-btn btn-11">Submit</button>
+								<button type="button" class="custom-btn btn-11" onclick="writeReply()">댓글 작성</button>
 							</div>
 						</form>
 					</div>
@@ -529,12 +489,15 @@ button {
 				</div> -->
 			</div>
 		</div>
+	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="/resources/js/reply.js"> </script>
+   
+    
 	<script type="text/javascript">
 		$(document).ready(function(){
-			
 			var operForm_modi = $("#operForm_modi");
 			
 			$("button[data-oper='modify']").on("click", function(e){
@@ -552,8 +515,36 @@ button {
 			$("button[data-oper='remove']").on("click", function(e){
 				operForm_remo.attr("action", "/board/remove").submit();
 			});
+			
+			 $(document).ready(function() {
+			        var post_idValue = '<c:out value="${board.post_id}"/>';
+			        var replyUL = $(".chat");
+			        
+			        showList(1);
+			        
+			        function showList(page) {
+			            replyService.getList({post_id:post_idValue, page:page||1}, function(list) {
+			                var str = "";
+			                if(list == null || list.length==0) {
+			                    console.log(list[i]);
+			                	replyUL.html("");
+			                    return;
+			                }
+			                for(var i=0, len=list.length || 0; i<len; i++) {
+			                	str+= "<li class='left cleafix' data rno='"+list[i].com_id+"'>";
+			                    str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
+			                    str+= "        <small class='pull-right text-muted'>" + list[i].com_date+"</small></div>";
+			                    str+= "            <p>"+list[i].com_content+"</p></div></li>";
+			                }
+			                
+			                replyUL.html(str);
+			            });
+			        }
+			    });
 		});
-	
 	</script>
+	
+	
+	
 </body>
 </html>
