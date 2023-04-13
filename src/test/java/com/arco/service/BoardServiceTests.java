@@ -41,6 +41,7 @@ public class BoardServiceTests {
 		log.info("생성된 게시물의 번호 : " + board.getPost_id());
 	}
 	
+
 	/*
 	 * @Test public void testGetList() {
 	 * 
