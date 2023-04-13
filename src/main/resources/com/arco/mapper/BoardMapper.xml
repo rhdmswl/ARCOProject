@@ -40,54 +40,55 @@
 	<sql id="criteria">
 			<choose>
 					<when test="type=='T'.toString()">
-						where post_title like concat('%', #{keyword}, '%')
+
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
 					</when>
 					<when test="type=='W'.toString()">
-						where post_writer like concat('%', #{keyword}, '%')
+						where brd_id=#{brd_id}
+						and post_writer like concat('%', #{keyword}, '%')
 					</when>
 					<when test="type=='C'.toString()">
-						where post_content like concat('%', #{keyword}, '%')
+						where brd_id=#{brd_id}
+						and post_content like concat('%', #{keyword}, '%')
 					</when>
 					<when test="type=='TC'.toString()">
-						where post_title like concat('%', #{keyword}, '%')
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
 						or post_content like concat('%', #{keyword}, '%')
 					</when>
 					<when test="type=='TW'.toString()">
-						where post_title like concat('%', #{keyword}, '%')
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
 						or post_writer like concat('%', #{keyword}, '%')
 					</when>
 					<when test="type=='TCW'.toString()">
-						where post_title like concat('%', #{keyword}, '%')
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
 						or post_content like concat('%', #{keyword}, '%')
 						or post_writer like concat('%', #{keyword}, '%')
 					</when>
+					<otherwise>
+					where brd_id=#{brd_id}
+					</otherwise>
 			</choose>
 	</sql>
 	
 	<select id="getListWithPaging" resultType="com.arco.domain.BoardVO">
-		<![CDATA[
 		SELECT *
 		FROM (
 			SELECT post_id, post_title, post_writer, post_content, post_regdate,brd_id
 			FROM post
-		]]>
+
 		<include refid="criteria"></include>
-		<![CDATA[
 		) as post_paging
-    	where brd_id=#{brd_id}
 		ORDER BY post_id DESC
 		LIMIT #{pageNumForLimit},10
-		]]>
-
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
-		select count(*) from post 
-		where brd_id=#{brd_id} and
-
-		<!-- <include refid="criteria"></include> -->
-		
-		post_id>0
+		select count(*) from post
+		<include refid="criteria"></include> 
 
 	</select>
 </mapper>

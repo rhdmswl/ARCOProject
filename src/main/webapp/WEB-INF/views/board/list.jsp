@@ -254,7 +254,6 @@ body {
 											</select>
 											<input type='text' name="keyword" class="form-control" placeholder="Search..." value='<c:out value="${pageMaker.cri.keyword}"/>'>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
-											<input type='hidden' name="pageNumForLimit" value="${pageMaker.cri.pageNumForLimit}">
 											<input type='hidden' name='brd_id' value='${pageMaker.cri.brd_id}'>
 											<button type="submit" class="searchButton"><span class="input-group-addon"><i class="zmdi zmdi-search"></i></span></button>
 										</form>
