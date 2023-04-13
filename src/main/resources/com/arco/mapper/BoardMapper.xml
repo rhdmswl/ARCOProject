@@ -40,6 +40,7 @@
 	<sql id="criteria">
 			<choose>
 					<when test="type=='T'.toString()">
+
 						where brd_id=#{brd_id}
 						and post_title like concat('%', #{keyword}, '%')
 					</when>
@@ -78,6 +79,7 @@
 		FROM (
 			SELECT post_id, post_title, post_writer, post_content, post_regdate,brd_id
 			FROM post
+
 		<include refid="criteria"></include>
 		) as post_paging
 		ORDER BY post_id DESC
@@ -87,5 +89,6 @@
 	<select id="getTotalCount" resultType="int">
 		select count(*) from post
 		<include refid="criteria"></include> 
+
 	</select>
 </mapper>

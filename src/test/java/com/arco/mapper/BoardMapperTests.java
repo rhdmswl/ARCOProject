@@ -74,7 +74,7 @@ public class BoardMapperTests {
 	public void testSearch() {
 		Criteria cri = new Criteria();
 		cri.setKeyword("test");
-		cri.setType("TWC");
+		cri.setType("W");
 		
 		List<BoardVO> list = mapper.getListWithPaging(cri);
 		
