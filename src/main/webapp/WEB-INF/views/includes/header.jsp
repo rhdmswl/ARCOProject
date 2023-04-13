@@ -400,9 +400,12 @@ li {
     font-size: 14px;
 }
 
-.navbar.navbar-expand-lg .navbar-nav .nav-link:hover,
+.navbar.navbar-expand-lg .navbar-nav .nav-link:hover {
+	color: #eb1a6a;
+}
+
 .navbar.navbar-expand-lg .navbar-nav .active .nav-link {
-    color: #eb1a6a;
+    color: #232d37;
 }
 
 .dropdown-item {
@@ -485,7 +488,7 @@ li {
                         <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
                             <ul class="navbar-nav" id="yummy-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="index.jsp">Home<span class="sr-only">(current)</span></a>
                                 </li>
                                 <!-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
@@ -503,7 +506,7 @@ li {
                                 <li class="nav-item">
                                     <a class="nav-link" href="/board/list">Community</a>
                                 </li>
-                                <li class="nav-item active">
+                                <li class="nav-item">
                                     <a class="nav-link" href="archive.html">Archive</a>
                                 </li>
                                 <li class="nav-item">
