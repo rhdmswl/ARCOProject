@@ -406,8 +406,7 @@ button {
 						<div class="media mb40">
 							<i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
 							<div class="media-body">
-								<h5 class="mt-0 font400 clearfix">
-									<a href="#" class="float-right">Reply</a> Jane Doe
+								<h5 class="mt-0 font400 clearfix">Jane Doe
 								</h5>
 								Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
 								vestibulum in vulputate at, tempus viverra turpis. Fusce
@@ -439,23 +438,13 @@ button {
 								congue felis in faucibus.
 							</div>
 						</div>
-						<hr class="mb40">
-						<h4 class="mb40 text-uppercase font500">Post a comment</h4>
 						<form role="form">
 							<div class="form-group">
-								<label>Name</label> <input type="text" class="form-control"
-									placeholder="John Doe">
-							</div>
-							<div class="form-group">
-								<label>Email</label> <input type="email" class="form-control"
-									placeholder="john@doe.com">
-							</div>
-							<div class="form-group">
 								<label>Comment</label>
-								<textarea class="form-control" rows="5" placeholder="Comment"></textarea>
+								<textarea class="form-control" rows="3" placeholder="Comment"></textarea>
 							</div>
 							<div class="clearfix float-right">
-								<button type="button" class="custom-btn btn-11">Submit</button>
+								<button type="button" class="custom-btn btn-11" onclick="writeReply()">댓글 작성</button>
 							</div>
 						</form>
 					</div>
@@ -529,6 +518,7 @@ button {
 				</div> -->
 			</div>
 		</div>
+	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -553,7 +543,21 @@ button {
 				operForm_remo.attr("action", "/board/remove").submit();
 			});
 		});
-	
 	</script>
+	<script type="text/javascript" src="/resources/js/reply.js"></script>
+	<script>
+	console.log("========");
+	console.log("js test");
+	
+	var postidValue='<c:out value="${board.post_id}"/>';
+	
+	replyService.add(
+		{com_content:"테스트 중입니다",com_writer:"test",post_id:postidValue},
+		function(result){
+			alert("RESULT:" +result);
+		}
+	)
+	</script>
+	
 </body>
 </html>

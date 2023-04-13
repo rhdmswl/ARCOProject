@@ -1,8 +1,11 @@
 console.log("Reply Module...............");
+
 var replyService = (function() {
+
 	function add(reply, callback, error) {
 		console.log("add reply.........");
-		$.ajax({
+		
+				$.ajax({
 			type: 'post',
 			url: '/replies/new',
 			data : JSON.stringify(reply),
@@ -28,8 +31,8 @@ var replyService = (function() {
 		$.getJSON("/replies/pages/" + bno + "/" + page + ".json",
 			function(data) {
 				if(callback) {
-					//  callback(data);  //댓글 목록만 가져오는 경우
-					 callback(data.replyCnt, data.list); //댓글 숫자와 목록을 가져오는 경우 
+					//  callback(data);
+					 callback(data.replyCnt, data.list);
 				}
 			}).fail(function(xhr, status, err) {
 				if(error) {
@@ -119,8 +122,7 @@ function displayTime(timeValue) {
 			}
 	}
 	
-		
-	
+
 	return {
 		add:add,
 		getList:getList,
@@ -130,4 +132,3 @@ function displayTime(timeValue) {
 		displayTime:displayTime
 	};
 })();
-
