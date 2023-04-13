@@ -12,4 +12,5 @@ public interface ReplyService {
 	public int modify(ReplyVO vo);
 	public int remove(Long com_id);
 	public List<ReplyVO> getList(Criteria cri, Long post_id);
+
 }
