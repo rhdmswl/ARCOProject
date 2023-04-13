@@ -25,14 +25,13 @@ var replyService = (function() {
 	// end add
 	
 		function getList(param, callback, error) {
-	var bno = param.bno;
+		var post_id = param.post_id;
 		var page = param.page || 1;
 		
-		$.getJSON("/replies/pages/" + bno + "/" + page + ".json",
+		$.getJSON("/replies/pages/" + post_id + "/" + page + ".json",
 			function(data) {
 				if(callback) {
-					//  callback(data);
-					 callback(data.replyCnt, data.list);
+					  callback(data);
 				}
 			}).fail(function(xhr, status, err) {
 				if(error) {
@@ -41,8 +40,6 @@ var replyService = (function() {
 			});
 	}
 
-
-	
 	function remove(rno, callback, error) {
 		$.ajax( {
 			type: 'delete',

@@ -404,38 +404,9 @@ button {
 						<hr class="mb40">
 						<h4 class="mb40 text-uppercase font500">Comments</h4>
 						<div class="media mb40">
-							<i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
 							<div class="media-body">
-								<h5 class="mt-0 font400 clearfix">Jane Doe
-								</h5>
-								Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-								vestibulum in vulputate at, tempus viverra turpis. Fusce
-								condimentum nunc ac nisi vulputate fringilla. Donec lacinia
-								congue felis in faucibus.
-							</div>
-						</div>
-						<div class="media mb40">
-							<i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
-							<div class="media-body">
-								<h5 class="mt-0 font400 clearfix">
-									<a href="#" class="float-right">Reply</a> Jane Doe
-								</h5>
-								Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-								vestibulum in vulputate at, tempus viverra turpis. Fusce
-								condimentum nunc ac nisi vulputate fringilla. Donec lacinia
-								congue felis in faucibus.
-							</div>
-						</div>
-						<div class="media mb40">
-							<i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
-							<div class="media-body">
-								<h5 class="mt-0 font400 clearfix">
-									<a href="#" class="float-right">Reply</a> Jane Doe
-								</h5>
-								Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-								vestibulum in vulputate at, tempus viverra turpis. Fusce
-								condimentum nunc ac nisi vulputate fringilla. Donec lacinia
-								congue felis in faucibus.
+							<ul class="chat">
+							</ul>
 							</div>
 						</div>
 						<form role="form">
@@ -522,9 +493,11 @@ button {
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="/resources/js/reply.js"> </script>
+   
+    
 	<script type="text/javascript">
 		$(document).ready(function(){
-			
 			var operForm_modi = $("#operForm_modi");
 			
 			$("button[data-oper='modify']").on("click", function(e){
@@ -542,22 +515,36 @@ button {
 			$("button[data-oper='remove']").on("click", function(e){
 				operForm_remo.attr("action", "/board/remove").submit();
 			});
+			
+			 $(document).ready(function() {
+			        var post_idValue = '<c:out value="${board.post_id}"/>';
+			        var replyUL = $(".chat");
+			        
+			        showList(1);
+			        
+			        function showList(page) {
+			            replyService.getList({post_id:post_idValue, page:page||1}, function(list) {
+			                var str = "";
+			                if(list == null || list.length==0) {
+			                    console.log(list[i]);
+			                	replyUL.html("");
+			                    return;
+			                }
+			                for(var i=0, len=list.length || 0; i<len; i++) {
+			                	str+= "<li class='left cleafix' data rno='"+list[i].com_id+"'>";
+			                    str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
+			                    str+= "        <small class='pull-right text-muted'>" + list[i].com_date+"</small></div>";
+			                    str+= "            <p>"+list[i].com_content+"</p></div></li>";
+			                }
+			                
+			                replyUL.html(str);
+			            });
+			        }
+			    });
 		});
 	</script>
-	<script type="text/javascript" src="/resources/js/reply.js"></script>
-	<script>
-	console.log("========");
-	console.log("js test");
 	
-	var postidValue='<c:out value="${board.post_id}"/>';
 	
-	replyService.add(
-		{com_content:"테스트 중입니다",com_writer:"test",post_id:postidValue},
-		function(result){
-			alert("RESULT:" +result);
-		}
-	)
-	</script>
 	
 </body>
 </html>
