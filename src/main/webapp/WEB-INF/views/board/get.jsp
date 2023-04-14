@@ -540,7 +540,7 @@ button {
 					str+= "			<form class='collapse' id='" + form_id + "'>";
 			        str+= "  			<div class='form-group'>";
 			        str+= "  			<input type='hidden' id='com_id' name='com_id' value=''/>";
-			        str+= "    				<textarea class='form-control' id ='com_up_content' rows='3'>$('#com_up_content')</textarea>";
+			        str+= "    				<textarea style='resize: none;' class='form-control' id ='com_up_content' rows='3'></textarea>";
 			        str+= "  			<button id='Comment_update' type='button' class='btn btn-info' >수정 완료</button>";
 			        str+= "  			<button type='button' class='btn btn-info comment-delete-btn'>삭제</button>";
 			        str+= "  			</div>";
@@ -591,6 +591,14 @@ button {
 			        "com_id" : com_id
 			    }; 
 			    replyService.update(reply, function(result){alert(result); showList(1);} );
+			});
+			
+			$(document).on('click', '.comment-delete-btn', function(){
+			    var com_id = $(this).closest("li").data("com-id");
+			    replyService.remove(com_id, function(result){
+			        alert(result);
+			        showList(1);
+			    });
 			});
 
 		});
