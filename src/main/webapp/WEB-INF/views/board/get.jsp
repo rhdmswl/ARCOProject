@@ -552,6 +552,8 @@ button {
 				});
 			}
 			
+			
+			
 			$("button[data-oper='modify']").on("click", function(e){
 				operForm_modi.attr("action", "/board/modify").submit();
 			});
