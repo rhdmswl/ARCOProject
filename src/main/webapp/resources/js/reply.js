@@ -57,6 +57,28 @@ var replyService = (function() {
 		});
 	}
 	
+	function update(reply, callback, error) {
+
+		console.log("RNO: " + reply.com_id);
+
+		$.ajax({
+			type : 'put',
+			url : '/replies/' + reply.com_id,
+			data : JSON.stringify(reply),
+			contentType : "application/json; charset=utf-8",
+			success : function(result, status, xhr) {
+				if (callback) {
+					callback(result);
+				}
+			},
+			error : function(xhr, status, er) {
+				if (error) {
+					error(er);
+				}
+			}
+		});
+	}
+	
 	
 	function get(rno, callback, error) {
 	console.log("get reply.........");
@@ -101,7 +123,7 @@ function displayTime(timeValue) {
 		add:add,
 		getList:getList,
 		remove:remove,
-		
+		update:update,
 		get:get,
 		displayTime:displayTime
 	};
