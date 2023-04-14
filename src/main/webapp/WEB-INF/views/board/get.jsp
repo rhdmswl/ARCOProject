@@ -510,8 +510,6 @@ button {
 			var operForm_modi = $("#operForm_modi");
 			var post_idValue = '<c:out value="${board.post_id}"/>';
 			var replyUL = $(".chat");
-			
-			
 			var objParams = {
 	        		com_id : $("#com_id").val(),
 	        		com_content : $("#com_content").val(),
@@ -580,7 +578,6 @@ button {
 				};
 				replyService.add(reply, function(result){alert(result); showList(1);} );
 			});
-			
 			$(document).on('click','.comment-edit-btn',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
 			    $("#" + form_id).collapse('toggle'); // 해당 form의 collapse 상태를 변경하여 textarea가 나타나도록 함
