@@ -2,6 +2,7 @@ package com.arco.domain;
 
 import java.util.Date;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -13,5 +14,5 @@ public class ReplyVO {
 	  private String com_content;
 	  private String com_writer;
 	  private Date com_date;
-
+	  
 }

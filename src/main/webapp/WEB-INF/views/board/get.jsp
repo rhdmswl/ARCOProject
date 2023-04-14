@@ -18,6 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
 <style type="text/css">
 body {
 	margin-top: 20px;
@@ -409,11 +411,16 @@ button {
 							</ul>
 							</div>
 						</div>
+						
+						<!-- 댓글 작성 창 -->
 						<form role="form">
 							<div class="form-group">
 								<label>Comment</label>
 								<textarea id="com_content" name ="com_content" class="form-control" rows="3"></textarea>
 							</div>
+							<div>
+							</div>
+							
 							<div class="clearfix float-right">
 								<button id="Comment_regist" type="button" class="custom-btn btn-11">댓글 등록</button>
 							</div>
@@ -491,14 +498,24 @@ button {
 		</div>
 	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+	
 	<script type="text/javascript" src="/resources/js/reply.js"> </script>
+	<script type="text/javascript" src="/resources/js/comment.js"></script>
+	
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var operForm_modi = $("#operForm_modi");
 			var post_idValue = '<c:out value="${board.post_id}"/>';
 			var replyUL = $(".chat");
+			
+			var objParams = {
+	        		com_id : $("#com_id").val(),
+	        		com_content : $("#com_content").val(),
+	        		com_writer : $("#com_writer").val()
+	        };
 			        
 			showList(1);
 			        
@@ -511,10 +528,22 @@ button {
 			    	return;
 			    }
 				for(var i=0, len=list.length || 0; i<len; i++) {
-					str+= "<li class='left cleafix' data rno='"+list[i].com_id+"'>";
+					str+= "<li class='left cleafix' data com_id='"+list[i].com_id+"'>";
 					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
-					str+= "        <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
-					str+= "            <p>"+list[i].com_content+"</p></div></li>";
+					str+= "         <small>"	;
+					str+= "        	<a href=('#multi-collapse-id') class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='multi-collapse-id'>수정</a>";
+					str+= "         </small>"	;
+					str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
+					str+= "         <p class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
+					str+= "			<form class='collapse multi-collapse-id'>";
+			        str+= "  			<div class='form-group'>";
+			        str+= "    				<textarea class='form-control' id='comment-content' rows='3'>$('#com_content')</textarea>";
+			        str+= "  			</div>";
+			        str+= "  				<input type='hidden' id='comment-id' value=$('#com_id')>";
+			        str+= "  				<button type='button' class='btn btn-info comment-update-btn' data-target='.multi-collapse-id'>수정 완료</button>";
+			        str+= "  				<button type='button' class='btn btn-info comment-delete-btn'>삭제</button>";
+			        str+= "			</form>";
+                    str+=		"</div></li>";
 					}
 				
 				replyUL.html(str);
@@ -537,6 +566,7 @@ button {
 				operForm_remo.attr("action", "/board/remove").submit();
 			});
 			
+
 			$('#Comment_regist').on("click",function(e) {
 				console.log(post_idValue);
 				console.log($('#com_content').val());
@@ -546,12 +576,9 @@ button {
 				};
 				replyService.add(reply, function(result){alert(result); showList(1);} );
 			});
-		});
 
-		
+		});
 	</script>
-	
-	
-	
+
 </body>
 </html>

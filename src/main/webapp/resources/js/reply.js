@@ -40,10 +40,10 @@ var replyService = (function() {
 			});
 	}
 
-	function remove(rno, callback, error) {
+	function remove(com_id, callback, error) {
 		$.ajax( {
 			type: 'delete',
-			url : '/replies/' + rno,
+			url : '/replies/' + com_id,
 			success : function(result, status, xhr) {
 				if(callback) {
 					callback(result);
@@ -58,32 +58,9 @@ var replyService = (function() {
 	}
 	
 	
-	function update(reply, callback, error) {
-
-		console.log("RNO: " + reply.rno);
-
-		$.ajax({
-			type : 'put',
-			url : '/replies/' + reply.rno,
-			data : JSON.stringify(reply),
-			contentType : "application/json; charset=utf-8",
-			success : function(result, status, xhr) {
-				if (callback) {
-					callback(result);
-				}
-			},
-			error : function(xhr, status, er) {
-				if (error) {
-					error(er);
-				}
-			}
-		});
-	}
-	
-	
 	function get(rno, callback, error) {
 	console.log("get reply.........");
-		$.get("/replies/" + rno + ".json", function(result) {
+		$.get("/replies/" + com_id + ".json", function(result) {
 
 			if (callback) {
 				callback(result);
@@ -124,7 +101,7 @@ function displayTime(timeValue) {
 		add:add,
 		getList:getList,
 		remove:remove,
-		update:update,
+		
 		get:get,
 		displayTime:displayTime
 	};
