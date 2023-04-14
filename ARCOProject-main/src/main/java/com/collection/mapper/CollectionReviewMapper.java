@@ -2,24 +2,19 @@ package com.collection.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
-
 import com.collection.domain.CollectionReviewVO;
-import com.collection.domain.Criteria;
 
 public interface CollectionReviewMapper {
-	
-//	@Select("select * from collectionRev where revSeq > 0")
+
+
 	public List<CollectionReviewVO> getList();
 	
-	public int insert(CollectionReviewVO vo);
-		
-	public CollectionReviewVO read(long seq);
+	public void insert(CollectionReviewVO review);
 	
-	public int delete(long seq);
+	public List<CollectionReviewVO> read(long seq);
 	
-	public int update(CollectionReviewVO vo);
+	public int delete(long reSeq);
 	
-	public List<CollectionReviewVO> getListWithPaging(Criteria cri);
+	public int update(CollectionReviewVO review);
 	
 }

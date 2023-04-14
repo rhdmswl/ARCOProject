@@ -9,13 +9,13 @@ public class CollectionReviewVO {
 	
 	private long seq;
 	private long revSeq;
-	private long userIdx;
+	private String userId;
 	
 	private String nickName;
 	private String revComment;
 	private int revCount;
 	private int revStar;
-	private Date replyDate;
+	private Date reviewDate;
 	private Date updateDate;
 	
 }

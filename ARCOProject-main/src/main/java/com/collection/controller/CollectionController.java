@@ -1,5 +1,6 @@
 package com.collection.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.collection.domain.CollectionVO;
+import com.collection.service.CollectionReviewService;
 import com.collection.service.CollectionService;
 
 import lombok.AllArgsConstructor;
@@ -15,21 +17,17 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/collection/")
+@RequestMapping("/collection")
 @AllArgsConstructor
 public class CollectionController {
 
+	@Autowired
 	private CollectionService service;
 	
 	@PostMapping("/register")
 	public void register(CollectionVO collection) {
 		service.insert(collection);
 	}
-	
-//	@PostMapping("/registerOthers")
-//	public void resisterOthers(CollectionVO collection) {
-//		service.insertOthers(collection);
-//	}
 	
 	@GetMapping("/index")
 	public String index(Model model) {
@@ -47,6 +45,7 @@ public class CollectionController {
 	@GetMapping("/list")
 	public String getList(Model model) {
 		model.addAttribute("list", service.getList());
+		log.info("getList(1)");
 		return "list";
 	}	
 	

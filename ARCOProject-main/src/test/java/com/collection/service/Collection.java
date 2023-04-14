@@ -65,26 +65,26 @@ public class Collection {
 		
 	}
 	
-	@Test
-	public void testRead() {
-		long seq = 207375;
-		CollectionReviewVO vo = mapper.read(seq);
-		log.info(vo);
-		
-	}
-	
-	@Test
-	public void updateTest() {
-		long seq = 207375;
-		CollectionReviewVO vo = mapper.read(seq);
-		
-		vo.setRevComment("2차 테스트 입니다.");
-		vo.setRevStar(4);
-		int count = mapper.update(vo);
-		
-		log.info("update count : " + count);
-		
-	}
+//	@Test
+//	public void testRead() {
+//		long seq = 207375;
+//		CollectionReviewVO vo = mapper.read(seq);
+//		log.info(vo);
+//		
+//	}
+//	
+//	@Test
+//	public void updateTest() {
+//		long seq = 207375;
+//		CollectionReviewVO vo = mapper.read(seq);
+//		
+//		vo.setRevComment("2차 테스트 입니다.");
+//		vo.setRevStar(4);
+//		int count = mapper.update(vo);
+//		
+//		log.info("update count : " + count);
+//		
+//	}
 	
 	
 	

@@ -8,9 +8,13 @@ public interface CollectionReviewService {
 	
 	public List<CollectionReviewVO> getList();
 	
-	public int register(CollectionReviewVO reviewVO);
+	public void register(CollectionReviewVO review);
 	
-	public CollectionReviewVO get(long seq);
+	public List<CollectionReviewVO> get(long seq);
 	
-
+	public boolean remove(long reSeq);
+	
+	public boolean modify(CollectionReviewVO review);
+	
+	
 }

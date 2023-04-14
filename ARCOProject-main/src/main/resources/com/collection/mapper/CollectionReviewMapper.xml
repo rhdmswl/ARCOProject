@@ -2,9 +2,15 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
   
 <mapper namespace="com.collection.mapper.CollectionReviewMapper">
+
+<select id="getList" resultType="com.collection.domain.CollectionReviewVO">
+
+	select*from collectionRev where revSeq > 0
+	
+</select>
+
 
 <insert id="insert">
 
@@ -13,45 +19,27 @@ values(#{seq}, nextval('revSeq'), #{userIdx}, #{nickName}, #{revComment, jdbcTyp
 
 </insert>
 
-<select id="getList" resultType="com.collection.domain.CollectionReviewVO">
-	
-	<![CDATA[
-	select * from collectionRev where revSeq > 0
-	]]>
-	
-</select>
 
 <select id="read" resultType="com.collection.domain.CollectionReviewVO">
 
-select * from collectionRev where seq = #{seq}
+	select * from collectionRev where seq = #{seq}
 
 </select>
 
 <delete id="delete">
 
-delete from collectionRev where revSeq = #{revSeq}
-
+	delete from collectionRev where revSeq = #{revSeq}
+	
 </delete>
 
 <update id="update">
 
-update collectionRev set revComment = #{revComment}, revStar = #{revStar} where revSeq = #{revSeq}
-	
+	update collectionRev
+		set revComment = #{revComment}
+		where revSeq = #{revSeq}
+
 </update>
 
-<select id="getListWithPaging" resultType="com.collection.domain.CollectionReviewVO">
-	
-		<![CDATA[
-		SELECT *
-		FROM (
-			SELECT seq, revSeq,userIdx, nickName, revComment, revCount, revStar, replyDate, updateDate
-			FROM collectionRev
-		) as collectionRev_paging
-    	where seq=#{seq}
-		ORDER BY revSeq DESC
-		LIMIT #{pageNumForLimit},10
-		]]>
 
-</select>
 
 </mapper>

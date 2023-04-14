@@ -1,15 +1,11 @@
 package com.collection.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.collection.domain.CollectionReviewVO;
@@ -18,46 +14,52 @@ import com.collection.service.CollectionReviewService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
-@RequestMapping("/reviews")
 @Controller
 @Log4j
+@RequestMapping("/review")
 @AllArgsConstructor
 public class CollectionReviewController {
 	
-	@Autowired
 	private CollectionReviewService service;
 	
-	@GetMapping("/list")
+	
+	@GetMapping
 	public void list(Model model) {
 		log.info("list");
 		model.addAttribute("list", service.getList());
 	}
 	
-	@PostMapping("/register")
-	public String resiger(CollectionReviewVO review, RedirectAttributes rttr) {
-		log.info("register : " + review);
-		service.register(review);
-		rttr.addFlashAttribute("result", review.getSeq());
-		
-		return "redirect:/collection/get?seq" + review.getRevSeq();
-	}
-	
-//	@PostMapping(value="/register", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-//	public ResponseEntity<String> create(@RequestBody CollectionReviewVO vo){
+//	@PostMapping("/register")
+//	public String register(CollectionReviewVO review, RedirectAttributes rttr) {
+//		log.info("register : " + review);
+//		service.register(review);
+//		rttr.addFlashAttribute("result", review.getSeq());
 //		
-//		log.info("CollectionReviewVO :" + vo);
-//		int insertCount = service.register(vo);
-//		
-//		log.info("Review insert count : " + insertCount);
-//		
-//		return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//		return "redirect:/collection/get?seq=" + review.getSeq();
 //	}
 	
-	@GetMapping(value = "/{seq}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<CollectionReviewVO> get(@PathVariable("seq") long seq){
-		log.info("get : " + seq);
-		
-		return new ResponseEntity<>(service.get(seq), HttpStatus.OK);
-	}
+//	@GetMapping({"/get", "/modify"})
+//	public void get(@RequestParam("seq") long seq, Model model) {
+//		log.info("/get or modify");
+//		model.addAttribute("review", service.get(seq));
+//	}
+	
+	/*
+	 * @PostMapping("/modify") public String modify(CollectionReviewVO review,
+	 * RedirectAttributes rttr) { log.info("modify......" + review);
+	 * 
+	 * if(service.modify(review)) { rttr.addFlashAttribute("resulst", "success"); }
+	 * return "redirect::/review/get?seq=" + review.getSeq(); }
+	 */
+	
+//	@PostMapping("/remove")
+//	public String remove(CollectionReviewVO review, RedirectAttributes rttr) {
+//		log.info("remove......" + review);
+//		
+//		if(service.remove(review.getRevSeq())) {
+//			rttr.addFlashAttribute("resulst", "success");
+//		}
+//		return "redirect::/review/get?seq=" + review.getSeq();
+//	}
 	
 }
