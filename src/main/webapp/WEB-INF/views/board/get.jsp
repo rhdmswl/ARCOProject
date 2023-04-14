@@ -422,7 +422,7 @@ button {
 							</div>
 							
 							<div class="clearfix float-right">
-								<button id="Comment_regist" type="button" class="custom-btn btn-11">댓글 등록</button>
+								<button id='Comment_regist' type="button" class="custom-btn btn-11">댓글 등록</button>
 							</div>
 						</form>
 					</div>
@@ -510,7 +510,6 @@ button {
 			var operForm_modi = $("#operForm_modi");
 			var post_idValue = '<c:out value="${board.post_id}"/>';
 			var replyUL = $(".chat");
-			
 			var objParams = {
 	        		com_id : $("#com_id").val(),
 	        		com_content : $("#com_content").val(),
@@ -528,25 +527,28 @@ button {
 			    	return;
 			    }
 				for(var i=0, len=list.length || 0; i<len; i++) {
-					str+= "<li class='left cleafix' data com_id='"+list[i].com_id+"'>";
+					var com_id = list[i].com_id;  // 댓글 ID 저장
+				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
+				    
+					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
 					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
 					str+= "         <small>"	;
-					str+= "        	<a href=('#multi-collapse-id') class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='multi-collapse-id'>수정</a>";
+					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
 					str+= "         </small>"	;
 					str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
 					str+= "         <p class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
-					str+= "			<form class='collapse multi-collapse-id'>";
+					str+= "			<form class='collapse' id='" + form_id + "'>";
 			        str+= "  			<div class='form-group'>";
-			        str+= "    				<textarea class='form-control' id='comment-content' rows='3'>$('#com_content')</textarea>";
+			        str+= "  			<input type='hidden' id='com_id' name='com_id' value=''/>";
+			        str+= "    				<textarea class='form-control' id ='com_up_content' rows='3'>$('#com_up_content')</textarea>";
+			        str+= "  			<button id='Comment_update' type='button' class='btn btn-info' >수정 완료</button>";
+			        str+= "  			<button type='button' class='btn btn-info comment-delete-btn'>삭제</button>";
 			        str+= "  			</div>";
-			        str+= "  				<input type='hidden' id='comment-id' value=$('#com_id')>";
-			        str+= "  				<button type='button' class='btn btn-info comment-update-btn' data-target='.multi-collapse-id'>수정 완료</button>";
-			        str+= "  				<button type='button' class='btn btn-info comment-delete-btn'>삭제</button>";
 			        str+= "			</form>";
                     str+=		"</div></li>";
 					}
-				
 				replyUL.html(str);
+				document.getElementById("com_id").value=com_id;
 				});
 			}
 			
@@ -575,6 +577,20 @@ button {
 						post_id:post_idValue
 				};
 				replyService.add(reply, function(result){alert(result); showList(1);} );
+			});
+			$(document).on('click','.comment-edit-btn',function(){
+			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
+			    $("#" + form_id).collapse('toggle'); // 해당 form의 collapse 상태를 변경하여 textarea가 나타나도록 함
+			});
+
+			$(document).on('click','#Comment_update',function(){
+			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
+			    var com_id = $(this).closest("li").data("com-id");
+			    var reply={
+			        "com_content": $("#" + form_id + ' textarea').val(), // 해당 form의 textarea의 값을 가져옴
+			        "com_id" : com_id
+			    }; 
+			    replyService.update(reply, function(result){alert(result); showList(1);} );
 			});
 
 		});
