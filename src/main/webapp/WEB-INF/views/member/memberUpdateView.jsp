@@ -15,10 +15,11 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>회원가입</title>
 </head>
+
 <script type="text/javascript">
 		$(document).ready(function(){
 			// 취소
-			$(".cancle").on("click", function(){
+			$(".cancel").on("click", function(){
 				
 				location.href = "/";
 						    
@@ -58,6 +59,7 @@
 	</script>
 <body>
 	<section id="container">
+	
 		<form id="updateForm" action="/member/memberUpdate" method="post">
 
 			<div class="form-group has-feedback">
@@ -83,19 +85,12 @@
 					class="form-control" type="text" id="email" name="email"
 					value="${member.email}" />
 			</div>
-		</form>
-		<div class="form-group has-feedback">
+			<div class="form-group has-feedback">
 			<button class="btn btn-success" type="button" id="submit">회원정보수정</button>
-			<button class="cancle btn btn-danger" type="button">취소</button>
+			<button class="cancel btn btn-danger" type="button">취소</button>
 		</div>
 
-		<!-- Page Heading -->
-
-
-		</div>
-		</div>
-
-		<!-- Brand Buttons -->
+		
 		<div class="card shadow mb-4">
 
 			<div class="card-body">
@@ -103,9 +98,10 @@
 					변경</a> 
 
 			</div>
-		</div>
-
-		</div>
+		</div> 
+		</form>
+		
+			
 	</section>
 
 </body>
