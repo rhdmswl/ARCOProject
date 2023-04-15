@@ -20,7 +20,7 @@
 			location.href="logout";
 		})
 		$("#registerBtn").on("click", function(){
-			location.href="member/register";
+			location.href="register";
 		})
 				
 		$("#mypageBtn").on("click", function(){
