@@ -29,7 +29,7 @@ public class BoardController {
 	private BoardService service;
 
 	@GetMapping("/list")
-	public void list(Criteria cri, Model model, @RequestParam("post_id") Long post_id) {
+	public void list(Criteria cri, Model model) {
 		cri.setpageNumForLimit();
 		log.info("list : "+cri);
 		
@@ -55,13 +55,13 @@ public class BoardController {
 
 		return "redirect:/board/list";
 	}
-
+	
 	@GetMapping({"/get", "/modify"})
 	public void get(@RequestParam("post_id") Long post_id, @ModelAttribute("cri") Criteria cri ,Model model) {
 		log.info("/get or modify");
 		
+		service.updateViewCount(post_id);
 		model.addAttribute("board", service.get(post_id));
-		model.addAttribute("board", service.updateViewCount(post_id));
 	}
 
 	@PostMapping("/modify")
