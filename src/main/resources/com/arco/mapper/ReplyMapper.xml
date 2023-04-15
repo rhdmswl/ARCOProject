@@ -27,7 +27,7 @@
 	<select id="getListWithPaging" resultType="com.arco.domain.ReplyVO">
 		SELECT *
 		FROM comment
-		ORDER BY com_id DESC
+		where post_id=#{post_id}
 		LIMIT #{cri.pageNumForLimit},10
 	</select>
 	
