@@ -85,7 +85,7 @@
 	<select id="getListWithPaging" resultType="com.arco.domain.BoardVO">
 		SELECT *
 		FROM (
-			SELECT post_id, post_title, post_writer, post_content, post_regdate,brd_id,post_com_count
+			SELECT post_id, post_title, post_writer, post_content, post_regdate, post_view_count, brd_id, post_com_count
 			FROM post
 		<include refid="criteria"></include>
 		) as post_paging
@@ -96,6 +96,11 @@
 	<select id="getTotalCount" resultType="int">
 		select count(*) from post
 		<include refid="criteria"></include> 
-
 	</select>
+	
+	<update id="updateViewCount">
+		update post 
+		set post_view_count = post_view_count + 1
+		where post_id = #{post_id}
+	</update>
 </mapper>
