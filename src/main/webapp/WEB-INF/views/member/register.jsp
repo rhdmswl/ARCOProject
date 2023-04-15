@@ -94,7 +94,6 @@
 					<label class="control-label" for="email">이메일</label>
 					<input class="form-control" type="text" id="email" name="email" />
 				</div>
-				
 			</form>
 				<div class="form-group has-feedback">
 					<button class="btn btn-success" type="button" id="submit">회원가입</button>

@@ -1,19 +1,36 @@
 package com.collection.controller;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
+import javax.inject.Inject;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.collection.service.MemberService;
+import com.collection.vo.ImageVO;
+
 import com.collection.vo.MemberVO;
 
 @Controller
@@ -28,13 +45,19 @@ public class MemberController {
 	@Inject
 	BCryptPasswordEncoder pwdEncoder;
 	
-	// È¸¿ø°¡ÀÔ get
-		@RequestMapping(value = "/register", method = RequestMethod.GET)
-		public void getRegister() throws Exception {
+	@Autowired
+  private ServletContext servletContext;
+	
+	@Autowired
+	private DataSource dataSource;
+
+	// íšŒì›ê°€ì… get
+  @RequestMapping(value = "/register", method = RequestMethod.GET)
+	public void getRegister() throws Exception {
 			logger.info("get register");
-		}
+	}
 		
-		// È¸¿ø°¡ÀÔ post
+		// íšŒì›ê°€ì… post
 		@RequestMapping(value = "/register", method = RequestMethod.POST)
 		public String postRegister(MemberVO vo) throws Exception {
 			logger.info("post register");
@@ -49,17 +72,15 @@ public class MemberController {
 					
 					service.register(vo);
 				}
-				// ¿ä±â¿¡¼­~ ÀÔ·ÂµÈ ¾ÆÀÌµğ°¡ Á¸ÀçÇÑ´Ù¸é -> ´Ù½Ã È¸¿ø°¡ÀÔ ÆäÀÌÁö·Î µ¹¾Æ°¡±â 
-				// Á¸ÀçÇÏÁö ¾Ê´Â´Ù¸é -> register
+				// ìš”ê¸°ì—ì„œ~ ì…ë ¥ëœ ì•„ì´ë””ê°€ ì¡´ì¬í•œë‹¤ë©´ -> ë‹¤ì‹œ íšŒì›ê°€ì… í˜ì´ì§€ë¡œ ëŒì•„ê°€ê¸° 
+				// ì¡´ì¬í•˜ì§€ ì•ŠëŠ”ë‹¤ë©´ -> register
 			 
 			return "redirect:/";
 }
-
-		
 	
-	// ·Î±×ÀÎ post
-		@RequestMapping(value = "/login", method = RequestMethod.POST)
-		public String login(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
+	// ë¡œê·¸ì¸ post
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
 			logger.info("post login");
 
 			session.getAttribute("member");
@@ -76,12 +97,12 @@ public class MemberController {
 			} else {
 				session.setAttribute("member", null);
 				rttr.addFlashAttribute("msg", false);
-			} // Ã³À½ ÀÛ¼ºµÈ ÄÚµå ¡æ login°´Ã¼¿¡ null°ªÀÌ µé¾î°¡¼­ ¿À·ù°¡ ¶á´Ù°í º½
+			} // ì²˜ìŒ ì‘ì„±ëœ ì½”ë“œ â†’ loginê°ì²´ì— nullê°’ì´ ë“¤ì–´ê°€ì„œ ì˜¤ë¥˜ê°€ ëœ¬ë‹¤ê³  ë´„
 
 			return "redirect:/";
 		}
 	
-	// ·Î±×¾Æ¿ô post
+	// ë¡œê·¸ì•„ì›ƒ post
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception{
 		
@@ -90,13 +111,13 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	// È¸¿øÁ¤º¸ ¼öÁ¤ get
+	// íšŒì›ì •ë³´ ìˆ˜ì • get
 	@RequestMapping(value="/memberUpdateView", method = RequestMethod.GET)
 	public String registerUpdateView() throws Exception{
 		return "member/memberUpdateView";
 	}
 	
-	// È¸¿øÁ¤º¸ ¼öÁ¤  post
+	// íšŒì›ì •ë³´ ìˆ˜ì •  post
 	@RequestMapping(value="/memberUpdate", method = RequestMethod.POST)
 	public String registerUpdate(MemberVO vo, HttpSession session) throws Exception{
 		
@@ -110,17 +131,18 @@ public class MemberController {
 			return "member/memberUpdateView";
 		}*/
 		service.memberUpdate(vo);
-		
+
 		return "redirect:/";
 	}
 	
-	// È¸¿ø Å»Åğ get
+	// íšŒì› íƒˆí‡´ get
 	@RequestMapping(value="/memberDeleteView", method = RequestMethod.GET)
 	public String memberDeleteView() throws Exception{
 		return "member/memberDeleteView";
 	}
 	
-	// È¸¿ø Å»Åğ post
+
+	// íšŒì› íƒˆí‡´ post
 	@RequestMapping(value="/memberDelete", method = RequestMethod.POST)
 	public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
 		
@@ -129,26 +151,65 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
-	
-	// ÆĞ½º¿öµå Ã¼Å©
-		@ResponseBody
-		@RequestMapping(value="/passChk", method = RequestMethod.POST)
-		public boolean passChk(MemberVO vo) throws Exception {
+
+	@RequestMapping(value = "/getProfileImg", method = RequestMethod.GET)
+	public void getProfileImg(String userId, HttpServletResponse response) throws Exception {
+		
+	    ImageVO imageVO = service.getProfileImg(userId);
+	    if (imageVO != null) {
+	        response.setContentType(imageVO.getContent_type());
+	        try (InputStream in = new ByteArrayInputStream(imageVO.getImage_data())) {
+	            IOUtils.copy(in, response.getOutputStream());
+	        }
+	    }
+	}
+
+	@RequestMapping(value = "/updateProfileImg", method = RequestMethod.POST)
+	public String updateProfileImg(MemberVO vo, MultipartFile file, HttpSession session) throws Exception {
+	    String profileImg = file.getOriginalFilename();
+	    String contentType = file.getContentType();
+	    byte[] imageData = file.getBytes();
+
+
+	    ImageVO imageVO = new ImageVO();
+	    imageVO.setFile_name(profileImg);
+	    imageVO.setContent_type(contentType);
+	    imageVO.setImage_data(imageData);
+	    imageVO.setUser_id(vo.getUserId());
+
+	    service.updateProfileImg(imageVO);
+
+	    return "redirect:/";
+	}
+
+	// mypage my writings
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String myPage(Model model, HttpSession session) throws Exception {
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		String userId = member.getUserId();
+
+		model.addAttribute("collectionRevs", service.getMemberCollectionRevs(userId));
+		model.addAttribute("posts", service.getMemberPosts(userId));
+		model.addAttribute("comments", service.getMemberComments(userId));
+
+		return "member/mypage";
+	}
+
+	// íŒ¨ìŠ¤ì›Œë“œ ì²´í¬
+	@ResponseBody
+	@RequestMapping(value="/passChk", method = RequestMethod.POST)
+	public boolean passChk(MemberVO vo) throws Exception {
 
 			MemberVO login = service.login(vo);
 			boolean pwdChk = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
 			return pwdChk;
-		}
+	}
 		
-		// ¾ÆÀÌµğ Áßº¹ Ã¼Å©
-		@ResponseBody
-		@RequestMapping(value="/idChk", method = RequestMethod.POST)
-		public int idChk(MemberVO vo) throws Exception {
+	// ì•„ì´ë”” ì¤‘ë³µ ì²´í¬
+	@ResponseBody
+	@RequestMapping(value="/idChk", method = RequestMethod.POST)
+	public int idChk(MemberVO vo) throws Exception {
 			int result = service.idChk(vo);
 			return result;
-		}
 	}
-
-
-
-
+}
