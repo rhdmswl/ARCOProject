@@ -222,6 +222,7 @@ body {
 									<th>제목</th>
 									<th>작성자</th>
 									<th>작성일</th>
+									<th>조회수</th>
 								</tr>
 							</thead>
 
@@ -237,6 +238,7 @@ body {
 									<td><c:out value="${board.post_writer}" /></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd"
 											value="${board.post_regdate}" /></td>
+									<td><c:out value="${board.post_view_count}" /></td>
 								</tr>
 							</c:forEach>
 						</table>
