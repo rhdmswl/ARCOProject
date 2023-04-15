@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.collection.dao.MemberDAO;
+
 import com.collection.vo.BoardVO;
 import com.collection.vo.CollectionReviewVO;
 import com.collection.vo.ImageVO;
@@ -90,4 +91,5 @@ public class MemberServiceImpl implements MemberService {
 	public List<ReplyVO> getMemberComments(String userId) throws Exception {
 		return dao.getMemberComments(userId);
 	}
+
 }
