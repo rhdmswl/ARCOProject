@@ -623,14 +623,14 @@ button {
 					var com_id = list[i].com_id;  // 댓글 ID 저장
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
 				    
-					    str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
-					    str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
-					    str+= "         <small>"	;
-					    str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
-					    str+= "         </small>"	;
-					    str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
-					    str+= "         <p id='comContentList' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
-					    str+= "			<form class='collapse' id='" + form_id + "'>";
+					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
+					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
+					str+= "         <small>"	;
+					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
+					str+= "         </small>"	;
+					str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
+					str+= "         <p id='comContentList' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
+					str+= "			<form class='collapse' id='" + form_id + "'>";
 			        str+= "  			<div class='form-group'>";
 			        str+= "  			<input type='hidden' id='com_id' name='com_id' value=''/>";
 			        str+= "    				<textarea style='resize: none;' class='form-control' id ='com_up_content' rows='3'></textarea>";
@@ -638,15 +638,15 @@ button {
 			        str+= "  			<div class='commentBtnGroup'><button type='button' class='btn btn-11 comment-delete-btn'>삭제</button>";
 			        str+= "  			<button id='Comment_update' type='button' class='btn btn-11' >수정 완료</button></div>";
 			        str+= "			</form>";
-              str+=		"</div></li>";
+                    str+=		"</div></li>";
 					}
 				replyUL.html(str);
 
-				document.getElementById("com_id").value=com_id;
 				showReplyPage(com_cnt);
-
+				document.getElementById("com_id").value=com_id;
 				});
 			}
+			
 			
 			$("button[data-oper='modify']").on("click", function(e){
 				operForm_modi.attr("action", "/board/modify").submit();
@@ -708,6 +708,7 @@ button {
 				PageNum=targetPageNum;
 				showList(PageNum);
 			});
+			
 			$(document).on('click','.comment-edit-btn',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
 			    $("#" + form_id).collapse('toggle'); // 해당 form의 collapse 상태를 변경하여 textarea가 나타나도록 함
