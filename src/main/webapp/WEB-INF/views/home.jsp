@@ -22,22 +22,22 @@
 		$("#registerBtn").on("click", function(){
 			location.href="member/register";
 		})
-		
-		
+				
 		$("#mypageBtn").on("click", function(){
 			location.href="member/mypage";
 		})
-		
+
 		$("#memberUpdateBtn").on("click", function(){
 			location.href="member/memberUpdateView";
 		})
 		
-		$("#memberDeleteBtn").on("click", function(){
+		$("#memberDelBtn").on("click", function(){
 			location.href="member/memberDeleteView";
 		})
 		
 	})
 </script>
+  
 <body>
 	<form name='homeForm' method="post" action="/member/login">
 		<c:if test="${member == null}">

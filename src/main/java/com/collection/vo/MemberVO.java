@@ -11,9 +11,10 @@ public class MemberVO {
 	private String userName;
 	private String phone;
 	private String email;
-	private String profileImg;
+	// private String profileImg;
 
 	private List<CollectionReviewVO> collectionRevs;
 	private List<BoardVO> posts;
 	private List<ReplyVO> comments;
+
 }

@@ -35,5 +35,5 @@ public interface MemberService {
 	List<BoardVO> getMemberPosts(String userId) throws Exception;
 
 	List<ReplyVO> getMemberComments(String userId) throws Exception;
-}
 
+}

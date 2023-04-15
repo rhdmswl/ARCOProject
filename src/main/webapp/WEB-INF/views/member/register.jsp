@@ -14,7 +14,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// 취소
-			$(".cencle").on("click", function(){
+			$(".cancel").on("click", function(){
 				location.href = "/";
 			})
 			
@@ -30,8 +30,18 @@
 					return false;
 				}
 				if($("#userName").val()==""){
-					alert("성명을 입력해주세요.");
+					alert("닉네임을 입력해주세요.");
 					$("#userName").focus();
+					return false;
+				}
+				if($("#phone").val()==""){
+					alert("전화번호를 입력해주세요.");
+					$("#phone").focus();
+					return false;
+				}
+				if($("#email").val()==""){
+					alert("이메일을 입력해주세요.");
+					$("#email").focus();
 					return false;
 				}
 				var idChkVal = $("#idChk").val();
@@ -69,18 +79,25 @@
 					<button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
 				</div>
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userPass">패스워드</label>
+					<label class="control-label" for="userPass">비밀번호</label>
 					<input class="form-control" type="password" id="userPass" name="userPass" />
 				</div>
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userName">성명</label>
+					<label class="control-label" for="userName">닉네임</label>
 					<input class="form-control" type="text" id="userName" name="userName" />
 				</div>
-				
+				<div class="form-group has-feedback">
+					<label class="control-label" for="phone">전화번호</label>
+					<input class="form-control" type="text" id="phone" name="phone" />
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="email">이메일</label>
+					<input class="form-control" type="text" id="email" name="email" />
+				</div>
 			</form>
 				<div class="form-group has-feedback">
 					<button class="btn btn-success" type="button" id="submit">회원가입</button>
-					<button class="cencle btn btn-danger" type="button">취소</button>
+					<button class="cancel btn btn-danger" type="button">취소</button>
 				</div>
 		</section>
 		

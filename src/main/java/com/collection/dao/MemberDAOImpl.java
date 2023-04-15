@@ -13,12 +13,13 @@ import com.collection.vo.ImageVO;
 import com.collection.vo.MemberVO;
 import com.collection.vo.ReplyVO;
 
+
 @Repository
 public class MemberDAOImpl implements MemberDAO {
 	
 	@Inject SqlSession sql;
-	// ȸ������
 
+	// 회원가입
 	@Override
 	public void register(MemberVO vo) throws Exception {
 		sql.insert("memberMapper.register", vo);
@@ -39,9 +40,9 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public void memberDelete(MemberVO vo) throws Exception {
-		// MemberVO�� ��� ������ �����ݴϴ�.
-		// �׷� xml���� memberMapper.memberDelete�� ���ø�
-		//  #{userId}, #{userPass}�� �Ķ���Ͱ��� ��Ī�� �ǰ�����.
+		// MemberVO에 담긴 값들을 보내줍니다.
+		// 그럼 xml에서 memberMapper.memberDelete에 보시면
+		//  #{userId}, #{userPass}에 파라미터값이 매칭이 되겠지요.
 		sql.delete("memberMapper.memberDelete", vo);
 		
 	}
@@ -60,27 +61,27 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 //	@Override
-//    public String getProfileImg(String userId) throws Exception {
+//  public String getProfileImg(String userId) throws Exception {
 //        return sql.selectOne("memberMapper.getProfileImg", userId);
 //    }
 //    
-//    @Override
-//    public void updateProfileImg(MemberVO vo) throws Exception {
+//  @Override
+//  public void updateProfileImg(MemberVO vo) throws Exception {
 //        sql.update("memberMapper.updateProfileImg", vo);
-//    }
+//  }
 	
-    @Override
-    public void insertImage(ImageVO imageVO) {
+  @Override
+  public void insertImage(ImageVO imageVO) {
         sql.insert("memberMapper.insertImage", imageVO);
-    }
+  }
 
-    @Override
-    public ImageVO selectImageByUserId(String userId) {
+  @Override
+  public ImageVO selectImageByUserId(String userId) {
         return sql.selectOne("memberMapper.selectImageByUserId", userId);
-    }
+  }
     
-    // mypage - my writings
-    @Override
+  // mypage - my writings
+  @Override
 	public List<CollectionReviewVO> getMemberCollectionRevs(String userId) throws Exception {
 		return sql.selectList("memberMapper.getMemberCollectionRevs", userId);
 	}
@@ -94,4 +95,5 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<ReplyVO> getMemberComments(String userId) throws Exception {
 		return sql.selectList("memberMapper.getMemberComments", userId);
 	}
+
 }
