@@ -335,10 +335,10 @@ button {
 
 .btn-11:before {
     position: absolute;
-    content: '';
+    /* content: ''; */
     display: inline-block;
     top: -180px;
-    left: 0;
+    left: 0px;
     width: 30px;
     height: 100%;
     background-color: #fff;
@@ -349,6 +349,50 @@ button {
               -4px -4px 6px 0 rgba(116, 125, 136, .2), 
     inset -4px -4px 6px 0 rgba(255,255,255,.2),
     inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.commentBtnGroup {
+	width: 100%;
+	height: 65px;
+}
+
+.commentBtnGroup .btn-11 {
+	font-family: 'Nanum Gothic', sans-serif;
+  	font-size: 13px;
+  	border: 1px solid #000;
+  	border-radius: 20px;
+  	margin-left: 2px;
+  	width: 100px;
+	position: relative;
+	float: right;
+	bottom: 18px;
+}
+
+.comRegistBtnGroup {
+	width: 100%;
+	height: 100px;
+	border: 1px solid #ddd;
+}
+
+.Comment_regist {
+	width: 130px;
+  	height: 30px;
+}
+
+.com_up_content {
+	margin-top: 10px;
+	magin-bottom: 3px;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.primary-font {
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 700;
+}
+
+.comContentList {
+	font-family: 'Nanum Gothic', sans-serif;
+	height: 50px;
 }
 
 @-webkit-keyframes shiny-btn1 {
@@ -415,13 +459,13 @@ button {
 						<!-- 댓글 작성 창 -->
 						<form role="form">
 							<div class="form-group">
-								<label>Comment</label>
-								<textarea id="com_content" name ="com_content" class="form-control" rows="3"></textarea>
+								<label style="font-family: 'Nanum Gothic', sans-serif;">Comment</label>
+								<textarea id="com_content" name ="com_content" class="form-control" rows="3" style="resize: none;"></textarea>
 							</div>
 							<div>
 							</div>
 							
-							<div class="clearfix float-right">
+							<div id="comRegistBtnGroup" class="clearfix float-right">
 								<button id='Comment_regist' type="button" class="custom-btn btn-11">댓글 등록</button>
 							</div>
 						</form>
@@ -536,14 +580,14 @@ button {
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
 					str+= "         </small>"	;
 					str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
-					str+= "         <p class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
+					str+= "         <p id='comContentList' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
 					str+= "			<form class='collapse' id='" + form_id + "'>";
 			        str+= "  			<div class='form-group'>";
 			        str+= "  			<input type='hidden' id='com_id' name='com_id' value=''/>";
 			        str+= "    				<textarea style='resize: none;' class='form-control' id ='com_up_content' rows='3'></textarea>";
-			        str+= "  			<button id='Comment_update' type='button' class='btn btn-info' >수정 완료</button>";
-			        str+= "  			<button type='button' class='btn btn-info comment-delete-btn'>삭제</button>";
 			        str+= "  			</div>";
+			        str+= "  			<div class='commentBtnGroup'><button type='button' class='btn btn-11 comment-delete-btn'>삭제</button>";
+			        str+= "  			<button id='Comment_update' type='button' class='btn btn-11' >수정 완료</button></div>";
 			        str+= "			</form>";
                     str+=		"</div></li>";
 					}
