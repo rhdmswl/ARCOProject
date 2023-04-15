@@ -5,7 +5,7 @@
 <html>
 <head>
 	<title>Home</title>
-		<!-- 합쳐지고 최소화된 최신 CSS -->
+	<!-- 합쳐지고 최소화된 최신 CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<!-- 부가적인 테마 -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -17,22 +17,14 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#logoutBtn").on("click", function(){
-			location.href="member/logout";
+			location.href="logout";
 		})
 		$("#registerBtn").on("click", function(){
 			location.href="member/register";
 		})
 				
 		$("#mypageBtn").on("click", function(){
-			location.href="member/mypage";
-		})
-
-		$("#memberUpdateBtn").on("click", function(){
-			location.href="member/memberUpdateView";
-		})
-		
-		$("#memberDelBtn").on("click", function(){
-			location.href="member/memberDeleteView";
+			location.href="mypage";
 		})
 		
 	})
@@ -57,10 +49,8 @@
 		<c:if test="${member != null }">
 			<div>
 				<p>${member.userId}님 환영 합니다.</p>
-				<button id="memberUpdateBtn" type="button">회원정보수정</button>
 				<button id="mypageBtn" type="button">마이페이지 - 나의 글 보기</button>
 				<button id="logoutBtn" type="button">로그아웃</button>
-				<button id="memberDelBtn" type="button">회원탈퇴</button>
 			</div>
 		</c:if>
 		<c:if test="${msg == false}">

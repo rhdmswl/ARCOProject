@@ -78,6 +78,12 @@ public class MemberController {
 			return "redirect:/";
 }
 	
+	// 로그인 get
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public String loginView() throws Exception{
+		return "member/login";
+	}	
+	
 	// 로그인 post
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
@@ -109,7 +115,7 @@ public class MemberController {
 		session.invalidate();
 		
 		return "redirect:/";
-	}
+	}	
 	
 	// 회원정보 수정 get
 	@RequestMapping(value="/memberUpdateView", method = RequestMethod.GET)
