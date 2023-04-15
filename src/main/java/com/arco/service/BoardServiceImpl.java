@@ -52,7 +52,7 @@ public class BoardServiceImpl implements BoardService {
 		
 		log.info("getListwith criteria"+cri);
 		return mapper.getListWithPaging(cri);
-	}
+	} 
 
 	@Override
 	public int getTotal(Criteria cri) {
@@ -64,5 +64,10 @@ public class BoardServiceImpl implements BoardService {
 	public int updateViewCount(Long post_id) {
 		log.info(post_id);
 		return mapper.updateViewCount(post_id);
+	
+	@Override
+	public void getComCnt(Long post_id) {
+		log.info("get comment count");
+		mapper.getComCnt(post_id);
 	}
 }
