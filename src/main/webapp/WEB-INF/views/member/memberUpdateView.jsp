@@ -15,6 +15,7 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>회원가입</title>
 </head>
+
 <script type="text/javascript">
 		$(document).ready(function(){
 			// 취소
@@ -57,6 +58,7 @@
 		/member/memberUpdate로 보내줍니다.(Controller) -->
 <body>
 	<section id="container">
+
     
     <p>프로필 이미지:</p>
 			<img src="your_upload_directory/${profile.profileImg}" alt="프로필 이미지" width="200" height="200" />
@@ -72,6 +74,7 @@
 			
 			<h3>회원 정보</h3>
     
+
 		<form id="updateForm" action="/member/memberUpdate" method="post">
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userId">아이디</label> <input
@@ -97,15 +100,18 @@
 			<button class="btn btn-success" type="button" id="submit">회원정보수정</button>
 			<button class="cancel btn btn-danger" type="button">취소</button>
 		</div>
+
 		
 		<div class="card shadow mb-4">
 			<div class="card-body">
 				<a href="/member/passUpdateView" class="btn btn-info btn-block">비밀번호
 					변경</a>
 			</div>
+
 		</div>
 		</form>
 		
+
 	</section>
 
 </body>
