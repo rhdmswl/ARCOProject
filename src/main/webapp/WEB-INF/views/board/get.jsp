@@ -453,6 +453,8 @@ button {
 							<div class="media-body">
 							<ul class="chat">
 							</ul>
+							<div class="panel-footer">
+							</div>
 							</div>
 						</div>
 						
@@ -559,29 +561,76 @@ button {
 	        		com_content : $("#com_content").val(),
 	        		com_writer : $("#com_writer").val()
 	        };
-			        
+			
+			var pageNum=1;
+			var replyPageFooter = $(".panel-footer");
+			
 			showList(1);
-			        
+			
+			// 페이징
+			function showReplyPage(com_cnt){
+				var endNum=Math.ceil(pageNum/10.0)*10;
+				var startNum=endNum-9;
+				
+				var prev=startNum != 1;
+				var next=false;
+				
+				if(endNum*10>=com_cnt){
+					endNum=Math.ceil(com_cnt/10.0);
+				}
+				
+				if(endNum*10<com_cnt){
+					next=true;
+				}
+				
+				var str="<ul class='pagination pull-right'>";
+				
+				if(prev){
+					str+= "<li class='page-item'><a class='page=link' href='"+(startNum-1)+"'>Previous</a></li>";
+				}
+				
+				for(var i = startNum; i<=endNum; i++){
+					var active=pageNum==i?"active":"";
+					str+="<li class='page-item"+active+"'><a class='page-link' href='"+i+"'>"+i+"<a></li>";
+				}
+				
+				if(next){
+					str+= "<li class='page-item'><a class='page=link' href='"+(endNum+1)+"'>Next</a></li>";
+				}
+				
+				str+="</ul></div>";
+				console.log(str);
+				replyPageFooter.html(str);
+			} // end 페이징
+			
+			
 			function showList(page) {
-				replyService.getList({post_id:post_idValue, page:page||1}, function(list) {
+				console.log("페이지 : " +page);
+				replyService.getList({post_id:post_idValue, page:page||1}, function(com_cnt,list) {
+
 				var str = "";
-				if(list == null || list.length==0) {
-			    	console.log(list[i]);
-			    	replyUL.html("");
+				if(page==-1) {
+			    	pageNum=Math.ceil(com_cnt/10.0);
+			    	showList(pageNum);
 			    	return;
 			    }
+				
+				if(list==null||list.length==0){
+					return;
+				}
+				
 				for(var i=0, len=list.length || 0; i<len; i++) {
 					var com_id = list[i].com_id;  // 댓글 ID 저장
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
 				    
-					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
-					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
-					str+= "         <small>"	;
-					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
-					str+= "         </small>"	;
-					str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
-					str+= "         <p id='comContentList' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
-					str+= "			<form class='collapse' id='" + form_id + "'>";
+					    str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
+					    str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
+					    str+= "         <small>"	;
+					    str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
+					    str+= "         </small>"	;
+					    str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
+					    str+= "         <p id='comContentList' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
+					    str+= "			<form class='collapse' id='" + form_id + "'>";
 			        str+= "  			<div class='form-group'>";
 			        str+= "  			<input type='hidden' id='com_id' name='com_id' value=''/>";
 			        str+= "    				<textarea style='resize: none;' class='form-control' id ='com_up_content' rows='3'></textarea>";
@@ -589,10 +638,13 @@ button {
 			        str+= "  			<div class='commentBtnGroup'><button type='button' class='btn btn-11 comment-delete-btn'>삭제</button>";
 			        str+= "  			<button id='Comment_update' type='button' class='btn btn-11' >수정 완료</button></div>";
 			        str+= "			</form>";
-                    str+=		"</div></li>";
+              str+=		"</div></li>";
 					}
 				replyUL.html(str);
+
 				document.getElementById("com_id").value=com_id;
+				showReplyPage(com_cnt);
+
 				});
 			}
 			
@@ -620,7 +672,41 @@ button {
 						com_content:$('#com_content').val(),
 						post_id:post_idValue
 				};
-				replyService.add(reply, function(result){alert(result); showList(1);} );
+				replyService.add(reply, function(result){alert(result); showList(-1);} );
+			});
+			$(document).on('click','.comment-edit-btn',function(){
+			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
+			    $("#" + form_id).collapse('toggle'); // 해당 form의 collapse 상태를 변경하여 textarea가 나타나도록 함
+			});
+
+			$(document).on('click','#Comment_update',function(){
+			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
+			    var com_id = $(this).closest("li").data("com-id");
+			    var reply={
+			        "com_content": $("#" + form_id + ' textarea').val(), // 해당 form의 textarea의 값을 가져옴
+			        "com_id" : com_id
+			    }; 
+			    replyService.update(reply, function(result){alert(result); showList(1);} );
+			});
+			
+			$(document).on('click', '.comment-delete-btn', function(){
+			    var com_id = $(this).closest("li").data("com-id");
+			    replyService.remove(com_id, function(result){
+			        alert(result);
+			        showList(1);
+			    });
+			});
+			
+			replyPageFooter.on('click','li a',function(e){
+				e.preventDefault();
+				console.log("page click");
+				
+				var targetPageNum=$(this).attr("href");
+				
+				console.log("targetPageNum : "+targetPageNum);
+				
+				PageNum=targetPageNum;
+				showList(PageNum);
 			});
 			$(document).on('click','.comment-edit-btn',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴

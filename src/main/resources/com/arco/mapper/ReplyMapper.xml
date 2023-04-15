@@ -24,17 +24,15 @@
 		update comment set com_content=#{com_content} where com_id=#{com_id}
 	</update>
 
-	<select id="getListWithPaging"
-		resultType="com.arco.domain.ReplyVO">
+	<select id="getListWithPaging" resultType="com.arco.domain.ReplyVO">
 		SELECT *
 		FROM comment
-		where post_id=#{post_id}
-		
+		ORDER BY com_id DESC
+		LIMIT #{cri.pageNumForLimit},10
 	</select>
-	<select id="getCountBypost_id" resultType="int">
-<![CDATA[
-	select count(com_id) from comment where post_id = #{post_id}
-]]>
+	
+	<select id="getCountByComId" resultType="int">
+	select count(*) from comment where post_id=#{post_id}
 
 	</select>
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.arco.domain.ReplyPageDTO;
 import com.arco.domain.Criteria;
 import com.arco.domain.ReplyVO;
 import com.arco.service.ReplyService;
@@ -52,16 +53,17 @@ public class ReplyController {
 	// 특정 게시물 댓글 목록 확인
 	@GetMapping(value = "/pages/{post_id}/{pageNum}",
 			produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<ReplyVO>> getList(
+	public ResponseEntity<ReplyPageDTO> getList(
 			@PathVariable("pageNum") int pageNum, @PathVariable("post_id") Long post_id) {
-		
 		log.info("getList......");
 		Criteria cri = new Criteria(pageNum, 10);
+		cri.setpageNumForLimit();
 		log.info(cri);
 		
-		return new ResponseEntity<>(service.getList(cri, post_id), HttpStatus.OK);
+		return new ResponseEntity<>(service.getListPage(cri, post_id),
+				HttpStatus.OK);
 	}
-	
+	 
 	
 	// 댓글 조회
 	@GetMapping(value = "/{com_id}",
@@ -102,6 +104,6 @@ public class ReplyController {
 			  : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	  
 	  }
-	 
+	
 }
 

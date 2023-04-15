@@ -16,4 +16,7 @@ public interface ReplyMapper {
 	public List<ReplyVO> getListWithPaging(
 	          @Param("cri") Criteria cri, 
 	          @Param("post_id") Long post_id);
+	
+	public int getCountByComId(Long com_id);
+	
 }
