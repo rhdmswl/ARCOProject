@@ -31,7 +31,7 @@ var replyService = (function() {
 		$.getJSON("/replies/pages/" + post_id + "/" + page + ".json",
 			function(data) {
 				if(callback) {
-					  callback(data);
+					  callback(data.com_cnt,data.list);
 				}
 			}).fail(function(xhr, status, err) {
 				if(error) {
