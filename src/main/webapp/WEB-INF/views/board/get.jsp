@@ -521,11 +521,12 @@ button {
 			var pageNum=1;
 			var replyPageFooter = $(".panel-footer");
 			
-			showList(1);
+			showList();
 			
 			// 페이징
 			function showReplyPage(com_cnt){
 				var endNum=Math.ceil(pageNum/10.0)*10;
+				
 				var startNum=endNum-9;
 				
 				var prev=startNum != 1;
@@ -534,7 +535,6 @@ button {
 				if(endNum*10>=com_cnt){
 					endNum=Math.ceil(com_cnt/10.0);
 				}
-				
 				if(endNum*10<com_cnt){
 					next=true;
 				}
@@ -556,14 +556,15 @@ button {
 				
 				str+="</ul></div>";
 				console.log(str);
+				
 				replyPageFooter.html(str);
 			} // end 페이징
 			
 			
 			function showList(page) {
-				console.log("페이지 : " +page);
-				replyService.getList({post_id:post_idValue, page:page||1}, function(com_cnt,list) {
-
+				replyService.getList({post_id:post_idValue, page:page||1}, 
+						function(com_cnt,list) {
+					
 				var str = "";
 				if(page==-1) {
 			    	pageNum=Math.ceil(com_cnt/10.0);
@@ -659,6 +660,7 @@ button {
 				console.log("targetPageNum : "+targetPageNum);
 				
 				PageNum=targetPageNum;
+				console.log("PageNum : "+PageNum);
 				showList(PageNum);
 			});
 
