@@ -565,11 +565,11 @@ button {
 			var pageNum=1;
 			var replyPageFooter = $(".panel-footer");
 			
-			showList();
+			showList(1);
 			
 			// 페이징
 			function showReplyPage(com_cnt){
-				var endNum=Math.ceil(pageNum/10.0)*10;
+				endNum=Math.ceil(pageNum/10.0)*10;
 				
 				var startNum=endNum-9;
 				
@@ -606,12 +606,14 @@ button {
 			
 			
 			function showList(page) {
+				console.log("페이지: "+page)
 				replyService.getList({post_id:post_idValue, page:page||1}, 
 						function(com_cnt,list) {
 					
 				var str = "";
 				if(page==-1) {
 			    	pageNum=Math.ceil(com_cnt/10.0);
+			    	
 			    	showList(pageNum);
 			    	return;
 			    }
@@ -667,13 +669,11 @@ button {
 			
 
 			$('#Comment_regist').on("click",function(e) {
-				console.log(post_idValue);
-				console.log($('#com_content').val());
 				var reply={
 						com_content:$('#com_content').val(),
 						post_id:post_idValue
 				};
-				replyService.add(reply, function(result){alert(result); showList(-1);} );
+				replyService.add(reply, function(result){alert(result); showList(endNum);} );
 			});
 			$(document).on('click','.comment-edit-btn',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
@@ -683,11 +683,13 @@ button {
 			$(document).on('click','#Comment_update',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
 			    var com_id = $(this).closest("li").data("com-id");
+			    console.log("PageNum update : "+PageNum);
 			    var reply={
 			        "com_content": $("#" + form_id + ' textarea').val(), // 해당 form의 textarea의 값을 가져옴
 			        "com_id" : com_id
 			    }; 
-			    replyService.update(reply, function(result){alert(result); showList(1);} );
+			    replyService.update(reply, function(result){alert(result); showList(pageNum);} );
+			    
 			});
 			
 			$(document).on('click', '.comment-delete-btn', function(){
@@ -710,30 +712,6 @@ button {
 				console.log("PageNum : "+PageNum);
 				showList(PageNum);
 			});
-			
-			$(document).on('click','.comment-edit-btn',function(){
-			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
-			    $("#" + form_id).collapse('toggle'); // 해당 form의 collapse 상태를 변경하여 textarea가 나타나도록 함
-			});
-
-			$(document).on('click','#Comment_update',function(){
-			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
-			    var com_id = $(this).closest("li").data("com-id");
-			    var reply={
-			        "com_content": $("#" + form_id + ' textarea').val(), // 해당 form의 textarea의 값을 가져옴
-			        "com_id" : com_id
-			    }; 
-			    replyService.update(reply, function(result){alert(result); showList(1);} );
-			});
-			
-			$(document).on('click', '.comment-delete-btn', function(){
-			    var com_id = $(this).closest("li").data("com-id");
-			    replyService.remove(com_id, function(result){
-			        alert(result);
-			        showList(1);
-			    });
-			});
-
 		});
 	</script>
 

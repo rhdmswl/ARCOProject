@@ -64,6 +64,7 @@ public class BoardServiceImpl implements BoardService {
 	public int updateViewCount(Long post_id) {
 		log.info(post_id);
 		return mapper.updateViewCount(post_id);
+	}
 	
 	@Override
 	public void getComCnt(Long post_id) {
