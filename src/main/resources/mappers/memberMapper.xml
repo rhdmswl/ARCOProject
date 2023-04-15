@@ -31,14 +31,14 @@
 	<update id="memberUpdate">
 		UPDATE MEMBER SET
 		<!-- USERPASS = #{userPass}, -->
-		USERNAME = #{userName}, EMAIL= #{email}, PHONE= #{phone}
+		USERNAME = #{userName}, , PHONE= #{phone}, EMAIL= #{email}
 		WHERE USERID =
 		#{userId}
 	</update>
 
 	<!-- 회원탈퇴 -->
 	<delete id="memberDelete">
-		DELETE FROM MEMBE2
+		DELETE FROM MEMBER
 		WHERE USERID = #{userId}
 		<!-- AND USERPASS = #{userPass} -->
 	</delete>
