@@ -22,7 +22,11 @@
 		$("#registerBtn").on("click", function(){
 			location.href="member/register";
 		})
-		
+				
+		$("#mypageBtn").on("click", function(){
+			location.href="member/mypage";
+		})
+
 		$("#memberUpdateBtn").on("click", function(){
 			location.href="member/memberUpdateView";
 		})
@@ -33,6 +37,7 @@
 		
 	})
 </script>
+  
 <body>
 	<form name='homeForm' method="post" action="/member/login">
 		<c:if test="${member == null}">
@@ -53,6 +58,7 @@
 			<div>
 				<p>${member.userId}님 환영 합니다.</p>
 				<button id="memberUpdateBtn" type="button">회원정보수정</button>
+				<button id="mypageBtn" type="button">마이페이지 - 나의 글 보기</button>
 				<button id="logoutBtn" type="button">로그아웃</button>
 				<button id="memberDelBtn" type="button">회원탈퇴</button>
 			</div>

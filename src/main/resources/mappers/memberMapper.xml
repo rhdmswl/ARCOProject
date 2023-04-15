@@ -14,8 +14,8 @@
 		, #{userPass}
 		, #{userName}
 		, #{phone}
-		, #{email} )
-
+		, #{email} 
+    )
 	</insert>
 
 	<!-- 로그인 -->
@@ -38,7 +38,7 @@
 
 	<!-- 회원탈퇴 -->
 	<delete id="memberDelete">
-		DELETE FROM MEMBE2
+		DELETE FROM MEMBER
 		WHERE USERID = #{userId}
 		<!-- AND USERPASS = #{userPass} -->
 	</delete>
@@ -47,13 +47,48 @@
 	<select id="passChk" resultType="int">
 		SELECT COUNT(*) FROM MEMBER
 		WHERE USERID = #{userId}
-		AND USERPASS = #{userPass}
+		  AND USERPASS = #{userPass}
 	</select>
-
+	
 	<!-- 아이디 중복 체크 -->
 	<select id="idChk" resultType="int">
 		SELECT COUNT(*) FROM MEMBER
-		WHERE
-		USERID = #{userId}
+		WHERE USERID = #{userId}
 	</select>
+
+	<insert id="insertImage" parameterType="com.collection.vo.ImageVO">
+        INSERT INTO image (file_name, content_type, image_data, user_id)
+        VALUES (#{file_name}, #{content_type}, #{image_data}, #{user_id})
+    </insert>
+    
+    <select id="selectImageByUserId" parameterType="string" resultType="com.collection.vo.ImageVO">
+        SELECT file_name, content_type, image_data
+        FROM image
+        WHERE user_id = #{userId}
+    </select>
+	
+<!-- <select id="getProfileImg" resultType="string">
+	    SELECT PROFILEIMG FROM MEMBER WHERE USERID = #{userId}
+	</select>
+	
+	<update id="updateProfileImg">
+	    UPDATE MEMBER SET PROFILEIMG = #{profileImg} WHERE USERID = #{userId}
+	</update> -->
+
+
+	<!-- 작성한 한줄평 불러오기 -->
+	<select id="getMemberCollectionRevs" resultType="com.collection.vo.CollectionReviewVO">
+		SELECT * FROM collectionRev WHERE nickname = #{sessionScope.userId}
+	</select>
+	
+	<!-- 작성한 게시글 불러오기 -->
+	<select id="getMemberPosts" resultType="com.collection.vo.BoardVO">
+		SELECT * FROM post WHERE post_writer = #{sessionScope.userId}
+	</select>
+	
+	<!-- 작성한 댓글 불러오기 -->
+	<select id="getMemberComments" resultType="com.collection.vo.ReplyVO">
+		SELECT * FROM comment WHERE com_writer = #{sessionScope.userId}
+	</select>
+
 </mapper>
