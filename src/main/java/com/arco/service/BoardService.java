@@ -19,4 +19,5 @@ public interface BoardService {
 	
 	public int getTotal(Criteria cri);
 	
+	public int updateViewCount(Long post_id);
 }

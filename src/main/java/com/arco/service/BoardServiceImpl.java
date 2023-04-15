@@ -59,4 +59,10 @@ public class BoardServiceImpl implements BoardService {
 		log.info("get total count");
 		return mapper.getTotalCount(cri);
 	}
+
+	@Override
+	public int updateViewCount(Long post_id) {
+		log.info(post_id);
+		return mapper.updateViewCount(post_id);
+	}
 }
