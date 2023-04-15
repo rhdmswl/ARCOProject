@@ -52,7 +52,9 @@
 								
 			});
 		})
+		
 	</script>
+
 
 <!-- 회원정보수정 버튼을 클릭했을때 button의 type가 submit로 되어있는데 이것은 클릭했을때 담긴 값들을 (value)
 		/member/memberUpdate로 보내줍니다.(Controller) -->
@@ -109,6 +111,14 @@
 			</div>
 
 		</div>
+		
+		<div class="card shadow mb-4">
+			<div class="card-body">
+				<a href="/member/memberDeleteView" class="btn btn-info btn-block">회원 탈퇴</a>
+			</div>
+
+		</div>
+		
 		</form>
 		
 

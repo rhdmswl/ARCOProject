@@ -16,7 +16,7 @@
 			// 취소
 			$(".cancel").on("click", function(){
 				
-				location.href = "/";
+				location.href = "/member/memberUpdateView";
 						    
 			})
 		
