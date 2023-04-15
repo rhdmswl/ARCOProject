@@ -409,11 +409,9 @@ button {
 							<div class="media-body">
 							<ul class="chat">
 							</ul>
-							
+							<div class="panel-footer">
 							</div>
-						</div>
-						
-						<div class="panel-footer">
+							</div>
 						</div>
 						
 						<!-- 댓글 작성 창 -->
