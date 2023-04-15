@@ -409,7 +409,11 @@ button {
 							<div class="media-body">
 							<ul class="chat">
 							</ul>
+							
 							</div>
+						</div>
+						
+						<div class="panel-footer">
 						</div>
 						
 						<!-- 댓글 작성 창 -->
@@ -515,17 +519,64 @@ button {
 	        		com_content : $("#com_content").val(),
 	        		com_writer : $("#com_writer").val()
 	        };
-			        
+			
+			var pageNum=1;
+			var replyPageFooter = $(".panel-footer");
+			
 			showList(1);
-			        
+			
+			// 페이징
+			function showReplyPage(com_cnt){
+				var endNum=Math.ceil(pageNum/10.0)*10;
+				var startNum=endNum-9;
+				
+				var prev=startNum != 1;
+				var next=false;
+				
+				if(endNum*10>=com_cnt){
+					endNum=Math.ceil(com_cnt/10.0);
+				}
+				
+				if(endNum*10<com_cnt){
+					next=true;
+				}
+				
+				var str="<ul class='pagination pull-right'>";
+				
+				if(prev){
+					str+= "<li class='page-item'><a class='page=link' href='"+(startNum-1)+"'>Previous</a></li>";
+				}
+				
+				for(var i = startNum; i<=endNum; i++){
+					var active=pageNum==i?"active":"";
+					str+="<li class='page-item"+active+"'><a class='page-link' href='"+i+"'>"+i+"<a></li>";
+				}
+				
+				if(next){
+					str+= "<li class='page-item'><a class='page=link' href='"+(endNum+1)+"'>Next</a></li>";
+				}
+				
+				str+="</ul></div>";
+				console.log(str);
+				replyPageFooter.html(str);
+			} // end 페이징
+			
+			
 			function showList(page) {
-				replyService.getList({post_id:post_idValue, page:page||1}, function(list) {
+				console.log("페이지 : " +page);
+				replyService.getList({post_id:post_idValue, page:page||1}, function(com_cnt,list) {
+
 				var str = "";
-				if(list == null || list.length==0) {
-			    	console.log(list[i]);
-			    	replyUL.html("");
+				if(page==-1) {
+			    	pageNum=Math.ceil(com_cnt/10.0);
+			    	showList(pageNum);
 			    	return;
 			    }
+				
+				if(list==null||list.length==0){
+					return;
+				}
+				
 				for(var i=0, len=list.length || 0; i<len; i++) {
 					var com_id = list[i].com_id;  // 댓글 ID 저장
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
@@ -548,11 +599,9 @@ button {
                     str+=		"</div></li>";
 					}
 				replyUL.html(str);
-				document.getElementById("com_id").value=com_id;
+				showReplyPage(com_cnt);
 				});
 			}
-			
-			
 			
 			$("button[data-oper='modify']").on("click", function(e){
 				operForm_modi.attr("action", "/board/modify").submit();
@@ -578,7 +627,7 @@ button {
 						com_content:$('#com_content').val(),
 						post_id:post_idValue
 				};
-				replyService.add(reply, function(result){alert(result); showList(1);} );
+				replyService.add(reply, function(result){alert(result); showList(-1);} );
 			});
 			$(document).on('click','.comment-edit-btn',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
@@ -601,6 +650,18 @@ button {
 			        alert(result);
 			        showList(1);
 			    });
+			});
+			
+			replyPageFooter.on('click','li a',function(e){
+				e.preventDefault();
+				console.log("page click");
+				
+				var targetPageNum=$(this).attr("href");
+				
+				console.log("targetPageNum : "+targetPageNum);
+				
+				PageNum=targetPageNum;
+				showList(PageNum);
 			});
 
 		});

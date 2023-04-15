@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.arco.domain.Criteria;
+import com.arco.domain.ReplyPageDTO;
 import com.arco.domain.ReplyVO;
 import com.arco.mapper.ReplyMapper;
 
@@ -49,5 +50,10 @@ public class ReplyServiceImpl implements ReplyService {
 		log.info("get Reply List of a Board " + post_id);
 		return mapper.getListWithPaging(cri, post_id);
 	}
-	
+	@Override
+	public ReplyPageDTO getListPage(Criteria cri,Long post_id) {
+		return new ReplyPageDTO(
+				mapper.getCountByComId(post_id),
+				mapper.getListWithPaging(cri, post_id));	
+	}
 }
