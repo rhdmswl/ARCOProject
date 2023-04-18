@@ -1,11 +1,8 @@
 console.log("review module..............");
-
 var reviewService = (function(){
-
-	function add(review, callback, error){
-		console.log("add review...........");
-		
-		$.ajax({
+function add(review, collback, error){
+console.log("review.........");
+$.ajax({
 			type: 'post',
 			url: '/review/new',
 			data : JSON.stringify(review),
@@ -22,16 +19,16 @@ var reviewService = (function(){
 			}
 		})
 	}
+	// end add
 	
-	function getList(param, callback, error) {
-		var seq = param.seq;
+		function getList(param, callback, error) {
+	var seq = param.seq;
 		var page = param.page || 1;
 		
 		$.getJSON("/review/pages/" + seq + "/" + page + ".json",
 			function(data) {
 				if(callback) {
-					  //callback(data);  //댓글 목록만 가져오는 경우
-					callback(data.reviewCnt, data.list); //댓글 숫자와 목록을 가져오는 경우 
+					callback(data);  //댓글 목록만 가져오는 경우
 				}
 			}).fail(function(xhr, status, err) {
 				if(error) {
@@ -41,9 +38,8 @@ var reviewService = (function(){
 	}
 	
 	function remove(revSeq, callback, error) {
-	
-		$.ajax({
-			type : 'delete',
+		$.ajax( {
+			type: 'delete',
 			url : '/review/' + revSeq,
 			success : function(deleteResult, status, xhr) {
 				if(callback) {
@@ -58,14 +54,14 @@ var reviewService = (function(){
 		});
 	}
 	
-	function update(review, callback, error) {
+	function update(CollectionRev, callback, error) {
 
-		console.log("revSeq: " + review.revSeq);
+		console.log("revSeq: " + CollectionRev.revSeq);
 
 		$.ajax({
 			type : 'put',
-			url : '/review/' + review.revSeq,
-			data : JSON.stringify(review),
+			url : '/review/' + CollectionRev.revSeq,
+			data : JSON.stringify(CollectionRev),
 			contentType : "application/json; charset=utf-8",
 			success : function(result, status, xhr) {
 				if (callback) {
@@ -81,7 +77,7 @@ var reviewService = (function(){
 	}
 	
 	function get(revSeq, callback, error) {
-	console.log("get review.........");
+	console.log("get reply.........");
 		$.get("/review/" + revSeq + ".json", function(result) {
 
 			if (callback) {
@@ -95,13 +91,11 @@ var reviewService = (function(){
 		});
 	}
 	
-	return {
-	
+	return{
 	add:add,
 	getList:getList,
 	remove:remove,
 	update:update,
 	get:get
 	};
-
 })();

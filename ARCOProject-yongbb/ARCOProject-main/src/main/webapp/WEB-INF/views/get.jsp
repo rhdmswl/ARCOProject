@@ -24,138 +24,7 @@
 
     <!-- Responsive CSS -->
     <link href="../resources/css/responsive/responsive.css" rel="stylesheet">
-<style type="text/css">
-body {
-	margin-top: 20px;
-	background: #FFF
-}
-.card {
-	background: #fff;
-	margin-bottom: 30px;
-	transition: .5s;
-	border: 0;
-	border-radius: .1875rem;
-	display: inline-block;
-	position: relative;
-	width: 100%;
-	box-shadow: none;
-	font-family: 'Nanum Gothic', sans-serif;
-}
-.page-link {
-	color: #000;
-	background-color: #fff;
-	border: 1px solid #ccc;
-}
-.page-item.active .page-link {
-	/* z-index: 1; */
-	color: #555;
-	font-weight: bold;
-	background-color: #e0e0e0;
-	border-color: #ccc;
-}
-.page-link:focus, .page-link:hover {
-	color: #000;
-	background-color: #fafafa;
-	border-color: #ccc;
-}
-.inbox .action_bar .delete_all {
-	margin-bottom: 0;
-	margin-top: 8px
-}
-.inbox .action_bar .btn, .inbox .action_bar .search {
-	margin-left: 200px;
-	margin-bottom: 15px;
-}
-.inbox .mail_list .list-group-item {
-	border: 0;
-	padding: 15px;
-	margin-bottom: 1px
-}
-.inbox .mail_list .list-group-item:hover {
-	background: #eceeef
-}
-.inbox .mail_list .list-group-item .media {
-	margin: 0;
-	width: 100%
-}
-.inbox .mail_list .list-group-item .controls {
-	display: inline-block;
-	margin-right: 10px;
-	vertical-align: top;
-	text-align: center;
-	margin-top: 11px
-}
-.inbox .mail_list .list-group-item .media-heading a {
-	color: #555;
-	font-weight: normal;
-}
-.inbox .mail_list .list-group-item .media-heading a:hover, .inbox .mail_list .list-group-item .media-heading a:focus
-	{
-	text-decoration: none
-}
-.inbox .mail_list .list-group-item .media-heading time {
-	font-size: 13px;
-	margin-right: 10px
-}
-.inbox .mail_list .list-group-item .msg {
-	margin-bottom: 0px
-}
-.inbox .mail_list .unread {
-	border-left: 2px solid
-}
-.inbox .mail_list .unread .media-heading a {
-	color: #333;
-	font-weight: 700
-}
-.inbox .btn-group {
-	box-shadow: none
-}
-.inbox .bg-gray {
-	background: #e6e6e6
-}
-.modal {
-	display : none;
-	position : fixed;
-	z-index : 300;
-	left : 0;
-	top : 0;
-	width : 120%;
-	height : 100%;
-	overflow : auto;
-	background-color: rgb(0,0,0);
-	background-color: rgba(0,0,0,0.4);
-}
-.modal-content {
-	position : fixed;
-	left : 50%;
-	top : 20%;
-	
-	transform : translate(-50%, -50%);
-	
-	background-color : #fefefe;
-	margin : 15% auto;
-	padding : 20px;
-	border : 1px solid #888;
-	border-radius : 10px;
-	width : 400px;
-	height : 170px;
-	box-shadow : 5px 10px 10px 1px rgba(0,0,0,.3);
-	font-family: 'Nanum Gothic', sans-serif;
-}
-.modal-footer {
-	font-family: 'Nanum Gothic', sans-serif;
-	cursor : pointer;
-	height : 48px;
-}
-.input-group-addon {
-	border : 0px;
-}
-@media only screen and (max-width: 767px) {
-	.inbox .mail_list .list-group-item .controls {
-		margin-top: 3px
-	}
-}
-</style>
+
 </head>
 <body>
 
@@ -234,8 +103,22 @@ body {
                                     <div><h4>장소 : <c:out value="${collection.place}" /></h4></div>
                                     <div><h4>주소 : <c:out value="${collection.placeAddr}" /></h4></div>
                                     <div><h4>문의 : <c:out value="${collection.phone}" /></h4></div>
+                                 
+                                    
 
-                          
+                                    <img class="br-30 mb-30" src="img/blog-img/11.jpg" alt="">
+                                    
+
+                                    <img class="br-30 mb-30" src="img/blog-img/12.jpg" alt="">
+                                    
+
+                                    <img class="br-30 mb-30" src="img/blog-img/13.jpg" alt="">
+                                    
+                                    
+
+                                    
+
+                                    <img class="br-30 mb-15" src="img/blog-img/14.jpg" alt="">
                                 </div>
                             </div>
 
@@ -249,16 +132,34 @@ body {
                             <div class="comment_area section_padding_50 clearfix">
                                 <h4 class="mb-30">2 Comments</h4>
 
-                                 <!-- /.panel-heading -->
-								            
-								      
-								        <ul class="chat">
-								
-								        </ul>
-								        <!-- ./ end ul -->
-								   
-								  <!-- /.panel .chat-panel -->
+                                
+                                <ul class = "chat">
+                                
+                                </ul>
+                                    
+                                      <%--   <div class="pull-rigth">
+                                        <ul class="pagination">
+                                        <c:if test="${pageMaker.prev }">
+                                        <li class="paginate_button privious"><a href="#">previous</a></li></c:if>
+                                        <c:forEach var ="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                                        <li class="paginate_button ${pageMaker.cri.pageNum == num? 'active':'' }"><a href="${num}">${num}</a></li></c:forEach>
+                                        <c:if test="${pageMaker.next}">
+                                        <li class="paginate_button next"><a href="${pageMaker.endPage +1 }">Next</a></li></c:if>
+                                        </ul>
+                                        </div> --%>
+                                        <!-- end Pagination -->
+                                        
+                                        
+                                    
+                                
                             </div>
+                            <form id='actionForm' action="/review/list" method='get'>
+		<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+		<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
+		</form>
+		
+		
+		
 
                             <!-- Leave A Comment -->
                             <div class="leave-comment-area section_padding_50 clearfix">
@@ -266,18 +167,18 @@ body {
                                     <h4 class="mb-30">Leave A Comment</h4>
 
                                     <!-- Comment Form -->
-                                    <form action="#" method="post">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="contact-name" placeholder="Name">
+                                   <form action="/review/register" method="post">
+                                     	<div class="form-group">
+                                            <input type="text" style="display:none;" name = "seq" value="<c:out value="${collection.seq}"/>">
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control" id="contact-email" placeholder="Email">
+                                            <input type="text" class="form-control" id="contact-name" placeholder="nickName" name = "userId">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="contact-website" placeholder="Website">
+                                            <input type="text" class="form-control" id="contact-email" placeholder="별점 넣을 공간" name = "revStar">
                                         </div>
-                                        <div class="form-group">
-                                            <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                        <div class="form-group">      
+                                         	<input type="text" class="form-control" id="contact-email" placeholder="한줄평자리" name = "revComment">
                                         </div>
                                         <button type="submit" class="btn contact-btn">Post Comment</button>
                                     </form>
@@ -295,8 +196,8 @@ body {
     </section>
     <!-- ****** Single Blog Area End ****** -->
 
-
-    <div class="owl-nav"><div class="owl-prev"></div><div class="owl-next"></div></div><div class="owl-dots"><div class="owl-dot"><span></span></div><div class="owl-dot active"><span></span></div></div></div>
+    
+       <div class="owl-nav"><div class="owl-prev"></div><div class="owl-next"></div></div><div class="owl-dots"><div class="owl-dot"><span></span></div><div class="owl-dot active"><span></span></div></div></div>
     <!-- ****** Our Creative Portfolio Area End ****** -->
 
     <!-- ****** Footer Social Icon Area Start ****** -->
@@ -318,7 +219,9 @@ body {
                 <div class="col-12">
                     <div class="footer-content">
                         <!-- Logo Area Start -->
- 
+                        <div class="footer-logo-area text-center">
+                            <a href="index.html" class="yummy-logo"></a>
+                        </div>
                         <!-- Menu Area Start -->
                         
                     </div>
@@ -338,58 +241,119 @@ body {
         </div>
     </footer>
     <!-- ****** Footer Menu Area End ****** -->
+	
+	
+	<script src="./resources/js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="./resources/js/bootstrap/popper.min.js"></script>
+    <script src="./resources/js/bootstrap/bootstrap.min.js"></script>
+    <script src="./resources/js/others/plugins.js"></script>
 
-    <!-- Jquery-2.2.4 js -->
-    <script src="../resources/js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="../resources/js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap-4 js -->
-    <script src="../resources/js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins JS -->
-    <script src="../resources/js/others/plugins.js"></script>
     <!-- Active JS -->
-    <script src="../resources/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
-	<script type="text/javascript" src="../resources/js/review.js"></script>
-	
-	<script type="text/javascript">
-	
-	$(document).ready(function (){
-	
-	var seqValue = '<c:out value="${collection.seq}"/>';
-	var reviewUL = $(".chat");
-	
-	showList(1);
-	
-	 function showList(page){
-	      
-	      reviewService.getList({seq:seqValue,page: page|| 1 }, function(list) {
-	        
-	        var str="";
-	       if(list == null || list.length == 0){
-	        
-	    	reviewUL.html("");
-	        
-	        return;
-	      }
-	       for (var i = 0, len = list.length || 0; i < len; i++) {
-	           str +="<li class='left clearfix' data-revSeq='"+list[i].revSeq+"'>";
-	           str +="  <div><div class='header'><strong class='primary-font'>"+list[i].nickName+"</strong>"; 
-	           str +="    <small class='pull-right text-muted'>"+list[i].reviewDate+"</small></div>";
-	           str +="    <p>"+list[i].revStar+"</p>";
-	           str +="    <p>"+list[i].revComment+"</p></div></li>";
-	         }
+    <script src="./resources/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+	<script src="./resources/js/jquery/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="./resources/js/review.js"></script>
+		<script>
+		/* console.log("=============");
+		console.log("JS TEST");
+		
+		var seqValue = '<c:out value = "${collection.seq}"/>'; */
+		
+		/* CollectionReviewService.getList({seq:seqValue,page: 1},function(list){
+			for(var i = 0, len = list.length||0; i <len; i++){
+				console.log(list[i]);
+			} */
+			
+			/* CollectionReviewService.remove(21, function(count){
+				console.log(count);
+				if(count === "success"){
+					alert("REMOVED");
+				}
+			}, function(err){
+				alert('ERROR...'); */
+				
+			/* 	CollectionReviewService.update({
+					revSeq:19,
+					seq: seqValue,
+					review:"Modified Review......"}
+				, function(result){
+					alert("수정 완료........"); */
+					
+				/* 	CollectionReviewService.get(10,function(data){
+						console.log(data);
 
+			 */
+		
+				
+            	 $(document).ready(function() {
+            		 var seqValue = '<c:out value="${collection.seq}"/>';
+            		 var reviewUL = $(".chat");
+            		 
+            		 showList(1);
+            		 
+            		 function showList(page){
+            			 console.log("show list " + page);
+            		    
+            			 reviewService.getList({seq:seqValue,page: page|| 1 },function(list){
+            					
+            				   var str="";
+            				   if(list==null || list.length ==0) {
+            					   reviewUL.html("");
+            				         return;
+            				   } 
+            				   
+            				   for(var i=0, len = list.length || 0; i < len; i++){
+            					 
+            					   str +="<li class='left clearfix' data-rno='"+list[i].revSeq+"'>";
+            					   str +="  <div><div class='header'><strong class='primary-font'>"+list[i].nickName+"</strong>"; 
+            					   str+= "   <small class='pull-right text-muted'>" +list[i].reviewDate+"</small></div>";
+            			           str +="    <p>"+list[i].revComment+"</p></div></li>";
+            				   } 
+            				   
+            				   reviewUL.html(str);
+            			   
+            			 }); 
+            		 } //end showList
 
-	    replyUL.html(str);
+            		/* var result='<c:out value="${result}"/>';
+            		checkModal(result);
+          
+            		
+            		function checkModal(result) {
+            			if(result==='' || history.state) {
+            				return;
+            			}
+            			
+            			if(parseInt(result) > 0) {
+            				$(".modal-body").html("한줄평 " + parseInt(result) + "번이 등록되었습니다.");
+            			}
+            			
+            			$("#myModal").modal("show");
+            		}
+            		
+            		$("#regBtn").on("click", function() {
+            			self.location="/review/register";
+            		});
+            		
+            		
+            		var actionForm = $("#actionForm");
+					$(".paginate_button a").on("click",	function(e) {
+								e.preventDefault();
+								console.log('click');
+								actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+								actionForm.submit();
+							});
+					$(".move").on("click", function(e){
+			            
+					      e.preventDefault();
+					      actionForm.append("<input type='hidden' name='revSeq' value='"+ $(this).r("href")+"'>");
+					      actionForm.at -->tr("action","/review/get");
+					      actionForm.submit();
+					      
+					    }); */
 
-	      }); //end function
-	      
-	   }  //end showList 
-	
-	});
-	
-	
-	</script>
+            	});
+										
+		</script>
 
 </body>
 </html>
