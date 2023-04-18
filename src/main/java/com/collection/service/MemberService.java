@@ -20,6 +20,8 @@ public interface MemberService {
 	
 	public int passChk(MemberVO vo) throws Exception;
 	
+	public void passUpdate(MemberVO login) throws Exception;
+	
 	public int idChk(MemberVO vo) throws Exception;
 	
 //	public String getProfileImg(String userId) throws Exception;

@@ -11,6 +11,8 @@ public class MemberVO {
 	private String userName;
 	private String phone;
 	private String email;
+	private String newPass;
+	private String confirmPass;
 	// private String profileImg;
 
 	private List<CollectionReviewVO> collectionRevs;
