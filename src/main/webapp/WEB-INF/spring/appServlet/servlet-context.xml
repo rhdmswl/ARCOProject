@@ -64,7 +64,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.collection.controller" />
+	<context:component-scan base-package="com.arco.controller" />
 	
 	<context:component-scan
 		base-package="com.collection.exception"/>
