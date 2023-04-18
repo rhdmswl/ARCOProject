@@ -28,7 +28,6 @@
         <div class="yummy-load"></div>
     </div>
 
-
 <!-- Background Pattern Swither -->
 <div id="pattern-switcher">
     Bg Pattern
@@ -136,6 +135,19 @@
     </div>
 </header>
 <!-- ****** Header Area End ****** -->
+
+
+<!-- test code -->
+개발중개발중개발중개발중개발중개발중개발중개발중개발중개발중개발중개발중개발중개발중개발중
+	<p>
+		<a href="/board/list?pageNum=1&brd_id=1">1번 게시판</a>
+	</p>
+	<p>
+		<a href="/board/list?pageNum=1&brd_id=2">2번 게시판</a>
+	</p>
+	<p>
+		<a href="/board/list?pageNum=1&brd_id=3">3번 게시판</a>
+	</p>
 
 <!-- ****** Welcome Post Area Start ****** -->
 <section class="welcome-post-sliders owl-carousel">
