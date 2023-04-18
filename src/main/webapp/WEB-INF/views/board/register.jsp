@@ -159,8 +159,8 @@ body {
 										
 										<tr>
 											
-											<th>작성자</th>
-											<th><input class="form-control" name='post_title'
+											<th>작성자 </th>
+											<th><input class="form-control" name='post_writer'
 												value="${member.userId}" readonly="readonly"></th>
 										</tr>
 
