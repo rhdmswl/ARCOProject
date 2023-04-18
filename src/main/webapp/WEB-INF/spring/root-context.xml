@@ -30,12 +30,11 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		
 		<property name="mapperLocations" value="classpath:/mappers/**/**/*.xml" />
 	</bean>
 	
 	<mybatis-spring:scan
-		base-package="com.arco.mapper" />
+		base-package="com.arco.mapper, com.member.mapper" />
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
@@ -47,6 +46,6 @@
 	    <property name="defaultEncoding" value="utf-8" />
 	</bean>
 	
-	<context:component-scan base-package="com.arco"></context:component-scan>
+	<context:component-scan base-package="com"></context:component-scan>
 
 </beans>
