@@ -25,12 +25,13 @@
 
 	<insert id="insert">
 		insert into post (post_id, post_title, post_content,
-		post_writer)
+		post_writer, brd_id)
 		values (
 		(select nextval('post_id') from dual),
 		#{post_title},
 		#{post_content},
-		#{post_writer}
+		#{post_writer},
+		#{brd_id}
 		)
 	</insert>
 

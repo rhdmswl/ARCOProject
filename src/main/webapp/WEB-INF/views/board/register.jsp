@@ -149,9 +149,9 @@ body {
 									<thead>
 										<tr>
 											<th style="border-right: hidden;" width='40'><select>
-													<option value="1">첫번째 게시판</option>
-													<option value="2">두번째 게시판</option>
-													<option value="3">세번째 게시판</option>
+													<option value='<c:out value="${cri.brd_id == 1}"/>'>첫번째 게시판</option>
+													<option value='<c:out value="${cri.brd_id == 2}"/>'>두번째 게시판</option>
+													<option value='<c:out value="${cri.brd_id == 3}"/>'>세번째 게시판</option>
 											</select></th>
 											<th><input class="form-control" name='post_title'
 												value="제목을 입력해주세요" onfocus="this.value=''"></th>
@@ -173,8 +173,9 @@ body {
 												<div class="card m-t-5">
 													<div class="body">
 														<ul class="pagination pagination-primary m-b-0">
-															<li class="page-item"><a class="page-link"
-																href='/board/list'>목록으로</a></li>
+															<li class="page-item">
+															<a class="page-link" href="/board/list">목록으로</a>
+															</li>
 														</ul>
 													</div>
 												</div>
@@ -183,9 +184,8 @@ body {
 												<div class="card m-t-5">
 													<div class="body">
 														<ul style="float: right;"
-															class="pagination pagination-primary m-b-0">
-															<li class="page-item"><input
-																style='cursor: pointer;' class="page-link" type="submit"
+															class="registerBtn pagination pagination-primary m-b-0">
+															<li class="page-item"><input style="cursor: pointer;" class="page-link" type="submit"
 																value="글 등록"></li>
 														</ul>
 													</div>
@@ -201,11 +201,33 @@ body {
 			</div>
 		</section>
 	</div>
+	<form id='actionForm' action="/board/list" method='get'>
+		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+		<input type='hidden' name='brd_id' value='<c:out value="${cri.brd_id}"/>'>
+	</form>
+	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
-		src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.bundle.min.js"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+	
 	<script type="text/javascript">
-		
-	</script>
+ 			$(document).ready(function(){
+ 			
+ 			/* var pageNum=$('#pageNum').val();
+			var brd_id=$('#brd_id').val(); */
+			var formObj = $("form");
+ 			
+ 			$('#registerBtn').on("click", function(){
+ 				
+ 				formObj.attr("action", "/board/list");
+ 				formObj.attr("method", "get");
+ 				formObj.submit();
+ 				
+ 				location.href="/board/list?pageNum=${cri.pageNum}"+"&brd_id=${cri.brd_id}";
+ 				
+ 			});
+ 			var actionForm = $("#actionForm");
+ 		});
+ 	</script>
 </body>
 
