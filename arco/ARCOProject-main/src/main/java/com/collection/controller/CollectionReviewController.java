@@ -48,11 +48,11 @@ public class CollectionReviewController {
 	@GetMapping(value = "/pages/{seq}/{pageNum}", produces = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity<List<CollectionReviewVO>> getList(@PathVariable("pageNum") int pageNum,
-			@PathVariable("seq") long seq) {
+			@PathVariable("seq") long seq, Model model) {
 		log.info("getList.............");
 		Criteria cri = new Criteria(pageNum, 10);
 		log.info(cri);
-
+		model.addAttribute("comment", service.getList(cri, seq));
 		return new ResponseEntity<>(service.getList(cri, seq), HttpStatus.OK);
 
 	}

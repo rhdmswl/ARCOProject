@@ -126,6 +126,7 @@
                                 <ol>
                                 <ul class = "chat">
                                 
+                               
                                 </ul>
                                     
                                       <%--   <div class="pull-rigth">
@@ -145,10 +146,11 @@
                                 </ol>
                             </div>
                             <form id='actionForm' action="/review/list" method='get'>
-		<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-		<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
-		</form>
-		
+								<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+								<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
+							</form>
+							
+							
 		
 		
 
@@ -180,6 +182,7 @@
  -->                                        </div>
                                         <button id='commentAdd' type="submit" class="btn contact-btn">Post Comment</button>
                                     </form>
+                                    
                                 </div>
                             </div>
 
@@ -257,34 +260,47 @@
 
        	$(document).ready(function() {
        		
+       		
             		 var seqValue = '<c:out value="${collection.seq}"/>';
             		 var reviewUL = $(".chat");
-            		 
             		 showList(1);
             		 
             		 function showList(page){
-            			 console.log("show list " + page);
-            			 console.log("show list seq :  " + seqValue);
+            			 
             			 CollectionReviewService.getList({seq:seqValue,page: page|| 1 },
             				function(list){
             				   var str="";
+            				   
             				   if(list==null || list.length ==0) {
             					   reviewUL.html("");
             				   } 
             				   
             				   for(var i=0, len = list.length || 0; i < len; i++){
-            					   str +="<li class='left clearfix' data-rno='"+list[i].revSeq+"'>";
+            					   var revSeqValue = list[i].revSeq;
+            					   var formId = "review" + list[i].revSeq
+            					   str +="<li class=' left clearfix' data-rno='"+list[i].revSeq+"'>";
             					   str +="  <div><div class='header'><strong class='primary-font'>"+list[i].nickName+"</strong>"; 
-            					   str+= "   <small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";
-            			           str +="    <p>"+list[i].revComment+"</p></div></li>";
+            					   str+= "   <small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].updateDate)+"</small></div>";
+/*             			           str +="    <p>"+list[i].revComment+"</p>"; */
+            			           str+= "         <p id='review' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</p>";
+            			           str += "<a href='#" + formId + "' value='"+ list[i].revSeq +"' class='update' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            			           str+= "			<form class='collapse' id='" + formId + "'>";
+            			           str+= "  			<div class='form-group'>";
+            				       str+= "  			<input type='text' id='revComment' name='revComment' value=''/>";		
+            				       str+= "  			<input type='text' id='revStar' name='revComment' value=''/>";      				       
+            				       str+= "  			<div style='display:none'><input type='datetime-local' id='updateDate' name='updateDate' value=''/></div>";
+            				       str+= "  			</div>";
+            				       str+= "  			<button id='update' type='button' class='btn btn-11' >수정 완료</button></div>";
+            				       str+= "			</form>";
+            			           /* str += "<input type='hidden' id='revSeqUpdate' name='revSeqUpdate' value='"+list[i].revSeq+"'><button type='button' data-toggle='collapse' class='update'>수정</button>"; */
+            			           str += "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'><a href='#' role='button' class='remove'>삭제</a></div></li>"; 
             				   } 
-            				   console.log("test : " + str);
             				   reviewUL.html(str);
             			   
             			 }); 
             		 } 
             
-                     $("#commentAdd").on("click",function(e){
+                     $(document).on("click",'#commentAdd' ,function(e){
                     	 var review = { 
                     			 seq : seqValue,
                         		 nickName : $('#nickName').val(), 
@@ -293,6 +309,38 @@
                         		 };
                          CollectionReviewService.add(review, function(result){alert(result); showList(1);});
                      });
+                     
+                     $(document).on("click",'.remove',function(e){
+                    	var revSeqValue = $('#revSeqDelete').val();
+                        CollectionReviewService.remove(revSeqValue, function(result){
+                        	alert(result); 
+                        	});
+                        showList(1);
+                     });
+                     
+                     $(document).on('click','.update',function(){
+         			    var revSeqValue = $('.update').val(); 
+         			    $("#" + revSeqValue).collapse('toggle');
+         			});
+                     
+                     
+                     
+                     
+                     $(document).on('click','#update',function(){
+                    	 
+                    	 var revSeqValue = $(this).closest("li").data("rno");
+                    	 var updateDateValue = document.getElementById('updateDate').value= new Date().toISOString().slice(0, -1);
+         			    var review={
+         			    		"revSeq" : revSeqValue,
+         			        "revComment" : $('#revComment').val(), // 해당 form의 textarea의 값을 가져옴
+         			        "revStar" : $('#revStar').val(),
+         			        "updateDate" : updateDateValue
+         			    }; 
+         			   CollectionReviewService.update(review, function(result){alert(result); showList(1);} );
+         			    
+         			});
+                     
+                     
        	});
 										
 		</script>
