@@ -1,8 +1,11 @@
 console.log("Reply Module...............");
+
 var replyService = (function() {
+
 	function add(reply, callback, error) {
 		console.log("add reply.........");
-		$.ajax({
+		
+				$.ajax({
 			type: 'post',
 			url: '/replies/new',
 			data : JSON.stringify(reply),
@@ -22,14 +25,13 @@ var replyService = (function() {
 	// end add
 	
 		function getList(param, callback, error) {
-	var bno = param.bno;
+		var post_id = param.post_id;
 		var page = param.page || 1;
 		
-		$.getJSON("/replies/pages/" + bno + "/" + page + ".json",
+		$.getJSON("/replies/pages/" + post_id + "/" + page + ".json",
 			function(data) {
 				if(callback) {
-					//  callback(data);  //댓글 목록만 가져오는 경우
-					 callback(data.replyCnt, data.list); //댓글 숫자와 목록을 가져오는 경우 
+					  callback(data.com_cnt,data.list);
 				}
 			}).fail(function(xhr, status, err) {
 				if(error) {
@@ -38,12 +40,10 @@ var replyService = (function() {
 			});
 	}
 
-
-	
-	function remove(rno, callback, error) {
+	function remove(com_id, callback, error) {
 		$.ajax( {
 			type: 'delete',
-			url : '/replies/' + rno,
+			url : '/replies/' + com_id,
 			success : function(result, status, xhr) {
 				if(callback) {
 					callback(result);
@@ -57,14 +57,13 @@ var replyService = (function() {
 		});
 	}
 	
-	
 	function update(reply, callback, error) {
 
-		console.log("RNO: " + reply.rno);
+		console.log("RNO: " + reply.com_id);
 
 		$.ajax({
 			type : 'put',
-			url : '/replies/' + reply.rno,
+			url : '/replies/' + reply.com_id,
 			data : JSON.stringify(reply),
 			contentType : "application/json; charset=utf-8",
 			success : function(result, status, xhr) {
@@ -83,7 +82,7 @@ var replyService = (function() {
 	
 	function get(rno, callback, error) {
 	console.log("get reply.........");
-		$.get("/replies/" + rno + ".json", function(result) {
+		$.get("/replies/" + com_id + ".json", function(result) {
 
 			if (callback) {
 				callback(result);
@@ -119,8 +118,7 @@ function displayTime(timeValue) {
 			}
 	}
 	
-		
-	
+
 	return {
 		add:add,
 		getList:getList,
@@ -130,4 +128,3 @@ function displayTime(timeValue) {
 		displayTime:displayTime
 	};
 })();
-

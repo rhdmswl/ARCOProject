@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.arco.mapper.BoardMapper">
+
+	<select id="getList" resultType="com.arco.domain.BoardVO">
+	<![CDATA[
+		select * from post ORDER BY post_id DESC
+	]]>
+	</select>
+
+	<update id="getComCnt" >
+		update post
+		set post_com_count=(select count(com_id)
+							from comment
+							where post_id=#{post_id})
+		where post_id=#{post_id}
+	</update>
+
+	<select id="read" resultType="com.arco.domain.BoardVO">
+		select * from post where
+		post_id=#{post_id}
+	</select>
+
+	<insert id="insert">
+		insert into post (post_id, post_title, post_content,
+		post_writer)
+		values (
+		(select nextval('post_id') from dual),
+		#{post_title},
+		#{post_content},
+		#{post_writer}
+		)
+	</insert>
+
+	<delete id="delete">
+		delete from post where post_id = #{post_id}
+	</delete>
+
+	<update id="update">
+		update post
+		set post_title=#{post_title},
+		post_content=#{post_content}
+		where post_id = #{post_id}
+	</update>
+
+	<sql id="criteria">
+			<choose>
+					<when test="type=='T'.toString()">
+
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='W'.toString()">
+						where brd_id=#{brd_id}
+						and post_writer like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='C'.toString()">
+						where brd_id=#{brd_id}
+						and post_content like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TC'.toString()">
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
+						or post_content like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TW'.toString()">
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
+						or post_writer like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TCW'.toString()">
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
+						or post_content like concat('%', #{keyword}, '%')
+						or post_writer like concat('%', #{keyword}, '%')
+					</when>
+					<otherwise>
+					where brd_id=#{brd_id}
+					</otherwise>
+			</choose>
+	</sql>
+	
+	<select id="getListWithPaging" resultType="com.arco.domain.BoardVO">
+		SELECT *
+		FROM (
+			SELECT post_id, post_title, post_writer, post_content, post_regdate, post_view_count, brd_id, post_com_count
+			FROM post
+		<include refid="criteria"></include>
+		) as post_paging
+		ORDER BY post_id DESC
+		LIMIT #{pageNumForLimit},10
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from post
+		<include refid="criteria"></include> 
+	</select>
+	
+	<update id="updateViewCount">
+		update post 
+		set post_view_count = post_view_count + 1
+		where post_id = #{post_id}
+	</update>
+</mapper>
