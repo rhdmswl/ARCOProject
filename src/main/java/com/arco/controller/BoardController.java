@@ -1,7 +1,5 @@
 package com.arco.controller;
 
-import javax.lang.model.element.ModuleElement;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,10 +48,12 @@ public class BoardController {
 	}		
 	
 	@PostMapping("/register")
-	public String register(BoardVO board, RedirectAttributes rttr) {
+	public String register(BoardVO board, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri) {
 		log.info("register: " + board);
 		service.register(board);
 		rttr.addFlashAttribute("result", board.getPost_id());
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("brd_id", cri.getBrd_id());
 
 		return "redirect:/board/list";
 	}

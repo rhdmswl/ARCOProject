@@ -412,7 +412,7 @@ button {
 							<div class="frame">
 								<button type="submit" class="custom-btn btn-11" data-oper='modify'>수정 완료</button>
 								<button class="custom-btn btn-11 move2" data-oper='list'
-									onclick="location.href='/board/list'">목록</button>
+									onclick="location.href='/board/list?pageNum='+$('#pageNum').val()+'$brd_id='+$('#brd_id').val()">목록</button>
 							</div>
 						</div>
 					</article>
