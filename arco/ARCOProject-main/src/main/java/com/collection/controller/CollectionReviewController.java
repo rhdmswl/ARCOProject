@@ -32,6 +32,7 @@ import lombok.extern.log4j.Log4j;
 
 public class CollectionReviewController {
 
+	
 	@Autowired
 	private CollectionReviewService service;
 
