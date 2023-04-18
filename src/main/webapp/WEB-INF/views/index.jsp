@@ -28,7 +28,7 @@
         <div class="yummy-load"></div>
     </div>
 
-```html
+
 <!-- Background Pattern Swither -->
 <div id="pattern-switcher">
     Bg Pattern
