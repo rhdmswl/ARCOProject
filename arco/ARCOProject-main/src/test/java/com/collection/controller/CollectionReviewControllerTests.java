@@ -1,5 +1,4 @@
 package com.collection.controller;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +11,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+
+
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,7 +21,7 @@ import lombok.extern.log4j.Log4j;
 		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
 @Log4j
 public class CollectionReviewControllerTests {
-	
+
 	@Autowired
 	private WebApplicationContext ctx;
 
@@ -35,23 +36,21 @@ public class CollectionReviewControllerTests {
 	public void testList() throws Exception {
 		
 		log.info(
-				mockMvc.perform(MockMvcRequestBuilders.get("/review/list"))
+				mockMvc.perform(MockMvcRequestBuilders.get("/review/pages/207375/1"))
 				.andReturn()
 				.getModelAndView()
 				.getModelMap());
 			
 	}
 	
-	
 	@Test
 	public void testRegister() throws Exception {
 		
 		String resultPage = mockMvc
 				.perform(MockMvcRequestBuilders.post("/review/register")
-						.param("seq", "207375")
-						.param("userId", "테스트")
-						.param("revComment", "테스트 하는 중")
-						.param("revStar", "3"))
+						.param("seq", String.valueOf(207375))
+						.param("nickName", "아웃사이드히터")
+						.param("revComment", "올해우승은현건"))
 				.andReturn().getModelAndView().getViewName();
 		log.info(resultPage);
 		
@@ -74,8 +73,8 @@ public class CollectionReviewControllerTests {
 		String resultPage = mockMvc
 				.perform(MockMvcRequestBuilders.post("/review/modify")
 						.param("seq", String.valueOf(207375))
-						.param("revSeq", String.valueOf(129))
-						.param("revComment", "수정테스트"))
+						.param("revSeq", String.valueOf(130))
+						.param("revComment", "아포짓스파이커"))
 				.andReturn().getModelAndView().getViewName();
 		log.info(resultPage);
 		
@@ -85,19 +84,27 @@ public class CollectionReviewControllerTests {
 	public void testRemove() throws Exception {
 		
 		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/review/remove")
-						.param("revSeq", "129"))
+						.param("revSeq", "132"))
 				.andReturn().getModelAndView().getViewName();
 		log.info(resultPage);
 		
 	}
 	
+	
 	@Test
-	public void testListPaging() throws Exception{
+	public void testListPaging() throws Exception {
+		
 		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/review/list")
-				.param("pageNume", "1"))
+				.param("seq", "207375")
+				.param("pageNum", "1"))
 				.andReturn().getModelAndView().getModelMap());
 		
 	}
 	
+	
+	
+				
+
+
 
 }

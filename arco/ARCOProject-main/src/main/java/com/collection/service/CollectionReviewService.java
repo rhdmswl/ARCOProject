@@ -7,7 +7,7 @@ import com.collection.domain.Criteria;
 
 public interface CollectionReviewService {
 	
-public int register(CollectionReviewVO review);
+	public int register(CollectionReviewVO review);
 	
 	public CollectionReviewVO get(long revSeq);
 	

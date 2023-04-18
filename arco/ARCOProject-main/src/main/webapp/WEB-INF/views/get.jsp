@@ -158,25 +158,27 @@
                                     <h4 class="mb-30">Leave A Comment</h4>
 
                                     <!-- Comment Form -->
-                                   <form action="/review/new" method="post">
+                                   <form role="form">
                                      	<div class="form-group">
-                                            <input type="text" style="display:none;" name = "seq" value="<c:out value="${collection.seq}"/>">
+                                            <input type="text" style="display:none;" id = "seq" name = "seq" value="<c:out value="${collection.seq}"/>">
                                         </div>
                                         <div class="form-group">
                                         	<label>작성자</label>
-                                        	
-                                          <input type="text" class="form-control" id="contact-name" placeholder="nickName" name = "nickName">
-                                        </div>
+                                        	<input class="form-control" type="text" id = 'nickName' name = 'nickName' value='작성자'>
+<!--                                            <input type="text" class="form-control" id="contact-name" placeholder="nickName" name = "userId">
+ -->                                        </div>
                                         <div class="form-group">
                                         	<label>리뷰내용</label>
-                                         <input type="text" class="form-control" id="contact-email" placeholder="별점 넣을 공간" name = "revStar">
-                                      </div>
+                                        	<input class="form-control" type="text" id = 'revComment' name = 'revComment' value='한줄평 작성'>
+<!--                                             <input type="text" class="form-control" id="contact-email" placeholder="별점 넣을 공간" name = "revStar">
+ -->                                        </div>
  
                                         <div class="form-group">  
                                         	<label>별점</label>
-                                          	<input type="text" class="form-control" id="contact-email" placeholder="한줄평자리" name = "revComment">
-                                      </div>
-                                        <button type="submit" id="commentAdd" class="btn contact-btn">Post Comment</button>
+                                        	<input class="form-control" type="text" id = 'revStar' name = 'revStar' value='별점'>    
+<!--                                          	<input type="text" class="form-control" id="contact-email" placeholder="한줄평자리" name = "revComment">
+ -->                                        </div>
+                                        <button id='commentAdd' type="submit" class="btn contact-btn">Post Comment</button>
                                     </form>
                                 </div>
                             </div>
@@ -250,63 +252,48 @@
     <!-- Active JS -->
     <script src="../resources/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 	<script src="../resources/js/jquery/jquery-2.2.4.min.js"></script>
-		 <script type="text/javascript" src="../resources/js/review.js"></script>
-	<script>	
-        
-	$(document).ready(function() {
-		
+		<script type="text/javascript" src="../resources/js/review.js"></script>
+		<script>
+
+       	$(document).ready(function() {
+       		
             		 var seqValue = '<c:out value="${collection.seq}"/>';
             		 var reviewUL = $(".chat");
             		 
             		 showList(1);
-      
+            		 
             		 function showList(page){
             			 console.log("show list " + page);
-            		    
-            			 CollectionReviewService.getList({seq:seqValue,page: page|| 1 },function(list){
-            					
+            			 console.log("show list seq :  " + seqValue);
+            			 CollectionReviewService.getList({seq:seqValue,page: page|| 1 },
+            				function(list){
             				   var str="";
             				   if(list==null || list.length ==0) {
             					   reviewUL.html("");
-            				         return;
             				   } 
             				   
             				   for(var i=0, len = list.length || 0; i < len; i++){
-            					 
             					   str +="<li class='left clearfix' data-rno='"+list[i].revSeq+"'>";
             					   str +="  <div><div class='header'><strong class='primary-font'>"+list[i].nickName+"</strong>"; 
             					   str+= "   <small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";
             			           str +="    <p>"+list[i].revComment+"</p></div></li>";
             				   } 
-            				   
+            				   console.log("test : " + str);
             				   reviewUL.html(str);
             			   
             			 }); 
-            		 } //end showList
-			
-            		 
-            		 var registerComment = $("#commentAdd");
-            		 var nickName = input[name='nickName']; 
-            		 var revStar = input[name='revStar'];
-            		 var revComment = input[name='revComment'];
-            		 
-            		 console.log(nickName);
-            		 console.log(revComment);
-            		 
-            		 
-            		 registerComment.on("click",function(e){
-            			 var review = {
-            					 "seq" : seqValue.val(),
-            					 "nickName" : nickName.val(), 
-            					 "revStar" : revStar.val(), 
-            					 "revComment" : revComment.val()};
-            			 };
-            			 CollectionReviewService.add(review, function(result){
-            				 alert(result);
-            			 });
-
-            	});
-           });
+            		 } 
+            
+                     $("#commentAdd").on("click",function(e){
+                    	 var review = { 
+                    			 seq : seqValue,
+                        		 nickName : $('#nickName').val(), 
+                        		 revStar : $('#revStar').val(), 
+                        		 revComment : $('#revComment').val()
+                        		 };
+                         CollectionReviewService.add(review, function(result){alert(result); showList(1);});
+                     });
+       	});
 										
 		</script>
 

@@ -38,8 +38,8 @@ public class CollectionReviewMapperTests {
 			CollectionReviewVO vo = new CollectionReviewVO();
 			
 			vo.setSeq(207375);
-			vo.setRevComment("한줄평 테스트 "+ i);
-			vo.setNickName("tester"+i);
+			vo.setRevComment("민회님 테스트 "+ i);
+			vo.setNickName("민회님"+i);
 			
 			mapper.insert(vo);
 			

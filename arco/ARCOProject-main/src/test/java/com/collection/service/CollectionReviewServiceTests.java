@@ -33,7 +33,7 @@ public class CollectionReviewServiceTests {
 	public void testRegister() {
 		CollectionReviewVO review = new CollectionReviewVO();
 		review.setSeq(207375);
-		review.setRevComment("테스트");
+		review.setRevComment("아니 이거뭐야 테스트");
 		review.setRevStar(3);
 		
 		service.register(review);

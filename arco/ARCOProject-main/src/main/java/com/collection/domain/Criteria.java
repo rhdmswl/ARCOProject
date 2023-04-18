@@ -12,21 +12,20 @@ public class Criteria {
 	private int pageNum;
 	private int pageNumForLimit;
 	
-	private String type;
-	private String keyword;
-	
 	private long seq;
 	private long revSeq;
+	private int amount;
 	
-	
-	 public Criteria() {
-	        this(1,10);
-	    }
+	public Criteria() {
+		this(1, 10);
+	}
 
 
-	 public Criteria(int pageNum, int pageNumForLimit) {
-			this.pageNum=pageNum;
-			this.pageNumForLimit = pageNumForLimit;
-		}
+	public Criteria(int pageNum, int amount) {
+		this.pageNum = pageNum;
+		this.amount = amount;
+		this.pageNumForLimit = ((pageNum - 1)*10);
+	}
+	
 	
 }
