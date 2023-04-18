@@ -11,35 +11,42 @@
 	
 	
 		<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<!-- <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql://arcodb.cpmuwg7pndtk.ap-northeast-2.rds.amazonaws.com:3306/arcodb"></property>
-		 -->
-		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://arcodb.cpmuwg7pndtk.ap-northeast-2.rds.amazonaws.com:3306/arcodb"></property>
-		<property name="username" value="arco_admin"></property>
-		<property name="password" value="arco1234"></property>
-		<property name="maxLifetime"  value="60000"/>
-	</bean>
-
-	<!-- HikariCP Configuration -->
+		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+			<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+			<property name="jdbcUrl"
+			value="jdbc:mysql://arcodb.cpmuwg7pndtk.ap-northeast-2.rds.amazonaws.com:3306/arcodb"></property>
+			<property name="username" value="arco_admin"></property>
+			<property name="password" value="arco1234"></property>
+			<property name="maxLifetime"  value="60000" />
+		</bean>
+		
+		<!-- HikariCP Configuration -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
-
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
+		
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		 <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+		<property name="mapperLocations" value="classpath:/mappers/**/**/*.xml" />
 	</bean>
 	
 	<mybatis-spring:scan
 		base-package="com.arco.mapper" />
 
-	<context:component-scan
-		base-package="com.arco.service"></context:component-scan>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+	</bean>  
 
+	<!-- 파일 업로드 처리를 위한 빈 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <property name="maxUploadSize" value="10485760" /> <!-- 10MB -->
+	    <property name="defaultEncoding" value="utf-8" />
+	</bean>
 	
-	<context:component-scan base-package="com.collection.sample"></context:component-scan>	
+	<context:component-scan base-package="com"></context:component-scan>
 
 </beans>
