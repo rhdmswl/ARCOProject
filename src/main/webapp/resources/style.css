@@ -380,7 +380,7 @@ li {
     z-index: 8;
 }
 
-.search-hidden-form {
+/* .search-hidden-form {
     position: absolute;
     width: 100%;
     z-index: 4;
@@ -432,7 +432,7 @@ li {
 
 .search-hidden-form span:hover {
     color: #000;
-}
+} */
 
 /* --------------------
 :: 3.0 Menu Area CSS

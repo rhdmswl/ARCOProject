@@ -156,6 +156,13 @@ body {
 											<th><input class="form-control" name='post_title'
 												value="제목을 입력해주세요" onfocus="this.value=''"></th>
 										</tr>
+										
+										<tr>
+											
+											<th>작성자 </th>
+											<th><input class="form-control" name='post_writer'
+												value="${member.userId}" readonly="readonly"></th>
+										</tr>
 
 										<tr>
 											<th colspan='2'><textarea style="resize: none;"
