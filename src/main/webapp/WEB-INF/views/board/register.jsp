@@ -201,4 +201,4 @@ body {
 		
 	</script>
 </body>
-<%@include file="../includes/footer.jsp"%>
+
