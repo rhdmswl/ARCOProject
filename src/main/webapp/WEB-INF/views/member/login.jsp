@@ -1,61 +1,89 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
-<html>
+<%@ page language="java" pageEncoding="UTF-8"
+	contentType="text/html; charset=UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<title>Home</title>
-	<!-- 합쳐지고 최소화된 최신 CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<!-- 부가적인 테마 -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로그인</title>
+<link rel="stylesheet" href="/css/material-dashboard.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/material-dashboard.min.js"></script>
 </head>
-<a href="/board/list">게시판</a><br />
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#logoutBtn").on("click", function(){
-			location.href="logout";
-		})
-		$("#registerBtn").on("click", function(){
-			location.href="register";
-		})
-				
-		$("#mypageBtn").on("click", function(){
-			location.href="mypage";
-		})
-		
-	})
-</script>
-  
+
 <body>
-	<form name='homeForm' method="post" action="/member/login">
-		<c:if test="${member == null}">
-			<div>
-				<label for="userId"></label>
-				<input type="text" id="userId" name="userId">
+	<div class="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+					<form name="homeForm" method="post" action="/member/login">
+						<div class="card card-login">
+							<div class="card-header card-header-primary text-center">
+								<h4 class="card-title">로그인</h4>
+							</div>
+							<div class="card-body">
+								<c:if test="${member == null}">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"> 
+											</span>
+										</div>
+										<input type="text" id="userId" name="userId"
+											class="form-control" placeholder="아이디">
+									</div>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"> 
+											</span>
+										</div>
+										<input type="password" id="userPass" name="userPass"
+											class="form-control" placeholder="비밀번호">
+									</div>
+									<div class="text-center">
+										<button type="submit" class="btn btn-primary">로그인</button>
+										<button id="registerBtn" type="button"
+											class="btn btn-secondary">회원가입</button>
+									</div>
+								</c:if>
+								<c:if test="${member != null}">
+									<div>
+										<p>${member.userId}님환영 합니다.</p>
+										<button id="mypageBtn" type="button" class="btn btn-primary">마이페이지
+											- 나의 글 보기</button>
+										<button id="logoutBtn" type="button" class="btn btn-secondary">로그아웃</button>
+									</div>
+								</c:if>
+								<c:if test="${msg == false}">
+									<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
+								</c:if>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
-			<div>
-				<label for="userPass"></label>
-				<input type="password" id="userPass" name="userPass">
-			</div>
-			<div>
-				<button type="submit">로그인</button>
-				<button id="registerBtn" type="button">회원가입</button>
-			</div>
-		</c:if>
-		<c:if test="${member != null }">
-			<div>
-				<p>${member.userId}님 환영 합니다.</p>
-				<button id="mypageBtn" type="button">마이페이지 - 나의 글 보기</button>
-				<button id="logoutBtn" type="button">로그아웃</button>
-			</div>
-		</c:if>
-		<c:if test="${msg == false}">
-			<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
-		</c:if>
-	</form>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#logoutBtn").on("click", function() {
+				location.href = "logout";
+			})
+			$("#registerBtn").on("click", function() {
+				location.href = "register";
+			})
+	
+			$("#mypageBtn").on("click", function() {
+				location.href = "mypage";
+			})
+	
+		})
+	</script>
+
 </body>
 </html>

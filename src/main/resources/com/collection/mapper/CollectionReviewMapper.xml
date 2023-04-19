@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.collection.mapper.CollectionReviewMapper">
+
+	<select id="getList"
+		resultType="com.collection.domain.CollectionReviewVO">
+<![CDATA[
+select * from collectionRev where revSeq >0
+]]>
+	</select>
+
+	<insert id="insert">
+		insert into collectionRev(seq, revSeq, userId, nickName, revComment,
+		revCount , revStar)
+		values(#{seq}, nextval('revSeq'), #{userId}, #{nickName}, #{revComment,
+		jdbcType=VARCHAR}, #{revCount}, #{revStar})
+	</insert>
+
+
+	<select id="read"
+		resultType="com.collection.domain.CollectionReviewVO">
+
+		select * from collectionRev where seq = #{seq} or revSeq = #{revSeq}
+
+	</select>
+
+	<delete id="delete">
+
+		delete from collectionRev where revSeq = #{revSeq}
+
+	</delete>
+
+	<update id="update">
+
+		update collectionRev
+		set revComment = #{revComment}
+		where revSeq = #{revSeq}
+
+	</update>
+
+	<sql id="criteria">
+		<choose>
+			<when test="type=='T'.toString()">
+
+				where revSeq=#{revSeq}
+				and revComment like concat('%', #{keyword}, '%')
+			</when>
+			
+			<otherwise>
+				where revSeq=#{revSeq}
+			</otherwise>
+		</choose>
+	</sql>
+
+	<select id="getListWithPaging" resultType="com.collection.domain.CollectionReviewVO">
+
+    select * from(select seq, revSeq, userId, nickName, revComment, revCount, revStar, reviewDate, updateDate from collectionRev)
+     as reviewPaging
+     where seq = #{seq}
+    order by revSeq desc limit #{cri.pageNumForLimit},10
+
+</select>
+
+	<!-- <select id="getListWithPaging"
+			resultType="com.collection.domain.CollectionReviewVO">
+			SELECT *
+			FROM collectionRev
+			where seq=#{seq}
+			
+		</select>
+ -->
+	<select id="getTotalCount" resultType="int">
+		select count(*) from collectionRev
+		<include refid="criteria"></include>
+
+	</select>
+</mapper>
