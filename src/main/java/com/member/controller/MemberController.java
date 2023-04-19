@@ -36,9 +36,8 @@ public class MemberController {
 	@Inject
 	MemberService service;
 
-	@Inject
+	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
-
 
 	@Autowired
 	private DataSource dataSource;
@@ -95,7 +94,7 @@ public class MemberController {
 			model.addAttribute("msg", false);
 		}
 
-		return "member/login";
+		return "redirect:/";
 	}
 
 	// 로그아웃 post

@@ -56,8 +56,4 @@ public class CollectionController {
 		return "collection/list";
 	}
 	
-
-
-	
-	
 }

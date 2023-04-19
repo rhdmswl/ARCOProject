@@ -257,9 +257,6 @@
     <!-- Active JS -->
     <script src="/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
-
-	
-	
 		<script type="text/javascript" src="/js/review.js"></script>
 <script>
 var pageNum = 1;

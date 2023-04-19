@@ -18,20 +18,21 @@ import com.collection.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
-
 @Component
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/spring-security.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml","file:src/main/webapp/WEB-INF/spring/spring-security.xml"})
 // Java Config
 // @ContextConfiguration(classes = {org.zerock.config.RootConfig.class} )
 @Log4j
+
+
 public class CollectionReviewMapperTests {
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
 	
 	@Autowired
-    BCryptPasswordEncoder pwdEncoder;
-	
+	BCryptPasswordEncoder pwdEncoder;
+
 	@Autowired
 	private CollectionReviewMapper mapper;
 	
