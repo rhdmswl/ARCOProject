@@ -2,19 +2,21 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@include file="../includes/header.jsp"%>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
+    
+	<jsp:include page="/WEB-INF/views/includes/header.jsp"/>
+	
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Yummy Blog - Food Blog Template</title>
+    <title>EXHIBITION - Page</title>
 
     <!-- Favicon -->
     <link rel="icon" href="/img/core-img/favicon.ico">
@@ -24,6 +26,19 @@
 
     <!-- Responsive CSS -->
     <link href="/css/responsive/responsive.css" rel="stylesheet">
+    
+<style type="text/css">
+
+body {
+	margin-top: 20px;
+	background: #FFF
+}
+
+.single_blog_area ul li:before {
+	content:none;
+}
+    
+</style>
 
 </head>
 <body>
@@ -117,19 +132,17 @@
                             
 
                             <!-- Related Post Area -->
-                            
 
-                            <!-- Comment Area Start -->
-                            <div class="comment_area section_padding_50 clearfix">
-                                <h4 class="mb-30">2 Comments</h4>
 
-                                <ol>
-                                <ul class = "chat">
-                                
-                               
-                                </ul>
-                                    
-                                      <%--   <div class="pull-rigth">
+							<!-- Comment Area Start -->
+							<div class="comment_area section_padding_50 clearfix">
+								<h4 class="mb-30">2 Comments</h4>
+
+								<ol>
+									<ul class="chat">
+
+									</ul>
+									<%--   <div class="pull-rigth">
                                         <ul class="pagination">
                                         <c:if test="${pageMaker.prev }">
                                         <li class="paginate_button privious"><a href="#">previous</a></li></c:if>
@@ -139,7 +152,7 @@
                                         <li class="paginate_button next"><a href="${pageMaker.endPage +1 }">Next</a></li></c:if>
                                         </ul>
                                         </div> --%>
-                                        <!-- end Pagination -->
+                <!-- end Pagination -->
                                         
                                         
                                     
@@ -150,13 +163,10 @@
                             <form id='actionForm' action="/review/list" method='get'>
 								<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 								<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
-							</form>
-							
-							
-		
-		
 
-                            <!-- Leave A Comment -->
+							</form>
+
+							<!-- Leave A Comment -->
                             <div class="leave-comment-area section_padding_50 clearfix">
                                 <div class="comment-form">
                                     <h4 class="mb-30">Leave A Comment</h4>
@@ -216,23 +226,6 @@
     </div>
     <!-- ****** Footer Social Icon Area End ****** -->
 
-    <!-- ****** Footer Menu Area Start ****** -->
-    <footer class="footer_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="footer-content">
-                        <!-- Logo Area Start -->
-                        <div class="footer-logo-area text-center">
-                            <a href="index.html" class="yummy-logo">Yummy Blog</a>
-                        </div>
-                        <!-- Menu Area Start -->
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -243,7 +236,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+
     <!-- ****** Footer Menu Area End ****** -->
 
     <!-- Jquery-2.2.4 js -->
@@ -257,6 +250,7 @@
     <!-- Active JS -->
     <script src="/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
+
 		<script type="text/javascript" src="/js/review.js"></script>
 <script>
 var pageNum = 1;

@@ -2,18 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@include file="../includes/header.jsp"%>
 
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
+
+<jsp:include page="/WEB-INF/views/includes/header.jsp" />
+
 <meta name="description" content="Anime Template">
 <meta name="keywords" content="Anime, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Anime | Template</title>
+
+<title>EXHIBITION</title>
 
 <!-- Google Font -->
 <link
@@ -25,21 +28,37 @@
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="/list/css/bootstrap.min.css"
+
 	type="text/css">
 <link rel="stylesheet" href="/list/css/font-awesome.min.css"
 	type="text/css">
 <link rel="stylesheet" href="/list/css/elegant-icons.css"
 	type="text/css">
-<link rel="stylesheet" href="/list/css/plyr.css"
-	type="text/css">
-<link rel="stylesheet" href="/list/css/nice-select.css"
-	type="text/css">
+<link rel="stylesheet" href="/list/css/plyr.css" type="text/css">
+<link rel="stylesheet" href="/list/css/nice-select.css" type="text/css">
 <link rel="stylesheet" href="/list/css/owl.carousel.min.css"
 	type="text/css">
-<link rel="stylesheet" href="/list/css/slicknav.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/list/css/style.css"
-	type="text/css">
+<link rel="stylesheet" href="/list/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="/list/css/style.css" type="text/css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
+	rel="stylesheet">
+
+<style>
+body {
+	margin-top: 20px;
+	background: #FFF
+}
+
+.product__item__text {
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -105,7 +124,8 @@
 										<div class="product__item__pic set-bg"
 											data-setbg="img/popular/popular-1.jpg">
 											<div>
-												<a href="/collection/get?seq=<c:out value="${collection.seq}"/>">
+												<a
+													href="/collection/get?seq=<c:out value="${collection.seq}"/>">
 													<img src="<c:out value="${collection.imgUrl}" />"
 													width="400" height="400">
 												</a>
@@ -119,9 +139,8 @@
 											</div>
 										</div>
 										<div class="product__item__text">
-											<h5>
-												<a href="#"><c:out value="${collection.title}" /></a>
-											</h5>
+											<a style="color: black; font-weight: 700;" href="#"><c:out
+													value="${collection.title}" /></a>
 										</div>
 									</div>
 								</div>
@@ -132,9 +151,10 @@
 								href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#"><i
 								class="fa fa-angle-double-right"></i></a>
 						</div>
-
 					</div>
 				</div>
+			</div>
+		</div>
 	</section>
 
 	<!-- ****** Our Creative Portfolio Area End ****** -->
@@ -150,49 +170,35 @@
 	<!-- ****** Footer Social Icon Area End ****** -->
 
 	<!-- ****** Footer Menu Area Start ****** -->
-	<footer class="footer_area">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="footer-content">
-						<!-- Logo Area Start -->
-						<div class="footer-logo-area text-center">
-							<a href="index.html" class="yummy-logo">Yummy Blog</a>
-						</div>
-						<!-- Menu Area Start -->
 
-					</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<!-- Copywrite Text -->
+				<div class="copy_right_text text-center">
+					<p>
+						Copyright @2018 All rights reserved | This template is made with <i
+							class="fa fa-heart-o" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+					</p>
 				</div>
 			</div>
 		</div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<!-- Copywrite Text -->
-					<div class="copy_right_text text-center">
-						<p>
-							Copyright @2018 All rights reserved | This template is made with
-							<i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank">Colorlib</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+	</div>
 	<!-- ****** Footer Menu Area End ****** -->
 
 	<!-- Jquery-2.2.4 js -->
-	<script src="/list/js/jquery/jquery-2.2.4.min.js"></script>
+
+	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->
-	<script src="/list/js/bootstrap/popper.min.js"></script>
+	<script src="/js/bootstrap/popper.min.js"></script>
 	<!-- Bootstrap-4 js -->
-	<script src="/list/js/bootstrap/bootstrap.min.js"></script>
+	<script src="/js/bootstrap/bootstrap.min.js"></script>
 	<!-- All Plugins JS -->
-	<script src="/list/js/others/plugins.js"></script>
+	<script src="/js/others/plugins.js"></script>
 	<!-- Active JS -->
-	<script src="/list/js/active.js"></script>
+	<script src="/js/active.js"></script>
+
 	<a id="scrollUp" href="#top"
 		style="position: absolute; z-index: 2147483647; display: block;">
 		<i class="fa fa-arrow-up" aria-hidden="true"></i>

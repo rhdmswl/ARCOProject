@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 
-<%@ include file="../includes/header.jsp" %>
+<jsp:include page="/WEB-INF/views/includes/header.jsp"/>
 
 <title>ARCO - Community Post</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">

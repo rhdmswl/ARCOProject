@@ -27,12 +27,10 @@ import lombok.extern.log4j.Log4j;
 
 
 public class CollectionReviewMapperTests {
+
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
 	
-	@Autowired
-	BCryptPasswordEncoder pwdEncoder;
-
 	@Autowired
 	private CollectionReviewMapper mapper;
 	
