@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.collection.mapper.CollectionMapper">
+	
+	<insert id="insertCollection">
+	
+		<!-- insert into collection (seq, title, startDate, endDate, realmName, gpsX, gpsY, thumbnail)
+		values (#{seq, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR}, #{startDate, jdbcType=VARCHAR}, #{endDate, jdbcType=VARCHAR}, #{realmName, jdbcType=VARCHAR}, 
+		#{gpsX, jdbcType=VARCHAR}, #{gpsY, jdbcType=VARCHAR}, #{thumbnail, jdbcType=VARCHAR}) -->
+		
+		insert into collection (seq, title, startDate, endDate, realmName, gpsX, gpsY, thumbnail, place, price, url, phone, placeAddr, area, imgUrl)
+		values (#{seq, jdbcType=BIGINT}, #{title, jdbcType=VARCHAR}, #{startDate, jdbcType=VARCHAR}, #{endDate, jdbcType=VARCHAR}, #{realmName, jdbcType=VARCHAR}, 
+		#{gpsX, jdbcType=DOUBLE}, #{gpsY, jdbcType=DOUBLE}, #{thumbnail, jdbcType=VARCHAR}, #{place, jdbcType=VARCHAR}, #{price, jdbcType=VARCHAR},
+		#{url, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{placeAddr, jdbcType=VARCHAR}, #{area, jdbcType=VARCHAR}, #{imgUrl, jdbcType=VARCHAR})
+	
+	</insert>
+	
+	<!-- <update id="updateCollectionOthers">
+		
+		update collection
+		set place = #{place, jdbcType=VARCHAR},
+		price = #{price, jdbcType=VARCHAR},
+		url = #{url, jdbcType=VARCHAR},
+		phone = #{phone, jdbcType=VARCHAR},
+		placeAddr = #{placeAddr, jdbcType=VARCHAR},
+		area =  #{area, jdbcType=VARCHAR}
+		where seq = #{seq}
+		
+		
+	</update> -->
+	
+<!-- 	<select id="getCollectionImgTitle">
+	
+		select imgUrl from collection
+		order by desc endDate 
+		limit 5
+	
+	</select> -->
+	
+	<select id="getCollectionList" resultType="com.collection.domain.CollectionVO">
+		select*from collection
+		order by endDate desc  
+	</select>
+	<select id="getCollection" resultType="com.collection.domain.CollectionVO">
+		select * from collection where seq = #{seq}
+	</select>
+	
+
+</mapper>
