@@ -2,8 +2,6 @@ package com.arco.service;
 
 import java.util.List;
 
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import com.arco.domain.BoardVO;
 import com.arco.domain.Criteria;
      
