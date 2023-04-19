@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
@@ -19,8 +21,10 @@
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
+    
 
 <style>
+
 
 /* ***** Fonts ***** */
 @import
@@ -474,7 +478,9 @@ rotate
 
 <body>
 
+
     <!-- ****** Top Header Area Start ****** -->
+    
     <div class="top_header_area">
         <div class="container">
             <div class="row">
@@ -485,7 +491,11 @@ rotate
                             <div>
                                 <a class="login" href="member/login">Login</a>
                                 <a class="register" href="member/register">Sign up</a>
+                                
+                 
                             </div>
+                            
+                            
 							<!-- <div class="register">
 							</div> -->
                         </div>
@@ -507,6 +517,7 @@ rotate
                     </div>
                 </div>
             </div>
+            
 
             <div class="row">
                 <div class="col-12">
