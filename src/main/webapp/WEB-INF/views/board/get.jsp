@@ -430,10 +430,13 @@ button {
 						</div>
 						
 						<div class="frame">
+							<c:if test="${member.userId==board.post_writer}"> 
 							<button class="custom-btn btn-11" data-oper='modify'>수정</button>
+							</c:if>
 							<button class="custom-btn btn-11" data-oper='list'>목록</button>
+							<c:if test="${member.userId==board.post_writer}">
 							<button class="custom-btn btn-11" data-oper='remove'>삭제</button>
-							
+							</c:if> 
 							<form id='operForm_modi' action="/board/modify" method="get">
 								<input type='hidden' id='post_id' name='post_id' value='<c:out value="${board.post_id}"/>'>
 								<input type='hidden' id='post_id' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
