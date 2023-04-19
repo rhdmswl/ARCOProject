@@ -565,7 +565,7 @@ rotate
                                         <a class="dropdown-item" href="contact.html">Contact</a>
                                     </div>
                                 </li> -->
-
+                                
 								<li class="nav-item"><a class="nav-link"
 									href="/collection/list">Exhibition</a></li>
 								<li class="nav-item"><a class="nav-link"
@@ -581,4 +581,3 @@ rotate
 			</div>
 		</div>
 	</header>
-

@@ -306,11 +306,13 @@ body {
 								<td style="padding: 0px;">
 									<div class="card m-t-5">
 										<div class="body">
+										<c:if test="${member.userId!=null}"> 
 											<ul style="float: right;" class="regBtn">
-												<li class="page-item"><a class="page-link"
+												<li class="page-item"><a class="page-link regmov"
 													style="width: 120px; text-align: center; border: 1px solid #ccc; border-radius: 20px;"
-													href='/board/register'>글 등록</a></li>
+													href="">글 등록</a></li>
 											</ul>
+										</c:if>
 										</div>
 									</div>
 								</td>
@@ -351,7 +353,6 @@ body {
 	<script type="text/javascript">
 	 	$(document).ready(
 				function() {
-
 					var result = '<c:out value="${result}"/>';
 
 					checkModal(result);
@@ -394,6 +395,14 @@ body {
 					    actionForm.append("<input type='hidden' name='post_id' value='"+
 					            $(this).attr("href")+"'>");
 					    actionForm.attr("action", "/board/get");
+					    actionForm.submit();
+					});
+					
+					$(".regmov").on("click", function(e){
+					    e.preventDefault();
+					    actionForm.append("<input type='hidden' name='brd_id' value='"+
+					            $(this).attr("href")+"'>");
+					    actionForm.attr("action", "/board/register");
 					    actionForm.submit();
 					});
 					

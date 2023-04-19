@@ -149,7 +149,7 @@ body {
 									<thead>
 										<tr>
 											<th style="border-right: hidden;" width='40'>
-											<select class="chk" id="category" onchange="changeSelect()">
+											<select class="chk" name='brd_id' id="category">
 													<option value="1">TALK</option>
 													<option value="2">MATE</option>
 													<option value="3">WEEKLY</option>
@@ -175,7 +175,7 @@ body {
 													<div class="body">
 														<ul class="pagination pagination-primary m-b-0">
 															<li class="page-item">
-															<a class="page-link" href="/board/list">목록으로</a>
+															<a class="page-link" href="/board/list?brd_id=${cri.brd_id}">목록으로</a>
 															</li>
 														</ul>
 													</div>
@@ -214,9 +214,9 @@ body {
  			$(document).ready(function(){
  			
 			var formObj = $("form");
-			var brd_id = "${cri.brd_id}";
+			var brd_id = "${param.brd_id}";
 			var pageNum = "${cri.pageNum}";
- 			
+			console.log("${param.brd_id}");
  			$('#registerBtn').on("click", function(){
  				
  				formObj.attr("action", "/board/list");
@@ -228,20 +228,13 @@ body {
  			});
  			var actionForm = $("#actionForm");
  			
- 			function changeSelect(){ 
- 				
- 				var selectList = document.getElementById("category")
- 				
- 				if(selectList.options[selectList.selectedIndex].value == "1"){
- 					location.href = "/board/list?pageNum=1&brd_id=1";
- 				}
- 				if(selectList.options[selectList.selectedIndex].value == "2"){
- 					location.href = "/board/list?pageNum=1&brd_id=2";
- 				}
- 				if(selectList.options[selectList.selectedIndex].value == "3"){
- 					location.href = "/board/list?pageNum=1&brd_id=3";
- 				}
- 			}
+ 			$('#category').val(brd_id);
+ 			
+ 			$("#category").change(function(){ //카테고리 수정 시 brd_id로 값 넘김--04.19 minhoe
+ 				brd_id = $("#category").val();
+ 				console.log(brd_id);
+ 			});
+ 			
  		});
  	</script>
 </body>

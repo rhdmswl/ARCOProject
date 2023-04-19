@@ -1,7 +1,5 @@
 package com.collection.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,18 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.collection.domain.CollectionReviewPageDTO;
 import com.collection.domain.CollectionReviewVO;
 import com.collection.domain.Criteria;
-import com.collection.domain.PageDTO;
 import com.collection.service.CollectionReviewService;
 
 import lombok.extern.log4j.Log4j;
@@ -47,13 +43,13 @@ public class CollectionReviewController {
 
 	@GetMapping(value = "/pages/{seq}/{pageNum}", produces = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<List<CollectionReviewVO>> getList(@PathVariable("pageNum") int pageNum,
-			@PathVariable("seq") long seq, Model model) {
+	public ResponseEntity<CollectionReviewPageDTO> getList(@PathVariable("pageNum") int pageNum,
+			@PathVariable("seq") long seq) {
 		log.info("getList.............");
 		Criteria cri = new Criteria(pageNum, 10);
+		log.info(seq);
 		log.info(cri);
-		model.addAttribute("comment", service.getList(cri, seq));
-		return new ResponseEntity<>(service.getList(cri, seq), HttpStatus.OK);
+		return new ResponseEntity<>(service.getListPage(cri, seq), HttpStatus.OK);
 
 	}
 

@@ -17,15 +17,14 @@
 <!-- Title -->
 <title>Yummy Blog - Food Blog Template</title>
 
-<!-- Favicon -->
-<link rel="icon" href="../resources/img/core-img/favicon.ico">
+    <!-- Favicon -->
+    <link rel="icon" href="/img/core-img/favicon.ico">
 
-<!-- Core Stylesheet -->
-<link href="../resources/style.css" rel="stylesheet">
+    <!-- Core Stylesheet -->
+    <link href="/style.css" rel="stylesheet">
 
-<!-- Responsive CSS -->
-<link href="../resources/css/responsive/responsive.css" rel="stylesheet">
-
+    <!-- Responsive CSS -->
+    <link href="/css/responsive/responsive.css" rel="stylesheet">
 
 </head>
 
@@ -257,1484 +256,1064 @@
 	                                            <div class="post-date">
 	                                                ~ <c:out value="${collection.endDate}"/>
 	                                            </div> --%>
-											</div>
-											<!-- Post Comment & Share Area -->
-											<div class="post-comment-share-area d-flex">
-												<!-- Post Favourite -->
-												<div class="post-favourite">
-													<a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>
-														10</a>
-												</div>
-												<!-- Post Comments -->
-												<div class="post-comments">
-													<a href="#"><i class="fa fa-comment-o"
-														aria-hidden="true"></i> 12</a>
-												</div>
-												<!-- Post Share -->
-												<div class="post-share">
-													<a href="#"><i class="fa fa-share-alt"
-														aria-hidden="true"></i></a>
-												</div>
-											</div>
-										</div>
-										<div>
-											<img src="<c:out value="${collection.imgUrl}"/>" width="150"
-												height="200" alt="">
-										</div>
-									</div>
 
-								</div>
-							</div>
-						</c:forEach>
+	                                        </div>
+	                                        <!-- Post Comment & Share Area -->
+	                                        <div class="post-comment-share-area d-flex">
+	                                            <!-- Post Favourite -->
+	                                            <div class="post-favourite">
+	                                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 10</a>
+	                                            </div>
+	                                            <!-- Post Comments -->
+	                                            <div class="post-comments">
+	                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 12</a>
+	                                            </div>
+	                                            <!-- Post Share -->
+	                                            <div class="post-share">
+	                                                <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                   	<div>
+	                                   		<img src="<c:out value="${collection.imgUrl}"/>" width="150" height="200" alt="">
+	                                   	</div>
+	                                </div>
+                                
+                            </div>
+                        </div>
+					</c:forEach>
+                        
 
+                <!-- ****** Blog Sidebar ****** -->
+                
+            </div>
+        </div>
+    </section>
+    <!-- ****** Blog Area End ****** -->
 
-						<!-- ****** Blog Sidebar ****** -->
+    <!-- ****** Instagram Area Start ****** -->
+    <div class="instargram_area owl-carousel section_padding_100_0 clearfix owl-loaded owl-drag" id="portfolio">
 
-					</div>
-				</div>
-	</section>
-	<!-- ****** Blog Area End ****** -->
+        <!-- Instagram Item -->
+        
 
-	<!-- ****** Instagram Area Start ****** -->
-	<div
-		class="instargram_area owl-carousel section_padding_100_0 clearfix owl-loaded owl-drag"
-		id="portfolio">
+        <!-- Instagram Item -->
+        
 
-		<!-- Instagram Item -->
+        <!-- Instagram Item -->
+        
 
+        <!-- Instagram Item -->
+        
 
-		<!-- Instagram Item -->
+        <!-- Instagram Item -->
+        
 
+        <!-- Instagram Item -->
+        
 
-		<!-- Instagram Item -->
+        <!-- Instagram Item -->
+        
 
+        <!-- Instagram Item -->
+        
 
-		<!-- Instagram Item -->
+    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1339px, 0px, 0px); transition: all 0s ease 0s; width: 2902px;"><div class="owl-item cloned" style="width: 223.2px;"><div class="owl-nav"><div class="owl-prev"></div><div class="owl-next"></div></div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="owl-dots"><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div></div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1562px, 0px, 0px); transition: all 0.8s ease 0s; width: 4018px;"><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/6.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/3.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/6.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/3.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div></div></div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="owl-nav"><div class="owl-prev"></div><div class="owl-next"></div></div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="owl-dots"><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div></div></div><div class="owl-item" style="width: 223.2px;"><div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1562px, 0px, 0px); transition: all 0.8s ease 0s; width: 4018px;"><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/6.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/3.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/6.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/3.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div></div></div></div><div class="owl-item active" style="width: 223.2px;"><div class="owl-nav"><div class="owl-prev"></div><div class="owl-next"></div></div></div><div class="owl-item active" style="width: 223.2px;"><div class="owl-dots"><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div></div></div><div class="owl-item cloned active" style="width: 223.2px;"><div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1562px, 0px, 0px); transition: all 0.8s ease 0s; width: 4018px;"><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/6.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/3.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/6.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/3.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div></div></div></div><div class="owl-item cloned active" style="width: 223.2px;"><div class="owl-nav"><div class="owl-prev"></div><div class="owl-next"></div></div></div><div class="owl-item cloned active" style="width: 223.2px;"><div class="owl-dots"><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div></div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1562px, 0px, 0px); transition: all 0.8s ease 0s; width: 4018px;"><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/6.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/3.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/6.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item active" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/1.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/2.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/3.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/4.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="instagram_gallery_item">
+            <!-- Instagram Thumb -->
+            <img src="img/instagram-img/5.jpg" alt="">
+            <!-- Hover -->
+            <div class="hover_overlay">
+                <div class="yummy-table">
+                    <div class="yummy-table-cell">
+                        <div class="follow-me text-center">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Follow me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div></div></div></div><div class="owl-item cloned" style="width: 223.2px;"><div class="owl-nav"><div class="owl-prev"></div><div class="owl-next"></div></div></div></div></div><div class="owl-nav disabled"><div class="owl-prev"></div><div class="owl-next"></div></div><div class="owl-dots disabled"><div class="owl-dot active"><span></span></div></div></div>
+    <!-- ****** Our Creative Portfolio Area End ****** -->
 
+    <!-- ****** Footer Social Icon Area Start ****** -->
+    <div class="social_icon_area clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ****** Footer Social Icon Area End ****** -->
 
-		<!-- Instagram Item -->
+    <!-- ****** Footer Menu Area Start ****** -->
+    <footer class="footer_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-content">
+                        <!-- Logo Area Start -->
+                        <div class="footer-logo-area text-center">
+                            <a href="index.html" class="yummy-logo">Yummy Blog</a>
+                        </div>
+                        <!-- Menu Area Start -->
+                        <nav class="navbar navbar-expand-lg">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#yummyfood-footer-nav" aria-controls="yummyfood-footer-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
+                            <!-- Menu Area Start -->
+                            
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Copywrite Text -->
+                    <div class="copy_right_text text-center">
+                        <p>Copyright @2018 All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-		<!-- Instagram Item -->
+    <!-- ****** Footer Menu Area End ****** -->
 
-
-		<!-- Instagram Item -->
-
-
-		<!-- Instagram Item -->
-
-
-		<div class="owl-stage-outer">
-			<div class="owl-stage"
-				style="transform: translate3d(-1339px, 0px, 0px); transition: all 0s ease 0s; width: 2902px;">
-				<div class="owl-item cloned" style="width: 223.2px;">
-					<div class="owl-nav">
-						<div class="owl-prev"></div>
-						<div class="owl-next"></div>
-					</div>
-				</div>
-				<div class="owl-item cloned" style="width: 223.2px;">
-					<div class="owl-dots">
-						<div class="owl-dot active">
-							<span></span>
-						</div>
-						<div class="owl-dot">
-							<span></span>
-						</div>
-					</div>
-				</div>
-				<div class="owl-item cloned" style="width: 223.2px;">
-					<div class="owl-stage-outer">
-						<div class="owl-stage"
-							style="transform: translate3d(-1562px, 0px, 0px); transition: all 0.8s ease 0s; width: 4018px;">
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/6.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/3.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/6.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/3.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="owl-item cloned" style="width: 223.2px;">
-					<div class="owl-nav">
-						<div class="owl-prev"></div>
-						<div class="owl-next"></div>
-					</div>
-				</div>
-				<div class="owl-item cloned" style="width: 223.2px;">
-					<div class="owl-dots">
-						<div class="owl-dot active">
-							<span></span>
-						</div>
-						<div class="owl-dot">
-							<span></span>
-						</div>
-					</div>
-				</div>
-				<div class="owl-item" style="width: 223.2px;">
-					<div class="owl-stage-outer">
-						<div class="owl-stage"
-							style="transform: translate3d(-1562px, 0px, 0px); transition: all 0.8s ease 0s; width: 4018px;">
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/6.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/3.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/6.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/3.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="owl-item active" style="width: 223.2px;">
-					<div class="owl-nav">
-						<div class="owl-prev"></div>
-						<div class="owl-next"></div>
-					</div>
-				</div>
-				<div class="owl-item active" style="width: 223.2px;">
-					<div class="owl-dots">
-						<div class="owl-dot active">
-							<span></span>
-						</div>
-						<div class="owl-dot">
-							<span></span>
-						</div>
-					</div>
-				</div>
-				<div class="owl-item cloned active" style="width: 223.2px;">
-					<div class="owl-stage-outer">
-						<div class="owl-stage"
-							style="transform: translate3d(-1562px, 0px, 0px); transition: all 0.8s ease 0s; width: 4018px;">
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/6.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/3.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/6.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/3.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="owl-item cloned active" style="width: 223.2px;">
-					<div class="owl-nav">
-						<div class="owl-prev"></div>
-						<div class="owl-next"></div>
-					</div>
-				</div>
-				<div class="owl-item cloned active" style="width: 223.2px;">
-					<div class="owl-dots">
-						<div class="owl-dot active">
-							<span></span>
-						</div>
-						<div class="owl-dot">
-							<span></span>
-						</div>
-					</div>
-				</div>
-				<div class="owl-item cloned" style="width: 223.2px;">
-					<div class="owl-stage-outer">
-						<div class="owl-stage"
-							style="transform: translate3d(-1562px, 0px, 0px); transition: all 0.8s ease 0s; width: 4018px;">
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/6.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/3.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/6.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/1.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/2.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/3.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/4.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 223.2px;">
-								<div class="instagram_gallery_item">
-									<!-- Instagram Thumb -->
-									<img src="img/instagram-img/5.jpg" alt="">
-									<!-- Hover -->
-									<div class="hover_overlay">
-										<div class="yummy-table">
-											<div class="yummy-table-cell">
-												<div class="follow-me text-center">
-													<a href="#"><i class="fa fa-instagram"
-														aria-hidden="true"></i> Follow me</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="owl-item cloned" style="width: 223.2px;">
-					<div class="owl-nav">
-						<div class="owl-prev"></div>
-						<div class="owl-next"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="owl-nav disabled">
-			<div class="owl-prev"></div>
-			<div class="owl-next"></div>
-		</div>
-		<div class="owl-dots disabled">
-			<div class="owl-dot active">
-				<span></span>
-			</div>
-		</div>
-	</div>
-	<!-- ****** Our Creative Portfolio Area End ****** -->
-
-	<!-- ****** Footer Social Icon Area Start ****** -->
-	<div class="social_icon_area clearfix">
-		<div class="container">
-			<div class="row">
-				<div class="col-12"></div>
-			</div>
-		</div>
-	</div>
-	<!-- ****** Footer Social Icon Area End ****** -->
-
-	<!-- ****** Footer Menu Area Start ****** -->
-	<footer class="footer_area">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="footer-content">
-						<!-- Logo Area Start -->
-						<div class="footer-logo-area text-center">
-							<a href="index.html" class="yummy-logo">Yummy Blog</a>
-						</div>
-						<!-- Menu Area Start -->
-						<nav class="navbar navbar-expand-lg">
-							<button class="navbar-toggler" type="button"
-								data-toggle="collapse" data-target="#yummyfood-footer-nav"
-								aria-controls="yummyfood-footer-nav" aria-expanded="false"
-								aria-label="Toggle navigation">
-								<i class="fa fa-bars" aria-hidden="true"></i> Menu
-							</button>
-							<!-- Menu Area Start -->
-
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<!-- Copywrite Text -->
-					<div class="copy_right_text text-center">
-						<p>
-							Copyright @2018 All rights reserved | This template is made with
-							<i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank">Colorlib</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-	<!-- ****** Footer Menu Area End ****** -->
-
-	<!-- Jquery-2.2.4 js -->
-	<script src="../resources/js/jquery/jquery-2.2.4.min.js"></script>
-	<!-- Popper js -->
-	<script src="../resources/js/bootstrap/popper.min.js"></script>
-	<!-- Bootstrap-4 js -->
-	<script src="../resources/js/bootstrap/bootstrap.min.js"></script>
-	<!-- All Plugins JS -->
-	<script src="../resources/js/others/plugins.js"></script>
-	<!-- Active JS -->
-	<script src="../resources/js/active.js"></script>
-	<a id="scrollUp" href="#top"
-		style="position: absolute; z-index: 2147483647; display: none;"><i
-		class="fa fa-arrow-up" aria-hidden="true"></i></a>
-	<a id="scrollUp" href="#top"
-		style="position: absolute; z-index: 2147483647;"><i
-		class="fa fa-arrow-up" aria-hidden="true"></i></a>
-
-
+    <!-- Jquery-2.2.4 js -->
+    <script src="/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap-4 js -->
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins JS -->
+    <script src="/js/others/plugins.js"></script>
+    <!-- Active JS -->
+    <script src="/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: none;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 
 
 </body>
