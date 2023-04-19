@@ -1,12 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +12,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/material-dashboard.min.js"></script>
 </head>
-
 <body>
 	<div class="wrapper">
 		<div class="container">
@@ -24,13 +20,13 @@
 					<form name="homeForm" method="post" action="/member/login">
 						<div class="card card-login">
 							<div class="card-header card-header-primary text-center">
-								<h4 class="card-title">로그인</h4>
+								<h4 class=“card-title”>로그인</h4>
 							</div>
 							<div class="card-body">
 								<c:if test="${member == null}">
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text"> 
+											<span class="input-group-text">
 											</span>
 										</div>
 										<input type="text" id="userId" name="userId"
@@ -38,7 +34,7 @@
 									</div>
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text"> 
+											<span class="input-group-text">
 											</span>
 										</div>
 										<input type="password" id="userPass" name="userPass"
@@ -58,6 +54,11 @@
 										<button id="logoutBtn" type="button" class="btn btn-secondary">로그아웃</button>
 									</div>
 								</c:if>
+								
+								<c:if test="${member.role == 'ROLE_ADMIN'}">
+									<button id="adminBtn" type="button">관리자페이지</button>
+								</c:if>
+								
 								<c:if test="${msg == false}">
 									<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
 								</c:if>
@@ -71,19 +72,22 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#logoutBtn").on("click", function() {
-				location.href = "logout";
+			$(“#logoutBtn”).on(“click”, function() {
+				location.href = “logout”;
 			})
-			$("#registerBtn").on("click", function() {
-				location.href = "register";
+			$(“#registerBtn”).on(“click”, function() {
+				location.href = “register”;
 			})
 	
-			$("#mypageBtn").on("click", function() {
-				location.href = "mypage";
+			$(“#mypageBtn”).on(“click”, function() {
+				location.href = “mypage”;
+			})
+			
+			$(“#adminBtn”).on(“click”, function(){
+				location.href=“/admin/index”;
 			})
 	
 		})
 	</script>
-
 </body>
 </html>
