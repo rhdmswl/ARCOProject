@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.arco.domain.BoardVO;
 import com.arco.domain.Criteria;
-
+     
 public interface BoardService {
 	
 	public void register(BoardVO board);
