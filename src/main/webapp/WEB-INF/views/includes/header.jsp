@@ -443,10 +443,10 @@ li {
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                         <div class="login_register_area d-flex">
                             <div class="login">
-                                <a href="member/login">Login</a>
+                                <a href="#">Login</a>
                             </div>
                             <div class="register">
-                                <a href="member/register">Sign up</a>
+                                <a href="#">Sign up</a>
                             </div>
                         </div>
 <!--                         Search Button Area
@@ -504,7 +504,7 @@ li {
                                     <a class="nav-link" href="#">Exhibition</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/board/list?pageNum=1&brd_id=1">Community</a>
+                                    <a class="nav-link" href="/board/list">Community</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="archive.html">Archive</a>
