@@ -39,6 +39,7 @@ public class MemberController {
 	@Inject
 	BCryptPasswordEncoder pwdEncoder;
 
+
 	@Autowired
 	private DataSource dataSource;
 

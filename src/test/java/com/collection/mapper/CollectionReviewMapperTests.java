@@ -3,6 +3,8 @@ package com.collection.mapper;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import javax.inject.Inject;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ import lombok.extern.log4j.Log4j;
 // @ContextConfiguration(classes = {org.zerock.config.RootConfig.class} )
 @Log4j
 public class CollectionReviewMapperTests {
+	@Autowired
+	BCryptPasswordEncoder pwdEncoder;
 	
 	@Autowired
     BCryptPasswordEncoder pwdEncoder;
@@ -165,5 +169,11 @@ public class CollectionReviewMapperTests {
 //	}
 //	
 
+	@Test
+	public void testList2() {
+		Criteria cri = new Criteria(1,10);
+		List<CollectionReviewVO> reviews = mapper.getListWithPaging(cri, 207375L);
+		reviews.forEach(review -> log.info(review));
+	}
 
 }
