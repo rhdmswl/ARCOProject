@@ -13,6 +13,7 @@ public class MemberVO {
 	private String email;
 	private String newPass;
 	private String confirmPass;
+	private String role;
 	// private String profileImg;
 
 	private List<CollectionReviewVO> collectionRevs;

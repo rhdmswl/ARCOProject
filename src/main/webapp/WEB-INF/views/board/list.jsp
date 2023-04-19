@@ -308,11 +308,13 @@ body {
 								<td style="padding: 0px;">
 									<div class="card m-t-5">
 										<div class="body">
+										<c:if test="${member.userId!=null}"> 
 											<ul style="float: right;" class="regBtn">
 												<li class="page-item"><a class="page-link regmov"
 													style="width: 120px; text-align: center; border: 1px solid #ccc; border-radius: 20px;"
 													href="">글 등록</a></li>
 											</ul>
+										</c:if>
 										</div>
 									</div>
 								</td>

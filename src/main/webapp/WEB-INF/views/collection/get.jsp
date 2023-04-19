@@ -152,14 +152,18 @@ body {
                                         <li class="paginate_button next"><a href="${pageMaker.endPage +1 }">Next</a></li></c:if>
                                         </ul>
                                         </div> --%>
-									<!-- end Pagination -->
-								</ol>
-							</div>
-							<div class="panel-footer"></div>
-							<form id='actionForm' action="/review/list" method='get'>
-								<input type='hidden' name='pageNum'
-									value='${pageMaker.cri.pageNum}'> <input type='hidden'
-									name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
+                <!-- end Pagination -->
+                                        
+                                        
+                                    
+                                </ol>
+                            </div>
+                            <div class = "panel-footer">
+                            </div>
+                            <form id='actionForm' action="/review/list" method='get'>
+								<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+								<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
+
 							</form>
 
 							<!-- Leave A Comment -->
@@ -247,8 +251,6 @@ body {
     <script src="/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
 
-	
-	
 		<script type="text/javascript" src="/js/review.js"></script>
 <script>
 var pageNum = 1;

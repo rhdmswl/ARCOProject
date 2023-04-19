@@ -14,6 +14,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
+
 <jsp:include page="/WEB-INF/views/includes/header.jsp"/>
 
 <!-- Title -->
@@ -98,11 +99,10 @@ body {
 }
 </style>
 
-
-
 </head>
 
 <body>
+
 
 	<!-- ****** Welcome Post Area Start ****** -->
 	<section class="welcome-post-sliders owl-carousel owl-loaded owl-drag">
@@ -130,6 +130,7 @@ body {
 	<section class="categories_area clearfix" id="about">
 		<div class="comuContainer">
 			<div class="comu">
+
 				<ul class="list-unstyled active"
 					style="list-style-type: none; text-align: center;">
 					<li class="sidelist"><a class="nav-link"
@@ -162,7 +163,6 @@ body {
 							<div class="col-12 col-md-6">
 								<div class="single-post wow fadeInUp" data-wow-delay=".4s"
 									style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-									<!-- Post Thumb -->
 									<!-- Post Content -->
 									<div class="post-content">
 										<div class="post-meta d-flex">
@@ -202,6 +202,7 @@ body {
 												<%-- <div class="post-author">
                                                 <p><a href="#"><c:out value="${collection.title}"/></a></p>
                                             </div> --%>
+
 												<%-- <!-- Post Date -->
 	                                            <div class="post-date">
 	                                                ~ <c:out value="${collection.endDate}"/>
@@ -251,7 +252,6 @@ body {
 	<a id="scrollUp" href="#top"
 		style="position: absolute; z-index: 2147483647; background-color:#f21378"><i
 		class="fa fa-arrow-up" aria-hidden="true"></i></a>
-
 
 </body>
 

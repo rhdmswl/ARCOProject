@@ -28,6 +28,7 @@
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="/list/css/bootstrap.min.css"
+
 	type="text/css">
 <link rel="stylesheet" href="/list/css/font-awesome.min.css"
 	type="text/css">
@@ -187,6 +188,7 @@ body {
 	<!-- ****** Footer Menu Area End ****** -->
 
 	<!-- Jquery-2.2.4 js -->
+
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->
 	<script src="/js/bootstrap/popper.min.js"></script>
@@ -196,6 +198,7 @@ body {
 	<script src="/js/others/plugins.js"></script>
 	<!-- Active JS -->
 	<script src="/js/active.js"></script>
+
 	<a id="scrollUp" href="#top"
 		style="position: absolute; z-index: 2147483647; display: block;">
 		<i class="fa fa-arrow-up" aria-hidden="true"></i>
