@@ -56,10 +56,7 @@ public class CollectionController {
 		return "collection/list";
 	}
 	
-	@GetMapping("/getTest")
-	public String getTest() {
-		return "get";
-	}
+	
 
 	
 	

@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
 
@@ -8,6 +7,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인</title>
@@ -17,53 +17,41 @@
 </head>
 
 <body>
-	<div class="wrapper">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-					<form name="homeForm" method="post" action="/member/login">
-						<div class="card card-login">
-							<div class="card-header card-header-primary text-center">
-								<h4 class="card-title">로그인</h4>
-							</div>
-							<div class="card-body">
-								<c:if test="${member == null}">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"> 
-											</span>
-										</div>
-										<input type="text" id="userId" name="userId"
-											class="form-control" placeholder="아이디">
-									</div>
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"> 
-											</span>
-										</div>
-										<input type="password" id="userPass" name="userPass"
-											class="form-control" placeholder="비밀번호">
-									</div>
-									<div class="text-center">
-										<button type="submit" class="btn btn-primary">로그인</button>
-										<button id="registerBtn" type="button"
-											class="btn btn-secondary">회원가입</button>
-									</div>
-								</c:if>
-								<c:if test="${member != null}">
-									<div>
-										<p>${member.userId}님환영 합니다.</p>
-										<button id="mypageBtn" type="button" class="btn btn-primary">마이페이지
-											- 나의 글 보기</button>
-										<button id="logoutBtn" type="button" class="btn btn-secondary">로그아웃</button>
-									</div>
-								</c:if>
-								<c:if test="${msg == false}">
-									<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
-								</c:if>
-							</div>
-						</div>
-					</form>
+	<form name='homeForm' method="post" action="/member/login">
+		<c:if test="${member == null}">
+			<div>
+				<label for="userId"></label> <input type="text" id="userId"
+					name="userId">
+			</div>
+			<div>
+				<label for="userPass"></label> <input type="password" id="userPass"
+					name="userPass">
+			</div>
+			<div>
+				<button type="submit">로그인</button>
+				<button id="registerBtn" type="button">회원가입</button>
+			</div>
+		</c:if>
+		<c:if test="${member != null }">
+
+			<div>
+				<p>${member.userId}님환영합니다.</p>
+				<button id="mypageBtn" type="button">마이페이지 - 나의 글 보기</button>
+				<button id="logoutBtn" type="button">로그아웃</button>
+				</div>
+		</c:if>
+		<c:if test="${member.role == 'ROLE_ADMIN'}">
+
+
+			<button id="adminBtn" type="button">관리자페이지</button>
+
+
+		</c:if>
+		
+		<c:if test="${msg == false}">
+			<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
+		</c:if>
+	</form>
 				</div>
 			</div>
 		</div>
@@ -81,9 +69,13 @@
 			$("#mypageBtn").on("click", function() {
 				location.href = "mypage";
 			})
+      $("#adminBtn").on("click", function(){
+			location.href="/admin/index";
+		})
 	
 		})
 	</script>
+
 
 </body>
 </html>
