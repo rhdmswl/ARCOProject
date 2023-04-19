@@ -15,7 +15,7 @@ select * from collectionRev where revSeq >0
 	<insert id="insert">
 		insert into collectionRev(seq, revSeq, userId, nickName, revComment,
 		revCount , revStar)
-		values(#{seq}, nextval('revSeq'), #{userId,}, #{nickName}, #{revComment,
+		values(#{seq}, nextval('revSeq'), #{userId}, #{nickName}, #{revComment,
 		jdbcType=VARCHAR}, #{revCount}, #{revStar})
 	</insert>
 
