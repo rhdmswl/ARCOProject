@@ -47,19 +47,16 @@ public class CollectionController {
 	public String get(@RequestParam("seq") long seq, Model model) {
 		log.info("/get");
 		model.addAttribute("collection", service.get(seq));
-		return "get";
+		return "collection/get";
 	}
 	
 	@GetMapping("/list")
 	public String getList(Model model) {
 		model.addAttribute("list", service.getList());
-		return "list";
+		return "collection/list";
 	}
 	
-	@GetMapping("/getTest")
-	public String getTest() {
-		return "get";
-	}
+	
 
 	
 	
