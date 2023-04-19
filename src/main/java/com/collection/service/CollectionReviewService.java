@@ -2,6 +2,7 @@ package com.collection.service;
 
 import java.util.List;
 
+import com.collection.domain.CollectionReviewPageDTO;
 import com.collection.domain.CollectionReviewVO;
 import com.collection.domain.Criteria;
 
@@ -17,4 +18,5 @@ public interface CollectionReviewService {
 	
 	public List<CollectionReviewVO> getList(Criteria cri, long seq);
 	
+	public CollectionReviewPageDTO getListPage(Criteria cri, long seq);
 }
