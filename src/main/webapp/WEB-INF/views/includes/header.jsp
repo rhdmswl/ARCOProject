@@ -9,21 +9,17 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Title -->
-    <title>ARCO</title>
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
-
-<!--     Core Stylesheet
-    <link href="resources/yummy-master/style.css" rel="stylesheet">
-
-    Responsive CSS
-    <link href="resources/yummy-master/responsive/responsive.css" rel="stylesheet"> -->
     
-    <style>
+<style>
 
 /* ***** Fonts ***** */
 
@@ -343,10 +339,17 @@ li {
     color: #222;
 } 
 
-.top_header_area .signup-search-area .login a {
-    margin-right: 13px;
+.top_header_area .signup-search-area .login {
+    margin-right: 10px;
     border-right: 2px solid #c2c2c2;
-    padding-right: 13px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.top_header_area .signup-search-area .register a {
+    color: #222;
+    border-right: 0;
 }
 
 
@@ -400,27 +403,11 @@ li {
     font-size: 14px;
 }
 
-.navbar.navbar-expand-lg .navbar-nav .nav-link:hover {
-	color: #eb1a6a;
-}
-
+.navbar.navbar-expand-lg .navbar-nav .nav-link:hover,
 .navbar.navbar-expand-lg .navbar-nav .active .nav-link {
-    color: #232d37;
+    color: #f21378;
 }
 
-.dropdown-item {
-    font-weight: 500;
-    color: #232d37;
-    font-size: 14px;
-    text-transform: uppercase;
-}
-
-.dropdown-item:focus,
-.dropdown-item:hover {
-    color: #eb1a6a;
-    text-decoration: none;
-    background-color: #eb1a6a;
-}
 
 </style>
 
@@ -428,39 +415,21 @@ li {
 
 <body>
 
-    <!-- Background Pattern Swither -->
-<!--     <div id="patter-close">
-        <i class="fa fa-times" aria-hidden="true"></i>
-    </div> -->
-
     <!-- ****** Top Header Area Start ****** -->
     <div class="top_header_area">
         <div class="container">
             <div class="row">
-      
                 <!--  Login Register Area -->
                 <div class="col-7 col-sm-6">
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                         <div class="login_register_area d-flex">
-                            <div class="login">
-                                <a href="member/login">Login</a>
+                            <div>
+                                <a class="login" href="member/login">Login</a>
+                                <a class="register" href="member/register">Sign up</a>
                             </div>
-                            <div class="register">
-                                <a href="member/register">Sign up</a>
-                            </div>
+							<!-- <div class="register">
+							</div> -->
                         </div>
-<!--                         Search Button Area
-                        <div class="search_button">
-                            <a class="searchBtn" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-                        </div>
-                        Search Form
-                        <div class="search-hidden-form">
-                            <form action="#" method="get">
-                                <input type="search" name="search" id="search-anything" placeholder="Search Anything...">
-                                <input type="submit" value="" class="d-none">
-                                <span class="searchBtn"><i class="fa fa-times" aria-hidden="true"></i></span>
-                            </form>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -483,23 +452,13 @@ li {
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-lg">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#yummyfood-nav" aria-controls="yummyfood-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i>Menu</button>
+                        
                         <!-- Menu Area Start -->
-                        <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
+                        <div class="navbar-collapse justify-content-center" id="yummyfood-nav">
                             <ul class="navbar-nav" id="yummy-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.jsp">Home<span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="/collection/index">Home<span class="sr-only">(current)</span></a>
                                 </li>
-                                <!-- <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                                    <div class="dropdown-menu" aria-labelledby="yummyDropdown">
-                                        <a class="dropdown-item" href="index.html">Home</a>
-                                        <a class="dropdown-item" href="archive.html">Archive</a>
-                                        <a class="dropdown-item" href="single.html">Single Blog</a>
-                                        <a class="dropdown-item" href="static.html">Static Page</a>
-                                        <a class="dropdown-item" href="contact.html">Contact</a>
-                                    </div>
-                                </li> -->
                                 <li class="nav-item">
                                     <a class="nav-link" href="/collection/list">Exhibition</a>
                                 </li>

@@ -30,9 +30,6 @@ public class CollectionReviewMapperTests {
 	BCryptPasswordEncoder pwdEncoder;
 	
 	@Autowired
-    BCryptPasswordEncoder pwdEncoder;
-	
-	@Autowired
 	private CollectionReviewMapper mapper;
 	
 	@Test

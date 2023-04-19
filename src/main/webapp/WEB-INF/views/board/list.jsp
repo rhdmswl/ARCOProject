@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 
-<%@ include file="../includes/header.jsp"%>
+<jsp:include page="/WEB-INF/views/includes/header.jsp"/>
 
 <title>ARCO - Community List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -174,10 +174,12 @@ body {
 
 .sidelist {
 	display: inline-block;
-	width: 100px;
-	height: 30px;
+	width: 150px;
+	height: 40px;
 	margin: 5px;
 	font-family: 'Nanum Gothic', sans-serif;
+	border: 1px solid #ccc;
+	border-radius: 20px;
 }
 
 @media only screen and (max-width: 767px) {
