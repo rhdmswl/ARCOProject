@@ -6,6 +6,8 @@ import java.util.stream.IntStream;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -14,13 +16,17 @@ import com.collection.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
+
+@Component
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/spring-security.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 // Java Config
 // @ContextConfiguration(classes = {org.zerock.config.RootConfig.class} )
 @Log4j
 public class CollectionReviewMapperTests {
 	
+	@Autowired
+    BCryptPasswordEncoder pwdEncoder;
 	
 	@Autowired
 	private CollectionReviewMapper mapper;
@@ -49,7 +55,7 @@ public class CollectionReviewMapperTests {
 	
 	@Test
 	public void testRead() {
-		Long targetrevSeq = 1L;
+		Long targetrevSeq = 728L;
 		
 		CollectionReviewVO vo = mapper.read(targetrevSeq);
 		

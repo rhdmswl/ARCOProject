@@ -40,9 +40,6 @@ public class MemberController {
 	BCryptPasswordEncoder pwdEncoder;
 
 	@Autowired
-	private ServletContext servletContext;
-
-	@Autowired
 	private DataSource dataSource;
 
 	// 회원가입 get
