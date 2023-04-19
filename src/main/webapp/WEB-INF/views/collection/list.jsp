@@ -8,7 +8,6 @@
 <html>
 
 <head>
-<head>
 <meta charset="UTF-8">
 <meta name="description" content="Anime Template">
 <meta name="keywords" content="Anime, unica, creative, html">
@@ -42,7 +41,7 @@
 <link rel="stylesheet" href="../resources/list/css/style.css"
 	type="text/css">
 </head>
-</head>
+
 <body>
 
 

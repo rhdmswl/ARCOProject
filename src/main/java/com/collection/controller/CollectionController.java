@@ -34,7 +34,7 @@ public class CollectionController {
 	@GetMapping("/index")
 	public String index(Model model) {
 		model.addAttribute("list", service.getList());
-		return "index";
+		return "collection/index";
 	}
 	
 //	@GetMapping("/get")
@@ -47,19 +47,15 @@ public class CollectionController {
 	public String get(@RequestParam("seq") long seq, Model model) {
 		log.info("/get");
 		model.addAttribute("collection", service.get(seq));
-		return "get";
+		return "collection/get";
 	}
 	
 	@GetMapping("/list")
 	public String getList(Model model) {
 		model.addAttribute("list", service.getList());
-		return "list";
+		return "collection/list";
 	}
 	
-	@GetMapping("/getTest")
-	public String getTest() {
-		return "get";
-	}
 
 	
 	

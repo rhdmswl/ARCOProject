@@ -17,13 +17,13 @@
     <title>Yummy Blog - Food Blog Template</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="../resources/img/core-img/favicon.ico">
+    <link rel="icon" href="/img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
-    <link href="../resources/style.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
 
     <!-- Responsive CSS -->
-    <link href="../resources/css/responsive/responsive.css" rel="stylesheet">
+    <link href="/css/responsive/responsive.css" rel="stylesheet">
 
 </head>
 <body>
@@ -245,17 +245,17 @@
     <!-- ****** Footer Menu Area End ****** -->
 
     <!-- Jquery-2.2.4 js -->
-    <script src="../resources/js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
-    <script src="../resources/js/bootstrap/popper.min.js"></script>
+    <script src="/js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap-4 js -->
-    <script src="../resources/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
     <!-- All Plugins JS -->
-    <script src="../resources/js/others/plugins.js"></script>
+    <script src="/js/others/plugins.js"></script>
     <!-- Active JS -->
-    <script src="../resources/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
-	<script src="../resources/js/jquery/jquery-2.2.4.min.js"></script>
-		<script type="text/javascript" src="../resources/js/review.js"></script>
+    <script src="/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript" src="/js/review.js"></script>
 		<script>
 
        	$(document).ready(function() {
@@ -331,7 +331,7 @@
                     	 var revSeqValue = $(this).closest("li").data("rno");
                     	 var updateDateValue = document.getElementById('updateDate').value= new Date().toISOString().slice(0, -1);
          			    var review={
-         			    		"revSeq" : revSeqValue,
+         			    	"revSeq" : revSeqValue,
          			        "revComment" : $('#revComment').val(),
          			        "revStar" : $('#revStar').val(),
          			        "updateDate" : updateDateValue
