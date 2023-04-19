@@ -34,7 +34,11 @@
 	</bean>
 	
 	<mybatis-spring:scan
+<<<<<<< HEAD
 		base-package="com.arco.mapper, com.collection.mapper" />
+=======
+		base-package="com.arco.mapper, com.member.mapper, com.collection.mapper" />
+>>>>>>> 2af7a8c56cc17e9ccaf968b65d158f7b46ed7979
 
 		
 
