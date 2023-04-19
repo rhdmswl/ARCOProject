@@ -332,7 +332,7 @@
                     	 var updateDateValue = document.getElementById('updateDate').value= new Date().toISOString().slice(0, -1);
          			    var review={
          			    		"revSeq" : revSeqValue,
-         			        "revComment" : $('#revComment').val(), // 해당 form의 textarea의 값을 가져옴
+         			        "revComment" : $('#revComment').val(),
          			        "revStar" : $('#revStar').val(),
          			        "updateDate" : updateDateValue
          			    }; 
