@@ -18,6 +18,7 @@ import com.collection.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
+
 @Component
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/spring-security.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
@@ -28,6 +29,8 @@ public class CollectionReviewMapperTests {
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
 	
+	@Autowired
+    BCryptPasswordEncoder pwdEncoder;
 	
 	@Autowired
 	private CollectionReviewMapper mapper;
@@ -56,7 +59,7 @@ public class CollectionReviewMapperTests {
 	
 	@Test
 	public void testRead() {
-		Long targetrevSeq = 1L;
+		Long targetrevSeq = 728L;
 		
 		CollectionReviewVO vo = mapper.read(targetrevSeq);
 		
