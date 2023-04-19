@@ -3,43 +3,18 @@
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>Home</title>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로그인</title>
+<link rel="stylesheet" href="/css/material-dashboard.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/material-dashboard.min.js"></script>
 </head>
-<a href="/board/list">게시판</a>
-<br />
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#logoutBtn").on("click", function(){
-			location.href="logout";
-		})
-		$("#registerBtn").on("click", function(){
-			location.href="register";
-		})
-				
-		$("#mypageBtn").on("click", function(){
-			location.href="mypage";
-		})
-		
-		$("#adminBtn").on("click", function(){
-			location.href="/admin/index";
-		})
-		
-		
-		
-	})
-</script>
 
 <body>
 	<form name='homeForm' method="post" action="/member/login">
@@ -77,5 +52,30 @@
 			<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
 		</c:if>
 	</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#logoutBtn").on("click", function() {
+				location.href = "logout";
+			})
+			$("#registerBtn").on("click", function() {
+				location.href = "register";
+			})
+	
+			$("#mypageBtn").on("click", function() {
+				location.href = "mypage";
+			})
+      $("#adminBtn").on("click", function(){
+			location.href="/admin/index";
+		})
+	
+		})
+	</script>
+
+
 </body>
 </html>

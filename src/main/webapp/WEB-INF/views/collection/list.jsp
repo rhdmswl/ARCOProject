@@ -185,15 +185,15 @@
 	<!-- ****** Footer Menu Area End ****** -->
 
 	<!-- Jquery-2.2.4 js -->
-	<script src="../resources/list/js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="/list/js/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->
-	<script src="../resources/list/js/bootstrap/popper.min.js"></script>
+	<script src="/list/js/bootstrap/popper.min.js"></script>
 	<!-- Bootstrap-4 js -->
-	<script src="../resources/list/js/bootstrap/bootstrap.min.js"></script>
+	<script src="/list/js/bootstrap/bootstrap.min.js"></script>
 	<!-- All Plugins JS -->
-	<script src="../resources/list/js/others/plugins.js"></script>
+	<script src="/list/js/others/plugins.js"></script>
 	<!-- Active JS -->
-	<script src="../resources/list/js/active.js"></script>
+	<script src="/list/js/active.js"></script>
 	<a id="scrollUp" href="#top"
 		style="position: absolute; z-index: 2147483647; display: block;">
 		<i class="fa fa-arrow-up" aria-hidden="true"></i>
