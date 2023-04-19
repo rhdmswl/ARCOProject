@@ -143,15 +143,16 @@ body {
 				<div class="row clearfix">
 					<div class="col-md-12 col-lg-12 col-xl-12">
 
-						<form role="from" action="/board/register" method="post">
+						<form id="insertForm" role="from" action="/board/register" method="post">
 							<div class="form-group">
 								<table class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th style="border-right: hidden;" width='40'><select>
-													<option value='<c:out value="${cri.brd_id == 1}"/>'>첫번째 게시판</option>
-													<option value='<c:out value="${cri.brd_id == 2}"/>'>두번째 게시판</option>
-													<option value='<c:out value="${cri.brd_id == 3}"/>'>세번째 게시판</option>
+											<th style="border-right: hidden;" width='40'>
+											<select class="chk" id="category" onchange="changeSelect()">
+													<option value="1">TALK</option>
+													<option value="2">MATE</option>
+													<option value="3">WEEKLY</option>
 											</select></th>
 											<th><input class="form-control" name='post_title'
 												value="제목을 입력해주세요" onfocus="this.value=''"></th>
@@ -201,10 +202,9 @@ body {
 			</div>
 		</section>
 	</div>
-	<form id='actionForm' action="/board/list" method='get'>
-		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-		<input type='hidden' name='brd_id' value='<c:out value="${cri.brd_id}"/>'>
-	</form>
+
+	<input type='hidden' name='pageNum' value="${cri.pageNum}"/>
+	<input type='hidden' name='brd_id' value="${cri.brd_id}"/>
 	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
@@ -213,9 +213,9 @@ body {
 	<script type="text/javascript">
  			$(document).ready(function(){
  			
- 			/* var pageNum=$('#pageNum').val();
-			var brd_id=$('#brd_id').val(); */
 			var formObj = $("form");
+			var brd_id = "${cri.brd_id}";
+			var pageNum = "${cri.pageNum}";
  			
  			$('#registerBtn').on("click", function(){
  				
@@ -223,10 +223,25 @@ body {
  				formObj.attr("method", "get");
  				formObj.submit();
  				
- 				location.href="/board/list?pageNum=${cri.pageNum}"+"&brd_id=${cri.brd_id}";
+ 				location.href="/board/list?pageNum="+pageNum+"&brd_id="+brd_id;
  				
  			});
  			var actionForm = $("#actionForm");
+ 			
+ 			function changeSelect(){ 
+ 				
+ 				var selectList = document.getElementById("category")
+ 				
+ 				if(selectList.options[selectList.selectedIndex].value == "1"){
+ 					location.href = "/board/list?pageNum=1&brd_id=1";
+ 				}
+ 				if(selectList.options[selectList.selectedIndex].value == "2"){
+ 					location.href = "/board/list?pageNum=1&brd_id=2";
+ 				}
+ 				if(selectList.options[selectList.selectedIndex].value == "3"){
+ 					location.href = "/board/list?pageNum=1&brd_id=3";
+ 				}
+ 			}
  		});
  	</script>
 </body>
