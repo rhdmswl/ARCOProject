@@ -8,7 +8,6 @@
 <html>
 
 <head>
-<head>
 <meta charset="UTF-8">
 <meta name="description" content="Anime Template">
 <meta name="keywords" content="Anime, unica, creative, html">
@@ -25,24 +24,24 @@
 	rel="stylesheet">
 
 <!-- Css Styles -->
-<link rel="stylesheet" href="../resources/list/css/bootstrap.min.css"
+<link rel="stylesheet" href="/list/css/bootstrap.min.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/list/css/font-awesome.min.css"
+<link rel="stylesheet" href="/list/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/list/css/elegant-icons.css"
+<link rel="stylesheet" href="/list/css/elegant-icons.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/list/css/plyr.css"
+<link rel="stylesheet" href="/list/css/plyr.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/list/css/nice-select.css"
+<link rel="stylesheet" href="/list/css/nice-select.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/list/css/owl.carousel.min.css"
+<link rel="stylesheet" href="/list/css/owl.carousel.min.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/list/css/slicknav.min.css"
+<link rel="stylesheet" href="/list/css/slicknav.min.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/list/css/style.css"
+<link rel="stylesheet" href="/list/css/style.css"
 	type="text/css">
 </head>
-</head>
+
 <body>
 
 
@@ -185,15 +184,15 @@
 	<!-- ****** Footer Menu Area End ****** -->
 
 	<!-- Jquery-2.2.4 js -->
-	<script src="../resources/list/js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="/list/js/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->
-	<script src="../resources/list/js/bootstrap/popper.min.js"></script>
+	<script src="/list/js/bootstrap/popper.min.js"></script>
 	<!-- Bootstrap-4 js -->
-	<script src="../resources/list/js/bootstrap/bootstrap.min.js"></script>
+	<script src="/list/js/bootstrap/bootstrap.min.js"></script>
 	<!-- All Plugins JS -->
-	<script src="../resources/list/js/others/plugins.js"></script>
+	<script src="/list/js/others/plugins.js"></script>
 	<!-- Active JS -->
-	<script src="../resources/list/js/active.js"></script>
+	<script src="/list/js/active.js"></script>
 	<a id="scrollUp" href="#top"
 		style="position: absolute; z-index: 2147483647; display: block;">
 		<i class="fa fa-arrow-up" aria-hidden="true"></i>

@@ -501,7 +501,7 @@ li {
                                     </div>
                                 </li> -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Exhibition</a>
+                                    <a class="nav-link" href="/collection/list">Exhibition</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/board/list?pageNum=1&brd_id=1">Community</a>

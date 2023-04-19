@@ -22,4 +22,5 @@ public interface CollectionReviewMapper {
 	
 	public List<CollectionReviewVO> getListWithPaging(@Param("cri") Criteria cri, @Param("seq") long seq);
 	
+	public int getCountBySeq(long seq);
 }

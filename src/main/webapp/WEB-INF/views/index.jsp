@@ -17,13 +17,13 @@
     <title>Yummy Blog - Food Blog Template</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="../resources/img/core-img/favicon.ico">
+    <link rel="icon" href=".../resources/img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
-    <link href="../resources/style.css" rel="stylesheet">
+    <link href=".../resources/style.css" rel="stylesheet">
 
     <!-- Responsive CSS -->
-    <link href="../resources/css/responsive/responsive.css" rel="stylesheet">
+    <link href=".../resources/css/responsive/responsive.css" rel="stylesheet">
 </head>
 
 <body>

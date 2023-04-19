@@ -1135,7 +1135,7 @@ li {
     margin: 0 2.5px;
 }
 
-.pagination-area .pagination .page-item.active .page-link,
+.pagination-area .pagination .page-link,
 .pagination-area .pagination .page-link:focus,
 .pagination-area .pagination .page-link:hover {
     color: #fff;

@@ -17,13 +17,13 @@
     <title>Yummy Blog - Food Blog Template</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="../resources/img/core-img/favicon.ico">
+    <link rel="icon" href="/img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
-    <link href="../resources/style.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
 
     <!-- Responsive CSS -->
-    <link href="../resources/css/responsive/responsive.css" rel="stylesheet">
+    <link href="/css/responsive/responsive.css" rel="stylesheet">
 
 </head>
 <body>
@@ -145,6 +145,8 @@
                                     
                                 </ol>
                             </div>
+                            <div class = "panel-footer">
+                            </div>
                             <form id='actionForm' action="/review/list" method='get'>
 								<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 								<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
@@ -245,17 +247,58 @@
     <!-- ****** Footer Menu Area End ****** -->
 
     <!-- Jquery-2.2.4 js -->
-    <script src="../resources/js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
-    <script src="../resources/js/bootstrap/popper.min.js"></script>
+    <script src="/js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap-4 js -->
-    <script src="../resources/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
     <!-- All Plugins JS -->
-    <script src="../resources/js/others/plugins.js"></script>
+    <script src="/js/others/plugins.js"></script>
     <!-- Active JS -->
-    <script src="../resources/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
-	<script src="../resources/js/jquery/jquery-2.2.4.min.js"></script>
-		<script type="text/javascript" src="../resources/js/review.js"></script>
+    <script src="/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
+	
+	
+		<script type="text/javascript" src="/js/review.js"></script>
+<script>
+var pageNum = 1;
+var reviewPageFooter = $(".panel-footer");
+function showReviewPage(reviewCnt) {
+	var endNum = Math.ceil(pageNum / 10.0) * 10;
+	var startNum = endNum - 9;
+	
+	var prev = startNum != 1;
+	var next = false;
+	
+	if(endNum * 10 >= reviewCnt) {
+		endNum = Math.ceil(reviewCnt/10.0);
+	}
+	
+	if(endNum * 10 < reviewCnt) {
+		next = true;
+	}
+	
+	var str = "<ul class='pagination pull-right'>";
+	if(prev) {
+		str += "<li class='page-item'><a class='page-link' href='"+(startNum-1)+"'>Previous</a></li>";
+	}
+	
+	for(var i=startNum ; i<=endNum; i++){
+		var active = pageNum == i? "active":"";
+		str+="<li class='page-item "+active+" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
+	}
+	
+	if(next) {
+		str+= "<li class='page-item'><a class='page-link' href='"+(endNum+1) + "'>Next</a></li>";
+	}
+
+	str += "</ul></div>";
+	console.log(str);
+	
+	reviewPageFooter.html(str);
+}
+</script>
+		
 		<script>
 
        	$(document).ready(function() {
@@ -266,9 +309,20 @@
             		 showList(1);
             		 
             		 function showList(page){
+            			 console.log("show list " + page);
             			 
             			 CollectionReviewService.getList({seq:seqValue,page: page|| 1 },
-            				function(list){
+            				function(reviewCnt, list){
+            				 console.log("reviewCnt: " + reviewCnt);
+            				 console.log("list: " + list);
+            				 console.log(list);
+            				 
+            			 
+            			 if(page == -1){
+            				 pageNum = Math.ceil(reviewCn/10.0);
+            				 showList(pageNum);
+            				 return;
+            			 }
             				   var str="";
             				   
             				   if(list==null || list.length ==0) {
@@ -297,6 +351,7 @@
             				   } 
             				   reviewUL.html(str);
             			   
+            				   showReviewPage(reviewCnt);
             			 }); 
             		 } 
             
@@ -307,7 +362,7 @@
                         		 revStar : $('#revStar').val(), 
                         		 revComment : $('#revComment').val()
                         		 };
-                         CollectionReviewService.add(review, function(result){alert(result); showList(1);});
+                         CollectionReviewService.add(review, function(result){alert(result); showList(-1);});
                      });
                      
                      $(document).on("click",'.remove',function(e){
@@ -315,7 +370,7 @@
                         CollectionReviewService.remove(revSeqValue, function(result){
                         	alert(result); 
                         	});
-                        showList(1);
+                        showList(pageNum);
                      });
                      
                      $(document).on('click','.update',function(){
@@ -323,6 +378,15 @@
          			    $("#" + revSeqValue).collapse('toggle');
          			});
                      
+                     
+                     reviewPageFooter.on("click", "li a", function(e) {
+             			e.preventDefault();
+             			console.log("page click");
+             			var targetPageNum = $(this).attr("href");
+             			console.log("targetPageNum : " + targetPageNum);
+             			pageNum = targetPageNum;
+             			showList(pageNum);
+             		});
                      
                      
                      
@@ -336,7 +400,7 @@
          			        "revStar" : $('#revStar').val(),
          			        "updateDate" : updateDateValue
          			    }; 
-         			   CollectionReviewService.update(review, function(result){alert(result); showList(1);} );
+         			   CollectionReviewService.update(review, function(result){alert(result); showList(pageNum);} );
          			    
          			});
                      

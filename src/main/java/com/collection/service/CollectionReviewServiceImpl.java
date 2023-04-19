@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.collection.domain.CollectionReviewPageDTO;
 import com.collection.domain.CollectionReviewVO;
 import com.collection.domain.Criteria;
 import com.collection.mapper.CollectionReviewMapper;
@@ -47,5 +48,14 @@ public class CollectionReviewServiceImpl implements CollectionReviewService {
 		log.info("modify....." + vo);
 		return mapper.update(vo);
 	}
+
+	@Override
+	public CollectionReviewPageDTO getListPage(Criteria cri, long seq) {
+		return new CollectionReviewPageDTO(
+		mapper.getCountBySeq(seq),
+		mapper.getListWithPaging(cri, seq));
+	}
+	
+	
 
 }
