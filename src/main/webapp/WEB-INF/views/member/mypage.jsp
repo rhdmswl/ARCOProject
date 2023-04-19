@@ -37,7 +37,7 @@
 		</tr>
 		<c:forEach var="rev" items="${collectionRevs}">
 			<tr>
-				<td><a href="/collection/get?rev_id=${rev.revId}">${rev.revComment}</a></td>
+				<td>${rev.revComment}</td>
 				<td>${rev.replyDate}</td>
 			</tr>
 		</c:forEach>
@@ -51,7 +51,7 @@
 		</tr>
 		<c:forEach var="post" items="${posts}">
 			<tr>
-				<td><a href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
+				<td>${post.post_title}</td>
 				<td>${post.post_regdate}</td>
 			</tr>
 		</c:forEach>
@@ -65,7 +65,7 @@
 		</tr>
 		<c:forEach var="comment" items="${comments}">
 			<tr>
-				<td><a href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
+				<td>${comment.com_content}</td>
 				<td>${comment.com_date}</td>
 			</tr>
 		</c:forEach>

@@ -143,26 +143,18 @@ body {
 				<div class="row clearfix">
 					<div class="col-md-12 col-lg-12 col-xl-12">
 
-						<form id="insertForm" role="from" action="/board/register" method="post">
+						<form role="from" action="/board/register" method="post">
 							<div class="form-group">
 								<table class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th style="border-right: hidden;" width='40'>
-											<select class="chk" id="category" onchange="changeSelect()">
-													<option value="1">TALK</option>
-													<option value="2">MATE</option>
-													<option value="3">WEEKLY</option>
+											<th style="border-right: hidden;" width='40'><select>
+													<option value="1">첫번째 게시판</option>
+													<option value="2">두번째 게시판</option>
+													<option value="3">세번째 게시판</option>
 											</select></th>
 											<th><input class="form-control" name='post_title'
 												value="제목을 입력해주세요" onfocus="this.value=''"></th>
-										</tr>
-										
-										<tr>
-											
-											<th>작성자 </th>
-											<th><input class="form-control" name='post_writer'
-												value="${member.userId}" readonly="readonly"></th>
 										</tr>
 
 										<tr>
@@ -174,9 +166,8 @@ body {
 												<div class="card m-t-5">
 													<div class="body">
 														<ul class="pagination pagination-primary m-b-0">
-															<li class="page-item">
-															<a class="page-link" href="/board/list">목록으로</a>
-															</li>
+															<li class="page-item"><a class="page-link"
+																href='/board/list'>목록으로</a></li>
 														</ul>
 													</div>
 												</div>
@@ -185,8 +176,9 @@ body {
 												<div class="card m-t-5">
 													<div class="body">
 														<ul style="float: right;"
-															class="registerBtn pagination pagination-primary m-b-0">
-															<li class="page-item"><input style="cursor: pointer;" class="page-link" type="submit"
+															class="pagination pagination-primary m-b-0">
+															<li class="page-item"><input
+																style='cursor: pointer;' class="page-link" type="submit"
 																value="글 등록"></li>
 														</ul>
 													</div>
@@ -202,47 +194,11 @@ body {
 			</div>
 		</section>
 	</div>
-
-	<input type='hidden' name='pageNum' value="${cri.pageNum}"/>
-	<input type='hidden' name='brd_id' value="${cri.brd_id}"/>
-	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
-	
+		src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
- 			$(document).ready(function(){
- 			
-			var formObj = $("form");
-			var brd_id = "${cri.brd_id}";
-			var pageNum = "${cri.pageNum}";
- 			
- 			$('#registerBtn').on("click", function(){
- 				
- 				formObj.attr("action", "/board/list");
- 				formObj.attr("method", "get");
- 				formObj.submit();
- 				
- 				location.href="/board/list?pageNum="+pageNum+"&brd_id="+brd_id;
- 				
- 			});
- 			var actionForm = $("#actionForm");
- 			
- 			function changeSelect(){ 
- 				
- 				var selectList = document.getElementById("category")
- 				
- 				if(selectList.options[selectList.selectedIndex].value == "1"){
- 					location.href = "/board/list?pageNum=1&brd_id=1";
- 				}
- 				if(selectList.options[selectList.selectedIndex].value == "2"){
- 					location.href = "/board/list?pageNum=1&brd_id=2";
- 				}
- 				if(selectList.options[selectList.selectedIndex].value == "3"){
- 					location.href = "/board/list?pageNum=1&brd_id=3";
- 				}
- 			}
- 		});
- 	</script>
+		
+	</script>
 </body>
 

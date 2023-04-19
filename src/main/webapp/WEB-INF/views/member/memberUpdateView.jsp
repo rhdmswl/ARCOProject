@@ -65,7 +65,7 @@
     <p>프로필 이미지:</p>
 			<img src="your_upload_directory/${profile.profileImg}" alt="프로필 이미지" width="200" height="200" />
 			<!-- form 경로 /member/profile/upload 에서 수정 --> 
-			<form action="/member/insertImage" method="post" enctype="multipart/form-data">
+			<form action="/member/updateProfileImg" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 			<label for="file">파일 업로드:</label>
 			<input type="file" name="file" id="file" class="form-control" />
