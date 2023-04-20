@@ -73,4 +73,40 @@ public class BoardServiceImpl implements BoardService {
 		log.info("get comment count");
 		mapper.getComCnt(post_id);
 	}
+	
+	@Override
+	public int findLike(Long post_id) {//추천 여부 확인
+		log.info("get findLike");
+		return mapper.findLike(post_id);
+	}
+	@Override
+	public void updateLike(Long post_id){
+	 mapper.updateLike(post_id);
+	}
+	
+	@Override
+	public void updateLikeCancel(Long post_id){
+		 mapper.updateLikeCancel(post_id);
+	}
+
+	@Override
+	public void insertLike(Long post_id,String userId){
+		mapper.insertLike(post_id,userId);
+	}
+	
+	@Override
+	public void deleteLike(Long post_id,String userId) {
+		mapper.deleteLike(post_id,userId);
+	}
+		
+	@Override
+	public void updateLikeCheck(Long post_id,String userId) {
+		mapper.updateLikeCheck(post_id,userId);
+	}
+			
+	@Override
+	public void updateLikeCheckCancel(Long post_id,String userId) {
+		mapper.updateLikeCheckCancel(post_id,userId);
+	}
+	
 }

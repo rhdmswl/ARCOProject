@@ -401,7 +401,7 @@ transform:rotate(360deg);
 
                             <div>
                                 <a class="login" href="http://localhost:8080/member/login">Login</a>
-                                <a class="register" href="http://localhost:8080member/register">Sign up</a>
+                                <a class="register" href="http://localhost:8080/member/register">Sign up</a>
                             </div>
 
 							<!-- <div class="register">
