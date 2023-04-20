@@ -10,22 +10,12 @@
 <title>My Page</title>
 	<link href="/css/material-dashboard.min.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" rel="stylesheet">
-	<script src="/js/core/jquery.min.js"></script>
-	<script src="/js/core/popper.min.js"></script>
-	<script src="/js/core/bootstrap-material-design.min.js"></script>
-	<script src="/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+	<link href="/js/core/jquery.min.js" type="text/javascript"></link>
+	<link href="/js/core/popper.min.js" type="text/javascript"></link>
+	<link href="/js/core/bootstrap-material-design.min.js" type="text/javascript"></link>
+	<link href="/js/plugins/perfect-scrollbar.jquery.min.js" type="text/javascript"></link>
 	<script src="/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
 </head>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-
-		$("#memberUpdateBtn").on("click", function(){
-			location.href="memberUpdateView";
-		})
-		
-	})
-</script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -102,69 +92,68 @@
 	<br>
 	<section id="container">
 		<!-- 회원 정보 수정 -->
-		<div class="card shadow mb-4">
-		    <div class="card-header card-header-primary">
-		        <h4 class="card-title">회원 정보</h4>
-		    </div>
-		    <div class="card-body">
-		        <form id="updateForm" action="/member/mypage" method="post">
-		            <div class="form-group has-feedback">
-					<label class="control-label" for="userId">아이디</label> 
-						<div style="display: flex; justify-content: center;">
+		<div class="d-flex justify-content-center">
+			<div class="card shadow mb-4 " style="width: 60%;">
+			    <div class="card-header card-header-primary">
+			        <h4 class="card-title">회원 정보</h4>
+			    </div>
+			    <div class="card-body">
+			        <form id="updateForm" action="/member/mypage" method="post">
+			            <div class="form-group has-feedback">
+						<label class="control-label" for="userId">아이디</label> 
+							<div style="display: flex; justify-content: center;">
+								<input
+								style = "text-align:center;" class="form-control" type="text" id="userId" name="userId"
+								value="${member.userId}" readonly="readonly" />
+							</div>
+					</div>
+					<br>
+					
+	<!-- 				<div class="form-group has-feedback">
+						<label class="control-label" for="userPass">비밀번호</label> 
 							<input
-							style = "text-align:center;" class="form-control" type="text" id="userId" name="userId"
-							value="${member.userId}" readonly="readonly" />
-						</div>
+							style = "text-align:center;" class="form-control" type="password" id="userPass" name="userPass"/>
+					</div>
+					<br> -->
+					
+					<div class="form-group has-feedback">
+						<label class="control-label" for="userName">닉네임</label> 
+							<input
+							style = "text-align:center;" class="form-control" type="text" id="userName" name="userName"
+							value="${member.userName}" />
+					</div>
+					<br>
+					
+					<div class="form-group has-feedback">
+						<label class="control-label" for="phone">전화번호</label> 
+							<input
+							style = "text-align:center;" class="form-control" type="text" id="phone" name="phone"
+							value="${member.phone}" />
+					</div>
+					<br>
+					
+					<div class="form-group has-feedback">
+						<label class="control-label" for="email">이메일</label> 
+							<input
+							style = "text-align:center;" class="form-control" type="text" id="email" name="email"
+							value="${member.email}" />
+					</div>
+					<br>
+					
+					<div class="form-group has-feedback">
+					<button class="btn btn-primary" type="submit">회원정보수정</button>
 				</div>
-				<br>
-				
-<!-- 				<div class="form-group has-feedback">
-					<label class="control-label" for="userPass">비밀번호</label> 
-						<input
-						style = "text-align:center;" class="form-control" type="password" id="userPass" name="userPass"/>
-				</div>
-				<br> -->
-				
-				<div class="form-group has-feedback">
-					<label class="control-label" for="userName">닉네임</label> 
-						<input
-						style = "text-align:center;" class="form-control" type="text" id="userName" name="userName"
-						value="${member.userName}" />
-				</div>
-				<br>
-				
-				<div class="form-group has-feedback">
-					<label class="control-label" for="phone">전화번호</label> 
-						<input
-						style = "text-align:center;" class="form-control" type="text" id="phone" name="phone"
-						value="${member.phone}" />
-				</div>
-				<br>
-				
-				<div class="form-group has-feedback">
-					<label class="control-label" for="email">이메일</label> 
-						<input
-						style = "text-align:center;" class="form-control" type="text" id="email" name="email"
-						value="${member.email}" />
-				</div>
-				<br>
-				
-				<div class="form-group has-feedback">
-				<button class="btn btn-primary" type="submit">회원정보수정</button>
-			</div>
-	
-			
-			<div class="card shadow mb-4">
-				<div class="card-body">
-					<a href="/member/passUpdateView" class="btn btn-info btn-block">비밀번호
-						변경</a>
-				</div>
-			</div>
-			
-		        </form>
-		    </div>
-		</div>  
 		
+				
+					<div class="card-body">
+						<a href="/member/passUpdateView" class="btn btn-secondary">비밀번호
+							변경</a>
+					</div>
+				
+			        </form>
+			    </div>
+			</div>  
+		</div>
 	</section>
 	
 	<!-- 한줄평 목록 -->
@@ -189,6 +178,25 @@
 	        </div>
 	    </div>
 	</div>
+	<!-- 한줄평 페이징 -->
+    <div>
+        <c:if test="${collectionRevPageMaker.prev}">
+            <a href="?page=${collectionRevPageMaker.startPage - 1}">이전</a>
+        </c:if>
+        <c:forEach var="pageNum" begin="${collectionRevPageMaker.startPage}" end="${collectionRevPageMaker.endPage}" step="1">
+            <c:choose>
+                <c:when test="${pageNum == collectionRevPageMaker.cri.page}">
+                    <span>${pageNum}</span>
+                </c:when>
+                <c:otherwise>
+                    <a href="?page=${pageNum}">${pageNum}</a>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        <c:if test="${collectionRevPageMaker.next}">
+            <a href="?page=${collectionRevPageMaker.endPage + 1}">다음</a>
+        </c:if>
+    </div>
 	
 	<!-- 게시글 목록 -->
 	<div class="card">
@@ -212,6 +220,25 @@
 	        </div>
 	    </div>
 	</div>
+	<!-- 게시글 페이징 -->
+	<div>
+    <c:if test="${postPageMaker.prev}">
+	        <a href="?page=${postPageMaker.startPage - 1}">이전</a>
+	    </c:if>
+	    <c:forEach var="pageNum" begin="${postPageMaker.startPage}" end="${postPageMaker.endPage}" step="1">
+	        <c:choose>
+	            <c:when test="${pageNum == postPageMaker.cri.page}">
+	                <span>${pageNum}</span>
+	            </c:when>
+	            <c:otherwise>
+	                <a href="?page=${pageNum}">${pageNum}</a>
+	            </c:otherwise>
+	        </c:choose>
+	    </c:forEach>
+	    <c:if test="${postPageMaker.next}">
+	        <a href="?page=${postPageMaker.endPage + 1}">다음</a>
+	    </c:if>
+	</div>
 
 	<!-- 댓글 목록 -->
 	<div class="card">
@@ -234,6 +261,25 @@
 	            </table>
 	        </div>
 	    </div>
+	</div>
+	<!-- 댓글 페이징 -->
+	<div>
+	    <c:if test="${commentPageMaker.prev}">
+	        <a href="?page=${commentPageMaker.startPage - 1}">이전</a>
+	    </c:if>
+	    <c:forEach var="pageNum" begin="${commentPageMaker.startPage}" end="${commentPageMaker.endPage}" step="1">
+	        <c:choose>
+	            <c:when test="${pageNum == commentPageMaker.cri.page}">
+	                <span>${pageNum}</span>
+	            </c:when>
+	            <c:otherwise>
+	                <a href="?page=${pageNum}">${pageNum}</a>
+	            </c:otherwise>
+	        </c:choose>
+	    </c:forEach>
+	    <c:if test="${commentPageMaker.next}">
+	        <a href="?page=${commentPageMaker.endPage + 1}">다음</a>
+	    </c:if>
 	</div>
 	
 <!-- 	<div class="text-center">

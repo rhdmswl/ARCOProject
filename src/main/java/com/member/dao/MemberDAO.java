@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.member.vo.BoardVO;
 import com.member.vo.CollectionReviewVO;
+import com.member.vo.Criteria;
 import com.member.vo.ImageVO;
 import com.member.vo.MemberVO;
 import com.member.vo.ReplyVO;
@@ -41,13 +42,25 @@ public interface MemberDAO {
 	// 프로필 이미지 조회
 	public ImageVO selectImageByUserId(String userId);
 
-	// 나의 한줄평
-	List<CollectionReviewVO> getMemberCollectionRevs(String userId) throws Exception;
+//	// 나의 한줄평
+//	List<CollectionReviewVO> getMemberCollectionRevs(String userId) throws Exception;
+//
+//	// 나의 게시글
+//	List<BoardVO> getMemberPosts(String userId) throws Exception;
+//
+//	// 나의 댓글
+//	List<ReplyVO> getMemberComments(String userId) throws Exception;
+	
+	// 페이징이 적용된 나의 한줄평
+	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception;
+	// 페이징이 적용된 나의 게시글
+	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception;
+	// 페이징이 적용된 나의 댓글
+	public List<ReplyVO> getMemberCommentsWithPaging(String userId, Criteria cri) throws Exception;
 
-	// 나의 게시글
-	List<BoardVO> getMemberPosts(String userId) throws Exception;
-
-	// 나의 댓글
-	List<ReplyVO> getMemberComments(String userId) throws Exception;
+	// 각 글의 개수, PageMaker
+	public int countCollectionRevs(String userId) throws Exception;
+	public int countPosts(String userId) throws Exception;
+	public int countComments(String userId) throws Exception;
 
 }

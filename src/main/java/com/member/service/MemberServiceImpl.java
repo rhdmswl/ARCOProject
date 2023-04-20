@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import com.member.dao.MemberDAO;
 import com.member.vo.BoardVO;
 import com.member.vo.CollectionReviewVO;
+import com.member.vo.Criteria;
 import com.member.vo.ImageVO;
 import com.member.vo.MemberVO;
+import com.member.vo.PageMaker;
 import com.member.vo.ReplyVO;
 
 @Service
@@ -80,19 +82,69 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectImageByUserId(userId);
 	}
 
+//	@Override
+//	public List<CollectionReviewVO> getMemberCollectionRevs(String userId) throws Exception {
+//		return dao.getMemberCollectionRevs(userId);
+//	}
+//
+//	@Override
+//	public List<BoardVO> getMemberPosts(String userId) throws Exception {
+//		return dao.getMemberPosts(userId);
+//	}
+//
+//	@Override
+//	public List<ReplyVO> getMemberComments(String userId) throws Exception {
+//		return dao.getMemberComments(userId);
+//	}
+	
+	// 페이징 적용
 	@Override
-	public List<CollectionReviewVO> getMemberCollectionRevs(String userId) throws Exception {
-		return dao.getMemberCollectionRevs(userId);
+	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception {
+	    return dao.getMemberCollectionRevsWithPaging(userId, cri);
 	}
 
 	@Override
-	public List<BoardVO> getMemberPosts(String userId) throws Exception {
-		return dao.getMemberPosts(userId);
+	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception {
+	    return dao.getMemberPostsWithPaging(userId, cri);
 	}
 
 	@Override
-	public List<ReplyVO> getMemberComments(String userId) throws Exception {
-		return dao.getMemberComments(userId);
+	public List<ReplyVO> getMemberCommentsWithPaging(String userId, Criteria cri) throws Exception {
+	    return dao.getMemberCommentsWithPaging(userId, cri);
 	}
+
+	// PageMaker
+	@Override
+	public int countCollectionRevs(String userId) throws Exception {
+	    return dao.countCollectionRevs(userId);
+	}
+
+	@Override
+	public int countPosts(String userId) throws Exception {
+	    return dao.countPosts(userId);
+	}
+
+	@Override
+	public int countComments(String userId) throws Exception {
+	    return dao.countComments(userId);
+	}
+	
+//	@Override
+//	public PageMaker getPageMaker(String userId, Criteria cri, String type) throws Exception {
+//	    PageMaker pageMaker = new PageMaker();
+//	    pageMaker.setCri(cri);
+//
+//	    int totalCount;
+//	    if (type.equals("collectionRevs")) {
+//	        totalCount = dao.getMemberCollectionRevsCount(userId);
+//	    } else if (type.equals("posts")) {
+//	        totalCount = dao.getMemberPostsCount(userId);
+//	    } else { // type.equals("comments")
+//	        totalCount = dao.getMemberCommentsCount(userId);
+//	    }
+//	    pageMaker.setTotalCount(totalCount);
+//
+//	    return pageMaker;
+//	}
 
 }
