@@ -64,7 +64,7 @@ public class MemberController {
 			service.register(vo);
 		}
 
-		return "redirect:/";
+		return "member/login";
 	}
 
 	// 로그인 get
@@ -94,7 +94,7 @@ public class MemberController {
 			model.addAttribute("msg", false);
 		}
 
-		return "redirect:/";
+		return "index";
 	}
 
 	// 로그아웃 post

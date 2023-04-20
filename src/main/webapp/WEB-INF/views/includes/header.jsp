@@ -482,10 +482,8 @@ rotate
                 <div class="col-7 col-sm-6">
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                         <div class="login_register_area d-flex">
-                            <div>
-                                <a class="login" href="member/login">Login</a>
-                                <a class="register" href="member/register">Sign up</a>
-                            </div>
+                        
+                          
 							<!-- <div class="register">
 							</div> -->
                         </div>

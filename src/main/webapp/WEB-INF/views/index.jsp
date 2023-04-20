@@ -5,6 +5,11 @@
 
 <!DOCTYPE html>
 <html>
+	<nav id="nav">
+		<div id="nav_box">
+			<%@ include file="include/nav.jsp" %>
+		</div>
+	</nav>
 
 <head>
 <meta charset="UTF-8">
@@ -16,6 +21,7 @@
 
 
 <jsp:include page="/WEB-INF/views/includes/header.jsp"/>
+
 
 <!-- Title -->
 <title>ARCO</title>

@@ -34,7 +34,7 @@ public class CollectionController {
 	@GetMapping("/index")
 	public String index(Model model) {
 		model.addAttribute("list", service.getList());
-		return "collection/index";
+		return "/index";
 	}
 	
 //	@GetMapping("/get")
