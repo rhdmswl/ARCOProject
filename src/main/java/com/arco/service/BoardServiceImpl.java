@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.arco.domain.BoardVO;
 import com.arco.domain.Criteria;
+import com.arco.domain.LikeVO;
 import com.arco.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -73,4 +74,40 @@ public class BoardServiceImpl implements BoardService {
 		log.info("get comment count");
 		mapper.getComCnt(post_id);
 	}
+	
+	@Override
+	public int findLike(LikeVO like) {//추천 여부 확인
+		log.info("get findLike");
+		return mapper.findLike(like);
+	}
+	@Override
+	public void updateLike(Long post_id){
+	 mapper.updateLike(post_id);
+	}
+	
+	@Override
+	public void updateLikeCancel(Long post_id){
+		 mapper.updateLikeCancel(post_id);
+	}
+
+	@Override
+	public void insertLike(LikeVO like){
+		mapper.insertLike(like);
+	}
+	
+	@Override
+	public void deleteLike(LikeVO like) {
+		mapper.deleteLike(like);
+	}
+		
+	@Override
+	public void updateLikeCheck(Long post_id,String userId) {
+		mapper.updateLikeCheck(post_id,userId);
+	}
+			
+	@Override
+	public void updateLikeCheckCancel(Long post_id,String userId) {
+		mapper.updateLikeCheckCancel(post_id,userId);
+	}
+	
 }

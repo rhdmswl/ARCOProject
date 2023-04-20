@@ -430,6 +430,13 @@ button {
 						</div>
 						
 						<div class="frame">
+							<button id='like' data-oper='like' class="custom-btn btn-11" >
+							추천
+							</button>
+						</div>
+						
+						
+						<div class="frame">
 							<c:if test="${member.userId==board.post_writer}"> 
 							<button class="custom-btn btn-11" data-oper='modify'>수정</button>
 							</c:if>
@@ -448,6 +455,8 @@ button {
 								<input type='hidden' id='post_id' name='brd_id' value='<c:out value="${cri.brd_id}"/>'>
 							</form>
 						</div>
+						
+						
 						
 						
 						<hr class="mb40">
@@ -575,6 +584,40 @@ button {
 			var replyPageFooter = $(".panel-footer");
 			
 			showList(1);
+						
+			
+			//추천 버튼 이벤트 함수
+			$("button[data-oper='like']").on("click", function(e){
+				var post_id =  "${board.post_id}";
+				var userId =  "${member.userId}";
+				console.log(post_id);
+				console.log(userId);
+				
+				
+				$.ajax({
+		            type : "POST",  
+		            url : "/board/updateLike",       
+		            contentType : "application/json; charset=utf-8",
+		            data : JSON.stringify({'post_id' : post_id ,'userId' : userId}),
+		            error:function(request,status,error){
+		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		               },
+		            success : function(response) {
+		            	var findLike = parseInt($(response).text());
+		                console.log(findLike);
+		            	if(findLike==0){
+	                    	alert("추천완료");
+	                    	location.reload();
+	                    	
+	                    }
+	                    else if (findLike == 1){
+	                     alert("추천취소");
+	                    	location.reload();
+	                }
+	
+		            }
+		        });
+			});
 			
 			// 페이징
 			function showReplyPage(com_cnt){
