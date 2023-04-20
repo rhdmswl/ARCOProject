@@ -430,7 +430,9 @@ button {
 						</div>
 						
 						<div class="frame">
-							<button data-oper='like' class="custom-btn btn-11" >추천</button>
+							<button id='like' data-oper='like' class="custom-btn btn-11" >
+							추천
+							</button>
 						</div>
 						
 						
@@ -588,8 +590,6 @@ button {
 			$("button[data-oper='like']").on("click", function(e){
 				var post_id =  "${board.post_id}";
 				var userId =  "${member.userId}";
-				const likebtn = document.getElementById('btn');
-				
 				console.log(post_id);
 				console.log(userId);
 				
@@ -602,11 +602,13 @@ button {
 		            error:function(request,status,error){
 		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		               },
-		            success : function(findLike) {
-		            	console.log(parseInt(findLike.textContent));
-		            	if(findLike == 0){
-	                    	alert("추천완료.");
+		            success : function(response) {
+		            	var findLike = parseInt($(response).text());
+		                console.log(findLike);
+		            	if(findLike==0){
+	                    	alert("추천완료");
 	                    	location.reload();
+	                    	
 	                    }
 	                    else if (findLike == 1){
 	                     alert("추천취소");
