@@ -83,23 +83,16 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value = "/updateLike", method = RequestMethod.POST)
 	public int updateLike(@RequestBody LikeVO like,Model model) {
-		//Long post_id=like.getPost_id();
 		
-		log.info("post_id :" +like.getPost_id());
-		log.info("2 :" +like.getUserId());
 		int findLike=service.findLike(like);
-		log.info("첫" +findLike);
 		if(findLike == 0) {
 			//좋아요 처음누름
-			log.info("like 0 진입");
 			service.insertLike(like);
 			service.updateLike(like.getPost_id());	//게시판테이블 +1
 		}else if(findLike == 1) {
-			log.info("like 1 진입");
 			service.updateLikeCancel(like.getPost_id()); //게시판테이블 - 1
 			service.deleteLike(like); //like테이블 삭제
 		}
-		log.info("여기까진 됨4");
 		log.info(findLike);
 		return findLike;
 	}
