@@ -582,35 +582,37 @@ button {
 			var replyPageFooter = $(".panel-footer");
 			
 			showList(1);
-			
-			
+						
 			
 			//추천 버튼 이벤트 함수
 			$("button[data-oper='like']").on("click", function(e){
 				var post_id =  "${board.post_id}";
 				var userId =  "${member.userId}";
+				const likebtn = document.getElementById('btn');
 				
 				console.log(post_id);
 				console.log(userId);
 				
+				
 				$.ajax({
 		            type : "POST",  
 		            url : "/board/updateLike",       
-		            dataType : "json",   
-		            data : {'post_id' : post_id},
-		            error : function(){
-		               alert("통신 에러");
-		            },
+		            contentType : "application/json; charset=utf-8",
+		            data : JSON.stringify({'post_id' : post_id ,'userId' : userId}),
+		            error:function(request,status,error){
+		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		               },
 		            success : function(findLike) {
-		                
-		                    if(findLike == 0){
-		                    	alert("추천완료.");
-		                    	location.reload();
-		                    }
-		                    else if (findLike >= 1){
-		                     alert("추천취소");
-		                    	location.reload();
-		                }
+		            	console.log(parseInt(findLike.textContent));
+		            	if(findLike == 0){
+	                    	alert("추천완료.");
+	                    	location.reload();
+	                    }
+	                    else if (findLike == 1){
+	                     alert("추천취소");
+	                    	location.reload();
+	                }
+	
 		            }
 		        });
 			});
