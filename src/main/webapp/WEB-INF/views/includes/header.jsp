@@ -14,9 +14,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
 
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
@@ -24,7 +22,7 @@
 <link rel="icon" href="img/core-img/favicon.ico">
 
 
-<style>
+<style type="text/css">
 
 /* ***** Fonts ***** */
 @import
@@ -40,13 +38,13 @@
 }
 
 body {
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	position: relative;
 	z-index: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-weight: 700;
 	color: #232d37;
 	line-height: 1.25;
@@ -199,6 +197,7 @@ a, a:hover, a:focus, a:active {
 	transition-duration: 500ms;
 	font-weight: 500;
 	outline: none;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 li {
@@ -222,7 +221,7 @@ li {
 }
 
 .font-shadow-into-light {
-	font-family: 'Shadows Into Light Two', cursive !important;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .yummy-table {
@@ -267,144 +266,6 @@ li {
 	z-index: 9;
 }
 
-@
--webkit-keyframes yummy-load { 0% {
-	-webkit-transform: rotate(0deg);
-	transform: rotate(0deg);
-}
-
-100
-
-
-
-
-%
-{
--webkit-transform
-
-
-
-
-:
-
-
-
-
-rotate
-
-
-(
-
-
-
-
-360deg
-
-
-
-
-)
-
-
-;
-transform
-
-
-
-
-:
-
-
-
-
-rotate
-
-
-(
-
-
-
-
-360deg
-
-
-
-
-)
-
-
-;
-}
-}
-@
-keyframes yummy-load { 0% {
-	-webkit-transform: rotate(0deg);
-	transform: rotate(0deg);
-}
-
-100
-
-
-
-
-%
-{
--webkit-transform
-
-
-
-
-:
-
-
-
-
-rotate
-
-
-(
-
-
-
-
-360deg
-
-
-
-
-)
-
-
-;
-transform
-
-
-
-
-:
-
-
-
-
-rotate
-
-
-(
-
-
-
-
-360deg
-
-
-
-
-)
-
-
-;
-}
-}
 .top_header_area {
 	width: 100%;
 	height: 40px;
@@ -430,9 +291,15 @@ rotate
 	bottom: 10px;
 }
 
+.logRegGroup {
+	
+}
+
 .top_header_area .signup-search-area a {
 	font-size: 13px;
 	color: #222;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 600;
 }
 
 .top_header_area .signup-search-area .login {
@@ -444,6 +311,25 @@ rotate
 }
 
 .top_header_area .signup-search-area .register a {
+	color: #222;
+	border-right: 0;
+}
+
+.top_header_area .signup-search-area .mypage {
+	position: absolute;
+	top: 7px;
+	right: 50px;
+	margin-right: 6px;
+	border-right: 2px solid #c2c2c2;
+	padding-right: 12px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+}
+
+.top_header_area .signup-search-area .logout {
+	position: absolute;
+	top: 10px;
+	right: 0px;
 	color: #222;
 	border-right: 0;
 }
@@ -477,8 +363,6 @@ rotate
 :: 3.0 Menu Area CSS
 -------------------- */
 .logo_area .yummy-logo {
-	font-family: 'Shadows Into Light Two', cursive;
-	font-size: 60px;
 	margin-bottom: 0;
 	padding: 35px 0 20px 0;
 	display: inline-block;
@@ -495,12 +379,25 @@ rotate
 	color: #232d37;
 	text-transform: uppercase;
 	font-size: 14px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 700;
 }
 
-.navbar.navbar-expand-lg .navbar-nav .nav-link:hover, .navbar.navbar-expand-lg .navbar-nav .active .nav-link
-	{
+.navbar.navbar-expand-lg .navbar-nav .nav-link:hover, 
+.navbar.navbar-expand-lg .navbar-nav .active .nav-link {
 	color: #f21378;
 }
+
+.welcomeMessage {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	font-size: 15px;
+	position: relative;
+	top: 0px;
+	right: 140px;
+	color: black;
+}
+
 </style>
 
 </head>
@@ -513,34 +410,22 @@ rotate
 			<div class="row">
 				<!--  Login Register Area -->
 				<div class="col-7 col-sm-6">
-					<div
-						class="signup-search-area d-flex align-items-center justify-content-end">
+					<div class="signup-search-area d-flex align-items-center justify-content-end">
 						<div class="login_register_area d-flex">
-
-							<div>
-
+							<div class="logRegGroup">
 								<c:if test="${member == null}">
-									<a class="login" href="/member/login">Login</a>
-									
-									<a class="register" href="/member/register">Sign Up</a>
-									
+									<a class="login" href="/member/login">Login</a>									
+									<a class="register" href="/member/register">Sign Up</a>									
 								</c:if>
 								<c:if test="${member != null}">
 									<c:if test="${member.role == 'ROLE_ADMIN'}">
 										<li><a href="/admin/index">관리자 화면</a>
 									</c:if>
-										${member.userName}님환영합니다.
-									<a class="mypage" href="/member/mypage">My Page</a>
-									
-									<a class="logout" href="/member/logout">Logout</a>
-									
+										<div class="welcomeMessage">${member.userName}님 환영합니다 &#128075;</div>
+									<a class="mypage" href="/member/mypage">My Page</a>									
+									<a class="logout" href="/member/logout">Logout</a>								
 								</c:if>
-
-
-
 							</div>
-
-
 							<!-- <div class="register">
 							</div> -->
 						</div>
@@ -558,7 +443,7 @@ rotate
 				<!-- Logo Area Start -->
 				<div class="col-12">
 					<div class="logo_area text-center">
-						<a href="/" class="yummy-logo"><img
+						<a href="/index" class="yummy-logo"><img
 							src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 					</div>
 				</div>
