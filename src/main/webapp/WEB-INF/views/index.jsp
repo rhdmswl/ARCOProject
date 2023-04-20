@@ -5,11 +5,6 @@
 
 <!DOCTYPE html>
 <html>
-	<nav id="nav">
-		<div id="nav_box">
-			<%@ include file="include/nav.jsp" %>
-		</div>
-	</nav>
 
 <head>
 <meta charset="UTF-8">
@@ -20,7 +15,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 
-<jsp:include page="/WEB-INF/views/includes/header.jsp"/>
+<jsp:include page="/WEB-INF/views/includes/header.jsp" />
 
 
 <!-- Title -->
@@ -79,15 +74,15 @@ body {
 	color: #f21378;
 	background-color: black;
 	position: absolute;
-    content: "";
-    bottom: -300px;
-    left: 0;
-    z-index: 3;
-    padding: 30px;
-    width: 100%;
-    height: auto;
-    transition-duration: 750ms;
-    opacity: 0.8;
+	content: "";
+	bottom: -300px;
+	left: 0;
+	z-index: 3;
+	padding: 30px;
+	width: 100%;
+	height: auto;
+	transition-duration: 750ms;
+	opacity: 0.8;
 }
 
 .sidelist {
@@ -104,6 +99,7 @@ body {
 	margin-bottom: 20px;
 }
 </style>
+
 
 </head>
 
@@ -123,8 +119,9 @@ body {
 					<div class="post-date-commnents d-flex">
 						<a href="#"> ~ <c:out value="${collection.endDate}" /></a>
 					</div>
-					<a href="#" style="color:white; font-weight:700; font-size: 22px;">
-							<c:out value="${collection.title}" />
+					<a href="#"
+						style="color: white; font-weight: 700; font-size: 22px;"> <c:out
+							value="${collection.title}" />
 					</a>
 				</div>
 			</div>
@@ -176,7 +173,8 @@ body {
 												<div class="postimage">
 													<div class="postImgGroup">
 														<img class="postimgurl"
-															src="<c:out value="${collection.imgUrl}"/>" width="400" height="400" alt="">
+															src="<c:out value="${collection.imgUrl}"/>" width="400"
+															height="400" alt="">
 													</div>
 													<div class="post-title">
 														<a href="#" style="color: black; font-weight: 700;"><c:out
@@ -256,7 +254,7 @@ body {
 		style="position: absolute; z-index: 2147483647; display: none;"><i
 		class="fa fa-arrow-up" aria-hidden="true"></i></a>
 	<a id="scrollUp" href="#top"
-		style="position: absolute; z-index: 2147483647; background-color:#f21378"><i
+		style="position: absolute; z-index: 2147483647; background-color: #f21378"><i
 		class="fa fa-arrow-up" aria-hidden="true"></i></a>
 
 </body>

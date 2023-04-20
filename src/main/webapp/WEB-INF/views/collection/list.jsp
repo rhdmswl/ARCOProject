@@ -11,6 +11,7 @@
 
 <jsp:include page="/WEB-INF/views/includes/header.jsp" />
 
+
 <meta name="description" content="Anime Template">
 <meta name="keywords" content="Anime, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

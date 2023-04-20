@@ -29,6 +29,7 @@ public class CollectionController {
 //	@PostMapping("/registerOthers")
 //	public void resisterOthers(CollectionVO collection) {
 //		service.insertOthers(collection);
+
 //	}
 	
 	@GetMapping("/index")
@@ -38,6 +39,9 @@ public class CollectionController {
 		return "index";
 
 	}
+
+//	}	
+
 
 	
 //	@GetMapping("/get")
