@@ -189,20 +189,6 @@ ul, ol {
 	padding: 0;
 }
 
-#scrollUp {
-	bottom: 55px;
-	font-size: 14px;
-	right: 50%;
-	width: 30px;
-	background-color: #fc6c3f;
-	color: #fff;
-	text-align: center;
-	height: 30px;
-	line-height: 30px;
-	border-radius: 50%;
-	margin-right: -15px;
-}
-
 a, a:hover, a:focus, a:active {
 	text-decoration: none;
 	-webkit-transition-duration: 500ms;
@@ -283,94 +269,24 @@ li {
 	transform: rotate(0deg);
 }
 
-100
-
-
-%
-{
--webkit-transform
-
-
-:
-
-
-rotate
-(
-
-
-360deg
-
-
-)
-;
-
-
-transform
-
-
-:
-
-
-rotate
-(
-
-
-360deg
-
-
-)
-;
-
-
+100%
+{-webkit-transform: rotate(360deg);
+transform:rotate(360deg);
 }
 }
+
 @
 keyframes yummy-load { 0% {
 	-webkit-transform: rotate(0deg);
 	transform: rotate(0deg);
 }
 
-100
-
-
-%
-{
--webkit-transform
-
-
-:
-
-
-rotate
-(
-
-
-360deg
-
-
-)
-;
-
-
-transform
-
-
-:
-
-
-rotate
-(
-
-
-360deg
-
-
-)
-;
-
-
+100%
+{-webkit-transform:rotate(360deg);
+transform:rotate(360deg);
 }
 }
+
 .top_header_area {
 	width: 100%;
 	height: 40px;
@@ -483,8 +399,8 @@ rotate
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                         <div class="login_register_area d-flex">
                             <div>
-                                <a class="login" href="member/login">Login</a>
-                                <a class="register" href="member/register">Sign up</a>
+                                <a class="login" href="http://localhost:8080/member/login">Login</a>
+                                <a class="register" href="http://localhost:8080member/register">Sign up</a>
                             </div>
 							<!-- <div class="register">
 							</div> -->
@@ -503,7 +419,7 @@ rotate
                 <!-- Logo Area Start -->
                 <div class="col-12">
                     <div class="logo_area text-center">
-                        <a href="#" class="yummy-logo"><img src="https://i.imgur.com/evlOrzY.png" width="400"></a>
+                        <a href="/" class="yummy-logo"><img src="https://i.imgur.com/evlOrzY.png" width="400"></a>
                     </div>
                 </div>
             </div>
@@ -516,7 +432,7 @@ rotate
                         <div class="navbar-collapse justify-content-center" id="yummyfood-nav">
                             <ul class="navbar-nav" id="yummy-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/collection/index">Home<span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/collection/list">Exhibition</a>
