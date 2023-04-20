@@ -17,7 +17,7 @@
 	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
 
 <style type="text/css">
 body {
@@ -53,9 +53,9 @@ Blog post entries
 
 .entry-title {
 	font-size: .95rem;
-	font-weight: 500;
+	font-weight: 600;
 	margin-bottom: 15px;
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .entry-thumb {
@@ -145,7 +145,7 @@ Blog post entries
 }
 
 .post-content .post-title {
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-weight: 500;
 }
 
@@ -194,12 +194,16 @@ Blog post entries
 	margin-right: 0px;
 }
 
+.form-control {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
 .post-content .fa {
 	color: #ddd;
 }
 
 .post-content a h2 {
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 1.5rem;
 	color: #333;
 	margin-bottom: 0px;
@@ -211,13 +215,13 @@ Blog post entries
 
 .post-masonry h4 {
 	text-transform: capitalize;
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 1rem;
 	font-weight: 700;
 }
 
 .post-title {
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	margin-left: 140px;
 	width: 100%;
 }
@@ -229,7 +233,7 @@ Blog post entries
 	height:400px;
 	text-align: left;
 	vertical-align:top;
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	resize: none;
 }
 
@@ -247,7 +251,7 @@ Blog post entries
 
 .categories li a:before {
 	content: "\f0da";
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	margin-right: 5px;
 }
 /*

@@ -150,7 +150,6 @@ body {
 	background-color: #fefefe;
 	margin: 15% auto;
 	padding: 20px;
-	border: 1px solid #888;
 	border-radius: 10px;
 	width: 400px;
 	height: 170px;
@@ -162,6 +161,8 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 	cursor: pointer;
 	height: 48px;
+	position: relative;
+	top: 50px;
 }
 
 .input-group-addon {
@@ -178,7 +179,8 @@ body {
 	display: inline-block;
 	width: 150px;
 	height: 40px;
-	margin: 5px;
+	margin-top: 50px;
+	margin-right: 5px;
 	font-family: 'Open Sans', sans-serif;
 	border: 1px solid #f21378;
 	border-radius: 20px;
@@ -222,16 +224,21 @@ body {
 .col-md-12 col-lg-12 col-xl-12 {
 	padding-right: 0px;
 	padding-left: 0px;
+	height: 100%;
 }
 
 .row .search {
-	position : relative;
+	position : absolute;
 }
 
-.pagination {
-	position : relative;
-	left : 36%;
+.modaltext {
+	vertical-align: middle;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	position: relative;
+	top: 30px;
 }
+
 
 @media only screen and (max-width: 767px) {
 	.inbox .mail_list .list-group-item .controls {
@@ -305,15 +312,6 @@ body {
 					<div class="col-md-12 col-lg-12 col-xl-12">
 						<div class="table table-bordered table-hover"
 							style="font-family: 'Noto Sans KR', sans-serif;">
-<!-- 							<thead>
-								<tr>
-									<th>#번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일</th>
-									<th>조회수</th>
-								</tr>
-							</thead> -->
 								<ul class="mail_list list-group list-unstyled">
 									<c:forEach items="${list}" var="board">
 									<li class="list-group-item">
@@ -339,22 +337,6 @@ body {
 									</li>
 									</c:forEach>
 								</ul>
-
-<%-- 							<c:forEach items="${list}" var="board">
-									<tr>
-										<td><c:out value="${board.post_id}" /></td>
-										<td><a class='move'
-											href='<c:out value="${board.post_id}"/>'
-											style="color: black;"> <c:out value="${board.post_title}" />
-												<b> [ <c:out value="${board.post_com_count}" /> ]
-											</b>
-										</a></td>
-										<td><c:out value="${board.post_writer}" /></td>
-										<td><fmt:formatDate pattern="yyyy-MM-dd"
-												value="${board.post_regdate}" /></td>
-										<td><c:out value="${board.post_view_count}" /></td>
-									</tr>
-								</c:forEach> --%>
 						</div>
 
 
@@ -401,12 +383,8 @@ body {
 
 							<!-- Modal content -->
 							<div class="modal-content">
-								<p style="text-align: center;">
-									<span style="font-size: 14pt;"><b><span
-											style="font-size: 20pt;">Success</span></b></span>
-								</p>
 								<p style="text-align: center; line-height: 1.5;">
-									<span style="font-size: 14pt;">처리가 완료되었습니다.</span>
+									<span class="modaltext" style="font-size: 13pt;">처리가 완료되었습니다 &#128171;</span>
 								</p>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" id="close_modal">Close</button>

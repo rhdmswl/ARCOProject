@@ -12,10 +12,17 @@
 <link
 	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	rel="stylesheet">
+	
+<!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+	
 <style type="text/css">
 body {
 	margin-top: 20px;
-	background: #FDFDFF
+	background: #fff
 }
 
 .card {
@@ -34,19 +41,26 @@ body {
 	color: #000;
 	background-color: #fff;
 	border: 1px solid #ccc;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	width: 80px;
+	text-align: center;
 }
 
 .page-item.active .page-link {
 	z-index: 1;
 	color: #555;
-	font-weight: bold;
+	font-weight: 500;
+	font-family: 'Noto Sans KR', sans-serif;
 	background-color: #f1f1f1;
 	border-color: #ccc;
 }
 
 .page-link:focus, .page-link:hover {
 	color: #000;
-	background-color: #fafafa;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	background-color: #f1f1f1;
 	border-color: #ccc;
 }
 
@@ -119,6 +133,34 @@ body {
 	background: #e6e6e6
 }
 
+.chk {
+  padding: 5px 30px 5px 10px;
+  border-radius: 4px;
+  outline: 0 none;
+}
+
+.chk option {
+  background: black;
+  color: #fff;
+  padding: 3px 0;
+}
+
+.form-control {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.form-control::placeholder {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.writername {
+	font-family: 'Noto Sans KR', sans-serif;
+	text-align: center;
+	position: relative;
+	bottom: 7px;
+
+}
+
 @media only screen and (max-width: 767px) {
 	.inbox .mail_list .list-group-item .controls {
 		margin-top: 3px
@@ -160,7 +202,7 @@ body {
 										
 										<tr>
 											
-											<th>작성자 </th>
+											<th><div class="writername">작성자</div></th>
 											<th><input class="form-control" name='post_writer'
 												value="${member.userId}" readonly="readonly"></th>
 										</tr>
@@ -175,7 +217,7 @@ body {
 													<div class="body">
 														<ul class="pagination pagination-primary m-b-0">
 															<li class="page-item">
-															<a class="page-link" href="/board/list?brd_id=${cri.brd_id}">목록으로</a>
+																<a class="page-link" href="/board/list?brd_id=${cri.brd_id}">목록</a>
 															</li>
 														</ul>
 													</div>

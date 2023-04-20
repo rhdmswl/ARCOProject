@@ -11,6 +11,57 @@
 <link rel="stylesheet" href="/css/material-dashboard.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/material-dashboard.min.js"></script>
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+<style type="text/css">
+
+body {
+	margin-top: 20px;
+	background: #FFF
+}
+
+.card {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.form-control::placeholder {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.btn-secondary {
+	font-family: 'Noto Sans KR', sans-serif;
+	box-shadow: none;
+}
+
+.btn-secondary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.btn-primary {
+	font-family: 'Noto Sans KR', sans-serif;
+	box-shadow: none;
+}
+
+.btn-primary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.btn-danger {
+	font-family: 'Noto Sans KR', sans-serif;
+	box-shadow: none;
+}
+
+.btn-danger:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+</style>
+
+
 <!-- Add other Material Dashboard dependencies here -->
 </head>
 
@@ -19,6 +70,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
+					<div class="logo_area text-center">
+						<a href="/index" class="yummy-logo"><img
+							src="https://i.imgur.com/evlOrzY.png" width="400"></a>
+					</div>
 					<form action="/member/register" method="post" name="regForm">
 						<div class="card card-login">
 							<div class="card-header card-header-primary text-center">
@@ -27,8 +82,7 @@
 							<div class="card-body">
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text">
-										</span>
+										<span class="input-group-text"> </span>
 									</div>
 									<input class="form-control" type="text" id="userId"
 										name="userId" placeholder="아이디" />
@@ -37,40 +91,36 @@
 								</div>
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text">
-										</span>
+										<span class="input-group-text"> </span>
 									</div>
 									<input class="form-control" type="password" id="userPass"
 										name="userPass" placeholder="비밀번호" />
 								</div>
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text">
-										</span>
+										<span class="input-group-text"> </span>
 									</div>
 									<input class="form-control" type="text" id="userName"
 										name="userName" placeholder="닉네임" />
 								</div>
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text">
-										</span>
+										<span class="input-group-text"> </span>
 									</div>
 									<input class="form-control" type="text" id="phone" name="phone"
 										placeholder="전화번호" />
 								</div>
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text">
-										</span>
+										<span class="input-group-text"> </span>
 									</div>
 									<input class="form-control" type="text" id="email" name="email"
 										placeholder="이메일" />
 								</div>
 							</div>
 							<div class="card-footer justify-content-center">
-								<button class="btn btn-primary"  type="submit">회원가입</button>
-								<button class="cancel btn btn-danger" >취소</button>
+								<button class="btn btn-primary" type="submit">회원가입</button>
+								<button class="cancel btn btn-danger">취소</button>
 							</div>
 						</div>
 					</form>
