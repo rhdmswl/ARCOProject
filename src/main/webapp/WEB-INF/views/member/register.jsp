@@ -18,7 +18,7 @@
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+				<div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
 					<form action="/member/register" method="post" name="regForm">
 						<div class="card card-login">
 							<div class="card-header card-header-primary text-center">
