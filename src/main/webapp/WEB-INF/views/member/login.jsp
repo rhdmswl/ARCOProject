@@ -49,8 +49,7 @@
 								<c:if test="${member != null}">
 									<div>
 										<p>${member.userId}님환영 합니다.</p>
-										<button id="mypageBtn" type="button" class="btn btn-primary">마이페이지
-											- 나의 글 보기</button>
+										<button id="mypageBtn" type="button" class="btn btn-primary">MyPage</button>
 										<button id="logoutBtn" type="button" class="btn btn-secondary">로그아웃</button>
 									</div>
 								</c:if>
