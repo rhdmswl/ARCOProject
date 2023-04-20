@@ -30,16 +30,25 @@ public class CollectionController {
 //	public void resisterOthers(CollectionVO collection) {
 //		service.insertOthers(collection);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f8a2bda7e4a1718084f707e26a53cc8a1a3592de
 //	}
 	
 	@GetMapping("/index")
 	public String index(Model model) {
 		model.addAttribute("list", service.getList());
-		return "/index";
+
+		return "index";
+
 	}
+<<<<<<< HEAD
 =======
 //	}	
 >>>>>>> db60b42e41b926165ff3d2766319939d2f3aa074
+=======
+
+>>>>>>> f8a2bda7e4a1718084f707e26a53cc8a1a3592de
 	
 //	@GetMapping("/get")
 //	public String get(Model model) {
