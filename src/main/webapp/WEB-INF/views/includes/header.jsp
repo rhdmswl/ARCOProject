@@ -399,8 +399,8 @@ transform:rotate(360deg);
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                         <div class="login_register_area d-flex">
                             <div>
-                                <a class="login" href="member/login">Login</a>
-                                <a class="register" href="member/register">Sign up</a>
+                                <a class="login" href="http://localhost:8080/member/login">Login</a>
+                                <a class="register" href="http://localhost:8080member/register">Sign up</a>
                             </div>
 							<!-- <div class="register">
 							</div> -->
@@ -419,7 +419,7 @@ transform:rotate(360deg);
                 <!-- Logo Area Start -->
                 <div class="col-12">
                     <div class="logo_area text-center">
-                        <a href="#" class="yummy-logo"><img src="https://i.imgur.com/evlOrzY.png" width="400"></a>
+                        <a href="/" class="yummy-logo"><img src="https://i.imgur.com/evlOrzY.png" width="400"></a>
                     </div>
                 </div>
             </div>
@@ -432,7 +432,7 @@ transform:rotate(360deg);
                         <div class="navbar-collapse justify-content-center" id="yummyfood-nav">
                             <ul class="navbar-nav" id="yummy-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/collection/index">Home<span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/collection/list">Exhibition</a>
