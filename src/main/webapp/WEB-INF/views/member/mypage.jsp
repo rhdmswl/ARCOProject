@@ -96,7 +96,9 @@
 
 <body>
 <div style="text-align:center">
-	<h1>My Page</h1>
+	<a href="/">
+		<img src="https://i.imgur.com/evlOrzY.png" width="400">
+	</a>
 	<br>
 	<section id="container">
 		<!-- 회원 정보 수정 -->
