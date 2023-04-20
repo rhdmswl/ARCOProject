@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.arco.domain.BoardVO;
 import com.arco.domain.Criteria;
-
+     
 public interface BoardService {
 	
 	public void register(BoardVO board);

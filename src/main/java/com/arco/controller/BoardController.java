@@ -1,7 +1,6 @@
 package com.arco.controller;
 
-import javax.lang.model.element.ModuleElement;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.arco.domain.BoardVO;
@@ -26,6 +26,7 @@ import lombok.extern.log4j.Log4j;
 
 public class BoardController {
 
+	@Autowired
 	private BoardService service;
 
 	@GetMapping("/list")
@@ -44,14 +45,21 @@ public class BoardController {
 
 
 	@GetMapping("/register")
-	public void register() {
+	public String register(@ModelAttribute("cri") Criteria cri){
+		log.info("register");
+		
+		return "/board/register";
 	}		
 	
 	@PostMapping("/register")
-	public String register(BoardVO board, RedirectAttributes rttr) {
+	public String register(BoardVO board, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri) {
 		log.info("register: " + board);
+		
 		service.register(board);
+		
 		rttr.addFlashAttribute("result", board.getPost_id());
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("brd_id", cri.getBrd_id());
 
 		return "redirect:/board/list";
 	}
