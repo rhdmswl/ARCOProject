@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.arco.domain.BoardVO;
 import com.arco.domain.Criteria;
+import com.arco.domain.LikeVO;
 import com.arco.domain.PageDTO;
 import com.arco.service.BoardService;
+import com.member.vo.MemberVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -65,12 +68,28 @@ public class BoardController {
 	}
 	
 	@GetMapping({"/get", "/modify"})
-	public void get(@RequestParam("post_id") Long post_id, @ModelAttribute("cri") Criteria cri ,Model model) {
+	public void get(@RequestParam("post_id") Long post_id, @ModelAttribute("cri") Criteria cri,Model model) {
 		log.info("/get or modify");
-		
+
 		service.updateViewCount(post_id);
 		model.addAttribute("board", service.get(post_id));
 		service.getComCnt(post_id);
+		log.info("post_id: " + post_id);	
+	}
+	
+	@ResponseBody
+	@PostMapping("/updateLike")
+	public void updateLike(Long post_id, String userId) {
+		int findLike=service.findLike(post_id);
+		if(findLike == 0) {
+			//좋아요 처음누름
+			service.insertLike(post_id, userId); //like테이블 삽입
+			service.updateLike(post_id);	//게시판테이블 +1
+		}else if(findLike == 1) {
+			service.updateLikeCancel(post_id); //게시판테이블 - 1
+			service.deleteLike(post_id, userId); //like테이블 삭제
+		}
+		log.info(findLike);
 	}
 
 	@PostMapping("/modify")
