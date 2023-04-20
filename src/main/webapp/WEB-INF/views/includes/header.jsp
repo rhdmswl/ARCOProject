@@ -398,23 +398,12 @@ transform:rotate(360deg);
                 <div class="col-7 col-sm-6">
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                         <div class="login_register_area d-flex">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        
-                          
-=======
-=======
 
->>>>>>> f8a2bda7e4a1718084f707e26a53cc8a1a3592de
                             <div>
                                 <a class="login" href="http://localhost:8080/member/login">Login</a>
                                 <a class="register" href="http://localhost:8080member/register">Sign up</a>
                             </div>
-<<<<<<< HEAD
->>>>>>> db60b42e41b926165ff3d2766319939d2f3aa074
-=======
 
->>>>>>> f8a2bda7e4a1718084f707e26a53cc8a1a3592de
 							<!-- <div class="register">
 							</div> -->
                         </div>
