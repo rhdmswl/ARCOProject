@@ -645,6 +645,9 @@ button {
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
 					str+= "         </small>"	;
+					str+= "         <small>"	;
+					str+= "        	<a href='#" + form_id + "' class='comment-delete-btn' role='button' aria-expanded='false' aria-controls='" + form_id + "'>삭제</a>";
+					str+= "         </small>"	;
 					}
 					str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
 					str+= "         <p id='comContentList' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
