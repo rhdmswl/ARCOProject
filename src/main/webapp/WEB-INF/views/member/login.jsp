@@ -20,22 +20,20 @@
 					<form name="homeForm" method="post" action="/member/login">
 						<div class="card card-login">
 							<div class="card-header card-header-primary text-center">
-								<h4 class=“card-title”>로그인</h4>
+								<h4 class="card-title">로그인</h4>
 							</div>
 							<div class="card-body">
 								<c:if test="${member == null}">
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text">
-											</span>
+											<span class="input-group-text"> </span>
 										</div>
 										<input type="text" id="userId" name="userId"
 											class="form-control" placeholder="아이디">
 									</div>
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text">
-											</span>
+											<span class="input-group-text"> </span>
 										</div>
 										<input type="password" id="userPass" name="userPass"
 											class="form-control" placeholder="비밀번호">
@@ -53,13 +51,13 @@
 										<button id="logoutBtn" type="button" class="btn btn-secondary">로그아웃</button>
 									</div>
 								</c:if>
-								
+
 								<c:if test="${member.role == 'ROLE_ADMIN'}">
 									<button id="adminBtn" type="button">관리자페이지</button>
 								</c:if>
-								
-								<c:if test="${msg == false}">
-									<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
+
+								<c:if test="${not empty msg}">
+									<p style="color: red;">로그인 실패! ${msg}</p>
 								</c:if>
 							</div>
 						</div>
@@ -68,7 +66,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#logoutBtn").on("click", function() {
