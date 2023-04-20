@@ -541,7 +541,6 @@ rotate
 							</div>
 
 
-
 							<!-- <div class="register">
 							</div> -->
 						</div>
