@@ -29,7 +29,14 @@ public class CollectionController {
 //	@PostMapping("/registerOthers")
 //	public void resisterOthers(CollectionVO collection) {
 //		service.insertOthers(collection);
-//	}	
+//	}
+	
+	@GetMapping("/index")
+	public String index(Model model) {
+		model.addAttribute("list", service.getList());
+		return "index";
+	}
+
 	
 //	@GetMapping("/get")
 //	public String get(Model model) {

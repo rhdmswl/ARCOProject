@@ -189,20 +189,6 @@ ul, ol {
 	padding: 0;
 }
 
-#scrollUp {
-	bottom: 55px;
-	font-size: 14px;
-	right: 50%;
-	width: 30px;
-	background-color: #fc6c3f;
-	color: #fff;
-	text-align: center;
-	height: 30px;
-	line-height: 30px;
-	border-radius: 50%;
-	margin-right: -15px;
-}
-
 a, a:hover, a:focus, a:active {
 	text-decoration: none;
 	-webkit-transition-duration: 500ms;
@@ -283,94 +269,24 @@ li {
 	transform: rotate(0deg);
 }
 
-100
-
-
-%
-{
--webkit-transform
-
-
-:
-
-
-rotate
-(
-
-
-360deg
-
-
-)
-;
-
-
-transform
-
-
-:
-
-
-rotate
-(
-
-
-360deg
-
-
-)
-;
-
-
+100%
+{-webkit-transform: rotate(360deg);
+transform:rotate(360deg);
 }
 }
+
 @
 keyframes yummy-load { 0% {
 	-webkit-transform: rotate(0deg);
 	transform: rotate(0deg);
 }
 
-100
-
-
-%
-{
--webkit-transform
-
-
-:
-
-
-rotate
-(
-
-
-360deg
-
-
-)
-;
-
-
-transform
-
-
-:
-
-
-rotate
-(
-
-
-360deg
-
-
-)
-;
-
-
+100%
+{-webkit-transform:rotate(360deg);
+transform:rotate(360deg);
 }
 }
+
 .top_header_area {
 	width: 100%;
 	height: 40px;
