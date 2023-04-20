@@ -1,13 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-<meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입</title>
 <link rel="stylesheet" href="/css/material-dashboard.min.css">
@@ -21,7 +19,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-					<form action="/member/register" method="post" id="regForm">
+					<form action="/member/register" method="post" name="regForm">
 						<div class="card card-login">
 							<div class="card-header card-header-primary text-center">
 								<h4 class="card-title">회원가입</h4>
@@ -71,8 +69,8 @@
 								</div>
 							</div>
 							<div class="card-footer justify-content-center">
-								<button class="btn btn-primary" type="button" id="submit">회원가입</button>
-								<button class="btn btn-danger" type="button">취소</button>
+								<button class="btn btn-primary"  type="submit">회원가입</button>
+								<button class="cancel btn btn-danger" >취소</button>
 							</div>
 						</div>
 					</form>

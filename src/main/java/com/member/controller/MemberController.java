@@ -89,12 +89,12 @@ public class MemberController {
 
 		if (login != null && pwdMatch == true) {
 			session.setAttribute("member", login);
+			return "redirect:/";
 		} else {
 			session.setAttribute("member", null);
-			model.addAttribute("msg", false);
+			model.addAttribute("msg", "아이디와 비밀번호를 확인해주세요.");
+			return "member/login";
 		}
-
-		return "index";
 	}
 
 	// 로그아웃 post
@@ -106,26 +106,19 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	// 회원정보 수정 get
-	@RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
-	public String registerUpdateView() throws Exception {
-		return "member/memberUpdateView";
-	}
+//	// 회원정보 수정 get
+//	@RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
+//	public String registerUpdateView() throws Exception {
+//		return "member/memberUpdateView";
+//	}
 
 	// 회원정보 수정 post
-	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
 	public String registerUpdate(MemberVO vo, HttpSession session) throws Exception {
 
-		/*
-		 * MemberVO login = service.login(vo);
-		 * 
-		 * boolean pwdMatch = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
-		 * if(pwdMatch) { service.memberUpdate(vo); session.invalidate(); }else { return
-		 * "member/memberUpdateView"; }
-		 */
 		service.memberUpdate(vo);
 
-		return "member/memberUpdate";
+		return "member/mypage";
 	}
 
 	// 회원 탈퇴 get
@@ -144,36 +137,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	@RequestMapping(value = "/getProfileImg", method = RequestMethod.GET)
-	public void getProfileImg(String userId, HttpServletResponse response) throws Exception {
-
-		ImageVO imageVO = service.getProfileImg(userId);
-		if (imageVO != null) {
-			response.setContentType(imageVO.getContent_type());
-			try (InputStream in = new ByteArrayInputStream(imageVO.getImage_data())) {
-				IOUtils.copy(in, response.getOutputStream());
-			}
-		}
-	}
-
-	@RequestMapping(value = "/updateProfileImg", method = RequestMethod.POST)
-	public String updateProfileImg(MemberVO vo, MultipartFile file, HttpSession session) throws Exception {
-		String profileImg = file.getOriginalFilename();
-		String contentType = file.getContentType();
-		byte[] imageData = file.getBytes();
-
-		ImageVO imageVO = new ImageVO();
-		imageVO.setFile_name(profileImg);
-		imageVO.setContent_type(contentType);
-		imageVO.setImage_data(imageData);
-		imageVO.setUser_id(vo.getUserId());
-
-		service.updateProfileImg(imageVO);
-
-		return "redirect:/";
-	}
-
-	// mypage my writings
+	// mypage - 회원 정보 수정, 나의 글 보기
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String myPage(Model model, HttpSession session) throws Exception {
 		MemberVO member = (MemberVO) session.getAttribute("member");
@@ -188,7 +152,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/passUpdateView", method = RequestMethod.GET)
 	public String pwUpdateView() throws Exception {
-		return "/member/passUpdateView";
+		return "member/passUpdateView";
 	}
 
 	// 패스워드 체크
@@ -234,5 +198,34 @@ public class MemberController {
 	public int idChk(MemberVO vo) throws Exception {
 		int result = service.idChk(vo);
 		return result;
+	}
+	
+	@RequestMapping(value = "/getProfileImg", method = RequestMethod.GET)
+	public void getProfileImg(String userId, HttpServletResponse response) throws Exception {
+
+		ImageVO imageVO = service.getProfileImg(userId);
+		if (imageVO != null) {
+			response.setContentType(imageVO.getContent_type());
+			try (InputStream in = new ByteArrayInputStream(imageVO.getImage_data())) {
+				IOUtils.copy(in, response.getOutputStream());
+			}
+		}
+	}
+
+	@RequestMapping(value = "/updateProfileImg", method = RequestMethod.POST)
+	public String updateProfileImg(MemberVO vo, MultipartFile file, HttpSession session) throws Exception {
+		String profileImg = file.getOriginalFilename();
+		String contentType = file.getContentType();
+		byte[] imageData = file.getBytes();
+
+		ImageVO imageVO = new ImageVO();
+		imageVO.setFile_name(profileImg);
+		imageVO.setContent_type(contentType);
+		imageVO.setImage_data(imageData);
+		imageVO.setUser_id(vo.getUserId());
+
+		service.updateProfileImg(imageVO);
+
+		return "redirect:/";
 	}
 }
