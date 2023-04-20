@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 
-<%@ include file="../includes/header.jsp" %>
+<jsp:include page="/WEB-INF/views/includes/header.jsp"/>
 
 <title>ARCO - Community Post</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -430,10 +430,13 @@ button {
 						</div>
 						
 						<div class="frame">
+							<c:if test="${member.userId==board.post_writer}"> 
 							<button class="custom-btn btn-11" data-oper='modify'>수정</button>
+							</c:if>
 							<button class="custom-btn btn-11" data-oper='list'>목록</button>
+							<c:if test="${member.userId==board.post_writer}">
 							<button class="custom-btn btn-11" data-oper='remove'>삭제</button>
-							
+							</c:if> 
 							<form id='operForm_modi' action="/board/modify" method="get">
 								<input type='hidden' id='post_id' name='post_id' value='<c:out value="${board.post_id}"/>'>
 								<input type='hidden' id='post_id' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
@@ -459,9 +462,14 @@ button {
 						</div>
 						
 						<!-- 댓글 작성 창 -->
+						<c:if test="${member.userId==null}">
+						<textarea id="com_content" name ="com_content" class="form-control" readonly="readonly" rows="3" style="resize: none;">로그인 후 입력해주세요!</textarea>
+						</c:if>
+						<c:if test="${member.userId!=null}">
 						<form role="form">
 							<div class="form-group">
 								<label style="font-family: 'Nanum Gothic', sans-serif;">Comment</label>
+								<textarea id="com_writer" name ="com_writer" readonly="readonly" class="form-control" rows="1" style="resize: none;">${member.userId}</textarea>
 								<textarea id="com_content" name ="com_content" class="form-control" rows="3" style="resize: none;"></textarea>
 							</div>
 							<div>
@@ -471,6 +479,7 @@ button {
 								<button id='Comment_regist' type="button" class="custom-btn btn-11">댓글 등록</button>
 							</div>
 						</form>
+						</c:if>
 					</div>
 				</article>
 
@@ -549,10 +558,6 @@ button {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 	
 	<script type="text/javascript" src="/js/reply.js"> </script>
-<<<<<<< Updated upstream
-=======
-	<script type="text/javascript" src="/js/comment.js"></script>
->>>>>>> Stashed changes
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -565,6 +570,7 @@ button {
 	        		com_writer : $("#com_writer").val()
 	        };
 			
+			var endNum=0;
 			var pageNum=1;
 			var replyPageFooter = $(".panel-footer");
 			
@@ -620,6 +626,10 @@ button {
 			    	showList(pageNum);
 			    	return;
 			    }
+				if(page==0) {
+			    	showList(1);
+			    	return;
+			    }
 				
 				if(list==null||list.length==0){
 					return;
@@ -631,9 +641,11 @@ button {
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
 					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
+					if (list[i].com_writer=="${member.userId}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
 					str+= "         </small>"	;
+					}
 					str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
 					str+= "         <p id='comContentList' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
 					str+= "			<form class='collapse' id='" + form_id + "'>";
@@ -674,6 +686,7 @@ button {
 			$('#Comment_regist').on("click",function(e) {
 				var reply={
 						com_content:$('#com_content').val(),
+						com_writer:$('#com_writer').val(),
 						post_id:post_idValue
 				};
 				replyService.add(reply, function(result){alert(result); showList(endNum);} );

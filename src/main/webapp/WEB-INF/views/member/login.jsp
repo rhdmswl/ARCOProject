@@ -72,19 +72,19 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$(“#logoutBtn”).on(“click”, function() {
-				location.href = “logout”;
+			$("#logoutBtn").on("click", function() {
+				location.href = "logout";
 			})
-			$(“#registerBtn”).on(“click”, function() {
-				location.href = “register”;
+			$("#registerBtn").on("click", function() {
+				location.href = "register";
 			})
 	
-			$(“#mypageBtn”).on(“click”, function() {
-				location.href = “mypage”;
+			$("#mypageBtn").on("click", function() {
+				location.href = "mypage";
 			})
 			
-			$(“#adminBtn”).on(“click”, function(){
-				location.href=“/admin/index”;
+			$("#adminBtn").on("click", function(){
+				location.href="/admin/index";
 			})
 	
 		})
