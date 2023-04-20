@@ -107,7 +107,8 @@
 	
 	<!-- 좋아요 눌렀는지 안눌렀는지 -->
 	<select id="findLike" resultType="int">
-		select count(*) from post_rec where post_id = #{post_id} and userId = #{userId}
+		select count(*) from post_rec
+		where post_id = #{post_id} and user_id = #{userId}
 	</select>
 	
 	<!-- 게시글 추천 수 -->
@@ -126,13 +127,13 @@
 	
 	<!-- 추천 시 Like insert -->
 	<insert id="insertLike">
-		insert into post_rec(post_id,userId)
+		insert into post_rec (post_id,user_id)
 		values (#{post_id},#{userId})
 	</insert>
 	
 	<!-- 추천 시 delete -->
 	<delete id="deleteLike">
-		delete from post_rec where post_id=#{post_id} and userId = #{userId}
+		delete from post_rec where post_id=#{post_id} and user_id = #{userId}
 	</delete>
 	
 	<!-- 추천 시 findlike를 1로 바꾸어서 중복 추천 방지 -->

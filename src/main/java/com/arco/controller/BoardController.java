@@ -1,12 +1,15 @@
 package com.arco.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -78,18 +81,27 @@ public class BoardController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/updateLike")
-	public void updateLike(Long post_id, String userId) {
-		int findLike=service.findLike(post_id);
+	@RequestMapping(value = "/updateLike", method = RequestMethod.POST)
+	public int updateLike(@RequestBody LikeVO like,Model model) {
+		//Long post_id=like.getPost_id();
+		
+		log.info("post_id :" +like.getPost_id());
+		log.info("2 :" +like.getUserId());
+		int findLike=service.findLike(like);
+		log.info("첫" +findLike);
 		if(findLike == 0) {
 			//좋아요 처음누름
-			service.insertLike(post_id, userId); //like테이블 삽입
-			service.updateLike(post_id);	//게시판테이블 +1
+			log.info("like 0 진입");
+			service.insertLike(like);
+			service.updateLike(like.getPost_id());	//게시판테이블 +1
 		}else if(findLike == 1) {
-			service.updateLikeCancel(post_id); //게시판테이블 - 1
-			service.deleteLike(post_id, userId); //like테이블 삭제
+			log.info("like 1 진입");
+			service.updateLikeCancel(like.getPost_id()); //게시판테이블 - 1
+			service.deleteLike(like); //like테이블 삭제
 		}
+		log.info("여기까진 됨4");
 		log.info(findLike);
+		return findLike;
 	}
 
 	@PostMapping("/modify")
