@@ -22,10 +22,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.member.service.MemberService;
+import com.member.vo.Criteria;
 import com.member.vo.ImageVO;
 import com.member.vo.MemberVO;
+import com.member.vo.PageMaker;
 
 @Controller
 @RequestMapping("/member/*")
@@ -137,18 +140,60 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	// mypage - 회원 정보 수정, 나의 글 보기
+//	// mypage - 회원 정보 수정, 나의 글 보기
+//	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+//	public String myPage(Model model, HttpSession session) throws Exception {
+//		MemberVO member = (MemberVO) session.getAttribute("member");
+//		String userId = member.getUserId();
+//
+//		model.addAttribute("collectionRevs", service.getMemberCollectionRevs(userId));
+//		model.addAttribute("posts", service.getMemberPosts(userId));
+//		model.addAttribute("comments", service.getMemberComments(userId));
+//
+//		return "member/mypage";
+//	}
+	
+	// mypage - 나의 글 보기 (페이징 적용)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String myPage(Model model, HttpSession session) throws Exception {
-		MemberVO member = (MemberVO) session.getAttribute("member");
-		String userId = member.getUserId();
+	public String myPage(Model model, HttpSession session,
+			@RequestParam(value="revPage", defaultValue="1") int revPage,
+            @RequestParam(value="postPage", defaultValue="1") int postPage,
+            @RequestParam(value="commentPage", defaultValue="1") int commentPage
+            ) throws Exception {
+		
+	    MemberVO vo = (MemberVO) session.getAttribute("member");
+	    String userId = null;
+	    if (vo != null) {
+	        userId = vo.getUserId();
+	    }
+//	    cri.setUserId(userId);
+//
+//	    model.addAttribute("collectionRevs", service.getMemberCollectionRevsWithPaging(userId, cri));
+//	    model.addAttribute("posts", service.getMemberPostsWithPaging(userId, cri));
+//	    model.addAttribute("comments", service.getMemberCommentsWithPaging(userId, cri));
+	    Criteria revCri = new Criteria(revPage);
+	    Criteria postCri = new Criteria(postPage);
+	    Criteria commentCri = new Criteria(commentPage);
 
-		model.addAttribute("collectionRevs", service.getMemberCollectionRevs(userId));
-		model.addAttribute("posts", service.getMemberPosts(userId));
-		model.addAttribute("comments", service.getMemberComments(userId));
+	    revCri.setUserId(userId);
+	    postCri.setUserId(userId);
+	    commentCri.setUserId(userId);
 
-		return "member/mypage";
+	    model.addAttribute("collectionRevs", service.getMemberCollectionRevsWithPaging(userId, revCri));
+	    model.addAttribute("posts", service.getMemberPostsWithPaging(userId, postCri));
+	    model.addAttribute("comments", service.getMemberCommentsWithPaging(userId, commentCri));
+
+	    PageMaker collectionRevPageMaker = new PageMaker(revCri, service.countCollectionRevs(userId));
+	    PageMaker postPageMaker = new PageMaker(postCri, service.countPosts(userId));
+	    PageMaker commentPageMaker = new PageMaker(commentCri, service.countComments(userId));
+
+	    model.addAttribute("collectionRevPageMaker", collectionRevPageMaker);
+	    model.addAttribute("postPageMaker", postPageMaker);
+	    model.addAttribute("commentPageMaker", commentPageMaker);
+
+	    return "member/mypage";
 	}
+
 
 	@RequestMapping(value = "/passUpdateView", method = RequestMethod.GET)
 	public String pwUpdateView() throws Exception {
