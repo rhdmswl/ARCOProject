@@ -57,6 +57,18 @@ body {
 	font-family: 'Nanum Gothic', sans-serif;
 }
 
+#scrollUp {
+	bottom: 55px;
+	font-size: 14px;
+	right: 50%;
+	width: 30px;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 50%;
+	margin-right: -15px;
+}
+
 </style>
 
 </head>
@@ -176,6 +188,9 @@ body {
 			<div class="col-12">
 				<!-- Copywrite Text -->
 				<div class="copy_right_text text-center">
+						<a id="scrollUp" href="#top"  
+						style="position: absolute; z-index: 2147483647; background-color:#f21378;"><i
+						class="fa fa-arrow-up lastscroll" aria-hidden="true" style="color:#fff;"></i></a>
 					<p>
 						Copyright @2018 All rights reserved | This template is made with <i
 							class="fa fa-heart-o" aria-hidden="true"></i> by <a
@@ -198,13 +213,6 @@ body {
 	<script src="/js/others/plugins.js"></script>
 	<!-- Active JS -->
 	<script src="/js/active.js"></script>
-
-	<a id="scrollUp" href="#top"
-		style="position: absolute; z-index: 2147483647; display: block;">
-		<i class="fa fa-arrow-up" aria-hidden="true"></i>
-	</a>
-
-
 
 </body>
 </html>
