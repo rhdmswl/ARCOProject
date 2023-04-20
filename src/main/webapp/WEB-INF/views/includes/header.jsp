@@ -503,7 +503,7 @@ rotate
                 <!-- Logo Area Start -->
                 <div class="col-12">
                     <div class="logo_area text-center">
-                        <a href="#" class="yummy-logo"><img src="https://i.imgur.com/evlOrzY.png" width="400"></a>
+                        <a href="/" class="yummy-logo"><img src="https://i.imgur.com/evlOrzY.png" width="400"></a>
                     </div>
                 </div>
             </div>
@@ -516,7 +516,7 @@ rotate
                         <div class="navbar-collapse justify-content-center" id="yummyfood-nav">
                             <ul class="navbar-nav" id="yummy-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/collection/index">Home<span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/collection/list">Exhibition</a>
