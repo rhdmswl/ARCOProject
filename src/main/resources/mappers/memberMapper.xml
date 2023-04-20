@@ -33,8 +33,7 @@
 	<update id="memberUpdate">
 		UPDATE MEMBER SET
 		<!-- USERPASS = #{userPass}, -->
-		USERNAME = #{userName}, PHONE= #{phone}, EMAIL= #{email},
-		USERPASS=#{userPass}
+		USERNAME = #{userName}, PHONE= #{phone}, EMAIL= #{email}
 		WHERE USERID = #{userId}
 	</update>
 
