@@ -89,12 +89,12 @@ public class MemberController {
 
 		if (login != null && pwdMatch == true) {
 			session.setAttribute("member", login);
+			return "redirect:/";
 		} else {
 			session.setAttribute("member", null);
-			model.addAttribute("msg", false);
+			model.addAttribute("msg", "아이디와 비밀번호를 확인해주세요.");
+			return "member/login";
 		}
-
-		return "index";
 	}
 
 	// 로그아웃 post
@@ -188,7 +188,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/passUpdateView", method = RequestMethod.GET)
 	public String pwUpdateView() throws Exception {
-		return "/member/passUpdateView";
+		return "member/passUpdateView";
 	}
 
 	// 패스워드 체크
