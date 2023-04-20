@@ -29,6 +29,7 @@ public class CollectionController {
 //	@PostMapping("/registerOthers")
 //	public void resisterOthers(CollectionVO collection) {
 //		service.insertOthers(collection);
+<<<<<<< HEAD
 //	}
 	
 	@GetMapping("/index")
@@ -36,6 +37,9 @@ public class CollectionController {
 		model.addAttribute("list", service.getList());
 		return "/index";
 	}
+=======
+//	}	
+>>>>>>> db60b42e41b926165ff3d2766319939d2f3aa074
 	
 //	@GetMapping("/get")
 //	public String get(Model model) {

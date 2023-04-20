@@ -482,8 +482,15 @@ rotate
                 <div class="col-7 col-sm-6">
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                         <div class="login_register_area d-flex">
+<<<<<<< HEAD
                         
                           
+=======
+                            <div>
+                                <a class="login" href="http://localhost:8080/member/login">Login</a>
+                                <a class="register" href="http://localhost:8080member/register">Sign up</a>
+                            </div>
+>>>>>>> db60b42e41b926165ff3d2766319939d2f3aa074
 							<!-- <div class="register">
 							</div> -->
                         </div>
@@ -501,7 +508,7 @@ rotate
                 <!-- Logo Area Start -->
                 <div class="col-12">
                     <div class="logo_area text-center">
-                        <a href="#" class="yummy-logo"><img src="https://i.imgur.com/evlOrzY.png" width="400"></a>
+                        <a href="/" class="yummy-logo"><img src="https://i.imgur.com/evlOrzY.png" width="400"></a>
                     </div>
                 </div>
             </div>
@@ -514,7 +521,7 @@ rotate
                         <div class="navbar-collapse justify-content-center" id="yummyfood-nav">
                             <ul class="navbar-nav" id="yummy-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/collection/index">Home<span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/collection/list">Exhibition</a>
