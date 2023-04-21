@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <title>UPDATE PASS</title>
 
-<!-- Favicon -->
-<link rel="icon" href="/img/core-img/favicon.ico">
-
 <!-- 필요한 스타일시트 파일들 추가 -->
 <link href="${pageContext.request.contextPath}/css/material-dashboard.min.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
@@ -79,14 +76,9 @@ body {
 .btn-primary {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	box-shadow: none;
-	width: 100px;
-	height: 40px;
-	line-height: 20px;
-	font-size: 15px;
-	padding: 0;
-	margin-top: 20px;
-	margin-right: 50px;
-	float: right;
+
+	margin-top:20px;
+
 }
 
 .btn-primary:hover {
@@ -154,51 +146,55 @@ input {
 
 </head>
 
-<body>
-	<div class="passUpdate">
-		<div class="logo_area text-center">
-			<a href="/" class="yummy-logo"><img
-				src="https://i.imgur.com/evlOrzY.png" width="400"></a>
-		</div>
-		<div class="card">
-			<div class="card-header passUpContent">
-				<div class="card-title">비밀번호 수정</div>
-				<div>
-					<c:if test="${not empty error}">
-						<div style="color: red;">${error}</div>
-					</c:if>
-				</div>
-				<div class="card-body passUpdateBox">
-					<form id="passUpdateForm"  class="boxForm"
-						action="${pageContext.request.contextPath}/member/passUpdate"
-						method="post">
-						<div class="presentPass">
-							<label class="presentPassText" for="userPass">현재 비밀번호</label> 
-							<input type="password" id="userPass" name="userPass" required>
-						</div>
-						<div class="newPass">
-							<label class="newPassText" for="newPass">새로운 비밀번호</label> 
-							<input type="password" id="newPass" name="newPass" required>
-						</div>
-						<div class="checkPass">
-							<label class="checkPassText" for="confirmPass">비밀번호 확인</label> 
-							<input type="password" id="confirmPass" name="confirmPass" required>
-						</div>
-						<button type="button" class="btn btn-primary"
-							onclick="showConfirmDialog()">수정하기</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript">
+<script type="text/javascript">
+
 		function showConfirmDialog() {
 			if (confirm('비밀번호를 변경하시겠습니까?')) {
 				document.getElementById('passUpdateForm').submit();
-				alert("비밀번호가 변경되었습니다. 다시 로그인해주세요!");
+				
 			}
 		}
 	</script>
-
+<body>
+  <section id="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
+        <div class="logo_area text-center">
+          <a href="/" class="yummy-logo">
+            <img src="https://i.imgur.com/evlOrzY.png" width="400">
+          </a>
+        </div>
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="text-center">비밀번호 변경</h4>
+          </div>
+          
+          <div class="card-body">
+            <form id="passUpdateForm" action="${pageContext.request.contextPath}/member/passUpdate" method="post">
+              <div>
+                <label class="control-label" for="userPass">현재 비밀번호:</label>
+                <input class="form-control" type="password" id="userPass" name="userPass" required>
+              </div>
+              <div>
+                <label class="control-label" for="newPass">새로운 비밀번호:</label>
+                <input class="form-control" type="password" id="newPass" name="newPass" required>
+              </div>
+              <div>
+                <label class="control-label" for="confirmPass">비밀번호 확인:</label>
+                <input class="form-control" type="password" id="confirmPass" name="confirmPass" required>
+              </div>
+              <c:if test="${not empty error}">
+            <div style="color: red;">${error}</div>
+          </c:if>
+              <div class="text-center">
+							<button class="btn btn-primary" type="button" onclick="showConfirmDialog()">수정하기</button>
+						</div>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
