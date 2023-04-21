@@ -131,14 +131,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	// mypage 회원정보 수정 post
-	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
-	public String registerUpdate(MemberVO vo, HttpSession session) throws Exception {
-
-		service.memberUpdate(vo);
-
-		return "redirect:/member/mypage";
-	}
+	
 	
 	// mypage - 나의 글 보기 (페이징 적용)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
