@@ -1,11 +1,11 @@
 package com.collection.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.collection.domain.CollectionReviewPageDTO;
 import com.collection.domain.CollectionReviewVO;
 import com.collection.domain.Criteria;
 import com.collection.service.CollectionReviewService;
 
 import lombok.extern.log4j.Log4j;
 
-@Controller
+@RestController
 @Log4j
 @RequestMapping("/review")
 
@@ -42,16 +42,16 @@ public class CollectionReviewController {
 	}
 
 	@GetMapping(value = "/pages/{seq}/{pageNum}", produces = { MediaType.APPLICATION_XML_VALUE,
-			MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<CollectionReviewPageDTO> getList(@PathVariable("pageNum") int pageNum,
-			@PathVariable("seq") long seq) {
-		log.info("getList.............");
-		Criteria cri = new Criteria(pageNum, 10);
-		log.info(seq);
-		log.info(cri);
-		return new ResponseEntity<>(service.getListPage(cri, seq), HttpStatus.OK);
+            MediaType.APPLICATION_JSON_UTF8_VALUE })
+    public ResponseEntity<List<CollectionReviewVO>> getList(@PathVariable("pageNum") int pageNum,
+            @PathVariable("seq") long seq) {
+        log.info("getList.............");
+        Criteria cri = new Criteria(pageNum, 10);
+        log.info(cri);
 
-	}
+        return new ResponseEntity<>(service.getList(cri, seq), HttpStatus.OK);
+
+    }
 
 	@GetMapping(value = "/{revSeq}", produces = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE })
@@ -85,58 +85,4 @@ public class CollectionReviewController {
 			new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-//	
-//	@GetMapping("/list")
-//	public String list(Criteria cri, Model model) {
-//		log.info("list:" + cri);
-//		model.addAttribute("list", service.getList(cri));
-//		model.addAttribute("pageMaker",new PageDTO(cri, 123));
-//		
-//		return "get";
-//	}
-//	
-//	@GetMapping("/register")
-//	public String register(CollectionReviewVO review, RedirectAttributes rttr) {
-//		log.info("register: " + review);
-//		
-//		service.register(review);
-//		
-//		rttr.addFlashAttribute("result" + review.getRevSeq());
-//		
-//		return "redirect:/review/lsit";
-//	}
-
-	@PostMapping("/register")
-	public String register(CollectionReviewVO review, RedirectAttributes rttr) {
-		log.info("register : " + review);
-		service.register(review);
-		rttr.addFlashAttribute("result", review.getSeq());
-
-		return "redirect:/collection/get?seq=" + review.getSeq();
-	}
-
-//	
-//	@GetMapping({"/get","/modify"})
-//	public void get(@RequestParam("seq") long seq,@ModelAttribute("cri") Criteria cri, Model model) {
-//		log.info("/get or modify");
-//		model.addAttribute("review", service.get(seq));
-//	}
-//	
-//	
-//	@PostMapping("/modify") public String modify(CollectionReviewVO review, RedirectAttributes rttr) { 
-//		log.info("modify......" + review);
-//		if(service.modify(review)) { rttr.addFlashAttribute("resulst", "success"); }
-//			  return "redirect::/review/get?seq=" + review.getSeq(); }
-//
-//			
-//	
-//	@PostMapping("/remove")
-//	public String remove(CollectionReviewVO review, RedirectAttributes rttr) {
-//		log.info("remove......" + review);
-//		
-//		if(service.remove(review.getRevSeq())) {
-//			rttr.addFlashAttribute("resulst", "success");
-//		}
-//		return "redirect::/review/get?seq=" + review.getSeq();
-//	}
 }

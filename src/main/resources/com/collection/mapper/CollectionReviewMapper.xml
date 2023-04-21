@@ -36,34 +36,21 @@ select * from collectionRev where revSeq >0
 	<update id="update">
 
 		update collectionRev
-		set revComment = #{revComment}
+		set revComment = #{revComment},
+		revStar = #{revStar}
 		where revSeq = #{revSeq}
 
 	</update>
 
-	<sql id="criteria">
-		<choose>
-			<when test="type=='T'.toString()">
-
-				where revSeq=#{revSeq}
-				and revComment like concat('%', #{keyword}, '%')
-			</when>
-			
-			<otherwise>
-				where revSeq=#{revSeq}
-			</otherwise>
-		</choose>
-	</sql>
-
 	<select id="getListWithPaging" resultType="com.collection.domain.CollectionReviewVO">
 
-    select * from(select seq, revSeq, userId, nickName, revComment, revCount, revStar, reviewDate, updateDate from collectionRev)
-     as reviewPaging
+    select * 
+    from(select seq, revSeq, userId, nickName, revComment, revCount, revStar, reviewDate, updateDate from collectionRev)as reviewPaging
      where seq = #{seq}
     order by revSeq desc limit #{cri.pageNumForLimit},10
 
-</select>
-
+	</select>
+	
 	 <select id="getCountBySeq"
 			resultType="int">
 			SELECT count(revSeq)
@@ -74,7 +61,5 @@ select * from collectionRev where revSeq >0
  
 	<select id="getTotalCount" resultType="int">
 		select count(*) from collectionRev
-		<include refid="criteria"></include>
-
 	</select>
 </mapper>

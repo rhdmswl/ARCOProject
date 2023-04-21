@@ -18,35 +18,56 @@
 	
 	</insert>
 	
-	<!-- <update id="updateCollectionOthers">
-		
-		update collection
-		set place = #{place, jdbcType=VARCHAR},
-		price = #{price, jdbcType=VARCHAR},
-		url = #{url, jdbcType=VARCHAR},
-		phone = #{phone, jdbcType=VARCHAR},
-		placeAddr = #{placeAddr, jdbcType=VARCHAR},
-		area =  #{area, jdbcType=VARCHAR}
-		where seq = #{seq}
-		
-		
-	</update> -->
-	
-<!-- 	<select id="getCollectionImgTitle">
-	
-		select imgUrl from collection
-		order by desc endDate 
-		limit 5
-	
-	</select> -->
 	
 	<select id="getCollectionList" resultType="com.collection.domain.CollectionVO">
 		select*from collection
 		order by endDate desc  
 	</select>
+	
 	<select id="getCollection" resultType="com.collection.domain.CollectionVO">
 		select * from collection where seq = #{seq}
 	</select>
+	
+	<sql id="criteria">
+		<choose>
+			<when test="type == 'T'.toString()">
+				where seq=#{seq}
+				and title like concat('%', #{keyword}, '%')
+			</when>
+			<!-- <when test="type=='D'.toString()">
+				where seq=#{seq}
+				and startDate like concat('%', #{keyword}, '%')
+			</when> -->	
+<!-- 		<otherwise>
+				where seq=#{seq}
+			</otherwise> -->
+		</choose>
+	</sql>
+	
+	
+	
+	<select id="getListWithPaging" resultType="com.collection.domain.CollectionVO">
+
+    select * 
+    from(select seq, title, startDate, endDate, imgUrl, revViewCount from collection
+    <include refid="criteria"></include>
+    )as collectionPaging
+    order by endDate desc limit #{pageNumForLimit},12
+
+	</select>
+
+ 
+	<select id="getTotalCount" resultType="int">
+		select count(*) from collection
+		<!-- <include refid="criteria"></include> -->
+
+	</select>
+	
+	<update id="revViewCount">
+		update collection 
+		set revViewCount = revViewCount + 1
+		where seq = #{seq}
+	</update>
 	
 
 </mapper>
