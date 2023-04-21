@@ -164,7 +164,7 @@ body {
 								$("#delForm").submit();
 							}
 						}else{
-							alert("패스워드가 틀렸습니다.");
+							alert("비밀번호가 틀렸습니다.");
 							return;
 						}
 					}
@@ -199,7 +199,7 @@ body {
 							</div>
 							<br>
 							<div class="form-group has-feedback">
-								<label class="control-label" for="userName">성명</label> 
+								<label class="control-label" for="userName">닉네임</label> 
 								<input class="form-control userName" type="text" id="userName" name="userName"
 									value="${member.userName}" readonly="readonly" />
 							</div>

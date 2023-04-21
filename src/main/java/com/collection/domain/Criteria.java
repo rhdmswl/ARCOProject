@@ -16,16 +16,25 @@ public class Criteria {
 	private long revSeq;
 	private int amount;
 	
+	private String type;
+	private String keyword;
+	
 	public Criteria() {
-		this(1, 10);
+		this(1, 12);
 	}
-
 
 	public Criteria(int pageNum, int amount) {
 		this.pageNum = pageNum;
 		this.amount = amount;
-		this.pageNumForLimit = ((pageNum - 1)*10);
 	}
 	
+	public void setpageNumForLimit() {
+		this.pageNumForLimit=((pageNum-1)*amount);
+	}
+	
+	public String[] getTypeArr() {
+		
+		return type == null ? new String[] {} : type.split("");
+	}
 	
 }

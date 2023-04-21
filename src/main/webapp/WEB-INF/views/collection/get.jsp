@@ -19,7 +19,7 @@
     <title>EXHIBITION - Page</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="/img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
     <link href="/style.css" rel="stylesheet">
@@ -35,7 +35,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
-    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     
 <style type="text/css">
 
@@ -247,6 +250,58 @@ a:hover {
 	bottom: 1px;
 }
 
+
+div.rating-wrapper {
+  display: flex;
+  align-items: first baseline;
+  flex-direction: column;
+  margin: 5rem;
+  font-size: 1.5rem;
+}
+
+div.star-wrapper {
+  font-size: 2rem;
+}
+
+div.star-wrapper i {
+  cursor: pointer;
+}
+
+div.star-wrapper i.yellow {
+  color: #fdd835;
+}
+
+div.star-wrapper i.vote-recorded {
+  color: #f57c00;
+}
+
+p.v-data {
+  background: #ccc;
+  padding: 0.5rem;
+}
+
+/* 각 별들의 기본 설정 */
+.starR{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+  font-size: 1.8em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* 별 이모지에 마우스 오버 시 */
+.starR:hover {
+  text-shadow: 0 0 0 #ccc;
+}
+
+/* 별 이모지를 클릭 후 class="on"이 되었을 경우 */
+.starR.on{
+  text-shadow: 0 0 0 #ec27c8;
+}
+
 </style>
 
 </head>
@@ -350,9 +405,8 @@ a:hover {
 							<!-- Comment Area Start -->
 							<div class="comment_area section_padding_50 clearfix">
 								<!-- <h4 class="mb-30">2 Comments</h4> -->
-								<ol>
-									<ul class="chat">
-									</ul>
+								<ul class="chat"></ul>
+								<div class="panel-footer">
 									<%--   <div class="pull-rigth">
                                         <ul class="pagination">
                                         <c:if test="${pageMaker.prev }">
@@ -409,7 +463,46 @@ a:hover {
 									</div>
 								</div>
 							</div>
+							</div>
 
+							<!-- 리뷰 남기기 -->
+                            <div class="leave-comment-area section_padding_50 clearfix">
+                                <div class="comment-form">
+                                    <h4 class="mb-30">Leave A Comment</h4>
+
+                                    <!-- Comment Form -->
+								</div> 
+									<form role="form">
+                                	<div class="form-group">
+										<input type="text" style="display:none;" id="seq" name = "seq" value="<c:out value="${collection.seq}"/>">
+                                	</div>
+                                        <div class="form-group starRev" id = "star">
+											<span class="star-input">
+												<span class="starR on" onClick="setStar(1)">⭐</span>
+												<span class="starR" onClick="setStar(2)">⭐</span>
+												<span class="starR" onClick="setStar(3)">⭐</span>
+												<span class="starR" onClick="setStar(4)">⭐</span>
+												<span class="starR" onClick="setStar(5)">⭐</span>
+												<output for="star-input"><b>0</b>점</output>						
+											</span>
+										</div>
+                                        <div class="form-group">
+                                        	<label>작성자</label>
+                                        	<input class="form-control" type="text" id='InputnickName' name = 'nickName' placeholder="nickName">
+                                        </div>
+                                        <div class="form-group">
+                                        	<label>리뷰내용</label>
+                                        	<input class="form-control" type="text" id='comment' name = 'revComment' placeholder="한줄평"> 
+										</div>
+										<button id='commentAdd' type="submit" class="btn contact-btn">Post Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 						</div>
 					</div>
 				</div>
@@ -442,166 +535,216 @@ a:hover {
     <!-- Bootstrap-4 js -->
     <script src="/js/bootstrap/bootstrap.min.js"></script>
     <!-- All Plugins JS -->
-    <script src="/js/others/plugins.js"></script>
+    <!-- <script src="/js/others/plugins.js"></script> -->
     <!-- Active JS -->
+
     <script src="/js/active.js"></script>
+
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
-
-		<script type="text/javascript" src="/js/review.js"></script>
+	<script type="text/javascript" src="/js/review.js"></script>
 <script>
-	var pageNum = 1;
-	var reviewPageFooter = $(".panel-footer");
-	function showReviewPage(reviewCnt) {
-		var endNum = Math.ceil(pageNum / 10.0) * 10;
-		var startNum = endNum - 9;
-
-		var prev = startNum != 1;
-		var next = false;
-
-		if (endNum * 10 >= reviewCnt) {
-			endNum = Math.ceil(reviewCnt / 10.0);
-		}
-
-		if (endNum * 10 < reviewCnt) {
-			next = true;
-		}
-
-		var str = "<ul class='pagination pull-right revList'>";
-		if (prev) {
-			str += "<li class='page-item'><a class='page-link' href='"
-					+ (startNum - 1) + "'>Previous</a></li>";
-		}
-
-		for (var i = startNum; i <= endNum; i++) {
-			var active = pageNum == i ? "active" : "";
-			str += "<li class='page-item "+active+" '><a class='page-link' href='"+i+"'>"
-					+ i + "</a></li>";
-		}
-
-		if (next) {
-			str += "<li class='page-item'><a class='page-link' href='"
-					+ (endNum + 1) + "'>Next</a></li>";
-		}
-
-		str += "</ul></div>";
-		console.log(str);
-
-		reviewPageFooter.html(str);
-	}
-</script>
-		
-
-		<script type="text/javascript" src="/js/review.js"></script>
-
-		<script>
 
        	$(document).ready(function() {
-       		
-       		
-            		 var seqValue = '<c:out value="${collection.seq}"/>';
-            		 var reviewUL = $(".chat");
-            		 showList(1);
+       		var pageNum = 1;
+       		var endNum=0;
+       		var reviewPageFooter = $(".panel-footer");
+            var seqValue = '<c:out value="${collection.seq}"/>';
+            var reviewUL = $(".chat");
             		 
+            showList(1);
+            
+            function showReviewPage(reviewCnt) {
+   			 console.log("함수 작동 " +reviewCnt);
+   			 console.log("함수 작동 " +pageNum);
+   				endNum = Math.ceil(pageNum / 5.0) * 5;
+   				var startNum = endNum - 4;
+   				
+   				var prev = startNum != 1;
+   				var next = false;
+   				
+   				console.log("reviewCnt : "+reviewCnt);
+   				if(endNum * 12 >= reviewCnt) {
+   					endNum = Math.ceil(reviewCnt/12.0);
+   				}
+   				
+   				if(endNum * 12 < reviewCnt) {
+   					next = true;
+   				} 
+   				var str = "<ul class='pagination pull-right'>";
+   				if(prev) {
+   					str += "<li class='page-item'><a class='page-link' href='"+(startNum-1)+"'>Previous</a></li>";
+   				}
+   				console.log("startNum : "+startNum);
+   				console.log("endNum : "+endNum);
+   				for(var i=startNum ; i<=endNum; i++){
+   					var active = pageNum == i? "active":"";
+   					str+="<li class='page-item "+active+" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
+   				}
+   				
+   				if(next) {
+   					str+= "<li class='page-item'><a class='page-link' href='"+(endNum+1) + "'>Next</a></li>";
+   				}
+   				str += "</ul></div>";
+   				console.log("함수끝"+str);
+   				
+   				reviewPageFooter.html(str);
+   			}		 
+            
             		 function showList(page){
-            			 console.log("show list " + page);
-            			 
+            			 pageNum=page;
             			 CollectionReviewService.getList({seq:seqValue,page: page|| 1 },
-            				function(reviewCnt, list){
-            				 console.log("reviewCnt: " + reviewCnt);
-            				 console.log("list: " + list);
-            				 console.log(list);
-            				 
-            			 
-            			 if(page == -1){
-            				 pageNum = Math.ceil(reviewCn/10.0);
-            				 showList(pageNum);
-            				 return;
-            			 }
+            				function(reviewCnt,list){
+            					console.log("리뷰 개수 " +reviewCnt);
             				   var str="";
+            				   if(page==-1) {
+            				    	pageNum=Math.ceil(com_cnt/10.0);
+            				    	
+            				    	showList(pageNum);
+            				    	return;
+            				   }
             				   
             				   if(list==null || list.length ==0) {
-            					   reviewUL.html("");
+            					   return;
             				   } 
             				   
             				   for(var i=0, len = list.length || 0; i < len; i++){
             					   var revSeqValue = list[i].revSeq;
             					   var formId = "review" + list[i].revSeq
-            					   str +="<li class=' left clearfix' data-rno='"+list[i].revSeq+"'>";
-            					   str +="  <div><div class='header'><strong class='primary-font'>"+list[i].nickName+"</strong>"; 
-            					   str+= "   <small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].updateDate)+"</small></div>";
-/*             			           str +="    <p>"+list[i].revComment+"</p>"; */
-            			           str+= "         <p id='review' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</p>";
-            			           str += "<a href='#" + formId + "' value='"+ list[i].revSeq +"' class='update' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
-            			           str+= "			<form class='collapse' id='" + formId + "'>";
-            			           str+= "  			<div class='form-group'>";
-            				       str+= "  			<input type='text' id='revComment' name='revComment' value=''/>";		
-            				       str+= "  			<input type='text' id='revStar' name='revComment' value=''/>";      				       
+
+            					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
+            					   str +=" <div><div class='header'><strong class='primary-font'>"+list[i].nickName+"</strong>"; 
+            					   str+= " <small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";
+            			           str+= " <p id='review' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</p>";
+            			           str+= "<a href='#" + formId + "' value='"+ list[i].revSeq +"' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+                                   str+= "            <form class='collapse' id='" + formId + "'>";
+                                   str+= "              <div class='form-group'>";
+                                   str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
+                                   /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
             				       str+= "  			<div style='display:none'><input type='datetime-local' id='updateDate' name='updateDate' value=''/></div>";
             				       str+= "  			</div>";
             				       str+= "  			<button id='update' type='button' class='btn btn-11' >수정 완료</button></div>";
             				       str+= "			</form>";
-            			           /* str += "<input type='hidden' id='revSeqUpdate' name='revSeqUpdate' value='"+list[i].revSeq+"'><button type='button' data-toggle='collapse' class='update'>수정</button>"; */
-            			           str += "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'><a href='#' role='button' class='remove'>삭제</a></div></li>"; 
+            			           str += "<div><input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'><button type='button' class='remove'>삭제</button></div></div></li>"; 
             				   } 
             				   reviewUL.html(str);
-            			   
+            				   console.log("showList page : " +pageNum);
             				   showReviewPage(reviewCnt);
             			 }); 
             		 } 
+            		 
+            		 
             
-                     $(document).on("click",'#commentAdd' ,function(e){
+                     $(document).on("click",'#commentAdd' ,function(){
                     	 var review = { 
                     			 seq : seqValue,
-                        		 nickName : $('#nickName').val(), 
-                        		 revStar : $('#revStar').val(), 
-                        		 revComment : $('#revComment').val()
+                        		 nickName : $('#InputnickName').val(),
+                        		 revComment : $('#comment').val(),
+                        		 revStar :  $(".starRev output b").text()
                         		 };
-                         CollectionReviewService.add(review, function(result){alert(result); showList(-1);});
+                         CollectionReviewService.add(review, function(result){alert(result); showList(1);});
                      });
                      
-                     $(document).on("click",'.remove',function(e){
-                    	var revSeqValue = $('#revSeqDelete').val();
+                     $(document).on("click",'.remove',function(){
+                    	 var revSeqValue = $(this).closest("li").data("revSeq");
                         CollectionReviewService.remove(revSeqValue, function(result){
-                        	alert(result); 
+                        	alert(result);
+                            showList(1);
                         	});
-                        showList(pageNum);
                      });
                      
-                     $(document).on('click','.update',function(){
-         			    var revSeqValue = $('.update').val(); 
-         			    $("#" + revSeqValue).collapse('toggle');
-         			});
-                     
-                     
-                     reviewPageFooter.on("click", "li a", function(e) {
-             			e.preventDefault();
-             			console.log("page click");
-             			var targetPageNum = $(this).attr("href");
-             			console.log("targetPageNum : " + targetPageNum);
-             			pageNum = targetPageNum;
-             			showList(pageNum);
-             		});
-                     
-                     
-                     
+                     $(document).on('click','.updatebtn',function(){
+                         var formId = $(this).closest('form').attr('id'); 
+                         $("#" + formId).collapse('toggle'); 
+                     });
+
                      $(document).on('click','#update',function(){
-                    	 
-                    	 var revSeqValue = $(this).closest("li").data("rno");
-                    	 var updateDateValue = document.getElementById('updateDate').value= new Date().toISOString().slice(0, -1);
-         			    var review={
-         			    	"revSeq" : revSeqValue,
-         			        "revComment" : $('#revComment').val(),
-         			        "revStar" : $('#revStar').val(),
-         			        "updateDate" : updateDateValue
-         			    }; 
-         			   CollectionReviewService.update(review, function(result){alert(result); showList(pageNum);} );
-         			    
+                        var formId = $(this).closest('form').attr('id');
+                        var revSeqValue = $(this).closest("li").data("revSeq");
+                        console.log(formId);
+                         var review={
+                             "revSeq" : revSeqValue,
+                             "revComment" : $("#" + formId+ ' textarea[id=revComment]').val(), 
+                             "revStar" : $('#' + formId + ' textarea[id="revStar"]').val()
+                         }; 
+                        CollectionReviewService.update(review, function(result){alert(result); showList(1);});
+
+                     });
+                     
+                     reviewPageFooter.on('click','li a',function(e){
+         				e.preventDefault();
+         				console.log("page click");
+         				
+         				var targetPageNum=$(this).attr("href");
+         				
+         				console.log("footer targetPageNum : "+targetPageNum);
+         				
+         				PageNum=targetPageNum;
+         				console.log("footer PageNum : "+PageNum);
+         				showList(PageNum);
          			});
-                     
-                     
+                  
+                    	
+                    /* 별점 구현 */
+                    //setStar로 선택된 별점 값 score에 저장
+                     $('.starRev span').click(function(){
+                    	    $(this).parent().children('span').removeClass('on');
+                    	    $(this).addClass('on').prevAll('span').addClass('on');
+                    	    var score = $(this).next().text();
+                    	    setStar(score);
+                    	    return false;
+                    	});
+
+                    	function setStar(starIndex) {
+                    	    // 클릭한 별까지 on 클래스 추가
+                    	    $(".starRev .starR").slice(0, starIndex).addClass("on");
+
+                    	    // 클릭한 별의 개수를 계산
+                    	    var numSelectedStars = $(".starRev .on").length;
+
+                    	    // 계산한 개수를 output에 출력
+                    	    $(".starRev output b").text(numSelectedStars);
+                    	}
+
+                    	var starRating = function() {
+                    	    var $star = $(".star-input"),
+                    	        $result = $star.find("output>b");
+                    	    //별점 클릭될때 어떻게 변하는지 나타내는 코드
+                    	    $(document)
+                    	        .on("focusin", ".star-input>.input", function(){
+                    	            $(this).addClass("focus");
+                    	        })
+                    	        .on("focusout", ".star-input>.input", function(){
+                    	            var $this = $(this);
+                    	            setTimeout(function(){
+                    	                if($this.find(":focus").length === 0){
+                    	                    $this.removeClass("focus");
+                    	                }
+                    	            }, 1000);
+                    	        })
+                    	        .on("change", ".star-input>.starR", function(){
+                    	            var score = $(this).next().text();
+                    	            setStar(score);
+                    	        })
+                    	        .on("mouseover", ".star-input label", function(){
+                    	            var score = $(this).text();
+                    	            setStar(score);
+                    	        })
+                    	        .on("mouseleave", ".star-input>.input", function(){
+                    	            var $checked = $star.find(":checked");
+                    	            if($checked.length === 0){
+                    	                setStar(0);
+                    	            } else {
+                    	                setStar($checked.next().text());
+                    	            }
+                    	        });
+                    	};
+
+                    	starRating();
+
+
        	});
 										
-		</script>
+</script>
 
 </body>
 </html>

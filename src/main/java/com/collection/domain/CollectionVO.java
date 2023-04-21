@@ -19,4 +19,5 @@ public class CollectionVO {
 	private String placeAddr;
 	private String area;
 	private String thumbnail;
+	private long revViewCount;
 }
