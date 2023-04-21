@@ -264,15 +264,15 @@ p.v-data {
 										</div>
                                         <div class="form-group">
                                         	<label>작성자</label>
-                                        	<input class="form-control" type="text" id='nickName' name = 'nickName' placeholder="nickName">
+                                        	<input class="form-control" type="text" id='InputnickName' name = 'nickName' placeholder="nickName">
                                         </div>
                                         <div class="form-group">
                                         	<label>리뷰내용</label>
-                                        	<input class="form-control" type="text" id='revComment' name = 'revComment' placeholder="한줄평"> 
+                                        	<input class="form-control" type="text" id='comment' name = 'revComment' placeholder="한줄평"> 
 										</div>
 										<div class="form-group">  
                                         	<label>별점</label>
-                                        	<input class="form-control" type="text" id='revStar' name = 'revStar' placeholder="별점">                                      	
+                                        	<input class="form-control" type="text" id='star' name = 'revStar' placeholder="별점">                                      	
 										</div>
 										<button id='commentAdd' type="submit" class="btn contact-btn">Post Comment</button>
                                     </form>
@@ -282,10 +282,9 @@ p.v-data {
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     <!-- ****** Single Blog Area End ****** -->
-
+		<div>
         <div class="owl-nav"><div class="owl-prev"></div><div class="owl-next"></div></div><div class="owl-dots"><div class="owl-dot"><span></span></div><div class="owl-dot active"><span></span></div></div></div>
     <!-- ****** Our Creative Portfolio Area End ****** -->
 
@@ -297,11 +296,10 @@ p.v-data {
     <!-- Bootstrap-4 js -->
     <script src="/js/bootstrap/bootstrap.min.js"></script>
     <!-- All Plugins JS -->
-    <script src="/js/others/plugins.js"></script>
+    <!-- <script src="/js/others/plugins.js"></script> -->
     <!-- Active JS -->
-    <script src="/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+    <!-- <script src="/js/active.js"></script> --><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
-
 	<script type="text/javascript" src="/js/review.js"></script>
 <script>
 var pageNum = 1;
@@ -342,13 +340,11 @@ function showReviewPage(reviewCnt) {
 	reviewPageFooter.html(str);
 }
 </script>
-		
 
-		<script type="text/javascript" src="/js/review.js"></script>
-
-		<script>
+<script>
 
        	$(document).ready(function() {
+       		
        		
        		
             		 var seqValue = '<c:out value="${collection.seq}"/>';
@@ -368,15 +364,16 @@ function showReviewPage(reviewCnt) {
             				   for(var i=0, len = list.length || 0; i < len; i++){
             					   var revSeqValue = list[i].revSeq;
             					   var formId = "review" + list[i].revSeq
-            					   str +="<li class=' left clearfix' data-revSeq='"+list[i].revSeq+"'>";
+
+            					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
             					   str +=" <div><div class='header'><strong class='primary-font'>"+list[i].nickName+"</strong>"; 
             					   str+= " <small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";
             			           str+= " <p id='review' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</p>";
-            			           str += "<a href='#" + formId + "' value='"+ list[i].revSeq +"' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
-            			           str+= "			<form class='collapse' id='" + formId + "'>";
-            			           str+= "  			<div class='form-group'>";
-            				       str+= "  			<input type='text' id='revComment' name='revComment' value=''/>";		
-            				       str+= "  			<input type='text' id='revStar' name='revComment' value=''/>";     
+            			           str+= "<a href='#" + formId + "' value='"+ list[i].revSeq +"' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+                                   str+= "            <form class='collapse' id='" + formId + "'>";
+                                   str+= "              <div class='form-group'>";
+                                   str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
+                                   str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  
             				      /*   str+= "<P id=" + star + ">"  부모
             				       str+="<a href='#' value='1'>★</a> " 자식들
             				       str+="<a href='#' value='2'">★</a> "
@@ -398,39 +395,38 @@ function showReviewPage(reviewCnt) {
                      $(document).on("click",'#commentAdd' ,function(){
                     	 var review = { 
                     			 seq : seqValue,
-                        		 nickName : $('#nickName').val(),
-                        		 revComment : $('#revComment').val(),
-                        		 revStar : $('#revStar').val() 
+                        		 nickName : $('#InputnickName').val(),
+                        		 revComment : $('#comment').val(),
+                        		 revStar : $('#star').val() 
                         		 };
                          CollectionReviewService.add(review, function(result){alert(result); showList(1);});
                      });
                      
                      $(document).on("click",'.remove',function(){
-                    	 var revSeqValue = $("#revSeqDelete").val();
+                    	 var revSeqValue = $(this).closest("li").data("revSeq");
                         CollectionReviewService.remove(revSeqValue, function(result){
                         	alert(result);
                             showList(1);
                         	});
-
- 
                      });
                      
                      $(document).on('click','.updatebtn',function(){
-                    	 var formId = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
-         			    $("#" + formId).collapse('toggle'); // 해당 form의 collapse 상태를 변경하여 textarea가 나타나도록 함
-         			});
-                     
-                     $(document).on('click','#update',function(){
-                    	 var revSeqValue = $(this).closest("li").data("revSeq");
+                         var formId = $(this).closest('form').attr('id'); 
+                         $("#" + formId).collapse('toggle'); 
+                     });
 
-         			    var review={
-         			    	"revSeq" : revSeqValue,
-         			        "revComment" : $('#revComment').val(), 
-         			        "revStar" : $('#revStar').val()
-         			    }; 
-         			   CollectionReviewService.update(review, function(result){alert(result); showList(1);} );
-         			    
-         			});
+                     $(document).on('click','#update',function(){
+                        var formId = $(this).closest('form').attr('id');
+                        var revSeqValue = $(this).closest("li").data("revSeq");
+                        console.log(formId);
+                         var review={
+                             "revSeq" : revSeqValue,
+                             "revComment" : $("#" + formId+ ' textarea[id=revComment]').val(), 
+                             "revStar" : $('#' + formId + ' textarea[id="revStar"]').val()
+                         }; 
+                        CollectionReviewService.update(review, function(result){alert(result); showList(1);});
+
+                     });
                    /*   
                      $('#star a').click(function(){ 
                     	 $(this).parent().children("a").removeClass("on");    
@@ -537,7 +533,7 @@ function showReviewPage(reviewCnt) {
                     		starRating();
        	});
 										
-		</script>
+</script>
 
 </body>
 </html>

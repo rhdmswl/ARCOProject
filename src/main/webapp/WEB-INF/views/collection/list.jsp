@@ -214,8 +214,6 @@ body {
 					</div>
 					</div>
 				</div>
-			</div>
-		</div>
 	</section>
 
 	<!-- ****** Our Creative Portfolio Area End ****** -->
