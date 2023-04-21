@@ -27,6 +27,9 @@
     <!-- Responsive CSS -->
     <link href="/css/responsive/responsive.css" rel="stylesheet">
     
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 <style type="text/css">
 
 body {
@@ -37,7 +40,98 @@ body {
 .single_blog_area ul li:before {
 	content:none;
 }
-    
+    /* 
+  #myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: right;
+}
+#myform input[type=radio]{
+    display: none;
+}
+#myform label{
+    font-size: 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+#myform label:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#reviewContents {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: solid 1.5px #D3D3D3;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+}
+
+div.all-rating-widgets {
+  display: flex;
+  justify-content: center;
+} */
+
+div.rating-wrapper {
+  display: flex;
+  align-items: first baseline;
+  flex-direction: column;
+  margin: 5rem;
+  font-size: 1.5rem;
+}
+
+div.star-wrapper {
+  font-size: 2rem;
+}
+
+div.star-wrapper i {
+  cursor: pointer;
+}
+
+div.star-wrapper i.yellow {
+  color: #fdd835;
+}
+
+div.star-wrapper i.vote-recorded {
+  color: #f57c00;
+}
+
+p.v-data {
+  background: #ccc;
+  padding: 0.5rem;
+}
+
+/* 각 별들의 기본 설정 */
+.starR{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+  font-size: 1.8em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* 별 이모지에 마우스 오버 시 */
+.starR:hover {
+  text-shadow: 0 0 0 #ccc;
+}
+
+/* 별 이모지를 클릭 후 class="on"이 되었을 경우 */
+.starR.on{
+  text-shadow: 0 0 0 #ec27c8;
+}
 </style>
 
 </head>
@@ -153,7 +247,24 @@ body {
                                         </ul>
                                         </div> --%>
                 <!-- end Pagination -->
-                                        
+                                   <!--    <link href="/text/css" rel="stylesheet"/>
+
+ 	<form class="mb-3" name="myform" id="myform" method="post">
+	<fieldset>
+		<span class="text-bold">별점을 선택해주세요</span>
+		<input type="radio" name="reviewStar" value="5" id="rate1"><label
+			for="rate1">★</label>
+		<input type="radio" name="reviewStar" value="4" id="rate2"><label
+			for="rate2">★</label>
+		<input type="radio" name="reviewStar" value="3" id="rate3"><label
+			for="rate3">★</label>
+		<input type="radio" name="reviewStar" value="2" id="rate4"><label
+			for="rate4">★</label>
+		<input type="radio" name="reviewStar" value="1" id="rate5"><label
+			for="rate5">★</label>
+	</fieldset>
+	
+</form>			   -->
                                         
                                     
                                 </ol>
@@ -172,10 +283,53 @@ body {
                                     <h4 class="mb-30">Leave A Comment</h4>
 
                                     <!-- Comment Form -->
-                                   <form role="form">
+                               <!--     <form role="form">
+                                   
+                                    <div class="all-rating-widgets">
+<div class="rating-wrapper" data-id="raiders">
+  <h2>star</h2>
+  <div class="star-wrapper">
+    <i class="fa fa-star-o" ></i>
+    <i class="fa fa-star-o" ></i>
+    <i class="fa fa-star-o" ></i>
+    <i class="fa fa-star-o" ></i>
+    <i class="fa fa-star-o" ></i>
+  </div>
+  <p class="v-data">Voting Data</p>
+</div> -->
+
+<!--  <div class="rating-wrapper" data-id="shawshank">
+  <h2>Shawshank Redemption</h2>
+  <div class="star-wrapper">
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+  </div>
+  <p class="v-data">Voting Data</p>
+</div>  -->
+</div> 
+
+
+
+
+
                                      	<div class="form-group">
                                             <input type="text" style="display:none;" id = "seq" name = "seq" value="<c:out value="${collection.seq}"/>">
                                         </div>
+                                        <div class="form-group starRev" id = "star">
+                                        	<span class="star-input">
+  <!-- 편의 상 가장 첫번째의 별은 기본으로 class="on"이 되게 설정해주었습니다. -->
+  <span class="starR on" onClick="setStar(1)">⭐</span>
+  <span class="starR" onClick="setStar(2)">⭐</span>
+  <span class="starR" onClick="setStar(3)">⭐</span>
+  <span class="starR" onClick="setStar(4)">⭐</span>
+  <span class="starR" onClick="setStar(5)">⭐</span>
+<output for="star-input"><b>0</b>점</output>						
+	</span>
+</div>
+
                                         <div class="form-group">
                                         	<label>작성자</label>
                                         	<input class="form-control" type="text" id = 'nickName' name = 'nickName' value='작성자'>
@@ -187,11 +341,12 @@ body {
 <!--                                             <input type="text" class="form-control" id="contact-email" placeholder="별점 넣을 공간" name = "revStar">
  -->                                        </div>
  
-                                        <div class="form-group">  
+                                        <!-- <div class="form-group">  
                                         	<label>별점</label>
                                         	<input class="form-control" type="text" id = 'revStar' name = 'revStar' value='별점'>    
-<!--                                          	<input type="text" class="form-control" id="contact-email" placeholder="한줄평자리" name = "revComment">
- -->                                        </div>
+                                         	<input type="text" class="form-control" id="contact-email" placeholder="한줄평자리" name = "revComment">
+                                        </div> -->
+                                        
                                         <button id='commentAdd' type="submit" class="btn contact-btn">Post Comment</button>
                                     </form>
                                     
@@ -251,13 +406,13 @@ body {
     <script src="/js/active.js"></script><a id="scrollUp" href="#top" style="position: absolute; z-index: 2147483647; display: block;"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
 
-		<script type="text/javascript" src="/js/review.js"></script>
+	<script type="text/javascript" src="/js/review.js"></script>
 <script>
 var pageNum = 1;
 var reviewPageFooter = $(".panel-footer");
 function showReviewPage(reviewCnt) {
-	var endNum = Math.ceil(pageNum / 10.0) * 10;
-	var startNum = endNum - 9;
+	var endNum = Math.ceil(pageNum / 5.0) * 5;
+	var startNum = endNum - 4;
 	
 	var prev = startNum != 1;
 	var next = false;
@@ -268,7 +423,8 @@ function showReviewPage(reviewCnt) {
 	
 	if(endNum * 10 < reviewCnt) {
 		next = true;
-	}
+	} 
+	
 	
 	var str = "<ul class='pagination pull-right'>";
 	if(prev) {
@@ -336,7 +492,14 @@ function showReviewPage(reviewCnt) {
             			           str+= "			<form class='collapse' id='" + formId + "'>";
             			           str+= "  			<div class='form-group'>";
             				       str+= "  			<input type='text' id='revComment' name='revComment' value=''/>";		
-            				       str+= "  			<input type='text' id='revStar' name='revComment' value=''/>";      				       
+            				       str+= "  			<input type='text' id='revStar' name='revComment' value=''/>";     
+            				     /*   str+= "<P id=" + star + ">" <!-- 부모 -->
+            				       str+="<a href='#' value='1'>★</a> "<!-- 자식들-->
+            				       str+="<a href='#' value='2'">★</a> "
+            				       str+="<a href='#' value='3'>★</a> "
+            				       str+="<a href='#' value='4'>★</a> "
+            				       str+="<a href='#' value='5'>★</a> "
+            				       str+= "<p>" */
             				       str+= "  			<div style='display:none'><input type='datetime-local' id='updateDate' name='updateDate' value=''/></div>";
             				       str+= "  			</div>";
             				       str+= "  			<button id='update' type='button' class='btn btn-11' >수정 완료</button></div>";
@@ -361,8 +524,8 @@ function showReviewPage(reviewCnt) {
                      });
                      
                      $(document).on("click",'.remove',function(e){
-                    	var revSeqValue = $('#revSeqDelete').val();
-                        CollectionReviewService.remove(revSeqValue, function(result){
+                    	 var revSeqValue = $("#revSeqDelete").val();
+                    	 CollectionReviewService.remove(revSeqValue, function(result){
                         	alert(result); 
                         	});
                         showList(pageNum);
@@ -398,8 +561,110 @@ function showReviewPage(reviewCnt) {
          			   CollectionReviewService.update(review, function(result){alert(result); showList(pageNum);} );
          			    
          			});
+                   /*   
+                     $('#star a').click(function(){ 
+                    	 $(this).parent().children("a").removeClass("on");    
+                    	 $(this).addClass("on").prevAll("a").addClass("on");
+                    	 console.log($(this).attr("value"));
+                     }); */
                      
+                   /*   2 */
+                    /*  $("div.star-wrapper i").on("mouseover", function () {
+                    	  if ($(this).siblings("i.vote-recorded").length == 0) {
+                    	    $(this)
+                    	      .prevAll()
+                    	      .addBack()
+                    	      .addClass("fa-solid yellow")
+                    	      .removeClass("fa-regular");
+                    	    $(this).nextAll().removeClass("fa-solid yellow").addClass("fa-regular");
+                    	  }
+                    	});
+
+                    	$("div.star-wrapper i").on("click", function () {
+                    	  let rating = $(this).prevAll().length + 1;
+                    	  let movie_id = $(this).closest("div.rating-wrapper").data("id");
+                    	  
+                    	  if ($(this).siblings("i.vote-recorded").length == 0) {
+                    	    
+                    	    $(this).prevAll().addBack().addClass("vote-recorded");
+                    	    $.post("update_ratings.php", { movie: movie_id, rating: rating }).done(
+                    	      function (data) {
+                    	        parent_div.find("p.v-data").text(data);
+                    	      }
+                    	    );
+                    	    
+                    	  }
+                    	}); */
+                    	
+                    /* 사용 쿼리 */
+                    	$('.starRev span').click(function(){
+                    		  $(this).parent().children('span').removeClass('on');
+                    		  $(this).addClass('on').prevAll('span').addClass('on');
+                    		  return false;
+                    		});
+                    
+                 /*   변경 */
                      
+                    	/* var $starEls = $('#star span.star');
+                    	var rate = 0;
+
+                    	$starEls.each(function (index, el) {
+                    	    $(el).on('click', function () {
+                    	        rating(index);
+                    	    });
+                    	});
+
+                    	function rating(score) {
+                    	    $starEls.each(function (i, el) {
+                    	        if (i <= score) {
+                    	            $(el).addClass('on');
+                    	        } else {
+                    	            $(el).removeClass('on');
+                    	        }
+                    	    });
+
+                    	    rate = score + 1;
+                    	} */
+                    	
+                    	/* 새로운코드 */
+   
+                    	var starRating = function(){
+                    		  var $star = $(".star-input"),
+                    		      $result = $star.find("output>b");
+                    		  $(document)
+                    		    .on("focusin", ".star-input>.input", function(){
+                    		    $(this).addClass("focus");
+                    		  })
+                    		    .on("focusout", ".star-input>.input", function(){
+                    		    
+                    		    	var $this = $(this);
+                    		    
+                    		    	setTimeout(function(){
+                    		      
+                    		    		if($this.find(":focus").length === 0){
+                    		    			$this.removeClass("focus");
+                    		    		}
+                    		    }, 1000);
+                    		  })
+                    		    .on("change", ".star-input>.starR", function(){
+                    		    $result.text($(this).next().text());
+                    		  })
+                    		    .on("mouseover", ".star-input label", function(){
+                    		    $result.text($(this).text());
+                    		  })
+                    		    .on("mouseleave", ".star-input>.input", function(){
+                    		    
+                    		    	var $checked = $star.find(":checked");
+                    		    
+                    		    	if($checked.length === 0){
+                    		    		$result.text("0");
+                    		    	} else {
+                    		    		$result.text($checked.next().text());
+                    		    	}
+                    		    	
+                    		  });
+                    		};
+                    		starRating();
        	});
 										
 		</script>
