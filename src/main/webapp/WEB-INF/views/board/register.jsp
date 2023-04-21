@@ -9,6 +9,10 @@
 
 <title>ARCO - Community register</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon -->
+<link rel="icon" href="/img/core-img/favicon.ico">
+
 <link
 	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	rel="stylesheet">

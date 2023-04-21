@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>비밀번호 수정</title>
 
+<!-- Favicon -->
+<link rel="icon" href="/img/core-img/favicon.ico">
+
 <!-- 필요한 스타일시트 파일들 추가 -->
 <link href="${pageContext.request.contextPath}/css/material-dashboard.min.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
