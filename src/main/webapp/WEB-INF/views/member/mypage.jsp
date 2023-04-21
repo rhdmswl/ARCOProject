@@ -15,6 +15,63 @@
 	<link href="/js/core/bootstrap-material-design.min.js" type="text/javascript"></link>
 	<link href="/js/plugins/perfect-scrollbar.jquery.min.js" type="text/javascript"></link>
 	<script src="/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+	
+<style type="text/css">
+
+body {
+	margin-top: 20px;
+	background: #FFF;
+	margin-bottom: 80px;
+}
+
+.btn-secondary {
+	font-family: 'Noto Sans KR', sans-serif;
+	box-shadow: none;
+}
+
+.btn-secondary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.btn-primary {
+	font-family: 'Noto Sans KR', sans-serif;
+	box-shadow: none;
+}
+
+.btn-primary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.card-title {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.control-label {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.table {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.outmember {
+	margin-top: 30px;
+}
+
+.form-control {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+</style>
+	
+	
 </head>
 
 <script type="text/javascript">
@@ -289,7 +346,7 @@
 	<br>
 	
 	<div class="text-center">
-	    <button onclick="location.href='/member/memberDeleteView'" type="button" class="btn btn-secondary">회원 탈퇴</button>
+	    <button onclick="location.href='/member/memberDeleteView'" type="button" class="btn btn-secondary outmember">회원 탈퇴</button>
 	</div>
 	</div>  
 </body>
