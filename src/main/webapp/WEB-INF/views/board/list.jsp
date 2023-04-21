@@ -16,9 +16,7 @@
 <!-- Favicon -->
 <link rel="icon" href="/img/core-img/favicon.ico">
 
-<link
-	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
 
@@ -332,6 +330,10 @@ body::-webkit-scrollbar-track {
 .card .btn-primary:hover {
 	background-color: #f21378;
     box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.searchButton {
+	border: 2px solid #e9ecef;
 }
 
 
