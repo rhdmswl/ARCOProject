@@ -115,15 +115,6 @@ public class MemberController {
 //		return "member/memberUpdateView";
 //	}
 
-	// 회원정보 수정 post
-	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
-	public String registerUpdate(MemberVO vo, HttpSession session) throws Exception {
-
-		service.memberUpdate(vo);
-
-		return "member/mypage";
-	}
-
 	// 회원 탈퇴 get
 	@RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
 	public String memberDeleteView() throws Exception {
@@ -166,6 +157,8 @@ public class MemberController {
 	    if (vo != null) {
 	        userId = vo.getUserId();
 	    }
+	    
+	    
 //	    cri.setUserId(userId);
 //
 //	    model.addAttribute("collectionRevs", service.getMemberCollectionRevsWithPaging(userId, cri));
@@ -190,9 +183,29 @@ public class MemberController {
 	    model.addAttribute("collectionRevPageMaker", collectionRevPageMaker);
 	    model.addAttribute("postPageMaker", postPageMaker);
 	    model.addAttribute("commentPageMaker", commentPageMaker);
+	    
+	 // 사용자 정보를 가져와서 모델에 추가
+	    model.addAttribute("member", vo);
 
 	    return "member/mypage";
 	}
+	
+	// 회원정보 수정 post
+	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
+	public String registerUpdate(MemberVO vo, HttpSession session, RedirectAttributes rttr, Model model) throws Exception {
+		
+		
+	    service.mypageUpdate(vo);
+	   
+	    session.setAttribute("member", vo);
+	    
+	    model.addAttribute("member", vo);
+		
+	    return "redirect:/member/mypage";
+	}
+
+
+
 
 
 	@RequestMapping(value = "/passUpdateView", method = RequestMethod.GET)
@@ -213,11 +226,11 @@ public class MemberController {
 	// 패스워드 변경
 	@RequestMapping(value = "/passUpdate", method = RequestMethod.POST)
 	public String passUpdate(@RequestParam("userPass") String userPass, @RequestParam("newPass") String newPass,
-			@RequestParam("confirmPass") String confirmPass, HttpSession session, Model model) throws Exception {
+			@RequestParam("confirmPass") String confirmPass, HttpSession session, Model model, RedirectAttributes rttr) throws Exception {
 
-		MemberVO login = (MemberVO) session.getAttribute("member");
+		MemberVO vo = (MemberVO) session.getAttribute("member");
 
-		boolean pwdMatch = pwdEncoder.matches(userPass, login.getUserPass());
+		boolean pwdMatch = pwdEncoder.matches(userPass, vo.getUserPass());
 		if (!pwdMatch) {
 			model.addAttribute("error", "입력한 현재 비밀번호가 일치하지 않습니다.");
 			return "member/passUpdateView";
@@ -230,10 +243,14 @@ public class MemberController {
 
 		String encodedNewPass = pwdEncoder.encode(newPass);
 
-		login.setUserPass(encodedNewPass);
-		service.memberUpdate(login);
+		vo.setUserPass(encodedNewPass);
+		service.memberUpdate(vo);
+		
 
-		session.invalidate();
+		 session.invalidate();
+		
+	
+	    
 		return "member/login";
 	}
 
