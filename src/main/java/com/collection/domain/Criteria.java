@@ -23,15 +23,12 @@ public class Criteria {
 		this(1, 12);
 	}
 
-//	public Criteria(int pageNum, int amount) {
-//		this.pageNum = pageNum;
-//		this.amount = amount;
-//		this.pageNumForLimit=((pageNum-1)*12);
-//	}
-	
 	public Criteria(int pageNum, int amount) {
 		this.pageNum = pageNum;
 		this.amount = amount;
+	}
+	
+	public void setpageNumForLimit() {
 		this.pageNumForLimit=((pageNum-1)*amount);
 	}
 	

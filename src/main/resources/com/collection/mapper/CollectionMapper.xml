@@ -31,17 +31,13 @@
 	<sql id="criteria">
 		<choose>
 			<when test="type == 'T'.toString()">
-				<!-- where seq=#{seq} -->
 				where
 				title like concat('%', #{keyword}, '%')
 			</when>
-			<!-- <when test="type=='D'.toString()">
-				where seq=#{seq}
+			<when test="type == 'D'.toString()">
+				where
 				and startDate like concat('%', #{keyword}, '%')
-			</when> -->	
-			<!-- <otherwise>
-				where seq=#{seq}
-			</otherwise> -->
+			</when>
 		</choose>
 	</sql>
 	
