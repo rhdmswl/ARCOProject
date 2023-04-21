@@ -41,6 +41,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public void mypageUpdate(MemberVO vo) throws Exception {
+
+		dao.mypageUpdate(vo);
+
+	}
+
+	@Override
 	public void memberDelete(MemberVO vo) throws Exception {
 		dao.memberDelete(vo);
 	}
@@ -96,39 +103,39 @@ public class MemberServiceImpl implements MemberService {
 //	public List<ReplyVO> getMemberComments(String userId) throws Exception {
 //		return dao.getMemberComments(userId);
 //	}
-	
+
 	// 페이징 적용
 	@Override
 	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception {
-	    return dao.getMemberCollectionRevsWithPaging(userId, cri);
+		return dao.getMemberCollectionRevsWithPaging(userId, cri);
 	}
 
 	@Override
 	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception {
-	    return dao.getMemberPostsWithPaging(userId, cri);
+		return dao.getMemberPostsWithPaging(userId, cri);
 	}
 
 	@Override
 	public List<ReplyVO> getMemberCommentsWithPaging(String userId, Criteria cri) throws Exception {
-	    return dao.getMemberCommentsWithPaging(userId, cri);
+		return dao.getMemberCommentsWithPaging(userId, cri);
 	}
 
 	// PageMaker
 	@Override
 	public int countCollectionRevs(String userId) throws Exception {
-	    return dao.countCollectionRevs(userId);
+		return dao.countCollectionRevs(userId);
 	}
 
 	@Override
 	public int countPosts(String userId) throws Exception {
-	    return dao.countPosts(userId);
+		return dao.countPosts(userId);
 	}
 
 	@Override
 	public int countComments(String userId) throws Exception {
-	    return dao.countComments(userId);
+		return dao.countComments(userId);
 	}
-	
+
 //	@Override
 //	public PageMaker getPageMaker(String userId, Criteria cri, String type) throws Exception {
 //	    PageMaker pageMaker = new PageMaker();
