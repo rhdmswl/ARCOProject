@@ -18,5 +18,5 @@ public interface CollectionReviewService {
 	
 	public List<CollectionReviewVO> getList(Criteria cri, long seq);
 	
-	public CollectionReviewPageDTO getListPage(Criteria cri, long seq);
+	/* public CollectionReviewPageDTO getListPage(Criteria cri, long seq); */
 }

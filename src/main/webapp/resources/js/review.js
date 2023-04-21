@@ -1,4 +1,4 @@
-console.log("reply module......");
+console.log("reivew module......");
 var CollectionReviewService = (function(){
 function add(review, collback, error){
 console.log("review.........");
@@ -22,13 +22,13 @@ $.ajax({
 	// end add
 	
 		function getList(param, callback, error) {
-	var seq = param.seq;
+		var seq = param.seq;
 		var page = param.page || 1;
 		
 		$.getJSON("/review/pages/" + seq + "/" + page + ".json",
 			function(data) {
 				if(callback) {
-					callback(data.reviewCnt, data.list);  //댓글 목록만 가져오는 경우
+					callback(data);  //댓글 목록만 가져오는 경우
 				}
 			}).fail(function(xhr, status, err) {
 				if(error) {

@@ -19,7 +19,7 @@
     <title>EXHIBITION - Page</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="/img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
     <link href="/style.css" rel="stylesheet">
@@ -208,7 +208,7 @@ p.v-data {
                                     <hr>
                                     <div><h4>전시기간 : <c:out value="${collection.startDate}" /> - <c:out value="${collection.endDate}" /></h4></div>
                                     <div><h4>가격 : <c:out value="${collection.price}" /></h4></div>
-                                    <div><h4>테켓구매 : <a href="<c:out value="${collection.url}" />" ><c:out value="${collection.url}" /></a></h4></div>
+                                    <div><h4><a href="<c:out value="${collection.url}"/>">티켓구매</a></h4></div>
                                     <div><h4>장소 : <c:out value="${collection.place}" /></h4></div>
                                     <div><h4>주소 : <c:out value="${collection.placeAddr}" /></h4></div>
                                     <div><h4>문의 : <c:out value="${collection.phone}" /></h4></div>
@@ -217,8 +217,6 @@ p.v-data {
 
                                  
                                     
-
-                                    <img class="br-30 mb-15" src="img/blog-img/14.jpg" alt="">
                                 </div>
                             </div>
 
@@ -230,7 +228,7 @@ p.v-data {
 
 							<!-- Comment Area Start -->
 							<div class="comment_area section_padding_50 clearfix">
-								<h4 class="mb-30">2 Comments</h4>
+								<h4 class="mb-30">Comments</h4>
 
 								<ol>
 									<ul class="chat">
@@ -316,7 +314,7 @@ p.v-data {
 
 
                                      	<div class="form-group">
-                                            <input type="text" style="display:none;" id = "seq" name = "seq" value="<c:out value="${collection.seq}"/>">
+                                            <input type="text" style="display:none;" id="seq" name = "seq" value="<c:out value="${collection.seq}"/>">
                                         </div>
                                         <div class="form-group starRev" id = "star">
                                         	<span class="star-input">
@@ -332,21 +330,16 @@ p.v-data {
 
                                         <div class="form-group">
                                         	<label>작성자</label>
-                                        	<input class="form-control" type="text" id = 'nickName' name = 'nickName' value='작성자'>
-<!--                                            <input type="text" class="form-control" id="contact-name" placeholder="nickName" name = "userId">
- -->                                        </div>
+                                        	<input class="form-control" type="text" id='nickName' name = 'nickName' placeholder="nickName">
+                                         </div>
                                         <div class="form-group">
                                         	<label>리뷰내용</label>
-                                        	<input class="form-control" type="text" id = 'revComment' name = 'revComment' value='한줄평 작성'>
-<!--                                             <input type="text" class="form-control" id="contact-email" placeholder="별점 넣을 공간" name = "revStar">
- -->                                        </div>
- 
-                                        <!-- <div class="form-group">  
+                                        	<input class="form-control" type="text" id='revComment' name = 'revComment' placeholder="한줄평"> 
+                                       </div>
+                                        <div class="form-group">  
                                         	<label>별점</label>
-                                        	<input class="form-control" type="text" id = 'revStar' name = 'revStar' value='별점'>    
-                                         	<input type="text" class="form-control" id="contact-email" placeholder="한줄평자리" name = "revComment">
-                                        </div> -->
-                                        
+                                        	<input class="form-control" type="text" id='revStar' name = 'revStar' placeholder="별점">                                      	
+                                       </div>
                                         <button id='commentAdd' type="submit" class="btn contact-btn">Post Comment</button>
                                     </form>
                                     
@@ -460,20 +453,9 @@ function showReviewPage(reviewCnt) {
             		 showList(1);
             		 
             		 function showList(page){
-            			 console.log("show list " + page);
             			 
             			 CollectionReviewService.getList({seq:seqValue,page: page|| 1 },
-            				function(reviewCnt, list){
-            				 console.log("reviewCnt: " + reviewCnt);
-            				 console.log("list: " + list);
-            				 console.log(list);
-            				 
-            			 
-            			 if(page == -1){
-            				 pageNum = Math.ceil(reviewCn/10.0);
-            				 showList(pageNum);
-            				 return;
-            			 }
+            				function(list){
             				   var str="";
             				   
             				   if(list==null || list.length ==0) {
@@ -483,18 +465,17 @@ function showReviewPage(reviewCnt) {
             				   for(var i=0, len = list.length || 0; i < len; i++){
             					   var revSeqValue = list[i].revSeq;
             					   var formId = "review" + list[i].revSeq
-            					   str +="<li class=' left clearfix' data-rno='"+list[i].revSeq+"'>";
-            					   str +="  <div><div class='header'><strong class='primary-font'>"+list[i].nickName+"</strong>"; 
-            					   str+= "   <small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].updateDate)+"</small></div>";
-/*             			           str +="    <p>"+list[i].revComment+"</p>"; */
-            			           str+= "         <p id='review' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</p>";
-            			           str += "<a href='#" + formId + "' value='"+ list[i].revSeq +"' class='update' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            					   str +="<li class=' left clearfix' data-revSeq='"+list[i].revSeq+"'>";
+            					   str +=" <div><div class='header'><strong class='primary-font'>"+list[i].nickName+"</strong>"; 
+            					   str+= " <small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";
+            			           str+= " <p id='review' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</p>";
+            			           str += "<a href='#" + formId + "' value='"+ list[i].revSeq +"' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
             			           str+= "			<form class='collapse' id='" + formId + "'>";
             			           str+= "  			<div class='form-group'>";
             				       str+= "  			<input type='text' id='revComment' name='revComment' value=''/>";		
             				       str+= "  			<input type='text' id='revStar' name='revComment' value=''/>";     
-            				     /*   str+= "<P id=" + star + ">" <!-- 부모 -->
-            				       str+="<a href='#' value='1'>★</a> "<!-- 자식들-->
+            				      /*   str+= "<P id=" + star + ">"  부모
+            				       str+="<a href='#' value='1'>★</a> " 자식들
             				       str+="<a href='#' value='2'">★</a> "
             				       str+="<a href='#' value='3'>★</a> "
             				       str+="<a href='#' value='4'>★</a> "
@@ -504,61 +485,47 @@ function showReviewPage(reviewCnt) {
             				       str+= "  			</div>";
             				       str+= "  			<button id='update' type='button' class='btn btn-11' >수정 완료</button></div>";
             				       str+= "			</form>";
-            			           /* str += "<input type='hidden' id='revSeqUpdate' name='revSeqUpdate' value='"+list[i].revSeq+"'><button type='button' data-toggle='collapse' class='update'>수정</button>"; */
-            			           str += "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'><a href='#' role='button' class='remove'>삭제</a></div></li>"; 
+            			           str += "<div><input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'><button type='button' class='remove'>삭제</button></div></div></li>"; 
             				   } 
             				   reviewUL.html(str);
             			   
-            				   showReviewPage(reviewCnt);
             			 }); 
             		 } 
             
-                     $(document).on("click",'#commentAdd' ,function(e){
+                     $(document).on("click",'#commentAdd' ,function(){
                     	 var review = { 
                     			 seq : seqValue,
-                        		 nickName : $('#nickName').val(), 
-                        		 revStar : $('#revStar').val(), 
-                        		 revComment : $('#revComment').val()
+                        		 nickName : $('#nickName').val(),
+                        		 revComment : $('#revComment').val(),
+                        		 revStar : $('#revStar').val() 
                         		 };
-                         CollectionReviewService.add(review, function(result){alert(result); showList(-1);});
+                         CollectionReviewService.add(review, function(result){alert(result); showList(1);});
                      });
                      
-                     $(document).on("click",'.remove',function(e){
+                     $(document).on("click",'.remove',function(){
                     	 var revSeqValue = $("#revSeqDelete").val();
-                    	 CollectionReviewService.remove(revSeqValue, function(result){
-                        	alert(result); 
+                        CollectionReviewService.remove(revSeqValue, function(result){
+                        	alert(result);
+                            showList(1);
                         	});
-                        showList(pageNum);
+
+ 
                      });
                      
-                     $(document).on('click','.update',function(){
-         			    var revSeqValue = $('.update').val(); 
-         			    $("#" + revSeqValue).collapse('toggle');
+                     $(document).on('click','.updatebtn',function(){
+                    	 var formId = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
+         			    $("#" + formId).collapse('toggle'); // 해당 form의 collapse 상태를 변경하여 textarea가 나타나도록 함
          			});
                      
-                     
-                     reviewPageFooter.on("click", "li a", function(e) {
-             			e.preventDefault();
-             			console.log("page click");
-             			var targetPageNum = $(this).attr("href");
-             			console.log("targetPageNum : " + targetPageNum);
-             			pageNum = targetPageNum;
-             			showList(pageNum);
-             		});
-                     
-                     
-                     
                      $(document).on('click','#update',function(){
-                    	 
-                    	 var revSeqValue = $(this).closest("li").data("rno");
-                    	 var updateDateValue = document.getElementById('updateDate').value= new Date().toISOString().slice(0, -1);
+                    	 var revSeqValue = $(this).closest("li").data("revSeq");
+
          			    var review={
          			    	"revSeq" : revSeqValue,
-         			        "revComment" : $('#revComment').val(),
-         			        "revStar" : $('#revStar').val(),
-         			        "updateDate" : updateDateValue
+         			        "revComment" : $('#revComment').val(), 
+         			        "revStar" : $('#revStar').val()
          			    }; 
-         			   CollectionReviewService.update(review, function(result){alert(result); showList(pageNum);} );
+         			   CollectionReviewService.update(review, function(result){alert(result); showList(1);} );
          			    
          			});
                    /*   

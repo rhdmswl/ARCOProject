@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.collection.domain.CollectionVO;
+import com.collection.domain.Criteria;
+import com.collection.domain.PageDTO;
 import com.collection.service.CollectionService;
 
 import lombok.AllArgsConstructor;
@@ -26,41 +28,24 @@ public class CollectionController {
 		service.insert(collection);
 	}
 	
-//	@PostMapping("/registerOthers")
-//	public void resisterOthers(CollectionVO collection) {
-//		service.insertOthers(collection);
-
-//	}
-	
 	@GetMapping("/index")
-	public String index(Model model) {
-		model.addAttribute("list", service.getList());
-
-		return "index";
-
+	public String index(Model model, Criteria cri) {
+		model.addAttribute("list", service.getList(cri));
+		return "/index";
 	}
-
-//	}	
-
-
-	
-//	@GetMapping("/get")
-//	public String get(Model model) {
-//		model.addAttribute("207375L", service.getList());
-//		return "single";
-//	}
 	
 	@GetMapping("/get")
-	public String get(@RequestParam("seq") long seq, Model model) {
+	public void get(@RequestParam("seq") long seq, Model model) {
 		log.info("/get");
 		model.addAttribute("collection", service.get(seq));
-		return "collection/get";
+		service.revViewCount(seq);
 	}
 	
 	@GetMapping("/list")
-	public String getList(Model model) {
-		model.addAttribute("list", service.getList());
-		return "collection/list";
+	public void getList(Model model, Criteria cri) {
+		int total = service.getTotal(cri);
+		model.addAttribute("list", service.getList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 }

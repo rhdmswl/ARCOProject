@@ -97,7 +97,36 @@ body {
 		</div>
 	</div>
 	<!-- ****** Breadcumb Area End ****** -->
-
+	
+	<div class="container-fluid">
+				<div class="row clearfix">
+					<div class="col-lg-12">
+						<div class="card action_bar">
+							<div class="body">
+								<div class="row clearfix">
+									<div class="col-lg-1 col-md-2 col-3"></div>
+									<div class="col-lg-5 col-md-4 col-6">
+										<form id="searchForm" action="/collection/list" method='get' style=" width:500px;" class="input-group search">
+											<select class="form-control" name='type' style="width:150px;">
+												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>--</option>
+												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
+												<option value="D" <c:out value="${pageMaker.cri.type eq 'D' ? 'selected' : ''}"/>>날짜</option>
+											</select>
+											<input type='text' name="keyword" class="form-control" style="width:350px;"
+													placeholder="Search..." value='<c:out value="${pageMaker.cri.keyword}"/>'>
+											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
+											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
+											<button type="submit" class="searchButton">Search<span class="input-group-addon"><i class="zmdi zmdi-search"></i></span></button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	</div>
+	
+	
 	<section class="product-page spad">
 		<div class="container">
 			<div class="row">
@@ -148,7 +177,7 @@ body {
 												<i class="fa fa-comments"></i> 11
 											</div>
 											<div class="view">
-												<i class="fa fa-eye"></i> 9141
+												<i class="fa fa-eye"></i> <c:out value="${collection.revViewCount}" />
 											</div>
 										</div>
 										<div class="product__item__text">
@@ -159,11 +188,30 @@ body {
 								</div>
 							</c:forEach>
 						</div>
-						<div class="product__pagination">
-							<a href="#" class="current-page">1</a> <a href="#">2</a> <a
-								href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#"><i
-								class="fa fa-angle-double-right"></i></a>
-						</div>
+						<table class="table" style="border-top: hidden;">
+							<tr>
+									<td style="padding: 0px;">
+										<div class="card m-t-5">
+											<div class="body">
+												<ul class="pagination pagination-primary m-b-0">
+													<c:if test="${pageMaker.prev}">
+														<li class="paginate_button previous"><a
+															class="page-link" href="${pageMaker.startPage-1}">Previous</a></li>
+													</c:if>
+													<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+														<li class="paginate_button"><a class="page-link move2" href="${num}">${num}</a></li>
+													</c:forEach>
+													<c:if test="${pageMaker.next}">
+														<li class="paginate_button next"><a class="page-link" href="${pageMaker.endPage +1}">Next</a></li>
+													</c:if>
+												</ul>
+											</div>
+										</div>
+									</td>
+								</tr>
+						</table>
+						</div>		
+					</div>
 					</div>
 				</div>
 			</div>
@@ -202,6 +250,13 @@ body {
 		</div>
 	</div>
 	<!-- ****** Footer Menu Area End ****** -->
+	
+	<form id='actionForm' action="/collection/list" method='get'>
+		<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+		<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
+ 		<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
+		<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
+	</form>
 
 	<!-- Jquery-2.2.4 js -->
 
@@ -213,7 +268,44 @@ body {
 	<!-- All Plugins JS -->
 	<script src="/js/others/plugins.js"></script>
 	<!-- Active JS -->
-	<script src="/js/active.js"></script>
+	<script src="/list/js/active.js"></script>
+	<a id="scrollUp" href="#top"
+		style="position: absolute; z-index: 2147483647; display: block;">
+		<i class="fa fa-arrow-up" aria-hidden="true"></i>
+	</a>
+	<script type="text/javascript">
+	$(document).ready(
+			function() {
+				
+				
+				var searchForm = $("#searchForm");
+				
+				$("#searchForm searchButton").on("click", function(e){
+					
+					e.preventDefault();
+					let val = $("input[name='keyword']").val();
+					searchForm.find("input[name='keyword']").val(val);
+					searchForm.submit();
+				});
+				
+				var actionForm = $("#actionForm");
+				
+				$(".paginate_button a").on("click", function(e) {
+							e.preventDefault();
+							console.log('click');
+							actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+							actionForm.submit();
+						
+				});
+				
+				
+				
+			});
+	
+	
+	
+	</script>
+
 
 </body>
 </html>
