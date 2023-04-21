@@ -42,9 +42,6 @@
     
 <style type="text/css">
 
-html {
-    height: 100%;
-}
 body {
     margin-top: 20px;
 	background: #FFF;
@@ -86,15 +83,8 @@ a:hover {
 	color : #fff;
 }
 
-.no-gutters {
-    margin-right: 0;
-    /* margin-left: 50px; */
-    position: relative;
-}
-
 .section_padding_80 {
-    margin-top: 30px;
-    margin-bottom: 80px;
+    margin-top: 20px;
 }
 
 .btn-secondary {
@@ -115,16 +105,38 @@ a:hover {
     box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
+.btn-secondary2 {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	box-shadow: none;
+	width: 100px;
+	height: 40px;
+	line-height: 20px;
+	font-size: 15px;
+	padding: 0;
+	background-color: #8f93a9;
+	border: 0;
+	color: white;
+	border-radius: 5px;
+}
+
+.btn-secondary2:hover {
+	background-color: #8f93a9;
+    box-shadow: 1px 4px 3px 1px #dadce0;
+    color: white;
+}
+
 .single_blog_area ul li:before {
 	content:none;
 }
 
-.single-post {
-	height: 70%;
+.single_blog_area ul li {
+    padding-left: 0px;
 }
 
 .post-thumb {
 	margin-bottom: 55px;
+	height: 460px;
 }
 
 .post-thumb img {
@@ -141,7 +153,7 @@ a:hover {
 }
 
 .post-date {
-	margin-left: 30px;
+	margin-left: 20px;
 }
 
 /* 전시 정보 그룹 */
@@ -171,13 +183,16 @@ a:hover {
 }
 
 /* 페이지 버튼 */
+.page-item {
+	margin-left: 4px;
+}
+
 .page-link {
 	display: flex;
     align-items: center;
     justify-content: center;
     color: #7b809a;
     padding: 0;
-    margin: 0 3px;
     border-radius: 50%!important;
     width: 36px;
     height: 36px;
@@ -228,28 +243,61 @@ a:hover {
 	float: right;
 }
 
-/* 댓글 리스트 */
-.panel-footer {
-	border: 1px solid magenta;
+.form-control::placeholder {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
 
+/* 댓글 리스트 */
 .comment_area {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 500;
-	border: 1px solid red;
-	position: absolute;
-	top: 90%;
+	position: relative;
 	width: 90%;
-	left: 40px;
+	left: 60px;
+	padding: 0;
 }
 
-
-.revList {
-	border: 1px solid blue;
-	position: absoulute;
-	bottom: 1px;
+.leave-comment-area {
+	position: relative;
+	left: 20px;
+	margin-top: 5px;
+	margin-bottom: 15px;
 }
 
+.remove {
+	float: right;
+}
+
+.revBox {
+	height: 60px;
+}
+
+.primary-font {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	font-size: 17px;
+}
+
+.revDate {
+	position: relative;
+	top: 0px;
+}
+
+.mb-30 {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	font-size: 23px;
+}
+
+.revContentInput {
+	width: 500px;
+	height: 50px;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 15px;
+	padding-left: 10px;
+}
 
 div.rating-wrapper {
   display: flex;
@@ -418,96 +466,47 @@ p.v-data {
                                         </ul>
                                         </div> --%>
 									<!-- end Pagination -->
-								</ol>
-							</div>
-							<div class="panel-footer">
-								<form id='actionForm' action="/review/list" method='get'>
-									<input type='hidden' name='pageNum'
-										value='${pageMaker.cri.pageNum}'> <input type='hidden'
-										name='pageNumForLimit'
-										value='${pageMaker.cri.pageNumForLimit}'>
-								</form>
-								<!-- Leave A Comment -->
+								</div>
+
+								<!-- 리뷰 남기기 -->
 								<div class="leave-comment-area section_padding_50 clearfix">
 									<div class="comment-form">
 										<div class="mb-30">한줄평을 남겨주세요 &#128173;</div>
 
 										<!-- Comment Form -->
-										<form role="form">
-											<div class="form-group">
-												<input type="text" style="display: none;" id="seq"
-													name="seq" value="<c:out value="${collection.seq}"/>">
-											</div>
-											<div class="form-group">
-												<label>작성자</label> <input class="form-control" type="text"
-													id='nickName' name='nickName' value='작성자'>
-												<!--                                            <input type="text" class="form-control" id="contact-name" placeholder="nickName" name = "userId">
- -->
-											</div>
-											<div class="form-group">
-												<label>리뷰내용</label> <input class="form-control" type="text"
-													id='revComment' name='revComment' value='한줄평 작성'>
-												<!--                                             <input type="text" class="form-control" id="contact-email" placeholder="별점 넣을 공간" name = "revStar">
- -->
-											</div>
-
-											<div class="form-group">
-												<label>별점</label> <input class="form-control" type="text"
-													id='revStar' name='revStar' value='별점'>
-												<!--                                          	<input type="text" class="form-control" id="contact-email" placeholder="한줄평자리" name = "revComment">
- -->
-											</div>
-											<button id='commentAdd' type="submit"
-												class="btn btn-secondary">댓글 작성</button>
-										</form>
 									</div>
-								</div>
-							</div>
-							</div>
-
-							<!-- 리뷰 남기기 -->
-                            <div class="leave-comment-area section_padding_50 clearfix">
-                                <div class="comment-form">
-                                    <h4 class="mb-30">Leave A Comment</h4>
-
-                                    <!-- Comment Form -->
-								</div> 
 									<form role="form">
-                                	<div class="form-group">
-										<input type="text" style="display:none;" id="seq" name = "seq" value="<c:out value="${collection.seq}"/>">
-                                	</div>
-                                        <div class="form-group starRev" id = "star">
-											<span class="star-input">
-												<span class="starR on" onClick="setStar(1)">⭐</span>
-												<span class="starR" onClick="setStar(2)">⭐</span>
-												<span class="starR" onClick="setStar(3)">⭐</span>
-												<span class="starR" onClick="setStar(4)">⭐</span>
-												<span class="starR" onClick="setStar(5)">⭐</span>
-												<output for="star-input"><b>0</b>점</output>						
+										<div class="form-group">
+											<input type="text" style="display: none;" id="seq" name="seq"
+												value="<c:out value="${collection.seq}"/>">
+										</div>
+										<div class="form-group starRev" id="star">
+											<span class="star-input"> <span class="starR on"
+												onClick="setStar(1)">⭐</span> <span class="starR"
+												onClick="setStar(2)">⭐</span> <span class="starR"
+												onClick="setStar(3)">⭐</span> <span class="starR"
+												onClick="setStar(4)">⭐</span> <span class="starR"
+												onClick="setStar(5)">⭐</span> <output for="star-input">
+													<b>0</b>점
+												</output>
 											</span>
 										</div>
-                                        <div class="form-group">
-                                        	<label>작성자</label>
-                                        	<input class="form-control" type="text" id='InputnickName' name = 'nickName' placeholder="nickName">
-                                        </div>
-                                        <div class="form-group">
-                                        	<label>리뷰내용</label>
-                                        	<input class="form-control" type="text" id='comment' name = 'revComment' placeholder="한줄평"> 
+										<div class="form-group">
+											<label>작성자</label> <input class="form-control revContentInput" type="text"
+												id='InputnickName' name='nickName' placeholder="nickName">
 										</div>
-										<button id='commentAdd' type="submit" class="btn contact-btn">Post Comment</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
+										<div class="form-group">
+											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
+												id='comment' name='revComment' placeholder="한줄평">
+										</div>
+										<button id='commentAdd' type="submit"
+											class="btn btn-secondary">댓글 작성</button>
+									</form>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 	</section>
 
 	<div class="container">
@@ -612,9 +611,9 @@ p.v-data {
             					   var formId = "review" + list[i].revSeq
 
             					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
-            					   str +=" <div><div class='header'><strong class='primary-font'>"+list[i].nickName+"</strong>"; 
-            					   str+= " <small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";
-            			           str+= " <p id='review' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</p>";
+            					   str +=" <div class='revBox'><div class='header'><div class='primary-font'>"+list[i].nickName+"</div>"; 
+            					   str+= " <small class='pull-right text-muted revDate'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";
+            			           str+= " <p id='review' style='height:45px; font-family: 'font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</p>";
             			           str+= "<a href='#" + formId + "' value='"+ list[i].revSeq +"' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
                                    str+= "            <form class='collapse' id='" + formId + "'>";
                                    str+= "              <div class='form-group'>";
@@ -622,9 +621,9 @@ p.v-data {
                                    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
             				       str+= "  			<div style='display:none'><input type='datetime-local' id='updateDate' name='updateDate' value=''/></div>";
             				       str+= "  			</div>";
-            				       str+= "  			<button id='update' type='button' class='btn btn-11' >수정 완료</button></div>";
+            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button></div>";
             				       str+= "			</form>";
-            			           str += "<div><input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'><button type='button' class='remove'>삭제</button></div></div></li>"; 
+            			           str += "<div><input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'><button type='button' class='remove btn-secondary2'>삭제</button></div></div></li>"; 
             				   } 
             				   reviewUL.html(str);
             				   console.log("showList page : " +pageNum);

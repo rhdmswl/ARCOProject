@@ -58,6 +58,9 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
 	rel="stylesheet">
 
+<link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" >
+
 <style>
 body {
 	margin-top: 20px;
@@ -76,6 +79,16 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-track {
     background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
+}
+
+a {
+	background-color: #fff;
+	color : #fff;
+}
+
+a:hover {
+	background-color: #fff;
+	color : #fff;
 }
 
 .product__item__text {
@@ -102,6 +115,78 @@ body::-webkit-scrollbar-track {
 	color: black;
 }
 
+/* 페이지 버튼 */
+
+.card {
+	border: 0;
+}
+
+.page-item {
+	margin-right: 4px;
+}
+
+.page-link {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7b809a;
+    padding: 0;
+    border-radius: 50%!important;
+    width: 36px;
+    height: 36px;
+    font-size: .875rem;
+    margin-right: 4px;
+}
+
+.page-link:hover {
+	color: #f21378;
+}
+
+.page-item.active .page-link {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f21378;
+    padding: 0;
+    margin: 0 3px;
+    border-radius: 50%!important;
+    width: 36px;
+    height: 36px;
+    font-size: .875rem;
+    background-color: #ddd;
+    border-color: #ddd;
+}
+
+.page-item.active:hover {
+	color: #f21378;
+}
+
+.form-control {
+  padding: 5px 30px 5px 10px;
+  border-radius: 4px;
+  outline: 0 none;
+  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.form-control option {
+  background: black;
+  color: #fff;
+  padding: 3px 0;
+}
+
+.input-group-addon {
+	border: 0px;
+}
+
+.searchButton {
+	border: 2px solid #e9ecef;
+}
+
+.searchForm {
+	position: relative;
+	left: 30px;
+}
+
 </style>
 
 </head>
@@ -116,17 +201,17 @@ body::-webkit-scrollbar-track {
 								<div class="row clearfix">
 									<div class="col-lg-1 col-md-2 col-3"></div>
 									<div class="col-lg-5 col-md-4 col-6">
-										<form id="searchForm" action="/collection/list" method='get' style=" width:500px;" class="input-group search">
-											<select class="form-control" name='type' style="width:150px;">
-												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>--</option>
+										<form id="searchForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
+											<select id="chk" class="form-control" name='type' style="width:70px;">
+												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>SEARCH</option>
 												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
 												<option value="D" <c:out value="${pageMaker.cri.type eq 'D' ? 'selected' : ''}"/>>날짜</option>
 											</select>
-											<input type='text' name="keyword" class="form-control" style="width:350px;"
-													placeholder="Search..." value='<c:out value="${pageMaker.cri.keyword}"/>'>
+											<input type='text' name="keyword" class="form-control" style="width:200px;"
+													placeholder="검색어를 입력해주세요." value='<c:out value="${pageMaker.cri.keyword}"/>'>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
-											<button type="submit" class="searchButton">Search<span class="input-group-addon"><i class="zmdi zmdi-search"></i></span></button>
+											<button type="submit" class="searchButton"><span class="input-group-addon"><i class="zmdi zmdi-search"></i></span></button>
 										</form>
 									</div>
 								</div>
@@ -182,12 +267,12 @@ body::-webkit-scrollbar-track {
 												</a>
 											</div>
 											<!--  <div class="ep">18 / 18</div> -->
-											<div class="comment">
+<%-- 											<div class="comment">
 												<i class="fa fa-comments"></i> 11
 											</div>
 											<div class="view">
 												<i class="fa fa-eye"></i> <c:out value="${collection.revViewCount}" />
-											</div>
+											</div> --%>
 										</div>
 										<div class="product__item__text">
 											<a style="color: black; font-weight: 700;" href="#"><c:out
@@ -247,11 +332,6 @@ body::-webkit-scrollbar-track {
 						<a id="scrollUp2" href="#top"  
 						style="position: absolute; z-index: 2147483647; background-color:#f21378;"><i
 						class="fa fa-arrow-up lastscroll" aria-hidden="true" style="color:#fff;"></i></a>
-					<p>
-						Copyright @2018 All rights reserved | This template is made with <i
-							class="fa fa-heart-o" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
-					</p>
 				</div>
 			</div>
 		</div>

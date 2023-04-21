@@ -55,9 +55,10 @@ body {
 
 .form-control::placeholder {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
 
 .form-control {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	width: 60%;
 	height: 50px;
 	box-sizing: border-box;
@@ -470,8 +471,7 @@ option {
 
 					</div>
 				</div>
-			</div>
-		</div>
+
 	</section>
 
 </body>
