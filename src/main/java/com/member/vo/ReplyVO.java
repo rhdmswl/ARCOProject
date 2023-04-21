@@ -2,7 +2,6 @@ package com.member.vo;
 
 import java.util.Date;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
