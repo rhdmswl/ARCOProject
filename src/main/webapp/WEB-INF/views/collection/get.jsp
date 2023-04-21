@@ -40,47 +40,6 @@ body {
 .single_blog_area ul li:before {
 	content:none;
 }
-    /* 
-  #myform fieldset{
-    display: inline-block;
-    direction: rtl;
-    border:0;
-}
-#myform fieldset legend{
-    text-align: right;
-}
-#myform input[type=radio]{
-    display: none;
-}
-#myform label{
-    font-size: 3em;
-    color: transparent;
-    text-shadow: 0 0 0 #f0f0f0;
-}
-#myform label:hover{
-    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-#myform label:hover ~ label{
-    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-#myform input[type=radio]:checked ~ label{
-    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-#reviewContents {
-    width: 100%;
-    height: 150px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: solid 1.5px #D3D3D3;
-    border-radius: 5px;
-    font-size: 16px;
-    resize: none;
-}
-
-div.all-rating-widgets {
-  display: flex;
-  justify-content: center;
-} */
 
 div.rating-wrapper {
   display: flex;
@@ -195,23 +154,6 @@ p.v-data {
 								<ul class="chat"></ul>
 								<div class="panel-footer">
 								</div>
-									
-<!--    <link href="/text/css" rel="stylesheet"/>
- 	<form class="mb-3" name="myform" id="myform" method="post">
-	<fieldset>
-		<span class="text-bold">별점을 선택해주세요</span>
-		<input type="radio" name="reviewStar" value="5" id="rate1"><label
-			for="rate1">★</label>
-		<input type="radio" name="reviewStar" value="4" id="rate2"><label
-			for="rate2">★</label>
-		<input type="radio" name="reviewStar" value="3" id="rate3"><label
-			for="rate3">★</label>
-		<input type="radio" name="reviewStar" value="2" id="rate4"><label
-			for="rate4">★</label>
-		<input type="radio" name="reviewStar" value="1" id="rate5"><label
-			for="rate5">★</label>
-	</fieldset>
-</form>			   -->
                             </div>
 
 							<!-- 리뷰 남기기 -->
@@ -220,31 +162,6 @@ p.v-data {
                                     <h4 class="mb-30">Leave A Comment</h4>
 
                                     <!-- Comment Form -->
-                               <!--     <form role="form">
-                                    <div class="all-rating-widgets">
-<div class="rating-wrapper" data-id="raiders">
-  <h2>star</h2>
-  <div class="star-wrapper">
-    <i class="fa fa-star-o" ></i>
-    <i class="fa fa-star-o" ></i>
-    <i class="fa fa-star-o" ></i>
-    <i class="fa fa-star-o" ></i>
-    <i class="fa fa-star-o" ></i>
-  </div>
-  <p class="v-data">Voting Data</p>
-</div> -->
-
-<!--  <div class="rating-wrapper" data-id="shawshank">
-  <h2>Shawshank Redemption</h2>
-  <div class="star-wrapper">
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-  </div>
-  <p class="v-data">Voting Data</p>
-</div>  -->
 								</div> 
 									<form role="form">
                                 	<div class="form-group">
@@ -267,10 +184,6 @@ p.v-data {
                                         <div class="form-group">
                                         	<label>리뷰내용</label>
                                         	<input class="form-control" type="text" id='comment' name = 'revComment' placeholder="한줄평"> 
-										</div>
-										<div class="form-group">  
-                                        	<label>별점</label>
-                                        	<input class="form-control" type="text" id='star' name = 'revStar' placeholder="별점">                                      	
 										</div>
 										<button id='commentAdd' type="submit" class="btn contact-btn">Post Comment</button>
                                     </form>
@@ -375,14 +288,7 @@ p.v-data {
                                    str+= "            <form class='collapse' id='" + formId + "'>";
                                    str+= "              <div class='form-group'>";
                                    str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
-                                   str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  
-            				      /*   str+= "<P id=" + star + ">"  부모
-            				       str+="<a href='#' value='1'>★</a> " 자식들
-            				       str+="<a href='#' value='2'">★</a> "
-            				       str+="<a href='#' value='3'>★</a> "
-            				       str+="<a href='#' value='4'>★</a> "
-            				       str+="<a href='#' value='5'>★</a> "
-            				       str+= "<p>" */
+                                   /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
             				       str+= "  			<div style='display:none'><input type='datetime-local' id='updateDate' name='updateDate' value=''/></div>";
             				       str+= "  			</div>";
             				       str+= "  			<button id='update' type='button' class='btn btn-11' >수정 완료</button></div>";
@@ -402,7 +308,7 @@ p.v-data {
                     			 seq : seqValue,
                         		 nickName : $('#InputnickName').val(),
                         		 revComment : $('#comment').val(),
-                        		 revStar : $('#star').val() 
+                        		 revStar :  $(".starRev output b").text()
                         		 };
                          CollectionReviewService.add(review, function(result){alert(result); showList(1);});
                      });
@@ -445,110 +351,66 @@ p.v-data {
          				console.log("footer PageNum : "+PageNum);
          				showList(PageNum);
          			});
-                   /*   
-                     $('#star a').click(function(){ 
-                    	 $(this).parent().children("a").removeClass("on");    
-                    	 $(this).addClass("on").prevAll("a").addClass("on");
-                    	 console.log($(this).attr("value"));
-                     }); */
-                     
-                   /*   2 */
-                    /*  $("div.star-wrapper i").on("mouseover", function () {
-                    	  if ($(this).siblings("i.vote-recorded").length == 0) {
-                    	    $(this)
-                    	      .prevAll()
-                    	      .addBack()
-                    	      .addClass("fa-solid yellow")
-                    	      .removeClass("fa-regular");
-                    	    $(this).nextAll().removeClass("fa-solid yellow").addClass("fa-regular");
-                    	  }
+                  
+                    	
+                    /* 별점 구현 */
+                    //setStar로 선택된 별점 값 score에 저장
+                     $('.starRev span').click(function(){
+                    	    $(this).parent().children('span').removeClass('on');
+                    	    $(this).addClass('on').prevAll('span').addClass('on');
+                    	    var score = $(this).next().text();
+                    	    setStar(score);
+                    	    return false;
                     	});
 
-                    	$("div.star-wrapper i").on("click", function () {
-                    	  let rating = $(this).prevAll().length + 1;
-                    	  let movie_id = $(this).closest("div.rating-wrapper").data("id");
-                    	  
-                    	  if ($(this).siblings("i.vote-recorded").length == 0) {
-                    	    
-                    	    $(this).prevAll().addBack().addClass("vote-recorded");
-                    	    $.post("update_ratings.php", { movie: movie_id, rating: rating }).done(
-                    	      function (data) {
-                    	        parent_div.find("p.v-data").text(data);
-                    	      }
-                    	    );
-                    	    
-                    	  }
-                    	}); */
-                    	
-                    /* 사용 쿼리 */
-                    	$('.starRev span').click(function(){
-                    		  $(this).parent().children('span').removeClass('on');
-                    		  $(this).addClass('on').prevAll('span').addClass('on');
-                    		  return false;
-                    		});
-                    
-                 /*   변경 */
-                     
-                    	/* var $starEls = $('#star span.star');
-                    	var rate = 0;
+                    	function setStar(starIndex) {
+                    	    // 클릭한 별까지 on 클래스 추가
+                    	    $(".starRev .starR").slice(0, starIndex).addClass("on");
 
-                    	$starEls.each(function (index, el) {
-                    	    $(el).on('click', function () {
-                    	        rating(index);
-                    	    });
-                    	});
+                    	    // 클릭한 별의 개수를 계산
+                    	    var numSelectedStars = $(".starRev .on").length;
 
-                    	function rating(score) {
-                    	    $starEls.each(function (i, el) {
-                    	        if (i <= score) {
-                    	            $(el).addClass('on');
-                    	        } else {
-                    	            $(el).removeClass('on');
-                    	        }
-                    	    });
+                    	    // 계산한 개수를 output에 출력
+                    	    $(".starRev output b").text(numSelectedStars);
+                    	}
 
-                    	    rate = score + 1;
-                    	} */
-                    	
-                    	/* 새로운코드 */
-   
-                    	var starRating = function(){
-                    		  var $star = $(".star-input"),
-                    		      $result = $star.find("output>b");
-                    		  $(document)
-                    		    .on("focusin", ".star-input>.input", function(){
-                    		    $(this).addClass("focus");
-                    		  })
-                    		    .on("focusout", ".star-input>.input", function(){
-                    		    
-                    		    	var $this = $(this);
-                    		    
-                    		    	setTimeout(function(){
-                    		      
-                    		    		if($this.find(":focus").length === 0){
-                    		    			$this.removeClass("focus");
-                    		    		}
-                    		    }, 1000);
-                    		  })
-                    		    .on("change", ".star-input>.starR", function(){
-                    		    $result.text($(this).next().text());
-                    		  })
-                    		    .on("mouseover", ".star-input label", function(){
-                    		    $result.text($(this).text());
-                    		  })
-                    		    .on("mouseleave", ".star-input>.input", function(){
-                    		    
-                    		    	var $checked = $star.find(":checked");
-                    		    
-                    		    	if($checked.length === 0){
-                    		    		$result.text("0");
-                    		    	} else {
-                    		    		$result.text($checked.next().text());
-                    		    	}
-                    		    	
-                    		  });
-                    		};
-                    		starRating();
+                    	var starRating = function() {
+                    	    var $star = $(".star-input"),
+                    	        $result = $star.find("output>b");
+                    	    //별점 클릭될때 어떻게 변하는지 나타내는 코드
+                    	    $(document)
+                    	        .on("focusin", ".star-input>.input", function(){
+                    	            $(this).addClass("focus");
+                    	        })
+                    	        .on("focusout", ".star-input>.input", function(){
+                    	            var $this = $(this);
+                    	            setTimeout(function(){
+                    	                if($this.find(":focus").length === 0){
+                    	                    $this.removeClass("focus");
+                    	                }
+                    	            }, 1000);
+                    	        })
+                    	        .on("change", ".star-input>.starR", function(){
+                    	            var score = $(this).next().text();
+                    	            setStar(score);
+                    	        })
+                    	        .on("mouseover", ".star-input label", function(){
+                    	            var score = $(this).text();
+                    	            setStar(score);
+                    	        })
+                    	        .on("mouseleave", ".star-input>.input", function(){
+                    	            var $checked = $star.find(":checked");
+                    	            if($checked.length === 0){
+                    	                setStar(0);
+                    	            } else {
+                    	                setStar($checked.next().text());
+                    	            }
+                    	        });
+                    	};
+
+                    	starRating();
+
+
        	});
 										
 </script>
