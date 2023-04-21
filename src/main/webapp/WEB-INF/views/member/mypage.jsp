@@ -8,6 +8,10 @@
 <head>
 
 <title>My Page</title>
+
+	<!-- Favicon -->
+	<link rel="icon" href="/img/core-img/favicon.ico">
+	
 	<link href="/css/material-dashboard.min.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" rel="stylesheet">
 	<link href="/js/core/jquery.min.js" type="text/javascript"></link>

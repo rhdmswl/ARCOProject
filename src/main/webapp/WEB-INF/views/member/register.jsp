@@ -12,6 +12,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/material-dashboard.min.js"></script>
 
+<!-- Favicon -->
+<link rel="icon" href="/img/core-img/favicon.ico">
+
 <!-- Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
