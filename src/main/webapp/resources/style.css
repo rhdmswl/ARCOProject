@@ -206,20 +206,6 @@ ol {
     padding: 0;
 }
 
-#scrollUp {
-    bottom: 55px;
-    font-size: 14px;
-    right: 50%;
-    width: 30px;
-    background-color: #fc6c3f;
-    color: #fff;
-    text-align: center;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 50%;
-    margin-right: -15px;
-}
-
 a,
 a:hover,
 a:focus,

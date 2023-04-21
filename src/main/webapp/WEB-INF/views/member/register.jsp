@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 
 <title>회원가입</title>
@@ -37,8 +38,23 @@ body {
 }
 
 .card {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	position: absolute;
+	width: 400px;
 }
+
+.card-title {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 30px;
+	font-weight: 700;
+	color: #696969;
+	width: 100%;
+	text-align: center;
+}
+
+
+.form-control::placeholder {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 
 .form-control {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -82,30 +98,70 @@ body {
 
 
 .btn-secondary {
-	font-family: 'Noto Sans KR', sans-serif;
+	width: 100px;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 15px;
 	box-shadow: none;
+	height: 40px;
+	line-height: 20px;
+	padding: 0;
 }
 
 .btn-secondary:hover {
 	box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
+.btn-secondary:before {
+    position: absolute;
+    /* content: ''; */
+    display: inline-block;
+    top: -180px;
+    left: 0px;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.btn-secondary:active {
+	  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+            -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+   			inset -4px -4px 6px 0 rgba(242, 19, 120),
+    		inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
 .btn-primary {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	box-shadow: none;
+	width: 100px;
+	height: 40px;
+	line-height: 20px;
+	font-size: 15px;
+	padding: 0;
 }
 
 .btn-primary:hover {
 	box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
-.btn-danger {
-	font-family: 'Noto Sans KR', sans-serif;
-	box-shadow: none;
+.btn-sm {
+	magin-bottom: 0px;
+	position: relative;
+	top: 5px;
 }
 
-.btn-danger:hover {
-	box-shadow: 1px 4px 3px 1px #dadce0;
+
+.btnGroup {
+	position: relative;
+	left: 150px;
+}
+
+.input-group {
+  height: 40px;
+  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+  border: 0;
+  outline: none;
+  padding-left: 10px;
+  margin-bottom: 15px;
 }
 
 .btn-primary.btn-sm {
@@ -338,12 +394,12 @@ option {
 					<a href="/" class="yummy-logo"><img
 						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 				</div>
-				<div class="card">
-					<div class="card-header card-header-primary">
-						<h4 class="card-title center">회원가입</h4>
-					</div>
+					<form action="/member/register" method="post" name="regForm">
+						<div class="card card-login">
+							<div class="card-header card-header-primary text-center">
+								<h4 class="card-title">회원 가입</h4>
+            </div>
 					<div class="card-body">
-						<form action="/member/register" method="post" id="regForm">
 							<div class="form-group has-feedback">
 								<label class="control-label" for="userId">아이디</label> <br>
 								<input class="form-control" type="text" id="userId"
@@ -364,10 +420,10 @@ option {
 							<br>
 							<div class="form-group has-feedback">
 								<label class="control-label" for="passCheck">비밀번호 확인</label><br>
-								<input class="form-control" type="password" id="passCheck"
-									name="passCheck" /> <span id="alert-success"
-									style="display: none; color: #000000;">비밀번호가 일치합니다.</span> <span
-									id="alert-danger"
+								<input class="form-control" type="password" id="passCheck" name="passCheck" /> 
+                  <span id="alert-success"
+									style="display: none; color: #000000;">비밀번호가 일치합니다.</span> 
+                  <span id="alert-danger"
 									style="display: none; color: #d92742; font-weight: bold;">비밀번호가
 									일치하지 않습니다.</span>
 
@@ -407,9 +463,9 @@ option {
 							
 
 						</form>
-						<div class="text-center">
-							<button class="btn btn-primary" type="button" id="submit">회원가입</button>
-							<button class="btn btn-secondary cancel" type="button">취소</button>
+							<div class="card-footer justify-content-center btnGroup">
+								<button class="btn btn-primary" type="submit">회원가입</button>
+								<button class="cancel btn btn-secondary">취소</button>
 						</div>
 
 					</div>

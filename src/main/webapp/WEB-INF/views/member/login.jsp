@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>로그인</title>
+<title>LOGIN</title>
 <link rel="stylesheet" href="/css/material-dashboard.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/material-dashboard.min.js"></script>
@@ -19,6 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 <style type="text/css">
 
@@ -28,31 +29,69 @@ body {
 }
 
 .card {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.card-title {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 30px;
+	font-weight: 700;
+	color: #696969;
 }
 
 .form-control::placeholder {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
 
 .btn-secondary {
-	font-family: 'Noto Sans KR', sans-serif;
+	width: 100px;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 15px;
 	box-shadow: none;
+	height: 40px;
+	line-height: 20px;
+	padding: 0;
 }
 
 .btn-secondary:hover {
     box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
+.btn-secondary:before {
+    position: absolute;
+    /* content: ''; */
+    display: inline-block;
+    top: -180px;
+    left: 0px;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.btn-secondary:active {
+	  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+            -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+   			inset -4px -4px 6px 0 rgba(242, 19, 120),
+    		inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
 .btn-primary {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	box-shadow: none;
+	width: 100px;
+	height: 40px;
+	line-height: 20px;
+	font-size: 15px;
+	padding: 0;
 }
 
 .btn-primary:hover {
     box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
+.text-center {
+	margin-top: 20px;
+}
 
 </style>
 
@@ -71,7 +110,7 @@ body {
 							<div class="col-12">
 							</div>
 							<div class="card-header card-header-primary text-center">
-								<h4 class="card-title">로그인</h4>
+								<div class="card-title">로그인</div>
 							</div>
 							<div class="card-body">
 								<c:if test="${member == null}">
@@ -80,14 +119,14 @@ body {
 											<span class="input-group-text"> </span>
 										</div>
 										<input type="text" id="userId" name="userId"
-											class="form-control" placeholder="아이디">
+											class="form-control userId" placeholder="아이디">
 									</div>
 									<div class="input-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"> </span>
 										</div>
 										<input type="password" id="userPass" name="userPass"
-											class="form-control" placeholder="비밀번호">
+											class="form-control userPass" placeholder="비밀번호">
 									</div>
 									<div class="text-center">
 										<button type="submit" class="btn btn-primary">로그인</button>
