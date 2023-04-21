@@ -24,7 +24,16 @@ public class CollectionReviewServiceImpl implements CollectionReviewService {
 		log.info("getList with cri......." + cri);
 		return mapper.getListWithPaging(cri, seq);
 	}
-
+	
+	@Override
+	public CollectionReviewPageDTO getListPage(Criteria cri, long seq) {
+		log.info("getList with cri......." + cri);
+		log.info("getList with seq......." + seq);
+		log.info("getList with cri......." + mapper.getCountBySeq(seq));
+		log.info("getList with cri......." + mapper.getListWithPaging(cri, seq));
+		return new CollectionReviewPageDTO(mapper.getCountBySeq(seq), mapper.getListWithPaging(cri, seq));
+	}
+	
 	@Override
 	public int register(CollectionReviewVO vo) {
 		log.info("register......." + vo);

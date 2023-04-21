@@ -32,7 +32,7 @@ public class Criteria {
 	public Criteria(int pageNum, int amount) {
 		this.pageNum = pageNum;
 		this.amount = amount;
-		this.pageNumForLimit=((pageNum-1)*12);
+		this.pageNumForLimit=((pageNum-1)*amount);
 	}
 	
 	public String[] getTypeArr() {

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.collection.domain.CollectionReviewPageDTO;
 import com.collection.domain.CollectionReviewVO;
 import com.collection.domain.Criteria;
 import com.collection.service.CollectionReviewService;
@@ -43,13 +44,14 @@ public class CollectionReviewController {
 
 	@GetMapping(value = "/pages/{seq}/{pageNum}", produces = { MediaType.APPLICATION_XML_VALUE,
             MediaType.APPLICATION_JSON_UTF8_VALUE })
-    public ResponseEntity<List<CollectionReviewVO>> getList(@PathVariable("pageNum") int pageNum,
+    public ResponseEntity<CollectionReviewPageDTO> getList(@PathVariable("pageNum") int pageNum,
             @PathVariable("seq") long seq) {
         log.info("getList.............");
-        Criteria cri = new Criteria(pageNum, 10);
+        Criteria cri = new Criteria(pageNum, 12);
+        cri.setSeq(seq);
         log.info(cri);
-
-        return new ResponseEntity<>(service.getList(cri, seq), HttpStatus.OK);
+        log.info("결과"+service.getListPage(cri, seq));
+        return new ResponseEntity<>(service.getListPage(cri, seq), HttpStatus.OK);
 
     }
 
