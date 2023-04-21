@@ -14,8 +14,7 @@
 		, #{userPass}
 		, #{userName}
 		, #{phone}
-		,
-		#{email}
+		, #{email}
 		)
 	</insert>
 
@@ -34,17 +33,8 @@
 	<update id="memberUpdate">
 		UPDATE MEMBER SET
 		<!-- USERPASS = #{userPass}, -->
-		USERNAME = #{userName}, PHONE= #{phone}, EMAIL= #{email}, USERPASS=
-		#{userPass}
-		WHERE USERID = #{userId}
-	</update>
-
-	<update id="mypageUpdate">
-		UPDATE MEMBER SET
-		<!-- USERPASS = #{userPass}, -->
 		USERNAME = #{userName}, PHONE= #{phone}, EMAIL= #{email}
-		WHERE USERID =
-		#{userId}
+		WHERE USERID = #{userId}
 	</update>
 
 	<!-- 회원탈퇴 -->
@@ -96,47 +86,57 @@
 		UPDATE MEMBER SET PROFILEIMG = #{profileImg} WHERE USERID = #{userId} </update> -->
 
 
-	<!-- 작성한 한줄평 불러오기 <select id="getMemberCollectionRevs" resultType="com.member.vo.CollectionReviewVO"> 
-		SELECT * FROM collectionRev WHERE nickname = #{sessionScope.userId} </select> 
-		작성한 게시글 불러오기 <select id="getMemberPosts" resultType="com.member.vo.BoardVO"> 
-		SELECT * FROM post WHERE post_writer = #{sessionScope.userId} </select> 작성한 
-		댓글 불러오기 <select id="getMemberComments" resultType="com.member.vo.ReplyVO"> 
-		SELECT * FROM comment WHERE com_writer = #{sessionScope.userId} </select> -->
+<!-- 	작성한 한줄평 불러오기
+	<select id="getMemberCollectionRevs"
+		resultType="com.member.vo.CollectionReviewVO">
+		SELECT * FROM collectionRev WHERE nickname =
+		#{sessionScope.userId}
+	</select>
+
+	작성한 게시글 불러오기
+	<select id="getMemberPosts" resultType="com.member.vo.BoardVO">
+		SELECT * FROM post WHERE
+		post_writer = #{sessionScope.userId}
+	</select>
+
+	작성한 댓글 불러오기
+	<select id="getMemberComments"
+		resultType="com.member.vo.ReplyVO">
+		SELECT * FROM comment WHERE com_writer =
+		#{sessionScope.userId}
+	</select> -->
 
 	<!-- 작성한 한줄평 불러오기 (페이징 적용) -->
-	<select id="getMemberCollectionRevsWithPaging"
-		resultType="com.member.vo.CollectionReviewVO">
-		SELECT * FROM collectionRev WHERE nickname = #{userId}
-		LIMIT ${start}, 12
+	<select id="getMemberCollectionRevsWithPaging" resultType="com.member.vo.CollectionReviewVO">
+	    SELECT * FROM collectionRev WHERE nickname = #{userId}
+	    LIMIT ${start}, 12
 	</select>
-
+	
 	<!-- 작성한 게시글 불러오기 (페이징 적용) -->
-	<select id="getMemberPostsWithPaging"
-		resultType="com.member.vo.BoardVO">
-		SELECT * FROM post WHERE post_writer = #{userId}
-		LIMIT ${start}, 12
+	<select id="getMemberPostsWithPaging" resultType="com.member.vo.BoardVO">
+	    SELECT * FROM post WHERE post_writer = #{userId}
+	    LIMIT ${start}, 12
 	</select>
-
+	
 	<!-- 작성한 댓글 불러오기 (페이징 적용) -->
-	<select id="getMemberCommentsWithPaging"
-		resultType="com.member.vo.ReplyVO">
-		SELECT * FROM comment WHERE com_writer = #{userId}
-		LIMIT ${start}, 12
+	<select id="getMemberCommentsWithPaging" resultType="com.member.vo.ReplyVO">
+	    SELECT * FROM comment WHERE com_writer = #{userId}
+	    LIMIT ${start}, 12
 	</select>
-
+	
 	<!-- 작성한 한줄평 총 개수 -->
 	<select id="countCollectionRevs" resultType="int">
-		SELECT COUNT(*) FROM collectionRev WHERE nickname = #{userId}
+	    SELECT COUNT(*) FROM collectionRev WHERE nickname = #{userId}
 	</select>
-
+	
 	<!-- 작성한 게시글 총 개수 -->
 	<select id="countPosts" resultType="int">
-		SELECT COUNT(*) FROM post WHERE post_writer = #{userId}
+	    SELECT COUNT(*) FROM post WHERE post_writer = #{userId}
 	</select>
-
+	
 	<!-- 작성한 댓글 총 개수 -->
 	<select id="countComments" resultType="int">
-		SELECT COUNT(*) FROM comment WHERE com_writer = #{userId}
+	    SELECT COUNT(*) FROM comment WHERE com_writer = #{userId}
 	</select>
-
+	
 </mapper>
