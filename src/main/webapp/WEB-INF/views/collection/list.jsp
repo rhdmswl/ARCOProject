@@ -29,6 +29,13 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
+	
+    <!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
+    
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="/list/css/bootstrap.min.css"
@@ -57,11 +64,26 @@ body {
 	background: #FFF
 }
 
-.product__item__text {
-	font-family: 'Nanum Gothic', sans-serif;
+body::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
 }
 
-#scrollUp {
+body::-webkit-scrollbar-thumb {
+    height: 5%; /* 스크롤바의 길이 */
+    background: #f21378; /* 스크롤바의 색상 */ 
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
+}
+
+.product__item__text {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	margin-bottom: 50px;
+}
+
+#scrollUp2 {
 	bottom: 55px;
 	font-size: 14px;
 	right: 50%;
@@ -73,33 +95,18 @@ body {
 	margin-right: -15px;
 }
 
+.titleText {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 30px;
+	font-weight: 600;
+	color: black;
+}
+
 </style>
 
 </head>
 
 <body>
-
-
-	<!-- ****** Breadcumb Area Start ****** -->
-
-	<div class="breadcumb-nav">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="#"><i
-									class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-							<li class="breadcrumb-item"><a href="#">Archive</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Single
-								Post Blog</li>
-						</ol>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- ****** Breadcumb Area End ****** -->
 
 	<section class="product-page spad">
 		<div class="container">
@@ -110,7 +117,7 @@ body {
 							<div class="row">
 								<div class="col-lg-8 col-md-8 col-sm-6">
 									<div class="section-title">
-										<h4>Collection List</h4>
+										<div class="titleText">Exhibition List</div>
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-4 col-sm-6">
@@ -192,7 +199,7 @@ body {
 			<div class="col-12">
 				<!-- Copywrite Text -->
 				<div class="copy_right_text text-center">
-						<a id="scrollUp" href="#top"  
+						<a id="scrollUp2" href="#top"  
 						style="position: absolute; z-index: 2147483647; background-color:#f21378;"><i
 						class="fa fa-arrow-up lastscroll" aria-hidden="true" style="color:#fff;"></i></a>
 					<p>

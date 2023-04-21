@@ -33,6 +33,20 @@ body {
 	background: #FFF
 }
 
+body::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 5%; /* 스크롤바의 길이 */
+    background: #f21378; /* 스크롤바의 색상 */ 
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
+}
+
 .card {
 	background: #fff;
 	margin-top: 30px;
