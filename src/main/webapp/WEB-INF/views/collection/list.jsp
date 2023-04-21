@@ -268,7 +268,7 @@ body {
 	<!-- All Plugins JS -->
 	<script src="/js/others/plugins.js"></script>
 	<!-- Active JS -->
-	<script src="/list/js/active.js"></script>
+	<script src="/js/active.js"></script>
 	<a id="scrollUp" href="#top"
 		style="position: absolute; z-index: 2147483647; display: block;">
 		<i class="fa fa-arrow-up" aria-hidden="true"></i>

@@ -27,20 +27,13 @@ import lombok.extern.log4j.Log4j;
 // @ContextConfiguration(classes = {org.zerock.config.RootConfig.class} )
 @Log4j
 public class CollectionReviewMapperTests {
-<<<<<<< HEAD
 
-	@Autowired
-	BCryptPasswordEncoder pwdEncoder;
-	
-	@Autowired
-=======
 	
 	@Autowired
     BCryptPasswordEncoder pwdEncoder;
 	
 	
 	@Autowired 
->>>>>>> 0419페이징_별점_조회수
 	private CollectionReviewMapper mapper;
 	
 	@Test

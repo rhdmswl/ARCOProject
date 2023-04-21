@@ -29,7 +29,7 @@ public class CollectionMapperTests {
 	@Test
 	public void testSearch() {
 		Criteria cri = new Criteria();
-		cri.setKeyword("");
+		cri.setKeyword("또라이");
 		cri.setType("T");
 		
 		List<CollectionVO> list = Mapper.getListWithPaging(cri);
