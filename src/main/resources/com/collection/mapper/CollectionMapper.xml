@@ -38,9 +38,6 @@
 				where
 				and startDate like concat('%', #{keyword}, '%')
 			</when>
-			<!-- <otherwise>
-				where seq=#{seq}
-			</otherwise> -->
 		</choose>
 	</sql>
 	

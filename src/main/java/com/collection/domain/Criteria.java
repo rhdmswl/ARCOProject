@@ -22,21 +22,15 @@ public class Criteria {
 	public Criteria() {
 		this(1, 12);
 	}
-	
-//	public Criteria(int pageNum, int pageNumForLimit) {
-//		this.pageNum=pageNum;
-//		this.pageNumForLimit = pageNumForLimit;
-//	}
 
 	public Criteria(int pageNum, int amount) {
 		this.pageNum = pageNum;
 		this.amount = amount;
-		this.pageNumForLimit=((pageNum-1)*12);
 	}
 	
-//	public void setpageNumForLimit() {
-//		this.pageNumForLimit=((pageNum-1)*12);
-//	}
+	public void setpageNumForLimit() {
+		this.pageNumForLimit=((pageNum-1)*amount);
+	}
 	
 	public String[] getTypeArr() {
 		

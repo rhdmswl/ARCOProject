@@ -46,6 +46,7 @@ public class CollectionController {
 		int total = service.getTotal(cri);
 		log.info(total);
 		log.info(cri);
+		cri.setpageNumForLimit();
 		model.addAttribute("list", service.getList(cri));
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
