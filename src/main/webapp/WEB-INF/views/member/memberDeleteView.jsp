@@ -40,7 +40,7 @@
 								$("#delForm").submit();
 							}
 						}else{
-							alert("패스워드가 틀렸습니다.");
+							alert("비밀번호가 틀렸습니다.");
 							return;
 						}
 					}
@@ -68,12 +68,12 @@
 								</div>
 								<br>
 								<div class="form-group has-feedback">
-									<label class="control-label" for="userPass">패스워드</label>
+									<label class="control-label" for="userPass">비밀번호</label>
 									<input class="form-control" type="password" id="userPass" name="userPass" />
 								</div>
 								<br>
 								<div class="form-group has-feedback">
-									<label class="control-label" for="userName">성명</label>
+									<label class="control-label" for="userName">닉네임</label>
 									<input class="form-control" type="text" id="userName" name="userName" value="${member.userName}" readonly="readonly"/>
 								</div>
 							</form>
