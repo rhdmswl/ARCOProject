@@ -55,53 +55,33 @@ body {
 </head>
 
 <body>
-<!-- 필요한 스크립트 파일들 추가 -->
-<script src="${pageContext.request.contextPath}/js/core/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/core/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/core/bootstrap-material-design.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/material-dashboard.min.js"></script>
-
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-6">
-				<div style="width:100%; text-align:center;">
-					<a href="/">
-						<img src="https://i.imgur.com/evlOrzY.png" width="400">
-					</a>
-				</div>
-				<div class="card">
-					<div class="card-header card-header-primary">
-						<h4 class="card-title">비밀번호 수정</h4>
-					</div>
-					<div class="card-body">
-						<c:if test="${not empty error}">
-							<div class="alert alert-danger">
-								<span>${error}</span>
-							</div>
-						</c:if>
-						<form action="${pageContext.request.contextPath}/member/passUpdate" method="post">
-							<div class="form-group">
-								<label for="userPass">현재 비밀번호:</label>
-								<input type="password" class="form-control" id="userPass" name="userPass" required>
-							</div>
-							<br>
-							<div class="form-group">
-								<label for="newPass">새로운 비밀번호:</label>
-								<input type="password" class="form-control" id="newPass" name="newPass" required>
-							</div>
-							<br>
-							<div class="form-group">
-								<label for="confirmPass">비밀번호 확인:</label>
-								<input type="password" class="form-control" id="confirmPass" name="confirmPass" required>
-							</div>
-							<br>
-							<button type="submit" class="btn btn-primary">수정하기</button>
-						</form>
-					</div>
-				</div>
-			</div>
+	<h2>비밀번호 수정</h2>
+	<c:if test="${not empty error}">
+		<div style="color: red;">${error}</div>
+	</c:if>
+	<form id="passUpdateForm" action="${pageContext.request.contextPath}/member/passUpdate" method="post">
+		<div>
+			<label for="userPass">현재 비밀번호:</label>
+			<input type="password" id="userPass" name="userPass" required>
 		</div>
-	</div>
+		<div>
+			<label for="newPass">새로운 비밀번호:</label>
+			<input type="password" id="newPass" name="newPass" required>
+		</div>
+		<div>
+			<label for="confirmPass">비밀번호 확인:</label>
+			<input type="password" id="confirmPass" name="confirmPass" required>
+		</div>
+		<button type="button" onclick="showConfirmDialog()">수정하기</button>
+	</form>
+	<script type="text/javascript">
+		function showConfirmDialog() {
+			if (confirm('비밀번호를 수정하시겠습니까?')) {
+				document.getElementById('passUpdateForm').submit();
+				alert("비밀번호가 변경되었습니다. 다시 로그인해주세요!");
+			}
+		}
+	</script>
+
 </body>
 </html>
