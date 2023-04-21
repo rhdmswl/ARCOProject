@@ -69,6 +69,11 @@ body {
 	font-size: 16px;
 }
 
+.current-page {
+    font-weight: bold;
+    color: red;
+}
+
 </style>
 	
 	
@@ -141,26 +146,29 @@ body {
 		</section>
 	
 	<!-- 한줄평 목록 -->
-	<div class="card">
-	    <div class="card-header card-header-primary">
-	        <h4 class="card-title">한줄평 목록</h4>
-	    </div>
-	    <div class="card-body">
-	        <div class="table-responsive">
-	            <table class="table">
-	                <tr>
-						<th>내용</th>
-						<th>작성일</th>
-					</tr>
-					<c:forEach var="rev" items="${collectionRev}">
-						<tr>
-							<td><a href="/collection/get?rev_id=${rev.revId}">${rev.revComment}</a></td>
-							<td>${rev.replyDate}</td>
+
+	<div class="d-flex justify-content-center">
+		<div class="card" style="width: 60%; text-align: left;">
+		    <div class="card-header card-header-primary">
+		        <h4 class="card-title">나의 한줄평</h4>
+		    </div>
+		    <div class="card-body">
+		        <div class="table-responsive">
+		            <table class="table">
+		                <tr>
+							<th>내용</th>
+							<th>작성일</th>
 						</tr>
-					</c:forEach>
-	            </table>
-	        </div>
-	    </div>
+						<c:forEach var="rev" items="${collectionRev}">
+							<tr>
+								<td><a href="/collection/get?rev_id=${rev.revId}">${rev.revComment}</a></td>
+								<td>${rev.replyDate}</td>
+							</tr>
+						</c:forEach>
+		            </table>
+		        </div>
+		    </div>
+		</div>
 	</div>
 	<!-- 한줄평 페이징 -->
     <div>
@@ -170,10 +178,10 @@ body {
         <c:forEach var="pageNum" begin="${collectionRevPageMaker.startPage}" end="${collectionRevPageMaker.endPage}" step="1">
             <c:choose>
                 <c:when test="${pageNum == collectionRevPageMaker.cri.page}">
-                    <span>${pageNum}</span>
+                    <span class="current-page">${pageNum}</span>
                 </c:when>
                 <c:otherwise>
-                    <a href="?page=${pageNum}">${pageNum}</a>
+                    <a href="?revPage=${pageNum}&postPage=${postPage}&commentPage=${commentPage}">${pageNum}</a>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
@@ -183,26 +191,28 @@ body {
     </div>
 	
 	<!-- 게시글 목록 -->
-	<div class="card">
-	    <div class="card-header card-header-primary">
-	        <h4 class="card-title">게시글 목록</h4>
-	    </div>
-	    <div class="card-body">
-	        <div class="table-responsive">
-	            <table class="table">
-	               <tr>
-						<th>제목</th>
-						<th>작성일</th>
-					</tr>
-					<c:forEach var="post" items="${posts}">
-						<tr>
-							<td><a href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
-							<td>${post.post_regdate}</td>
+	<div class="d-flex justify-content-center">
+		<div class="card" style="width: 60%; text-align: left;">
+		    <div class="card-header card-header-primary">
+		        <h4 class="card-title">나의 게시글</h4>
+		    </div>
+		    <div class="card-body">
+		        <div class="table-responsive">
+		            <table class="table">
+		               <tr>
+							<th>제목</th>
+							<th>작성일</th>
 						</tr>
-					</c:forEach>
-	            </table>
-	        </div>
-	    </div>
+						<c:forEach var="post" items="${posts}">
+							<tr>
+								<td><a href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
+								<td>${post.post_regdate}</td>
+							</tr>
+						</c:forEach>
+		            </table>
+		        </div>
+		    </div>
+		</div>
 	</div>
 	<!-- 게시글 페이징 -->
 	<div>
@@ -212,10 +222,11 @@ body {
 	    <c:forEach var="pageNum" begin="${postPageMaker.startPage}" end="${postPageMaker.endPage}" step="1">
 	        <c:choose>
 	            <c:when test="${pageNum == postPageMaker.cri.page}">
-	                <span>${pageNum}</span>
+	                <span class="current-page">${pageNum}</span>
 	            </c:when>
 	            <c:otherwise>
-	                <a href="?page=${pageNum}">${pageNum}</a>
+	            	<!-- <a href="?page=${pageNum}">${pageNum}</a> -->
+	                <a href="?revPage=${revPage}&postPage=${pageNum}&commentPage=${commentPage}">${pageNum}</a>
 	            </c:otherwise>
 	        </c:choose>
 	    </c:forEach>
@@ -225,26 +236,28 @@ body {
 	</div>
 
 	<!-- 댓글 목록 -->
-	<div class="card">
-	    <div class="card-header card-header-primary">
-	        <h4 class="card-title">댓글 목록</h4>
-	    </div>
-	    <div class="card-body">
-	        <div class="table-responsive">
-	            <table class="table">
-	                <tr>
-						<th>내용</th>
-						<th>작성일</th>
-					</tr>
-					<c:forEach var="comment" items="${comments}">
-						<tr>
-							<td><a href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
-							<td>${comment.com_date}</td>
+	<div class="d-flex justify-content-center">
+		<div class="card" style="width: 60%; text-align: left;">
+		    <div class="card-header card-header-primary">
+		        <h4 class="card-title">나의 댓글</h4>
+		    </div>
+		    <div class="card-body">
+		        <div class="table-responsive">
+		            <table class="table">
+		                <tr>
+							<th>내용</th>
+							<th>작성일</th>
 						</tr>
-					</c:forEach>
-	            </table>
-	        </div>
-	    </div>
+						<c:forEach var="comment" items="${comments}">
+							<tr>
+								<td><a href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
+								<td>${comment.com_date}</td>
+							</tr>
+						</c:forEach>
+		            </table>
+		        </div>
+		    </div>
+		</div>
 	</div>
 	<!-- 댓글 페이징 -->
 	<div>
@@ -254,10 +267,10 @@ body {
 	    <c:forEach var="pageNum" begin="${commentPageMaker.startPage}" end="${commentPageMaker.endPage}" step="1">
 	        <c:choose>
 	            <c:when test="${pageNum == commentPageMaker.cri.page}">
-	                <span>${pageNum}</span>
+	                <span class="current-page">${pageNum}</span>
 	            </c:when>
 	            <c:otherwise>
-	                <a href="?page=${pageNum}">${pageNum}</a>
+	                <a href="?revPage=${revPage}&postPage=${postPage}&commentPage=${pageNum}">${pageNum}</a>
 	            </c:otherwise>
 	        </c:choose>
 	    </c:forEach>

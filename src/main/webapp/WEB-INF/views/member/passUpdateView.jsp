@@ -6,9 +6,53 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 수정</title>
+
+<!-- 필요한 스타일시트 파일들 추가 -->
+<link href="${pageContext.request.contextPath}/css/material-dashboard.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+<style type="text/css">
+
+body {
+	margin-top: 20px;
+	background: #FFF
+}
+
+.card {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.form-control::placeholder {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.btn-secondary {
+	font-family: 'Noto Sans KR', sans-serif;
+	box-shadow: none;
+}
+
+.btn-secondary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.btn-primary {
+	font-family: 'Noto Sans KR', sans-serif;
+	box-shadow: none;
+}
+
+.btn-primary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+
+</style>
+
 </head>
-
-
 
 <body>
 	<h2>비밀번호 수정</h2>
@@ -38,5 +82,6 @@
 			}
 		}
 	</script>
+
 </body>
 </html>

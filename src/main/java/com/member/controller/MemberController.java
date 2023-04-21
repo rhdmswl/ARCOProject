@@ -131,18 +131,14 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-//	// mypage - 회원 정보 수정, 나의 글 보기
-//	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-//	public String myPage(Model model, HttpSession session) throws Exception {
-//		MemberVO member = (MemberVO) session.getAttribute("member");
-//		String userId = member.getUserId();
-//
-//		model.addAttribute("collectionRevs", service.getMemberCollectionRevs(userId));
-//		model.addAttribute("posts", service.getMemberPosts(userId));
-//		model.addAttribute("comments", service.getMemberComments(userId));
-//
-//		return "member/mypage";
-//	}
+	// mypage 회원정보 수정 post
+	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
+	public String registerUpdate(MemberVO vo, HttpSession session) throws Exception {
+
+		service.memberUpdate(vo);
+
+		return "redirect:/member/mypage";
+	}
 	
 	// mypage - 나의 글 보기 (페이징 적용)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
@@ -157,13 +153,7 @@ public class MemberController {
 	    if (vo != null) {
 	        userId = vo.getUserId();
 	    }
-	    
-	    
-//	    cri.setUserId(userId);
-//
-//	    model.addAttribute("collectionRevs", service.getMemberCollectionRevsWithPaging(userId, cri));
-//	    model.addAttribute("posts", service.getMemberPostsWithPaging(userId, cri));
-//	    model.addAttribute("comments", service.getMemberCommentsWithPaging(userId, cri));
+
 	    Criteria revCri = new Criteria(revPage);
 	    Criteria postCri = new Criteria(postPage);
 	    Criteria commentCri = new Criteria(commentPage);

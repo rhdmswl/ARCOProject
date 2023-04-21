@@ -443,7 +443,7 @@ li {
 				<!-- Logo Area Start -->
 				<div class="col-12">
 					<div class="logo_area text-center">
-						<a href="/index" class="yummy-logo"><img
+						<a href="/" class="yummy-logo"><img
 							src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 					</div>
 				</div>

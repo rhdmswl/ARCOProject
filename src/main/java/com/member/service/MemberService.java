@@ -42,7 +42,7 @@ public interface MemberService {
 //
 //	List<ReplyVO> getMemberComments(String userId) throws Exception;
 	
-	// 페이징이 적용된 메소
+	// 페이징이 적용된 메소드
 	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception;
 	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception;
 	public List<ReplyVO> getMemberCommentsWithPaging(String userId, Criteria cri) throws Exception;

@@ -71,7 +71,7 @@ body {
 			<div class="row">
 				<div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
 					<div class="logo_area text-center">
-						<a href="/index" class="yummy-logo"><img
+						<a href="/" class="yummy-logo"><img
 							src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 					</div>
 					<form action="/member/register" method="post" name="regForm">
