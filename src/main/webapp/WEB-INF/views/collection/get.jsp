@@ -193,6 +193,8 @@ p.v-data {
 							<div class="comment_area section_padding_50 clearfix">
 								<h4 class="mb-30">Comments</h4>
 								<ul class="chat"></ul>
+								<div class="panel-footer">
+								</div>
 									
 <!--    <link href="/text/css" rel="stylesheet"/>
  	<form class="mb-3" name="myform" id="myform" method="post">
@@ -211,10 +213,6 @@ p.v-data {
 	</fieldset>
 </form>			   -->
                             </div>
-                            <form id='actionForm' action="/review/list" method='get'>
-								<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-								<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
-							</form>
 
 							<!-- 리뷰 남기기 -->
                             <div class="leave-comment-area section_padding_50 clearfix">
@@ -302,63 +300,67 @@ p.v-data {
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="/js/review.js"></script>
 <script>
-var pageNum = 1;
-var reviewPageFooter = $(".panel-footer");
-function showReviewPage(reviewCnt) {
-	var endNum = Math.ceil(pageNum / 5.0) * 5;
-	var startNum = endNum - 4;
-	
-	var prev = startNum != 1;
-	var next = false;
-	
-	if(endNum * 10 >= reviewCnt) {
-		endNum = Math.ceil(reviewCnt/10.0);
-	}
-	
-	if(endNum * 10 < reviewCnt) {
-		next = true;
-	} 
-	
-	
-	var str = "<ul class='pagination pull-right'>";
-	if(prev) {
-		str += "<li class='page-item'><a class='page-link' href='"+(startNum-1)+"'>Previous</a></li>";
-	}
-	
-	for(var i=startNum ; i<=endNum; i++){
-		var active = pageNum == i? "active":"";
-		str+="<li class='page-item "+active+" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
-	}
-	
-	if(next) {
-		str+= "<li class='page-item'><a class='page-link' href='"+(endNum+1) + "'>Next</a></li>";
-	}
-
-	str += "</ul></div>";
-	console.log(str);
-	
-	reviewPageFooter.html(str);
-}
-</script>
-
-<script>
-
        	$(document).ready(function() {
-       		
-       		
-       		
-            		 var seqValue = '<c:out value="${collection.seq}"/>';
-            		 var reviewUL = $(".chat");
-            		 showList(1);
+       		var pageNum = 1;
+       		var endNum=0;
+       		var reviewPageFooter = $(".panel-footer");
+            var seqValue = '<c:out value="${collection.seq}"/>';
+            var reviewUL = $(".chat");
             		 
+            showList(1);
+            
+            function showReviewPage(reviewCnt) {
+   			 console.log("함수 작동 " +reviewCnt);
+   			 console.log("함수 작동 " +pageNum);
+   				endNum = Math.ceil(pageNum / 5.0) * 5;
+   				var startNum = endNum - 4;
+   				
+   				var prev = startNum != 1;
+   				var next = false;
+   				
+   				console.log("reviewCnt : "+reviewCnt);
+   				if(endNum * 12 >= reviewCnt) {
+   					endNum = Math.ceil(reviewCnt/12.0);
+   				}
+   				
+   				if(endNum * 12 < reviewCnt) {
+   					next = true;
+   				} 
+   				var str = "<ul class='pagination pull-right'>";
+   				if(prev) {
+   					str += "<li class='page-item'><a class='page-link' href='"+(startNum-1)+"'>Previous</a></li>";
+   				}
+   				console.log("startNum : "+startNum);
+   				console.log("endNum : "+endNum);
+   				for(var i=startNum ; i<=endNum; i++){
+   					var active = pageNum == i? "active":"";
+   					str+="<li class='page-item "+active+" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
+   				}
+   				
+   				if(next) {
+   					str+= "<li class='page-item'><a class='page-link' href='"+(endNum+1) + "'>Next</a></li>";
+   				}
+   				str += "</ul></div>";
+   				console.log("함수끝"+str);
+   				
+   				reviewPageFooter.html(str);
+   			}		 
+            
             		 function showList(page){
-            			 
+            			 pageNum=page;
             			 CollectionReviewService.getList({seq:seqValue,page: page|| 1 },
-            				function(list){
+            				function(reviewCnt,list){
+            					console.log("리뷰 개수 " +reviewCnt);
             				   var str="";
+            				   if(page==-1) {
+            				    	pageNum=Math.ceil(com_cnt/10.0);
+            				    	
+            				    	showList(pageNum);
+            				    	return;
+            				   }
             				   
             				   if(list==null || list.length ==0) {
-            					   reviewUL.html("");
+            					   return;
             				   } 
             				   
             				   for(var i=0, len = list.length || 0; i < len; i++){
@@ -388,9 +390,12 @@ function showReviewPage(reviewCnt) {
             			           str += "<div><input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'><button type='button' class='remove'>삭제</button></div></div></li>"; 
             				   } 
             				   reviewUL.html(str);
-            			   
+            				   console.log("showList page : " +pageNum);
+            				   showReviewPage(reviewCnt);
             			 }); 
             		 } 
+            		 
+            		 
             
                      $(document).on("click",'#commentAdd' ,function(){
                     	 var review = { 
@@ -427,6 +432,19 @@ function showReviewPage(reviewCnt) {
                         CollectionReviewService.update(review, function(result){alert(result); showList(1);});
 
                      });
+                     
+                     reviewPageFooter.on('click','li a',function(e){
+         				e.preventDefault();
+         				console.log("page click");
+         				
+         				var targetPageNum=$(this).attr("href");
+         				
+         				console.log("footer targetPageNum : "+targetPageNum);
+         				
+         				PageNum=targetPageNum;
+         				console.log("footer PageNum : "+PageNum);
+         				showList(PageNum);
+         			});
                    /*   
                      $('#star a').click(function(){ 
                     	 $(this).parent().children("a").removeClass("on");    
