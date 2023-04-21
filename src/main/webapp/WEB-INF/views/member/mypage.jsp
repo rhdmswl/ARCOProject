@@ -465,7 +465,9 @@ body {
             </c:choose>
         </c:forEach>
         <c:if test="${collectionRevPageMaker.next}">
+
     		<a href="?revPage=${collectionRevPageMaker.endPage + 1}&postPage=${postPage}&commentPage=${commentPage}">다음</a>
+
         </c:if>
     </div>
 	
@@ -509,7 +511,9 @@ body {
 	        </c:choose>
 	    </c:forEach>
 	    <c:if test="${postPageMaker.next}">
+
 	    	<a href="?revPage=${revPage}&postPage=${postPageMaker.endPage + 1}&commentPage=${commentPage}">다음</a>
+
 	    </c:if>
 	</div>
 
@@ -562,5 +566,6 @@ body {
 	<div class="text-center">
 	    <button onclick="location.href='/member/memberDeleteView'" type="button" class="btn btn-secondary outmember">회원 탈퇴</button>
 	</div>
+
 </body>
 </html> --%>

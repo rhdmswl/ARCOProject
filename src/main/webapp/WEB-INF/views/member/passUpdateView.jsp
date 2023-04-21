@@ -79,7 +79,7 @@ body {
 	</form>
 	<script type="text/javascript">
 		function showConfirmDialog() {
-			if (confirm('비밀번호를 수정하시겠습니까?')) {
+			if (confirm('비밀번호를 변경하시겠습니까?')) {
 				document.getElementById('passUpdateForm').submit();
 				alert("비밀번호가 변경되었습니다. 다시 로그인해주세요!");
 			}
