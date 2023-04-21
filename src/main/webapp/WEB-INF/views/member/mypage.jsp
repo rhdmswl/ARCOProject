@@ -171,7 +171,7 @@ body {
 		</div>
 	</div>
 	<!-- 한줄평 페이징 -->
-    <div>
+    <div class="text-center">
         <c:if test="${collectionRevPageMaker.prev}">
             <a href="?page=${collectionRevPageMaker.startPage - 1}">이전</a>
         </c:if>
@@ -186,7 +186,7 @@ body {
             </c:choose>
         </c:forEach>
         <c:if test="${collectionRevPageMaker.next}">
-            <a href="?page=${collectionRevPageMaker.endPage + 1}">다음</a>
+            <a href="?revPage=${collectionRevPageMaker.endPage + 1}&postPage=${postPage}&commentPage=${commentPage}">다음</a>
         </c:if>
     </div>
 	
@@ -215,7 +215,7 @@ body {
 		</div>
 	</div>
 	<!-- 게시글 페이징 -->
-	<div>
+	<div class="text-center">
     <c:if test="${postPageMaker.prev}">
 	        <a href="?page=${postPageMaker.startPage - 1}">이전</a>
 	    </c:if>
@@ -231,7 +231,7 @@ body {
 	        </c:choose>
 	    </c:forEach>
 	    <c:if test="${postPageMaker.next}">
-	        <a href="?page=${postPageMaker.endPage + 1}">다음</a>
+	       <a href="?revPage=${revPage}&postPage=${postPageMaker.endPage + 1}&commentPage=${commentPage}">다음</a>
 	    </c:if>
 	</div>
 
@@ -260,7 +260,7 @@ body {
 		</div>
 	</div>
 	<!-- 댓글 페이징 -->
-	<div>
+	<div class="text-center">
 	    <c:if test="${commentPageMaker.prev}">
 	        <a href="?page=${commentPageMaker.startPage - 1}">이전</a>
 	    </c:if>
@@ -275,7 +275,7 @@ body {
 	        </c:choose>
 	    </c:forEach>
 	    <c:if test="${commentPageMaker.next}">
-	        <a href="?page=${commentPageMaker.endPage + 1}">다음</a>
+	        <a href="?revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.endPage + 1}">다음</a>
 	    </c:if>
 	</div>
 	
@@ -288,6 +288,6 @@ body {
 	<div class="text-center">
 	    <button onclick="location.href='/member/memberDeleteView'" type="button" class="btn btn-secondary outmember">회원 탈퇴</button>
 	</div>
-	</div>  
+	 
 </body>
 </html>
