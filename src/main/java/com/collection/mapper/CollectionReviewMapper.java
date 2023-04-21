@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.collection.domain.CollectionReviewVO;
+import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
 
 public interface CollectionReviewMapper {

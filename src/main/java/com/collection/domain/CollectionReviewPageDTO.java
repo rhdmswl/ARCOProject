@@ -10,7 +10,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class CollectionReviewPageDTO {
-	private int reiviewCnt;
+	private int reviewCnt;
 	private List<CollectionReviewVO> list;
 
 }

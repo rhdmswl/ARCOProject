@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.collection.domain.CollectionVO;
+import com.collection.domain.Criteria;
 import com.collection.service.CollectionService;
 
 import lombok.AllArgsConstructor;
@@ -20,8 +21,8 @@ public class HomeController {
 	private CollectionService service;
 
 	@GetMapping("/")
-	public String index(Model model) {
-		model.addAttribute("list", service.getList());
+	public String index(Model model, Criteria cri) {
+		model.addAttribute("list", service.getList(cri));
 		return "index";
 	}
 }

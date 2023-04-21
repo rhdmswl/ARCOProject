@@ -17,6 +17,8 @@ public interface CollectionReviewService {
 	public int modify(CollectionReviewVO review);
 	
 	public List<CollectionReviewVO> getList(Criteria cri, long seq);
-	
+
 	public CollectionReviewPageDTO getListPage(Criteria cri, long seq);
+	
+	/* public CollectionReviewPageDTO getListPage(Criteria cri, long seq); */
 }

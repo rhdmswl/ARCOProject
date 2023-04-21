@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.collection.domain.CollectionVO;
+import com.collection.domain.Criteria;
 import com.collection.mapper.CollectionMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -26,8 +28,8 @@ public class CollectionServiceImpl implements CollectionService {
 	}
 
 	@Override
-	public List<CollectionVO> getList() {
-		return mapper.getCollectionList();
+	public List<CollectionVO> getList(Criteria cri) {
+		return mapper.getListWithPaging(cri);
 	}
 	
 
@@ -36,20 +38,20 @@ public class CollectionServiceImpl implements CollectionService {
 		log.info(seq);
 		return mapper.getCollection(seq);
 	}
-	
 
-	/*
-	 * @Override public String[] getCollectionImgTitle() {
-	 * return mapper.getCollectionImgTitle(); }
-	 */
 
-	/*
-	 * @Override public void insertOthers(CollectionVO collection) {
-	 * log.info("insert : " + collection);
-	 * mapper.updateCollectionOthers(collection);
-	 * 
-	 * }
-	 */
+	@Override
+	public int getTotal(Criteria cri) {
+		log.info("get total count");
+		return mapper.getTotalCount(cri);
+	}
+
+	@Override
+	public int revViewCount(long seq) {
+		log.info(seq);
+		return mapper.revViewCount(seq);
+	}
+
 
 	
 

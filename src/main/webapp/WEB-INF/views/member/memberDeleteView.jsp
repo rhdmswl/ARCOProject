@@ -6,6 +6,9 @@
 		<!-- Material Dashboard CSS -->
 		<link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
 		
+		<!-- Favicon -->
+		<link rel="icon" href="/img/core-img/favicon.ico">
+		
 		<!-- Google Fonts -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 		

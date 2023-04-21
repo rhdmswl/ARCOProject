@@ -12,15 +12,20 @@
 
 <title>ARCO - Community Post</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon -->
+<link rel="icon" href="/img/core-img/favicon.ico">
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/material-dashboard.min.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 <style type="text/css">
 body {
@@ -29,6 +34,8 @@ body {
 /*
 Blog post entries
 */
+
+
 .entry-card {
 	-webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
 	-moz-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
@@ -58,7 +65,7 @@ Blog post entries
 	font-size: .95rem;
 	font-weight: 500;
 	margin-bottom: 15px;
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
 
 .entry-thumb {
@@ -149,7 +156,8 @@ Blog post entries
 
 .post-content .post-title {
 	font-weight: 700;
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	color: #0f0f0f;
 }
 
 .post-meta {
@@ -196,6 +204,14 @@ Blog post entries
 	margin-right: 0px;
 }
 
+/* 상세 페이지 틀 */
+.post-content {
+	border: 2px solid #f21378;
+	border-radius: 20px;
+	padding: 60px;
+	padding-bottom: 80px;
+}
+
 .post-content .fa {
 	color: #ddd;
 }
@@ -219,11 +235,22 @@ Blog post entries
 .postbox {
 	margin-top: 40px;
 	margin-bottom: 60px !important;
-	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 600;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	color: #696969;
 }
 
 .mb40 {
+	margin-top: 20px;
 	margin-bottom: 40px !important;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	position: relative;
+	left: 12%;
+}
+
+.mb40 .chat {
+	position: relative;
+	right: 14%;
 }
 
 .mb30 {
@@ -234,54 +261,7 @@ Blog post entries
 	color: #555;
 }
 
-.categories li a:before {
-	content: "\f0da";
-	font-family: 'Nanum Gothic', sans-serif;
-	margin-right: 5px;
-}
-/*
-Template sidebar
-*/
-.sidebar-title {
-	margin-bottom: 1rem;
-	font-size: 1.1rem;
-}
 
-.categories li {
-	vertical-align: middle;
-}
-
-.categories li>ul {
-	padding-left: 15px;
-}
-
-.categories li>ul>li>a {
-	font-weight: 300;
-}
-
-.categories li a {
-	color: #999;
-	position: relative;
-	display: block;
-	padding: 5px 10px;
-	border-bottom: 1px solid #eee;
-}
-
-.categories li a:before {
-	content: "\f0da";
-	font-family: 'FontAwesome';
-	margin-right: 5px;
-}
-
-.categories li a:hover {
-	color: #444;
-	background-color: #f5f5f5;
-}
-
-.categories>li.active>a {
-	font-weight: 600;
-	color: #444;
-}
 
 .media-body h5 {
 	font-size: 15px;
@@ -300,7 +280,7 @@ Template sidebar
 
 .frame {
   width: 90%;
-  margin: 40px auto;
+  margin: 15px auto;
   text-align: center;
   line-height: -100px;
 }
@@ -310,10 +290,9 @@ button {
   outline: none;
 }
 
-.custom-btn {
+/* .custom-btn {
   width: 130px;
   height: 40px;
-  border: 1px solid #000;
   border-radius: 20px;
   font-family: 'Nanum Gothic', sans-serif;
   font-size: 14px;
@@ -324,8 +303,13 @@ button {
   display: inline-block;
 }
 
+.custom-btn img {
+	width: 50px;
+	height: 50px;
+} */
+
 /* 11 */
-.btn-11 {
+/* .btn-11 {
   overflow: hidden;
   transition: all 0.3s ease;
 }
@@ -337,7 +321,6 @@ button {
 
 .btn-11:before {
     position: absolute;
-    /* content: ''; */
     display: inline-block;
     top: -180px;
     left: 0px;
@@ -351,11 +334,14 @@ button {
               -4px -4px 6px 0 rgba(116, 125, 136, .2), 
     inset -4px -4px 6px 0 rgba(255,255,255,.2),
     inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
-}
+} */
 
 .commentBtnGroup {
 	width: 100%;
 	height: 65px;
+	position: relative;
+	left: 440px;
+	margin-bottom: 30px;
 }
 
 .commentBtnGroup .btn-11 {
@@ -384,18 +370,119 @@ button {
 .com_up_content {
 	margin-top: 10px;
 	magin-bottom: 3px;
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	border: 1px solid #ccc;
 }
 
 .primary-font {
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 700;
 }
 
 .comContentList {
-	font-family: 'Nanum Gothic', sans-serif;
 	height: 50px;
+	color: black;
+	font-weight: 500;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
+
+.commentGroup {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	position: relative;
+}
+
+.commentTitleText {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+	color: black;
+	position: relative;
+	left: 15px;
+}
+
+.com_content {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	color: black;
+	border: 1px solid #ccc;
+}
+
+.btn-secondary {
+	width: 100px;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 15px;
+	box-shadow: none;
+	height: 40px;
+	line-height: 20px;
+	padding: 0;
+}
+
+.btn-secondary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.btn-secondary:before {
+    position: absolute;
+    /* content: ''; */
+    display: inline-block;
+    top: -180px;
+    left: 0px;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.btn-secondary:active {
+	  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+            -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+   			inset -4px -4px 6px 0 rgba(242, 19, 120),
+    		inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.btn-primary {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	box-shadow: none;
+	width: 100px;
+	height: 40px;
+	line-height: 20px;
+	font-size: 15px;
+	padding: 0;
+}
+
+.btn-primary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.form-control::placeholder {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.pageItemGroup {
+	position: relative;
+	right: 12%;
+}
+
+.page-link {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7b809a;
+    padding: 0;
+    margin: 0 3px;
+    border-radius: 50%!important;
+    width: 36px;
+    height: 36px;
+    font-size: .875rem;
+}
+
+.page-link:hover {
+	color: #f21378;
+}
+
+.comment-delete-btn {
+	position: relative;
+}
+
 
 @-webkit-keyframes shiny-btn1 {
     0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
@@ -417,152 +504,98 @@ button {
 			<div class="col-md-9 mb40">
 				<article>
 					<div class="post-content">
-						<h3 class="post-title"><c:out value="${board.post_title}"/></h3>
-						
+						<h3 class="post-title">
+							<c:out value="${board.post_title}" />
+						</h3>
+
 						<ul class="post-meta list-inline">
-							<li class="list-inline-item"><i class="fa fa-user-circle-o" ></i>
-								<a href="#"><c:out value="${board.post_writer}"/></a></li>
-							
+							<li class="list-inline-item"><i class="fa fa-user-circle-o"></i>
+								<a href="#"><c:out value="${board.post_writer}" /></a></li>
+
 							<li class="list-inline-item"><i class="fa fa-calendar-o"></i>
-								<a href="#"><fmt:formatDate pattern = "yyyy-MM-dd" value="${board.post_regdate}"/></a></li>
+								<a href="#"><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${board.post_regdate}" /></a></li>
 
 						</ul>
-						<div class="postbox" style="box-sizing: border-box; width:100%; height:300px;">
-								<c:out value="${board.post_content}"/>
+						<div class="postbox"
+							style="box-sizing: border-box; width: 100%; height: 300px;">
+							<c:out value="${board.post_content}" />
 						</div>
-						
-						<div class="frame">
-							<button id='like' data-oper='like' class="custom-btn btn-11" >
-							추천
-							</button>
+
+						<div class="frame" style="background-color:none;">
+							<button id='like' data-oper='like' class="btn btn-primary">추천</button>
+								<!-- <button id='like' style="border:none; background-color:none;" data-oper='like' 
+										class="custom-btn btn-11"><img id="heartImg" src="https://i.imgur.com/6io8NDW.png"></button> -->
 						</div>
-						
-						
+
+
 						<div class="frame">
-							<c:if test="${member.userId==board.post_writer}"> 
-							<button class="custom-btn btn-11" data-oper='modify'>수정</button>
-							</c:if>
-							<button class="custom-btn btn-11" data-oper='list'>목록</button>
 							<c:if test="${member.userId==board.post_writer}">
-							<button class="custom-btn btn-11" data-oper='remove'>삭제</button>
-							</c:if> 
+								<button class="btn btn-secondary" data-oper='modify'>수정</button>
+							</c:if>
+							<button class="btn btn-secondary" data-oper='list'>목록</button>
+							<c:if test="${member.userId==board.post_writer}">
+								<button class="btn btn-secondary" data-oper='remove'>삭제</button>
+							</c:if>
 							<form id='operForm_modi' action="/board/modify" method="get">
-								<input type='hidden' id='post_id' name='post_id' value='<c:out value="${board.post_id}"/>'>
-								<input type='hidden' id='post_id' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-								<input type='hidden' id='post_id' name='brd_id' value='<c:out value="${cri.brd_id}"/>'>
+								<input type='hidden' id='post_id' name='post_id'
+									value='<c:out value="${board.post_id}"/>'> <input
+									type='hidden' id='post_id' name='pageNum'
+									value='<c:out value="${cri.pageNum}"/>'> <input
+									type='hidden' id='post_id' name='brd_id'
+									value='<c:out value="${cri.brd_id}"/>'>
 							</form>
 							<form id='operForm_remo' action="/board/remove" method="post">
-								<input type='hidden' id='post_id' name='post_id' value='<c:out value="${board.post_id}"/>'>
-								<input type='hidden' id='post_id' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-								<input type='hidden' id='post_id' name='brd_id' value='<c:out value="${cri.brd_id}"/>'>
+								<input type='hidden' id='post_id' name='post_id'
+									value='<c:out value="${board.post_id}"/>'> <input
+									type='hidden' id='post_id' name='pageNum'
+									value='<c:out value="${cri.pageNum}"/>'> <input
+									type='hidden' id='post_id' name='brd_id'
+									value='<c:out value="${cri.brd_id}"/>'>
 							</form>
 						</div>
-						
-						
-						
-						
+
+
 						<hr class="mb40">
-						<h4 class="mb40 text-uppercase font500">Comments</h4>
+						<div class="mb40 text-uppercase font500 commentTitleText">Comments</div>
 						<div class="media mb40">
 							<div class="media-body">
-							<ul class="chat">
-							</ul>
-							<div class="panel-footer">
-							</div>
+								<ul style="color:black; font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;" class="chat">
+								</ul>
+								<div class="panel-footer"></div>
 							</div>
 						</div>
-						
+
 						<!-- 댓글 작성 창 -->
+						<div class="commentGroup">
 						<c:if test="${member.userId==null}">
-						<textarea id="com_content" name ="com_content" class="form-control" readonly="readonly" rows="3" style="resize: none;">로그인 후 입력해주세요!</textarea>
+							<textarea id="com_content" name="com_content"
+								class="form-control" readonly="readonly" rows="3"
+								style="resize: none;" placeholder="   로그인 후 입력해주세요!"></textarea>
 						</c:if>
 						<c:if test="${member.userId!=null}">
-						<form role="form">
-							<div class="form-group">
-								<label style="font-family: 'Nanum Gothic', sans-serif;">Comment</label>
-								<textarea id="com_writer" name ="com_writer" readonly="readonly" class="form-control" rows="1" style="resize: none;">${member.userId}</textarea>
-								<textarea id="com_content" name ="com_content" class="form-control" rows="3" style="resize: none;"></textarea>
-							</div>
-							<div>
-							</div>
-							
-							<div id="comRegistBtnGroup" class="clearfix float-right">
-								<button id='Comment_regist' type="button" class="custom-btn btn-11">댓글 등록</button>
-							</div>
-						</form>
+							<form role="form">
+								<div class="form-group">
+									<textarea id="com_writer" name="com_writer" readonly="readonly"
+										class="form-control" rows="1" style="resize: none; color:black;">${member.userId}</textarea>
+									<textarea id="com_content" name="com_content"
+										class="form-control" rows="3" style="resize: none; color:black; border:1px solid #ccc;"></textarea>
+								</div>
+								<div></div>
+
+								<div id="comRegistBtnGroup" class="clearfix float-right">
+									<button id='Comment_regist' type="button"
+										class="btn btn-primary" style="width: 120px;">댓글 등록</button>
+								</div>
+							</form>
 						</c:if>
+						</div>
 					</div>
 				</article>
-
-			</div>
-<!-- 			<div class="col-md-3 mb40">
-				<div class="mb40">
-					<form>
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search..."
-								aria-describedby="basic-addon2">
-							<button class="input-group-addon" id="basic-addon2">
-								<i class="fa fa-search"></i>
-							</button>
-						</div>
-					</form>
-				</div> -->
-
-				<div class="mb40">
-					<h4 class="sidebar-title">Categories</h4>
-					<ul class="list-unstyled categories">
-						<li><a href="#">Rent</a></li>
-						<li><a href="#">Sale</a></li>
-						<li class="active"><a href="#">Apartment</a>
-							<ul class="list-unstyled">
-								<li><a href="#">Office</a></li>
-								<li><a href="#">Godown</a></li>
-								<li><a href="#">Gerage</a></li>
-							</ul></li>
-						<li><a href="#">Top Rating</a></li>
-						<li><a href="#">Trending</a></li>
-						<li><a href="#">Newest Properties</a></li>
-					</ul>
-				</div>
-
-				<!-- <div>
-					<h4 class="sidebar-title">Latest News</h4>
-					<ul class="list-unstyled">
-						<li class="media"><img class="d-flex mr-3 img-fluid"
-							width="64"
-							src="https://bootdey.com/img/Content/avatar/avatar1.png"
-							alt="Generic placeholder image">
-							<div class="media-body">
-								<h5 class="mt-0 mb-1">
-									<a href="#">Lorem ipsum dolor sit amet</a>
-								</h5>
-								April 05, 2017
-							</div></li>
-						<li class="media my-4"><img class="d-flex mr-3 img-fluid"
-							width="64"
-							src="https://bootdey.com/img/Content/avatar/avatar2.png"
-							alt="Generic placeholder image">
-							<div class="media-body">
-								<h5 class="mt-0 mb-1">
-									<a href="#">Lorem ipsum dolor sit amet</a>
-								</h5>
-								Jan 05, 2017
-							</div></li>
-						<li class="media"><img class="d-flex mr-3 img-fluid"
-							width="64"
-							src="https://bootdey.com/img/Content/avatar/avatar3.png"
-							alt="Generic placeholder image">
-							<div class="media-body">
-								<h5 class="mt-0 mb-1">
-									<a href="#">Lorem ipsum dolor sit amet</a>
-								</h5>
-								March 15, 2017
-							</div></li>
-					</ul>
-				</div> -->
 			</div>
 		</div>
-	
+	</div>
+
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -595,6 +628,8 @@ button {
 				console.log(post_id);
 				console.log(userId);
 				
+/*  				document.getElementById("heartImg");
+				heartImg.src = "https://i.imgur.com/oNkFWY6.png"; */
 				
 				$.ajax({
 		            type : "POST",  
@@ -609,13 +644,12 @@ button {
 		                console.log(findLike);
 		            	if(findLike==0){
 	                    	alert("추천완료");
-	                    	location.reload();
-	                    	
+	                    	location.reload(); 	
 	                    }
 	                    else if (findLike == 1){
-	                     alert("추천취소");
+	                     	alert("추천취소");
 	                    	location.reload();
-	                }
+	              		}
 	
 		            }
 		        });
@@ -637,7 +671,7 @@ button {
 					next=true;
 				}
 				
-				var str="<ul class='pagination pull-right'>";
+				var str="<ul class='pagination pull-right pageItemGroup'>";
 				
 				if(prev){
 					str+= "<li class='page-item'><a class='page=link' href='"+(startNum-1)+"'>Previous</a></li>";
@@ -695,14 +729,14 @@ button {
 					str+= "         </small>"	;
 					}
 					str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
-					str+= "         <p id='comContentList' style='height:45px; font-family: 'Nanum Gothic', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].com_content+"</p>";
+					str+= "         <div id='comContentList' style='height:45px;' class='collapse multi-collapse-id show'>"+list[i].com_content+"</div>";
 					str+= "			<form class='collapse' id='" + form_id + "'>";
 			        str+= "  			<div class='form-group'>";
 			        str+= "  			<input type='hidden' id='com_id' name='com_id' value=''/>";
-			        str+= "    				<textarea style='resize: none;' class='form-control' id ='com_up_content' rows='3'></textarea>";
+			        str+= "    				<textarea style='resize: none; border:1px solid #ccc' class='form-control' id ='com_up_content' rows='3'></textarea>";
 			        str+= "  			</div>";
-			        str+= "  			<div class='commentBtnGroup'><button type='button' class='btn btn-11 comment-delete-btn'>삭제</button>";
-			        str+= "  			<button id='Comment_update' type='button' class='btn btn-11' >수정 완료</button></div>";
+			        str+= "  			<div class='commentBtnGroup'><button id='Comment-delete' type='button' class='btn btn-secondary comment-delete-btn'>삭제</button>";
+			        str+= "  			<button id='Comment_update' type='button' class='btn btn-primary' >수정 완료</button></div>";
 			        str+= "			</form>";
                     str+=		"</div></li>";
 					}
