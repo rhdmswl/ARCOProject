@@ -28,7 +28,8 @@ $.ajax({
 		$.getJSON("/review/pages/" + seq + "/" + page + ".json",
 			function(data) {
 				if(callback) {
-					callback(data);  //댓글 목록만 가져오는 경우
+
+					callback(data.reviewCnt,data.list); 
 				}
 			}).fail(function(xhr, status, err) {
 				if(error) {
