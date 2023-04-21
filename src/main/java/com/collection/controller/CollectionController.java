@@ -44,6 +44,8 @@ public class CollectionController {
 	@GetMapping("/list")
 	public void getList(Model model, Criteria cri) {
 		int total = service.getTotal(cri);
+		log.info(total);
+		log.info(cri);
 		model.addAttribute("list", service.getList(cri));
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
