@@ -137,49 +137,24 @@ p.v-data {
 </head>
 <body>
 
-    <!-- ****** Breadcumb Area Start ****** -->
-    
-    <div class="breadcumb-nav">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Archive</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Single Post Blog</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ****** Breadcumb Area End ****** -->
-
     <!-- ****** Single Blog Area Start ****** -->
     <section class="single_blog_area section_padding_80">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="row no-gutters">
-
-                        <!-- Single Post Share Info -->
-                        
-
-                        <!-- Single Post -->
-                        <div class="col-10 col-sm-11">
-                            <div class="single-post">
-                                <!-- Post Thumb -->
-                                <div class="post-thumb">
-	            <img src="<c:out value="${collection.imgUrl}"/>" width="400" height="500" alt="">
+                    	<div class="col-10 col-sm-11">
+                        	<div class="single-post">
+								<div class="post-thumb">
+									<img src="<c:out value="${collection.imgUrl}"/>" width="400" height="500" alt="">
                                 </div>
                                 <!-- Post Content -->
                                 <div class="post-content">
-                                    <div class="post-meta d-flex">
-                                        <div class="post-author-date-area d-flex">
+                                	<div class="post-meta d-flex">
+                                    	<div class="post-author-date-area d-flex">
                                             <!-- Post Author -->
-                                            <div class="post-author">
-                                                <a href="#">By Marian</a>
+                                        	<div class="post-author">
+                                            	<a href="#">By Marian</a>
                                             </div>
                                             <!-- Post Date -->
                                             <div class="post-date">
@@ -200,7 +175,7 @@ p.v-data {
                                             <div class="post-share">
                                                 <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
                                             </div>
-                                        </div>
+                                           </div>
                                     </div>
                                     <a href="#">
                                         <h2 class="post-headline"><c:out value="${collection.title}" /></h2>
@@ -211,42 +186,15 @@ p.v-data {
                                     <div><h4><a href="<c:out value="${collection.url}"/>">티켓구매</a></h4></div>
                                     <div><h4>장소 : <c:out value="${collection.place}" /></h4></div>
                                     <div><h4>주소 : <c:out value="${collection.placeAddr}" /></h4></div>
-                                    <div><h4>문의 : <c:out value="${collection.phone}" /></h4></div>
-                                 
-                                    
-
-                                 
-                                    
+                                    <div><h4>문의 : <c:out value="${collection.phone}" /></h4></div>            
                                 </div>
                             </div>
-
-                            <!-- Tags Area -->
-                            
-
-                            <!-- Related Post Area -->
-
-
-							<!-- Comment Area Start -->
+							<!-- 리뷰 부분 -->
 							<div class="comment_area section_padding_50 clearfix">
 								<h4 class="mb-30">Comments</h4>
-
-								<ol>
-									<ul class="chat">
-
-									</ul>
-									<%--   <div class="pull-rigth">
-                                        <ul class="pagination">
-                                        <c:if test="${pageMaker.prev }">
-                                        <li class="paginate_button privious"><a href="#">previous</a></li></c:if>
-                                        <c:forEach var ="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                                        <li class="paginate_button ${pageMaker.cri.pageNum == num? 'active':'' }"><a href="${num}">${num}</a></li></c:forEach>
-                                        <c:if test="${pageMaker.next}">
-                                        <li class="paginate_button next"><a href="${pageMaker.endPage +1 }">Next</a></li></c:if>
-                                        </ul>
-                                        </div> --%>
-                <!-- end Pagination -->
-                                   <!--    <link href="/text/css" rel="stylesheet"/>
-
+								<ul class="chat"></ul>
+									
+<!--    <link href="/text/css" rel="stylesheet"/>
  	<form class="mb-3" name="myform" id="myform" method="post">
 	<fieldset>
 		<span class="text-bold">별점을 선택해주세요</span>
@@ -261,28 +209,20 @@ p.v-data {
 		<input type="radio" name="reviewStar" value="1" id="rate5"><label
 			for="rate5">★</label>
 	</fieldset>
-	
 </form>			   -->
-                                        
-                                    
-                                </ol>
-                            </div>
-                            <div class = "panel-footer">
                             </div>
                             <form id='actionForm' action="/review/list" method='get'>
 								<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 								<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
-
 							</form>
 
-							<!-- Leave A Comment -->
+							<!-- 리뷰 남기기 -->
                             <div class="leave-comment-area section_padding_50 clearfix">
                                 <div class="comment-form">
                                     <h4 class="mb-30">Leave A Comment</h4>
 
                                     <!-- Comment Form -->
                                <!--     <form role="form">
-                                   
                                     <div class="all-rating-widgets">
 <div class="rating-wrapper" data-id="raiders">
   <h2>star</h2>
@@ -307,85 +247,48 @@ p.v-data {
   </div>
   <p class="v-data">Voting Data</p>
 </div>  -->
-</div> 
-
-
-
-
-
-                                     	<div class="form-group">
-                                            <input type="text" style="display:none;" id="seq" name = "seq" value="<c:out value="${collection.seq}"/>">
-                                        </div>
+								</div> 
+									<form role="form">
+                                	<div class="form-group">
+										<input type="text" style="display:none;" id="seq" name = "seq" value="<c:out value="${collection.seq}"/>">
+                                	</div>
                                         <div class="form-group starRev" id = "star">
-                                        	<span class="star-input">
-  <!-- 편의 상 가장 첫번째의 별은 기본으로 class="on"이 되게 설정해주었습니다. -->
-  <span class="starR on" onClick="setStar(1)">⭐</span>
-  <span class="starR" onClick="setStar(2)">⭐</span>
-  <span class="starR" onClick="setStar(3)">⭐</span>
-  <span class="starR" onClick="setStar(4)">⭐</span>
-  <span class="starR" onClick="setStar(5)">⭐</span>
-<output for="star-input"><b>0</b>점</output>						
-	</span>
-</div>
-
+											<span class="star-input">
+												<span class="starR on" onClick="setStar(1)">⭐</span>
+												<span class="starR" onClick="setStar(2)">⭐</span>
+												<span class="starR" onClick="setStar(3)">⭐</span>
+												<span class="starR" onClick="setStar(4)">⭐</span>
+												<span class="starR" onClick="setStar(5)">⭐</span>
+												<output for="star-input"><b>0</b>점</output>						
+											</span>
+										</div>
                                         <div class="form-group">
                                         	<label>작성자</label>
                                         	<input class="form-control" type="text" id='nickName' name = 'nickName' placeholder="nickName">
-                                         </div>
+                                        </div>
                                         <div class="form-group">
                                         	<label>리뷰내용</label>
                                         	<input class="form-control" type="text" id='revComment' name = 'revComment' placeholder="한줄평"> 
-                                       </div>
-                                        <div class="form-group">  
+										</div>
+										<div class="form-group">  
                                         	<label>별점</label>
                                         	<input class="form-control" type="text" id='revStar' name = 'revStar' placeholder="별점">                                      	
-                                       </div>
-                                        <button id='commentAdd' type="submit" class="btn contact-btn">Post Comment</button>
+										</div>
+										<button id='commentAdd' type="submit" class="btn contact-btn">Post Comment</button>
                                     </form>
-                                    
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
-                <!-- ****** Blog Sidebar ****** -->
-                
             </div>
         </div>
     </section>
     <!-- ****** Single Blog Area End ****** -->
 
-
-   
         <div class="owl-nav"><div class="owl-prev"></div><div class="owl-next"></div></div><div class="owl-dots"><div class="owl-dot"><span></span></div><div class="owl-dot active"><span></span></div></div></div>
     <!-- ****** Our Creative Portfolio Area End ****** -->
 
-    <!-- ****** Footer Social Icon Area Start ****** -->
-    <div class="social_icon_area clearfix">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ****** Footer Social Icon Area End ****** -->
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Copywrite Text -->
-                    <div class="copy_right_text text-center">
-                        <p>Copyright @2018 All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <!-- ****** Footer Menu Area End ****** -->
 
     <!-- Jquery-2.2.4 js -->
     <script src="/js/jquery/jquery-2.2.4.min.js"></script>
