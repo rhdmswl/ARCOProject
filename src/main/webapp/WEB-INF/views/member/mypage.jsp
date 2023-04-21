@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+
 <title>My Page</title>
 	<link href="/css/material-dashboard.min.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" rel="stylesheet">
@@ -20,7 +20,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
-	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">
 
 body {
@@ -73,145 +73,72 @@ body {
 	
 	
 </head>
-
 <script type="text/javascript">
-	$(document).ready(function(){
-		// 취소
-		$(".cancel").on("click", function(){
+		$(document).ready(function(){
 			
-			location.href = "/";
-					    
-		})
-	
-		$("#submit").on("click", function(){
-			
-/* 			if($("#userPass").val()==""){
-				alert("비밀번호를 입력해주세요.");
-				$("#userPass").focus();
-				return false;
-			} */
-			
-			if($("#userName").val()==""){
-				alert("닉네임을 입력해주세요.");
-				$("#userName").focus();
-				return false;
-			}
-
-			if($("#phone").val()==""){
-				alert("전화번호를 입력해주세요.");
-				$("#phone").focus();
-				return false;
-			}
-
-			if($("#email").val()==""){
-				alert("이메일을 입력해주세요.");
-				$("#email").focus();
-				return false;
-			}
-
-			
-			if(confirm("회원수정하시겠습니까?")){
-				$("#updateForm").submit();
-				
-				return ;
-			}
-			
-/* 			$.ajax({
-				url : "/member/passChk",
-				type : "POST",
-				dateType : "json",
-				data : $("#updateForm").serializeArray(),
-				success: function(data){
-					
-					if(data==true){
-						if(confirm("회원수정하시겠습니까?")){
-							$("#updateForm").submit();
-						}
-						
-					}else{
-						alert("패스워드가 틀렸습니다.");
-						return;
-						
-					}
-				}
-			})	 */	
-			
-		});
-	})
-	
-</script>
-
-<body>
-<div style="text-align:center">
-	<a href="/">
-		<img src="https://i.imgur.com/evlOrzY.png" width="400">
-	</a>
-	<br>
-	<section id="container">
-		<!-- 회원 정보 수정 -->
-		<div class="d-flex justify-content-center">
-			<div class="card shadow mb-4 " style="width: 60%;">
-			    <div class="card-header card-header-primary">
-			        <h4 class="card-title">회원 정보</h4>
-			    </div>
-			    <div class="card-body">
-			        <form id="updateForm" action="/member/mypage" method="post">
-			            <div class="form-group has-feedback">
-						<label class="control-label" for="userId">아이디</label> 
-							<div style="display: flex; justify-content: center;">
-								<input
-								style = "text-align:center;" class="form-control" type="text" id="userId" name="userId"
-								value="${member.userId}" readonly="readonly" />
-							</div>
-					</div>
-					<br>
-					
-	<!-- 				<div class="form-group has-feedback">
-						<label class="control-label" for="userPass">비밀번호</label> 
-							<input
-							style = "text-align:center;" class="form-control" type="password" id="userPass" name="userPass"/>
-					</div>
-					<br> -->
-					
-					<div class="form-group has-feedback">
-						<label class="control-label" for="userName">닉네임</label> 
-							<input
-							style = "text-align:center;" class="form-control" type="text" id="userName" name="userName"
-							value="${member.userName}" />
-					</div>
-					<br>
-					
-					<div class="form-group has-feedback">
-						<label class="control-label" for="phone">전화번호</label> 
-							<input
-							style = "text-align:center;" class="form-control" type="text" id="phone" name="phone"
-							value="${member.phone}" />
-					</div>
-					<br>
-					
-					<div class="form-group has-feedback">
-						<label class="control-label" for="email">이메일</label> 
-							<input
-							style = "text-align:center;" class="form-control" type="text" id="email" name="email"
-							value="${member.email}" />
-					</div>
-					<br>
-					
-					<div class="form-group has-feedback">
-					<button class="btn btn-primary" type="submit">회원정보수정</button>
-				</div>
 		
+			$("#submit").on("click", function(){
 				
-					<div class="card-body">
+				if($("#userName").val()==""){
+					alert("닉네임을 입력해주세요.");
+					$("#userName").focus();
+					return false;
+				}
+				
+				if($("#phone").val()==""){
+					alert("전화번호를 입력해주세요.");
+					$("#phone").focus();
+					return false;
+				}
+				
+				if($("#email").val()==""){
+					alert("이메일을 입력해주세요.");
+					$("#email").focus();
+					return false;
+				}
+				
+				
+				if(confirm("회원수정하시겠습니까?")){
+					$("#updateForm").submit();
+					alert("회원정보가 수정되었습니다.");
+				}
+				
+				
+			
+			});
+		})
+	</script>
+	<body>
+		<section id="container">
+			<form id="updateForm" action="/member/mypage" method="post">
+				<div class="form-group has-feedback">
+					<label class="control-label" for="userId">아이디</label>
+					<input class="form-control" type="text" id="userId" name="userId" value="${member.userId}" readonly="readonly"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="userName">닉네임</label>
+					<input class="form-control" type="text" id="userName" name="userName" value ="${member.userName}"/>
+				</div>
+				
+				<div class="form-group has-feedback">
+					<label class="control-label" for="userName">전화번호</label>
+					<input class="form-control" type="text" id="phone" name="phone" value ="${member.phone}" />
+				</div>
+				
+				<div class="form-group has-feedback">
+					<label class="control-label" for="email">이메일</label>
+					<input class="form-control" type="text" id="email" name="email" value ="${member.email}"/>
+				</div>
+			</form>
+				<div class="form-group has-feedback">
+					<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
+				<div class="card-body">
 						<a href="/member/passUpdateView" class="btn btn-secondary">비밀번호
 							변경</a>
 					</div>
-				
-			        </form>
-			    </div>
-			</div>  
-		</div>
-	</section>
+					
+				</div>
+		</section>
 	
 	<!-- 한줄평 목록 -->
 	<div class="card">
@@ -225,7 +152,7 @@ body {
 						<th>내용</th>
 						<th>작성일</th>
 					</tr>
-					<c:forEach var="rev" items="${collectionRevs}">
+					<c:forEach var="rev" items="${collectionRev}">
 						<tr>
 							<td><a href="/collection/get?rev_id=${rev.revId}">${rev.revComment}</a></td>
 							<td>${rev.replyDate}</td>
