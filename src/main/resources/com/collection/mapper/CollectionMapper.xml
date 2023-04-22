@@ -41,6 +41,19 @@
 		</choose>
 	</sql>
 	
+	<sql id="criteriaClass">
+		<choose>
+			<when test="type == 'T'.toString()">
+				where
+				title like concat('%', #{keyword}, '%')
+			</when>
+			<when test="type == 'D'.toString()">
+				where
+				and startDate like concat('%', #{keyword}, '%')
+			</when>
+		</choose>
+	</sql>
+	
 	
 	
 	<select id="getListWithPaging" resultType="com.collection.domain.CollectionVO">

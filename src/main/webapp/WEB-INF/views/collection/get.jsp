@@ -78,6 +78,10 @@ body::-webkit-scrollbar-track {
     margin-top: 20px;
 }
 
+.section_padding_50 {
+    padding-top: 40px;
+}
+
 .btn-secondary {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 600;
@@ -155,14 +159,20 @@ body::-webkit-scrollbar-track {
 	left: 20px;
 	right: 30px;
 	background-color: #fff;
+	height: 600px;
+}
+
+.card-body {
+	height: inherit;
 }
 
 .exhiInfoGroup {
+    overflow:hidden;
+    height:auto;
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	margin-top: 30px;
 	padding: 20px;
-	height: 410px;
 }
 
 /* 전시 정보 */
@@ -250,7 +260,7 @@ body::-webkit-scrollbar-track {
 
 .leave-comment-area {
 	position: relative;
-	left: 20px;
+	left: auto;
 	margin-top: 5px;
 	margin-bottom: 15px;
 }
@@ -281,13 +291,17 @@ body::-webkit-scrollbar-track {
 }
 
 .revContentInput {
-	width: 500px;
+	width: inherit;
 	height: 50px;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	font-size: 15px;
-	padding-left: 10px;
+	padding-left: 10px;	
+}
+
+.revTextBox {
+	width: 400px;
 }
 
 div.rating-wrapper {
@@ -478,20 +492,33 @@ p.v-data {
 												onClick="setStar(3)">⭐</span> <span class="starR"
 												onClick="setStar(4)">⭐</span> <span class="starR"
 												onClick="setStar(5)">⭐</span> <output for="star-input">
-													<b>0</b>점
+													<b>&nbsp;&nbsp;0</b>점
 												</output>
 											</span>
 										</div>
-										<div class="form-group">
-											<label>작성자</label> <input class="form-control revContentInput" type="text"
-												id='InputnickName' name='nickName' placeholder="nickName">
+										<c:if test="${member.userId!=null}">
+										<div class="form-group revTextBox">
+											<label>작성자</label> <textarea class="form-control revContentInput"
+												id='InputnickName' name='nickName'  readonly="readonly" style="resize: none;">${member.userName}</textarea>
 										</div>
-										<div class="form-group">
+										<div class="form-group revTextBox">
 											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
 												id='comment' name='revComment' placeholder="한줄평">
 										</div>
 										<button id='commentAdd' type="submit"
 											class="btn btn-secondary">댓글 작성</button>
+										</c:if>
+										<!-- 비 로그인 시 -->
+										<c:if test="${member.userId==null}">
+										<div class="form-group revTextBox">
+											<label>작성자</label> <input class="form-control revContentInput" type="text"
+												readonly="readonly" placeholder="로그인 후 입력해주세요!">
+										</div>
+										<div class="form-group revTextBox">
+											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
+												readonly="readonly" placeholder="로그인 후 입력해주세요!">
+										</div>
+										</c:if>
 									</form>
 								</div>
 							</div>
@@ -508,11 +535,6 @@ p.v-data {
 						<a id="scrollUp2" href="#top"  
 						style="position: absolute; z-index: 2147483647; background-color:#f21378;"><i
 						class="fa fa-arrow-up lastscroll" aria-hidden="true" style="color:#fff;"></i></a>
-					<p>
-						Copyright @2018 All rights reserved | This template is made with <i
-							class="fa fa-heart-o" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
-					</p>
 				</div>
 			</div>
 		</div>
@@ -603,7 +625,7 @@ p.v-data {
 
             					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
             					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
-            					   if (list[i].nickName=="${member.userId}"){
+            					   if (list[i].nickName=="${member.userName}"){
             					   str+= "         <small>"	;
             					   str+= "<a href='#" + formId + "' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
             					   str+= "|"	;
@@ -616,9 +638,9 @@ p.v-data {
                                    str+= "              <div class='form-group'>";
                                    str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
                                    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
-            				       str+= "  			<div style='display:none'><input type='datetime-local' id='updateDate' name='updateDate' value=''/></div>";
+                                   str+= "  			</div>";
+            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button></div>";
             				       str+= "  			</div>";
-            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button>";
             				       str+= "			</form>";
             				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
             			           str += "</div></li>"; 
@@ -683,7 +705,7 @@ p.v-data {
                     	
                     /* 별점 구현 */
                     //setStar로 선택된 별점 값 score에 저장
-                     $('.starRev span').click(function(){
+                     $('.starRev span.starR').click(function(){
                     	    $(this).parent().children('span').removeClass('on');
                     	    $(this).addClass('on').prevAll('span').addClass('on');
                     	    var score = $(this).next().text();
@@ -726,7 +748,7 @@ p.v-data {
                     	            var score = $(this).text();
                     	            setStar(score);
                     	        })
-                    	        .on("mouseleave", ".star-input>.input", function(){
+                    	        .on("mouseleave", ".star-input>.starR", function(){
                     	            var $checked = $star.find(":checked");
                     	            if($checked.length === 0){
                     	                setStar(0);
