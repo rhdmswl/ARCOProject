@@ -345,6 +345,18 @@ p.v-data {
   cursor: pointer;
 }
 
+/* 한줄평 별들의 기본 설정 */
+.starV{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+  font-size: 1.4em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
 /* 별 이모지에 마우스 오버 시 */
 .starR:hover {
   text-shadow: 0 0 0 #ccc;
@@ -355,6 +367,15 @@ p.v-data {
   text-shadow: 0 0 0 #ec27c8;
 }
 
+/* 별 이모지에 설정된 class="on"이 되었을 경우 */
+.starV.on{
+  text-shadow: 0 0 0 #ec27c8;
+}
+
+.jb-division-line {
+  border-top: 1px solid #ccc;
+  margin: 20px 0px;
+}
 </style>
 
 </head>
@@ -624,6 +645,15 @@ p.v-data {
             					   var formId = "review" + list[i].revSeq
 
             					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
+            					   str += "<div class='rating' id='star'>";
+            					   for (var j = 1; j <= 5; j++) {
+            					       if (j <= list[i].revStar) {
+            					           str += "<span class='starV on'>⭐</span>";
+            					       } else {
+            					           str += "<span class='starV'>⭐</span>";
+            					       }
+            					   }
+            					   str += "</div>";
             					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
             					   if (list[i].nickName=="${member.userName}"){
             					   str+= "         <small>"	;
@@ -643,7 +673,9 @@ p.v-data {
             				       str+= "  			</div>";
             				       str+= "			</form>";
             				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
-            			           str += "</div></li>"; 
+            			          
+            				       str += "</div></li>"; 
+            			            str+= "<div class='jb-division-line'></div>";
             				   } 
             				   reviewUL.html(str);
             				   console.log("showList page : " +pageNum);
@@ -702,6 +734,9 @@ p.v-data {
          				showList(PageNum);
          			});
                   
+                     if($('.rating').length){
+                    	 var rating
+                     }
                     	
                     /* 별점 구현 */
                     //setStar로 선택된 별점 값 score에 저장
