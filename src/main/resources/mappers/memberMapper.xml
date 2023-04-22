@@ -75,6 +75,13 @@
 		WHERE
 		USERID = #{userId}
 	</select>
+	
+	<!-- 닉네임 중복 체크 -->
+	<select id="nameChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE
+		USERNAME = #{userName}
+	</select>
 
 	<insert id="insertImage" parameterType="com.member.vo.ImageVO">
 		INSERT INTO image
@@ -106,39 +113,41 @@
 	<!-- 작성한 한줄평 불러오기 (페이징 적용) -->
 	<select id="getMemberCollectionRevsWithPaging"
 		resultType="com.member.vo.CollectionReviewVO">
-	    SELECT *, collection.seq AS collectionSeq FROM collectionRev
+		SELECT * FROM collectionRev WHERE userId = #{userId}
+		LIMIT ${start}, 12
+	    <!-- SELECT *, collection.seq AS collectionSeq FROM collectionRev
 	    JOIN collection ON collectionRev.seq = collection.seq
-	    WHERE nickName = #{userName}
-	    LIMIT ${start}, 12
+	    WHERE userId = #{userId}
+	    LIMIT ${start}, 12 -->
 	</select>
 
 	<!-- 작성한 게시글 불러오기 (페이징 적용) -->
 	<select id="getMemberPostsWithPaging"
 		resultType="com.member.vo.BoardVO">
-		SELECT * FROM post WHERE post_writer = #{userName}
+		SELECT * FROM post WHERE post_writer = #{userId}
 		LIMIT ${start}, 12
 	</select>
 
 	<!-- 작성한 댓글 불러오기 (페이징 적용) -->
 	<select id="getMemberCommentsWithPaging"
 		resultType="com.member.vo.ReplyVO">
-		SELECT * FROM comment WHERE com_writer = #{userName}
+		SELECT * FROM comment WHERE com_writer = #{userId}
 		LIMIT ${start}, 12
 	</select>
 
 	<!-- 작성한 한줄평 총 개수 -->
 	<select id="countCollectionRevs" resultType="int">
-		SELECT COUNT(*) FROM collectionRev WHERE nickName = #{userName}
+		SELECT COUNT(*) FROM collectionRev WHERE userId = #{userId}
 	</select>
 
 	<!-- 작성한 게시글 총 개수 -->
 	<select id="countPosts" resultType="int">
-		SELECT COUNT(*) FROM post WHERE post_writer = #{userName}
+		SELECT COUNT(*) FROM post WHERE post_writer = #{userId}
 	</select>
 
 	<!-- 작성한 댓글 총 개수 -->
 	<select id="countComments" resultType="int">
-		SELECT COUNT(*) FROM comment WHERE com_writer = #{userName}
+		SELECT COUNT(*) FROM comment WHERE com_writer = #{userId}
 	</select>
 
 </mapper>
