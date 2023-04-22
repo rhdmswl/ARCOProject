@@ -477,7 +477,7 @@ p.v-data {
 												onClick="setStar(2)">⭐</span> <span class="starR"
 												onClick="setStar(3)">⭐</span> <span class="starR"
 												onClick="setStar(4)">⭐</span> <span class="starR"
-												onClick="setStar(5)">⭐</span> <output for="star-input">
+												onClick="setStar(5)">⭐</span> <output class ="out" for="star-input">
 													<b>0</b>점
 												</output>
 											</span>
@@ -683,7 +683,7 @@ p.v-data {
                     	
                     /* 별점 구현 */
                     //setStar로 선택된 별점 값 score에 저장
-                     $('.starRev span').click(function(){
+                     $('.starRev span.starR').click(function(){
                     	    $(this).parent().children('span').removeClass('on');
                     	    $(this).addClass('on').prevAll('span').addClass('on');
                     	    var score = $(this).next().text();
@@ -726,7 +726,7 @@ p.v-data {
                     	            var score = $(this).text();
                     	            setStar(score);
                     	        })
-                    	        .on("mouseleave", ".star-input>.input", function(){
+                    	        .on("mouseleave", ".star-input>.starR", function(){
                     	            var $checked = $star.find(":checked");
                     	            if($checked.length === 0){
                     	                setStar(0);
