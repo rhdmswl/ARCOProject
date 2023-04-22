@@ -496,9 +496,10 @@ p.v-data {
 												</output>
 											</span>
 										</div>
+										<c:if test="${member.userId!=null}">
 										<div class="form-group revTextBox">
 											<label>작성자</label> <input class="form-control revContentInput" type="text"
-												id='InputnickName' name='nickName' placeholder="닉네임">
+												id='InputnickName' name='nickName'  readonly="readonly" placeholder="${member.userName}">
 										</div>
 										<div class="form-group revTextBox">
 											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
@@ -506,6 +507,18 @@ p.v-data {
 										</div>
 										<button id='commentAdd' type="submit"
 											class="btn btn-secondary">댓글 작성</button>
+										</c:if>
+										<!-- 비 로그인 시 -->
+										<c:if test="${member.userId==null}">
+										<div class="form-group revTextBox">
+											<label>작성자</label> <input class="form-control revContentInput" type="text"
+												id='InputnickName' name='nickName'  readonly="readonly" placeholder="로그인 후 입력해주세요!">
+										</div>
+										<div class="form-group revTextBox">
+											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
+												id='comment' name='revComment' readonly="readonly" placeholder="로그인 후 입력해주세요!">
+										</div>
+										</c:if>
 									</form>
 								</div>
 							</div>
@@ -612,7 +625,7 @@ p.v-data {
 
             					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
             					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
-            					   if (list[i].nickName=="${member.userId}"){
+            					   if (list[i].nickName=="${member.userName}"){
             					   str+= "         <small>"	;
             					   str+= "<a href='#" + formId + "' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
             					   str+= "|"	;
