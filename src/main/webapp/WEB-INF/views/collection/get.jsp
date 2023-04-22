@@ -73,18 +73,13 @@ body::-webkit-scrollbar-track {
 	margin-right: -15px;
 }
 
-a {
-	background-color: #fff;
-	color : #fff;
-}
-
-a:hover {
-	background-color: #fff;
-	color : #fff;
-}
 
 .section_padding_80 {
     margin-top: 20px;
+}
+
+.section_padding_50 {
+    padding-top: 40px;
 }
 
 .btn-secondary {
@@ -164,14 +159,20 @@ a:hover {
 	left: 20px;
 	right: 30px;
 	background-color: #fff;
+	height: 600px;
+}
+
+.card-body {
+	height: inherit;
 }
 
 .exhiInfoGroup {
+    overflow:hidden;
+    height:auto;
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	margin-top: 30px;
 	padding: 20px;
-	height: 410px;
 }
 
 /* 전시 정보 */
@@ -259,7 +260,7 @@ a:hover {
 
 .leave-comment-area {
 	position: relative;
-	left: 20px;
+	left: auto;
 	margin-top: 5px;
 	margin-bottom: 15px;
 }
@@ -290,13 +291,17 @@ a:hover {
 }
 
 .revContentInput {
-	width: 500px;
+	width: inherit;
 	height: 50px;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	font-size: 15px;
-	padding-left: 10px;
+	padding-left: 10px;	
+}
+
+.revTextBox {
+	width: 400px;
 }
 
 div.rating-wrapper {
@@ -487,20 +492,33 @@ p.v-data {
 												onClick="setStar(3)">⭐</span> <span class="starR"
 												onClick="setStar(4)">⭐</span> <span class="starR"
 												onClick="setStar(5)">⭐</span> <output for="star-input">
-													<b>0</b>점
+													<b>&nbsp;&nbsp;0</b>점
 												</output>
 											</span>
 										</div>
-										<div class="form-group">
+										<c:if test="${member.userId!=null}">
+										<div class="form-group revTextBox">
 											<label>작성자</label> <input class="form-control revContentInput" type="text"
-												id='InputnickName' name='nickName' placeholder="nickName">
+												id='InputnickName' name='nickName'  readonly="readonly" placeholder="${member.userName}">
 										</div>
-										<div class="form-group">
+										<div class="form-group revTextBox">
 											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
 												id='comment' name='revComment' placeholder="한줄평">
 										</div>
 										<button id='commentAdd' type="submit"
 											class="btn btn-secondary">댓글 작성</button>
+										</c:if>
+										<!-- 비 로그인 시 -->
+										<c:if test="${member.userId==null}">
+										<div class="form-group revTextBox">
+											<label>작성자</label> <input class="form-control revContentInput" type="text"
+												id='InputnickName' name='nickName'  readonly="readonly" placeholder="로그인 후 입력해주세요!">
+										</div>
+										<div class="form-group revTextBox">
+											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
+												id='comment' name='revComment' readonly="readonly" placeholder="로그인 후 입력해주세요!">
+										</div>
+										</c:if>
 									</form>
 								</div>
 							</div>
@@ -517,11 +535,6 @@ p.v-data {
 						<a id="scrollUp2" href="#top"  
 						style="position: absolute; z-index: 2147483647; background-color:#f21378;"><i
 						class="fa fa-arrow-up lastscroll" aria-hidden="true" style="color:#fff;"></i></a>
-					<p>
-						Copyright @2018 All rights reserved | This template is made with <i
-							class="fa fa-heart-o" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
-					</p>
 				</div>
 			</div>
 		</div>
@@ -611,18 +624,26 @@ p.v-data {
             					   var formId = "review" + list[i].revSeq
 
             					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
-            					   str +=" <div class='revBox'><div class='header'><div class='primary-font'>"+list[i].nickName+"</div>"; 
-            					   str+= " <small class='pull-right text-muted revDate'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";
-            			           str+= " <p id='review' style='height:45px; font-family: 'font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</p>";
-            			           str+= "<a href='#" + formId + "' value='"+ list[i].revSeq +"' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
+            					   if (list[i].nickName=="${member.userName}"){
+            					   str+= "         <small>"	;
+            					   str+= "<a href='#" + formId + "' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            					   str+= "|"	;
+            					   str+=" <a href='#' class='remove2' role='button' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
+            					   str+= "         </small>"	;
+            					   }
+            					   str+= "<small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";//header끝
+            			           str+= "<div id='review' style='height:45px; font-family: 'font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</div>";
                                    str+= "            <form class='collapse' id='" + formId + "'>";
                                    str+= "              <div class='form-group'>";
                                    str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
                                    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
                                    str+= "  			</div>";
             				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button></div>";
+            				       str+= "  			</div>";
             				       str+= "			</form>";
-            			           str += "<div><input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'><button type='button' class='remove btn-secondary2'>삭제</button></div></div></li>"; 
+            				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
+            			           str += "</div></li>"; 
             				   } 
             				   reviewUL.html(str);
             				   console.log("showList page : " +pageNum);
@@ -642,7 +663,7 @@ p.v-data {
                          CollectionReviewService.add(review, function(result){alert(result); showList(1);});
                      });
                      
-                     $(document).on("click",'.remove',function(){
+                     $(document).on("click",'.remove2',function(){
                     	 var revSeqValue = $(this).closest("li").data("revSeq");
                         CollectionReviewService.remove(revSeqValue, function(result){
                         	alert(result);

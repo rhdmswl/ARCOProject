@@ -359,7 +359,7 @@ body::-webkit-scrollbar-track {
 							<div class="body">
 								<div class="row clearfix">
 									<div class="col-lg-1 col-md-2 col-3"></div>
-									<div class="col-lg-5 col-md-4 col-6">
+									<div class="col-lg-5 col-md-4 col-6 searchBox">
 										<form id="searchForm" action="/board/list" method='get' style=" width:500px;" class="input-group search">
 											<select id="chk" class="form-control" name='type' style="width:150px;">
 												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>SEARCH</option>
@@ -389,7 +389,7 @@ body::-webkit-scrollbar-track {
 						<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
 							href="/board/list?pageNum=1&brd_id=1">TALK</a></li>
 						<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
-							href="/board/list?pageNum=1&brd_id=2">MATE</a></li>
+							href="/board/list?pageNum=1&brd_id=2">INFO</a></li>
 						<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
 							href="/board/list?pageNum=1&brd_id=3">WEEKLY</a></li>
 					</ul>
