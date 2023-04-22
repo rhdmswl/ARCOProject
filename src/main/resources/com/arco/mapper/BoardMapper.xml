@@ -12,9 +12,7 @@
 
 	<update id="getComCnt" >
 		update post
-		set post_com_count=(select count(com_id)
-							from comment
-							where post_id=#{post_id})
+		set post_com_count=post_com_count+#{amount}
 		where post_id=#{post_id}
 	</update>
 
@@ -25,13 +23,14 @@
 
 	<insert id="insert">
 		insert into post (post_id, post_title, post_content,
-		post_writer, brd_id)
+		post_writer, brd_id,user_id)
 		values (
 		(select nextval('post_id') from dual),
 		#{post_title},
 		#{post_content},
 		#{post_writer},
-		#{brd_id}
+		#{brd_id},
+		#{user_id}
 		)
 	</insert>
 

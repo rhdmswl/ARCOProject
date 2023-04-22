@@ -12,6 +12,7 @@ public class BoardVO {
 	private String post_writer;
 	private String post_title;
 	private String post_content;
+	private String user_id;
 	private Date post_regdate;
 	private int post_com_count;
 	private int post_view_count;

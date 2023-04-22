@@ -39,6 +39,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=875db2344685ebc0aa08645ef75d08b6"></script>
+
     
 <style type="text/css">
 
@@ -345,6 +347,18 @@ p.v-data {
   cursor: pointer;
 }
 
+/* 한줄평 별들의 기본 설정 */
+.starV{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+  font-size: 1.4em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
 /* 별 이모지에 마우스 오버 시 */
 .starR:hover {
   text-shadow: 0 0 0 #ccc;
@@ -353,6 +367,21 @@ p.v-data {
 /* 별 이모지를 클릭 후 class="on"이 되었을 경우 */
 .starR.on{
   text-shadow: 0 0 0 #ec27c8;
+}
+
+/* 별 이모지에 설정된 class="on"이 되었을 경우 */
+.starV.on{
+  text-shadow: 0 0 0 #ec27c8;
+}
+
+.jb-division-line {
+  border-top: 1px solid #ccc;
+  margin: 20px 0px;
+}
+
+.mapsize {
+  width: 700px;
+  margin: 0 auto;
 }
 
 </style>
@@ -448,16 +477,21 @@ p.v-data {
 													</a>
 												</div>
 											</div>
+											
 										</div>
+										
 									</div>
 									<!-- <img class="br-30 mb-15" src="img/blog-img/14.jpg" alt=""> -->
 								</div>
 							</div>
+							<div class = "mapsize" style = "position: static;margin-bottom: 40px;">
+							<div class="infoText">&#128205; 위치 보기</div>
+							<div id="map" style="width:100%; height:500px; " ></div></div>
 
 
 							<!-- Comment Area Start -->
 							<div class="comment_area section_padding_50 clearfix">
-								<!-- <h4 class="mb-30">2 Comments</h4> -->
+								<h4 class="mb-30">Comments</h4> 
 								<ul class="chat"></ul>
 								<div class="panel-footer">
 									<%--   <div class="pull-rigth">
@@ -624,6 +658,15 @@ p.v-data {
             					   var formId = "review" + list[i].revSeq
 
             					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
+            					   str += "<div class='rating' id='star'>";
+            					   for (var j = 1; j <= 5; j++) {
+            					       if (j <= list[i].revStar) {
+            					           str += "<span class='starV on'>⭐</span>";
+            					       } else {
+            					           str += "<span class='starV'>⭐</span>";
+            					       }
+            					   }
+            					   str += "</div>";
             					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
             					   if (list[i].nickName=="${member.userName}"){
             					   str+= "         <small>"	;
@@ -643,7 +686,9 @@ p.v-data {
             				       str+= "  			</div>";
             				       str+= "			</form>";
             				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
-            			           str += "</div></li>"; 
+            			          
+            				       str += "</div></li>"; 
+            			            str+= "<div class='jb-division-line'></div>";
             				   } 
             				   reviewUL.html(str);
             				   console.log("showList page : " +pageNum);
@@ -702,6 +747,9 @@ p.v-data {
          				showList(PageNum);
          			});
                   
+                     if($('.rating').length){
+                    	 var rating
+                     }
                     	
                     /* 별점 구현 */
                     //setStar로 선택된 별점 값 score에 저장
@@ -759,9 +807,29 @@ p.v-data {
                     	};
 
                     	starRating();
+                    	
+                    	/* 지도 코드 */
+                    	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                        mapOption = { 
+                            center: new kakao.maps.LatLng(${collection.gpsY},  ${collection.gpsX}), // 지도의 중심좌표
+                            level: 3 // 지도의 확대 레벨
+                        };
 
+                    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+                    // 마커가 표시될 위치입니다 
+                    var markerPosition  = new kakao.maps.LatLng(${collection.gpsY}, ${collection.gpsX}); 
+
+                    // 마커를 생성합니다
+                    var marker = new kakao.maps.Marker({
+                        position: markerPosition
+                    });
+
+                    // 마커가 지도 위에 표시되도록 설정합니다
+                    marker.setMap(map);
 
        	});
+                    	
 										
 </script>
 

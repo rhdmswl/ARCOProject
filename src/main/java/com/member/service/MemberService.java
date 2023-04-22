@@ -28,6 +28,8 @@ public interface MemberService {
 	
 	public int idChk(MemberVO vo) throws Exception;
 	
+	public int nameChk(MemberVO vo) throws Exception;
+	
 //	public String getProfileImg(String userId) throws Exception;
 //	
 //	public void updateProfileImg(MemberVO vo) throws Exception;
@@ -43,16 +45,15 @@ public interface MemberService {
 //	List<ReplyVO> getMemberComments(String userId) throws Exception;
 	
 	// 페이징이 적용된 메소드
-	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userName, Criteria cri) throws Exception;
-	public List<BoardVO> getMemberPostsWithPaging(String userName, Criteria cri) throws Exception;
-	public List<ReplyVO> getMemberCommentsWithPaging(String userName, Criteria cri) throws Exception;
+	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception;
+	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception;
+	public List<ReplyVO> getMemberCommentsWithPaging(String userId, Criteria cri) throws Exception;
 
 	// PageMaker
-	public int countCollectionRevs(String userName) throws Exception;
-	public int countPosts(String userName) throws Exception;
-	public int countComments(String userName) throws Exception;
-	
-	
+	public int countCollectionRevs(String userId) throws Exception;
+	public int countPosts(String userId) throws Exception;
+	public int countComments(String userId) throws Exception;
+
 	// admin
 	public List<MemberVO> listAllMembers(Criteria criteria);
 	public List<CollectionReviewVO> listAllReviews(Criteria criteria);
@@ -64,5 +65,5 @@ public interface MemberService {
 	public int countAllCollectionRevs() throws Exception;
 	public int countAllPosts() throws Exception;
 	public int countAllComments() throws Exception;
-	
+
 }

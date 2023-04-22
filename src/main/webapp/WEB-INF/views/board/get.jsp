@@ -5,6 +5,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
 
@@ -497,6 +498,23 @@ button {
 	position: relative;
 }
 
+.likeBox {
+	text-align: center;
+	line-height: 10px;
+}
+
+.likeBtnText {
+	margin-right: 8px;
+	display: inline-block;
+}
+
+.recBtnCount {
+	border-left: 2px solid white;
+	height: 13px;
+	padding-left: 9px;
+	display: inline-block;
+}
+
 
 @-webkit-keyframes shiny-btn1 {
     0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
@@ -537,18 +555,23 @@ button {
 						</div>
 
 						<div class="frame" style="background-color:none;">
-							<button id='like' data-oper='like' class="btn btn-primary">추천</button>
+							<button id='like' data-oper='like' class="btn btn-primary likeBtn">
+								<div class="likeBox">
+									<div class="likeBtnText">추천</div>
+									<div class="recBtnCount">${board.post_rec_count}</div>
+								</div>
+							</button>
 								<!-- <button id='like' style="border:none; background-color:none;" data-oper='like' 
 										class="custom-btn btn-11"><img id="heartImg" src="https://i.imgur.com/6io8NDW.png"></button> -->
 						</div>
 
 
 						<div class="frame">
-							<c:if test="${member.userName==board.post_writer}">
+							<c:if test="${member.userId==board.user_id}">
 								<button class="btn btn-secondary" data-oper='modify'>수정</button>
 							</c:if>
 							<button class="btn btn-secondary" data-oper='list'>목록</button>
-							<c:if test="${member.userName==board.post_writer}">
+							<c:if test="${member.userId==board.user_id}">
 								<button class="btn btn-secondary" data-oper='remove'>삭제</button>
 							</c:if>
 							<form id='operForm_modi' action="/board/modify" method="get">
@@ -619,6 +642,15 @@ button {
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
+			
+			window.addEventListener('popstate', function(event) {
+				  var url = window.location.href;
+				  if (url.indexOf('?post_id=') > -1) {
+				    var newUrl = url.split('?post_id=')[0];
+				    window.history.replaceState({}, document.title, newUrl);
+				  }
+				});
+			
 			var operForm_modi = $("#operForm_modi");
 			var post_idValue = '<c:out value="${board.post_id}"/>';
 			var replyUL = $(".chat");
@@ -657,11 +689,9 @@ button {
 		            	var findLike = parseInt($(response).text());
 		                console.log(findLike);
 		            	if(findLike==0){
-	                    	alert("추천완료");
 	                    	location.reload(); 	
 	                    }
 	                    else if (findLike == 1){
-	                     	alert("추천취소");
 	                    	location.reload();
 	              		}
 	
@@ -734,7 +764,7 @@ button {
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
 					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
-					if (list[i].com_writer=="${member.userName}"){
+					if (list[i].com_writer_id=="${member.userId}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
 					str+= "         </small>"	;
@@ -783,6 +813,7 @@ button {
 				var reply={
 						com_content:$('#com_content').val(),
 						com_writer:$('#com_writer').val(),
+						com_writer_id:('${member.userId}'),
 						post_id:post_idValue
 				};
 				replyService.add(reply, function(result){alert(result); showList(endNum);} );
@@ -795,7 +826,6 @@ button {
 			$(document).on('click','#Comment_update',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
 			    var com_id = $(this).closest("li").data("com-id");
-			    console.log("PageNum update : "+PageNum);
 			    var reply={
 			        "com_content": $("#" + form_id + ' textarea').val(), // 해당 form의 textarea의 값을 가져옴
 			        "com_id" : com_id
