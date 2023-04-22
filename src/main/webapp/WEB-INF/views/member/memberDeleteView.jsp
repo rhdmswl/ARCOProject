@@ -1,18 +1,142 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<html>
-	<head>
+<head>
 		<!-- Material Dashboard CSS -->
 		<link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
 		
+		<!-- Favicon -->
+		<link rel="icon" href="/img/core-img/favicon.ico">
+		
 		<!-- Google Fonts -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+
+		<!-- Font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 		
 	 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	 	
-		<title>회원탈퇴</title>
-	</head>
+		<title>DELETE ACCOUNT</title>
+		
+<style type="text/css">
+			
+body {
+	margin-top: 20px;
+	background: #FFF
+}
+
+.btn-secondary {
+	width: 100px;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 15px;
+	box-shadow: none;
+	height: 40px;
+	line-height: 20px;
+	padding: 0;
+}
+
+.btn-secondary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.btn-secondary:before {
+    position: absolute;
+    /* content: ''; */
+    display: inline-block;
+    top: -180px;
+    left: 0px;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.btn-secondary:active {
+	  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+            -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+   			inset -4px -4px 6px 0 rgba(242, 19, 120),
+    		inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.btn-primary {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	box-shadow: none;
+	width: 100px;
+	height: 40px;
+	line-height: 20px;
+	font-size: 15px;
+	padding: 0;
+}
+
+.btn-primary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.card {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.card .card-header {
+	padding-bottom: 0px;
+}
+
+.card-title {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 30px;
+	font-weight: 700;
+	color: #696969;
+	text-align: center;
+}
+
+.control-label {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 19px;
+	font-weight: 700;
+	color: #696969;
+}
+
+.delFormGroup {
+	position: relative;
+	left: 17%;
+	margin-bottom: 33px;
+}
+
+.userPass {
+  width: 400px;
+  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  outline: none;
+  padding-left: 10px;
+}
+
+.userId {
+  width: 400px;
+  height: 40px;
+  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  border: 0;
+  outline: none;
+  padding-left: 10px;
+}
+
+.userName {
+
+  height: 40px;
+  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+
+}
+
+</style>
+		
+		
+</head>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// 취소
@@ -40,57 +164,60 @@
 								$("#delForm").submit();
 							}
 						}else{
-							alert("패스워드가 틀렸습니다.");
+							alert("비밀번호가 틀렸습니다.");
 							return;
 						}
 					}
-				})
-				
+				})				
 			});
-			
-				
-			
 		})
 	</script>
 	<body>
 		<section id="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6">
-					<div class="card">
-						<div class="card-header card-header-primary">
-							<h4 class="card-title">회원탈퇴</h4>
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="logo_area text-center">
+					<a href="/" class="yummy-logo"><img
+						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
+				</div>
+				<div class="card">
+					<div class="card-header card-header-primary">
+						<div class="card-title">회원 탈퇴</div>
+					</div>
+					<div class="card-body">
+						<form class="delFormGroup" action="/member/memberDelete" method="post" id="delForm">
+							<div class="form-group has-feedback">
+								<label class="control-label" for="userId">아이디</label> 
+								<input class="form-control userId" type="text" id="userId" name="userId"
+									value="${member.userId}" readonly="readonly" />
+							</div>
+							<br>
+							<div class="form-group has-feedback">
+								<label class="control-label" for="userPass">패스워드</label> 
+								<input class="form-control userPass" type="password" id="userPass"
+									name="userPass" />
+							</div>
+							<br>
+							<div class="form-group has-feedback">
+								<label class="control-label" for="userName">닉네임</label> 
+								<input class="form-control userName" type="text" id="userName" name="userName"
+									value="${member.userName}" readonly="readonly" />
+							</div>
+						</form>
+						<div class="text-center">
+							<button class="btn btn-secondary" type="button" id="submit">회원탈퇴</button>
+							<button class="btn btn-primary cancel" type="button">취소</button>
 						</div>
-						<div class="card-body">
-							<form action="/member/memberDelete" method="post" id="delForm">
-								<div class="form-group has-feedback">
-									<label class="control-label" for="userId">아이디</label>
-									<input class="form-control" type="text" id="userId" name="userId" value="${member.userId}" readonly="readonly"/>
-								</div>
-								<br>
-								<div class="form-group has-feedback">
-									<label class="control-label" for="userPass">패스워드</label>
-									<input class="form-control" type="password" id="userPass" name="userPass" />
-								</div>
-								<br>
-								<div class="form-group has-feedback">
-									<label class="control-label" for="userName">성명</label>
-									<input class="form-control" type="text" id="userName" name="userName" value="${member.userName}" readonly="readonly"/>
-								</div>
-							</form>
-							<div class="text-center">
-								<button class="btn btn-secondary" type="button" id="submit">회원탈퇴</button>
-								<button class="btn btn-primary cancel" type="button">취소</button>
-							</div>
-							<div>
-								<c:if test="${msg == false}">
-									<p class="text-danger">비밀번호가 맞지 않습니다.</p>
-								</c:if>
-							</div>
+						<div>
+							<c:if test="${msg == false}">
+								<p class="text-danger">비밀번호가 맞지 않습니다.</p>
+							</c:if>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 		
 	</body>
 	

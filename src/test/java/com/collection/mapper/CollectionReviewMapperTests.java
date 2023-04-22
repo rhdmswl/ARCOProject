@@ -1,9 +1,9 @@
 package com.collection.mapper;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.util.List;
 import java.util.stream.IntStream;
-
-import javax.inject.Inject;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,24 +14,26 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.collection.domain.CollectionReviewVO;
+import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
+
 @Component
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml","file:src/main/webapp/WEB-INF/spring/spring-security.xml"})
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/spring-security.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 // Java Config
 // @ContextConfiguration(classes = {org.zerock.config.RootConfig.class} )
 @Log4j
-
-
 public class CollectionReviewMapperTests {
 
-	@Autowired
-	BCryptPasswordEncoder pwdEncoder;
 	
 	@Autowired
+    BCryptPasswordEncoder pwdEncoder;
+	
+	
+	@Autowired 
 	private CollectionReviewMapper mapper;
 	
 	@Test
@@ -156,23 +158,8 @@ public class CollectionReviewMapperTests {
 //		list.forEach(review -> log.info(review));
 //	}
 //	
-//	@Test
-//	public void testSearch() {
-//		Criteria cri = new Criteria();
-//		cri.setKeyword("테스트");
-//		cri.setType("T");
-//		
-//		List<CollectionReviewVO> list = mapper.getListWithPaging(cri);
-//		
-//		list.forEach(review -> log.info(review));
-//	}
-//	
+	
+	
 
-	@Test
-	public void testList2() {
-		Criteria cri = new Criteria(1,10);
-		List<CollectionReviewVO> reviews = mapper.getListWithPaging(cri, 207375L);
-		reviews.forEach(review -> log.info(review));
-	}
 
 }

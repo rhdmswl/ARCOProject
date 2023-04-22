@@ -12,6 +12,10 @@
 
 <title>ARCO - Community Post</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon -->
+<link rel="icon" href="/img/core-img/favicon.ico">
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -23,9 +27,22 @@
 body {
 	margin-top: 20px;
 }
-/*
-Blog post entries
-*/
+
+body::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 5%; /* 스크롤바의 길이 */
+    background: #f21378; /* 스크롤바의 색상 */ 
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
+}
+
+
 .entry-card {
 	-webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
 	-moz-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);

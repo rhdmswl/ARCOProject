@@ -239,33 +239,6 @@ li {
 	vertical-align: middle;
 }
 
-/* #preloader {
-    overflow: hidden;
-    background-color: #fff;
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 999999;
-} */
-.yummy-load {
-	-webkit-animation: 2000ms linear 0s normal none infinite running
-		yummy-load;
-	animation: 2000ms linear 0s normal none infinite running yummy-load;
-	background: transparent none repeat scroll 0 0;
-	border-color: #dddddd #dddddd #fc6c3f;
-	border-radius: 50%;
-	border-style: solid;
-	border-width: 3px;
-	height: 40px;
-	left: calc(50% - 20px);
-	position: relative;
-	top: calc(50% - 20px);
-	width: 40px;
-	z-index: 9;
-}
-
 .top_header_area {
 	width: 100%;
 	height: 40px;
@@ -289,10 +262,6 @@ li {
 	z-index: 3;
 	left: 500px;
 	bottom: 10px;
-}
-
-.logRegGroup {
-	
 }
 
 .top_header_area .signup-search-area a {
@@ -334,31 +303,6 @@ li {
 	border-right: 0;
 }
 
-/* .search-hidden-form {
-    position: absolute;
-    width: 100%;
-    z-index: 4;
-    height: 100%;
-    top: 0;
-    left: 250%;
-    right: 0;
-    bottom: 60%;
-    -webkit-transition-duration: 500ms;
-    transition-duration: 500ms;
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    font-size: 12px;
-} */
-
-/* .search-hidden-form #search-anything {
-    width: 100%;
-    height: 30px;
-    border: 1px solid #ddd;
-    top: 5px;
-    position: relative;
-    padding: 5px 10px;
-} */
-
 /* --------------------
 :: 3.0 Menu Area CSS
 -------------------- */
@@ -372,6 +316,7 @@ li {
 .navbar.navbar-expand-lg {
 	padding: 0;
 	margin-bottom: 30px;
+	box-shadow: none;
 }
 
 .navbar.navbar-expand-lg .navbar-nav .nav-link {

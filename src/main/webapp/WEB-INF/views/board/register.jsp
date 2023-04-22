@@ -9,6 +9,10 @@
 
 <title>ARCO - Community register</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon -->
+<link rel="icon" href="/img/core-img/favicon.ico">
+
 <link
 	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -23,6 +27,20 @@
 body {
 	margin-top: 20px;
 	background: #fff
+}
+
+body::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 5%; /* 스크롤바의 길이 */
+    background: #f21378; /* 스크롤바의 색상 */ 
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
 }
 
 .card {

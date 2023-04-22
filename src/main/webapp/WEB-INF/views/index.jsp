@@ -12,6 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 
@@ -40,6 +41,41 @@
 body {
 	margin-top: 20px;
 	background: #FFF
+}
+
+body::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #f21378; /* 스크롤바의 색상 */ 
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
+}
+
+.fa-arrow-up:before {
+    content: none;
+}
+
+.fa-arrow-up2:before {
+    content: "\f062";
+}
+
+
+#scrollUp2 {
+	bottom: 55px;
+	font-size: 14px;
+	right: 50%;
+	width: 30px;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 50%;
+	margin-right: -15px;
 }
 
 .blog_area {
@@ -98,6 +134,7 @@ body {
 .post-comment-share-area {
 	margin-bottom: 20px;
 }
+
 </style>
 
 
@@ -133,17 +170,13 @@ body {
 	<section class="categories_area clearfix" id="about">
 		<div class="comuContainer">
 			<div class="comu">
-
 				<ul class="list-unstyled active"
 					style="list-style-type: none; text-align: center;">
-					<li class="sidelist"><a class="nav-link"
-						style="color: black; font-weight: 700;"
+					<li class="sidelist"><a class="nav-link" style="color: black; font-weight: 700;"
 						href="/board/list?pageNum=1&brd_id=1">TALK</a></li>
-					<li class="sidelist"><a class="nav-link"
-						style="color: black; font-weight: 700;"
+					<li class="sidelist"><a class="nav-link" style="color: black; font-weight: 700;"
 						href="/board/list?pageNum=1&brd_id=2">MATE</a></li>
-					<li class="sidelist"><a class="nav-link"
-						style="color: black; font-weight: 700;"
+					<li class="sidelist"><a class="nav-link" style="color: black; font-weight: 700;"
 						href="/board/list?pageNum=1&brd_id=3">WEEKLY</a></li>
 				</ul>
 			</div>
@@ -230,11 +263,10 @@ body {
 			<div class="col-12">
 				<!-- Copywrite Text -->
 				<div class="copy_right_text text-center">
-					<p>
-						Copyright @2018 All rights reserved | This template is made with <i
-							class="fa fa-heart-o" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
-					</p>
+					<a id="scrollUp2" href="#top"
+						style="position: absolute; z-index: 2147483647; background-color: #f21378;"><i
+						class="fa fa-arrow-up2 lastscroll" aria-hidden="true"
+						style="color: #fff;"></i></a>
 				</div>
 			</div>
 		</div>
@@ -250,12 +282,6 @@ body {
 	<script src="/js/others/plugins.js"></script>
 	<!-- Active JS -->
 	<script src="/js/active.js"></script>
-	<a id="scrollUp" href="#top"
-		style="position: absolute; z-index: 2147483647; display: none;"><i
-		class="fa fa-arrow-up" aria-hidden="true"></i></a>
-	<a id="scrollUp" href="#top"
-		style="position: absolute; z-index: 2147483647; background-color: #f21378"><i
-		class="fa fa-arrow-up" aria-hidden="true"></i></a>
 
 </body>
 
