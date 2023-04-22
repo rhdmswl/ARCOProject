@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.arco.mapper.BoardMapper">
+
+	<select id="getList" resultType="com.arco.domain.BoardVO">
+	<![CDATA[
+		select * from post ORDER BY post_id DESC
+	]]>
+	</select>
+
+	<update id="getComCnt" >
+		update post
+		set post_com_count=post_com_count+#{amount}
+		where post_id=#{post_id}
+	</update>
+
+	<select id="read" resultType="com.arco.domain.BoardVO">
+		select * from post where
+		post_id=#{post_id}
+	</select>
+
+	<insert id="insert">
+		insert into post (post_id, post_title, post_content,
+		post_writer, brd_id,user_id)
+		values (
+		(select nextval('post_id') from dual),
+		#{post_title},
+		#{post_content},
+		#{post_writer},
+		#{brd_id},
+		#{user_id}
+		)
+	</insert>
+
+	<delete id="delete">
+		delete from post where post_id = #{post_id}
+	</delete>
+
+	<update id="update">
+		update post
+		set post_title=#{post_title},
+		post_content=#{post_content}
+		where post_id = #{post_id}
+	</update>
+
+	<sql id="criteria">
+			<choose>
+					<when test="type=='T'.toString()">
+
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='W'.toString()">
+						where brd_id=#{brd_id}
+						and post_writer like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='C'.toString()">
+						where brd_id=#{brd_id}
+						and post_content like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TC'.toString()">
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
+						or post_content like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TW'.toString()">
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
+						or post_writer like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TCW'.toString()">
+						where brd_id=#{brd_id}
+						and post_title like concat('%', #{keyword}, '%')
+						or post_content like concat('%', #{keyword}, '%')
+						or post_writer like concat('%', #{keyword}, '%')
+					</when>
+					<otherwise>
+					where brd_id=#{brd_id}
+					</otherwise>
+			</choose>
+	</sql>
+	
+	<select id="getListWithPaging" resultType="com.arco.domain.BoardVO">
+		SELECT *
+		FROM (
+			SELECT post_id, post_title, post_writer, post_content, post_regdate, post_view_count, brd_id, post_com_count
+			FROM post
+		<include refid="criteria"></include>
+		) as post_paging
+		ORDER BY post_id DESC
+		LIMIT #{pageNumForLimit},10
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from post
+		<include refid="criteria"></include> 
+	</select>
+	
+	<update id="updateViewCount">
+		update post 
+		set post_view_count = post_view_count + 1
+		where post_id = #{post_id}
+	</update>
+	
+	<!-- 좋아요 눌렀는지 안눌렀는지 -->
+	<select id="findLike" resultType="int">
+		select count(*) from post_rec
+		where post_id = #{post_id} and user_id = #{userId}
+	</select>
+	
+	<!-- 게시글 추천 수 -->
+	<update id="updateLike">
+		update post set
+		post_rec_count = post_rec_count +1
+		where post_id=#{post_id}
+	</update>
+	
+	<!-- 게시글 추천 수 취소 -->
+	<update id="updateLikeCancel">
+		update post set
+		post_rec_count = post_rec_count -1
+		where post_id=#{post_id}
+	</update>
+	
+	<!-- 추천 시 Like insert -->
+	<insert id="insertLike">
+		insert into post_rec (post_id,user_id)
+		values (#{post_id},#{userId})
+	</insert>
+	
+	<!-- 추천 시 delete -->
+	<delete id="deleteLike">
+		delete from post_rec where post_id=#{post_id} and user_id = #{userId}
+	</delete>
+	
+	<!-- 추천 시 findlike를 1로 바꾸어서 중복 추천 방지 -->
+	<update id="updateLikeCheck">
+	</update>
+	
+	<!-- 추천 취소 시 findlike를 0 -->
+	<update id="updatelikeCheckCancel">
+	</update>
+</mapper>
