@@ -87,6 +87,10 @@ a:hover {
     margin-top: 20px;
 }
 
+.section_padding_50 {
+    padding-top: 40px;
+}
+
 .btn-secondary {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 600;
@@ -164,14 +168,20 @@ a:hover {
 	left: 20px;
 	right: 30px;
 	background-color: #fff;
+	height: 600px;
+}
+
+.card-body {
+	height: inherit;
 }
 
 .exhiInfoGroup {
+    overflow:hidden;
+    height:auto;
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	margin-top: 30px;
 	padding: 20px;
-	height: 410px;
 }
 
 /* 전시 정보 */
@@ -259,7 +269,7 @@ a:hover {
 
 .leave-comment-area {
 	position: relative;
-	left: 20px;
+	left: auto;
 	margin-top: 5px;
 	margin-bottom: 15px;
 }
@@ -290,13 +300,17 @@ a:hover {
 }
 
 .revContentInput {
-	width: 500px;
+	width: inherit;
 	height: 50px;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	font-size: 15px;
-	padding-left: 10px;
+	padding-left: 10px;	
+}
+
+.revTextBox {
+	width: 400px;
 }
 
 div.rating-wrapper {
@@ -487,15 +501,15 @@ p.v-data {
 												onClick="setStar(3)">⭐</span> <span class="starR"
 												onClick="setStar(4)">⭐</span> <span class="starR"
 												onClick="setStar(5)">⭐</span> <output for="star-input">
-													<b>0</b>점
+													<b>&nbsp;&nbsp;0</b>점
 												</output>
 											</span>
 										</div>
-										<div class="form-group">
+										<div class="form-group revTextBox">
 											<label>작성자</label> <input class="form-control revContentInput" type="text"
-												id='InputnickName' name='nickName' placeholder="nickName">
+												id='InputnickName' name='nickName' placeholder="닉네임">
 										</div>
-										<div class="form-group">
+										<div class="form-group revTextBox">
 											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
 												id='comment' name='revComment' placeholder="한줄평">
 										</div>
@@ -517,11 +531,6 @@ p.v-data {
 						<a id="scrollUp2" href="#top"  
 						style="position: absolute; z-index: 2147483647; background-color:#f21378;"><i
 						class="fa fa-arrow-up lastscroll" aria-hidden="true" style="color:#fff;"></i></a>
-					<p>
-						Copyright @2018 All rights reserved | This template is made with <i
-							class="fa fa-heart-o" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
-					</p>
 				</div>
 			</div>
 		</div>

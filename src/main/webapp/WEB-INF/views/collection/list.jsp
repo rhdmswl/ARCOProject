@@ -182,9 +182,18 @@ a:hover {
 	border: 2px solid #e9ecef;
 }
 
+.col-lg-1 col-md-2 col-3 {
+	width: 0px;
+}
+
+.col-lg-5{
+	width: 600px;
+}
+
 .searchForm {
 	position: relative;
-	left: 30px;
+	margin-left: 10px;
+	left: 25%;
 }
 
 </style>
@@ -200,7 +209,7 @@ a:hover {
 							<div class="body">
 								<div class="row clearfix">
 									<div class="col-lg-1 col-md-2 col-3"></div>
-									<div class="col-lg-5 col-md-4 col-6">
+									<div class="col-lg-5 col-md-4 col-6 searchBox">
 										<form id="searchForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
 											<select id="chk" class="form-control" name='type' style="width:70px;">
 												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>SEARCH</option>
