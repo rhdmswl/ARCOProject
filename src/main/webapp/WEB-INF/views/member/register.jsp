@@ -40,7 +40,7 @@ body {
 .card {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	position: absolute;
-	width: 400px;
+	
 }
 
 .card-title {
@@ -395,12 +395,12 @@ option {
 					<a href="/" class="yummy-logo"><img
 						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 				</div>
-					<form action="/member/register" method="post" name="regForm">
-						<div class="card card-login">
-							<div class="card-header card-header-primary text-center">
-								<h4 class="card-title">회원 가입</h4>
-            </div>
-					<div class="card-body">
+				<div class="card">
+					<div class="card-header card-header-primary">
+						<h4 class="card-title center">회원가입</h4>
+						</div>
+						<div class="card-body">
+						<form action="/member/register" method="post" id="regForm">
 							<div class="form-group has-feedback">
 								<label class="control-label" for="userId">아이디</label> <br>
 								<input class="form-control" type="text" id="userId"
@@ -420,14 +420,20 @@ option {
 							</div>
 							<br>
 							<div class="form-group has-feedback">
+								<label class="control-label" for="userPass">비밀번호</label><br>
+								<input class="form-control" type="password" id="userPass"
+									name="userPass" />
+
+							</div>
+							<br>
+							<div class="form-group has-feedback">
 								<label class="control-label" for="passCheck">비밀번호 확인</label><br>
-								<input class="form-control" type="password" id="passCheck" name="passCheck" /> 
-                  <span id="alert-success"
-									style="display: none; color: #000000;">비밀번호가 일치합니다.</span> 
-                  <span id="alert-danger"
+								<input class="form-control" type="password" id="passCheck"
+									name="passCheck" /> <span id="alert-success"
+									style="display: none; color: #000000;">비밀번호가 일치합니다.</span> <span
+									id="alert-danger"
 									style="display: none; color: #d92742; font-weight: bold;">비밀번호가
 									일치하지 않습니다.</span>
-
 							</div>
 							<br>
 							<div class="form-group has-feedback">
@@ -456,22 +462,23 @@ option {
 									<option value="daum.net">daum.net</option>
 									<option value="hanmail.net">hanmail.net</option>
 									<option value="nate.com">nate.com</option>
-									
-									
+
+
 								</select>
 
 							</div>
-							
+
 
 						</form>
-							<div class="card-footer justify-content-center btnGroup">
-								<button class="btn btn-primary" type="submit">회원가입</button>
-								<button class="cancel btn btn-secondary">취소</button>
+						<div class="text-center">
+							<button class="btn btn-primary" type="button" id="submit">회원가입</button>
+							<button class="btn btn-secondary cancel" type="button">취소</button>
 						</div>
 
 					</div>
 				</div>
-
+				</div>
+</div>
 	</section>
 
 </body>
