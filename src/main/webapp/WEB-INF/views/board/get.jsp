@@ -5,6 +5,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
 
@@ -537,7 +538,7 @@ button {
 						</div>
 
 						<div class="frame" style="background-color:none;">
-							<button id='like' data-oper='like' class="btn btn-primary">추천</button>
+							<button id='like' data-oper='like' class="btn btn-primary">추천    |    ${board.post_rec_count}</button>
 								<!-- <button id='like' style="border:none; background-color:none;" data-oper='like' 
 										class="custom-btn btn-11"><img id="heartImg" src="https://i.imgur.com/6io8NDW.png"></button> -->
 						</div>
@@ -619,6 +620,15 @@ button {
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
+			
+			window.addEventListener('popstate', function(event) {
+				  var url = window.location.href;
+				  if (url.indexOf('?post_id=') > -1) {
+				    var newUrl = url.split('?post_id=')[0];
+				    window.history.replaceState({}, document.title, newUrl);
+				  }
+				});
+			
 			var operForm_modi = $("#operForm_modi");
 			var post_idValue = '<c:out value="${board.post_id}"/>';
 			var replyUL = $(".chat");
@@ -657,11 +667,9 @@ button {
 		            	var findLike = parseInt($(response).text());
 		                console.log(findLike);
 		            	if(findLike==0){
-	                    	alert("추천완료");
 	                    	location.reload(); 	
 	                    }
 	                    else if (findLike == 1){
-	                     	alert("추천취소");
 	                    	location.reload();
 	              		}
 	
