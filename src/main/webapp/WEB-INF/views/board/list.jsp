@@ -253,13 +253,20 @@ body::-webkit-scrollbar-track {
 .smalltext .viewgroup {
 	position: absolute;
 	float: left;
-	right: 140px;
+	right: 175px;
 }
 
 .smalltext .commentCountGroup {
 	position: absolute;
-	right: 88px;
+	right: 130px;
 	float: left;
+}
+
+.smalltext .likeCountGroup {
+	position: absolute;
+	right: 80px;
+	width: 50px;
+	height: 20px;
 }
 
 .col-md-12 col-lg-12 col-xl-12 {
@@ -426,7 +433,7 @@ body::-webkit-scrollbar-track {
 															<c:out value="${board.post_view_count}" /></div>
 														<div class="commentCountGroup"><img class="countImg" src= "https://i.imgur.com/SPrFzms.png">
 															<c:out value="${board.post_com_count}" /></div> 
-														<div class="like 이미지 넣어주세요"><img class="countImg" src= "https://i.imgur.com/SPrFzms.png">
+														<div class="likeCountGroup"><img class="countImg" src= "https://i.imgur.com/OUWERYO.png">
 															<c:out value="${board.post_rec_count}" /></div> 
 													</small>
 													</div>
