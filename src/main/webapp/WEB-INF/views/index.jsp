@@ -175,7 +175,7 @@ body::-webkit-scrollbar-track {
 					<li class="sidelist"><a class="nav-link" style="color: black; font-weight: 700;"
 						href="/board/list?pageNum=1&brd_id=1">TALK</a></li>
 					<li class="sidelist"><a class="nav-link" style="color: black; font-weight: 700;"
-						href="/board/list?pageNum=1&brd_id=2">MATE</a></li>
+						href="/board/list?pageNum=1&brd_id=2">INFO</a></li>
 					<li class="sidelist"><a class="nav-link" style="color: black; font-weight: 700;"
 						href="/board/list?pageNum=1&brd_id=3">WEEKLY</a></li>
 				</ul>

@@ -261,6 +261,7 @@ body::-webkit-scrollbar-track {
 .mb40 .chat {
 	position: relative;
 	right: 14%;
+	overflow: hidden;
 }
 
 .mb30 {
@@ -346,12 +347,15 @@ button {
     inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
 } */
 
-.commentBtnGroup {
+.comBox {
 	width: 100%;
 	height: 65px;
-	position: relative;
-	left: 440px;
 	margin-bottom: 30px;
+}
+
+.commentBtnGroup {
+	position: relative;
+	float: right;
 }
 
 .commentBtnGroup .btn-11 {
@@ -745,8 +749,8 @@ button {
 			        str+= "  			<input type='hidden' id='com_id' name='com_id' value=''/>";
 			        str+= "    				<textarea style='resize: none; border:1px solid #ccc' class='form-control' id ='com_up_content' rows='3'></textarea>";
 			        str+= "  			</div>";
-			        str+= "  			<div class='commentBtnGroup'><button id='Comment-delete' type='button' class='btn btn-secondary comment-delete-btn'>삭제</button>";
-			        str+= "  			<button id='Comment_update' type='button' class='btn btn-primary' >수정 완료</button></div>";
+			        str+= "  			<div class='comBox'><div class='commentBtnGroup'><button id='Comment-delete' type='button' class='btn btn-secondary comment-delete-btn'>삭제</button>";
+			        str+= "  			<button id='Comment_update' type='button' class='btn btn-primary' >수정 완료</button></div></div>";
 			        str+= "			</form>";
                     str+=		"</div></li>";
 					}
