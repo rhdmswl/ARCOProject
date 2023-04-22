@@ -498,8 +498,8 @@ p.v-data {
 										</div>
 										<c:if test="${member.userId!=null}">
 										<div class="form-group revTextBox">
-											<label>작성자</label> <input class="form-control revContentInput" type="text"
-												id='InputnickName' name='nickName'  readonly="readonly" placeholder="${member.userName}">
+											<label>작성자</label> <textarea class="form-control revContentInput"
+												id='InputnickName' name='nickName'  readonly="readonly" style="resize: none;">${member.userName}</textarea>
 										</div>
 										<div class="form-group revTextBox">
 											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
@@ -512,11 +512,11 @@ p.v-data {
 										<c:if test="${member.userId==null}">
 										<div class="form-group revTextBox">
 											<label>작성자</label> <input class="form-control revContentInput" type="text"
-												id='InputnickName' name='nickName'  readonly="readonly" placeholder="로그인 후 입력해주세요!">
+												readonly="readonly" placeholder="로그인 후 입력해주세요!">
 										</div>
 										<div class="form-group revTextBox">
 											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
-												id='comment' name='revComment' readonly="readonly" placeholder="로그인 후 입력해주세요!">
+												readonly="readonly" placeholder="로그인 후 입력해주세요!">
 										</div>
 										</c:if>
 									</form>
@@ -638,9 +638,9 @@ p.v-data {
                                    str+= "              <div class='form-group'>";
                                    str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
                                    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
-            				       str+= "  			<div style='display:none'><input type='datetime-local' id='updateDate' name='updateDate' value=''/></div>";
+                                   str+= "  			</div>";
+            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button></div>";
             				       str+= "  			</div>";
-            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button>";
             				       str+= "			</form>";
             				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
             			           str += "</div></li>"; 
@@ -705,7 +705,7 @@ p.v-data {
                     	
                     /* 별점 구현 */
                     //setStar로 선택된 별점 값 score에 저장
-                     $('.starRev span').click(function(){
+                     $('.starRev span.starR').click(function(){
                     	    $(this).parent().children('span').removeClass('on');
                     	    $(this).addClass('on').prevAll('span').addClass('on');
                     	    var score = $(this).next().text();
@@ -748,7 +748,7 @@ p.v-data {
                     	            var score = $(this).text();
                     	            setStar(score);
                     	        })
-                    	        .on("mouseleave", ".star-input>.input", function(){
+                    	        .on("mouseleave", ".star-input>.starR", function(){
                     	            var $checked = $star.find(":checked");
                     	            if($checked.length === 0){
                     	                setStar(0);

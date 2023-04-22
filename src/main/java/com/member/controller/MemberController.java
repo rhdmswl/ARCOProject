@@ -2,6 +2,7 @@ package com.member.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.member.service.MemberService;
+import com.member.vo.CollectionReviewVO;
 import com.member.vo.Criteria;
 import com.member.vo.ImageVO;
 import com.member.vo.MemberVO;
@@ -109,12 +111,6 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-//	// 회원정보 수정 get
-//	@RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
-//	public String registerUpdateView() throws Exception {
-//		return "member/memberUpdateView";
-//	}
-
 	// 회원 탈퇴 get
 	@RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
 	public String memberDeleteView() throws Exception {
@@ -130,8 +126,6 @@ public class MemberController {
 
 		return "redirect:/";
 	}
-
-	
 	
 	// mypage - 나의 글 보기 (페이징 적용)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
@@ -142,26 +136,32 @@ public class MemberController {
             ) throws Exception {
 		
 	    MemberVO vo = (MemberVO) session.getAttribute("member");
-	    String userId = null;
+	    String userName = null;
 	    if (vo != null) {
-	        userId = vo.getUserId();
+	    	userName = vo.getUserName();
 	    }
 
 	    Criteria revCri = new Criteria(revPage);
 	    Criteria postCri = new Criteria(postPage);
 	    Criteria commentCri = new Criteria(commentPage);
 
-	    revCri.setUserId(userId);
-	    postCri.setUserId(userId);
-	    commentCri.setUserId(userId);
+	    revCri.setUserName(userName);
+	    postCri.setUserName(userName);
+	    commentCri.setUserName(userName);
 
-	    model.addAttribute("collectionRevs", service.getMemberCollectionRevsWithPaging(userId, revCri));
-	    model.addAttribute("posts", service.getMemberPostsWithPaging(userId, postCri));
-	    model.addAttribute("comments", service.getMemberCommentsWithPaging(userId, commentCri));
+	    model.addAttribute("collectionRev", service.getMemberCollectionRevsWithPaging(userName, revCri));
+	    model.addAttribute("posts", service.getMemberPostsWithPaging(userName, postCri));
+	    model.addAttribute("comments", service.getMemberCommentsWithPaging(userName, commentCri));
 
-	    PageMaker collectionRevPageMaker = new PageMaker(revCri, service.countCollectionRevs(userId));
-	    PageMaker postPageMaker = new PageMaker(postCri, service.countPosts(userId));
-	    PageMaker commentPageMaker = new PageMaker(commentCri, service.countComments(userId));
+	    PageMaker collectionRevPageMaker = new PageMaker(revCri, service.countCollectionRevs(userName));
+	    PageMaker postPageMaker = new PageMaker(postCri, service.countPosts(userName));
+	    PageMaker commentPageMaker = new PageMaker(commentCri, service.countComments(userName));
+	    
+	    List<CollectionReviewVO> collectionReviews = service.getMemberCollectionRevsWithPaging(userName, revCri);
+	    for (CollectionReviewVO review : collectionReviews) {
+	        review.setCollectionSeq(review.getCollectionSeq());
+	    }
+	    model.addAttribute("collectionRev", collectionReviews);
 
 	    model.addAttribute("collectionRevPageMaker", collectionRevPageMaker);
 	    model.addAttribute("postPageMaker", postPageMaker);
@@ -179,17 +179,11 @@ public class MemberController {
 		
 		
 	    service.mypageUpdate(vo);
-	   
 	    session.setAttribute("member", vo);
-	    
 	    model.addAttribute("member", vo);
 		
 	    return "redirect:/member/mypage";
 	}
-
-
-
-
 
 	@RequestMapping(value = "/passUpdateView", method = RequestMethod.GET)
 	public String pwUpdateView() throws Exception {

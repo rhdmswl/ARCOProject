@@ -37,7 +37,8 @@ select * from collectionRev where revSeq >0
 
 		update collectionRev
 		set revComment = #{revComment},
-		revStar = #{revStar}
+		revStar = #{revStar},
+		reviewDate = now()
 		where revSeq = #{revSeq}
 
 	</update>
