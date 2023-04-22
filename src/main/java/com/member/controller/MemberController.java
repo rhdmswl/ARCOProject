@@ -136,28 +136,28 @@ public class MemberController {
             ) throws Exception {
 		
 	    MemberVO vo = (MemberVO) session.getAttribute("member");
-	    String userId = null;
+	    String userName = null;
 	    if (vo != null) {
-	        userId = vo.getUserId();
+	    	userName = vo.getUserName();
 	    }
 
 	    Criteria revCri = new Criteria(revPage);
 	    Criteria postCri = new Criteria(postPage);
 	    Criteria commentCri = new Criteria(commentPage);
 
-	    revCri.setUserId(userId);
-	    postCri.setUserId(userId);
-	    commentCri.setUserId(userId);
+	    revCri.setUserName(userName);
+	    postCri.setUserName(userName);
+	    commentCri.setUserName(userName);
 
-	    model.addAttribute("collectionRev", service.getMemberCollectionRevsWithPaging(userId, revCri));
-	    model.addAttribute("posts", service.getMemberPostsWithPaging(userId, postCri));
-	    model.addAttribute("comments", service.getMemberCommentsWithPaging(userId, commentCri));
+	    model.addAttribute("collectionRev", service.getMemberCollectionRevsWithPaging(userName, revCri));
+	    model.addAttribute("posts", service.getMemberPostsWithPaging(userName, postCri));
+	    model.addAttribute("comments", service.getMemberCommentsWithPaging(userName, commentCri));
 
-	    PageMaker collectionRevPageMaker = new PageMaker(revCri, service.countCollectionRevs(userId));
-	    PageMaker postPageMaker = new PageMaker(postCri, service.countPosts(userId));
-	    PageMaker commentPageMaker = new PageMaker(commentCri, service.countComments(userId));
+	    PageMaker collectionRevPageMaker = new PageMaker(revCri, service.countCollectionRevs(userName));
+	    PageMaker postPageMaker = new PageMaker(postCri, service.countPosts(userName));
+	    PageMaker commentPageMaker = new PageMaker(commentCri, service.countComments(userName));
 	    
-	    List<CollectionReviewVO> collectionReviews = service.getMemberCollectionRevsWithPaging(userId, revCri);
+	    List<CollectionReviewVO> collectionReviews = service.getMemberCollectionRevsWithPaging(userName, revCri);
 	    for (CollectionReviewVO review : collectionReviews) {
 	        review.setCollectionSeq(review.getCollectionSeq());
 	    }

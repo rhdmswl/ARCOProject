@@ -4,7 +4,7 @@ public class Criteria {
 
     private int page;
     private int perPageNum;
-    private String userId;
+    private String userName;
 
     public Criteria() {
         this.page = 1;
@@ -40,12 +40,12 @@ public class Criteria {
         return perPageNum;
     }
     
-    public String getUserId() {
-        return userId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getStart() {
