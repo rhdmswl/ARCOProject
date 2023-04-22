@@ -106,8 +106,12 @@
 	<!-- 작성한 한줄평 불러오기 (페이징 적용) -->
 	<select id="getMemberCollectionRevsWithPaging"
 		resultType="com.member.vo.CollectionReviewVO">
-		SELECT * FROM collectionRev WHERE nickname = #{userId}
-		LIMIT ${start}, 12
+<!-- 		SELECT * FROM collectionRev WHERE userId = #{userId}
+		LIMIT ${start}, 12 -->
+	    SELECT *, collection.seq AS collectionSeq FROM collectionRev
+	    JOIN collection ON collectionRev.seq = collection.seq
+	    WHERE userId = #{userId}
+	    LIMIT ${start}, 12
 	</select>
 
 	<!-- 작성한 게시글 불러오기 (페이징 적용) -->
@@ -126,7 +130,7 @@
 
 	<!-- 작성한 한줄평 총 개수 -->
 	<select id="countCollectionRevs" resultType="int">
-		SELECT COUNT(*) FROM collectionRev WHERE nickname = #{userId}
+		SELECT COUNT(*) FROM collectionRev WHERE userId = #{userId}
 	</select>
 
 	<!-- 작성한 게시글 총 개수 -->
