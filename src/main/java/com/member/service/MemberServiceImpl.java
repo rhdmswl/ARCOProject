@@ -106,52 +106,34 @@ public class MemberServiceImpl implements MemberService {
 
 	// 페이징 적용
 	@Override
-	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception {
-		return dao.getMemberCollectionRevsWithPaging(userId, cri);
+	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userName, Criteria cri) throws Exception {
+		return dao.getMemberCollectionRevsWithPaging(userName, cri);
 	}
 
 	@Override
-	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception {
-		return dao.getMemberPostsWithPaging(userId, cri);
+	public List<BoardVO> getMemberPostsWithPaging(String userName, Criteria cri) throws Exception {
+		return dao.getMemberPostsWithPaging(userName, cri);
 	}
 
 	@Override
-	public List<ReplyVO> getMemberCommentsWithPaging(String userId, Criteria cri) throws Exception {
-		return dao.getMemberCommentsWithPaging(userId, cri);
+	public List<ReplyVO> getMemberCommentsWithPaging(String userName, Criteria cri) throws Exception {
+		return dao.getMemberCommentsWithPaging(userName, cri);
 	}
 
 	// PageMaker
 	@Override
-	public int countCollectionRevs(String userId) throws Exception {
-		return dao.countCollectionRevs(userId);
+	public int countCollectionRevs(String userName) throws Exception {
+		return dao.countCollectionRevs(userName);
 	}
 
 	@Override
-	public int countPosts(String userId) throws Exception {
-		return dao.countPosts(userId);
+	public int countPosts(String userName) throws Exception {
+		return dao.countPosts(userName);
 	}
 
 	@Override
-	public int countComments(String userId) throws Exception {
-		return dao.countComments(userId);
+	public int countComments(String userName) throws Exception {
+		return dao.countComments(userName);
 	}
-
-//	@Override
-//	public PageMaker getPageMaker(String userId, Criteria cri, String type) throws Exception {
-//	    PageMaker pageMaker = new PageMaker();
-//	    pageMaker.setCri(cri);
-//
-//	    int totalCount;
-//	    if (type.equals("collectionRevs")) {
-//	        totalCount = dao.getMemberCollectionRevsCount(userId);
-//	    } else if (type.equals("posts")) {
-//	        totalCount = dao.getMemberPostsCount(userId);
-//	    } else { // type.equals("comments")
-//	        totalCount = dao.getMemberCommentsCount(userId);
-//	    }
-//	    pageMaker.setTotalCount(totalCount);
-//
-//	    return pageMaker;
-//	}
 
 }
