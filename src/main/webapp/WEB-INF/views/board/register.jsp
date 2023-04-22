@@ -223,6 +223,8 @@ body::-webkit-scrollbar-track {
 											<th><div class="writername">작성자</div></th>
 											<th><input class="form-control" name='post_writer'
 												value="${member.userName}" readonly="readonly"></th>
+												<th><input class="form-control" name='user_id' type='hidden'
+												value="${member.userId}"></th>
 										</tr>
 
 										<tr>

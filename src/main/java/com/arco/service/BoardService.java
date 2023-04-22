@@ -22,8 +22,6 @@ public interface BoardService {
 	
 	public int updateViewCount(Long post_id);
 
-	public void getComCnt(Long post_id);
-
 	public int findLike(LikeVO like);
 	public void insertLike(LikeVO like);
 	public void updateLike(Long post_id);
