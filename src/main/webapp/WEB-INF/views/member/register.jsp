@@ -71,9 +71,6 @@ body {
 	background-color: #ffffff;
 }
 
-
-
-
 .btn-secondary {
 	width: 100px;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
@@ -148,216 +145,325 @@ body {
 	display: inline-block;
 	vertical-align: middle;
 }
-
-
-
-
 </style>
 
 </head>
 <script type="text/javascript">
-	$(document).ready(function() {
-	    // 취소
-	    $(".cancel").on("click", function() {
-	        location.href = "/";
-	    })
-	    	  $('.form-control').focusout(function () {
-	    		  var userId = $("#userId").val();
-	  	        var idRegex = /^[a-zA-Z0-9]{4,10}$/;
-	  	        if (userId == '') {
-	  	            $("#alert-danger1").css('display', 'inline-block').text('아이디를 입력해주세요.');
-	  	            return false;
-	  	        } else if (!idRegex.test(userId)) {
-	  	            $("#alert-danger1").css('display', 'inline-block').text('아이디는 문자와 숫자 조합이며 4자이상 10자 이하이어야 합니다.');
-	  	            return false;
-	  	        } else {
-	  	            $("#alert-danger1").css('display', 'none');
-	  	        }
-		  
-});
+	$(document)
+			.ready(
+					function() {
+						// 취소
+						$(".cancel").on("click", function() {
+							location.href = "/";
+						})
+						$('.form-control')
+								.focusout(
+										function() {
+											var userId = $("#userId").val();
+											var idRegex = /^[a-zA-Z0-9]{4,10}$/;
+											var spaceRegex = /\s/;
 
-	  $('.form-control').focusout(function () {
-		  // 비밀번호 유효성 검사
-	        var pwd1 = $("#userPass").val();
-	        var pwd2 = $("#passCheck").val();
-	        var pwdRegex = /^[a-zA-Z0-9!@#$%^&*()?_~]{8,16}$/;
-	       
-	          if (!pwdRegex.test(pwd1)) {
-	            $("#alert-danger").css('display', 'inline-block').text('비밀번호는 8~16자 이내의 영문, 숫자, 특수문자만 사용 가능합니다.');
-	            return false;
-	        } else {
-	            $("#alert-danger").css('display', 'none');
-	        }
+											if (userId == '') {
+												$("#alert-danger1").css(
+														'display',
+														'inline-block').text(
+														'아이디를 입력해주세요.');
+												return false;
+											} else if (spaceRegex.test(userId)) {
+												$("#alert-danger1")
+														.css('display',
+																'inline-block')
+														.text(
+																'아이디에는 공백을 입력할 수 없습니다.');
+												return false;
+											} else if (!idRegex.test(userId)) {
+												$("#alert-danger1")
+														.css('display',
+																'inline-block')
+														.text(
+																'아이디는 문자와 숫자 조합이며 4자이상 10자 이하이어야 합니다.');
+												return false;
+											} else {
+												$("#alert-danger1").css(
+														'display', 'none');
+											}
+										});
 
-	        if ( pwd1 != '' && pwd2 == '' ) {
-	            $("#alert-danger").css('display', 'inline-block').text('비밀번호 확인을 입력해주세요.');
-	            return false;
-	        } else if (pwd1 != "" || pwd2 != "") {
-	            if (pwd1 == pwd2) {
-	                $("#alert-success").css('display', 'inline-block');
-	                $("#alert-danger").css('display', 'none');
-	            } else {
-	                $("#alert-success").css('display', 'none');
-	                $("#alert-danger").css('display', 'inline-block').text('비밀번호가 일치하지 않습니다.');
-	                return false;
-	            }
-	        }
+						$('.form-control')
+								.focusout(
+										function() {
+											// 비밀번호 유효성 검사
+											var pwd1 = $("#userPass").val();
+											var pwd2 = $("#passCheck").val();
+											var pwdRegex = /^[a-zA-Z0-9!@#$%^&*()?_~]{8,16}$/;
+											
 
-    // check for duplicate characters in password
-    var passwordChars = pwd1.split("");
-    var duplicateCount = 0;
-    for (var i = 0; i < passwordChars.length; i++) {
-        var charCount = 0;
-        for (var j = 0; j < passwordChars.length; j++) {
-            if (passwordChars[i] == passwordChars[j]) {
-                charCount++;
-            }
-        }
-        if (charCount > 2) {
-            duplicateCount++;
-        }
-    }
-    if (duplicateCount > 0) {
-        $("#alert-danger").css('display', 'inline-block').text('비밀번호에는 3개 이상 중복된 문자 또는 숫자를 사용할 수 없습니다.');
-    }
-});
-	    
-	    $('.form-control').focusout(function () {
-	    	var userName = $("#userName").val();
-	    	var nameRegex = /^[a-zA-Z가-힣]{2,8}$/;
-	    	
-	    	 if (!nameRegex.test(userName)) {
-	    		 $("#alert-danger2").css('display', 'inline-block').text('닉네임은 2자 이상 8자 이하의 영문 또는 한글로만 입력해주세요.');
-	    	    return false;
-	    	} else {
-	    	    $("#alert-danger2").css('display', 'none');
-	    	}
+											if (!pwdRegex.test(pwd1)) {
+												$("#alert-danger")
+														.css('display',
+																'inline-block')
+														.text(
+																'비밀번호는 8자~16자 이내의 영문, 숫자, 특수문자만 사용 가능합니다.');
+												return false;
+											} else {
+												$("#alert-danger").css(
+														'display', 'none');
+											}
 
-	  
-});
-	    
-	    $('.form-control').focusout(function () {
-	        var phone = $("#phone").val();
-	        var phoneRegex = /^[0-9]+$/;
+											// 비밀번호에 공백 포함 불가
+											if (/\s/.test(pwd1)) {
+												$("#alert-danger")
+														.css('display',
+																'inline-block')
+														.text(
+																'비밀번호에는 공백을 포함할 수 없습니다.');
+												return false;
+											} else {
+												$("#alert-danger").css(
+														'display', 'none');
+											}
 
-	        if (!phoneRegex.test(phone)) {
-	            $("#alert-danger3").css('display', 'inline-block').text('전화번호는 숫자만 입력 가능합니다.');
-	            return false;
-	        } else {
-	            $("#alert-danger3").css('display', 'none');
-	        }
-	    });
+											if (pwd1 != '' && pwd2 == '') {
+												$("#alert-danger").css(
+														'display',
+														'inline-block').text(
+														'비밀번호 확인을 입력해주세요.');
+												return false;
+											} else if (pwd1 != "" || pwd2 != "") {
+												if (pwd1 == pwd2) {
+													$("#alert-success").css(
+															'display',
+															'inline-block');
+													$("#alert-danger").css(
+															'display', 'none');
+												} else {
+													$("#alert-success").css(
+															'display', 'none');
+													$("#alert-danger")
+															.css('display',
+																	'inline-block')
+															.text(
+																	'비밀번호가 일치하지 않습니다.');
+													return false;
+												}
+											}
 
+											// check for duplicate characters in password
+											var passwordChars = pwd1.split("");
+											var duplicateCount = 0;
+											for (var i = 0; i < passwordChars.length; i++) {
+												var charCount = 0;
+												for (var j = 0; j < passwordChars.length; j++) {
+													if (passwordChars[i] == passwordChars[j]) {
+														charCount++;
+													}
+												}
+												if (charCount > 2) {
+													duplicateCount++;
+												}
+											}
+											if (duplicateCount > 0) {
+												$("#alert-danger")
+														.css('display',
+																'inline-block')
+														.text(
+																'비밀번호에는 3개 이상 중복된 문자 또는 숫자를 사용할 수 없습니다.');
+											}
+										});
 
+						$('.form-control').focusout(function() {
+						    var userName = $("#userName").val();
+						    var nameRegex = /^[a-zA-Z가-힣0-9]{2,10}$/;
+						    var numRegex = /^[0-9]{2,10}$/;
+						    var spaceRegex = /\s/;
 
-
-
-	    $("#submit").on("click", function() {
-	        if ($("#userId").val() == "") {
-	            alert("아이디를 입력해주세요.");
-	            $("#userId").focus();
-	            return false;
-	        }
-	       
-	        if ($("#userPass").val() == "") {
-	            alert("비밀번호를 입력해주세요.");
-	            $("#userPass").focus();
-	            return false;
-	        }
-	        if ($("#passCheck").val() == "") {
-	            alert("비밀번호확인을 입력해주세요.");
-	            $("#passCheck").focus();
-	            return false;
-	        }
-	        if ($("#userName").val() == "") {
-	            alert("닉네임을 입력해주세요.");
-	            $("#userName").focus();
-	            return false;
-	        }
-	      
-
-	        if ($("#phone").val() == "") {
-	            alert("전화번호를 입력해주세요.");
-	            $("#phone").focus();
-	            return false;
-	        }
-	        if ($("#email").val() == "") {
-	            alert("이메일을 입력해주세요.");
-	            $("#email").focus();
-	            return false;
-	        }
-	              
-	       
-	        var idChkVal = $("#idChk").val();
-	        var pwVal = $("#userPass").val();
-	        var emailVal = $("#email").val();
-	        var phoneVal = $("#phone").val();
-	        var usernameVal = $("#userName").val();
-
-	        if (idChkVal == "N") {
-	            alert("중복확인 버튼을 눌러주세요.");
-	        } else if (pwVal == "" || emailVal == "" || phoneVal == "" || usernameVal == "") {
-	            alert("비밀번호, 이메일, 전화번호, 닉네임을 모두 입력해주세요.");
-	        } else if (pwVal.length < 8) {
-	            alert("비밀번호는 최소 8자 이상 입력해주세요.");
-	        } else if (!isValidEmail(emailVal)) {
-	            alert("유효한 이메일 주소를 입력해주세요.");
-	        } else if (!isValidPhone(phoneVal)) {
-	            alert("유효한 전화번호를 입력해주세요.");
-	        } else if (!isValidUsername(usernameVal)) {
-	            alert("닉네임은 2자 이상 8자 이하의 한글이나 영문으로만 입력해주세요.");
-	        } else {
-	            $("#regForm").submit();
-	            alert("회원가입이 완료되었습니다. ARCO에 오신걸 환영합니다 !");
-	        }
-
-	       
-	        function isValidEmail(email) {
-	           
-	            var emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-	            return emailRegEx.test(email);
-	        }
-
-	        
-	        function isValidPhone(phone) {
-	            
-	            var phoneRegEx = /^\d{10,11}$/;
-	            return phoneRegEx.test(phone);
-	        }
-
-	        
-	        function isValidUsername(username) {
-	           
-	            var usernameRegEx = /^[a-zA-Z가-힣]{2,8}$/;
-	            return usernameRegEx.test(username);
-	        }
+						    if (spaceRegex.test(userName)) {
+						        $("#alert-danger2").css('display', 'inline-block')
+						            .text('닉네임에는 공백을 입력할 수 없습니다.');
+						        return false;
+						    } else if (!nameRegex.test(userName)) {
+						        $("#alert-danger2").css('display', 'inline-block')
+						            .text('닉네임은 2자~10자 이하의 영문, 한글, 숫자만 사용가능합니다.');
+						        return false;
+						    } else if (numRegex.test(userName)) {
+						        $("#alert-danger2").css('display', 'inline-block')
+						            .text('닉네임에는 숫자만 입력할 수 없습니다.');
+						        return false;
+						    } else {
+						        $("#alert-danger2").css('display', 'none');
+						    }
+						});
 
 
-	    });
-	});
-	
+						$('.form-control').focusout(
+								function() {
+									var phone = $("#phone").val();
+									var phoneRegex = /^[0-9]+$/;
+
+									if (!phoneRegex.test(phone)) {
+										$("#alert-danger3").css('display',
+												'inline-block').text(
+												'전화번호는 숫자만 입력 가능합니다.');
+										return false;
+									} else {
+										$("#alert-danger3").css('display',
+												'none');
+									}
+								});
+
+						$("#submit")
+								.on(
+										"click",
+										function() {
+											if ($("#userId").val() == "") {
+												alert("아이디를 입력해주세요.");
+												$("#userId").focus();
+												return false;
+											}
+
+											if ($("#userPass").val() == "") {
+												alert("비밀번호를 입력해주세요.");
+												$("#userPass").focus();
+												return false;
+											}
+											if ($("#passCheck").val() == "") {
+												alert("비밀번호확인을 입력해주세요.");
+												$("#passCheck").focus();
+												return false;
+											}
+											if ($("#userName").val() == "") {
+												alert("닉네임을 입력해주세요.");
+												$("#userName").focus();
+												return false;
+											}
+
+											if ($("#phone").val() == "") {
+												alert("전화번호를 입력해주세요.");
+												$("#phone").focus();
+												return false;
+											}
+											if ($("#email").val() == "") {
+												alert("이메일을 입력해주세요.");
+												$("#email").focus();
+												return false;
+											}
+
+											var idChkVal = $("#idChk").val();
+											var nameChkVal = $("#nameChk")
+													.val();
+											var pwVal = $("#userPass").val();
+											var emailVal = $("#email").val();
+											var phoneVal = $("#phone").val();
+											var usernameVal = $("#userName")
+													.val();
+
+											if (idChkVal == "N"
+													|| nameChkVal == "N") {
+												alert("중복확인 버튼을 눌러주세요.");
+											} else if (idChkVal == "D"
+													|| nameChkVal == "D") {
+												alert("중복된 아이디 또는 닉네임을 입력하셨습니다. 재입력해주세요.");
+											} else if (pwVal == ""
+													|| emailVal == ""
+													|| phoneVal == ""
+													|| usernameVal == "") {
+												alert("공백없이 모두 입력해주세요.");
+											} else if (pwVal.length < 8) {
+												alert("비밀번호는 8자~16자 이내로 입력해주세요.");
+											} else if (!isValidEmail(emailVal)) {
+												alert("유효한 이메일 주소를 입력해주세요.");
+											} else if (!isValidPhone(phoneVal)) {
+												alert("유효한 전화번호를 입력해주세요.");
+											} else if (!isValidUsername(usernameVal)) {
+												alert("닉네임은 2자 이상 8자 이하의 한글, 영문, 숫자만 입력해주세요.");
+											} else {
+												if (idChkVal == "D") {
+													alert("중복된 아이디를 입력하셨습니다. 재입력해주세요.");
+													return false;
+												}
+												if (nameChkVal == "D") {
+													alert("중복된 닉네임을 입력하셨습니다. 재입력해주세요.");
+													return false;
+												}
+												$("#regForm").submit();
+												alert("회원가입이 완료되었습니다. ARCO에 오신걸 환영합니다 !");
+											}
+
+											function isValidEmail(email) {
+
+												var emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+												return emailRegEx.test(email);
+											}
+
+											function isValidPhone(phone) {
+
+												var phoneRegEx = /^\d{10,11}$/;
+												return phoneRegEx.test(phone);
+											}
+
+											function isValidUsername(username) {
+												  var usernameRegEx = /^[a-zA-Z가-힣\d]{2,10}$/;
+												  var containsAlphabetOrKorean = /[a-zA-Z가-힣]/.test(username);
+												  var containsDigit = /\d/.test(username);
+												  var containsSpace = /\s/.test(username);
+
+												  if (!usernameRegEx.test(username)) {
+												    return false;
+												  }
+
+												  if (!containsAlphabetOrKorean || containsSpace) {
+												    return false;
+												  }
+
+												  return true;
+												}
+
+
+
+										});
+					});
 
 	function fn_idChk() {
-	    $.ajax({
-	        url : "/member/idChk",
-	        type : "post",
-	        dataType : "json",
-	        data : {
-	            "userId" : $("#userId").val()
-	        },
-	        success : function(data) {
-	            if (data == 1) {
-	                alert("중복된 아이디입니다.");
-	            } else if (data == 0) {
-	                $("#idChk").attr("value", "Y");
-	                alert("사용가능한 아이디입니다.");
-	            }
-	        }
-	    });
+		$.ajax({
+			url : "/member/idChk",
+			type : "post",
+			dataType : "json",
+			data : {
+				"userId" : $("#userId").val()
+			},
+			success : function(data) {
+				if (data == 1) {
+					alert("중복된 아이디입니다.");
+					$("#idChk").val("D");
+				} else if (data == 0) {
+					$("#idChk").attr("value", "Y");
+					alert("사용가능한 아이디입니다.");
+					$("#idChk").val("Y");
+				}
+			}
+		});
 	}
+	function fn_nameChk() {
+		$.ajax({
+			url : "/member/nameChk",
+			type : "post",
+			dataType : "json",
+			data : {
+				"userName" : $("#userName").val()
+			},
+			success : function(data) {
+				if (data == 1) {
+					alert("중복된 닉네임입니다.");
+					$("#nameChk").val("D");
+				} else if (data == 0) {
+					$("#nameChk").val("Y");
+					alert("사용가능한 닉네임입니다.");
 
-	 
-	</script>
+				}
+			}
+		});
+	}
+</script>
 <body>
 	<section id="container">
 		<div class="row justify-content-center">
@@ -403,8 +509,12 @@ body {
 							<br>
 							<div class="form-group has-feedback">
 								<label class="control-label" for="userName">닉네임</label><br>
+
 								<input class="form-control" type="text" id="userName"
-									name="userName" /> <span id="alert-danger2"
+									name="userName" />
+								<button class="btn btn-primary btn-sm" type="button"
+									id="nameChk" onclick="fn_nameChk();" value="N">중복확인</button>
+								<span id="alert-danger2"
 									style="display: none; color: #d92742; font-weight: bold;"></span>
 							</div>
 							<br>

@@ -1,16 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" pageEncoding="UTF-8"
-	contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOGIN</title>
-<link rel="stylesheet" href="/css/material-dashboard.min.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/material-dashboard.min.js"></script>
+<!-- Material Dashboard CSS -->
+<link rel="stylesheet"
+	href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+
+<!-- Google Fonts -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+
+
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Favicon -->
 <link rel="icon" href="/img/core-img/favicon.ico">
@@ -24,7 +28,13 @@
 <link rel="stylesheet"
 	href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
+
+<title>비밀번호 변경</title>
 <style type="text/css">
+.center {
+	text-align: center;
+}
+
 body {
 	margin-top: 20px;
 	background: #FFF
@@ -32,6 +42,7 @@ body {
 
 .card {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	position: relative;;
 }
 
 .card-title {
@@ -39,14 +50,17 @@ body {
 	font-size: 30px;
 	font-weight: 700;
 	color: #696969;
+	width: 100%;
+	text-align: center;
 }
 
 .form-control::placeholder {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
-.form-control{
-font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	width: 100%;
+
+.form-control {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	width: 80%;
 	height: 50px;
 	box-sizing: border-box;
 	margin-left: 5px;
@@ -54,7 +68,11 @@ font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	border-radius: 4px;
 	border: 1px solid #d9d6d6;
 	color: #383838;
-	background-color: #ffffff;}
+	background-color: #ffffff;
+}
+
+
+
 
 .btn-secondary {
 	width: 100px;
@@ -64,6 +82,8 @@ font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	height: 40px;
 	line-height: 20px;
 	padding: 0;
+	margin-left:50px;
+	margin-top:20px;
 }
 
 .btn-secondary:hover {
@@ -95,79 +115,188 @@ font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	line-height: 20px;
 	font-size: 15px;
 	padding: 0;
+	margin-right:50px;
+	margin-top:20px;
 }
 
 .btn-primary:hover {
 	box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
-.text-center {
-	margin-top: 20px;
+.btn-sm {
+	magin-bottom: 0px;
+	position: relative;
+	top: 5px;
 }
+
+.btnGroup {
+	position: relative;
+	left: 150px;
+}
+
+.input-group {
+	height: 40px;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	border: 0;
+	outline: none;
+	padding-left: 10px;
+	margin-bottom: 15px;
+}
+
+.btn-primary.btn-sm {
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.form-control, .box {
+	display: inline-block;
+	vertical-align: middle;
+}
+#passUpdateForm{
+margin-left:60px;}
+
+
+
+
 </style>
 
 </head>
-	<script type="text/javascript">
-  function showConfirmDialog() {
-    var userPass = document.getElementById('userPass').value;
-    var newPass = document.getElementById('newPass').value;
-    var confirmPass = document.getElementById('confirmPass').value;
+<script type="text/javascript">
+$(document).ready(function() {
+	  // 비밀번호 유효성 검사
+	  function validatePassword() {
+	    var pwd1 = $("#newPass").val();
+	    var pwd2 = $("#passCheck").val();
+	    var pwdRegex = /^[a-zA-Z0-9!@#$%^&*()?_~]{8,16}$/;
+	    var passwordChars = pwd1.split("");
+	    var duplicateCount = 0;
 
-    if (userPass.trim() === "" || newPass.trim() === "" || confirmPass.trim() === "") {
-      alert("비밀번호를 입력해주세요.");
-      return;
-    }
+	    if (!pwdRegex.test(pwd1)) {
+	      $("#alert-danger").css('display', 'inline-block').text('비밀번호는 8~16자 이내의 영문, 숫자, 특수문자만 사용 가능합니다.');
+	      return false;
+	    }
 
-    if (confirm('비밀번호를 변경하시겠습니까?')) {
-      document.getElementById('passUpdateForm').submit();
-    }
-  }
-</script>
+	    if (pwd1 != '' && pwd2 == '') {
+	      $("#alert-danger").css('display', 'inline-block').text('비밀번호 확인을 입력해주세요.');
+	      return false;
+	    }
 
+	    if (pwd1 != "" || pwd2 != "") {
+	      if (pwd1 == pwd2) {
+	        $("#alert-success").css('display', 'inline-block');
+	        $("#alert-danger").css('display', 'none');
+	      } else {
+	        $("#alert-success").css('display', 'none');
+	        $("#alert-danger").css('display', 'inline-block').text('비밀번호가 일치하지 않습니다.');
+	        return false;
+	      }
+	    }
+
+	    for (var i = 0; i < passwordChars.length; i++) {
+	      var charCount = 0;
+	      for (var j = 0; j < passwordChars.length; j++) {
+	        if (passwordChars[i] == passwordChars[j]) {
+	          charCount++;
+	        }
+	      }
+	      if (charCount > 2) {
+	        duplicateCount++;
+	      }
+	    }
+
+	    if (duplicateCount > 0) {
+	      $("#alert-danger").css('display', 'inline-block').text('비밀번호에는 3개 이상 중복된 문자 또는 숫자를 사용할 수 없습니다.');
+	      return false;
+	    }
+
+	    return true;
+	  }
+
+	  // 비밀번호 변경 버튼 클릭 이벤트
+	  $("#submit").on("click", function() {
+	    if (!validatePassword()) {
+	      return false;
+	    }
+
+	    if ($("#newPass").val() == "") {
+	      alert("비밀번호를 입력해주세요.");
+	      $("#newPass").focus();
+	      return false;
+	    }
+
+	    if ($("#passCheck").val() == "") {
+	      alert("비밀번호 확인을 입력해주세요.");
+	      $("#passCheck").focus();
+	      return false;
+	    }
+
+	    var pwVal = $("#newPass").val();
+
+	    if (pwVal.length < 8) {
+	      alert("비밀번호는 최소 8자 이상 입력해주세요.");
+	    } else {
+	      $("#passUpdateForm").submit();
+	      alert("비밀번호 변경이 완료 되었습니다. 다시 로그인 해주세요 !");
+	    }
+	  });
+
+	  // 취소
+	  $(".cancel").on("click", function() {
+	    location.href = "/member/mypage";
+	  });
+
+	  $('.form-control').focusout(function () {
+	    validatePassword();
+	  });
+	});
+
+	 
+	</script>
 <body>
-<div class="wrapper">
-	<div class="container">
-		<div class="row">
+	<section id="container">
+		<div class="row justify-content-center">
 			<div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
 				<div class="logo_area text-center">
-					<a href="/" class="yummy-logo"><img src="https://i.imgur.com/evlOrzY.png" width="400"></a>
+					<a href="/" class="yummy-logo"><img
+						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 				</div>
-				<form id="passUpdateForm" action="${pageContext.request.contextPath}/member/passUpdate" method="post">
-					<div class="card card">
-						<div class="col-12"></div>
-						<div class="card-header card-header-primary text-center">
-							<div class="card-title">비밀번호 변경</div>
-						</div>
-						<div class="card-body">
-							<label class="control-label" for="userPass">현재 비밀번호:</label> 
-							<input class="form-control" type="password" id="userPass" name="userPass" required>
-						
-					
-						<div>
-							<label class="control-label" for="newPass">새로운 비밀번호:</label> 
-							<input class="form-control" type="password" id="newPass" name="newPass" required>
-						</div>
-						
-						<div>
-							<label class="control-label" for="confirmPass">비밀번호 확인:</label>
-							<input class="form-control" type="password" id="confirmPass" name="confirmPass" required>
-						</div>
-						
-						<c:if test="${not empty error}">
-							<div style="color: red;">${error}</div>
-						</c:if>
+				<div class="card">
+					<div class="card-header card-header-primary">
+						<h4 class="card-title center">비밀번호 변경</h4>
+					</div>
+					<div class="card-body">
+						<form action="/member/passUpdate" method="post" id="passUpdateForm">
+							
+							<div class="form-group has-feedback">
+								<label class="control-label" for="newPass">새 비밀번호</label><br>
+								<input class="form-control" type="password" id="newPass"
+									name="newPass" />
+
+							</div>
+							<br>
+
+							<div class="form-group has-feedback">
+								<label class="control-label" for="passCheck">새 비밀번호 확인</label><br>
+								<input class="form-control" type="password" id="passCheck"
+									name="passCheck" /> <span id="alert-success"
+									style="display: none; color: #000000;">비밀번호가 일치합니다.</span> <span
+									id="alert-danger"
+									style="display: none; color: #d92742; font-weight: bold;">비밀번호가
+									일치하지 않습니다.</span>
+							</div>
+							
+						</form>
 						<div class="text-center">
-							<button class="btn btn-primary" type="button" onclick="showConfirmDialog()">변경하기</button>
+							<button class="btn btn-primary" type="button" id="submit">비밀번호 변경</button>
+							<button class="btn btn-secondary cancel" type="button">취소</button>
 						</div>
+
 					</div>
-					</div>
-				</form>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-
-
+	</section>
 
 </body>
+
 </html>

@@ -33,6 +33,9 @@ public interface MemberDAO {
 
 	// 아이디 중복체크
 	public int idChk(MemberVO vo) throws Exception;
+	
+	// 닉네임 중복체크
+		public int nameChk(MemberVO vo) throws Exception;
 
 	// public String getProfileImg(String userId) throws Exception;
 
@@ -54,15 +57,15 @@ public interface MemberDAO {
 //	List<ReplyVO> getMemberComments(String userId) throws Exception;
 	
 	// 페이징이 적용된 나의 한줄평
-	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userName, Criteria cri) throws Exception;
+	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception;
 	// 페이징이 적용된 나의 게시글
-	public List<BoardVO> getMemberPostsWithPaging(String userName, Criteria cri) throws Exception;
+	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception;
 	// 페이징이 적용된 나의 댓글
-	public List<ReplyVO> getMemberCommentsWithPaging(String userName, Criteria cri) throws Exception;
+	public List<ReplyVO> getMemberCommentsWithPaging(String userId, Criteria cri) throws Exception;
 
 	// 각 글의 개수, PageMaker
-	public int countCollectionRevs(String userName) throws Exception;
-	public int countPosts(String userName) throws Exception;
-	public int countComments(String userName) throws Exception;
+	public int countCollectionRevs(String userId) throws Exception;
+	public int countPosts(String userId) throws Exception;
+	public int countComments(String userId) throws Exception;
 
 }

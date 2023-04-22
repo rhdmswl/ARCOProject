@@ -198,7 +198,41 @@ body::-webkit-scrollbar-track {
 
 </style>
 </head>
-
+<script type="text/javascript">
+		$(document).ready(function(){
+			
+		
+			$("#submit").on("click", function(){
+				
+				if($("#userName").val()==""){
+					alert("닉네임을 입력해주세요.");
+					$("#userName").focus();
+					return false;
+				}
+				
+				if($("#phone").val()==""){
+					alert("전화번호를 입력해주세요.");
+					$("#phone").focus();
+					return false;
+				}
+				
+				if($("#email").val()==""){
+					alert("이메일을 입력해주세요.");
+					$("#email").focus();
+					return false;
+				}
+				
+				
+				if(confirm("회원수정하시겠습니까?")){
+					$("#updateForm").submit();
+					alert("회원정보가 수정되었습니다.");
+				}
+				
+				
+			
+			});
+		})
+	</script>
 <body>
 <div class="container">
 	<div class="row my-2">
