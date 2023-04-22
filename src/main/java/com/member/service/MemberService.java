@@ -51,4 +51,18 @@ public interface MemberService {
 	public int countCollectionRevs(String userName) throws Exception;
 	public int countPosts(String userName) throws Exception;
 	public int countComments(String userName) throws Exception;
+	
+	
+	// admin
+	public List<MemberVO> listAllMembers(Criteria criteria);
+	public List<CollectionReviewVO> listAllReviews(Criteria criteria);
+	public List<BoardVO> listAllPosts(Criteria criteria);
+	public List<ReplyVO> listAllComments(Criteria criteria);
+	
+	// admin PageMaker
+	public int countAllMembers() throws Exception;
+	public int countAllCollectionRevs() throws Exception;
+	public int countAllPosts() throws Exception;
+	public int countAllComments() throws Exception;
+	
 }

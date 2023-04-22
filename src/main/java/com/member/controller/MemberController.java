@@ -145,9 +145,9 @@ public class MemberController {
 	    Criteria postCri = new Criteria(postPage);
 	    Criteria commentCri = new Criteria(commentPage);
 
-	    revCri.setUserName(userName);
-	    postCri.setUserName(userName);
-	    commentCri.setUserName(userName);
+	    revCri.setUserId(userName);
+	    postCri.setUserId(userName);
+	    commentCri.setUserId(userName);
 
 	    model.addAttribute("collectionRev", service.getMemberCollectionRevsWithPaging(userName, revCri));
 	    model.addAttribute("posts", service.getMemberPostsWithPaging(userName, postCri));

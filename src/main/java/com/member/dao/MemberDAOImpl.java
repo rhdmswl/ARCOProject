@@ -151,5 +151,55 @@ public class MemberDAOImpl implements MemberDAO {
     public int countComments(String userName) throws Exception {
         return sql.selectOne("memberMapper.countComments", userName);
     }
+    
+    // admin
+    @Override
+    public List<MemberVO> listAllMembers(Criteria criteria) {
+    	Map<String, Object> paramMap = new HashMap<>();
+    	paramMap.put("start", criteria.getStart());
+      return sql.selectList("memberMapper.listAllMembers", paramMap);
+    }
+
+    @Override
+    public List<CollectionReviewVO> listAllReviews(Criteria criteria) {
+    	Map<String, Object> paramMap = new HashMap<>();
+    	paramMap.put("start", criteria.getStart());
+      return sql.selectList("memberMapper.listAllReviews", paramMap);
+    }
+
+    @Override
+    public List<BoardVO> listAllPosts(Criteria criteria) {
+    	Map<String, Object> paramMap = new HashMap<>();
+    	paramMap.put("start", criteria.getStart());
+      return sql.selectList("memberMapper.listAllPosts", paramMap);
+    }
+
+    @Override
+    public List<ReplyVO> listAllComments(Criteria criteria) {
+    	Map<String, Object> paramMap = new HashMap<>();
+    	paramMap.put("start", criteria.getStart());
+      return sql.selectList("memberMapper.listAllComments", paramMap);
+    }
+    
+    // admin PageMaker
+    @Override
+    public int countAllMembers() throws Exception {
+        return sql.selectOne("memberMapper.countAllMembers");
+    }
+    
+    @Override
+    public int countAllCollectionRevs() throws Exception {
+        return sql.selectOne("memberMapper.countAllCollectionRevs");
+    }
+
+    @Override
+    public int countAllPosts() throws Exception {
+        return sql.selectOne("memberMapper.countAllPosts");
+    }
+
+    @Override
+    public int countAllComments() throws Exception {
+        return sql.selectOne("memberMapper.countAllComments");
+    }
 
 }

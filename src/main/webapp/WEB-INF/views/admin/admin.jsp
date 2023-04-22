@@ -4,10 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
+<html> <!-- lang="en" -->
 <head>
-<title>My Page</title>
-<link href="/css/material-dashboard.min.css" rel="stylesheet" />
+    <link href="/css/material-dashboard.min.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" rel="stylesheet">
 	<link href="/js/core/jquery.min.js" type="text/javascript"></link>
 	<link href="/js/core/popper.min.js" type="text/javascript"></link>
@@ -198,104 +197,71 @@ body::-webkit-scrollbar-track {
 
 </style>
 </head>
-<script type="text/javascript">
-		$(document).ready(function(){
-			
-		
-			$("#submit").on("click", function(){
-				
-				if($("#userName").val()==""){
-					alert("닉네임을 입력해주세요.");
-					$("#userName").focus();
-					return false;
-				}
-				
-				if($("#phone").val()==""){
-					alert("전화번호를 입력해주세요.");
-					$("#phone").focus();
-					return false;
-				}
-				
-				if($("#email").val()==""){
-					alert("이메일을 입력해주세요.");
-					$("#email").focus();
-					return false;
-				}
-				
-				
-				if(confirm("회원수정하시겠습니까?")){
-					$("#updateForm").submit();
-					alert("회원정보가 수정되었습니다.");
-				}
-				
-				
-			
-			});
-		})
-	</script>
 <body>
-<div class="container">
+  <div class="container">
 	<div class="row my-2">
 			<div class="col-lg-8 order-lg-2">
 				<div class="logo_area text-center">
 					<a href="/" class="yummy-logo"><img
 						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 				</div>
-				<div class="tab-content py-4">
-					<div class="profileTitleText">User Profile</div>
-					<div class="card active profileBox" id="profile">
-						<div class="mb-3"></div>
-						<form id="updateForm" action="/member/mypage" method="post"
-							style="text-align: left;">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<div class="bmd-label-floating" for="userId">아이디</div> <input
-											type="text" id="userId" name="userId" class="form-control memberGroup"
-											value="${member.userId}" readonly="readonly" />
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<div class="bmd-label-floating" for="userName">닉네임</div> <input
-											type="text" id="userName" name="userName"
-											class="form-control memberGroup" value="${member.userName}" />
-									</div>
-								</div>
+				
+				<h1>Admin Page</h1>
+				
+				<!-- 회원 목록 -->
+				<div class="d-flex justify-content-center">
+					<div class="card" style="width: 100%; text-align: left;">
+						<div class="card-header card-header-primary">
+							<div class="card-title">전체 회원 목록</div>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table">
+									<tr>
+										<th>아이디</th>
+										<th>이름</th>
+										<th>이메일</th>
+										<th>가입일</th>
+									</tr>
+									<c:forEach var="user" items="${member}">
+										<tr>
+											<td>${user.userId}</td>
+											<td>${user.userName}</td>
+											<td>${user.email}</td>
+										</tr>
+									</c:forEach>
+								</table>
 							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<div class="bmd-label-floating" for="phone">전화번호</div> <input
-											type="text" id="phone" name="phone" class="form-control memberGroup"
-											value="${member.phone}" />
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<div class="bmd-label-floating" for="email">이메일</div> <input
-											type="text" id="email" name="email" class="form-control memberGroup"
-											value="${member.email}" />
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div style="text-align: right;">
-										<button type="submit" id="submit" class="btn btn-primary ml-2">회원정보 수정</button>
-										<a href="/member/passUpdateView" class="btn btn-secondary">비밀번호 변경</a>
-									</div>
-								</div>
-							</div>
-						</form>
+						</div>
 					</div>
 				</div>
+				<!-- 회원 목록 페이징 -->
+				<div class="text-center page-item">
+					<c:if test="${memberPageMaker.prev}">
+						<a class="page-link" href="?memberPage=${memberPageMaker.startPage - 1}&revPage=${revPage}&postPage=${postPage}&commentPage=${commentPage}">Prev</a>
+					</c:if>
+					<c:forEach var="pageNum" begin="${memberPageMaker.startPage}"
+						end="${memberPageMaker.endPage}" step="1">
+						<c:choose>
+							<c:when test="${pageNum == memberPageMaker.cri.page}">
+								<div class="page-link">${pageNum}</div>
+							</c:when>
+							<c:otherwise>
+								<a class="page-link" href="?memberPage=${pageNum}&revPage=${revPage}&postPage=${postPage}&commentPage=${commentPage}">${pageNum}</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${memberPageMaker.next}">
+						<a class="page-link" href="?memberPage=${memberPageMaker.endPage + 1}&revPage=${revPage}&postPage=${postPage}&commentPage=${commentPage}">Next</a>
+					</c:if>
+				</div>
+				<br>
 				
 				<!-- 한줄평 목록 -->
 				<div class="d-flex justify-content-center">
 					<div class="card" style="width: 100%; text-align: left;">
 						<div class="card-header card-header-primary">
-							<div class="card-title">나의 한줄평</div>
+							<div class="card-title">전체 한줄평</div>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -318,7 +284,8 @@ body::-webkit-scrollbar-track {
 				<!-- 한줄평 페이징 -->
 				<div class="text-center page-item">
 					<c:if test="${collectionRevPageMaker.prev}">
-						<a class="page-link" href="?page=${collectionRevPageMaker.startPage - 1}">Prev</a>
+						<%-- <a class="page-link" href="?page=${collectionRevPageMaker.startPage - 1}">Prev</a> --%>
+						<a class="page-link" href="?revPage=${collectionRevPageMaker.startPage - 1}&postPage=${postPage}&commentPage=${commentPage}">Prev</a>
 					</c:if>
 					<c:forEach var="pageNum"
 						begin="${collectionRevPageMaker.startPage}"
@@ -365,7 +332,8 @@ body::-webkit-scrollbar-track {
 				<!-- 게시글 페이징 -->
 				<div class="text-center page-item">
 					<c:if test="${postPageMaker.prev}">
-						<a class="page-link" href="?page=${postPageMaker.startPage - 1}">Prev</a>
+						<%-- <a class="page-link" href="?page=${postPageMaker.startPage - 1}">Prev</a> --%>
+						<a class="page-link" href="?revPage=${revPage}&postPage=${postPageMaker.startPage - 1}&commentPage=${commentPage}">Prev</a>
 					</c:if>
 					<c:forEach var="pageNum" begin="${postPageMaker.startPage}"
 						end="${postPageMaker.endPage}" step="1">
@@ -411,7 +379,8 @@ body::-webkit-scrollbar-track {
 				<!-- 댓글 페이징 -->
 				<div class="text-center page-item">
 					<c:if test="${commentPageMaker.prev}">
-						<a class="page-link" href="?page=${commentPageMaker.startPage - 1}">이전</a>
+						<%-- <a class="page-link" href="?page=${commentPageMaker.startPage - 1}">이전</a> --%>
+						<a class="page-link" href="?revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.startPage - 1}">Prev</a>
 					</c:if>
 					<c:forEach var="pageNum" begin="${commentPageMaker.startPage}"
 						end="${commentPageMaker.endPage}" step="1">
@@ -425,18 +394,62 @@ body::-webkit-scrollbar-track {
 						</c:choose>
 					</c:forEach>
 					<c:if test="${commentPageMaker.next}">
-						<a class="page-link" href="?revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.endPage + 1}">다음</a>
+						<a class="page-link" href="?revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.endPage + 1}">Next</a>
 					</c:if>
 				</div>
 
 				<br>
-
-				<div class="text-center">
-					<button onclick="location.href='/member/memberDeleteView'"
-						type="button" class="btn btn-secondary outmember">회원 탈퇴</button>
-				</div>
 			</div>
 		</div>
 	</div>
+  
+  <%-- <h2>전시 상세 한줄평 목록</h2>
+  <table id="reviewsTable">
+    Dummy data
+    <tr>
+      <td>1</td>
+      <td><a href="editReview.jsp?reviewId=1">한줄평 내용</a></td>
+      <td>
+        <button class="deleteReviewBtn" data-id="1">삭제</button>
+      </td>
+    </tr>
+  </table>
+  
+  <h2>커뮤니티 게시글 목록</h2>
+  <table id="postsTable">
+    Dummy data
+    <tr>
+      <td>1</td>
+      <td><a href="editPost.jsp?postId=1">게시글 제목</a></td>
+      <td>
+        <button class="deletePostBtn" data-id="1">삭제</button>
+      </td>
+    </tr>
+  </table>
+  
+  <h2>커뮤니티 댓글 목록</h2>
+  <table id="commentsTable">
+    Dummy data
+    <tr>
+      <td>1</td>
+      <td><a href="editComment.jsp?commentId=1">댓글 내용</a></td>
+      <td>
+        <button class="deleteCommentBtn" data-id="1">삭제</button>
+      </td>
+    </tr>
+  </table>
+
+  <h2>회원 목록</h2>
+  <table id="usersTable">
+    Dummy data
+    <tr>
+      <td>1</td>
+      <td><a href="editUser.jsp?userId=1">회원 이름</a></td>
+      <td>
+        <button class="deleteUserBtn" data-id="1">삭제</button>
+      </td>
+    </tr>
+  </table> --%>
+
 </body>
 </html>
