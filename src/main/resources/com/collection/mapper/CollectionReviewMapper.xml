@@ -45,7 +45,7 @@ select * from collectionRev where revSeq >0
 	<select id="getListWithPaging" resultType="com.collection.domain.CollectionReviewVO">
 
     select * 
-    from(select seq, revSeq, userId, nickName, revComment, revCount, revStar, reviewDate, updateDate from collectionRev)as reviewPaging
+    from(select seq, revSeq, userId, nickName, revComment, revCount, revStar, reviewDate from collectionRev)as reviewPaging
      where seq = #{seq}
     order by revSeq desc limit #{cri.pageNumForLimit},12
 

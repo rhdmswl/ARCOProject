@@ -73,15 +73,6 @@ body::-webkit-scrollbar-track {
 	margin-right: -15px;
 }
 
-a {
-	background-color: #fff;
-	color : #fff;
-}
-
-a:hover {
-	background-color: #fff;
-	color : #fff;
-}
 
 .section_padding_80 {
     margin-top: 20px;
@@ -611,19 +602,26 @@ p.v-data {
             					   var formId = "review" + list[i].revSeq
 
             					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
-            					   str +=" <div class='revBox'><div class='header'><div class='primary-font'>"+list[i].nickName+"</div>"; 
-            					   str+= " <small class='pull-right text-muted revDate'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";
-            			           str+= " <p id='review' style='height:45px; font-family: 'font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</p>";
-            			           str+= "<a href='#" + formId + "' value='"+ list[i].revSeq +"' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
+            					   if (list[i].nickName=="${member.userId}"){
+            					   str+= "         <small>"	;
+            					   str+= "<a href='#" + formId + "' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            					   str+= "|"	;
+            					   str+=" <a href='#' class='remove2' role='button' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
+            					   str+= "         </small>"	;
+            					   }
+            					   str+= "<small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";//header끝
+            			           str+= "<div id='review' style='height:45px; font-family: 'font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</div>";
                                    str+= "            <form class='collapse' id='" + formId + "'>";
                                    str+= "              <div class='form-group'>";
                                    str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
                                    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
             				       str+= "  			<div style='display:none'><input type='datetime-local' id='updateDate' name='updateDate' value=''/></div>";
             				       str+= "  			</div>";
-            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button></div>";
+            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button>";
             				       str+= "			</form>";
-            			           str += "<div><input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'><button type='button' class='remove btn-secondary2'>삭제</button></div></div></li>"; 
+            				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
+            			           str += "</div></li>"; 
             				   } 
             				   reviewUL.html(str);
             				   console.log("showList page : " +pageNum);
@@ -643,7 +641,7 @@ p.v-data {
                          CollectionReviewService.add(review, function(result){alert(result); showList(1);});
                      });
                      
-                     $(document).on("click",'.remove',function(){
+                     $(document).on("click",'.remove2',function(){
                     	 var revSeqValue = $(this).closest("li").data("revSeq");
                         CollectionReviewService.remove(revSeqValue, function(result){
                         	alert(result);
