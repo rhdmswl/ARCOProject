@@ -498,8 +498,8 @@ p.v-data {
 										</div>
 										<c:if test="${member.userId!=null}">
 										<div class="form-group revTextBox">
-											<label>작성자</label> <input class="form-control revContentInput" type="text"
-												id='InputnickName' name='nickName'  readonly="readonly" placeholder="${member.userName}">
+											<label>작성자</label> <textarea class="form-control revContentInput"
+												id='InputnickName' name='nickName'  readonly="readonly" style="resize: none;">${member.userName}</textarea>
 										</div>
 										<div class="form-group revTextBox">
 											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
@@ -512,11 +512,11 @@ p.v-data {
 										<c:if test="${member.userId==null}">
 										<div class="form-group revTextBox">
 											<label>작성자</label> <input class="form-control revContentInput" type="text"
-												id='InputnickName' name='nickName'  readonly="readonly" placeholder="로그인 후 입력해주세요!">
+												readonly="readonly" placeholder="로그인 후 입력해주세요!">
 										</div>
 										<div class="form-group revTextBox">
 											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
-												id='comment' name='revComment' readonly="readonly" placeholder="로그인 후 입력해주세요!">
+												readonly="readonly" placeholder="로그인 후 입력해주세요!">
 										</div>
 										</c:if>
 									</form>
