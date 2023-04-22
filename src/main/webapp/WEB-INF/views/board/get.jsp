@@ -544,11 +544,11 @@ button {
 
 
 						<div class="frame">
-							<c:if test="${member.userId==board.post_writer}">
+							<c:if test="${member.userName==board.post_writer}">
 								<button class="btn btn-secondary" data-oper='modify'>수정</button>
 							</c:if>
 							<button class="btn btn-secondary" data-oper='list'>목록</button>
-							<c:if test="${member.userId==board.post_writer}">
+							<c:if test="${member.userName==board.post_writer}">
 								<button class="btn btn-secondary" data-oper='remove'>삭제</button>
 							</c:if>
 							<form id='operForm_modi' action="/board/modify" method="get">
@@ -591,7 +591,7 @@ button {
 							<form role="form">
 								<div class="form-group">
 									<textarea id="com_writer" name="com_writer" readonly="readonly"
-										class="form-control" rows="1" style="resize: none; color:black;">${member.userId}</textarea>
+										class="form-control" rows="1" style="resize: none; color:black;">${member.userName}</textarea>
 									<textarea id="com_content" name="com_content"
 										class="form-control" rows="3" style="resize: none; color:black; border:1px solid #ccc;"></textarea>
 								</div>
@@ -734,7 +734,7 @@ button {
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
 					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
-					if (list[i].com_writer=="${member.userId}"){
+					if (list[i].com_writer=="${member.userName}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
 					str+= "         </small>"	;
