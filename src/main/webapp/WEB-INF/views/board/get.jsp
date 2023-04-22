@@ -498,6 +498,23 @@ button {
 	position: relative;
 }
 
+.likeBox {
+	text-align: center;
+	line-height: 10px;
+}
+
+.likeBtnText {
+	margin-right: 8px;
+	display: inline-block;
+}
+
+.recBtnCount {
+	border-left: 2px solid white;
+	height: 13px;
+	padding-left: 9px;
+	display: inline-block;
+}
+
 
 @-webkit-keyframes shiny-btn1 {
     0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
@@ -538,7 +555,12 @@ button {
 						</div>
 
 						<div class="frame" style="background-color:none;">
-							<button id='like' data-oper='like' class="btn btn-primary">추천    |    ${board.post_rec_count}</button>
+							<button id='like' data-oper='like' class="btn btn-primary likeBtn">
+								<div class="likeBox">
+									<div class="likeBtnText">추천</div>
+									<div class="recBtnCount">${board.post_rec_count}</div>
+								</div>
+							</button>
 								<!-- <button id='like' style="border:none; background-color:none;" data-oper='like' 
 										class="custom-btn btn-11"><img id="heartImg" src="https://i.imgur.com/6io8NDW.png"></button> -->
 						</div>
