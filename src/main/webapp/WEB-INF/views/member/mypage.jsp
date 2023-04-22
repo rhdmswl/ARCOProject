@@ -272,8 +272,8 @@ body::-webkit-scrollbar-track {
 									</tr>
 									<c:forEach var="rev" items="${collectionRev}">
 										<tr>
-											<td><a href="/collection/get?rev_id=${rev.revId}">${rev.revComment}</a></td>
-											<td>${rev.replyDate}</td>
+											<td><a href="/collection/get?seq=${rev.collectionSeq}">${rev.revComment}</a></td>
+											<td>${rev.reviewDate}</td>
 										</tr>
 									</c:forEach>
 								</table>
