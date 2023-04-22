@@ -149,14 +149,16 @@ body::-webkit-scrollbar-track {
 		<c:forEach items="${list}" var="collection">
 			<div class="welcome-single-slide">
 				<!-- Post Thumb -->
-				<img src="<c:out value="${collection.imgUrl}"/>" width="200"
-					height="500" alt="">
+				<a href="/collection/get?seq=<c:out value="${collection.seq}"/>">
+					<img src="<c:out value="${collection.imgUrl}"/>" width="200"
+						height="500" alt="">
+				</a>
 				<!-- Overlay Text -->
 				<div class="project_title">
-					<div class="post-date-commnents d-flex">
+					<%-- <div class="post-date-commnents d-flex">
 						<a href="#"> ~ <c:out value="${collection.endDate}" /></a>
-					</div>
-					<a href="#"
+					</div> --%>
+					<a href="/collection/get?seq=<c:out value="${collection.seq}"/>"
 						style="color: white; font-weight: 700; font-size: 22px;"> <c:out
 							value="${collection.title}" />
 					</a>
@@ -205,12 +207,14 @@ body::-webkit-scrollbar-track {
 											<div class="post-author-date-area d-flex">
 												<div class="postimage">
 													<div class="postImgGroup">
-														<img class="postimgurl"
-															src="<c:out value="${collection.imgUrl}"/>" width="400"
-															height="400" alt="">
+														<a href="/collection/get?seq=<c:out value="${collection.seq}"/>">
+															<img class="postimgurl"
+																src="<c:out value="${collection.imgUrl}"/>" width="400"
+																height="400" alt="">
+														</a>
 													</div>
 													<div class="post-title">
-														<a href="#" style="color: black; font-weight: 700;"><c:out
+														<a href="/collection/get?seq=<c:out value="${collection.seq}"/>" style="color: black; font-weight: 700;"><c:out
 																value="${collection.title}" /></a>
 													</div>
 													<!-- Post Comment & Share Area -->

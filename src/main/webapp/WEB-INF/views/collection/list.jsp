@@ -275,8 +275,9 @@ a:hover {
 											</div> --%>
 										</div>
 										<div class="product__item__text">
-											<a style="color: black; font-weight: 700;" href="#"><c:out
-													value="${collection.title}" /></a>
+											<a style="color: black; font-weight: 700;" 
+											href="/collection/get?seq=<c:out value="${collection.seq}"/>">
+											<c:out value="${collection.title}" /></a>
 										</div>
 									</div>
 								</div>
