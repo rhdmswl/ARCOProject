@@ -76,7 +76,6 @@ public class BoardController {
 
 		service.updateViewCount(post_id);
 		model.addAttribute("board", service.get(post_id));
-		service.getComCnt(post_id);
 		log.info("post_id: " + post_id);	
 		
 	}

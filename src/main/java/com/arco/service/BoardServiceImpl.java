@@ -69,11 +69,11 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.updateViewCount(post_id);
 	}
 	
-	@Override
-	public void getComCnt(Long post_id) {
-		log.info("get comment count");
-		mapper.getComCnt(post_id);
-	}
+//	@Override
+//	public void getComCnt(Long post_id) {
+//		log.info("get comment count");
+//		mapper.getComCnt(post_id);
+//	}
 	
 	@Override
 	public int findLike(LikeVO like) {//추천 여부 확인
