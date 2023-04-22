@@ -78,6 +78,7 @@ public class BoardController {
 		model.addAttribute("board", service.get(post_id));
 		service.getComCnt(post_id);
 		log.info("post_id: " + post_id);	
+		
 	}
 	
 	@ResponseBody

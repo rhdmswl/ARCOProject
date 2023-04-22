@@ -5,6 +5,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 
@@ -425,6 +426,8 @@ body::-webkit-scrollbar-track {
 															<c:out value="${board.post_view_count}" /></div>
 														<div class="commentCountGroup"><img class="countImg" src= "https://i.imgur.com/SPrFzms.png">
 															<c:out value="${board.post_com_count}" /></div> 
+														<div class="like 이미지 넣어주세요"><img class="countImg" src= "https://i.imgur.com/SPrFzms.png">
+															<c:out value="${board.post_rec_count}" /></div> 
 													</small>
 													</div>
 												</div>
@@ -508,7 +511,9 @@ body::-webkit-scrollbar-track {
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-	 	$(document).ready(
+	
+	$(document).ready(
+			
 				function() {
 					var result = '<c:out value="${result}"/>';
 
