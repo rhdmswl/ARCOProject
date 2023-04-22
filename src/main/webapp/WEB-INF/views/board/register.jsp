@@ -211,7 +211,7 @@ body::-webkit-scrollbar-track {
 											<th style="border-right: hidden;" width='40'>
 											<select class="chk" name='brd_id' id="category">
 													<option value="1">TALK</option>
-													<option value="2">MATE</option>
+													<option value="2">INFO</option>
 													<option value="3">WEEKLY</option>
 											</select></th>
 											<th><input class="form-control" name='post_title'
@@ -222,7 +222,7 @@ body::-webkit-scrollbar-track {
 											
 											<th><div class="writername">작성자</div></th>
 											<th><input class="form-control" name='post_writer'
-												value="${member.userId}" readonly="readonly"></th>
+												value="${member.userName}" readonly="readonly"></th>
 										</tr>
 
 										<tr>
