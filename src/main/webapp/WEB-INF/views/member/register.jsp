@@ -419,13 +419,7 @@ option {
 
 							</div>
 							<br>
-							<div class="form-group has-feedback">
-								<label class="control-label" for="userPass">비밀번호</label><br>
-								<input class="form-control" type="password" id="userPass"
-									name="userPass" />
-
-							</div>
-							<br>
+						
 							<div class="form-group has-feedback">
 								<label class="control-label" for="passCheck">비밀번호 확인</label><br>
 								<input class="form-control" type="password" id="passCheck"
