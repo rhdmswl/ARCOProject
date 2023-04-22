@@ -15,6 +15,5 @@ public class CollectionReviewVO {
 	private int revCount;
 	private int revStar;
 	private Date reviewDate;
-	private Date updateDate;
 	
 }

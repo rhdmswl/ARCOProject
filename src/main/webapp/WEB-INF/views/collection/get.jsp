@@ -638,9 +638,9 @@ p.v-data {
                                    str+= "              <div class='form-group'>";
                                    str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
                                    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
-            				       str+= "  			<div style='display:none'><input type='datetime-local' id='updateDate' name='updateDate' value=''/></div>";
+                                   str+= "  			</div>";
+            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button></div>";
             				       str+= "  			</div>";
-            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button>";
             				       str+= "			</form>";
             				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
             			           str += "</div></li>"; 
