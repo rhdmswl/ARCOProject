@@ -45,13 +45,13 @@
 
 		 <choose>
 			<when test='sort == "end"'>
-				 order by endDate asc;
+				 order by endDate asc
 			</when>
 			<when test='sort == "viewCount"'>
-				 order by revViewCount desc;
+				 order by revViewCount desc
 			</when>
 			<!-- <when test='sort == "star"'>
-				 revStar order by desc;
+				 revStar order by desc
 			</when> -->
 		</choose> 
 

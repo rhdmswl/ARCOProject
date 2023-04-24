@@ -253,7 +253,7 @@ a:hover {
 												<option value="reviewCount" <c:out value="${pageMaker.cri.sort eq 'reviewCount' ? 'selected' : ''}"/>>조회순</option>
 												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
 											</select>
-											<input type='hidden' name="keyword" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'>
+											<%-- <input type='hidden' name="sort" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'> --%>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
 
