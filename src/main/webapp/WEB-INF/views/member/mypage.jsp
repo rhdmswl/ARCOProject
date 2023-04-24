@@ -41,7 +41,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     height: 30%; /* 스크롤바의 길이 */
-    background: #f21378; /* 스크롤바의 색상 */ 
+    background: black; /* 스크롤바의 색상 */ 
     border-radius: 10px;
 }
 
@@ -232,6 +232,8 @@ body::-webkit-scrollbar-track {
 			
 			});
 		})
+		
+		
 	</script>
 <body>
 <div class="container">
@@ -306,7 +308,7 @@ body::-webkit-scrollbar-track {
 									</tr>
 									<c:forEach var="rev" items="${collectionRev}">
 										<tr>
-											<td><a href="/collection/get?seq=${rev.collectionSeq}">${rev.revComment}</a></td>
+											<td><a href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
 											<td>${rev.reviewDate}</td>
 										</tr>
 									</c:forEach>

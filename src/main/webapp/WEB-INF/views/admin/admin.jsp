@@ -25,6 +25,7 @@
 	<link rel="icon" href="/img/core-img/favicon.ico">
 	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 	
 <style type="text/css">
 
@@ -272,7 +273,7 @@ body::-webkit-scrollbar-track {
 									</tr>
 									<c:forEach var="rev" items="${collectionRev}">
 										<tr>
-											<td><a href="/collection/get?seq=${rev.collectionSeq}">${rev.revComment}</a></td>
+											<td><a href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
 											<td>${rev.reviewDate}</td>
 										</tr>
 									</c:forEach>
@@ -309,7 +310,7 @@ body::-webkit-scrollbar-track {
 				<div class="d-flex justify-content-center">
 					<div class="card" style="width: 100%; text-align: left;">
 						<div class="card-header card-header-primary">
-							<div class="card-title">나의 게시글</div>
+							<div class="card-title">모든 게시글</div>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -356,7 +357,7 @@ body::-webkit-scrollbar-track {
 				<div class="d-flex justify-content-center">
 					<div class="card" style="width: 120%; text-align: left;">
 						<div class="card-header card-header-primary">
-							<div class="card-title">나의 댓글</div>
+							<div class="card-title">모든 댓글</div>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
