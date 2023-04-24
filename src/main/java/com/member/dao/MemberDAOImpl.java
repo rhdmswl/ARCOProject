@@ -74,6 +74,12 @@ public class MemberDAOImpl implements MemberDAO {
 		int result = sql.selectOne("memberMapper.idChk", vo);
 		return result;
 	}
+	
+	@Override
+	public int nameChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne("memberMapper.nameChk", vo);
+		return result;
+	}
 
 //	@Override
 //  public String getProfileImg(String userId) throws Exception {
@@ -113,43 +119,93 @@ public class MemberDAOImpl implements MemberDAO {
 	
     // 페이징이 적용된 메소드
     @Override
-    public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userName, Criteria cri) throws Exception {
+    public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("userName", userName);
+        paramMap.put("userId", userId);
         paramMap.put("start", cri.getStart());
         return sql.selectList("memberMapper.getMemberCollectionRevsWithPaging", paramMap);
         
     }
 
     @Override
-    public List<BoardVO> getMemberPostsWithPaging(String userName, Criteria cri) throws Exception {
+    public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("userName", userName);
+        paramMap.put("userId", userId);
         paramMap.put("start", cri.getStart());
         return sql.selectList("memberMapper.getMemberPostsWithPaging", paramMap);
     }
 
     @Override
-    public List<ReplyVO> getMemberCommentsWithPaging(String userName, Criteria cri) throws Exception {
+    public List<ReplyVO> getMemberCommentsWithPaging(String userId, Criteria cri) throws Exception {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("userName", userName);
+        paramMap.put("userId", userId);
         paramMap.put("start", cri.getStart());
         return sql.selectList("memberMapper.getMemberCommentsWithPaging", paramMap);
     }
     
     @Override
-    public int countCollectionRevs(String userName) throws Exception {
-        return sql.selectOne("memberMapper.countCollectionRevs", userName);
+    public int countCollectionRevs(String userId) throws Exception {
+        return sql.selectOne("memberMapper.countCollectionRevs", userId);
     }
 
     @Override
-    public int countPosts(String userName) throws Exception {
-        return sql.selectOne("memberMapper.countPosts", userName);
+    public int countPosts(String userId) throws Exception {
+        return sql.selectOne("memberMapper.countPosts", userId);
     }
 
     @Override
-    public int countComments(String userName) throws Exception {
-        return sql.selectOne("memberMapper.countComments", userName);
+    public int countComments(String userId) throws Exception {
+        return sql.selectOne("memberMapper.countComments", userId);
+    }
+    
+    // admin
+    @Override
+    public List<MemberVO> listAllMembers(Criteria criteria) {
+    	Map<String, Object> paramMap = new HashMap<>();
+    	paramMap.put("start", criteria.getStart());
+      return sql.selectList("memberMapper.listAllMembers", paramMap);
+    }
+
+    @Override
+    public List<CollectionReviewVO> listAllReviews(Criteria criteria) {
+    	Map<String, Object> paramMap = new HashMap<>();
+    	paramMap.put("start", criteria.getStart());
+      return sql.selectList("memberMapper.listAllReviews", paramMap);
+    }
+
+    @Override
+    public List<BoardVO> listAllPosts(Criteria criteria) {
+    	Map<String, Object> paramMap = new HashMap<>();
+    	paramMap.put("start", criteria.getStart());
+      return sql.selectList("memberMapper.listAllPosts", paramMap);
+    }
+
+    @Override
+    public List<ReplyVO> listAllComments(Criteria criteria) {
+    	Map<String, Object> paramMap = new HashMap<>();
+    	paramMap.put("start", criteria.getStart());
+      return sql.selectList("memberMapper.listAllComments", paramMap);
+    }
+    
+    // admin PageMaker
+    @Override
+    public int countAllMembers() throws Exception {
+        return sql.selectOne("memberMapper.countAllMembers");
+    }
+    
+    @Override
+    public int countAllCollectionRevs() throws Exception {
+        return sql.selectOne("memberMapper.countAllCollectionRevs");
+    }
+
+    @Override
+    public int countAllPosts() throws Exception {
+        return sql.selectOne("memberMapper.countAllPosts");
+    }
+
+    @Override
+    public int countAllComments() throws Exception {
+        return sql.selectOne("memberMapper.countAllComments");
     }
 
 }

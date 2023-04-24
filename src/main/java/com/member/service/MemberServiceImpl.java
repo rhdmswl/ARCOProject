@@ -68,6 +68,12 @@ public class MemberServiceImpl implements MemberService {
 		int result = dao.idChk(vo);
 		return result;
 	}
+	
+	@Override
+	public int nameChk(MemberVO vo) throws Exception {
+		int result = dao.nameChk(vo);
+		return result;
+	}
 
 //    @Override
 //    public String getProfileImg(String userId) throws Exception {
@@ -106,34 +112,75 @@ public class MemberServiceImpl implements MemberService {
 
 	// 페이징 적용
 	@Override
-	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userName, Criteria cri) throws Exception {
-		return dao.getMemberCollectionRevsWithPaging(userName, cri);
+	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception {
+		return dao.getMemberCollectionRevsWithPaging(userId, cri);
 	}
 
 	@Override
-	public List<BoardVO> getMemberPostsWithPaging(String userName, Criteria cri) throws Exception {
-		return dao.getMemberPostsWithPaging(userName, cri);
+	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception {
+		return dao.getMemberPostsWithPaging(userId, cri);
 	}
 
 	@Override
-	public List<ReplyVO> getMemberCommentsWithPaging(String userName, Criteria cri) throws Exception {
-		return dao.getMemberCommentsWithPaging(userName, cri);
+	public List<ReplyVO> getMemberCommentsWithPaging(String userId, Criteria cri) throws Exception {
+		return dao.getMemberCommentsWithPaging(userId, cri);
 	}
 
 	// PageMaker
 	@Override
-	public int countCollectionRevs(String userName) throws Exception {
-		return dao.countCollectionRevs(userName);
+	public int countCollectionRevs(String userId) throws Exception {
+		return dao.countCollectionRevs(userId);
 	}
 
 	@Override
-	public int countPosts(String userName) throws Exception {
-		return dao.countPosts(userName);
+	public int countPosts(String userId) throws Exception {
+		return dao.countPosts(userId);
 	}
 
 	@Override
-	public int countComments(String userName) throws Exception {
-		return dao.countComments(userName);
+	public int countComments(String userId) throws Exception {
+		return dao.countComments(userId);
+	}
+	
+	// admin
+	  @Override
+	  public List<MemberVO> listAllMembers(Criteria criteria) {
+	    return dao.listAllMembers(criteria);
+	  }
+
+	  @Override
+	  public List<CollectionReviewVO> listAllReviews(Criteria criteria) {
+	    return dao.listAllReviews(criteria);
+	  }
+
+	  @Override
+	  public List<BoardVO> listAllPosts(Criteria criteria) {
+	    return dao.listAllPosts(criteria);
+	  }
+
+	  @Override
+	  public List<ReplyVO> listAllComments(Criteria criteria) {
+	    return dao.listAllComments(criteria);
+	  }
+
+    @Override
+	public int countAllMembers() throws Exception {
+		return dao.countAllMembers();
+	}
+	  
+	@Override
+	public int countAllCollectionRevs() throws Exception {
+		return dao.countAllCollectionRevs();
+	}
+
+	@Override
+	public int countAllPosts() throws Exception {
+		return dao.countAllPosts();
+	}
+
+	@Override
+	public int countAllComments() throws Exception {
+		return dao.countAllComments();
 	}
 
 }
