@@ -52,6 +52,11 @@ public class CollectionServiceImpl implements CollectionService {
 		return mapper.revViewCount(seq);
 	}
 
+	/*
+	 * @Override public List<CollectionVO> getListSort(Criteria cri) {
+	 * log.info(cri); return mapper.getListWithPagingSort(cri); }
+	 */
+
 
 	
 

@@ -31,28 +31,41 @@
 	<sql id="criteria">
 		<choose>
 			<when test="type == 'T'.toString()">
-				where
-				title like concat('%', #{keyword}, '%')
+				where title like concat('%', #{keyword}, '%') 
 			</when>
 			<when test="type == 'D'.toString()">
-				where
-				and startDate like concat('%', #{keyword}, '%')
+				where startDate like concat('%', #{keyword}, '%') 
 			</when>
 		</choose>
 	</sql>
 	
-	<sql id="criteriaClass">
-		<choose>
-			<when test="type == 'T'.toString()">
-				where
-				title like concat('%', #{keyword}, '%')
+	
+	
+	<sql id="sort">
+
+		 <choose>
+			<when test='sort == "end"'>
+				 order by endDate asc;
 			</when>
-			<when test="type == 'D'.toString()">
-				where
-				and startDate like concat('%', #{keyword}, '%')
+			<when test='sort == "viewCount"'>
+				 order by revViewCount desc;
 			</when>
-		</choose>
+			<!-- <when test='sort == "star"'>
+				 revStar order by desc;
+			</when> -->
+		</choose> 
+
 	</sql>
+	
+	
+	<!-- <select id="getListWithPagingSort" resultType="com.collection.domain.CollectionVO">
+
+    select * 
+    from(select seq, title, startDate, endDate, imgUrl, revViewCount from collection
+    <include refid="sort"></include>
+    )as collectionPaging limit #{pageNumForLimit},12
+
+	</select> -->
 	
 	
 	
@@ -61,16 +74,16 @@
     select * 
     from(select seq, title, startDate, endDate, imgUrl, revViewCount from collection
     <include refid="criteria"></include>
+    <include refid="sort"></include> 
     )as collectionPaging
+    where endDate >= now()     
     order by endDate desc limit #{pageNumForLimit},12
 
 	</select>
-
  
 	<select id="getTotalCount" resultType="int">
 		select count(*) from collection
-		<!-- <include refid="criteria"></include> -->
-
+		<include refid="criteria"></include>
 	</select>
 	
 	<update id="revViewCount">

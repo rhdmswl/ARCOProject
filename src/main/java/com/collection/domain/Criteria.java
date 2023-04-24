@@ -1,5 +1,7 @@
 package com.collection.domain;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,6 +21,11 @@ public class Criteria {
 	private String type;
 	private String keyword;
 	
+	private String sort;
+	private String end;
+	private String viewCount;
+	private int star;
+	
 	public Criteria() {
 		this(1, 12);
 	}
@@ -35,6 +42,11 @@ public class Criteria {
 	public String[] getTypeArr() {
 		
 		return type == null ? new String[] {} : type.split("");
+	}
+	
+	public String[] getSortArr() {
+		
+		return sort == null ? new String[] {} : sort.split("");
 	}
 	
 }

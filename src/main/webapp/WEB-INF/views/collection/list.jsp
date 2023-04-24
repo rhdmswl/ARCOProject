@@ -244,20 +244,21 @@ a:hover {
 								</div>
 								<div class="col-lg-4 col-md-4 col-sm-6">
 									<div class="product__page__filter">
-										<p>Order by:</p>
-										<select style="display: none;">
-											<option value="">A-Z</option>
-											<option value="">1-10</option>
-											<option value="">10-50</option>
-										</select>
-										<div class="nice-select" tabindex="0">
-											<span class="current">A-Z</span>
-											<ul class="list">
-												<li data-value="" class="option selected">A-Z</li>
-												<li data-value="" class="option">1-10</li>
-												<li data-value="" class="option">10-50</li>
-											</ul>
-										</div>
+										
+										
+										<form id="sortForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
+											
+											<select id="sortSelect" class="form-control" name='sort' style="width:70px;">
+												<option value="end" <c:out value="${pageMaker.cri.sort eq 'end' ? 'selected' : ''}"/> selected>종료일순</option>
+												<option value="reviewCount" <c:out value="${pageMaker.cri.sort eq 'reviewCount' ? 'selected' : ''}"/>>조회순</option>
+												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
+											</select>
+											<input type='hidden' name="keyword" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'>
+											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
+											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
+
+										</form>							 
+										
 									</div>
 								</div>
 							</div>
@@ -354,7 +355,7 @@ a:hover {
  		<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
 		<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
 	</form>
-
+	
 	<!-- Jquery-2.2.4 js -->
 
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
@@ -374,7 +375,6 @@ a:hover {
 	$(document).ready(
 			function() {
 				
-				
 				var searchForm = $("#searchForm");
 				
 				$("#searchForm searchButton").on("click", function(e){
@@ -383,7 +383,7 @@ a:hover {
 					let val = $("input[name='keyword']").val();
 					searchForm.find("input[name='keyword']").val(val);
 					searchForm.submit();
-				});
+				});  
 				
 				var actionForm = $("#actionForm");
 				
@@ -393,7 +393,16 @@ a:hover {
 							actionForm.find("input[name='pageNum']").val($(this).attr("href"));
 							actionForm.submit();
 						
-				});			
+				});
+				
+				var sortForm = $("#sortForm");
+				
+				$("#sortForm").on("click", function(e){
+					
+					e.preventDefault();
+					sortForm.find("#sortSelect option:selected").val();
+					sortForm.submit();
+				});  
 				
 			});
 	
