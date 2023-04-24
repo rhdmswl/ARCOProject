@@ -817,6 +817,7 @@ button {
 						post_id:post_idValue
 				};
 				replyService.add(reply, function(result){alert(result); showList(endNum);} );
+				document.getElementById("com_content").value='';
 			});
 			$(document).on('click','.comment-edit-btn',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
