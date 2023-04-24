@@ -779,7 +779,7 @@ button {
 			        str+= "  			<input type='hidden' id='com_id' name='com_id' value=''/>";
 			        str+= "    				<textarea style='resize: none; border:1px solid #ccc' class='form-control' id ='com_up_content' rows='3'></textarea>";
 			        str+= "  			</div>";
-			        str+= "  			<div class='comBox'><div class='commentBtnGroup'><button id='Comment-delete' type='button' class='btn btn-secondary comment-delete-btn'>삭제</button>";
+			        str+= "  			<div class='comBox'><div class='commentBtnGroup'>";
 			        str+= "  			<button id='Comment_update' type='button' class='btn btn-primary' >수정 완료</button></div></div>";
 			        str+= "			</form>";
                     str+=		"</div></li>";
@@ -817,6 +817,7 @@ button {
 						post_id:post_idValue
 				};
 				replyService.add(reply, function(result){alert(result); showList(endNum);} );
+				document.getElementById("com_content").value='';
 			});
 			$(document).on('click','.comment-edit-btn',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
