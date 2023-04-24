@@ -260,8 +260,11 @@ li {
 	height: 40px;
 	position: relative;
 	z-index: 3;
-	left: 500px;
+	left: 700px;
 	bottom: 10px;
+}
+.top_header_area .signup-search-area .logRegGroup{
+	left:100px;
 }
 
 .top_header_area .signup-search-area a {
@@ -273,7 +276,6 @@ li {
 
 .top_header_area .signup-search-area .login {
 	margin-right: 10px;
-	border-right: 2px solid #c2c2c2;
 	padding-right: 15px;
 	padding-bottom: 5px;
 	padding-top: 5px;
@@ -285,11 +287,10 @@ li {
 }
 
 .top_header_area .signup-search-area .mypage {
-	position: absolute;
+position: absolute;
 	top: 7px;
-	right: 50px;
+	right: 85px;
 	margin-right: 6px;
-	border-right: 2px solid #c2c2c2;
 	padding-right: 12px;
 	padding-bottom: 3px;
 	padding-top: 3px;
@@ -297,8 +298,18 @@ li {
 
 .top_header_area .signup-search-area .logout {
 	position: absolute;
+	top: 7px;
+	right: 85px;
+	margin-right: -65px;
+	padding-right: 12px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+	
+}
+.top_header_area .signup-search-area .admin {
+	position: absolute;
 	top: 10px;
-	right: 0px;
+	right: -55px;
 	color: #222;
 	border-right: 0;
 }
@@ -339,7 +350,7 @@ li {
 	font-size: 15px;
 	position: relative;
 	top: 0px;
-	right: 140px;
+	right: 180px;
 	color: black;
 }
 
@@ -363,9 +374,11 @@ li {
 									<a class="register" href="/member/register">Sign Up</a>									
 								</c:if>
 								<c:if test="${member != null}">
-									<c:if test="${member.role == 'ROLE_ADMIN'}">
-										<li><a href="/admin/index">관리자 화면</a>
+								<c:if test="${member.role == 'ROLE_ADMIN'}">
+								<a class="admin" href="/admin/admin">관리자 화면</a>	
+										
 									</c:if>
+									
 										<div class="welcomeMessage">${member.userName}님 환영합니다 &#128075;</div>
 									<a class="mypage" href="/member/mypage">My Page</a>									
 									<a class="logout" href="/member/logout">Logout</a>								
