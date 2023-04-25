@@ -408,6 +408,12 @@ p.v-data {
 										<div class="post-headline">
 											<c:out value="${collection.title}" />
 										</div>
+										<div class = "info">
+                                            <span class="starAvg"> 
+                                          <span class="starR on" style="font-size: 1.2em;">⭐</span> 
+                                          <span class="star-score"><b>${collection.starAvg} 점</b></span>
+                                        </span>
+                                            </div>
 										<div class="exhiInfoGroup">
 											<div class="info">
 												<div class="infoText">&#128198; 전시 기간</div>

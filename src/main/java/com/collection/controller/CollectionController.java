@@ -39,6 +39,8 @@ public class CollectionController {
 		log.info("/get");
 		model.addAttribute("collection", service.get(seq));
 		service.revViewCount(seq);
+		service.reviewCount(seq);
+		service.starAvg(seq);
 	}
 	
 	@GetMapping("/list")

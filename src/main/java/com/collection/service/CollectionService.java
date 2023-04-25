@@ -15,6 +15,8 @@ public interface CollectionService {
 	public CollectionVO get(long seq);
 	public int getTotal(Criteria cri);
 	public int revViewCount(long seq);
+	public void reviewCount(long seq);
+	public void starAvg(long seq);
 
 	
 	

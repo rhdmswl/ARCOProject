@@ -251,7 +251,7 @@ a:hover {
 											<select id="sortSelect" class="form-control" name='sort' style="width:70px;">
 												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
 												<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
-												<option value="revStar" <c:out value="${pageMaker.cri.sort eq 'revStar' ? 'selected' : ''}"/>>별점순</option>
+												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
 											</select>
 											<%-- <input type='hidden' name="sort" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'> --%>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">

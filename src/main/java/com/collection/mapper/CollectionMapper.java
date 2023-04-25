@@ -18,6 +18,9 @@ public interface CollectionMapper {
 	public int getTotalCount(Criteria cri);
 	public List<CollectionVO> getListWithPaging(Criteria cri);
 //	public List<CollectionVO> getListWithPagingSort(Criteria cri);
-	public int revViewCount(long Seq);
+	public int revViewCount(long seq);
+	public void reviewCount(long seq);
+	public void starAvg(long seq);
+	
 	
 }
