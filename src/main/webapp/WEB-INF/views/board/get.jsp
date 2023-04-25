@@ -782,7 +782,7 @@ button {
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
-					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
+					str+= "    <div><div class='header'><div class='primary-font'>"+list[i].com_writer+"</div>";
 					if (list[i].com_writer_id=="${member.userId}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
