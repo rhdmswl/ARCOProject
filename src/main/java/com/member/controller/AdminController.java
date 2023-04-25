@@ -14,15 +14,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.member.service.MemberService;
-import com.member.vo.BoardVO;
+import com.member.service.AdminService;
 import com.member.vo.CollectionReviewVO;
 import com.member.vo.Criteria;
 import com.member.vo.MemberVO;
 import com.member.vo.PageMaker;
-import com.member.vo.ReplyVO;
 
 @Controller
 @RequestMapping("/admin/*")
@@ -31,7 +29,9 @@ public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
 	@Inject
-	MemberService service;
+	AdminService service;
+	
+
 	
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
@@ -103,5 +103,24 @@ public class AdminController {
 //	    model.addAttribute("pageMaker", pageMaker);
 
 	  }
+
+
+		// 회원 삭제 post
+	@RequestMapping(value = "/admin", method = RequestMethod.POST)
+	public @ResponseBody String deleteUser(@RequestParam("userId") String userId, HttpSession session) throws Exception {
+	    // 해당 유저 삭제하기
+	    service.deleteUser(userId);
+
+	    // 업데이트된 회원 리스트 가져오기
+	    Criteria criteria = new Criteria();
+	    List<MemberVO> userList = service.listAllMembers(criteria);
+
+	    // 세션에 업데이트된 회원 리스트 저장하기
+	    session.setAttribute("userList", userList);
+
+	    return "success";
+	}
+
+
 
 }
