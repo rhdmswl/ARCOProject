@@ -35,7 +35,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     height: 5%; /* 스크롤바의 길이 */
-    background: #f21378; /* 스크롤바의 색상 */ 
+    background: black; /* 스크롤바의 색상 */ 
     border-radius: 10px;
 }
 
@@ -210,9 +210,9 @@ body::-webkit-scrollbar-track {
 										<tr>
 											<th style="border-right: hidden;" width='40'>
 											<select class="chk" name='brd_id' id="category">
-													<option value="1">TALK</option>
-													<option value="2">MATE</option>
-													<option value="3">WEEKLY</option>
+													<option value="1">정보</option>
+													<option value="3">전시</option>
+													<option value="2">자유</option>
 											</select></th>
 											<th><input class="form-control" name='post_title'
 												value="제목을 입력해주세요" onfocus="this.value=''"></th>
@@ -222,7 +222,9 @@ body::-webkit-scrollbar-track {
 											
 											<th><div class="writername">작성자</div></th>
 											<th><input class="form-control" name='post_writer'
-												value="${member.userId}" readonly="readonly"></th>
+												value="${member.userName}" readonly="readonly"></th>
+												<th><input class="form-control" name='user_id' type='hidden'
+												value="${member.userId}"></th>
 										</tr>
 
 										<tr>

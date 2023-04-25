@@ -2,6 +2,7 @@ package com.collection.mapper;
 
 import java.util.List;
 
+import com.arco.domain.BoardVO;
 import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
 
@@ -23,4 +24,5 @@ public interface CollectionMapper {
 	public void starAvg(long seq);
 	
 	
+	public List<BoardVO> getIndexList();
 }

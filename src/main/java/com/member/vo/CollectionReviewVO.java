@@ -1,5 +1,7 @@
 package com.member.vo;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -12,5 +14,9 @@ public class CollectionReviewVO {
 	private String revComment;
 	private int revCount;
 	private int revStar;
+	private Date reviewDate;
+	private Date updateDate;
+	
+	private long collectionSeq;
 	
 }

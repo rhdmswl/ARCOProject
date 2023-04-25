@@ -6,10 +6,10 @@
 <mapper namespace="com.arco.mapper.ReplyMapper">
 
 	<insert id="insert">
-		insert into comment (com_id, post_id, com_content, com_writer)
+		insert into comment (com_id, post_id, com_content, com_writer,com_writer_id)
 		values (
 		(select nextval('com_id') from dual), #{post_id}, #{com_content},
-		#{com_writer})
+		#{com_writer},#{com_writer_id})
 	</insert>
 
 	<select id="read" resultType="com.arco.domain.ReplyVO">

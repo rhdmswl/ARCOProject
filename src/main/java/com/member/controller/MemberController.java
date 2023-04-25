@@ -2,6 +2,7 @@ package com.member.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
@@ -24,7 +25,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.member.service.MailSendService;
 import com.member.service.MemberService;
+import com.member.vo.CollectionReviewVO;
 import com.member.vo.Criteria;
 import com.member.vo.ImageVO;
 import com.member.vo.MemberVO;
@@ -39,11 +42,12 @@ public class MemberController {
 	@Inject
 	MemberService service;
 
+	
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
 
 	@Autowired
-	private DataSource dataSource;
+	MailSendService mailService;
 
 	// 회원가입 get
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -56,6 +60,7 @@ public class MemberController {
 	public String postRegister(MemberVO vo) throws Exception {
 		logger.info("post register");
 		int result = service.idChk(vo);
+		
 
 		if (result == 1) {
 			return "/member/register";
@@ -109,12 +114,6 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-//	// 회원정보 수정 get
-//	@RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
-//	public String registerUpdateView() throws Exception {
-//		return "member/memberUpdateView";
-//	}
-
 	// 회원 탈퇴 get
 	@RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
 	public String memberDeleteView() throws Exception {
@@ -130,8 +129,6 @@ public class MemberController {
 
 		return "redirect:/";
 	}
-
-	
 	
 	// mypage - 나의 글 보기 (페이징 적용)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
@@ -144,7 +141,7 @@ public class MemberController {
 	    MemberVO vo = (MemberVO) session.getAttribute("member");
 	    String userId = null;
 	    if (vo != null) {
-	        userId = vo.getUserId();
+	    	userId = vo.getUserId();
 	    }
 
 	    Criteria revCri = new Criteria(revPage);
@@ -155,13 +152,19 @@ public class MemberController {
 	    postCri.setUserId(userId);
 	    commentCri.setUserId(userId);
 
-	    model.addAttribute("collectionRevs", service.getMemberCollectionRevsWithPaging(userId, revCri));
+	    model.addAttribute("collectionRev", service.getMemberCollectionRevsWithPaging(userId, revCri));
 	    model.addAttribute("posts", service.getMemberPostsWithPaging(userId, postCri));
 	    model.addAttribute("comments", service.getMemberCommentsWithPaging(userId, commentCri));
 
 	    PageMaker collectionRevPageMaker = new PageMaker(revCri, service.countCollectionRevs(userId));
 	    PageMaker postPageMaker = new PageMaker(postCri, service.countPosts(userId));
 	    PageMaker commentPageMaker = new PageMaker(commentCri, service.countComments(userId));
+	    
+	    List<CollectionReviewVO> collectionReviews = service.getMemberCollectionRevsWithPaging(userId, revCri);
+	    for (CollectionReviewVO review : collectionReviews) {
+	        review.setCollectionSeq(review.getCollectionSeq());
+	    }
+	    model.addAttribute("collectionRev", collectionReviews);
 
 	    model.addAttribute("collectionRevPageMaker", collectionRevPageMaker);
 	    model.addAttribute("postPageMaker", postPageMaker);
@@ -179,17 +182,11 @@ public class MemberController {
 		
 		
 	    service.mypageUpdate(vo);
-	   
 	    session.setAttribute("member", vo);
-	    
 	    model.addAttribute("member", vo);
 		
 	    return "redirect:/member/mypage";
 	}
-
-
-
-
 
 	@RequestMapping(value = "/passUpdateView", method = RequestMethod.GET)
 	public String pwUpdateView() throws Exception {
@@ -208,34 +205,26 @@ public class MemberController {
 
 	// 패스워드 변경
 	@RequestMapping(value = "/passUpdate", method = RequestMethod.POST)
-	public String passUpdate(@RequestParam("userPass") String userPass, @RequestParam("newPass") String newPass,
-			@RequestParam("confirmPass") String confirmPass, HttpSession session, Model model, RedirectAttributes rttr) throws Exception {
+	public String passUpdate( @RequestParam("newPass") String newPass,HttpSession session, Model model, RedirectAttributes rttr) throws Exception {
 
 		MemberVO vo = (MemberVO) session.getAttribute("member");
 
-		boolean pwdMatch = pwdEncoder.matches(userPass, vo.getUserPass());
-		if (!pwdMatch) {
-			model.addAttribute("error", "입력한 현재 비밀번호가 일치하지 않습니다.");
-			return "member/passUpdateView";
-		}
-
-		if (!newPass.equals(confirmPass)) {
-			model.addAttribute("error", "새로운 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
-			return "member/passUpdateView";
+		// 세션에 로그인한 사용자 정보가 없는 경우
+		if (vo == null) {
+			rttr.addFlashAttribute("msg", "로그인이 필요합니다.");
+			return "redirect:/member/login";
 		}
 
 		String encodedNewPass = pwdEncoder.encode(newPass);
 
 		vo.setUserPass(encodedNewPass);
 		service.memberUpdate(vo);
-		
 
-		 session.invalidate();
-		
-	
-	    
+		session.invalidate();
+
 		return "member/login";
 	}
+
 
 	// 아이디 중복 체크
 	@ResponseBody
@@ -244,6 +233,14 @@ public class MemberController {
 		int result = service.idChk(vo);
 		return result;
 	}
+	
+	// 닉네임 중복 체크
+		@ResponseBody
+		@RequestMapping(value = "/nameChk", method = RequestMethod.POST)
+		public int nameChk(MemberVO vo) throws Exception {
+			int result = service.nameChk(vo);
+			return result;
+		}
 	
 	@RequestMapping(value = "/getProfileImg", method = RequestMethod.GET)
 	public void getProfileImg(String userId, HttpServletResponse response) throws Exception {
@@ -273,4 +270,14 @@ public class MemberController {
 
 		return "redirect:/";
 	}
+	
+	// 이메일 인증
+	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public String mailCheck(String email) {
+		System.out.println("이메일 인증 요청이 들어옴!");
+		System.out.println("이메일 인증 이메일 : " + email);
+		return mailService.joinEmail(email);
+	}
+	
 }

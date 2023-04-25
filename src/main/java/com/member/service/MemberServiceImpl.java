@@ -68,6 +68,12 @@ public class MemberServiceImpl implements MemberService {
 		int result = dao.idChk(vo);
 		return result;
 	}
+	
+	@Override
+	public int nameChk(MemberVO vo) throws Exception {
+		int result = dao.nameChk(vo);
+		return result;
+	}
 
 //    @Override
 //    public String getProfileImg(String userId) throws Exception {
@@ -135,23 +141,7 @@ public class MemberServiceImpl implements MemberService {
 	public int countComments(String userId) throws Exception {
 		return dao.countComments(userId);
 	}
-
-//	@Override
-//	public PageMaker getPageMaker(String userId, Criteria cri, String type) throws Exception {
-//	    PageMaker pageMaker = new PageMaker();
-//	    pageMaker.setCri(cri);
-//
-//	    int totalCount;
-//	    if (type.equals("collectionRevs")) {
-//	        totalCount = dao.getMemberCollectionRevsCount(userId);
-//	    } else if (type.equals("posts")) {
-//	        totalCount = dao.getMemberPostsCount(userId);
-//	    } else { // type.equals("comments")
-//	        totalCount = dao.getMemberCommentsCount(userId);
-//	    }
-//	    pageMaker.setTotalCount(totalCount);
-//
-//	    return pageMaker;
-//	}
+	
+	
 
 }

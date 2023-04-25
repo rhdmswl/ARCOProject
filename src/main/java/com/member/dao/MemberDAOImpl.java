@@ -74,6 +74,12 @@ public class MemberDAOImpl implements MemberDAO {
 		int result = sql.selectOne("memberMapper.idChk", vo);
 		return result;
 	}
+	
+	@Override
+	public int nameChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne("memberMapper.nameChk", vo);
+		return result;
+	}
 
 //	@Override
 //  public String getProfileImg(String userId) throws Exception {
@@ -151,5 +157,7 @@ public class MemberDAOImpl implements MemberDAO {
     public int countComments(String userId) throws Exception {
         return sql.selectOne("memberMapper.countComments", userId);
     }
+    
+   
 
 }

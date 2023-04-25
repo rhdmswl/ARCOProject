@@ -4,13 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.arco.domain.Criteria;
 import com.arco.domain.ReplyPageDTO;
 import com.arco.domain.ReplyVO;
+import com.arco.mapper.BoardMapper;
 import com.arco.mapper.ReplyMapper;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Service
@@ -20,10 +23,14 @@ public class ReplyServiceImpl implements ReplyService {
 	
 	@Autowired
 	private ReplyMapper mapper;
+	@Setter(onMethod_ = @Autowired)
+	private BoardMapper boardMapper;
 
+	@Transactional
 	@Override
 	public int register(ReplyVO vo) {
 		log.info("register......" + vo);
+		boardMapper.getComCnt(vo.getPost_id(), 1);
 		return mapper.insert(vo);
 	}
 
@@ -39,9 +46,12 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.update(vo);
 	}
 
+	@Transactional
 	@Override
 	public int remove(Long com_id) {
 		log.info("remove......" + com_id);
+		ReplyVO vo =mapper.read(com_id);
+		boardMapper.getComCnt(vo.getPost_id(), -1);
 		return mapper.delete(com_id);
 	}
 

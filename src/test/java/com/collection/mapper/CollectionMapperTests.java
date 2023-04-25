@@ -36,4 +36,10 @@ public class CollectionMapperTests {
 		
 		list.forEach(review -> log.info(review));
 	}
+	
+	@Test
+	public void testGetIndexList() {
+		
+		Mapper.getIndexList().forEach(board -> log.info(board));
+	}
 }

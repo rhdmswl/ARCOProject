@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.arco.domain.BoardVO;
 import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
 import com.collection.mapper.CollectionMapper;
@@ -63,15 +63,5 @@ public class CollectionServiceImpl implements CollectionService {
 		log.info(log);
 		mapper.starAvg(seq);
 	}
-	
-	
-
-	/*
-	 * @Override public List<CollectionVO> getListSort(Criteria cri) {
-	 * log.info(cri); return mapper.getListWithPagingSort(cri); }
-	 */
-
-
-	
 
 }

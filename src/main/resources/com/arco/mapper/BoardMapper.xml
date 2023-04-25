@@ -12,9 +12,7 @@
 
 	<update id="getComCnt" >
 		update post
-		set post_com_count=(select count(com_id)
-							from comment
-							where post_id=#{post_id})
+		set post_com_count=post_com_count+#{amount}
 		where post_id=#{post_id}
 	</update>
 
@@ -25,13 +23,14 @@
 
 	<insert id="insert">
 		insert into post (post_id, post_title, post_content,
-		post_writer, brd_id)
+		post_writer, brd_id,user_id)
 		values (
 		(select nextval('post_id') from dual),
 		#{post_title},
 		#{post_content},
 		#{post_writer},
-		#{brd_id}
+		#{brd_id},
+		#{user_id}
 		)
 	</insert>
 
@@ -49,7 +48,6 @@
 	<sql id="criteria">
 			<choose>
 					<when test="type=='T'.toString()">
-
 						where brd_id=#{brd_id}
 						and post_title like concat('%', #{keyword}, '%')
 					</when>
@@ -78,21 +76,41 @@
 						or post_writer like concat('%', #{keyword}, '%')
 					</when>
 					<otherwise>
-					where brd_id=#{brd_id}
+						<choose><!-- 추천 게시판이 아닐 경우 모든 게시판 표시 -->
+						<when test="brd_id!=4">
+							where brd_id=#{brd_id} 
+						</when>
+						<otherwise><!-- 추천 게시판일 경우 추천수 10 이상 -->
+							where post_rec_count >=10
+						</otherwise>
+						</choose>
 					</otherwise>
 			</choose>
 	</sql>
 	
+	
 	<select id="getListWithPaging" resultType="com.arco.domain.BoardVO">
 		SELECT *
 		FROM (
-			SELECT post_id, post_title, post_writer, post_content, post_regdate, post_view_count, brd_id, post_com_count
+			SELECT post_id, post_title, post_writer, post_content, post_regdate, post_view_count, brd_id, post_com_count,post_rec_count
 			FROM post
 		<include refid="criteria"></include>
 		) as post_paging
 		ORDER BY post_id DESC
 		LIMIT #{pageNumForLimit},10
 	</select>
+	
+	<select id="getBest" resultType="com.arco.domain.BoardVO">
+		SELECT *
+		FROM (
+			SELECT post_id, post_title, post_writer, post_content, post_regdate, post_view_count, brd_id, post_com_count,post_rec_count
+			FROM post
+		) as post_paging
+		where post_rec_count >=10
+		ORDER BY post_id DESC
+		LIMIT 0,5
+	</select>
+
 	
 	<select id="getTotalCount" resultType="int">
 		select count(*) from post

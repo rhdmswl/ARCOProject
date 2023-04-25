@@ -49,7 +49,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     height: 30%; /* 스크롤바의 길이 */
-    background: #f21378; /* 스크롤바의 색상 */ 
+    background: black; /* 스크롤바의 색상 */ 
     border-radius: 10px;
 }
 
@@ -135,6 +135,66 @@ body::-webkit-scrollbar-track {
 	margin-bottom: 20px;
 }
 
+
+.index-margin {
+	margin-bottom: 1.875rem;
+}
+
+.index {
+	border: 0;
+	box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+	-ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+}
+
+.index {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #ffffff;
+	background-clip: border-box;
+	border: 1px solid #e6e4e9;
+	border-radius: 8px;
+}
+
+.index .index-header.no-border {
+	border: 0;
+}
+
+.index .index-header {
+	background: none;
+	padding: 0 0.9375rem;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	min-height: 50px;
+}
+
+.index-header:first-child {
+	border-radius: calc(8px - 1px) calc(8px - 1px) 0 0;
+}
+
+.widget-49 .widget-49-meeting-points {
+	font-weight: 400;
+	font-size: 13px;
+	margin-top: .5rem;
+}
+
+.widget-49 .widget-49-meeting-points .widget-49-meeting-item {
+	color: #727686;
+}
+
+.widget-49 .widget-49-meeting-action {
+	text-align: right;
+}
+
+.widget-49 .widget-49-meeting-action a {
+	text-transform: uppercase;
+}
+
 </style>
 
 
@@ -166,10 +226,11 @@ body::-webkit-scrollbar-track {
 			</div>
 		</c:forEach>
 	</section>
-
+	
+	<jsp:include page="/WEB-INF/views/indexlist.jsp" />
 
 	<!-- ****** Categories Area Start ****** -->
-	<section class="categories_area clearfix" id="about">
+<!-- 	<section class="categories_area clearfix" id="about">
 		<div class="comuContainer">
 			<div class="comu">
 				<ul class="list-unstyled active"
@@ -183,7 +244,7 @@ body::-webkit-scrollbar-track {
 				</ul>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- ****** Categories Area End ****** -->
 	
 	<!-- ****** Blog Area Start ****** -->
@@ -287,5 +348,5 @@ body::-webkit-scrollbar-track {
 	<script src="/js/active.js"></script>
 
 </body>
-
 </html>
+<jsp:include page="/WEB-INF/views/includes/footer.jsp" />

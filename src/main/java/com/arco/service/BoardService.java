@@ -17,12 +17,9 @@ public interface BoardService {
 	public boolean remove(Long post_id);
 	
 	public List<BoardVO> getList(Criteria cri);
-	
 	public int getTotal(Criteria cri);
 	
 	public int updateViewCount(Long post_id);
-
-	public void getComCnt(Long post_id);
 
 	public int findLike(LikeVO like);
 	public void insertLike(LikeVO like);
@@ -31,5 +28,9 @@ public interface BoardService {
 	public void updateLikeCheckCancel(Long post_id, String userId);
 	public void updateLikeCancel(Long post_id);
 	public void deleteLike(LikeVO like);
+
+	public List<BoardVO> getBest();
+
+	
 	
 }

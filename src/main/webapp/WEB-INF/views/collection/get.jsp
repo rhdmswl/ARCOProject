@@ -36,9 +36,15 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
+	<!-- star -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<!-- map -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=875db2344685ebc0aa08645ef75d08b6"></script>
+	
+	<!-- 글자수 -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     
 <style type="text/css">
 
@@ -53,7 +59,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     height: 5%; /* 스크롤바의 길이 */
-    background: #f21378; /* 스크롤바의 색상 */ 
+    background: black; /* 스크롤바의 색상 */ 
     border-radius: 10px;
 }
 
@@ -345,6 +351,18 @@ p.v-data {
   cursor: pointer;
 }
 
+/* 한줄평 별들의 기본 설정 */
+.starV{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+  font-size: 1.4em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
 /* 별 이모지에 마우스 오버 시 */
 .starR:hover {
   text-shadow: 0 0 0 #ccc;
@@ -355,6 +373,20 @@ p.v-data {
   text-shadow: 0 0 0 #ec27c8;
 }
 
+/* 별 이모지에 설정된 class="on"이 되었을 경우 */
+.starV.on{
+  text-shadow: 0 0 0 #ec27c8;
+}
+
+.jb-division-line {
+  border-top: 1px solid #ccc;
+  margin: 20px 0px;
+}
+
+.mapsize {
+  width: 700px;
+  margin: 0 auto;
+}
 </style>
 
 </head>
@@ -454,16 +486,21 @@ p.v-data {
 													</a>
 												</div>
 											</div>
+											
 										</div>
+										
 									</div>
 									<!-- <img class="br-30 mb-15" src="img/blog-img/14.jpg" alt=""> -->
 								</div>
 							</div>
+							<div class = "mapsize" style = "position: static;margin-bottom: 40px;">
+							<div class="infoText">&#128205; 위치 보기</div>
+							<div id="map" style="width:100%; height:500px; " ></div></div>
 
 
 							<!-- Comment Area Start -->
 							<div class="comment_area section_padding_50 clearfix">
-								<!-- <h4 class="mb-30">2 Comments</h4> -->
+<h4 class="mb-30">Comments</h4>
 								<ul class="chat"></ul>
 								<div class="panel-footer">
 									<%--   <div class="pull-rigth">
@@ -491,38 +528,41 @@ p.v-data {
 											<input type="text" style="display: none;" id="seq" name="seq"
 												value="<c:out value="${collection.seq}"/>">
 										</div>
-										<div class="form-group starRev" id="star">
+										<!-- 별점기능 -->
+										<div class="form-group starRev" id="star"> 
 											<span class="star-input"> <span class="starR on"
 												onClick="setStar(1)">⭐</span> <span class="starR"
 												onClick="setStar(2)">⭐</span> <span class="starR"
 												onClick="setStar(3)">⭐</span> <span class="starR"
 												onClick="setStar(4)">⭐</span> <span class="starR"
 												onClick="setStar(5)">⭐</span> <output for="star-input">
-													<b>&nbsp;&nbsp;0</b>점
+													<b>&nbsp;&nbsp;1</b>점
 												</output>
 											</span>
 										</div>
 										<c:if test="${member.userId!=null}">
 										<div class="form-group revTextBox">
-											<label>작성자</label> <input class="form-control revContentInput" type="text"
-												id='InputnickName' name='nickName'  readonly="readonly" placeholder="${member.userName}">
+											<label>작성자</label> <textarea class="form-control revContentInput"
+												id='InputnickName' name='nickName'  readonly="readonly" style="resize: none;">${member.userName}</textarea>
 										</div>
 										<div class="form-group revTextBox">
-											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
-												id='comment' name='revComment' placeholder="한줄평">
+											<label>한줄평 작성</label> <input class="form-control revContentInput" type="text"
+												id='comment' name='revComment' placeholder="한줄평을 적어주세요">
+												<div id="comment_cnt">(0 / 50)</div>
 										</div>
 										<button id='commentAdd' type="submit"
-											class="btn btn-secondary">댓글 작성</button>
+											class="btn btn-secondary">입력 완료</button>
+											
 										</c:if>
 										<!-- 비 로그인 시 -->
 										<c:if test="${member.userId==null}">
 										<div class="form-group revTextBox">
 											<label>작성자</label> <input class="form-control revContentInput" type="text"
-												id='InputnickName' name='nickName'  readonly="readonly" placeholder="로그인 후 입력해주세요!">
+												readonly="readonly" placeholder="로그인 후 입력해주세요!">
 										</div>
 										<div class="form-group revTextBox">
 											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
-												id='comment' name='revComment' readonly="readonly" placeholder="로그인 후 입력해주세요!">
+												readonly="readonly" placeholder="로그인 후 입력해주세요!">
 										</div>
 										</c:if>
 									</form>
@@ -606,6 +646,16 @@ p.v-data {
    				console.log("함수끝"+str);
    				
    				reviewPageFooter.html(str);
+   				
+   				/* 글자수 제한 기능 */
+   			 $('#comment').on('keyup', function() {
+   		        $('#comment_cnt').html("("+$(this).val().length+" / 50)");
+   		 
+   		        if($(this).val().length > 50) {
+   		            $(this).val($(this).val().substring(0, 50));
+   		            $('#comment_cnt').html("(50 / 50)");
+   		        }
+   		    });
    			}		 
             
             		 function showList(page){
@@ -630,6 +680,15 @@ p.v-data {
             					   var formId = "review" + list[i].revSeq
 
             					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
+            					   str += "<div class='rating' id='star'>";
+            					   for (var j = 1; j <= 5; j++) {
+            					       if (j <= list[i].revStar) {
+            					           str += "<span class='starV on'>⭐</span>";
+            					       } else {
+            					           str += "<span class='starV'>⭐</span>";
+            					       }
+            					   }
+            					   str += "</div>";
             					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
             					   if (list[i].nickName=="${member.userName}"){
             					   str+= "         <small>"	;
@@ -649,13 +708,16 @@ p.v-data {
             				       str+= "  			</div>";
             				       str+= "			</form>";
             				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
-            			           str += "</div></li>"; 
+            			          
+            				       str += "</div></li>"; 
+            			            str+= "<div class='jb-division-line'></div>";
             				   } 
             				   reviewUL.html(str);
             				   console.log("showList page : " +pageNum);
             				   showReviewPage(reviewCnt);
             			 }); 
             		 } 
+            		 
             		 
             		 
             
@@ -708,10 +770,13 @@ p.v-data {
          				showList(PageNum);
          			});
                   
+                     if($('.rating').length){
+                    	 var rating
+                     }
                     	
                     /* 별점 구현 */
                     //setStar로 선택된 별점 값 score에 저장
-                     $('.starRev span').click(function(){
+                     $('.starRev span.starR').click(function(){
                     	    $(this).parent().children('span').removeClass('on');
                     	    $(this).addClass('on').prevAll('span').addClass('on');
                     	    var score = $(this).next().text();
@@ -746,18 +811,20 @@ p.v-data {
                     	                }
                     	            }, 1000);
                     	        })
+                    	        /* 별점 체크하지 않았을때 기본 1점으로 설정 */
                     	        .on("change", ".star-input>.starR", function(){
-                    	            var score = $(this).next().text();
+                    	            var $checked = $star.find(":checked");
+                    	            var score = ($checked.length === 0) ? 1 : $checked.next().text();
                     	            setStar(score);
                     	        })
                     	        .on("mouseover", ".star-input label", function(){
                     	            var score = $(this).text();
                     	            setStar(score);
                     	        })
-                    	        .on("mouseleave", ".star-input>.input", function(){
+                    	        .on("mouseleave", ".star-input>.starR", function(){
                     	            var $checked = $star.find(":checked");
                     	            if($checked.length === 0){
-                    	                setStar(0);
+                    	                setStar(1);
                     	            } else {
                     	                setStar($checked.next().text());
                     	            }
@@ -765,11 +832,32 @@ p.v-data {
                     	};
 
                     	starRating();
+                    	
+                    	/* 지도 코드 */
+                    	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                        mapOption = { 
+                            center: new kakao.maps.LatLng(${collection.gpsY},  ${collection.gpsX}), // 지도의 중심좌표
+                            level: 3 // 지도의 확대 레벨
+                        };
 
+                    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+                    // 마커가 표시될 위치입니다 
+                    var markerPosition  = new kakao.maps.LatLng(${collection.gpsY}, ${collection.gpsX}); 
+
+                    // 마커를 생성합니다
+                    var marker = new kakao.maps.Marker({
+                        position: markerPosition
+                    });
+
+                    // 마커가 지도 위에 표시되도록 설정합니다
+                    marker.setMap(map);
 
        	});
+                    	
 										
 </script>
 
 </body>
 </html>
+<jsp:include page="/WEB-INF/views/includes/footer.jsp" />

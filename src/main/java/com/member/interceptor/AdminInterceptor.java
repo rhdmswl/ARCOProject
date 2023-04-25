@@ -21,7 +21,8 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 			return false;
 		}
 
-		if (vo.getRole() != "ROLE_ADMIN") {
+		if (!vo.getRole().equals("ROLE_ADMIN")) {
+
 			res.sendRedirect("/");
 			return false;
 		}

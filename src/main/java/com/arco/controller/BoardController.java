@@ -43,7 +43,7 @@ public class BoardController {
 		model.addAttribute("list", service.getList(cri));
 		
 		int total= service.getTotal(cri);
-		
+		log.info("best : "+cri);
 		log.info("total: "+total);
 		
 		model.addAttribute("pageMaker", new PageDTO(cri,total));
@@ -76,8 +76,8 @@ public class BoardController {
 
 		service.updateViewCount(post_id);
 		model.addAttribute("board", service.get(post_id));
-		service.getComCnt(post_id);
 		log.info("post_id: " + post_id);	
+		
 	}
 	
 	@ResponseBody

@@ -5,6 +5,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 
@@ -37,7 +38,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     height: 5%; /* 스크롤바의 길이 */
-    background: #f21378; /* 스크롤바의 색상 */ 
+    background: black; /* 스크롤바의 색상 */ 
     border-radius: 10px;
 }
 
@@ -252,13 +253,20 @@ body::-webkit-scrollbar-track {
 .smalltext .viewgroup {
 	position: absolute;
 	float: left;
-	right: 140px;
+	right: 175px;
 }
 
 .smalltext .commentCountGroup {
 	position: absolute;
-	right: 88px;
+	right: 130px;
 	float: left;
+}
+
+.smalltext .likeCountGroup {
+	position: absolute;
+	right: 80px;
+	width: 50px;
+	height: 20px;
 }
 
 .col-md-12 col-lg-12 col-xl-12 {
@@ -387,26 +395,37 @@ body::-webkit-scrollbar-track {
 					<ul class="list-unstyled active"
 						style="list-style-type: none; text-align: center;">
 						<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
-							href="/board/list?pageNum=1&brd_id=1">TALK</a></li>
+							href="/board/list?pageNum=1&brd_id=4">BEST</a></li>
 						<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
-							href="/board/list?pageNum=1&brd_id=2">INFO</a></li>
+							href="/board/list?pageNum=1&brd_id=1">정보</a></li>
+							<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
+							href="/board/list?pageNum=1&brd_id=3">전시</a></li>
 						<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
-							href="/board/list?pageNum=1&brd_id=3">WEEKLY</a></li>
+							href="/board/list?pageNum=1&brd_id=2">자유</a></li>
+						
+							
 					</ul>
+					<!-- 현재 게시판 위치 표시 -->
 					<c:choose>
-						<c:when test="${cri.brd_id == 1}">
-							<h1 class="h3 mb-2 text-gray-800">TALK</h1>
+						<c:when test="${pageMaker.cri.brd_id == 2}">
+							<h1 class="h3 mb-2 text-gray-800">자유</h1>
 						</c:when>
-						<c:when test="${cri.brd_id == 2}">
-							<h1 class="h3 mb-2 text-gray-800">MATE</h1>
+						<c:when test="${pageMaker.cri.brd_id == 1}">
+							<h1 class="h3 mb-2 text-gray-800">정보</h1>
 						</c:when>
-						<c:when test="${cri.brd_id == 3}">
-							<h1 class="h3 mb-2 text-gray-800">WEEKLY</h1>
+						<c:when test="${pageMaker.cri.brd_id == 3}">
+							<h1 class="h3 mb-2 text-gray-800">전시</h1>
+						</c:when>
+						<c:when test="${pageMaker.cri.brd_id ==4}">
+							<h1 class="h3 mb-2 text-gray-800">BEST</h1>
 						</c:when>
 					</c:choose>
+					<!-- 현재 게시판 위치 표시 종료 -->
 				</div>
 				<div class="row clearfix">
 					<div class="col-md-12 col-lg-12 col-xl-12">
+						
+						
 						<div class="table table-bordered table-hover"
 							style="font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;">
 								<ul class="mail_list list-group list-unstyled">
@@ -415,7 +434,25 @@ body::-webkit-scrollbar-track {
 										<div class="media">
 											<div class="media-body">
 												<div class="media-heading">
-													<small class="float-left text-muted"><c:out value="${board.post_id}" /></small>
+													<!-- 베스트 게시판 일 시, 글 순번 대신 글 카테고리 표시 -->
+													<c:if test="${pageMaker.cri.brd_id==4}">
+														<c:choose>
+															<c:when test="${board.brd_id==1}">
+															<small class="float-left text-muted">정보</small>
+															</c:when>
+															<c:when test="${board.brd_id==2}">
+															<small class="float-left text-muted">자유</small>
+															</c:when>
+															<c:when test="${board.brd_id==3}">
+															<small class="float-left text-muted">전시</small>
+															</c:when>
+														</c:choose>
+													</c:if>
+													
+													<c:if test="${pageMaker.cri.brd_id!=4}">
+														<small class="float-left text-muted"><c:out value="${board.post_id}" /></small>
+													</c:if>
+													<!-- 베스트 게시판 일 시, 글 순번 대신 글 카테고리 표시  끝-->
 													<div class="m-r-10"><c:out value="${board.post_writer}" /></div> 
 													<div class="smalltext">
 													<small class="float-right text-muted">
@@ -425,6 +462,8 @@ body::-webkit-scrollbar-track {
 															<c:out value="${board.post_view_count}" /></div>
 														<div class="commentCountGroup"><img class="countImg" src= "https://i.imgur.com/SPrFzms.png">
 															<c:out value="${board.post_com_count}" /></div> 
+														<div class="likeCountGroup"><img class="countImg" src= "https://i.imgur.com/OUWERYO.png">
+															<c:out value="${board.post_rec_count}" /></div> 
 													</small>
 													</div>
 												</div>
@@ -467,7 +506,7 @@ body::-webkit-scrollbar-track {
 								<td style="padding: 0px;">
 									<div class="card m-t-5">
 										<div class="body">
-										<c:if test="${member.userId!=null}"> 
+										<c:if test="${member.userId!=null && pageMaker.cri.brd_id!=4}"> 
 											<ul style="float: right;" class="regBtn">
 												<li class="pageitem"><button class="btn btn-primary regmov" 
 													style="width: 120px; text-align: center; border: 1px solid #ccc; border-radius: 20px;"
@@ -508,7 +547,9 @@ body::-webkit-scrollbar-track {
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-	 	$(document).ready(
+	
+	$(document).ready(
+			
 				function() {
 					var result = '<c:out value="${result}"/>';
 
@@ -586,3 +627,4 @@ body::-webkit-scrollbar-track {
 	</script>
 </body>
 </html>
+<jsp:include page="/WEB-INF/views/includes/footer.jsp" />

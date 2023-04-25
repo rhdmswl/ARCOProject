@@ -33,6 +33,9 @@ public interface MemberDAO {
 
 	// 아이디 중복체크
 	public int idChk(MemberVO vo) throws Exception;
+	
+	// 닉네임 중복체크
+		public int nameChk(MemberVO vo) throws Exception;
 
 	// public String getProfileImg(String userId) throws Exception;
 
@@ -64,5 +67,7 @@ public interface MemberDAO {
 	public int countCollectionRevs(String userId) throws Exception;
 	public int countPosts(String userId) throws Exception;
 	public int countComments(String userId) throws Exception;
+
+
 
 }
