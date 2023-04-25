@@ -66,7 +66,7 @@ public class CollectionServiceImpl implements CollectionService {
 
 	@Override
 	public List<BoardVO> getIndexList() {
-		log.info("get Board List");
+
 		return mapper.getIndexList();
 	}
 
