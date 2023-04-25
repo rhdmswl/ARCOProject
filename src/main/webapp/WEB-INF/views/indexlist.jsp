@@ -17,32 +17,31 @@
 .indexBoard {
 	margin-top: 130px;
 	margin-bottom: 80px;
-	margin-right: 80px;
-	margin-left: 80px;
+	display: table;
 	max-width: 65%;
-	position: relative;
-	left: 12%;
-	
 }
 
 .indexrow {
 	width: 1200px;
+	display: inline-black;
+	vertical-align: middle;
+	padding-left: 50px;
 }
 
 .listFirst {
-	
-	margin-right: 100px;
+	float: left;
+	margin-right: 150px;
 }
 
 .listSecond {
-
-	margin-right: 0;
+	float: left;
+	margin-right: 150px;
 }
 
 
 .index-margin {
 	margin-bottom: 1.875rem;
-	width: 480px;
+	width: 500px;
 }
 
 .index-board .index-info {

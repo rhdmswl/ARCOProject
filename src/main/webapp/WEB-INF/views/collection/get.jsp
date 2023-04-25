@@ -27,8 +27,8 @@
     <!-- Responsive CSS -->
     <link href="/css/responsive/responsive.css" rel="stylesheet">
     
-    <!-- <link rel="stylesheet" href="/css/material-dashboard.min.css"> -->
-    <script src="/js/material-dashboard.min.js"></script>
+    <!-- <script src="/js/material-dashboard.min.js"></script> -->
+    <link rel="stylesheet" href="/css/material-dashboard.min.css">
     
     <!-- Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -262,6 +262,8 @@ body::-webkit-scrollbar-track {
 	width: 90%;
 	left: 60px;
 	padding: 0;
+	margin-top: 50px;
+	border-bottom: 0;
 }
 
 .leave-comment-area {
@@ -387,6 +389,14 @@ p.v-data {
   width: 700px;
   margin: 0 auto;
 }
+
+.reviewBox {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+}
+
+
 </style>
 
 </head>
@@ -604,9 +614,12 @@ p.v-data {
     <!-- <script src="/js/others/plugins.js"></script> -->
     <!-- Active JS -->
 
-    <script src="/js/active.js"></script>
-
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	
+    <!-- <script src="/js/active.js"></script> -->
 	<script type="text/javascript" src="/js/review.js"></script>
 <script>
        	$(document).ready(function() {
@@ -699,19 +712,19 @@ p.v-data {
             					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
             					   if (list[i].nickName=="${member.userName}"){
             					   str+= "         <small>"	;
-            					   str+= "<a href='#" + formId + "' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
-            					   str+= "|"	;
-            					   str+=" <a href='#' class='remove2' role='button' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
+            					   str+= "<a href='#" + formId + "' class='updatebtn' style='color:black;' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            					   str+= ""	;
+            					   str+=" <a href='#' class='remove2' role='button' style='color:black; aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
             					   str+= "         </small>"	;
             					   }
             					   str+= "<small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";//header끝
-            			           str+= "<div id='review' style='height:45px; font-family: 'font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</div>";
-                                   str+= "            <form class='collapse' id='" + formId + "'>";
+            			           str+= "<div id='review' font-family: 'font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</div>";
+                                   str+= "            <form class='collapse reviewColl' id='" + formId + "'>";
                                    str+= "              <div class='form-group'>";
-                                   str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
+                                   str+= "                    <textarea style='resize: none;' class='form-control reviewBox' id ='revComment' rows='3'></textarea>";
                                    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
                                    str+= "  			</div>";
-            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button></div>";
+            				       str+= "  			<button id='update' type='button' class='btn btn-secondary updateSuccess' >수정 완료</button></div>";
             				       str+= "  			</div>";
             				       str+= "			</form>";
             				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
