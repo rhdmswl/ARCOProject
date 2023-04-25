@@ -58,4 +58,10 @@ public class CollectionServiceImpl implements CollectionService {
 		return mapper.getIndexList();
 	}
 
+	@Override
+	public List<BoardVO> getIndexList() {
+		log.info("get Board List");
+		return mapper.getIndexList();
+	}
+
 }
