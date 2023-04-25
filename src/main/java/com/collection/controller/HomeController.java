@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
@@ -23,6 +24,8 @@ public class HomeController {
 	@GetMapping("/")
 	public String index(Model model, Criteria cri) {
 		model.addAttribute("list", service.getList(cri));
+		model.addAttribute("board", service.getIndexList());
+
 		return "index";
 	}
 }

@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import com.collection.domain.CollectionVO;
 
 import lombok.extern.log4j.Log4j;
@@ -46,4 +45,8 @@ public class Collection {
 
 	}
 	
+	@Test
+	public void testGetIndexList() {
+		service.getIndexList().forEach(board -> log.info(board));
+	}
 }

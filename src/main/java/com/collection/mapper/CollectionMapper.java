@@ -2,6 +2,7 @@ package com.collection.mapper;
 
 import java.util.List;
 
+import com.arco.domain.BoardVO;
 import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
 
@@ -19,4 +20,5 @@ public interface CollectionMapper {
 	public List<CollectionVO> getListWithPaging(Criteria cri);
 	public int revViewCount(long Seq);
 	
+	public List<BoardVO> getIndexList();
 }

@@ -18,6 +18,11 @@
 	
 	</insert>
 	
+	<select id="getIndexList" resultType="com.arco.domain.BoardVO">
+	<![CDATA[
+		select * from post ORDER BY post_id DESC limit 5
+	]]>
+	</select>
 	
 	<select id="getCollectionList" resultType="com.collection.domain.CollectionVO">
 		select*from collection
