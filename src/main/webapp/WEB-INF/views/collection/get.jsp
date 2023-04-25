@@ -733,7 +733,8 @@ p.v-data {
                     			 seq : seqValue,
                         		 nickName : $('#InputnickName').val(),
                         		 revComment : $('#comment').val(),
-                        		 revStar :  $(".starRev output b").text()
+                        		 revStar :  $(".starRev output b").text(),
+                        		 userId : ('${member.userId}')
                         		 };
                          CollectionReviewService.add(review, function(result){alert(result); showList(1);});
                      });
