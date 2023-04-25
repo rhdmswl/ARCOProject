@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.arco.domain.BoardVO;
 import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
 import com.collection.mapper.CollectionMapper;
@@ -52,7 +52,10 @@ public class CollectionServiceImpl implements CollectionService {
 		return mapper.revViewCount(seq);
 	}
 
-
-	
+	@Override
+	public List<BoardVO> getIndexList() {
+		log.info("get Board List");
+		return mapper.getIndexList();
+	}
 
 }

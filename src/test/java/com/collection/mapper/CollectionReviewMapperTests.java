@@ -1,7 +1,5 @@
 package com.collection.mapper;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -14,7 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.collection.domain.CollectionReviewVO;
-import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
@@ -29,9 +26,10 @@ import lombok.extern.log4j.Log4j;
 public class CollectionReviewMapperTests {
 
 	
-	@Autowired
-    BCryptPasswordEncoder pwdEncoder;
-	
+	/*
+	 * @Autowired private BCryptPasswordEncoder pwdEncoder;
+	 */
+	 
 	
 	@Autowired 
 	private CollectionReviewMapper mapper;

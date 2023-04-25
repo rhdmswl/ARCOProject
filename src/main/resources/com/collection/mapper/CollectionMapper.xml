@@ -18,6 +18,12 @@
 	
 	</insert>
 	
+	<select id="getIndexList" resultType="com.arco.domain.BoardVO">
+		<!-- select * from post where brd_id=#{brd_id} ORDER BY post_id DESC limit 3 -->
+	<![CDATA[
+		select * from post ORDER BY post_id DESC limit 3
+	]]>
+	</select>
 	
 	<select id="getCollectionList" resultType="com.collection.domain.CollectionVO">
 		select*from collection
