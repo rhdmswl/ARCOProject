@@ -40,9 +40,27 @@ body {
 	background: #FFF
 }
 
+body::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 5%; /* 스크롤바의 길이 */
+    background: black; /* 스크롤바의 색상 */ 
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
+}
+
 .card {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	position: relative;;
+	position: relative;
+	width: 500px;
+	position: relative;
+	right: 45px;
+	margin-bottom: 70px;
 }
 
 .card-title {
@@ -132,7 +150,6 @@ body {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	border: 0;
 	outline: none;
-	padding-left: 10px;
 	margin-bottom: 15px;
 }
 
@@ -145,6 +162,22 @@ body {
 	display: inline-block;
 	vertical-align: middle;
 }
+
+.control-label, label {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	color: black;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.emailSelectBtn {
+	margin-left: 355px;
+}
+
+.submitBtnGroup {
+	margin-top: 50px;
+}
+
 </style>
 
 </head>
@@ -601,7 +634,7 @@ body {
 								</select>
 							</div>   
 							<div class="input-group-addon">
-								<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
+								<button type="button" class="btn btn-primary emailSelectBtn" id="mail-Check-Btn">본인인증</button>
 							</div>
 								<div class="mail-check-box">
 							<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
@@ -609,7 +642,7 @@ body {
 								<span id="mail-check-warn"></span>
 						</div>
 						
-						<div class="text-center">
+						<div class="text-center submitBtnGroup">
 							<button class="btn btn-primary" type="button" id="submit">회원가입</button>
 							<button class="btn btn-secondary cancel" type="button">취소</button>
 						</div>

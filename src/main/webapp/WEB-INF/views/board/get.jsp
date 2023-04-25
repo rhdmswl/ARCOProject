@@ -838,11 +838,14 @@ button {
 				replyService.add(reply, function(result){alert(result); showList(endNum);} );
 				document.getElementById("com_content").value='';
 			});
+			
+			
 			$(document).on('click','.comment-edit-btn',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
 			    $("#" + form_id).collapse('toggle'); // 해당 form의 collapse 상태를 변경하여 textarea가 나타나도록 함
 			});
 
+			
 			$(document).on('click','#Comment_update',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
 			    var com_id = $(this).closest("li").data("com-id");
@@ -853,6 +856,7 @@ button {
 			    replyService.update(reply, function(result){alert(result); showList(pageNum);} );
 			    
 			});
+			
 			
 			$(document).on('click', '.comment-delete-btn', function(){
 			    var com_id = $(this).closest("li").data("com-id");
