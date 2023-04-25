@@ -66,7 +66,16 @@
 
 	</select>
 
+	<select id = "update">
+	UPDATE collection
+	SET starAvg = (
+	    SELECT SUM(revStar) / reviewCount
+	    FROM collectionRev
+	    WHERE collectionRev.seq = collection.seq
+	);
  
+ 	</select>
+ 	
 	<select id="getTotalCount" resultType="int">
 		select count(*) from collection
 		<!-- <include refid="criteria"></include> -->

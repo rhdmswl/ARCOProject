@@ -20,4 +20,5 @@ public class CollectionVO {
 	private String area;
 	private String thumbnail;
 	private long revViewCount;
+	private double starAvg;
 }

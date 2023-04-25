@@ -437,6 +437,12 @@ p.v-data {
 										<div class="post-headline">
 											<c:out value="${collection.title}" />
 										</div>
+										<div class = "info">
+											<span class="starAvg"> 
+										  <span class="starR on" style="font-size: 1.2em;">⭐</span> 
+										  <span class="star-score"><b>${collection.starAvg} 점</b></span>
+										</span>
+											</div>
 										<div class="exhiInfoGroup">
 											<div class="info">
 												<div class="infoText">&#128198; 전시 기간</div>
@@ -487,6 +493,13 @@ p.v-data {
 							<div class = "mapsize" style = "position: static;margin-bottom: 40px;">
 							<div class="infoText">&#128205; 위치 보기</div>
 							<div id="map" style="width:100%; height:500px; " ></div></div>
+							
+							<!-- 길찾기로 이동 -->
+							<div style = "position: margin-bottom: 40px;">
+							<a href="https://map.kakao.com/link/to/<c:out value="${collection.place}"/>,<c:out value="${collection.gpsY}"/>,<c:out value="${collection.gpsX}"/>" >
+														<button class="btn btn-secondary">길 안내</button>
+													</a>
+													</div>
 
 
 							<!-- Comment Area Start -->
@@ -589,7 +602,6 @@ p.v-data {
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="/js/review.js"></script>
 <script>
-
        	$(document).ready(function() {
        		var pageNum = 1;
        		var endNum=0;
@@ -747,9 +759,6 @@ p.v-data {
          				showList(PageNum);
          			});
                   
-                     if($('.rating').length){
-                    	 var rating
-                     }
                     	
                     /* 별점 구현 */
                     //setStar로 선택된 별점 값 score에 저장
@@ -808,6 +817,7 @@ p.v-data {
 
                     	starRating();
                     	
+                    	
                     	/* 지도 코드 */
                     	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                         mapOption = { 
@@ -828,7 +838,8 @@ p.v-data {
                     // 마커가 지도 위에 표시되도록 설정합니다
                     marker.setMap(map);
 
-       	});
+                    /* map end */
+});
                     	
 										
 </script>
