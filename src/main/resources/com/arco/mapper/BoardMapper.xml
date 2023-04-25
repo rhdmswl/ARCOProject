@@ -81,7 +81,7 @@
 							where brd_id=#{brd_id} 
 						</when>
 						<otherwise><!-- 추천 게시판일 경우 추천수 10 이상 -->
-							Where post_rec_count >=10
+							where post_rec_count >=10
 						</otherwise>
 						</choose>
 					</otherwise>
@@ -98,6 +98,17 @@
 		) as post_paging
 		ORDER BY post_id DESC
 		LIMIT #{pageNumForLimit},10
+	</select>
+	
+	<select id="getBest" resultType="com.arco.domain.BoardVO">
+		SELECT *
+		FROM (
+			SELECT post_id, post_title, post_writer, post_content, post_regdate, post_view_count, brd_id, post_com_count,post_rec_count
+			FROM post
+		) as post_paging
+		where post_rec_count >=10
+		ORDER BY post_id DESC
+		LIMIT 0,5
 	</select>
 
 	

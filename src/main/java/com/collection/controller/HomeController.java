@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.arco.service.BoardService;
 import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
 import com.collection.service.CollectionService;
@@ -20,12 +21,13 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class HomeController {
 	private CollectionService service;
+	private BoardService boardService;
 
 	@GetMapping("/")
-	public String index(Model model, Criteria cri) {
+	public String index(Model model,Criteria cri) {
 		model.addAttribute("list", service.getList(cri));
 		model.addAttribute("board", service.getIndexList());
-
+		model.addAttribute("best", boardService.getBest());
 		return "index";
 	}
 }

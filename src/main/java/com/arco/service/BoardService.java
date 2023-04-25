@@ -29,6 +29,8 @@ public interface BoardService {
 	public void updateLikeCancel(Long post_id);
 	public void deleteLike(LikeVO like);
 
+	public List<BoardVO> getBest();
+
 	
 	
 }
