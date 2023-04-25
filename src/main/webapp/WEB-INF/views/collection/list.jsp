@@ -276,13 +276,6 @@ a:hover {
 													width="400" height="400">
 												</a>
 											</div>
-											<!--  <div class="ep">18 / 18</div> -->
-<%-- 											<div class="comment">
-												<i class="fa fa-comments"></i> 11
-											</div>
-											<div class="view">
-												<i class="fa fa-eye"></i> <c:out value="${collection.revViewCount}" />
-											</div> --%>
 										</div>
 										<div class="product__item__text">
 											<a style="color: black; font-weight: 700;" 
@@ -371,6 +364,7 @@ a:hover {
 		style="position: absolute; z-index: 2147483647; display: block;">
 		<i class="fa fa-arrow-up" aria-hidden="true"></i>
 	</a>
+	
 	<script type="text/javascript">
 	$(document).ready(
 			function() {

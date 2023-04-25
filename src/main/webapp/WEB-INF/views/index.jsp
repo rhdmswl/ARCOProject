@@ -36,6 +36,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
 	rel="stylesheet">
+	
 
 <style>
 body {
@@ -246,7 +247,28 @@ body::-webkit-scrollbar-track {
 		</div>
 	</section> -->
 	<!-- ****** Categories Area End ****** -->
-	
+							
+								<div class="col-lg-4 col-md-4 col-sm-6">
+											<div class="product__page__filter">
+												
+												
+												<form id="sortForm" action="/index" method='get' style=" width:500px;" class="input-group searchForm">
+													
+													<select id="sortSelect" class="form-control" name='sort' style="width:70px;">
+														<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
+														<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
+														<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
+													</select>
+													<%-- <input type='hidden' name="sort" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'> --%>
+													<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
+													<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
+												</form>							 												
+											</div>
+									</div>
+					
+				
+						
+						
 	<!-- ****** Blog Area Start ****** -->
 	<section class="blog_area section_padding_0_80">
 		<div class="container">
@@ -299,15 +321,7 @@ body::-webkit-scrollbar-track {
 														</div>
 													</div>
 												</div>
-												<!-- Post Author -->
-												<%-- <div class="post-author">
-                                                <p><a href="#"><c:out value="${collection.title}"/></a></p>
-                                            </div> --%>
-
-												<%-- <!-- Post Date -->
-	                                            <div class="post-date">
-	                                                ~ <c:out value="${collection.endDate}"/>
-	                                            </div> --%>
+	
 											</div>
 										</div>
 									</div>
@@ -319,6 +333,7 @@ body::-webkit-scrollbar-track {
 			</div>
 		</div>
 	</section>
+	
 	<!-- ****** Blog Area End ****** -->
 
 
@@ -346,6 +361,27 @@ body::-webkit-scrollbar-track {
 	<script src="/js/others/plugins.js"></script>
 	<!-- Active JS -->
 	<script src="/js/active.js"></script>
+	
+	<script type="text/javascript">
+	
+	$(document).ready(
+			
+			function() {
+				
+				var sortForm = $("#sortForm");
+				
+				$("#sortForm").on("click", function(e){
+					/* e.preventDefault(); */
+					console.log("click");
+					sortForm.find("#sortSelect option:selected").val();
+					sortForm.submit();
+				});  
+				
+			});
+	
+	
+	
+	</script>
 
 </body>
 </html>
