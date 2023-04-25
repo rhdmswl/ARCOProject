@@ -376,6 +376,8 @@ body {
 												alert("유효한 전화번호를 입력해주세요.");
 											} else if (!isValidUsername(usernameVal)) {
 												alert("닉네임은 2자 이상 8자 이하의 한글, 영문, 숫자만 입력해주세요.");
+											} else if (!isValidPassword($("#userPass").val())) {
+											    alert("비밀번호에는 3개 이상 중복된 문자 또는 숫자를 사용할 수 없습니다.");
 											} else {
 												if (idChkVal == "D") {
 													alert("중복된 아이디를 입력하셨습니다. 재입력해주세요.");
@@ -417,7 +419,21 @@ body {
 
 												  return true;
 												}
-
+											
+											function isValidPassword(password) {
+												  let consecutiveCount = 1;
+												  for (let i = 1; i < password.length; i++) {
+												    if (password[i] === password[i - 1]) {
+												      consecutiveCount++;
+												      if (consecutiveCount >= 3) {
+												        return false;
+												      }
+												    } else {
+												      consecutiveCount = 1;
+												    }
+												  }
+												  return true;
+												}
 
 
 										});
