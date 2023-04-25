@@ -374,14 +374,9 @@ position: absolute;
 									<a class="register" href="/member/register">Sign Up</a>									
 								</c:if>
 								<c:if test="${member != null}">
-<<<<<<< Updated upstream
 								<c:if test="${member.role == 'ROLE_ADMIN'}">
 								<a class="admin" href="/admin/admin">관리자 화면</a>	
 										
-=======
-									<c:if test="${member.role == 'ROLE_ADMIN'}">
-										<li><a href="/admin/admin">관리자 화면</a></li>
->>>>>>> Stashed changes
 									</c:if>
 									
 										<div class="welcomeMessage">${member.userName}님 환영합니다 &#128075;</div>
