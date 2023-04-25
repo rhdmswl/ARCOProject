@@ -180,22 +180,22 @@ body {
 			<div class="col-lg-4">
 				<div class="index-board index-margin">
 					<div class="index-header no-border">
-						<div class="index-title">WEEKLY BEST</div>
+						<div class="index-title">BEST</div>
 					</div>
 					<div class="index-body pt-0">
 						<div class="widget-49">
-							<c:forEach items="${board}" var="board">
+							<c:forEach items="${best}" var="board">
 								<table class="widget-49-meeting-points">
 									<tr>
 										<td class="widget-49-meeting-item"><a
 											style="color: black;"
-											href="/board/get?post_id=${board.post_id}"><c:out
+											href="/board/get?post_id=${board.post_id}&brd_id=4"><c:out
 													value="${board.post_title}" /></a></td>
 									</tr>
 								</table>
 							</c:forEach>
 							<div class="widget-49-meeting-action">
-								<a href="/board/list?pageNum=1&brd_id=2"
+								<a href="/board/list?pageNum=1&brd_id=4"
 									class="btn btn-sm btn-flash-border-primary">더보기<img
 									class="moreImg" src="https://i.imgur.com/Pi8nidz.png"
 									width="30px"></a>
