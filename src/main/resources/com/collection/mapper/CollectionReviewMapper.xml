@@ -42,6 +42,16 @@ select * from collectionRev where revSeq >0
 		where revSeq = #{revSeq}
 
 	</update>
+	
+	<!-- <select id="getListWithPaging" resultType="com.collection.domain.CollectionReviewVO">
+
+    select * 
+    from(select rv.seq, rv.revSeq, rv.userId, rv.nickName, rv.revComment, rv.revCount, rv.revStar, rv.reviewDate 
+    sum(revStar) as sum, round(sum(revStar)/revViewCount, 1) as avg from collectionRev rv, collection cr where rv.seq = cr.seq)as reviewPaging
+     where seq = #{seq}
+    order by revSeq desc limit #{cri.pageNumForLimit},12
+
+	</select> -->
 
 	<select id="getListWithPaging" resultType="com.collection.domain.CollectionReviewVO">
 

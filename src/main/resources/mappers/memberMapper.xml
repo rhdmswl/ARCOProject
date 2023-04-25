@@ -75,7 +75,7 @@
 		WHERE
 		USERID = #{userId}
 	</select>
-	
+
 	<!-- 닉네임 중복 체크 -->
 	<select id="nameChk" resultType="int">
 		SELECT COUNT(*) FROM MEMBER
@@ -115,75 +115,86 @@
 		resultType="com.member.vo.CollectionReviewVO">
 		SELECT * FROM collectionRev WHERE userId = #{userId}
 		LIMIT ${start}, 12
-	    <!-- SELECT *, collection.seq AS collectionSeq FROM collectionRev
-	    JOIN collection ON collectionRev.seq = collection.seq
-	    WHERE userId = #{userId}
-	    LIMIT ${start}, 12 -->
+		<!-- SELECT *, collection.seq AS collectionSeq FROM collectionRev JOIN 
+			collection ON collectionRev.seq = collection.seq WHERE userId = #{userId} 
+			LIMIT ${start}, 12 -->
 	</select>
 
 	<!-- 작성한 게시글 불러오기 (페이징 적용) -->
 	<select id="getMemberPostsWithPaging"
 		resultType="com.member.vo.BoardVO">
 		SELECT * FROM post WHERE post_writer = #{userId}
-		LIMIT ${start}, 12
+		LIMIT
+		${start}, 12
 	</select>
 
 	<!-- 작성한 댓글 불러오기 (페이징 적용) -->
 	<select id="getMemberCommentsWithPaging"
 		resultType="com.member.vo.ReplyVO">
 		SELECT * FROM comment WHERE com_writer = #{userId}
-		LIMIT ${start}, 12
+		LIMIT
+		${start}, 12
 	</select>
 
 	<!-- 작성한 한줄평 총 개수 -->
 	<select id="countCollectionRevs" resultType="int">
-		SELECT COUNT(*) FROM collectionRev WHERE userId = #{userId}
+		SELECT COUNT(*) FROM
+		collectionRev WHERE userId = #{userId}
 	</select>
 
 	<!-- 작성한 게시글 총 개수 -->
 	<select id="countPosts" resultType="int">
-		SELECT COUNT(*) FROM post WHERE post_writer = #{userId}
+		SELECT COUNT(*) FROM post
+		WHERE post_writer = #{userId}
 	</select>
 
 	<!-- 작성한 댓글 총 개수 -->
 	<select id="countComments" resultType="int">
-		SELECT COUNT(*) FROM comment WHERE com_writer = #{userId}
+		SELECT COUNT(*) FROM
+		comment WHERE com_writer = #{userId}
 	</select>
-	
+
 	<!-- all 회원 목록 조회 (페이징 적용) -->
 	<select id="listAllMembers" resultType="com.member.vo.MemberVO">
-	  SELECT * FROM MEMBER
+		SELECT * FROM MEMBER
 	</select>
-	
+
 	<!-- all 한줄평 불러오기 (페이징 적용) -->
 	<select id="listAllReviews"
 		resultType="com.member.vo.CollectionReviewVO">
-	    SELECT * FROM collectionRev
+		SELECT * FROM collectionRev
 		LIMIT ${start}, 12
 	</select>
 
 	<!-- all 게시글 불러오기 (페이징 적용) -->
-	<select id="listAllPosts"
-		resultType="com.member.vo.BoardVO">
+	<select id="listAllPosts" resultType="com.member.vo.BoardVO">
 		SELECT * FROM post
-		LIMIT ${start}, 12
+		LIMIT
+		${start}, 12
 	</select>
 
 	<!-- all 댓글 불러오기 (페이징 적용) -->
-	<select id="listAllComments"
-		resultType="com.member.vo.ReplyVO">
+	<select id="listAllComments" resultType="com.member.vo.ReplyVO">
 		SELECT * FROM comment
 		LIMIT ${start}, 12
 	</select>
 
 	<!-- admin 회원 총 인원 -->
 	<select id="countAllMembers" resultType="int">
-		SELECT COUNT(*) FROM MEMBER
+		SELECT COUNT(*) FROM
+		MEMBER
+	</select>
+
+	<!-- admin 회원 삭제 -->
+	<select id="deleteUser" resultType="int">
+		DELETE FROM MEMBER
+		WHERE USERID = #{userId}
 	</select>
 
 	<!-- admin 한줄평 총 개수 -->
 	<select id="countAllCollectionRevs" resultType="int">
-		SELECT COUNT(*) FROM collectionRev
+		SELECT COUNT(*)
+		FROM collectionRev
 	</select>
 
 	<!-- admin 게시글 총 개수 -->
@@ -193,6 +204,7 @@
 
 	<!-- admin 댓글 총 개수 -->
 	<select id="countAllComments" resultType="int">
-		SELECT COUNT(*) FROM comment
+		SELECT COUNT(*) FROM
+		comment
 	</select>
 </mapper>

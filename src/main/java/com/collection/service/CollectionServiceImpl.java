@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.arco.domain.BoardVO;
 import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
 import com.collection.mapper.CollectionMapper;
@@ -52,7 +52,16 @@ public class CollectionServiceImpl implements CollectionService {
 		return mapper.revViewCount(seq);
 	}
 
+	@Override
+	public void reviewCount(long seq) {
+		log.info(seq);
+		mapper.reviewCount(seq);
+	}
 
-	
+	@Override
+	public void starAvg(long seq) {
+		log.info(log);
+		mapper.starAvg(seq);
+	}
 
 }

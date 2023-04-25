@@ -309,7 +309,7 @@ position: absolute;
 .top_header_area .signup-search-area .admin {
 	position: absolute;
 	top: 10px;
-	right: -55px;
+	right: -70px;
 	color: #222;
 	border-right: 0;
 }
@@ -375,7 +375,7 @@ position: absolute;
 								</c:if>
 								<c:if test="${member != null}">
 								<c:if test="${member.role == 'ROLE_ADMIN'}">
-								<a class="admin" href="/admin/admin">관리자 화면</a>	
+								<a class="admin" href="/admin/admin">Admin Page</a>	
 										
 									</c:if>
 									
@@ -420,7 +420,7 @@ position: absolute;
 								<li class="nav-item"><a class="nav-link"
 									href="/collection/list">Exhibition</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="/board/list?pageNum=1&brd_id=1">Community</a></li>
+									href="/board/list?pageNum=1&brd_id=4">Community</a></li>
 								<li class="nav-item"><a class="nav-link" href="#">About</a>
 								</li>
 							</ul>

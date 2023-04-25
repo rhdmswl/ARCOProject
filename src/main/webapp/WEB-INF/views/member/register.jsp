@@ -311,6 +311,43 @@ body {
 									}
 								});
 
+						$('#mail-Check-Btn').click(function() {
+							const email = $('#userEmail1').val() + $('#userEmail2').val(); // 이메일 주소값 얻어오기!
+							console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
+							const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+							
+							$.ajax({
+								type : 'get',
+								url : '<c:url value ="/member/mailCheck?email="/>'+email, // GET방식이라 Url 뒤에 email을 쓸 수 있음
+								success : function (data) {
+									console.log("data : " +  data);
+									checkInput.attr('disabled',false);
+									code =data;
+									alert('인증번호가 전송되었습니다.')
+								}			
+							}); // end ajax
+						}); // end send email
+						
+						// 인증번호 비교 
+						// blur -> focus가 벗어나는 경우 발생
+						$('.mail-check-input').blur(function () {
+							const inputCode = $(this).val();
+							const $resultMsg = $('#mail-check-warn');
+							
+							if(inputCode === code){
+								$resultMsg.html('인증번호가 일치합니다.');
+								$resultMsg.css('color','green');
+								$('#mail-Check-Btn').attr('disabled',true);
+								$('#userEamil1').attr('readonly',true);
+								$('#userEamil2').attr('readonly',true);
+								$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+						         $('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+							}else{
+								$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+								$resultMsg.css('color','red');
+							}
+						});
+						
 						$("#submit")
 								.on(
 										"click",
@@ -376,6 +413,8 @@ body {
 												alert("유효한 전화번호를 입력해주세요.");
 											} else if (!isValidUsername(usernameVal)) {
 												alert("닉네임은 2자 이상 8자 이하의 한글, 영문, 숫자만 입력해주세요.");
+											} else if (!isValidPassword($("#userPass").val())) {
+											    alert("비밀번호에는 3개 이상 중복된 문자 또는 숫자를 사용할 수 없습니다.");
 											} else {
 												if (idChkVal == "D") {
 													alert("중복된 아이디를 입력하셨습니다. 재입력해주세요.");
@@ -417,7 +456,21 @@ body {
 
 												  return true;
 												}
-
+											
+											function isValidPassword(password) {
+												  let consecutiveCount = 1;
+												  for (let i = 1; i < password.length; i++) {
+												    if (password[i] === password[i - 1]) {
+												      consecutiveCount++;
+												      if (consecutiveCount >= 3) {
+												        return false;
+												      }
+												    } else {
+												      consecutiveCount = 1;
+												    }
+												  }
+												  return true;
+												}
 
 
 										});
@@ -533,6 +586,29 @@ body {
 
 
 						</form>
+						
+						<!-- email -->
+						<div class="form-group email-form">
+							 <label for="email">이메일</label>
+							 <div class="input-group">
+								<input type="text" class="form-control" name="userEmail1" id="userEmail1" placeholder="이메일" >
+								<select class="form-control" name="userEmail2" id="userEmail2" >
+								<option>@naver.com</option>
+								<option>@daum.net</option>
+								<option>@gmail.com</option>
+								<option>@hanmail.com</option>
+								 <option>@yahoo.co.kr</option>
+								</select>
+							</div>   
+							<div class="input-group-addon">
+								<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
+							</div>
+								<div class="mail-check-box">
+							<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
+							</div>
+								<span id="mail-check-warn"></span>
+						</div>
+						
 						<div class="text-center">
 							<button class="btn btn-primary" type="button" id="submit">회원가입</button>
 							<button class="btn btn-secondary cancel" type="button">취소</button>
