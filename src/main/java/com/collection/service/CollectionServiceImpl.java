@@ -53,8 +53,20 @@ public class CollectionServiceImpl implements CollectionService {
 	}
 
 	@Override
+	public void reviewCount(long seq) {
+		log.info(seq);
+		mapper.reviewCount(seq);
+	}
+
+	@Override
+	public void starAvg(long seq) {
+		log.info(log);
+		mapper.starAvg(seq);
+	}
+
+	@Override
 	public List<BoardVO> getIndexList() {
-		log.info("get Board List");
+
 		return mapper.getIndexList();
 	}
 

@@ -246,7 +246,7 @@ body::-webkit-scrollbar-track {
 		</div>
 	</section> -->
 	<!-- ****** Categories Area End ****** -->
-
+	
 	<!-- ****** Blog Area Start ****** -->
 	<section class="blog_area section_padding_0_80">
 		<div class="container">
@@ -255,7 +255,6 @@ body::-webkit-scrollbar-track {
 					<div class="row">
 
 						<!-- Single Post -->
-
 
 						<!-- Single Post -->
 						<c:forEach items="${list}" var="collection">

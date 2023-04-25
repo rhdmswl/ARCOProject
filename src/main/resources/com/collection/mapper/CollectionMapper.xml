@@ -36,52 +36,76 @@
 	<sql id="criteria">
 		<choose>
 			<when test="type == 'T'.toString()">
-				where
-				title like concat('%', #{keyword}, '%')
+				where title like concat('%', #{keyword}, '%') 
 			</when>
 			<when test="type == 'D'.toString()">
-				where
-				and startDate like concat('%', #{keyword}, '%')
+				where startDate like concat('%', #{keyword}, '%') 
 			</when>
 		</choose>
 	</sql>
 	
-	<sql id="criteriaClass">
-		<choose>
-			<when test="type == 'T'.toString()">
-				where
-				title like concat('%', #{keyword}, '%')
+	
+	
+	<sql id="sort">
+
+		 <choose>
+			<when test='sort == "endDate"'>
+				 order by endDate asc
 			</when>
-			<when test="type == 'D'.toString()">
-				where
-				and startDate like concat('%', #{keyword}, '%')
+			<when test='sort == "revViewCount"'>
+				 order by revViewCount desc
 			</when>
-		</choose>
+			<when test='sort == "star"'>
+				 order by starAvg desc
+			</when>
+		</choose> 
+
 	</sql>
 	
+	
+	<!-- <select id="getListWithPagingSort" resultType="com.collection.domain.CollectionVO">
+
+    select * 
+    from(select seq, title, startDate, endDate, imgUrl, revViewCount from collection
+    <include refid="sort"></include>
+    )as collectionPaging limit #{pageNumForLimit},12
+ 
+	</select> -->
 	
 	
 	<select id="getListWithPaging" resultType="com.collection.domain.CollectionVO">
 
     select * 
-    from(select seq, title, startDate, endDate, imgUrl, revViewCount from collection
+    from(select seq, title, startDate, endDate, imgUrl, revViewCount, starAvg from collection
     <include refid="criteria"></include>
     )as collectionPaging
-    order by endDate desc limit #{pageNumForLimit},12
+    where endDate >= now()     
+    <include refid="sort"></include>  limit #{pageNumForLimit},12
 
 	</select>
-
- 
+ 	
 	<select id="getTotalCount" resultType="int">
 		select count(*) from collection
-		<!-- <include refid="criteria"></include> -->
-
+		<include refid="criteria"></include>
 	</select>
 	
 	<update id="revViewCount">
 		update collection 
 		set revViewCount = revViewCount + 1
 		where seq = #{seq}
+	</update>
+	
+	<update id="reviewCount">
+		update collection
+		set reviewCount = (select count(*) from collectionRev where seq = #{seq})
+		where seq = #{seq}
+	</update>
+	
+	<update id="starAvg">
+		UPDATE collection cr 
+		SET cr.starAvg = ROUND((SELECT SUM(rv.revStar) FROM collectionRev rv WHERE rv.seq = #{seq}) / 
+                       (SELECT COUNT(*) FROM collectionRev WHERE seq = #{seq}), 1)
+		WHERE cr.seq = #{seq};
 	</update>
 	
 

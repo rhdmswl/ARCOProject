@@ -198,7 +198,35 @@ body::-webkit-scrollbar-track {
 
 </style>
 </head>
+<script type="text/javascript">
+$(document).ready(function() {
+    // 삭제 버튼 클릭 시
+    $('.delete-btn').click(function() {
+        var userId = $(this).data('user-id');
+        if (confirm(userId + ' 님을 삭제하시겠습니까?')) {
+            // 삭제 요청 보내기
+            $.ajax({
+                url: '/admin/admin',
+                type: 'POST',
+                data: {userId: userId},
+                success: function(result) {
+                    // 삭제 성공 시 완료 메시지 띄우기
+                    if (result === 'success') {
+                        alert('회원이 삭제되었습니다.');
+                        // 현재 페이지 다시 로드하기
+                        location.reload();
+                    } 
+                }
+            });
+        }
+    });
+});
+
+
+
+</script>
 <body>
+
   <div class="container">
 	<div class="row my-2">
 			<div class="col-lg-8 order-lg-2">
@@ -222,16 +250,19 @@ body::-webkit-scrollbar-track {
 										<th>아이디</th>
 										<th>이름</th>
 										<th>이메일</th>
-										<th>가입일</th>
+										<th>회원 관리</th>
 									</tr>
 									<c:forEach var="user" items="${member}">
 										<tr>
 											<td>${user.userId}</td>
 											<td>${user.userName}</td>
 											<td>${user.email}</td>
+											 <td><button class="btn btn-danger btn-sm delete-btn" data-user-id="${user.userId}">삭제</button></td>
 										</tr>
 									</c:forEach>
+									
 								</table>
+								 
 							</div>
 						</div>
 					</div>

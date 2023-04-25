@@ -494,6 +494,25 @@ button {
 	color: #f21378;
 }
 
+.page-item.active .page-link {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f21378;
+    padding: 0;
+    margin: 0 3px;
+    border-radius: 50%!important;
+    width: 36px;
+    height: 36px;
+    font-size: .875rem;
+    background-color: #ddd;
+    border-color: #ddd;
+}
+
+.page-item.active:hover {
+	color: #f21378;
+}
+
 .comment-delete-btn {
 	position: relative;
 }
