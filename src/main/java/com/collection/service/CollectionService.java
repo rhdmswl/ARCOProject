@@ -2,8 +2,9 @@ package com.collection.service;
 
 import java.util.List;
 
-import com.collection.domain.Criteria;
+import com.arco.domain.BoardVO;
 import com.collection.domain.CollectionVO;
+import com.collection.domain.Criteria;
 
 public interface CollectionService {
 	
@@ -15,6 +16,6 @@ public interface CollectionService {
 	public int getTotal(Criteria cri);
 	public int revViewCount(long seq);
 
-	
+	public List<BoardVO> getIndexList();
 	
 }

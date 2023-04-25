@@ -33,8 +33,10 @@ public class AdminController {
 	@Inject
 	MemberService service;
 	
+	
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
+	 
 	
 //	// 관리자화면
 //	@RequestMapping(value = "/index", method = RequestMethod.GET)

@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.member.service.MailSendService;
 import com.member.service.MemberService;
 import com.member.vo.CollectionReviewVO;
 import com.member.vo.Criteria;
@@ -41,11 +42,12 @@ public class MemberController {
 	@Inject
 	MemberService service;
 
+	
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
 
 	@Autowired
-	private DataSource dataSource;
+	MailSendService mailService;
 
 	// 회원가입 get
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -268,4 +270,14 @@ public class MemberController {
 
 		return "redirect:/";
 	}
+	
+	// 이메일 인증
+	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public String mailCheck(String email) {
+		System.out.println("이메일 인증 요청이 들어옴!");
+		System.out.println("이메일 인증 이메일 : " + email);
+		return mailService.joinEmail(email);
+	}
+	
 }

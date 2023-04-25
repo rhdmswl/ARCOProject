@@ -39,7 +39,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     height: 5%; /* 스크롤바의 길이 */
-    background: #f21378; /* 스크롤바의 색상 */ 
+    background: black; /* 스크롤바의 색상 */ 
     border-radius: 10px;
 }
 
@@ -860,3 +860,4 @@ button {
 
 </body>
 </html>
+<jsp:include page="/WEB-INF/views/includes/footer.jsp" />

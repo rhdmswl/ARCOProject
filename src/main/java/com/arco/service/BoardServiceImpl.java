@@ -57,6 +57,7 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.getListWithPaging(cri);
 	} 
 
+	
 	@Override
 	public int getTotal(Criteria cri) {
 		log.info("get total count");
@@ -108,6 +109,13 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void updateLikeCheckCancel(Long post_id,String userId) {
 		mapper.updateLikeCheckCancel(post_id,userId);
+	}
+
+	@Override
+	public List<BoardVO> getBest() {
+		log.info("get Best Board");
+		return mapper.getBest();
+
 	}
 	
 }
