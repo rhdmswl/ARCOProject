@@ -10,20 +10,21 @@
       
     <beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> 
 
-	<!-- 관리자 권한할 때 수정하라고 해서 추가했는데 잘 되는건지 모르겠어서 일단 주석처리해뒀습니다..! -->
-<!-- 	HTTP Security 설정
+	<!-- 관리자 권한할 때 수정하라고 해서 추가했는데 잘 되는건지 모르겠어서 일단 주석처리해뒀습니다 -->
+<!-- 	
+	HTTP Security 설정
 	<http>
 	    <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 	    <intercept-url pattern="/**" access="permitAll" />
 	
-	    <form-login
-	        login-page="/login"
+ 	    <form-login
+	        login-page="/mypage/login"
 	        default-target-url="/"
-	        authentication-failure-url="/login?error"
-	        username-parameter="username"
-	        password-parameter="password" />
+	        authentication-failure-url="/mypage/login"
+	        username-parameter="userId"
+	        password-parameter="userPass" />
 	    <logout logout-url="/logout" logout-success-url="/" />
-	    <csrf disabled="true"/>
+	    <csrf disabled="true"/> 
 	</http>
 	
 	인메모리 사용자 설정

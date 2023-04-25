@@ -327,7 +327,7 @@ body::-webkit-scrollbar-track {
 						end="${collectionRevPageMaker.endPage}" step="1">
 						<c:choose>
 							<c:when test="${pageNum == collectionRevPageMaker.cri.page}">
-								<div class="page-link">${pageNum}</div>
+								<div class="page-link current-page">${pageNum}</div>
 							</c:when>
 							<c:otherwise>
 								<a class="page-link" href="?revPage=${pageNum}&postPage=${postPage}&commentPage=${commentPage}">${pageNum}</a>
@@ -373,7 +373,7 @@ body::-webkit-scrollbar-track {
 						end="${postPageMaker.endPage}" step="1">
 						<c:choose>
 							<c:when test="${pageNum == postPageMaker.cri.page}">
-								<div class="page-link">${pageNum}</div>
+								<div class="page-link current-page">${pageNum}</div>
 							</c:when>
 							<c:otherwise>
 								<a class="page-link" href="?revPage=${revPage}&postPage=${pageNum}&commentPage=${commentPage}">${pageNum}</a>
@@ -419,7 +419,7 @@ body::-webkit-scrollbar-track {
 						end="${commentPageMaker.endPage}" step="1">
 						<c:choose>
 							<c:when test="${pageNum == commentPageMaker.cri.page}">
-								<div class="page-link">${pageNum}</div>
+								<div class="page-link current-page">${pageNum}</div>
 							</c:when>
 							<c:otherwise>
 								<a class="page-link" href="?revPage=${revPage}&postPage=${postPage}&commentPage=${pageNum}">${pageNum}</a>
