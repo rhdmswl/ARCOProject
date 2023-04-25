@@ -39,6 +39,8 @@ public class CollectionController {
 		log.info("/get");
 		model.addAttribute("collection", service.get(seq));
 		service.revViewCount(seq);
+		service.reviewCount(seq);
+		service.starAvg(seq);
 	}
 	
 	@GetMapping("/list")
@@ -48,6 +50,7 @@ public class CollectionController {
 		log.info(cri);
 		cri.setpageNumForLimit();
 		model.addAttribute("list", service.getList(cri));
+//		model.addAttribute("sort", service.getListSort(cri));      
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
