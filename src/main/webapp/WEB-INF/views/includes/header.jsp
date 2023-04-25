@@ -309,7 +309,7 @@ position: absolute;
 .top_header_area .signup-search-area .admin {
 	position: absolute;
 	top: 10px;
-	right: -55px;
+	right: -70px;
 	color: #222;
 	border-right: 0;
 }
@@ -375,7 +375,7 @@ position: absolute;
 								</c:if>
 								<c:if test="${member != null}">
 								<c:if test="${member.role == 'ROLE_ADMIN'}">
-								<a class="admin" href="/admin/admin">관리자 화면</a>	
+								<a class="admin" href="/admin/admin">Admin Page</a>	
 										
 									</c:if>
 									
