@@ -709,27 +709,27 @@ p.v-data {
             					       }
             					   }
             					   str += "</div>";
-            					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
+            					   str +="<div class='revBox'><div class='header'><div class='primary-font'>"+list[i].nickName+"</div>"; 
             					   if (list[i].nickName=="${member.userName}"){
             					   str+= "         <small>"	;
             					   str+= "<a href='#" + formId + "' class='updatebtn' style='color:black;' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
             					   str+= ""	;
-            					   str+=" <a href='#' class='remove2' role='button' style='color:black; aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
+            					   str+=" <a href='#' class='remove2' role='button' style='color:black;' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
             					   str+= "         </small>"	;
             					   }
             					   str+= "<small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";//header끝
-            			           str+= "<div id='review' font-family: 'font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</div>";
+            			           str+= "<div id='review' style='font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</div>";
                                    str+= "            <form class='collapse reviewColl' id='" + formId + "'>";
                                    str+= "              <div class='form-group'>";
                                    str+= "                    <textarea style='resize: none;' class='form-control reviewBox' id ='revComment' rows='3'></textarea>";
                                    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
                                    str+= "  			</div>";
             				       str+= "  			<button id='update' type='button' class='btn btn-secondary updateSuccess' >수정 완료</button></div>";
-            				       str+= "  			</div>";
+            				       str+= "  			</form>";
             				       str+= "			</form>";
             				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
             			          
-            				       str += "</div></li>"; 
+            				       str += "</li>"; 
             			            str+= "<div class='jb-division-line'></div>";
             				   } 
             				   reviewUL.html(str);
