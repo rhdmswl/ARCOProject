@@ -66,11 +66,18 @@ body::-webkit-scrollbar-track {
 }
 
 .page-item.active .page-link {
-	/* z-index: 1; */
-	color: #555;
-	font-weight: bold;
-	background-color: #e0e0e0;
-	border-color: #ccc;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f21378;
+    padding: 0;
+    margin: 0 3px;
+    border-radius: 50%!important;
+    width: 36px;
+    height: 36px;
+    font-size: .875rem;
+    background-color: #ddd;
+    border-color: #ddd;
 }
 
 .page-link:focus, .page-link:hover {
@@ -89,7 +96,20 @@ body::-webkit-scrollbar-track {
 	margin-bottom: 15px;
 }
 
+.table-bordered {
+    border: 0;
+}
+
+.mail_list {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: 0;
+	border-right: 0;
+}
+
 .inbox .mail_list .list-group-item {
+	border-left:0;
+	border-right:0;
 	border-bottom: 0.3px solid #e9ecef;
 	padding: 15px;
 	margin-bottom: 1px;
@@ -203,9 +223,26 @@ body::-webkit-scrollbar-track {
 	margin-right: 5px;
 	font-family: 'Open Sans', sans-serif;
 	border: 1px solid #f21378;
-	border-radius: 20px;
 	background-color: #f21378;
+	border-radius: 20px;
+	color: white;
 }
+
+.sideListGroup {
+	list-style: none;
+	text-align: center;
+}
+
+.sidelist a {
+	color: white;
+}
+
+.sidelist:hover{
+	background-color: black;
+	border: 1px solid black;
+	border-radius: 20px;
+}
+
 
 .m-r-10 {
 	margin-left: 50px;
@@ -344,6 +381,17 @@ body::-webkit-scrollbar-track {
 	border: 2px solid #e9ecef;
 }
 
+.positionText {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+	padding-top: 28px;
+	padding-bottom: 5px;
+}
+
+.boardName {
+	float: left;
+}
 
 @media only screen and (max-width: 767px) {
 	.inbox .mail_list .list-group-item .controls {
@@ -358,8 +406,6 @@ body::-webkit-scrollbar-track {
 		href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" >
 	<div class="container">
 		<section class="content inbox">
-			
-
 			<div class="container-fluid">
 				<div class="row clearfix">
 					<div class="col-lg-12">
@@ -392,15 +438,14 @@ body::-webkit-scrollbar-track {
 				</div>
 				<!-- 사이드 카테고리 -->
 				<div class="mb40">
-					<ul class="list-unstyled active"
-						style="list-style-type: none; text-align: center;">
-						<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
+					<ul class="list-unstyled active sideListGroup">
+						<li class="sidelist active"><a class="nav-link" style="font-weight: 700;"
 							href="/board/list?pageNum=1&brd_id=4">BEST</a></li>
-						<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
+						<li class="sidelist active"><a class="nav-link" style="font-weight: 700;"
 							href="/board/list?pageNum=1&brd_id=1">정보</a></li>
-							<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
+							<li class="sidelist active"><a class="nav-link" style="font-weight: 700;"
 							href="/board/list?pageNum=1&brd_id=3">전시</a></li>
-						<li class="sidelist"><a class="nav-link" style="color: white; font-weight: 700;"
+						<li class="sidelist active"><a class="nav-link" style="font-weight: 700;"
 							href="/board/list?pageNum=1&brd_id=2">자유</a></li>
 						
 							
@@ -408,16 +453,24 @@ body::-webkit-scrollbar-track {
 					<!-- 현재 게시판 위치 표시 -->
 					<c:choose>
 						<c:when test="${pageMaker.cri.brd_id == 2}">
-							<h1 class="h3 mb-2 text-gray-800">자유</h1>
+							<div class="positionText">
+								<div class="boardName">자유</div>
+							</div>
 						</c:when>
 						<c:when test="${pageMaker.cri.brd_id == 1}">
-							<h1 class="h3 mb-2 text-gray-800">정보</h1>
+							<div class="positionText">
+								<div class="boardName">정보</div>
+							</div>
 						</c:when>
 						<c:when test="${pageMaker.cri.brd_id == 3}">
-							<h1 class="h3 mb-2 text-gray-800">전시</h1>
+							<div class="positionText">
+								<div class="boardName">전시</div>
+							</div>
 						</c:when>
 						<c:when test="${pageMaker.cri.brd_id ==4}">
-							<h1 class="h3 mb-2 text-gray-800">BEST</h1>
+							<div class="positionText">
+								<div class="boardName">BEST</div>
+							</div>
 						</c:when>
 					</c:choose>
 					<!-- 현재 게시판 위치 표시 종료 -->
@@ -622,6 +675,10 @@ body::-webkit-scrollbar-track {
 					    actionForm.submit();
 					});
 					
+					$('#sidelist').on("click", function(){
+						$('#sidelist').removeClass();
+						$(this).addClass('on');
+					});
 				});
 		
 	</script>

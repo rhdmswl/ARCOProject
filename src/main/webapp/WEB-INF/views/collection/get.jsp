@@ -500,7 +500,7 @@ p.v-data {
 
 							<!-- Comment Area Start -->
 							<div class="comment_area section_padding_50 clearfix">
-<h4 class="mb-30">Comments</h4>
+							<h4 class="mb-30">Comments</h4>
 								<ul class="chat"></ul>
 								<div class="panel-footer">
 									<%--   <div class="pull-rigth">
