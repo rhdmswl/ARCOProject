@@ -64,4 +64,10 @@ public class CollectionServiceImpl implements CollectionService {
 		mapper.starAvg(seq);
 	}
 
+	@Override
+	public List<BoardVO> getIndexList() {
+		log.info("get Board List");
+		return mapper.getIndexList();
+	}
+
 }
