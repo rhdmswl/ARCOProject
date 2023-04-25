@@ -37,4 +37,6 @@ public interface BoardMapper {
 	public void updateLikeCheck(Long post_id, String userId);
 	public void updateLikeCheckCancel(Long post_id, String userId);
 
+	public List<BoardVO> getBest();
+
 }

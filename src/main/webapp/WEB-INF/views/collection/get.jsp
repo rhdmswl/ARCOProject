@@ -36,11 +36,15 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
+	<!-- star -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<!-- map -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=875db2344685ebc0aa08645ef75d08b6"></script>
-
+	
+	<!-- 글자수 -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     
 <style type="text/css">
 
@@ -383,7 +387,6 @@ p.v-data {
   width: 700px;
   margin: 0 auto;
 }
-
 </style>
 
 </head>
@@ -491,7 +494,7 @@ p.v-data {
 
 							<!-- Comment Area Start -->
 							<div class="comment_area section_padding_50 clearfix">
-								<h4 class="mb-30">Comments</h4> 
+<h4 class="mb-30">Comments</h4>
 								<ul class="chat"></ul>
 								<div class="panel-footer">
 									<%--   <div class="pull-rigth">
@@ -519,14 +522,15 @@ p.v-data {
 											<input type="text" style="display: none;" id="seq" name="seq"
 												value="<c:out value="${collection.seq}"/>">
 										</div>
-										<div class="form-group starRev" id="star">
+										<!-- 별점기능 -->
+										<div class="form-group starRev" id="star"> 
 											<span class="star-input"> <span class="starR on"
 												onClick="setStar(1)">⭐</span> <span class="starR"
 												onClick="setStar(2)">⭐</span> <span class="starR"
 												onClick="setStar(3)">⭐</span> <span class="starR"
 												onClick="setStar(4)">⭐</span> <span class="starR"
 												onClick="setStar(5)">⭐</span> <output for="star-input">
-													<b>&nbsp;&nbsp;0</b>점
+													<b>&nbsp;&nbsp;1</b>점
 												</output>
 											</span>
 										</div>
@@ -536,11 +540,13 @@ p.v-data {
 												id='InputnickName' name='nickName'  readonly="readonly" style="resize: none;">${member.userName}</textarea>
 										</div>
 										<div class="form-group revTextBox">
-											<label>리뷰내용</label> <input class="form-control revContentInput" type="text"
-												id='comment' name='revComment' placeholder="한줄평">
+											<label>한줄평 작성</label> <input class="form-control revContentInput" type="text"
+												id='comment' name='revComment' placeholder="한줄평을 적어주세요">
+												<div id="comment_cnt">(0 / 50)</div>
 										</div>
 										<button id='commentAdd' type="submit"
-											class="btn btn-secondary">댓글 작성</button>
+											class="btn btn-secondary">입력 완료</button>
+											
 										</c:if>
 										<!-- 비 로그인 시 -->
 										<c:if test="${member.userId==null}">
@@ -634,6 +640,16 @@ p.v-data {
    				console.log("함수끝"+str);
    				
    				reviewPageFooter.html(str);
+   				
+   				/* 글자수 제한 기능 */
+   			 $('#comment').on('keyup', function() {
+   		        $('#comment_cnt').html("("+$(this).val().length+" / 50)");
+   		 
+   		        if($(this).val().length > 50) {
+   		            $(this).val($(this).val().substring(0, 50));
+   		            $('#comment_cnt').html("(50 / 50)");
+   		        }
+   		    });
    			}		 
             
             		 function showList(page){
@@ -695,6 +711,7 @@ p.v-data {
             				   showReviewPage(reviewCnt);
             			 }); 
             		 } 
+            		 
             		 
             		 
             
@@ -788,8 +805,10 @@ p.v-data {
                     	                }
                     	            }, 1000);
                     	        })
+                    	        /* 별점 체크하지 않았을때 기본 1점으로 설정 */
                     	        .on("change", ".star-input>.starR", function(){
-                    	            var score = $(this).next().text();
+                    	            var $checked = $star.find(":checked");
+                    	            var score = ($checked.length === 0) ? 1 : $checked.next().text();
                     	            setStar(score);
                     	        })
                     	        .on("mouseover", ".star-input label", function(){
@@ -799,7 +818,7 @@ p.v-data {
                     	        .on("mouseleave", ".star-input>.starR", function(){
                     	            var $checked = $star.find(":checked");
                     	            if($checked.length === 0){
-                    	                setStar(0);
+                    	                setStar(1);
                     	            } else {
                     	                setStar($checked.next().text());
                     	            }

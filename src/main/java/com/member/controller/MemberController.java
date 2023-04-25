@@ -42,9 +42,10 @@ public class MemberController {
 	@Inject
 	MemberService service;
 
+	
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
-	
+
 	@Autowired
 	MailSendService mailService;
 

@@ -420,7 +420,7 @@ position: absolute;
 								<li class="nav-item"><a class="nav-link"
 									href="/collection/list">Exhibition</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="/board/list?pageNum=1&brd_id=1">Community</a></li>
+									href="/board/list?pageNum=1&brd_id=4">Community</a></li>
 								<li class="nav-item"><a class="nav-link" href="#">About</a>
 								</li>
 							</ul>
