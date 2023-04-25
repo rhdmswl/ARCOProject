@@ -13,5 +13,6 @@ public class ReplyVO {
 	  private String com_content;
 	  private String com_writer;
 	  private Date com_date;
+	  private String com_writer_id;
 	  
 }
