@@ -19,7 +19,7 @@
     <title>EXHIBITION - Page</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="/img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
     <link href="/style.css" rel="stylesheet">
