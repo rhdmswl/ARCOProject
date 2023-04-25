@@ -22,9 +22,6 @@ public class Criteria {
 	private String keyword;
 	
 	private String sort;
-	private String end;
-	private String viewCount;
-	private int star;
 	
 	public Criteria() {
 		this(1, 12);

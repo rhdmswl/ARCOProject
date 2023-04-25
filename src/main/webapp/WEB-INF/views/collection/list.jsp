@@ -34,7 +34,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
+<!-- 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css"> -->
     
 
 <!-- Css Styles -->
@@ -249,9 +249,9 @@ a:hover {
 										<form id="sortForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
 											
 											<select id="sortSelect" class="form-control" name='sort' style="width:70px;">
-												<option value="end" <c:out value="${pageMaker.cri.sort eq 'end' ? 'selected' : ''}"/> selected>종료일순</option>
-												<option value="reviewCount" <c:out value="${pageMaker.cri.sort eq 'reviewCount' ? 'selected' : ''}"/>>조회순</option>
-												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
+												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
+												<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
+												<option value="revStar" <c:out value="${pageMaker.cri.sort eq 'revStar' ? 'selected' : ''}"/>>별점순</option>
 											</select>
 											<%-- <input type='hidden' name="sort" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'> --%>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
@@ -398,8 +398,8 @@ a:hover {
 				var sortForm = $("#sortForm");
 				
 				$("#sortForm").on("click", function(e){
-					
-					e.preventDefault();
+					/* e.preventDefault(); */
+					console.log("click");
 					sortForm.find("#sortSelect option:selected").val();
 					sortForm.submit();
 				});  

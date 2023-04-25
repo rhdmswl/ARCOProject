@@ -44,14 +44,14 @@
 	<sql id="sort">
 
 		 <choose>
-			<when test='sort == "end"'>
+			<when test='sort == "endDate"'>
 				 order by endDate asc
 			</when>
-			<when test='sort == "viewCount"'>
+			<when test='sort == "revViewCount"'>
 				 order by revViewCount desc
 			</when>
-			<!-- <when test='sort == "star"'>
-				 revStar order by desc
+			<!-- <when test='sort == "revStar"'>
+				 order by revStar desc
 			</when> -->
 		</choose> 
 
@@ -64,7 +64,7 @@
     from(select seq, title, startDate, endDate, imgUrl, revViewCount from collection
     <include refid="sort"></include>
     )as collectionPaging limit #{pageNumForLimit},12
-
+ 
 	</select> -->
 	
 	
@@ -74,10 +74,9 @@
     select * 
     from(select seq, title, startDate, endDate, imgUrl, revViewCount from collection
     <include refid="criteria"></include>
-    <include refid="sort"></include> 
     )as collectionPaging
     where endDate >= now()     
-    order by endDate desc limit #{pageNumForLimit},12
+    <include refid="sort"></include>  limit #{pageNumForLimit},12
 
 	</select>
  
