@@ -83,33 +83,6 @@
 		USERNAME = #{userName}
 	</select>
 
-	<insert id="insertImage" parameterType="com.member.vo.ImageVO">
-		INSERT INTO image
-		(file_name, content_type, image_data, user_id)
-		VALUES (#{file_name},
-		#{content_type}, #{image_data}, #{user_id})
-	</insert>
-
-	<select id="selectImageByUserId" parameterType="string"
-		resultType="com.member.vo.ImageVO">
-		SELECT file_name, content_type, image_data
-		FROM image
-		WHERE
-		user_id = #{userId}
-	</select>
-
-	<!-- <select id="getProfileImg" resultType="string"> SELECT PROFILEIMG FROM 
-		MEMBER WHERE USERID = #{userId} </select> <update id="updateProfileImg"> 
-		UPDATE MEMBER SET PROFILEIMG = #{profileImg} WHERE USERID = #{userId} </update> -->
-
-
-	<!-- 작성한 한줄평 불러오기 <select id="getMemberCollectionRevs" resultType="com.member.vo.CollectionReviewVO"> 
-		SELECT * FROM collectionRev WHERE nickname = #{sessionScope.userId} </select> 
-		작성한 게시글 불러오기 <select id="getMemberPosts" resultType="com.member.vo.BoardVO"> 
-		SELECT * FROM post WHERE post_writer = #{sessionScope.userId} </select> 작성한 
-		댓글 불러오기 <select id="getMemberComments" resultType="com.member.vo.ReplyVO"> 
-		SELECT * FROM comment WHERE com_writer = #{sessionScope.userId} </select> -->
-
 	<!-- 작성한 한줄평 불러오기 (페이징 적용) -->
 	<select id="getMemberCollectionRevsWithPaging"
 		resultType="com.member.vo.CollectionReviewVO">
@@ -157,6 +130,7 @@
 	<!-- all 회원 목록 조회 (페이징 적용) -->
 	<select id="listAllMembers" resultType="com.member.vo.MemberVO">
 		SELECT * FROM MEMBER
+		LIMIT ${start}, 12
 	</select>
 
 	<!-- all 한줄평 불러오기 (페이징 적용) -->
@@ -207,4 +181,42 @@
 		SELECT COUNT(*) FROM
 		comment
 	</select>
+	
+	<!-- 회원 탈퇴/삭제 시 해당 유저의 모든 한줄평 삭제 -->
+	<delete id="deleteReviewsByUserId">
+		DELETE FROM collectionRev
+		WHERE USERID = #{userId}
+	</delete>
+	
+	<!-- 회원 탈퇴/삭제 시 해당 유저의 모든 게시글 삭제 -->
+	<delete id="deletePostsByUserId">
+		DELETE FROM post
+		WHERE user_id = #{userId}
+	</delete>
+	
+	<!-- 회원 탈퇴/삭제 시 해당 유저의 모든 댓글 삭제 -->
+	<delete id="deleteCommentsByUserId">
+		DELETE FROM comment
+		WHERE com_writer_id = #{userId}
+	</delete>
+	
+	<insert id="insertImage" parameterType="com.member.vo.ImageVO">
+		INSERT INTO image
+		(file_name, content_type, image_data, user_id)
+		VALUES (#{file_name},
+		#{content_type}, #{image_data}, #{user_id})
+	</insert>
+
+	<select id="selectImageByUserId" parameterType="string"
+		resultType="com.member.vo.ImageVO">
+		SELECT file_name, content_type, image_data
+		FROM image
+		WHERE
+		user_id = #{userId}
+	</select>
+
+	<!-- <select id="getProfileImg" resultType="string"> SELECT PROFILEIMG FROM 
+		MEMBER WHERE USERID = #{userId} </select> <update id="updateProfileImg"> 
+		UPDATE MEMBER SET PROFILEIMG = #{profileImg} WHERE USERID = #{userId} </update> -->
+	
 </mapper>
