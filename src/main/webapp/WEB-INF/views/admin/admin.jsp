@@ -196,6 +196,47 @@ body::-webkit-scrollbar-track {
 	margin-top: 10px;
 }
 
+
+.tab {
+  width: 17%;
+  position: fixed;
+  left: 50px;
+  bottom: 430px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-size:15px;
+
+ 
+}
+
+.tab button {
+	background-color: inherit;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	
+}
+
+.tab button:hover {
+	border-color: #f21378;
+}
+
+.tab button.active {
+  border-color: #f21378;
+  border: 3px solid #f21378;
+ 
+}
+
+
+
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	
+}
+
 </style>
 </head>
 <script type="text/javascript">
@@ -221,7 +262,19 @@ $(document).ready(function() {
         }
     });
 });
-
+function openTab(evt, tabName) {
+	var i, tabcontent, tablinks;
+	tabcontent = document.getElementsByClassName("tabcontent");
+	for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	}
+	tablinks = document.getElementsByClassName("tablinks");
+	for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].classList.remove("active");
+	}
+	document.getElementById(tabName).style.display = "block";
+	evt.currentTarget.classList.add("active");
+}
 
 
 </script>
@@ -236,7 +289,16 @@ $(document).ready(function() {
 				</div>
 				
 				<h1>Admin Page</h1>
-				
+					<div class="tab">
+					<button class="tablinks active" onclick="openTab(event, 'all')">회원
+						정보</button>
+					<button class="tablinks" onclick="openTab(event, 'collection')">모든 한줄평</button>
+					<button class="tablinks" onclick="openTab(event, 'board')">모든 게시글</button>
+					<button class="tablinks" onclick="openTab(event, 'comment')">모든 댓글</button>
+					
+					
+				</div>
+				<div id="all" class="tabcontent" style="display: block;">
 				<!-- 회원 목록 -->
 				<div class="d-flex justify-content-center">
 					<div class="card" style="width: 100%; text-align: left;">
@@ -287,8 +349,10 @@ $(document).ready(function() {
 						<a class="page-link" href="?memberPage=${memberPageMaker.endPage + 1}&revPage=${revPage}&postPage=${postPage}&commentPage=${commentPage}">Next</a>
 					</c:if>
 				</div>
-				<br>
+				</div>
 				
+				
+				<div id="collection" class="tabcontent">
 				<!-- 한줄평 목록 -->
 				<div class="d-flex justify-content-center">
 					<div class="card" style="width: 100%; text-align: left;">
@@ -335,8 +399,9 @@ $(document).ready(function() {
 						<a class="page-link" href="?revPage=${collectionRevPageMaker.endPage + 1}&postPage=${postPage}&commentPage=${commentPage}">Next</a>
 					</c:if>
 				</div>
-				<br>
-
+				</div>
+				
+				<div id="board" class="tabcontent">
 				<!-- 게시글 목록 -->
 				<div class="d-flex justify-content-center">
 					<div class="card" style="width: 100%; text-align: left;">
@@ -382,8 +447,9 @@ $(document).ready(function() {
 						<a class="page-link" href="?revPage=${revPage}&postPage=${postPageMaker.endPage + 1}&commentPage=${commentPage}">Next</a>
 					</c:if>
 				</div>
-				<br>
-
+				</div>
+				
+				<div id="comment" class="tabcontent">
 				<!-- 댓글 목록 -->
 				<div class="d-flex justify-content-center">
 					<div class="card" style="width: 120%; text-align: left;">
@@ -428,6 +494,7 @@ $(document).ready(function() {
 					<c:if test="${commentPageMaker.next}">
 						<a class="page-link" href="?revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.endPage + 1}">Next</a>
 					</c:if>
+				</div>
 				</div>
 
 				<br>
