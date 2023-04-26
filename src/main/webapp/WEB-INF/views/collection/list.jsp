@@ -222,11 +222,7 @@ a:hover {
 												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
 												<option value="D" <c:out value="${pageMaker.cri.type eq 'D' ? 'selected' : ''}"/>>날짜</option>
 											</select>
-											<input id="key" type='text' name="keyword" class="form-control" style="width:200px;"
-													placeholder="검색어를 입력해주세요." value='<c:out value="${pageMaker.cri.keyword}"/>'>
-													
-											<input id="selectDate" type="date" name="date" class="form-control" style="width:200px;"
-											 value='<c:out value="${pageMaker.cri.date}"/>'>
+											<ul class="chat"></ul>
 											
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
@@ -387,7 +383,12 @@ a:hover {
             
 			function() {
 				
-				 var searchForm = $("#searchForm");
+				var searchUL = $(".chat");
+				var searchForm = $("#searchForm");
+				
+				var strDefault=''
+				strDefault+= "<input id='key' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
+				searchUL.html(strDefault);
 				
 				$("#searchForm searchButton").on("click", function(e){
 							e.preventDefault();
@@ -401,7 +402,19 @@ a:hover {
 							/* } */			
 				});
 				
-				
+				$("#chk").change (function(e) {
+				    var selectTag = $("#chk option:selected").val();
+				    var str="";
+				    console.log(selectTag);
+				    if (selectTag=="T" || selectTag==""){
+				    str+= "<input id='key' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
+				    }
+				    if (selectTag=="D"){
+				    str+= "<input id='selectDate' type='date' name='date' class='form-control' style='width:200px;' value='<c:out value='${pageMaker.cri.date}'/>'>";
+					}
+
+					searchUL.html(str);
+				});
 				
 				
 				
