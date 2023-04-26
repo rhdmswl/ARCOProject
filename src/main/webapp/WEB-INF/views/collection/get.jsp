@@ -19,7 +19,7 @@
     <title>EXHIBITION - Page</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="/img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
     <link href="/style.css" rel="stylesheet">
@@ -27,8 +27,8 @@
     <!-- Responsive CSS -->
     <link href="/css/responsive/responsive.css" rel="stylesheet">
     
-    <!-- <link rel="stylesheet" href="/css/material-dashboard.min.css"> -->
-    <script src="/js/material-dashboard.min.js"></script>
+    <!-- <script src="/js/material-dashboard.min.js"></script> -->
+    <link rel="stylesheet" href="/css/material-dashboard.min.css">
     
     <!-- Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -262,6 +262,8 @@ body::-webkit-scrollbar-track {
 	width: 90%;
 	left: 60px;
 	padding: 0;
+	margin-top: 50px;
+	border-bottom: 0;
 }
 
 .leave-comment-area {
@@ -387,6 +389,14 @@ p.v-data {
   width: 700px;
   margin: 0 auto;
 }
+
+.reviewBox {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+}
+
+
 </style>
 
 </head>
@@ -440,6 +450,13 @@ p.v-data {
 										<div class="post-headline">
 											<c:out value="${collection.title}" />
 										</div>
+										<div class = "info">
+											<span class="starAvg"> 
+										  <span class="starR on" style="font-size: 1.2em;">⭐</span> 
+										  <span class="star-score"><b>${collection.starAvg} 점</b></span>
+										</span>
+											</div>
+
 										<div class="exhiInfoGroup">
 											<div class="info">
 												<div class="infoText">&#128198; 전시 기간</div>
@@ -490,11 +507,18 @@ p.v-data {
 							<div class = "mapsize" style = "position: static;margin-bottom: 40px;">
 							<div class="infoText">&#128205; 위치 보기</div>
 							<div id="map" style="width:100%; height:500px; " ></div></div>
+							
+							<!-- 길찾기로 이동 -->
+							<div style = "position: margin-bottom: 40px;">
+							<a href="https://map.kakao.com/link/to/<c:out value="${collection.place}"/>,<c:out value="${collection.gpsY}"/>,<c:out value="${collection.gpsX}"/>" >
+														<button class="btn btn-secondary">길 안내</button>
+													</a>
+													</div>
 
 
 							<!-- Comment Area Start -->
 							<div class="comment_area section_padding_50 clearfix">
-<h4 class="mb-30">Comments</h4>
+							<h4 class="mb-30">Comments</h4>
 								<ul class="chat"></ul>
 								<div class="panel-footer">
 									<%--   <div class="pull-rigth">
@@ -590,12 +614,14 @@ p.v-data {
     <!-- <script src="/js/others/plugins.js"></script> -->
     <!-- Active JS -->
 
-    <script src="/js/active.js"></script>
-
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	
+    <!-- <script src="/js/active.js"></script> -->
 	<script type="text/javascript" src="/js/review.js"></script>
 <script>
-
        	$(document).ready(function() {
        		var pageNum = 1;
        		var endNum=0;
@@ -683,27 +709,27 @@ p.v-data {
             					       }
             					   }
             					   str += "</div>";
-            					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
+            					   str +="<div class='revBox'><div class='header'><div class='primary-font'>"+list[i].nickName+"</div>"; 
             					   if (list[i].nickName=="${member.userName}"){
             					   str+= "         <small>"	;
-            					   str+= "<a href='#" + formId + "' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
-            					   str+= "|"	;
-            					   str+=" <a href='#' class='remove2' role='button' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
+            					   str+= "<a href='#" + formId + "' class='updatebtn' style='color:black;' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            					   str+= ""	;
+            					   str+=" <a href='#' class='remove2' role='button' style='color:black;' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
             					   str+= "         </small>"	;
             					   }
             					   str+= "<small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";//header끝
-            			           str+= "<div id='review' style='height:45px; font-family: 'font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</div>";
-                                   str+= "            <form class='collapse' id='" + formId + "'>";
+            			           str+= "<div id='review' style='font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</div>";
+                                   str+= "            <form class='collapse reviewColl' id='" + formId + "'>";
                                    str+= "              <div class='form-group'>";
-                                   str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
+                                   str+= "                    <textarea style='resize: none;' class='form-control reviewBox' id ='revComment' rows='3'></textarea>";
                                    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
                                    str+= "  			</div>";
-            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button></div>";
-            				       str+= "  			</div>";
+            				       str+= "  			<button id='update' type='button' class='btn btn-secondary updateSuccess' >수정 완료</button></div>";
+            				       str+= "  			</form>";
             				       str+= "			</form>";
             				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
             			          
-            				       str += "</div></li>"; 
+            				       str += "</li>"; 
             			            str+= "<div class='jb-division-line'></div>";
             				   } 
             				   reviewUL.html(str);
@@ -720,7 +746,8 @@ p.v-data {
                     			 seq : seqValue,
                         		 nickName : $('#InputnickName').val(),
                         		 revComment : $('#comment').val(),
-                        		 revStar :  $(".starRev output b").text()
+                        		 revStar :  $(".starRev output b").text(),
+                        		 userId : ('${member.userId}')
                         		 };
                          CollectionReviewService.add(review, function(result){alert(result); showList(1);});
                      });
@@ -764,9 +791,6 @@ p.v-data {
          				showList(PageNum);
          			});
                   
-                     if($('.rating').length){
-                    	 var rating
-                     }
                     	
                     /* 별점 구현 */
                     //setStar로 선택된 별점 값 score에 저장
@@ -827,6 +851,7 @@ p.v-data {
 
                     	starRating();
                     	
+                    	
                     	/* 지도 코드 */
                     	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                         mapOption = { 
@@ -847,7 +872,8 @@ p.v-data {
                     // 마커가 지도 위에 표시되도록 설정합니다
                     marker.setMap(map);
 
-       	});
+                    /* map end */
+});
                     	
 										
 </script>
