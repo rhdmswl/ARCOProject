@@ -29,6 +29,7 @@ public class CollectionServiceImpl implements CollectionService {
 
 	@Override
 	public List<CollectionVO> getList(Criteria cri) {
+		log.info("get collection list..");
 		return mapper.getListWithPaging(cri);
 	}
 	

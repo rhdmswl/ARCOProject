@@ -252,10 +252,13 @@ a:hover {
 									<div class="product__page__filter">
 										
 										
-										<form id="sortForm" action="/collection/list" method='get' style=" width:200px;" class="input-group sortForm">
+
+										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
 											
-											<select id="sortSelect" class="form-control" name='sort'>
+											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:70px;" >
+
 												<option value="select" <c:out value="${pageMaker.cri.sort == null ? 'selected' : ''}"/>>정렬순</option>
+
 												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
 												<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
 												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
@@ -263,10 +266,11 @@ a:hover {
 											<%-- <input type='hidden' name="sort" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'> --%>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
-											<!-- 추가한 기본 버튼 -->
-											<button class="sortFindBtn">정렬찾기</button>
-										</form>							 
-										
+
+										</form>					 
+
+				 
+
 									</div>
 								</div>
 							</div>
@@ -284,13 +288,6 @@ a:hover {
 													width="400" height="400">
 												</a>
 											</div>
-											<!--  <div class="ep">18 / 18</div> -->
-<%-- 											<div class="comment">
-												<i class="fa fa-comments"></i> 11
-											</div>
-											<div class="view">
-												<i class="fa fa-eye"></i> <c:out value="${collection.revViewCount}" />
-											</div> --%>
 										</div>
 										<div class="product__item__text">
 											<a style="color: black; font-weight: 700;" 
@@ -379,8 +376,14 @@ a:hover {
 		style="position: absolute; z-index: 2147483647; display: block;">
 		<i class="fa fa-arrow-up" aria-hidden="true"></i>
 	</a>
+	
 	<script type="text/javascript">
-	$(document).ready(
+	
+	
+	
+	
+	$(document).ready(			
+            
 			function() {
 				
 				var searchForm = $("#searchForm");
@@ -402,20 +405,19 @@ a:hover {
 							actionForm.submit();
 						
 				});
-				
-				var sortForm = $("#sortForm");
-				
-				$("#sortFindBtn").on("click", function(e){
-					/* e.preventDefault(); */
-					console.log("click");
-					sortForm.find("#sortSelect option:selected").val();
-					sortForm.submit();
-				});  
-				
+																
 			});
 	
 	
-	
+	function f_changeFunc(obj){
+		
+        var selectVal = $(obj).val();     
+        
+        var f = document.sortForm;
+     
+		f.submit();
+             
+    }
 	</script>
 </body>
 </html>
