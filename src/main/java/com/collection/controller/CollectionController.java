@@ -1,5 +1,7 @@
 package com.collection.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,10 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.collection.domain.CollectionDibsVO;
 import com.collection.domain.CollectionVO;
 import com.collection.domain.Criteria;
 import com.collection.domain.PageDTO;
+import com.collection.service.CollectionDibsService;
 import com.collection.service.CollectionService;
+import com.member.vo.MemberVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -22,6 +27,7 @@ import lombok.extern.log4j.Log4j;
 public class CollectionController {
 
 	private CollectionService service;
+	private CollectionDibsService dibsService;
 	
 	@PostMapping("/register")
 	public void register(CollectionVO collection) {
@@ -36,8 +42,18 @@ public class CollectionController {
 	 */
 	
 	@GetMapping("/get")
-	public void get(@RequestParam("seq") long seq, Model model) {
+	public void get(@RequestParam("seq") long seq, Model model,HttpSession session) {
 		log.info("/get");
+		MemberVO vo = (MemberVO) session.getAttribute("member");
+	    String userId = null;
+	    if (vo != null) {
+	    	userId = vo.getUserId();
+	    }
+	    CollectionDibsVO dibsvo= new CollectionDibsVO();
+	    dibsvo.setUserId(userId);
+	    dibsvo.setSeq(seq);
+	    
+	    model.addAttribute("dibs",dibsService.check(dibsvo));
 		model.addAttribute("collection", service.get(seq));
 		service.revViewCount(seq);
 		service.reviewCount(seq);

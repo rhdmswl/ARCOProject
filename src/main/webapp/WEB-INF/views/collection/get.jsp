@@ -498,11 +498,22 @@ p.v-data {
 													</a>
 												</div>
 											</div>
+											<c:if test="${member.userId!=null}">
+												<c:if test="${dibs>=1}">
 													<div class="info">
 														<div class="infoBtn">
-															<button id='dibs' class="btn btn-secondary">찜하기</button>
+															<button id='dibs' class="btn btn-secondary">찜 취소</button>
 														</div>
 													</div>
+												</c:if>
+												<c:if test="${dibs==0}">
+													<div class="info">
+														<div class="infoBtn">
+															<button id='dibs' class="btn btn-secondary">찜 하기</button>
+														</div>
+													</div>
+												</c:if>
+											</c:if>
 												</div>
 											</div>
 											
@@ -827,7 +838,7 @@ p.v-data {
          						endDate:endDate,
          						imgUrl:imgUrl,
          				};
-                    	dibsService.addDibs(dibs, function(result){alert(result);showlist(1);});
+                    	dibsService.addDibs(dibs, function(result){alert(result);});
          			});
                      
                     /* 별점 구현 */

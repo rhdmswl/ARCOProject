@@ -27,4 +27,16 @@ public class CollectionDibsServiceImpl implements CollectionDibsService {
 		log.info("add dibs......." + vo);
 		return mapper.add(vo);
 	}
+	
+	@Override
+	public int check(CollectionDibsVO vo) {
+		log.info("check dibs......." + vo);
+		return mapper.check(vo);
+	}
+
+	@Override
+	public int cancel(CollectionDibsVO vo) {
+		log.info("cancel dibs......." + vo);
+		return mapper.cancel(vo);
+	}
 }
