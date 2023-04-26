@@ -373,6 +373,7 @@ body::-webkit-scrollbar-track {
 							   if(!regex.test(inputCode)) {
 							      $resultMsg.html('인증번호는 숫자 6자리여야 합니다.');
 							      $resultMsg.css('color', 'red');
+							      $('#submit').attr('disabled', true);
 							      return;
 							   }
 							   
@@ -600,7 +601,7 @@ body::-webkit-scrollbar-track {
 								<label class="control-label" for="passCheck">비밀번호 확인</label><br>
 								<input class="form-control" type="password" id="passCheck"
 									name="passCheck" /> <span id="alert-success"
-									style="display: none; color: #000000;">비밀번호가 일치합니다.</span> <span
+									style="display: none; color: green;">비밀번호가 일치합니다.</span> <span
 									id="alert-danger"
 									style="display: none; color: #d92742; font-weight: bold;">비밀번호가
 									일치하지 않습니다.</span>
