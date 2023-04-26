@@ -371,7 +371,7 @@ position: absolute;
 							<div class="logRegGroup">
 								<c:if test="${member == null}">
 									<a class="login" href="/member/login">Login</a>									
-									<a class="register" href="/member/register">Sign Up</a>									
+									<a class="register" href="/member/privacypolicy">Sign Up</a>									
 								</c:if>
 								<c:if test="${member != null}">
 								<c:if test="${member.role == 'ROLE_ADMIN'}">
