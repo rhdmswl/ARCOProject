@@ -196,6 +196,12 @@ a:hover {
 	left: 25%;
 }
 
+.sortForm {
+	margin-right: 0;
+	float: right;
+	padding-left: 10px;
+}
+
 </style>
 
 </head>
@@ -246,9 +252,13 @@ a:hover {
 									<div class="product__page__filter">
 										
 										
+
 										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
 											
 											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:70px;" >
+
+												<option value="select" <c:out value="${pageMaker.cri.sort == null ? 'selected' : ''}"/>>정렬순</option>
+
 												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
 												<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
 												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
@@ -256,9 +266,11 @@ a:hover {
 											<%-- <input type='hidden' name="sort" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'> --%>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
-											<!-- <button class="sortFindBtn">정렬찾기</button> -->
+
 										</form>					 
-										
+
+				 
+
 									</div>
 								</div>
 							</div>
@@ -393,19 +405,7 @@ a:hover {
 							actionForm.submit();
 						
 				});
-													
-				/*
-				var sortForm = $("#sortForm");
-				
-				
-				$("#sortForm").on("click",function(e){
-					var selectedElement = document.getElementById("sortSelect");
-				
-					sortForm.find(selectedElement).val();
-					sortForm.submit();
-				});*/			
-
-				
+																
 			});
 	
 	

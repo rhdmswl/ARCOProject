@@ -102,7 +102,6 @@
     <include refid="sort"></include>  limit #{pageNumForLimit},12
 
 	</select>
-
  	
 	<select id="getTotalCount" resultType="int">
 		select count(*) from collection

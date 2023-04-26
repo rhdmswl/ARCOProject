@@ -494,6 +494,25 @@ button {
 	color: #f21378;
 }
 
+.page-item.active .page-link {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f21378;
+    padding: 0;
+    margin: 0 3px;
+    border-radius: 50%!important;
+    width: 36px;
+    height: 36px;
+    font-size: .875rem;
+    background-color: #ddd;
+    border-color: #ddd;
+}
+
+.page-item.active:hover {
+	color: #f21378;
+}
+
 .comment-delete-btn {
 	position: relative;
 }
@@ -763,7 +782,7 @@ button {
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
-					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
+					str+= "    <div><div class='header'><div class='primary-font'>"+list[i].com_writer+"</div>";
 					if (list[i].com_writer_id=="${member.userId}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
@@ -819,11 +838,14 @@ button {
 				replyService.add(reply, function(result){alert(result); showList(endNum);} );
 				document.getElementById("com_content").value='';
 			});
+			
+			
 			$(document).on('click','.comment-edit-btn',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
 			    $("#" + form_id).collapse('toggle'); // 해당 form의 collapse 상태를 변경하여 textarea가 나타나도록 함
 			});
 
+			
 			$(document).on('click','#Comment_update',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
 			    var com_id = $(this).closest("li").data("com-id");
@@ -834,6 +856,7 @@ button {
 			    replyService.update(reply, function(result){alert(result); showList(pageNum);} );
 			    
 			});
+			
 			
 			$(document).on('click', '.comment-delete-btn', function(){
 			    var com_id = $(this).closest("li").data("com-id");
