@@ -58,7 +58,7 @@
 				where title like concat('%', #{keyword}, '%') 
 			</when>
 			<when test="type == 'D'.toString()">
-				where startDate like concat('%', #{keyword}, '%') 
+				where endDate >= #{date}
 			</when>
 		</choose>
 	</sql>

@@ -58,7 +58,7 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
 	rel="stylesheet">
 
-<link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" >
 
 <style>
@@ -222,8 +222,12 @@ a:hover {
 												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
 												<option value="D" <c:out value="${pageMaker.cri.type eq 'D' ? 'selected' : ''}"/>>날짜</option>
 											</select>
-											<input type='text' name="keyword" class="form-control" style="width:200px;"
+											<input id="key" type='text' name="keyword" class="form-control" style="width:200px;"
 													placeholder="검색어를 입력해주세요." value='<c:out value="${pageMaker.cri.keyword}"/>'>
+													
+											<input id="selectDate" type="date" name="date" class="form-control" style="width:200px;"
+											 value='<c:out value="${pageMaker.cri.date}"/>'>
+											
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
 											<button type="submit" class="searchButton"><span class="input-group-addon"><i class="zmdi zmdi-search"></i></span></button>
@@ -256,9 +260,6 @@ a:hover {
 										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
 											
 											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:70px;" >
-
-												<option value="select" <c:out value="${pageMaker.cri.sort == null ? 'selected' : ''}"/>>정렬순</option>
-
 												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
 												<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
 												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
@@ -386,15 +387,23 @@ a:hover {
             
 			function() {
 				
-				var searchForm = $("#searchForm");
+				 var searchForm = $("#searchForm");
 				
 				$("#searchForm searchButton").on("click", function(e){
-					
-					e.preventDefault();
-					let val = $("input[name='keyword']").val();
-					searchForm.find("input[name='keyword']").val(val);
-					searchForm.submit();
-				});  
+							e.preventDefault();
+						
+							$('#selectDate').attr("disabled", true);
+						/*if(<c:out value="${pageMaker.cri.type}"/> != 'D'){ */
+							
+								let val = $("input[name='keyword']").val();
+								searchForm.find("input[name='keyword']").val(val);
+								searchForm.submit();
+							/* } */			
+				});
+				
+				
+				
+				
 				
 				var actionForm = $("#actionForm");
 				
@@ -418,6 +427,7 @@ a:hover {
 		f.submit();
              
     }
+	
 	</script>
 </body>
 </html>
