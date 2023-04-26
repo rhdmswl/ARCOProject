@@ -75,6 +75,12 @@ public class MemberController {
 		return "member/login";
 	}
 
+	// 개인정보처리방침 get
+	@RequestMapping(value = "/privacypolicy", method = RequestMethod.GET)
+	public void getPrivacyPolicy() throws Exception {
+	    logger.info("get privacypolicy");
+	}
+	
 	// 로그인 get
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginView() throws Exception {
