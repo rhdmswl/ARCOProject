@@ -10,5 +10,7 @@ import com.collection.domain.Criteria;
 public interface CollectionDibsService {
 	
 	public int add(CollectionDibsVO dibs);
+	public int check(CollectionDibsVO dibs);
+	public int cancel(CollectionDibsVO dibs);
 
 }

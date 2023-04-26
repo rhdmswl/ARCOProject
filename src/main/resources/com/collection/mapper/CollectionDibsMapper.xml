@@ -9,6 +9,16 @@
 		insert into dibs(seq, title, start_date, end_date, user_id,imgUrl)
 		values(#{seq},#{title}, #{startDate}, #{endDate}, #{userId}, #{imgUrl})
 	</insert>
+	
+	<select id="check" resultType="int">
+		select count(*) from dibs
+		where seq = #{seq} and user_id = #{userId}
+	</select>
+	
+	<delete id="cancel">
+		delete from dibs 
+		where seq = #{seq} and user_id=#{userId}
+	</delete>
 
 
 </mapper>

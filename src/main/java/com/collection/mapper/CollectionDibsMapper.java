@@ -13,5 +13,7 @@ public interface CollectionDibsMapper {
 
 	
 	public int add(CollectionDibsVO vo);
+	public int check(CollectionDibsVO vo);
+	public int cancel(CollectionDibsVO vo);
 		
 }
