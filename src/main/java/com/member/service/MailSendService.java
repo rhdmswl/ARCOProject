@@ -35,11 +35,18 @@ public class MailSendService {
 		String toMail = email;
 		String title = "ARCO 회원 가입 인증 이메일 입니다."; // 이메일 제목 
 		String content = 
-				"ARCO 홈페이지를 방문해주셔서 감사합니다." + 	//html 형식으로 작성
-                "<br><br>" + 
-			    "인증 번호는 " + authNumber + "입니다." + 
-			    "<br>" + 
-			    "해당 인증번호를 인증번호 확인란에 기입하여 주세요."; //이메일 내용 삽입
+			    "<div style='background-color:#FFF5EE; padding:20px;'>" +
+			    "<div style='max-width:600px; margin:auto; background-color:#ffffff; padding:20px; border-radius:10px; text-align:center;'>" +
+			    "<img src='https://i.imgur.com/evlOrzY.png' alt='ARCO' style='max-width:30%;'>" +
+			    "<h2 style='color:#f21378;'>ARCO 회원 가입 인증 이메일 입니다.</h2>" +
+			    "<p>ARCO 홈페이지를 방문해주셔서 감사합니다.</p>" +
+			    "<p>인증 번호는 <strong style='color:#f21378; font-size:18px;'>" + authNumber + "</strong>입니다.</p>" +
+			    "<p>해당 인증번호를 인증번호 확인란에 기입하여 주세요.</p>" +
+			    "<hr style='border-top: 0.05px solid #e9e9e9; margin: 20px 0;'>" +
+			    "<p style='text-align:center; font-size:15px; color:#888;'>본 메일은 발신 전용입니다.</p>" +
+			    "</div>" +
+			    "</div>";
+
 		mailSend(setFrom, toMail, title, content);
 		return Integer.toString(authNumber);
 	}
