@@ -34,7 +34,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
+<!-- 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css"> -->
 
 	<!-- star -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -278,7 +278,7 @@ body::-webkit-scrollbar-track {
 }
 
 .revBox {
-	height: 60px;
+	height: auto;
 }
 
 .primary-font {
@@ -749,20 +749,23 @@ p.v-data {
                         		 revStar :  $(".starRev output b").text(),
                         		 userId : ('${member.userId}')
                         		 };
-                         CollectionReviewService.add(review, function(result){alert(result); showList(1);});
+                         CollectionReviewService.add(review, function(result){alert(result);
+                         
+                         });
+                         showList(1);
                      });
                      
                      $(document).on("click",'.remove2',function(){
                     	 var revSeqValue = $(this).closest("li").data("revSeq");
                         CollectionReviewService.remove(revSeqValue, function(result){
                         	alert(result);
-                            showList(1);
                         	});
+                        showList(1);
                      });
                      
                      $(document).on('click','.updatebtn',function(){
                          var formId = $(this).closest('form').attr('id'); 
-                         $("#" + formId).collapse('toggle'); 
+                         $("#" + formId).collapse('toggle');
                      });
 
                      $(document).on('click','#update',function(){
