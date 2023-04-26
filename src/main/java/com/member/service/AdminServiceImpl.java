@@ -21,48 +21,47 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void deleteUser(String userId) throws Exception {
 		dao.deleteUser(userId);
-
 	}
 	
 	// admin
-		  @Override
-		  public List<MemberVO> listAllMembers(Criteria criteria) {
-		    return dao.listAllMembers(criteria);
-		  }
+	@Override
+	public List<MemberVO> listAllMembers(Criteria criteria) {
+	  return dao.listAllMembers(criteria);
+	}
+	
+	@Override
+	public List<CollectionReviewVO> listAllReviews(Criteria criteria) {
+	  return dao.listAllReviews(criteria);
+	}
+	
+	@Override
+	public List<BoardVO> listAllPosts(Criteria criteria) {
+	  return dao.listAllPosts(criteria);
+	}
+	
+    @Override
+	public List<ReplyVO> listAllComments(Criteria criteria) {
+	  return dao.listAllComments(criteria);
+	}
 
-		  @Override
-		  public List<CollectionReviewVO> listAllReviews(Criteria criteria) {
-		    return dao.listAllReviews(criteria);
-		  }
+    @Override
+	public int countAllMembers() throws Exception {
+		return dao.countAllMembers();
+	}
+	  
+	@Override
+	public int countAllCollectionRevs() throws Exception {
+		return dao.countAllCollectionRevs();
+	}
 
-		  @Override
-		  public List<BoardVO> listAllPosts(Criteria criteria) {
-		    return dao.listAllPosts(criteria);
-		  }
+	@Override
+	public int countAllPosts() throws Exception {
+		return dao.countAllPosts();
+	}
 
-		  @Override
-		  public List<ReplyVO> listAllComments(Criteria criteria) {
-		    return dao.listAllComments(criteria);
-		  }
-
-	    @Override
-		public int countAllMembers() throws Exception {
-			return dao.countAllMembers();
-		}
-		  
-		@Override
-		public int countAllCollectionRevs() throws Exception {
-			return dao.countAllCollectionRevs();
-		}
-
-		@Override
-		public int countAllPosts() throws Exception {
-			return dao.countAllPosts();
-		}
-
-		@Override
-		public int countAllComments() throws Exception {
-			return dao.countAllComments();
-		}
+	@Override
+	public int countAllComments() throws Exception {
+		return dao.countAllComments();
+	}
 
 }
