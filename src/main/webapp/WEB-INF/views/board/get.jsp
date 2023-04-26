@@ -593,6 +593,9 @@ button {
 							<c:if test="${member.userId==board.user_id}">
 								<button class="btn btn-secondary" data-oper='remove'>삭제</button>
 							</c:if>
+							<c:if test="${member.role=='ROLE_ADMIN'}">
+								<button class="btn btn-primary" data-oper='remove'>관리자 삭제</button>
+							</c:if>
 							<form id='operForm_modi' action="/board/modify" method="get">
 								<input type='hidden' id='post_id' name='post_id'
 									value='<c:out value="${board.post_id}"/>'> <input
@@ -782,7 +785,7 @@ button {
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
-					str+= "    <div><div class='header'><div class='primary-font'>"+list[i].com_writer+"</div>";
+					str+= "    <div><div class='header'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
 					if (list[i].com_writer_id=="${member.userId}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
