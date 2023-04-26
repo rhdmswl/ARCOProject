@@ -219,4 +219,10 @@
 		MEMBER WHERE USERID = #{userId} </select> <update id="updateProfileImg"> 
 		UPDATE MEMBER SET PROFILEIMG = #{profileImg} WHERE USERID = #{userId} </update> -->
 	
+	<select id="calendarList" resultType="com.collection.domain.CollectionDibsVO">
+	<![CDATA[
+		select * from dibs
+	]]>
+	</select>
+	
 </mapper>
