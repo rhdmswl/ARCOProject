@@ -355,6 +355,8 @@ function fn_nameChk() {
 					</div>
 				</div>
 
+				<jsp:include page="/WEB-INF/views/calendar/mycalendar.jsp" />
+
 				<!-- 한줄평 목록 -->
 				<div class="d-flex justify-content-center">
 					<div class="card" style="width: 100%; text-align: left;">
