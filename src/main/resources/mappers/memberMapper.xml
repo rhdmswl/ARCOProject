@@ -45,6 +45,18 @@
 		WHERE user_id = #{userId}
 	</update>
 	
+	<update id="commentNickUpdate">
+		UPDATE comment SET
+		com_writer = #{userName}
+		WHERE com_writer_id = #{userId}
+	</update>
+	
+	<update id="reviewNickUpdate">
+		UPDATE collectionRev SET
+		nickName = #{userName}
+		WHERE userId = #{userId}
+	</update>
+	
 	<update id="mypageUpdate">
 		UPDATE MEMBER SET
 		<!-- USERPASS = #{userPass}, -->

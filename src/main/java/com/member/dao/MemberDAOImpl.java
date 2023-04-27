@@ -46,6 +46,8 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		sql.update("memberMapper.mypageUpdate", vo);
 		sql.update("memberMapper.boardNickUpdate", vo);
+		sql.update("memberMapper.commentNickUpdate", vo);
+		sql.update("memberMapper.reviewNickUpdate", vo);
 	}
 	
 
