@@ -234,7 +234,7 @@ margin-bottom:-30px;
 	width: 17%;
 	position: fixed;
 	left: 50px;
-	bottom: 430px;
+	bottom: 550px;
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
@@ -260,7 +260,7 @@ margin-bottom:-30px;
 }
 
 .tabcontent {
-	display: block;
+	display: none;
 	padding: 6px 12px;
 }
 </style>
@@ -354,75 +354,13 @@ function openTab(evt, tabName) {
 						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 				</div>
 				<div class="tab">
-					<button class="tablinks active" onclick="openTab(event, 'profile')">회원
-						정보</button>
-					<button class="tablinks" onclick="openTab(event, 'collection')">나의
-						한줄평 / 나의 게시글 / 나의 댓글</button>
-					<button class="tablinks" onclick="openTab(event, 'select')">나의
-						찜 목록</button>
+					<button class="tablinks active" onclick="openTab(event, 'select')">찜한 전시 일정</button>
+					<button class="tablinks" onclick="openTab(event, 'collection')">나의	한줄평 / 게시글 / 댓글</button>
+					<button class="tablinks" onclick="openTab(event, 'profile')">나의 프로필</button>
 
 				</div>
-				<div id="profile" class="tabcontent" style="display: block;">
-					<div class="tab-content py-4">
-						<div class="profileTitleText">User Profile</div>
-						<div class="card active profileBox" id="profile">
-							<div class="mb-3"></div>
-							<form id="updateForm" action="/member/mypage" method="post"
-								style="text-align: left;">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="userId">아이디</div>
-											<input type="text" id="userId" name="userId"
-												class="form-control memberGroup" value="${member.userId}"
-												readonly="readonly" />
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="userName">닉네임</div>
-											<input type="text" id="userName" name="userName"
-												class="form-control memberGroup2" value="${member.userName}" />
-											<button class="btn btn-primary btn-sm" type="button"
-												id="nameChk" onclick="fn_nameChk();" value="N">중복확인</button>
-
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="phone">전화번호</div>
-											<input type="text" id="phone" name="phone"
-												class="form-control memberGroup" value="${member.phone}"
-												readonly="readonly" />
-
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="email">이메일</div>
-											<input type="text" id="email" name="email"
-												class="form-control memberGroup" value="${member.email}"
-												readonly="readonly" />
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<div style="text-align: right;">
-											<button type="submit" id="submit"
-												class="btn btn-primary ml-2">회원정보 수정</button>
-											<a href="/member/passUpdateView" class="btn btn-secondary">비밀번호
-												변경</a>
-												<a href="/member/memberDeleteView" class="btn btn-secondary">회원탈퇴</a>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
+				
+				
 
 
 
@@ -573,9 +511,72 @@ function openTab(evt, tabName) {
 				</div>
 
 				
-				<div id="select" class="tabcontent">
+				<div id="profile" class="tabcontent">
+<div class="tab-content py-4">
+						<div class="profileTitleText">My Profile</div>
+						<div class="card active profileBox" id="profile">
+							<div class="mb-3"></div>
+							<form id="updateForm" action="/member/mypage" method="post"
+								style="text-align: left;">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<div class="bmd-label-floating" for="userId">아이디</div>
+											<input type="text" id="userId" name="userId"
+												class="form-control memberGroup" value="${member.userId}"
+												readonly="readonly" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<div class="bmd-label-floating" for="userName">닉네임</div>
+											<input type="text" id="userName" name="userName"
+												class="form-control memberGroup2" value="${member.userName}" />
+											<button class="btn btn-primary btn-sm" type="button"
+												id="nameChk" onclick="fn_nameChk();" value="N">중복확인</button>
 
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<div class="bmd-label-floating" for="phone">전화번호</div>
+											<input type="text" id="phone" name="phone"
+												class="form-control memberGroup" value="${member.phone}"
+												readonly="readonly" />
+
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<div class="bmd-label-floating" for="email">이메일</div>
+											<input type="text" id="email" name="email"
+												class="form-control memberGroup" value="${member.email}"
+												readonly="readonly" />
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div style="text-align: right;">
+											<button type="submit" id="submit"
+												class="btn btn-primary ml-2">회원정보 수정</button>
+											<a href="/member/passUpdateView" class="btn btn-secondary">비밀번호
+												변경</a>
+												<a href="/member/memberDeleteView" class="btn btn-secondary">회원탈퇴</a>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				
+				</div>
+				
+				<div id="select" class="tabcontent" style="display: block;">
 					<jsp:include page="/WEB-INF/views/calendar/mycalendar.jsp" />
+					
 				</div>
 
 
