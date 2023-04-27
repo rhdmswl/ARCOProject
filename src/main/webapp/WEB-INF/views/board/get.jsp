@@ -569,8 +569,8 @@ button {
 
 						</ul>
 						<div class="postbox"
-							style="box-sizing: border-box; width: 100%; height: 300px;">
-							<c:out value="${board.post_content}" />
+							style="box-sizing: border-box; width: 100%;">
+							${content}
 						</div>
 
 						<div class="frame" style="background-color:none;">
@@ -800,7 +800,7 @@ button {
 						str+= "         </small>"	;
 					}
 					str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
-					str+= "         <div id='comContentList' style='height:45px;' class='collapse multi-collapse-id show'>"+list[i].com_content+"</div>";
+					str+= "         <div id='comContentList' style='' class='collapse multi-collapse-id show'>"+list[i].com_content+"</div>";
 					str+= "			<form class='collapse' id='" + form_id + "'>";
 			        str+= "  			<div class='form-group'>";
 			        str+= "  			<input type='hidden' id='com_id' name='com_id' value=''/>";
@@ -809,6 +809,7 @@ button {
 			        str+= "  			<div class='comBox'><div class='commentBtnGroup'>";
 			        str+= "  			<button id='Comment_update' type='button' class='btn btn-primary' >수정 완료</button></div></div>";
 			        str+= "			</form>";
+			        str+=		"<br>";
                     str+=		"</div></li>";
 					}
 				replyUL.html(str);
@@ -838,7 +839,7 @@ button {
 
 			$('#Comment_regist').on("click",function(e) {
 				var reply={
-						com_content:$('#com_content').val(),
+						com_content:$('#com_content').val().replace(/\n/g,"<br>"),
 						com_writer:$('#com_writer').val(),
 						com_writer_id:('${member.userId}'),
 						post_id:post_idValue

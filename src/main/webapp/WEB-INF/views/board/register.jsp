@@ -278,7 +278,6 @@ body::-webkit-scrollbar-track {
 			var formObj = $("form");
 			var brd_id = "${param.brd_id}";
 			var pageNum = "${cri.pageNum}";
-			console.log("${param.brd_id}");
  			$('#registerBtn').on("click", function(){
  				
  				formObj.attr("action", "/board/list");
