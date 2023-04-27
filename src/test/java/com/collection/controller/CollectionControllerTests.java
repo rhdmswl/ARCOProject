@@ -6,6 +6,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import javax.inject.Inject;
+
 import org.json.XML;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -23,20 +25,26 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.collection.domain.CollectionVO;
-import com.collection.service.CollectionServiceImpl;
+import com.member.service.MailSendService;
+import com.member.service.MemberService;
 
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/spring-security.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml",
-		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
+		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml", "file:src/main/webapp/WEB-INF/spring/email-context.xml" })
 @Log4j
 public class CollectionControllerTests {
 
+	@Inject
+	MemberService service;
+	
 	@Autowired
     BCryptPasswordEncoder pwdEncoder;
+	
+	@Autowired
+	MailSendService mailService;
 	
 	@Autowired
 	private WebApplicationContext ctx;
@@ -52,15 +60,15 @@ public class CollectionControllerTests {
 	public void testRegister() throws Exception {
 
 		StringBuilder urlBuilder = new StringBuilder("http://www.culture.go.kr/openapi/rest/publicperformancedisplays/period"); /* URL */
-		urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=egRwJCG3SGkAZ82SPT3oRYlbbuZGTU6yDn5oUNHoj07yCst4ynaHqJnigaas910jwFhHr23p3IHHgi5kgOOaDw%3D%3D");
+		urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=RWSgJIZJGBT%2Ffvaa0MRUzKHyhOGU4o8aFquLScMfTvtKypjNwb9U4oJ9KbK9UvkBNPiovUrxZGj4K%2Fa651ZaXA%3D%3D");
 //		urlBuilder.append("&" + URLEncoder.encode("keyword", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8"));
 //		urlBuilder.append("&" + URLEncoder.encode("sortStdr", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 1:등록일, 2:공연명, 3:지역 */
 //		urlBuilder.append("&" + URLEncoder.encode("ComMsgHeader", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
 //		urlBuilder.append("&" + URLEncoder.encode("RequestTime", "UTF-8") + "="  + URLEncoder.encode("20230411:00000000", "UTF-8")); /* Optional 필드 */
 //		urlBuilder.append("&" + URLEncoder.encode("CallBackURI", "UTF-8") + "="  + URLEncoder.encode("", "UTF-8")); /* Optional 필드 */
 		urlBuilder.append("&" + URLEncoder.encode("MsgBody", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
-		urlBuilder.append("&" + URLEncoder.encode("from", "UTF-8") + "=" + URLEncoder.encode("20230401", "UTF-8")); /**/
-		urlBuilder.append("&" + URLEncoder.encode("to", "UTF-8") + "=" + URLEncoder.encode("20231231", "UTF-8")); /**/
+		urlBuilder.append("&" + URLEncoder.encode("from", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
+		urlBuilder.append("&" + URLEncoder.encode("to", "UTF-8") + "=" + URLEncoder.encode("20241231", "UTF-8")); /**/
 		urlBuilder.append("&" + URLEncoder.encode("cPage", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /**/
 		urlBuilder.append("&" + URLEncoder.encode("rows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /* 3~100 */
 
@@ -133,7 +141,7 @@ public class CollectionControllerTests {
 				String imgUrl = "";
 
 				StringBuilder urlBuilder2 = new StringBuilder("http://www.culture.go.kr/openapi/rest/publicperformancedisplays/d/"); /* URL */
-				urlBuilder2.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=egRwJCG3SGkAZ82SPT3oRYlbbuZGTU6yDn5oUNHoj07yCst4ynaHqJnigaas910jwFhHr23p3IHHgi5kgOOaDw%3D%3D");
+				urlBuilder2.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=RWSgJIZJGBT%2Ffvaa0MRUzKHyhOGU4o8aFquLScMfTvtKypjNwb9U4oJ9KbK9UvkBNPiovUrxZGj4K%2Fa651ZaXA%3D%3D");
 //						urlBuilder.append("&" + URLEncoder.encode("keyword", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8"));
 //						urlBuilder.append("&" + URLEncoder.encode("sortStdr", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 1:등록일, 2:공연명, 3:지역 */
 //				urlBuilder2.append("&" + URLEncoder.encode("ComMsgHeader", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
