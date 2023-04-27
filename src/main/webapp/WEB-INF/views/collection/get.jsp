@@ -858,7 +858,7 @@ p.v-data {
          						endDate:endDate,
          						imgUrl:imgUrl,
          				};
-                    	dibsService.addDibs(dibs, function(result){alert(result);});
+                    	dibsService.addDibs(dibs, function(result){alert(result); window.location.reload();});
          			});
                      
                     /* 별점 구현 */
