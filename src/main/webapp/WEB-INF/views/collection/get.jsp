@@ -570,6 +570,9 @@ p.v-data {
 										</div>
 										<button id='commentAdd' type="submit"
 											class="btn btn-secondary">입력 완료</button>
+										<div>	<span id="alert-danger2"
+									style="display: none; color: #d92742; font-weight: bold;"></span>
+							</div>
 											
 										</c:if>
 										<!-- 비 로그인 시 -->
@@ -669,12 +672,16 @@ p.v-data {
    				
    				/* 글자수 제한 기능 */
    			 $('#comment').on('keyup', function() {
+   				 //한줄평 쓰는 칸 눌렀을 때 입력버튼 권한주기
+   				 $('#commentAdd').attr('disabled', false);
+   			 
    		        $('#comment_cnt').html("("+$(this).val().length+" / 50)");
    		 
    		        if($(this).val().length > 50) {
    		            $(this).val($(this).val().substring(0, 50));
    		            $('#comment_cnt').html("(50 / 50)");
    		        }
+   		        
    		    });
    			}		 
             
@@ -738,8 +745,6 @@ p.v-data {
             			 }); 
             		 } 
             		 
-            		 
-            		 
             
                      $(document).on("click",'#commentAdd' ,function(){
                     	 var review = { 
@@ -749,9 +754,18 @@ p.v-data {
                         		 revStar :  $(".starRev output b").text(),
                         		 userId : ('${member.userId}')
                         		 };
+                    	 //한줄평 안썼을 때 입력 못하게 함
+                    	 if($(comment).val().length == 0) {
+      						$("#comment").focus();
+     							$("#alert-danger2").css('display', 'inline-block')
+     				            .text('한줄평을 입력해주세요.');
+     							$('#commentAdd').attr('disabled', true);
+     							return false;
+     						 }
                          CollectionReviewService.add(review, function(result){alert(result);
                          
                          });
+                         
                          showList(1);
                      });
                      
@@ -832,13 +846,14 @@ p.v-data {
                     	                }
                     	            }, 1000);
                     	        })
+                    	        
                     	        /* 별점 체크하지 않았을때 기본 1점으로 설정 */
                     	        .on("change", ".star-input>.starR", function(){
                     	            var $checked = $star.find(":checked");
                     	            var score = ($checked.length === 0) ? 1 : $checked.next().text();
                     	            setStar(score);
                     	        })
-                    	        .on("mouseover", ".star-input label", function(){
+                    	        .on("mouseover", ".revTextBox input", function(){
                     	            var score = $(this).text();
                     	            setStar(score);
                     	        })
@@ -851,6 +866,7 @@ p.v-data {
                     	            }
                     	        });
                     	};
+
 
                     	starRating();
                     	
