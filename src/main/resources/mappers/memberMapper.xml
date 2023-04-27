@@ -219,9 +219,9 @@
 		MEMBER WHERE USERID = #{userId} </select> <update id="updateProfileImg"> 
 		UPDATE MEMBER SET PROFILEIMG = #{profileImg} WHERE USERID = #{userId} </update> -->
 	
-	<select id="calendarList" resultType="com.collection.domain.CollectionDibsVO">
+	<select id="calendarList" resultType="com.member.vo.CalendarVO">
 	<![CDATA[
-		select * from dibs
+		select * from dibs where user_id=#{user_id}
 	]]>
 	</select>
 	

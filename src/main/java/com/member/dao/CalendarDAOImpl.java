@@ -1,6 +1,5 @@
 package com.member.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,11 +14,12 @@ public class CalendarDAOImpl implements CalendarDAO {
 	
 	@Inject
 	SqlSession sql;
-	
+
 	@Override
-	public List<CalendarVO> calendarList() {
+	public List<CalendarVO> calendarList(String userId) {
 		
-		return sql.selectList("memberMapper.calendarList");
+		return sql.selectList("memberMapper.calendarList", userId);
+		
 	}
 
 }
