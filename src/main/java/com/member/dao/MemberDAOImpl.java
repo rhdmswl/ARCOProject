@@ -45,6 +45,9 @@ public class MemberDAOImpl implements MemberDAO {
 	public void mypageUpdate(MemberVO vo) throws Exception {
 		
 		sql.update("memberMapper.mypageUpdate", vo);
+		sql.update("memberMapper.boardNickUpdate", vo);
+		sql.update("memberMapper.commentNickUpdate", vo);
+		sql.update("memberMapper.reviewNickUpdate", vo);
 	}
 	
 
