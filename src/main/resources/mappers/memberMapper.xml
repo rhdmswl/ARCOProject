@@ -39,6 +39,12 @@
 		WHERE USERID = #{userId}
 	</update>
 
+	<update id="boardNickUpdate">
+		UPDATE post SET
+		post_writer = #{userName}
+		WHERE user_id = #{userId}
+	</update>
+	
 	<update id="mypageUpdate">
 		UPDATE MEMBER SET
 		<!-- USERPASS = #{userPass}, -->
