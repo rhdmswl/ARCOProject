@@ -40,9 +40,27 @@ body {
 	background: #FFF
 }
 
+body::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 5%; /* 스크롤바의 길이 */
+    background: black; /* 스크롤바의 색상 */ 
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
+}
+
 .card {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	position: relative;;
+	position: relative;
+	width: 500px;
+	position: relative;
+	right: 45px;
+	margin-bottom: 70px;
 }
 
 .card-title {
@@ -132,7 +150,6 @@ body {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	border: 0;
 	outline: none;
-	padding-left: 10px;
 	margin-bottom: 15px;
 }
 
@@ -145,6 +162,23 @@ body {
 	display: inline-block;
 	vertical-align: middle;
 }
+
+.control-label, label {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	color: black;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.emailSelectBtn {
+	margin-left: 300px;
+	bottom:45px;
+}
+
+.submitBtnGroup {
+	margin-top: 50px;
+}
+
 </style>
 
 </head>
@@ -312,7 +346,7 @@ body {
 								});
 
 						$('#mail-Check-Btn').click(function() {
-							const email = $('#userEmail1').val() + $('#userEmail2').val(); // 이메일 주소값 얻어오기!
+							const email = $('#email').val() // 이메일 주소값 얻어오기!
 							console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
 							const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
 							
@@ -334,20 +368,30 @@ body {
 							const inputCode = $(this).val();
 							const $resultMsg = $('#mail-check-warn');
 							
+							   // 유효성 검사 - 숫자 6자리
+							   const regex = /^[0-9]{6}$/;
+							   if(!regex.test(inputCode)) {
+							      $resultMsg.html('인증번호는 숫자 6자리여야 합니다.');
+							      $resultMsg.css('color', 'red');
+							      $('#submit').attr('disabled', true);
+							      return;
+							   }
+							   
 							if(inputCode === code){
 								$resultMsg.html('인증번호가 일치합니다.');
 								$resultMsg.css('color','green');
 								$('#mail-Check-Btn').attr('disabled',true);
-								$('#userEamil1').attr('readonly',true);
-								$('#userEamil2').attr('readonly',true);
-								$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
-						         $('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
-							}else{
-								$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
-								$resultMsg.css('color','red');
-							}
-						});
-						
+								$('#email').attr('readonly',true);
+								// 회원가입 버튼 활성화
+							    $('#submit').attr('disabled', false);
+							
+							  } else {
+							    $resultMsg.html('인증번호가 일치하지 않습니다.');
+							    $resultMsg.css('color', 'red');
+							    // 회원가입 버튼 비활성화
+							    $('#submit').attr('disabled', true);
+							  }
+							});
 						$("#submit")
 								.on(
 										"click",
@@ -393,7 +437,9 @@ body {
 											var phoneVal = $("#phone").val();
 											var usernameVal = $("#userName")
 													.val();
-
+											var verifyCodeVal = $("#verifyCode").val();
+											
+										
 											if (idChkVal == "N"
 													|| nameChkVal == "N") {
 												alert("중복확인 버튼을 눌러주세요.");
@@ -403,7 +449,8 @@ body {
 											} else if (pwVal == ""
 													|| emailVal == ""
 													|| phoneVal == ""
-													|| usernameVal == "") {
+													|| usernameVal == ""
+													|| verifyCodeVal == "" ) {
 												alert("공백없이 모두 입력해주세요.");
 											} else if (pwVal.length < 8) {
 												alert("비밀번호는 8자~16자 이내로 입력해주세요.");
@@ -411,7 +458,7 @@ body {
 												alert("유효한 이메일 주소를 입력해주세요.");
 											} else if (!isValidPhone(phoneVal)) {
 												alert("유효한 전화번호를 입력해주세요.");
-											} else if (!isValidUsername(usernameVal)) {
+											}  else if (!isValidUsername(usernameVal)) {
 												alert("닉네임은 2자 이상 8자 이하의 한글, 영문, 숫자만 입력해주세요.");
 											} else if (!isValidPassword($("#userPass").val())) {
 											    alert("비밀번호에는 3개 이상 중복된 문자 또는 숫자를 사용할 수 없습니다.");
@@ -554,7 +601,7 @@ body {
 								<label class="control-label" for="passCheck">비밀번호 확인</label><br>
 								<input class="form-control" type="password" id="passCheck"
 									name="passCheck" /> <span id="alert-success"
-									style="display: none; color: #000000;">비밀번호가 일치합니다.</span> <span
+									style="display: none; color: green;">비밀번호가 일치합니다.</span> <span
 									id="alert-danger"
 									style="display: none; color: #d92742; font-weight: bold;">비밀번호가
 									일치하지 않습니다.</span>
@@ -578,38 +625,27 @@ body {
 									style="display: none; color: #d92742; font-weight: bold;"></span>
 							</div>
 							<br>
+								<!-- email -->
 							<div class="form-group has-feedback">
 								<label class="control-label" for="email">이메일</label><br> <input
 									class="form-control" type="text" id="email" name="email" />
+									<div class="input-group-addon">
+								<button type="button" class="btn btn-primary emailSelectBtn" id="mail-Check-Btn">본인인증</button>
+							</div>
+								<div class="mail-check-box">
+							<input class="form-control mail-check-input" id= verifyCode name= verifyCode placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
+							</div>
+								<span id="mail-check-warn"></span>
 
 							</div>
 
 
 						</form>
 						
-						<!-- email -->
-						<div class="form-group email-form">
-							 <label for="email">이메일</label>
-							 <div class="input-group">
-								<input type="text" class="form-control" name="userEmail1" id="userEmail1" placeholder="이메일" >
-								<select class="form-control" name="userEmail2" id="userEmail2" >
-								<option>@naver.com</option>
-								<option>@daum.net</option>
-								<option>@gmail.com</option>
-								<option>@hanmail.com</option>
-								 <option>@yahoo.co.kr</option>
-								</select>
-							</div>   
-							<div class="input-group-addon">
-								<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
-							</div>
-								<div class="mail-check-box">
-							<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
-							</div>
-								<span id="mail-check-warn"></span>
-						</div>
+					
+				
 						
-						<div class="text-center">
+						<div class="text-center submitBtnGroup">
 							<button class="btn btn-primary" type="button" id="submit">회원가입</button>
 							<button class="btn btn-secondary cancel" type="button">취소</button>
 						</div>

@@ -19,7 +19,7 @@
     <title>EXHIBITION - Page</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="/img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
     <link href="/style.css" rel="stylesheet">
@@ -27,14 +27,14 @@
     <!-- Responsive CSS -->
     <link href="/css/responsive/responsive.css" rel="stylesheet">
     
-    <!-- <link rel="stylesheet" href="/css/material-dashboard.min.css"> -->
-    <script src="/js/material-dashboard.min.js"></script>
+    <!-- <script src="/js/material-dashboard.min.js"></script> -->
+    <link rel="stylesheet" href="/css/material-dashboard.min.css">
     
     <!-- Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
+<!-- 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css"> -->
 
 	<!-- star -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,6 +66,7 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track {
     background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
 }
+
 
 #scrollUp2 {
 	bottom: 55px;
@@ -262,6 +263,8 @@ body::-webkit-scrollbar-track {
 	width: 90%;
 	left: 60px;
 	padding: 0;
+	margin-top: 50px;
+	border-bottom: 0;
 }
 
 .leave-comment-area {
@@ -276,7 +279,7 @@ body::-webkit-scrollbar-track {
 }
 
 .revBox {
-	height: 60px;
+	height: auto;
 }
 
 .primary-font {
@@ -387,6 +390,14 @@ p.v-data {
   width: 700px;
   margin: 0 auto;
 }
+
+.reviewBox {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+}
+
+
 </style>
 
 </head>
@@ -404,7 +415,7 @@ p.v-data {
 							<div class="single-post">
 								<!-- Post Thumb -->
 								<div class="post-thumb">
-									<img src="<c:out value="${collection.imgUrl}"/>" width="400"
+									<img src="<c:out value="${collection.thumbnail}"/>" width="400"
 										height="500" alt="">
 								</div>
 								<!-- Post Content -->
@@ -487,8 +498,26 @@ p.v-data {
 													</a>
 												</div>
 											</div>
+											<c:if test="${member.userId!=null}">
+												<c:if test="${dibs>=1}">
+													<div class="info">
+														<div class="infoBtn">
+															<button id='dibs' class="btn btn-secondary">찜 취소</button>
+														</div>
+													</div>
+												</c:if>
+												<c:if test="${dibs==0}">
+													<div class="info">
+														<div class="infoBtn">
+															<button id='dibs' class="btn btn-secondary">찜 하기</button>
+														</div>
+													</div>
+												</c:if>
+											</c:if>
+												</div>
+											</div>
 											
-										</div>
+								
 										
 									</div>
 									<!-- <img class="br-30 mb-15" src="img/blog-img/14.jpg" alt=""> -->
@@ -509,7 +538,9 @@ p.v-data {
 							<!-- Comment Area Start -->
 							<div class="comment_area section_padding_50 clearfix">
 							<h4 class="mb-30">Comments</h4>
-								<ul class="chat"></ul>
+								<ul class="chat">
+								
+								</ul>
 								<div class="panel-footer">
 									<%--   <div class="pull-rigth">
                                         <ul class="pagination">
@@ -560,6 +591,9 @@ p.v-data {
 										</div>
 										<button id='commentAdd' type="submit"
 											class="btn btn-secondary">입력 완료</button>
+										<div>	<span id="alert-danger2"
+									style="display: none; color: #d92742; font-weight: bold;"></span>
+							</div>
 											
 										</c:if>
 										<!-- 비 로그인 시 -->
@@ -604,10 +638,14 @@ p.v-data {
     <!-- <script src="/js/others/plugins.js"></script> -->
     <!-- Active JS -->
 
-    <script src="/js/active.js"></script>
-
 	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	
+    <!-- <script src="/js/active.js"></script> -->
 	<script type="text/javascript" src="/js/review.js"></script>
+	<script type="text/javascript" src="/js/dibs.js"></script>
 <script>
        	$(document).ready(function() {
        		var pageNum = 1;
@@ -656,12 +694,16 @@ p.v-data {
    				
    				/* 글자수 제한 기능 */
    			 $('#comment').on('keyup', function() {
+   				 //한줄평 쓰는 칸 눌렀을 때 입력버튼 권한주기
+   				 $('#commentAdd').attr('disabled', false);
+   			 
    		        $('#comment_cnt').html("("+$(this).val().length+" / 50)");
    		 
    		        if($(this).val().length > 50) {
    		            $(this).val($(this).val().substring(0, 50));
    		            $('#comment_cnt').html("(50 / 50)");
    		        }
+   		        
    		    });
    			}		 
             
@@ -683,49 +725,58 @@ p.v-data {
             				   } 
             				   
             				   for(var i=0, len = list.length || 0; i < len; i++){
-            					   var revSeqValue = list[i].revSeq;
-            					   var formId = "review" + list[i].revSeq
-
-            					   str +="<li class=' left clearfix' data-rev-Seq='"+list[i].revSeq+"'>";
-            					   str += "<div class='rating' id='star'>";
-            					   for (var j = 1; j <= 5; j++) {
-            					       if (j <= list[i].revStar) {
-            					           str += "<span class='starV on'>⭐</span>";
-            					       } else {
-            					           str += "<span class='starV'>⭐</span>";
-            					       }
-            					   }
-            					   str += "</div>";
-            					   str +="<div class='revBox'><div class='header'><string class='primary-font'>"+list[i].nickName+""; 
-            					   if (list[i].nickName=="${member.userName}"){
-            					   str+= "         <small>"	;
-            					   str+= "<a href='#" + formId + "' class='updatebtn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
-            					   str+= "|"	;
-            					   str+=" <a href='#' class='remove2' role='button' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
-            					   str+= "         </small>"	;
-            					   }
-            					   str+= "<small class='pull-right text-muted'>" +CollectionReviewService.displayTime(list[i].reviewDate)+"</small></div>";//header끝
-            			           str+= "<div id='review' style='height:45px; font-family: 'font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>"+list[i].revComment+"</div>";
-                                   str+= "            <form class='collapse' id='" + formId + "'>";
-                                   str+= "              <div class='form-group'>";
-                                   str+= "                    <textarea style='resize: none;' class='form-control' id ='revComment' rows='3'></textarea>";
-                                   /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
-                                   str+= "  			</div>";
-            				       str+= "  			<button id='update' type='button' class='btn btn-secondary' >수정 완료</button></div>";
-            				       str+= "  			</div>";
-            				       str+= "			</form>";
-            				       str+= "<input type='hidden' id='revSeqDelete' name='revSeqDelete' value='"+list[i].revSeq+"'>"	;
-            			          
-            				       str += "</div></li>"; 
-            			            str+= "<div class='jb-division-line'></div>";
-            				   } 
+            					    var revSeqValue = list[i].revSeq;
+            					    var formId = "review" + list[i].revSeq;
+            					    
+            					    str += "<li class='left clearfix' data-rev-Seq='" + revSeqValue + "'>";
+            					    str += "<div class='rating' id='star'>";
+            					    
+            					    for (var j = 1; j <= 5; j++) {
+            					        if (j <= list[i].revStar) {
+            					            str += "<span class='starV on'>⭐</span>";
+            					        } else {
+            					            str += "<span class='starV'>⭐</span>";
+            					        }
+            					    }
+            					    
+            					    str += "</div>";
+            					    str += "<div class='revBox'>";
+            					    str += "<div class='header'>";
+            					    str += "<h1 class='primary-font' style='display:inline;'>" + list[i].nickName + "&nbsp;&nbsp;&nbsp;&nbsp;</h1>";
+            					    if (list[i].nickName == "${member.userName}"){
+            					        str += "<small>";
+            					        str += "<a href='#" + formId + "' class='updatebtn' style='color:#A9A9A9;' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            					        str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"			       
+            					        str += "<a href='#" + formId + "' class='remove2' role='button' style='color:#FF1493;' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
+            					        str += "</small>";
+            					        
+            					    }       					  
+            					    	    
+            					    str += "<small class='pull-right text-muted'>" + CollectionReviewService.displayTime(list[i].reviewDate) + "</small>";
+            					    str += "</div>"; // header 끝            					   
+            					    str += "<div id='review' style='font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>" + list[i].revComment + "</div>";
+            					    if("${member.role}" == "ROLE_ADMIN"){
+            					        str += "<a href='#" + formId + "' class='remove2' role='button' style='color:red;' aria-expanded='false' aria-controls='" + formId + "'>관리자 삭제</a>";
+            					    }
+            					    str += "<form class='collapse' id='" + formId + "'>";
+            					    str += "<div class='form-group'>";
+            					    
+            					    str += "<textarea style='resize: none;' class='form-control reviewBox' id ='revComment' rows='3'></textarea>";
+            					    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
+            					    str += "</div>";
+            					    str += "<div><button id='update' type='button' class='btn btn-secondary updateSuccess'>수정 완료</button></div>";
+            					    str += "</form>";
+            					    str += "</div>";
+            					    str += "</li>";
+            					    str += "<div class='jb-division-line'></div>";
+            					    
+            					    
+            					} 
             				   reviewUL.html(str);
             				   console.log("showList page : " +pageNum);
             				   showReviewPage(reviewCnt);
             			 }); 
             		 } 
-            		 
-            		 
             		 
             
                      $(document).on("click",'#commentAdd' ,function(){
@@ -733,22 +784,35 @@ p.v-data {
                     			 seq : seqValue,
                         		 nickName : $('#InputnickName').val(),
                         		 revComment : $('#comment').val(),
-                        		 revStar :  $(".starRev output b").text()
+                        		 revStar :  $(".starRev output b").text(),
+                        		 userId : ('${member.userId}')
                         		 };
-                         CollectionReviewService.add(review, function(result){alert(result); showList(1);});
+                    	 //한줄평 안썼을 때 입력 못하게 함
+                    	 if($(comment).val().length == 0) {
+      						$("#comment").focus();
+     							$("#alert-danger2").css('display', 'inline-block')
+     				            .text('한줄평을 입력해주세요.');
+     							$('#commentAdd').attr('disabled', true);
+     							return false;
+     						 }
+                         CollectionReviewService.add(review, function(result){alert(result);
+                         
+                         });
+                         
+                         showList(1);
                      });
                      
                      $(document).on("click",'.remove2',function(){
                     	 var revSeqValue = $(this).closest("li").data("revSeq");
                         CollectionReviewService.remove(revSeqValue, function(result){
                         	alert(result);
-                            showList(1);
                         	});
+                        showList(1);
                      });
                      
                      $(document).on('click','.updatebtn',function(){
                          var formId = $(this).closest('form').attr('id'); 
-                         $("#" + formId).collapse('toggle'); 
+                         $("#" + formId).collapse('toggle');
                      });
 
                      $(document).on('click','#update',function(){
@@ -777,7 +841,26 @@ p.v-data {
          				showList(PageNum);
          			});
                   
-                    	
+                     /* 찜하기 버튼 */
+                     $('#dibs').on("click",function(e) {
+                    	var startDate ="${collection.startDate}";
+         				var endDate="${collection.endDate}";
+         				var seq="${collection.seq}";
+         				var title="${collection.title}";
+         				var userId="${member.userId}";
+         				var imgUrl="${collection.imgUrl}";
+         			
+                    	 var dibs={
+         						seq:seq,
+         						title:title,
+         						startDate:startDate,
+         						userId:userId,
+         						endDate:endDate,
+         						imgUrl:imgUrl,
+         				};
+                    	dibsService.addDibs(dibs, function(result){alert(result);});
+         			});
+                     
                     /* 별점 구현 */
                     //setStar로 선택된 별점 값 score에 저장
                      $('.starRev span.starR').click(function(){
@@ -815,13 +898,14 @@ p.v-data {
                     	                }
                     	            }, 1000);
                     	        })
+                    	        
                     	        /* 별점 체크하지 않았을때 기본 1점으로 설정 */
                     	        .on("change", ".star-input>.starR", function(){
                     	            var $checked = $star.find(":checked");
                     	            var score = ($checked.length === 0) ? 1 : $checked.next().text();
                     	            setStar(score);
                     	        })
-                    	        .on("mouseover", ".star-input label", function(){
+                    	        .on("mouseover", ".revTextBox input", function(){
                     	            var score = $(this).text();
                     	            setStar(score);
                     	        })
@@ -834,6 +918,7 @@ p.v-data {
                     	            }
                     	        });
                     	};
+
 
                     	starRating();
                     	

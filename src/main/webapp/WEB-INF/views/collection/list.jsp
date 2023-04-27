@@ -58,7 +58,7 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
 	rel="stylesheet">
 
-<link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" >
 
 <style>
@@ -196,6 +196,12 @@ a:hover {
 	left: 25%;
 }
 
+.sortForm {
+	margin-right: 0;
+	float: right;
+	padding-left: 10px;
+}
+
 </style>
 
 </head>
@@ -216,8 +222,9 @@ a:hover {
 												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
 												<option value="D" <c:out value="${pageMaker.cri.type eq 'D' ? 'selected' : ''}"/>>날짜</option>
 											</select>
-											<input type='text' name="keyword" class="form-control" style="width:200px;"
-													placeholder="검색어를 입력해주세요." value='<c:out value="${pageMaker.cri.keyword}"/>'>
+											<ul class="chat">
+											
+											</ul>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
 											<button type="submit" class="searchButton"><span class="input-group-addon"><i class="zmdi zmdi-search"></i></span></button>
@@ -246,9 +253,10 @@ a:hover {
 									<div class="product__page__filter">
 										
 										
-										<form id="sortForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
+
+										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
 											
-											<select id="sortSelect" class="form-control" name='sort' style="width:70px;">
+											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:70px;" >
 												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
 												<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
 												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
@@ -257,8 +265,10 @@ a:hover {
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
 
-										</form>							 
-										
+										</form>					 
+
+				 
+
 									</div>
 								</div>
 							</div>
@@ -272,17 +282,10 @@ a:hover {
 											<div>
 												<a
 													href="/collection/get?seq=<c:out value="${collection.seq}"/>">
-													<img src="<c:out value="${collection.imgUrl}" />"
+													<img src="<c:out value="${collection.thumbnail}" />"
 													width="400" height="400">
 												</a>
 											</div>
-											<!--  <div class="ep">18 / 18</div> -->
-<%-- 											<div class="comment">
-												<i class="fa fa-comments"></i> 11
-											</div>
-											<div class="view">
-												<i class="fa fa-eye"></i> <c:out value="${collection.revViewCount}" />
-											</div> --%>
 										</div>
 										<div class="product__item__text">
 											<a style="color: black; font-weight: 700;" 
@@ -371,19 +374,54 @@ a:hover {
 		style="position: absolute; z-index: 2147483647; display: block;">
 		<i class="fa fa-arrow-up" aria-hidden="true"></i>
 	</a>
+	
 	<script type="text/javascript">
-	$(document).ready(
+	
+	
+	
+	
+	$(document).ready(			
+            
 			function() {
 				
+				var searchUL = $(".chat");
 				var searchForm = $("#searchForm");
+
+				var strDefault=''
+				strDefault+= "<input id='key' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
+				searchUL.html(strDefault);
+				
+				$("#chk").change (function(e) {
+					var selectTag = $("#chk option:selected").val();
+				    var str="";
+				    console.log(selectTag);
+				    if (selectTag=="T" || selectTag==""){
+				    str+= "<input id='' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
+				    }
+				    if (selectTag=="D"){
+				    str+= "<input id='' type='date' name='date' class='form-control' style='width:200px;' value='<c:out value='${pageMaker.cri.date}'/>'>";
+					}
+
+					searchUL.html(str);
+				});
+				
 				
 				$("#searchForm searchButton").on("click", function(e){
-					
 					e.preventDefault();
+					var selectTag = $("#chk option:selected").val();
+					if(selectTag =="T" || selectTag==""){
 					let val = $("input[name='keyword']").val();
 					searchForm.find("input[name='keyword']").val(val);
 					searchForm.submit();
-				});  
+					}
+					if(selectTag =="D"){
+						let val = $("input[name='date']").val();
+						searchForm.find("input[name='date']").val(val);
+						searchForm.submit();
+					}
+				});
+				
+				
 				
 				var actionForm = $("#actionForm");
 				
@@ -394,19 +432,19 @@ a:hover {
 							actionForm.submit();
 						
 				});
-				
-				var sortForm = $("#sortForm");
-				
-				$("#sortForm").on("click", function(e){
-					/* e.preventDefault(); */
-					console.log("click");
-					sortForm.find("#sortSelect option:selected").val();
-					sortForm.submit();
-				});  
-				
+																
 			});
 	
 	
+	function f_changeFunc(obj){
+		
+        var selectVal = $(obj).val();     
+        
+        var f = document.sortForm;
+     
+		f.submit();
+             
+    }
 	
 	</script>
 </body>

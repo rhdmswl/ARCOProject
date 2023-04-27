@@ -45,12 +45,21 @@ public class MemberDAOImpl implements MemberDAO {
 	public void mypageUpdate(MemberVO vo) throws Exception {
 		
 		sql.update("memberMapper.mypageUpdate", vo);
+		sql.update("memberMapper.boardNickUpdate", vo);
+		sql.update("memberMapper.commentNickUpdate", vo);
+		sql.update("memberMapper.reviewNickUpdate", vo);
 	}
 	
 
 
 	@Override
 	public void memberDelete(MemberVO vo) throws Exception {
+		
+		// 유저가 작성한 글 전체 삭제
+		sql.delete("memberMapper.deleteReviewsByUserId", vo.getUserId());
+		sql.delete("memberMapper.deletePostsByUserId", vo.getUserId());
+		sql.delete("memberMapper.deleteCommentsByUserId", vo.getUserId());
+
 		// MemberVO에 담긴 값들을 보내줍니다.
 		// 그럼 xml에서 memberMapper.memberDelete에 보시면
 		// #{userId}, #{userPass}에 파라미터값이 매칭이 되겠지요.

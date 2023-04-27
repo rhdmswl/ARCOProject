@@ -20,6 +20,7 @@ public class Criteria {
 	
 	private String type;
 	private String keyword;
+	private Date date;
 	
 	private String sort;
 	

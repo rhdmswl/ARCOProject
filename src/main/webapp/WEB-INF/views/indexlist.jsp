@@ -7,31 +7,41 @@
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link
+<!-- <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+	rel="stylesheet"> -->
 
 <style type="text/css">
-body {
-	margin-top: 20px;
-}
+
 
 .indexBoard {
 	margin-top: 130px;
 	margin-bottom: 80px;
-	max-width: 2000px;
-	position: relative;
-	left: 17%;
+	display: table;
+	max-width: 65%;
 }
 
-.col-lg-4 {
-	width: 1500px;
-	display: block;
-	margin-right: 10px;
+.indexrow {
+	width: 1200px;
+	display: inline-black;
+	vertical-align: middle;
+	padding-left: 50px;
 }
+
+.listFirst {
+	float: left;
+	margin-right: 150px;
+}
+
+.listSecond {
+	float: left;
+	margin-right: 150px;
+}
+
 
 .index-margin {
 	margin-bottom: 1.875rem;
+	width: 500px;
 }
 
 .index-board .index-info {
@@ -101,14 +111,14 @@ body {
 	border-bottom: 1px solid black;
 }
 
-.widget-49 .widget-49-meeting-points {
+.boardlist-49 .boardlist-49-meeting-points {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 400;
 	font-size: 17px;
 	margin-top: 10px;
 }
 
-.widget-49 .widget-49-meeting-points .widget-49-meeting-item {
+.boardlist-49 .boardlist-49-meeting-points .boardlist-49-meeting-item {
 	color: #727686;
 }
 
@@ -118,7 +128,7 @@ body {
 	font-size: 17px;
 }
 
-.widget-49 .widget-49-meeting-action {
+.boardlist-49 .boardlist-49-meeting-action {
 	text-align: right;
 }
 
@@ -128,7 +138,7 @@ body {
 	font-weight: 500;
 }
 
-.widget-49 .widget-49-meeting-action a {
+.boardlist-49 .boardlist-49-meeting-action a {
 	text-transform: uppercase;
 }
 
@@ -145,17 +155,17 @@ body {
 <body>
 
 	<div class="container indexBoard">
-		<div class="row">
-			<div class="col-lg-4">
+		<div class="row indexrow">
+			<div class="col-lg-4 listFirst">
 				<div class="index-info index-margin">
 					<div class="index-head">
 						<div class="index-title">공간</div>
 					</div>
 					<div class="index-body pt-0">
-						<div class="widget-49">
-								<table class="widget-49-meeting-points">
+						<div class="boardlist-49">
+								<table class="boardlist-49-meeting-points">
 									<tr>
-										<td class="widget-49-meeting-item">
+										<td class="boardlist-49-meeting-item">
 											<p class="infoText" style="color:black;">
 											예술과 사람을 연결하는 공간으로<br/>
 											누구나 쉽게 접근할 수 있도록 전시 정보를 제공합니다. <br/>
@@ -167,9 +177,9 @@ body {
 										</td>
 									</tr>
 								</table>	
-							<div class="widget-49-meeting-action">
+							<div class="boardlist-49-meeting-action">
 								<a href="/collection/list"
-									class="btn btn-sm btn-flash-border-primary">더보기<img
+									class="btn btn-sm btn-flash-border-primary" style="color:black;">더보기<img
 									class="moreImg" src="https://i.imgur.com/Pi8nidz.png"
 									width="30px"></a>
 							</div>
@@ -177,26 +187,26 @@ body {
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-lg-4 listSecond">
 				<div class="index-board index-margin">
 					<div class="index-header no-border">
 						<div class="index-title">BEST</div>
 					</div>
 					<div class="index-body pt-0">
-						<div class="widget-49">
+						<div class="boardlist-49">
 							<c:forEach items="${best}" var="board">
-								<table class="widget-49-meeting-points">
+								<table class="boardlist-49-meeting-points">
 									<tr>
-										<td class="widget-49-meeting-item"><a
+										<td class="boardlist-49-meeting-item"><a
 											style="color: black;"
 											href="/board/get?post_id=${board.post_id}&brd_id=4"><c:out
 													value="${board.post_title}" /></a></td>
 									</tr>
 								</table>
 							</c:forEach>
-							<div class="widget-49-meeting-action">
+							<div class="boardlist-49-meeting-action">
 								<a href="/board/list?pageNum=1&brd_id=4"
-									class="btn btn-sm btn-flash-border-primary">더보기<img
+									class="btn btn-sm btn-flash-border-primary" style="color:black;">더보기<img
 									class="moreImg" src="https://i.imgur.com/Pi8nidz.png"
 									width="30px"></a>
 							</div>
@@ -208,8 +218,8 @@ body {
 	</div>
 
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- <script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script> -->
 	<script type="text/javascript">
 
 		$(document).ready(function() {

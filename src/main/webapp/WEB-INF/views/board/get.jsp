@@ -593,6 +593,9 @@ button {
 							<c:if test="${member.userId==board.user_id}">
 								<button class="btn btn-secondary" data-oper='remove'>삭제</button>
 							</c:if>
+							<c:if test="${member.role=='ROLE_ADMIN'}">
+								<button class="btn btn-primary" data-oper='remove'>관리자 삭제</button>
+							</c:if>
 							<form id='operForm_modi' action="/board/modify" method="get">
 								<input type='hidden' id='post_id' name='post_id'
 									value='<c:out value="${board.post_id}"/>'> <input
@@ -782,7 +785,7 @@ button {
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
-					str+= "    <div><div class='header'><string class='primary-font'>"+list[i].com_writer+"</strong>";
+					str+= "    <div><div class='header'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
 					if (list[i].com_writer_id=="${member.userId}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
@@ -838,11 +841,14 @@ button {
 				replyService.add(reply, function(result){alert(result); showList(endNum);} );
 				document.getElementById("com_content").value='';
 			});
+			
+			
 			$(document).on('click','.comment-edit-btn',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
 			    $("#" + form_id).collapse('toggle'); // 해당 form의 collapse 상태를 변경하여 textarea가 나타나도록 함
 			});
 
+			
 			$(document).on('click','#Comment_update',function(){
 			    var form_id = $(this).closest('form').attr('id'); // 클릭한 버튼의 부모 form 요소에서 id 값을 가져옴
 			    var com_id = $(this).closest("li").data("com-id");
@@ -853,6 +859,7 @@ button {
 			    replyService.update(reply, function(result){alert(result); showList(pageNum);} );
 			    
 			});
+			
 			
 			$(document).on('click', '.comment-delete-btn', function(){
 			    var com_id = $(this).closest("li").data("com-id");

@@ -14,15 +14,15 @@ public interface AdminDAO {
 	public void deleteUser(String userId) throws Exception;
 	
 	// admin
-		public List<MemberVO> listAllMembers(Criteria criteria);
-		public List<CollectionReviewVO> listAllReviews(Criteria criteria);
-		public List<BoardVO> listAllPosts(Criteria criteria);
-		public List<ReplyVO> listAllComments(Criteria criteria);
+	public List<MemberVO> listAllMembers(Criteria criteria);
+	public List<CollectionReviewVO> listAllReviews(Criteria criteria);
+	public List<BoardVO> listAllPosts(Criteria criteria);
+	public List<ReplyVO> listAllComments(Criteria criteria);
 
-		// admin PageMaker
-		public int countAllMembers() throws Exception;
-		public int countAllCollectionRevs() throws Exception;
-		public int countAllPosts() throws Exception;
-		public int countAllComments() throws Exception;
+	// admin PageMaker
+	public int countAllMembers() throws Exception;
+	public int countAllCollectionRevs() throws Exception;
+	public int countAllPosts() throws Exception;
+	public int countAllComments() throws Exception;
 
 }

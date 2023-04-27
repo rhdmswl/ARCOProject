@@ -22,11 +22,16 @@ public class AdminDAOImpl implements AdminDAO {
 
 	@Override
 	public void deleteUser(String userId) throws Exception {
+		 // 유저가 작성한 글 전체 삭제
+		 sql.delete("memberMapper.deleteReviewsByUserId", userId);
+		 sql.delete("memberMapper.deletePostsByUserId", userId);
+		 sql.delete("memberMapper.deleteCommentsByUserId", userId);
+		 
+		 // 유저 삭제
 		 sql.delete("memberMapper.deleteUser", userId);
-
 	}
 	
-	 // admin
+	// admin
     @Override
     public List<MemberVO> listAllMembers(Criteria criteria) {
     	Map<String, Object> paramMap = new HashMap<>();

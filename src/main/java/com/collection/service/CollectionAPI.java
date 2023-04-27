@@ -6,13 +6,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.json.XML;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.collection.domain.CollectionVO;
 
@@ -27,11 +28,11 @@ public class CollectionAPI {
 		urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=egRwJCG3SGkAZ82SPT3oRYlbbuZGTU6yDn5oUNHoj07yCst4ynaHqJnigaas910jwFhHr23p3IHHgi5kgOOaDw%3D%3D");																											
 //		urlBuilder.append("&" + URLEncoder.encode("keyword", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8"));
 //		urlBuilder.append("&" + URLEncoder.encode("sortStdr", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 1:등록일, 2:공연명, 3:지역 */
-		urlBuilder.append("&" + URLEncoder.encode("ComMsgHeader", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
+//		urlBuilder.append("&" + URLEncoder.encode("ComMsgHeader", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
 //		urlBuilder.append("&" + URLEncoder.encode("RequestTime", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /* Optional 필드 */
 //		urlBuilder.append("&" + URLEncoder.encode("CallBackURI", "UTF-8") + "="+ URLEncoder.encode("", "UTF-8")); /* Optional 필드 */
 		urlBuilder.append("&" + URLEncoder.encode("MsgBody", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
-		urlBuilder.append("&" + URLEncoder.encode("from", "UTF-8") + "=" + URLEncoder.encode("20230401", "UTF-8")); /**/
+		urlBuilder.append("&" + URLEncoder.encode("from", "UTF-8") + "=" + URLEncoder.encode("20230101", "UTF-8")); /**/
 		urlBuilder.append("&" + URLEncoder.encode("to", "UTF-8") + "=" + URLEncoder.encode("20230601", "UTF-8")); /**/
 		urlBuilder.append("&" + URLEncoder.encode("cPage", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /**/
 		urlBuilder.append("&" + URLEncoder.encode("rows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /* 3~100 */
@@ -77,17 +78,23 @@ public class CollectionAPI {
 				  
 				  CollectionServiceImpl service = new CollectionServiceImpl();
 				  CollectionVO vo = new CollectionVO();
+				  
+				  SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+				  
 				  for(int i = 0; i < objArr.size(); i++) {
 					  JSONObject perfor = (JSONObject) objArr.get(i);
 					  long seq = (long)perfor.get("seq");
 					  String seq_ = String.valueOf(seq);
 					  String title = (String)perfor.get("title");
-					  String startDate_ = perfor.get("startDate").toString();
-					  String endDate_ = perfor.get("endDate").toString();
+					  long startDate_ = (long) perfor.get("startDate");
+					  long endDate_ = (long) perfor.get("endDate");
 					  String startDate = "";
 					  String endDate = "";
-					  startDate = startDate_.substring(0,4) + "/" + startDate_.substring(4,6) + "/" + startDate_.substring(6);
-					  endDate = endDate_.substring(0,4) + "/" + endDate_.substring(4,6) + "/" + endDate_.substring(6);	  
+						/*
+						 * startDate = startDate_.substring(0,4) + "/" + startDate_.substring(4,6) + "/"
+						 * + startDate_.substring(6); endDate = endDate_.substring(0,4) + "/" +
+						 * endDate_.substring(4,6) + "/" + endDate_.substring(6);
+						 */
 					  String realmName = (String) perfor.get("realmName");
 					  String thumbnail = (String) perfor.get("realmName");
 					  String gpsX_ = ((Object)perfor.get("gpsX")).toString();
@@ -155,6 +162,8 @@ public class CollectionAPI {
 							  area = (String)perforInfo.get("area");
 							  } catch(NullPointerException e) {
 								  System.out.println("NullPointerException ocuured!!");
+							  } catch(java.lang.ClassCastException e) {
+								  System.out.println("ClassCastException ocuured!!");
 							  }
 					  
 //					  vo.setSeq(123);
@@ -174,7 +183,7 @@ public class CollectionAPI {
 //						  System.out.println("NullPointerException");
 //						  e.printStackTrace();
 //					  }
-					  System.out.println(seq +" \\ " + title + " \\ " + startDate + " \\ " + endDate + " \\ " + place + " \\ " + price + " \\ " + collectionUrl
+					  System.out.println(seq +" \\ " + title + " \\ " + startDate_ + " \\ " + endDate_ + " \\ " + place + " \\ " + price + " \\ " + collectionUrl
 							  + " \\ " + phone + " \\ " + placeAddr + " \\ " + realmName + " \\ " +  thumbnail + " \\ " +  gpsX + " \\ " + gpsY + " \\ " + area);	  
 				  
 				  }

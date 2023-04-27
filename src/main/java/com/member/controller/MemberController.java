@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.member.service.CalendarService;
 import com.member.service.MailSendService;
 import com.member.service.MemberService;
 import com.member.vo.CollectionReviewVO;
@@ -41,7 +42,6 @@ public class MemberController {
 
 	@Inject
 	MemberService service;
-
 	
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
@@ -75,6 +75,12 @@ public class MemberController {
 		return "member/login";
 	}
 
+	// 개인정보처리방침 get
+	@RequestMapping(value = "/privacypolicy", method = RequestMethod.GET)
+	public void getPrivacyPolicy() throws Exception {
+	    logger.info("get privacypolicy");
+	}
+	
 	// 로그인 get
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginView() throws Exception {
