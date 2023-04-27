@@ -415,7 +415,7 @@ p.v-data {
 							<div class="single-post">
 								<!-- Post Thumb -->
 								<div class="post-thumb">
-									<img src="<c:out value="${collection.imgUrl}"/>" width="400"
+									<img src="<c:out value="${collection.thumbnail}"/>" width="400"
 										height="500" alt="">
 								</div>
 								<!-- Post Content -->
