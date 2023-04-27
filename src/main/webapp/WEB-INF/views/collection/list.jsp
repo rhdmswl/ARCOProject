@@ -222,8 +222,9 @@ a:hover {
 												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
 												<option value="D" <c:out value="${pageMaker.cri.type eq 'D' ? 'selected' : ''}"/>>날짜</option>
 											</select>
-											<ul class="chat"></ul>
+											<ul class="chat">
 											
+											</ul>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
 											<button type="submit" class="searchButton"><span class="input-group-addon"><i class="zmdi zmdi-search"></i></span></button>
@@ -281,7 +282,7 @@ a:hover {
 											<div>
 												<a
 													href="/collection/get?seq=<c:out value="${collection.seq}"/>">
-													<img src="<c:out value="${collection.imgUrl}" />"
+													<img src="<c:out value="${collection.thumbnail}" />"
 													width="400" height="400">
 												</a>
 											</div>
@@ -385,35 +386,39 @@ a:hover {
 				
 				var searchUL = $(".chat");
 				var searchForm = $("#searchForm");
-				
+
 				var strDefault=''
 				strDefault+= "<input id='key' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
 				searchUL.html(strDefault);
 				
-				$("#searchForm searchButton").on("click", function(e){
-							e.preventDefault();
-						
-							$('#selectDate').attr("disabled", true);
-						/*if(<c:out value="${pageMaker.cri.type}"/> != 'D'){ */
-							
-								let val = $("input[name='keyword']").val();
-								searchForm.find("input[name='keyword']").val(val);
-								searchForm.submit();
-							/* } */			
-				});
-				
 				$("#chk").change (function(e) {
-				    var selectTag = $("#chk option:selected").val();
+					var selectTag = $("#chk option:selected").val();
 				    var str="";
 				    console.log(selectTag);
 				    if (selectTag=="T" || selectTag==""){
-				    str+= "<input id='key' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
+				    str+= "<input id='' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
 				    }
 				    if (selectTag=="D"){
-				    str+= "<input id='selectDate' type='date' name='date' class='form-control' style='width:200px;' value='<c:out value='${pageMaker.cri.date}'/>'>";
+				    str+= "<input id='' type='date' name='date' class='form-control' style='width:200px;' value='<c:out value='${pageMaker.cri.date}'/>'>";
 					}
 
 					searchUL.html(str);
+				});
+				
+				
+				$("#searchForm searchButton").on("click", function(e){
+					e.preventDefault();
+					var selectTag = $("#chk option:selected").val();
+					if(selectTag =="T" || selectTag==""){
+					let val = $("input[name='keyword']").val();
+					searchForm.find("input[name='keyword']").val(val);
+					searchForm.submit();
+					}
+					if(selectTag =="D"){
+						let val = $("input[name='date']").val();
+						searchForm.find("input[name='date']").val(val);
+						searchForm.submit();
+					}
 				});
 				
 				

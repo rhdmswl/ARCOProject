@@ -6,17 +6,13 @@
 <mapper namespace="com.collection.mapper.CollectionMapper">
 	
 	<insert id="insertCollection">
-	
-		<!-- insert into collection (seq, title, startDate, endDate, realmName, gpsX, gpsY, thumbnail)
-		values (#{seq, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR}, #{startDate, jdbcType=VARCHAR}, #{endDate, jdbcType=VARCHAR}, #{realmName, jdbcType=VARCHAR}, 
-		#{gpsX, jdbcType=VARCHAR}, #{gpsY, jdbcType=VARCHAR}, #{thumbnail, jdbcType=VARCHAR}) -->
 		
 		insert into collection (seq, title, startDate, endDate, realmName, gpsX, gpsY, thumbnail, place, price, url, phone, placeAddr, area, imgUrl)
 		values (#{seq, jdbcType=BIGINT}, #{title, jdbcType=VARCHAR}, #{startDate, jdbcType=VARCHAR}, #{endDate, jdbcType=VARCHAR}, #{realmName, jdbcType=VARCHAR}, 
 		#{gpsX, jdbcType=DOUBLE}, #{gpsY, jdbcType=DOUBLE}, #{thumbnail, jdbcType=VARCHAR}, #{place, jdbcType=VARCHAR}, #{price, jdbcType=VARCHAR},
 		#{url, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{placeAddr, jdbcType=VARCHAR}, #{area, jdbcType=VARCHAR}, #{imgUrl, jdbcType=VARCHAR}
 		
-		ON DUPLICATE KEY UPDATE
+		<!-- ON DUPLICATE KEY UPDATE
         title = #{title},
         startDate = #{startDate},
         endeDate = #{endDate},
@@ -30,7 +26,7 @@
         phone = #{phone},
         placeAddr = #{placeAddr},
         area = #{area},
-        imgUrl = #{imgUrl}
+        imgUrl = #{imgUrl} -->
 		
 		
 		)
@@ -95,7 +91,7 @@
 	<select id="getListWithPaging" resultType="com.collection.domain.CollectionVO">
 
     select * 
-    from(select seq, title, startDate, endDate, imgUrl, revViewCount, starAvg from collection
+    from(select seq, title, startDate, endDate, imgUrl, revViewCount, thumbnail, starAvg from collection
     <include refid="criteria"></include>
     )as collectionPaging
     where endDate >= now()     
