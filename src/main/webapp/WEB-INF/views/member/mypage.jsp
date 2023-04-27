@@ -260,7 +260,7 @@ margin-bottom:-30px;
 }
 
 .tabcontent {
-	display: none;
+	display: block;
 	padding: 6px 12px;
 }
 </style>
