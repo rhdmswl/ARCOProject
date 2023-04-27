@@ -61,11 +61,14 @@ public class BoardController {
 	public String register(BoardVO board, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri) {
 		log.info("register: " + board);
 		
+		String contents = ((String)board.getPost_content()).replace("\r\n","<br>");
+		board.setPost_content(contents);
 		service.register(board);
 		
 		rttr.addFlashAttribute("result", board.getPost_id());
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("brd_id", cri.getBrd_id());
+		
 
 		return "redirect:/board/list";
 	}
@@ -74,8 +77,18 @@ public class BoardController {
 	public void get(@RequestParam("post_id") Long post_id, @ModelAttribute("cri") Criteria cri,Model model) {
 		log.info("/get or modify");
 
+		BoardVO board= new BoardVO();
 		service.updateViewCount(post_id);
-		model.addAttribute("board", service.get(post_id));
+		board=service.get(post_id);
+		
+		String content = board.getPost_content();
+	    model.addAttribute("content", content);//조회용
+	    
+		String contents = ((String)board.getPost_content()).replace("<br>","\r\n");
+		board.setPost_content(contents);
+		model.addAttribute("board", board);//수정용
+		
+		
 		log.info("post_id: " + post_id);	
 		
 	}
@@ -101,6 +114,9 @@ public class BoardController {
 	public String modify(BoardVO board, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		log.info("modify:" + board);
 
+		String contents = ((String)board.getPost_content()).replace("\r\n","<br>");
+		board.setPost_content(contents);
+		
 		if (service.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
 		}
