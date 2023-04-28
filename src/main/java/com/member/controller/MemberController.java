@@ -140,7 +140,8 @@ public class MemberController {
 	public String myPage(Model model, HttpSession session,
 			@RequestParam(value = "revPage", defaultValue = "1") int revPage,
 			@RequestParam(value = "postPage", defaultValue = "1") int postPage,
-			@RequestParam(value = "commentPage", defaultValue = "1") int commentPage) throws Exception {
+			@RequestParam(value = "commentPage", defaultValue = "1") int commentPage,
+		    @RequestParam(value = "mypage_id", defaultValue = "1") int mypage_id) throws Exception {
 
 		MemberVO vo = (MemberVO) session.getAttribute("member");
 		String userId = null;
@@ -176,6 +177,8 @@ public class MemberController {
 
 		// 사용자 정보를 가져와서 모델에 추가
 		model.addAttribute("member", vo);
+		
+	    model.addAttribute("mypage_id", mypage_id);
 
 		return "member/mypage";
 	}
