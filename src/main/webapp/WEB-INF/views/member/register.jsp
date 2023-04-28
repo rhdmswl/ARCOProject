@@ -29,7 +29,7 @@
 	href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 
-<title>회원가입</title>
+<title>SIGN UP</title>
 <style type="text/css">
 .center {
 	text-align: center;
@@ -194,7 +194,7 @@ body::-webkit-scrollbar-track {
 								.focusout(
 										function() {
 											var userId = $("#userId").val();
-											var idRegex = /^[a-zA-Z0-9]{4,10}$/;
+											var idRegex = /^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]{4,10}$/;
 											var spaceRegex = /\s/;
 
 											if (userId == '') {
@@ -217,7 +217,12 @@ body::-webkit-scrollbar-track {
 														.text(
 																'아이디는 문자와 숫자 조합이며 4자이상 10자 이하이어야 합니다.');
 												return false;
-											} else {
+											}else if (/^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/.test(userId)) {
+											    $("#alert-danger1").css('display', 'inline-block').text('아이디에는 한글만 입력할 수 없습니다.');
+											    return false;
+											}
+ 
+											else {
 												$("#alert-danger1").css(
 														'display', 'none');
 											}
@@ -282,27 +287,7 @@ body::-webkit-scrollbar-track {
 												}
 											}
 
-											// check for duplicate characters in password
-											var passwordChars = pwd1.split("");
-											var duplicateCount = 0;
-											for (var i = 0; i < passwordChars.length; i++) {
-												var charCount = 0;
-												for (var j = 0; j < passwordChars.length; j++) {
-													if (passwordChars[i] == passwordChars[j]) {
-														charCount++;
-													}
-												}
-												if (charCount > 2) {
-													duplicateCount++;
-												}
-											}
-											if (duplicateCount > 0) {
-												$("#alert-danger")
-														.css('display',
-																'inline-block')
-														.text(
-																'비밀번호에는 3개 이상 중복된 문자 또는 숫자를 사용할 수 없습니다.');
-											}
+											
 										});
 
 						$('.form-control').focusout(function() {
@@ -429,6 +414,7 @@ body::-webkit-scrollbar-track {
 												return false;
 											}
 
+											var idVal = $("#userId").val();
 											var idChkVal = $("#idChk").val();
 											var nameChkVal = $("#nameChk")
 													.val();
@@ -446,6 +432,8 @@ body::-webkit-scrollbar-track {
 											} else if (idChkVal == "D"
 													|| nameChkVal == "D") {
 												alert("중복된 아이디 또는 닉네임을 입력하셨습니다. 재입력해주세요.");
+												
+												    return false;
 											} else if (pwVal == ""
 													|| emailVal == ""
 													|| phoneVal == ""
@@ -460,9 +448,9 @@ body::-webkit-scrollbar-track {
 												alert("유효한 전화번호를 입력해주세요.");
 											}  else if (!isValidUsername(usernameVal)) {
 												alert("닉네임은 2자 이상 8자 이하의 한글, 영문, 숫자만 입력해주세요.");
-											} else if (!isValidPassword($("#userPass").val())) {
-											    alert("비밀번호에는 3개 이상 중복된 문자 또는 숫자를 사용할 수 없습니다.");
-											} else {
+											} else if (idVal.length < 4 || idVal.length > 10 || !isValidId(idVal)) {
+												  alert("아이디는 4자 이상 10자 이하의 영문 소문자, 숫자만 입력 가능합니다. 다시 입력해주세요.");
+											}	else {
 												if (idChkVal == "D") {
 													alert("중복된 아이디를 입력하셨습니다. 재입력해주세요.");
 													return false;
@@ -473,7 +461,9 @@ body::-webkit-scrollbar-track {
 												}
 												$("#regForm").submit();
 												alert("회원가입이 완료되었습니다. ARCO에 오신걸 환영합니다 !");
+												
 											}
+										
 
 											function isValidEmail(email) {
 
@@ -486,6 +476,12 @@ body::-webkit-scrollbar-track {
 												var phoneRegEx = /^\d{10,11}$/;
 												return phoneRegEx.test(phone);
 											}
+											function isValidId(id) {
+												 
+												  var regExp = /^[a-z0-9_-]{4,10}$/;
+												  return regExp.test(id);
+												}
+
 
 											function isValidUsername(username) {
 												  var usernameRegEx = /^[a-zA-Z가-힣\d]{2,10}$/;
