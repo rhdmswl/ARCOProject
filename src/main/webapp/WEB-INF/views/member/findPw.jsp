@@ -61,6 +61,7 @@ body::-webkit-scrollbar-track {
 	position: relative;
 	right: 45px;
 	margin-bottom: 70px;
+	left:6%;
 }
 
 .card-title {
@@ -70,6 +71,7 @@ body::-webkit-scrollbar-track {
 	color: #696969;
 	width: 100%;
 	text-align: center;
+	
 }
 
 .form-control::placeholder {
@@ -97,6 +99,7 @@ body::-webkit-scrollbar-track {
 	height: 40px;
 	line-height: 20px;
 	padding: 0;
+	bottom:40px;
 }
 
 .btn-secondary:hover {
