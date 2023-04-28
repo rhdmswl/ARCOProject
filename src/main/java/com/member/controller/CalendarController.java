@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -79,7 +78,7 @@ public class CalendarController {
 	
 	@RequestMapping(method = {RequestMethod.POST}, value="/update")
 	public String colorUpdate(@RequestBody String filterJSON, HttpServletRequest request, 
-			HttpServletResponse response, Model model, HttpSession session) throws JsonParseException, Exception, IOException {
+			HttpServletResponse response, Model model, HttpSession session) throws Exception, IOException {
 		
 		MemberVO vo = (MemberVO) session.getAttribute("member");
 		
@@ -91,11 +90,9 @@ public class CalendarController {
 		ObjectMapper mapper = new ObjectMapper();
 		CalendarVO calendar = (CalendarVO) mapper.readValue(filterJSON, new TypeReference<CalendarVO>() {});
 		
-		Long seq = calendar.getSeq();
 		String color = calendar.getColor();
 		
 		calendar.setUser_id(vo.getUserId());
-		calendar.setSeq(seq);
 		calendar.setColor(color);
 		
 		service.colorUpdate(calendar);
@@ -103,7 +100,6 @@ public class CalendarController {
 		log.info("user_id : " + vo.getUserId());
 		log.info("colorUpdate : " + calendar);
 		
-		obj.put("success", "ok");
 		out.print(obj);
 		
 		return null;

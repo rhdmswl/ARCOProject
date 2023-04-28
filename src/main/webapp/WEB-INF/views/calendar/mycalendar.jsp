@@ -110,7 +110,7 @@ body {
 				<span class="modaltext" style="font-size: 13pt;">컬러 변경 &#128171;</span>
 			</div>
 			<div class="modal-body">
-				<div class="form-group">
+				<form class="form-group">
 					<label for="color-picker">Color:</label>
 					<datalist id="colorlist">
 						<option value="#db4430" data-color="#db4430">#db4430</option>
@@ -119,8 +119,8 @@ body {
 						<option value="#9730db" data-color="#9730db">#9730db</option>
 						<option value="#eb318e" data-color="#eb318e">#eb318e</option>
 					</datalist>
-					<input type="color" list="colorlist" id="event-color" />
-				</div>
+					<input type="color" list="colorlist" id="event-color" name="colorlist" />
+				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" value="${calendar.color}"
@@ -142,11 +142,10 @@ body {
 			
 		   var selectedEvent = null;
 		   var defaultColors = ["#db4430", "#32a852", "#3630db", "#9730db", "#eb318e"];
-		   var eventColors = JSON.parse(localStorage.getItem('myEventColors')) || {};
-		   
 		   var modal = $(".modal");
-		   var modalInputColor = modal.find("input[name='event-color']");
+		   var modalInputColor = modal.find("input[name='colorlist']");
 		   var save_modal = $("#save_modal");
+		
 		   var userId="${member.userId}";
 		   
 		   console.log("calendar color module --------------");
@@ -179,6 +178,7 @@ body {
 			    		eventLimit: true,				//이벤트가 많아지면 more 링크
 			    		locale: 'ko', 					//한국어 설정
 						events: data,
+						eventColor: defaultColors,
 						eventClick: function calendarService(info) {
 							selectedEvent = info.event;
 							
@@ -195,11 +195,6 @@ body {
 		                    $('#event-color').change(function () {
 		                        var color = $(this).val();
 		                        selectedEvent.setProp('backgroundColor', color);
-		                        eventColors[selectedEvent.id] = color;
-		                        
-		                        /* switch (selectedEvent.id) {
-		                        	events : {color : '#db4430'}
-		                        } */
 		                    });
 		                    
 		                    $("#save_modal").click(function() {
@@ -221,10 +216,9 @@ body {
 		                    	          callback(result);
 		                    	        }
 		                    	      },
-		                    	      error: function(xhr, status, error) {
-		                    	        if (error) {
-		                    	          error(error);
-		                    	        }
+		                    	      error: function(request,status,error){
+				    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		                    	        
 		                    	      }
 		                    	    });
 		                    	  }
@@ -234,12 +228,11 @@ body {
 		                    	  };
 		                    	})();
 		                    	
-		                    	colorService.colorUpdate(color, function(result){
-		                    		
-		                    		alert(result);
-		                    		
+		                    	colorService.colorUpdate(color, function(request,status,error){
+		    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		                    	});
-		                    	
+		 		               	
+		                    		
 				    	    });
 				
 				    	    // modal close button
@@ -248,10 +241,10 @@ body {
 				    	    });
 						},
 						
-				        eventBackgroundColor: function(info) {
+				        /* eventBackgroundColor: function(info) {
 				        	return eventColors[info.event.id] || info.event.backgroundColor || defaultColors[info.event._def.sourceId % defaultColors.length];
-				        }
-					        
+				        } */
+				        					        
 		    		});
 						
 	    			calendar.render();

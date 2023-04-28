@@ -717,6 +717,10 @@ p.v-data {
 	<script type="text/javascript" src="/js/dibs.js"></script>
 <script>
        	$(document).ready(function() {
+       		
+       		//URL 파라미터 안 보이게
+			history.replaceState({}, null, location.pathname);
+       		
        		var pageNum = 1;
        		var endNum=0;
        		var reviewPageFooter = $(".panel-footer");
@@ -917,6 +921,7 @@ p.v-data {
                     	
                     	$("#close_modal").click(function() {
 							$('#myModal').hide();
+							window.location.reload();
 						});
          			});
                      
