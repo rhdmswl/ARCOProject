@@ -61,7 +61,7 @@ body::-webkit-scrollbar-track {
 	position: relative;
 	right: 45px;
 	margin-bottom: 70px;
-	left:6%;
+	left:7%;
 }
 
 .card-title {
@@ -71,7 +71,6 @@ body::-webkit-scrollbar-track {
 	color: #696969;
 	width: 100%;
 	text-align: center;
-	
 }
 
 .form-control::placeholder {
@@ -185,66 +184,42 @@ body::-webkit-scrollbar-track {
 
 </head>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						// 취소
-						$(".cancel").on("click", function() {
-							location.href = "login";
-						})
-					
-						
-					// 비밀번호 찾기 인증메일 전송
+$(document).ready(function() {
+	  // 취소
+	  $(".cancel").on("click", function() {
+	    location.href = "login";
+	  });
 
-						$('#find-Pw-Btn').click(function() {
-							//db
-							const userId = $("#userId").val();
-							const email = $("#email").val();
-							console.log(userId);
-							console.log(email);
+	  // 아이디 찾기 
+	  $('#find-Id-Btn').click(function() {
+	    //db
+	    const userName = $("#userName").val();
+	    const phone = $("#phone").val();
+	    console.log(userName);
+	    console.log(phone);
 
-							$.ajax({
-								url : "/member/findPw",
-								type : "post",
-								dataType : "json",
-								data : {
-									"userId" : $("#userId").val(),
-									"email" : $("#email").val()
-								},
-								success : function(data) {
-									if (data == 1) {
-										alert(email +"로 임시비밀번호를 전송하겠습니다.");
-										send_email(userId,email);
-										//email로 임시비밀번호를 발송하는 함수를 넣어준다.
-									} else if (data == 0) {
-										alert("일치하는 정보가 없습니다.");
+	    $.ajax({
+	    	  url: "/member/findId",
+	    	  type: "post",
+	    	  dataType: "text",
+	    	  data: {
+	    	    "userName": $("#userName").val(),
+	    	    "phone": $("#phone").val()
+	    	  },
+	    	  success: function(data) {
+	    		  if (data.trim() !== "") {
+	    		    alert("아이디는 " + data + "입니다. 다시 로그인해주세요 !");
+	    		    location.href ="login";
+	    		  } else {
+	    		    alert("일치하는 정보가 없습니다.");
+	    		  }
+	    		}
 
-									}
-								}
-							});
-							
+	    	  
+	    	});
 
-						}); // end send email
-
-			
-					});
-	
-	function send_email(userId, email) {
-		//const email = email; // 이메일 주소값 얻어오기!
-		console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인 // 인증번호 입력하는곳 
-		$.ajax({
-			type : 'get',
-			url : '<c:url value="/member/findPwmailCheck?email=' + email + '&userId=' + userId + '"/>', // GET방식이라 Url 뒤에 email을 쓸 수 있음
-			success : function(data) {
-				console.log("data : " + data);
-				code = data;
-				alert('임시 비밀번호가 전송되었습니다. 다시 로그인해주세요 !');
-				location.href = "login";
-				
-			}
-		});
-	}
-
+	  });
+	});
 
 	
 </script>
@@ -258,23 +233,23 @@ body::-webkit-scrollbar-track {
 				</div>
 				<div class="card">
 					<div class="card-header card-header-primary">
-						<h4 class="card-title center">비밀번호 찾기</h4>
+						<h4 class="card-title center">아이디 찾기</h4>
 					</div>
 					<div class="card-body">
-						<form action="/member/findPw" method="post" id="findPwForm">
+						<form action="/member/findId" method="post" id="findIdForm">
 							<div class="form-group has-feedback">
-								<label class="control-label" for="userId">아이디</label> <br>
-								<input class="form-control" type="text" id="userId"
-									name="userId" />
+								<label class="control-label" for="userName">닉네임</label> <br>
+								<input class="form-control" type="text" id="userName"
+									name="userName" />
 							</div>
 							<br>
 							<!-- email -->
 							<div class="form-group has-feedback">
-								<label class="control-label" for="email">이메일</label><br> <input
-									class="form-control" type="text" id="email" name="email" />
+								<label class="control-label" for="phone">전화번호</label><br> <input
+									class="form-control" type="text" id="phone" name="phone" />
 								<div class="input-group-addon">
 									<button type="button" class="btn btn-primary emailSelectBtn"
-										id="find-Pw-Btn">메일 전송</button>
+										id="find-Id-Btn">아이디 확인</button>
 								</div>
 							</div>
 						</form>

@@ -22,6 +22,9 @@ public interface MemberDAO {
 
 	// 임시 패스워드 발급
 	public void findPwUpdate(MemberVO vo) throws Exception;
+	
+	// 아이디 찾기
+	public String findId(MemberVO vo) throws Exception;
 
 	// 회원정보 수정
 	public void mypageUpdate(MemberVO vo) throws Exception;

@@ -311,5 +311,23 @@ public class MemberController {
 
 		return result;
 	}
+	
+	// 아이디 찾기 get
+		@RequestMapping(value = "/findId", method = RequestMethod.GET)
+		public String findIdView() throws Exception {
+			return "member/findId";
+		}
+
+		// 아이디 찾기 post
+		@ResponseBody
+		@RequestMapping(value = "/findId", method = RequestMethod.POST)
+		public String findId(String userName, String phone) throws Exception {
+			
+			MemberVO vo = new MemberVO("","",userName,phone,"","");
+			String result = service.findId(vo);
+			
+			return result;
+		}
+
 
 }

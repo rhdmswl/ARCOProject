@@ -54,6 +54,14 @@
 		= #{userPass}
 		WHERE USERID = #{userId} AND EMAIL = #{email}
 	</update>
+	
+	<!-- 아이디 찾기 (닉네임, 전화번호 일치여부)-->
+	<select id="findId" resultType="String"><!-- id 수정 필요 -->
+		SELECT USERID FROM MEMBER
+		WHERE USERNAME = #{userName} AND PHONE=#{phone}
+	</select>
+	
+	
 
 	<update id="boardNickUpdate">
 		UPDATE post SET

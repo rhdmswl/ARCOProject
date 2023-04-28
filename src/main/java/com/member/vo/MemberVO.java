@@ -24,6 +24,13 @@ public class MemberVO {
 		this.email = email;		
 		this.role = role;
 	}
+	
+
+	
+
+	
+
+
 
 	private List<CollectionReviewVO> collectionRevs;
 	private List<BoardVO> posts;
