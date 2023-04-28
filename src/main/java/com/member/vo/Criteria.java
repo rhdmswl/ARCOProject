@@ -5,6 +5,8 @@ public class Criteria {
     private int page;
     private int perPageNum;
     private String userId;
+    
+    private int mypage_id;
 
     public Criteria() {
         this.page = 1;
@@ -55,4 +57,13 @@ public class Criteria {
     public int getCount() {
         return perPageNum;
     }
+    
+    public int getMypage_id() {
+        return mypage_id;
+    }
+
+    public void setMypage_id(int mypage_id) {
+        this.mypage_id = mypage_id;
+    }
+    
 }

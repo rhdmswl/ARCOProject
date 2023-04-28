@@ -35,6 +35,7 @@
 
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style type="text/css">
 body {
@@ -230,6 +231,17 @@ margin-bottom:-30px;
 	background-color: #f2f2f2;
 }
 
+.sideListGroup {
+	list-style: none;
+	text-align: center;
+	display: flex;
+    justify-content: space-around;
+}
+
+.sidelist a {
+	color: white;
+}
+
 .tab {
 	width: 17%;
 	position: fixed;
@@ -309,6 +321,32 @@ $(document).ready(function() {
             }
         }
     });
+    
+    $(".page-item a.page-link").on("click", function (event) {
+        event.preventDefault();
+        var type = $(this).closest(".page-item").data("type");
+        var url = $(this).attr("href");
+
+        $.ajax({
+            url: url,
+            type: "GET",
+            success: function (data) {
+                // 여기서 data는 새로 받아온 HTML 페이지
+                // 새로 받아온 페이지에서 페이징 영역의 내용을 가져와 현재 페이지의 페이징 영역에 넣어줌
+                var newPageItem = $(data).find(".page-item[data-type='" + type + "']");
+                $(".page-item[data-type='" + type + "']").html(newPageItem.html());
+
+                // 새로 받아온 페이지에서 해당 타입의 목록 영역의 내용을 가져와 현재 페이지의 목록 영역에 넣어줌
+                var contentId = type === "review" ? "myReviews" : type === "post" ? "myPosts" : "myComments";
+                var newContent = $(data).find("#" + contentId);
+                $("#" + contentId).html(newContent.html());
+            },
+            error: function (xhr, status, error) {
+                console.log("페이징 오류: " + error);
+            }
+        });
+    });
+
 });
 
 function fn_nameChk() {
@@ -344,8 +382,18 @@ function openTab(evt, tabName) {
 	evt.currentTarget.classList.add("active");
 }
 
+function showContent(id) {
+    var mypage_id = ${mypage_id};
+    document.getElementById("select").style.display = (id === 1 && mypage_id === 1) ? "block" : "none";
+    document.getElementById("profile").style.display = (id === 3 && mypage_id === 3) ? "block" : "none";
+    document.getElementById("myReviews").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
+    document.getElementById("myPosts").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
+    document.getElementById("myComments").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
+    document.getElementById("pagination").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
+}
 </script>
-<body>
+
+<body onload="showContent(${mypage_id});">
 	<div class="container">
 		<div class="row my-2">
 			<div class="col-lg-8 order-lg-2">
@@ -353,166 +401,27 @@ function openTab(evt, tabName) {
 					<a href="/" class="yummy-logo"><img
 						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 				</div>
-				<div class="tab">
-					<button class="tablinks active" onclick="openTab(event, 'select')">찜한 전시 일정</button>
-					<button class="tablinks" onclick="openTab(event, 'collection')">나의	한줄평 / 게시글 / 댓글</button>
-					<button class="tablinks" onclick="openTab(event, 'profile')">나의 프로필</button>
-
-				</div>
 				
-				
+					<ul class="list-unstyled active sideListGroup">
+						<li class="sidelist${mypage_id == 1 ? ' active' : ''}">
+							<a class="nav-link" style="font-weight: 700; font-size:22px; color:gray;"
+							href="/member/mypage?mypage_id=1" onclick="showContent(1);">찜한 전시 일정</a>
+						</li>
+						<li class="sidelist${mypage_id == 2 ? ' active' : ''}">
+							<a class="nav-link" style="font-weight: 700; font-size:22px; color:gray;"
+							href="/member/mypage?mypage_id=2" onclick="showContent(2);">나의	한줄평 / 게시글 / 댓글</a>
+						</li>
+						<li class="sidelist${mypage_id == 3 ? ' active' : ''}">
+							<a class="nav-link" style="font-weight: 700; font-size:22px; color:gray;"
+							href="/member/mypage?mypage_id=3" onclick="showContent(3);">나의 프로필</a>
+						</li>
+					</ul>
 
-
-
-				<div id="collection" class="tabcontent">
-					<!-- 한줄평 목록 -->
-					<div class="d-flex justify-content-center">
-						<div class="card" style="width: 100%; text-align: left;">
-							<div class="card-header card-header-primary">
-								<div class="card-title">나의 한줄평</div>
-							</div>
-							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table">
-										<tr>
-											<th>내용</th>
-											<th>작성일</th>
-										</tr>
-										<c:forEach var="rev" items="${collectionRev}">
-											<tr>
-												<td><a href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
-												<td>${rev.reviewDate}</td>
-											</tr>
-										</c:forEach>
-									</table>
-								</div>
-							</div>
-						</div>
+					<div id="select" class="tabcontent" style="display: ${mypage_id == 1 ? 'block' : 'none'};">
+						<jsp:include page="/WEB-INF/views/calendar/mycalendar.jsp" />
 					</div>
-					<!-- 한줄평 페이징 -->
-					<div class="text-center page-item">
-						<c:if test="${collectionRevPageMaker.prev}">
-							<a class="page-link"
-								href="?page=${collectionRevPageMaker.startPage - 1}">Prev</a>
-						</c:if>
-						<c:forEach var="pageNum"
-							begin="${collectionRevPageMaker.startPage}"
-							end="${collectionRevPageMaker.endPage}" step="1">
-							<c:choose>
-								<c:when test="${pageNum == collectionRevPageMaker.cri.page}">
-									<div class="page-link">${pageNum}</div>
-								</c:when>
-								<c:otherwise>
-									<a class="page-link"
-										href="?revPage=${pageNum}&postPage=${postPage}&commentPage=${commentPage}">${pageNum}</a>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${collectionRevPageMaker.next}">
-							<a class="page-link"
-								href="?revPage=${collectionRevPageMaker.endPage + 1}&postPage=${postPage}&commentPage=${commentPage}">Next</a>
-						</c:if>
-					</div>
-					<!-- 게시글 목록 -->
-					<div class="d-flex justify-content-center">
-						<div class="card" style="width: 100%; text-align: left;">
-							<div class="card-header card-header-primary">
-								<div class="card-title">나의 게시글</div>
-							</div>
-							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table">
-										<tr>
-											<th>제목</th>
-											<th>작성일</th>
-										</tr>
-										<c:forEach var="post" items="${posts}">
-											<tr>
-												<td><a href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
-												<td>${post.post_regdate}</td>
-											</tr>
-										</c:forEach>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 게시글 페이징 -->
-					<div class="text-center page-item">
-						<c:if test="${postPageMaker.prev}">
-							<a class="page-link" href="?page=${postPageMaker.startPage - 1}">Prev</a>
-						</c:if>
-						<c:forEach var="pageNum" begin="${postPageMaker.startPage}"
-							end="${postPageMaker.endPage}" step="1">
-							<c:choose>
-								<c:when test="${pageNum == postPageMaker.cri.page}">
-									<div class="page-link">${pageNum}</div>
-								</c:when>
-								<c:otherwise>
-									<a class="page-link"
-										href="?revPage=${revPage}&postPage=${pageNum}&commentPage=${commentPage}">${pageNum}</a>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${postPageMaker.next}">
-							<a class="page-link"
-								href="?revPage=${revPage}&postPage=${postPageMaker.endPage + 1}&commentPage=${commentPage}">Next</a>
-						</c:if>
-					</div>
-					<!-- 댓글 목록 -->
-					<div class="d-flex justify-content-center">
-						<div class="card" style="width: 120%; text-align: left;">
-							<div class="card-header card-header-primary">
-								<div class="card-title">나의 댓글</div>
-							</div>
-							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table">
-										<tr>
-											<th>내용</th>
-											<th>작성일</th>
-										</tr>
-										<c:forEach var="comment" items="${comments}">
-											<tr>
-												<td><a href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
-												<td>${comment.com_date}</td>
-											</tr>
-										</c:forEach>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 댓글 페이징 -->
-					<div class="text-center page-item">
-						<c:if test="${commentPageMaker.prev}">
-							<a class="page-link"
-								href="?page=${commentPageMaker.startPage - 1}">이전</a>
-						</c:if>
-						<c:forEach var="pageNum" begin="${commentPageMaker.startPage}"
-							end="${commentPageMaker.endPage}" step="1">
-							<c:choose>
-								<c:when test="${pageNum == commentPageMaker.cri.page}">
-									<div class="page-link">${pageNum}</div>
-								</c:when>
-								<c:otherwise>
-									<a class="page-link"
-										href="?revPage=${revPage}&postPage=${postPage}&commentPage=${pageNum}">${pageNum}</a>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${commentPageMaker.next}">
-							<a class="page-link"
-								href="?revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.endPage + 1}">다음</a>
-						</c:if>
-					</div>
-
-
-				</div>
-
-				
-				<div id="profile" class="tabcontent">
-<div class="tab-content py-4">
+					
+					<div class="tab-content py-4" style="display: ${mypage_id == 3 ? 'block' : 'none'};">
 						<div class="profileTitleText">My Profile</div>
 						<div class="card active profileBox" id="profile">
 							<div class="mb-3"></div>
@@ -570,16 +479,153 @@ function openTab(evt, tabName) {
 								</div>
 							</form>
 						</div>
+				
+				</div>
+
+				<c:if test="${mypage_id == 2}">
+					<!-- 한줄평 목록 -->
+					<div id="myReviews" class="tab-content py-4" style="display: ${mypage_id == 2 ? 'block' : 'none'};">
+						<div class="card" style="width: 100%; text-align: left;">
+							<div class="card-header card-header-primary">
+								<div class="card-title">나의 한줄평</div>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table">
+										<tr>
+											<th>내용</th>
+											<th>작성일</th>
+										</tr>
+										<c:forEach var="rev" items="${collectionRev}">
+											<tr>
+												<td><a href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
+												<td>${rev.reviewDate}</td>
+											</tr>
+										</c:forEach>
+									</table>
+								</div>
+							</div>
+						</div>
 					</div>
+					<!-- 한줄평 페이징 -->
+					<div class="text-center page-item" data-type="review">
+						<c:if test="${collectionRevPageMaker.prev}">
+							<a class="page-link"
+								href="?page=${collectionRevPageMaker.startPage - 1}&tabName=collection">Prev</a>
+						</c:if>
+						<c:forEach var="pageNum"
+							begin="${collectionRevPageMaker.startPage}"
+							end="${collectionRevPageMaker.endPage}" step="1">
+							<c:choose>
+								<c:when test="${pageNum == collectionRevPageMaker.cri.page}">
+									<div class="page-link">${pageNum}</div>
+								</c:when>
+								<c:otherwise>
+									<a class="page-link"
+										href="?revPage=${pageNum}&postPage=${postPage}&commentPage=${commentPage}&tabName=collection">${pageNum}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${collectionRevPageMaker.next}">
+							<a class="page-link"
+								href="?revPage=${collectionRevPageMaker.endPage + 1}&postPage=${postPage}&commentPage=${commentPage}&tabName=collection">Next</a>
+						</c:if>
+					</div>
+					<!-- 게시글 목록 -->
+					<div id="myReviews" class="tab-content py-4" style="display: ${mypage_id == 2 ? 'block' : 'none'};">
+						<div class="card" style="width: 100%; text-align: left;">
+							<div class="card-header card-header-primary">
+								<div class="card-title">나의 게시글</div>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table">
+										<tr>
+											<th>제목</th>
+											<th>작성일</th>
+										</tr>
+										<c:forEach var="post" items="${posts}">
+											<tr>
+												<td><a href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
+												<td>${post.post_regdate}</td>
+											</tr>
+										</c:forEach>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 게시글 페이징 -->
+					<div class="text-center page-item" data-type="post">
+						<c:if test="${postPageMaker.prev}">
+							<a class="page-link" href="?page=${postPageMaker.startPage - 1}&tabName=collection">Prev</a>
+						</c:if>
+						<c:forEach var="pageNum" begin="${postPageMaker.startPage}"
+							end="${postPageMaker.endPage}" step="1">
+							<c:choose>
+								<c:when test="${pageNum == postPageMaker.cri.page}">
+									<div class="page-link">${pageNum}</div>
+								</c:when>
+								<c:otherwise>
+									<a class="page-link"
+										href="?revPage=${revPage}&postPage=${pageNum}&commentPage=${commentPage}&tabName=collection">${pageNum}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${postPageMaker.next}">
+							<a class="page-link"
+								href="?revPage=${revPage}&postPage=${postPageMaker.endPage + 1}&commentPage=${commentPage}&tabName=collection">Next</a>
+						</c:if>
+					</div>
+					<!-- 댓글 목록 -->
+					<div id="myReviews" class="tab-content py-4" style="display: ${mypage_id == 2 ? 'block' : 'none'};">
+						<div class="card" style="width: 120%; text-align: left;">
+							<div class="card-header card-header-primary">
+								<div class="card-title">나의 댓글</div>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table">
+										<tr>
+											<th>내용</th>
+											<th>작성일</th>
+										</tr>
+										<c:forEach var="comment" items="${comments}">
+											<tr>
+												<td><a href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
+												<td>${comment.com_date}</td>
+											</tr>
+										</c:forEach>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 댓글 페이징 -->
+					<div class="text-center page-item" data-type="comment">
+						<c:if test="${commentPageMaker.prev}">
+							<a class="page-link"
+								href="?page=${commentPageMaker.startPage - 1}&tabName=collection">Prev</a>
+						</c:if>
+						<c:forEach var="pageNum" begin="${commentPageMaker.startPage}"
+							end="${commentPageMaker.endPage}" step="1">
+							<c:choose>
+								<c:when test="${pageNum == commentPageMaker.cri.page}">
+									<div class="page-link">${pageNum}</div>
+								</c:when>
+								<c:otherwise>
+									<a class="page-link"
+										href="?revPage=${revPage}&postPage=${postPage}&commentPage=${pageNum}&tabName=collection">${pageNum}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${commentPageMaker.next}">
+							<a class="page-link"
+								href="?revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.endPage + 1}&tabName=collection">Next</a>
+						</c:if>
+					</div>
+				</c:if>
 				
-				</div>
-				
-				<div id="select" class="tabcontent" style="display: block;">
-					<jsp:include page="/WEB-INF/views/calendar/mycalendar.jsp" />
-					
-				</div>
-
-
 			</div>
 		</div>
 	</div>
