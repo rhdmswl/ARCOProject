@@ -393,7 +393,7 @@ function openTab(evt, tabName) {
 					<div class="text-center page-item">
 						<c:if test="${collectionRevPageMaker.prev}">
 							<a class="page-link"
-								href="?page=${collectionRevPageMaker.startPage - 1}">Prev</a>
+								href="?page=${collectionRevPageMaker.startPage - 1}&tabName=collection">Prev</a>
 						</c:if>
 						<c:forEach var="pageNum"
 							begin="${collectionRevPageMaker.startPage}"
@@ -404,13 +404,13 @@ function openTab(evt, tabName) {
 								</c:when>
 								<c:otherwise>
 									<a class="page-link"
-										href="?revPage=${pageNum}&postPage=${postPage}&commentPage=${commentPage}">${pageNum}</a>
+										href="?revPage=${pageNum}&postPage=${postPage}&commentPage=${commentPage}&tabName=collection">${pageNum}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${collectionRevPageMaker.next}">
 							<a class="page-link"
-								href="?revPage=${collectionRevPageMaker.endPage + 1}&postPage=${postPage}&commentPage=${commentPage}">Next</a>
+								href="?revPage=${collectionRevPageMaker.endPage + 1}&postPage=${postPage}&commentPage=${commentPage}&tabName=collection">Next</a>
 						</c:if>
 					</div>
 					<!-- 게시글 목록 -->
@@ -440,7 +440,7 @@ function openTab(evt, tabName) {
 					<!-- 게시글 페이징 -->
 					<div class="text-center page-item">
 						<c:if test="${postPageMaker.prev}">
-							<a class="page-link" href="?page=${postPageMaker.startPage - 1}">Prev</a>
+							<a class="page-link" href="?page=${postPageMaker.startPage - 1}&tabName=collection">Prev</a>
 						</c:if>
 						<c:forEach var="pageNum" begin="${postPageMaker.startPage}"
 							end="${postPageMaker.endPage}" step="1">
@@ -450,13 +450,13 @@ function openTab(evt, tabName) {
 								</c:when>
 								<c:otherwise>
 									<a class="page-link"
-										href="?revPage=${revPage}&postPage=${pageNum}&commentPage=${commentPage}">${pageNum}</a>
+										href="?revPage=${revPage}&postPage=${pageNum}&commentPage=${commentPage}&tabName=collection">${pageNum}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${postPageMaker.next}">
 							<a class="page-link"
-								href="?revPage=${revPage}&postPage=${postPageMaker.endPage + 1}&commentPage=${commentPage}">Next</a>
+								href="?revPage=${revPage}&postPage=${postPageMaker.endPage + 1}&commentPage=${commentPage}&tabName=collection">Next</a>
 						</c:if>
 					</div>
 					<!-- 댓글 목록 -->
@@ -487,7 +487,7 @@ function openTab(evt, tabName) {
 					<div class="text-center page-item">
 						<c:if test="${commentPageMaker.prev}">
 							<a class="page-link"
-								href="?page=${commentPageMaker.startPage - 1}">이전</a>
+								href="?page=${commentPageMaker.startPage - 1}&tabName=collection">Prev</a>
 						</c:if>
 						<c:forEach var="pageNum" begin="${commentPageMaker.startPage}"
 							end="${commentPageMaker.endPage}" step="1">
@@ -497,13 +497,13 @@ function openTab(evt, tabName) {
 								</c:when>
 								<c:otherwise>
 									<a class="page-link"
-										href="?revPage=${revPage}&postPage=${postPage}&commentPage=${pageNum}">${pageNum}</a>
+										href="?revPage=${revPage}&postPage=${postPage}&commentPage=${pageNum}&tabName=collection">${pageNum}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${commentPageMaker.next}">
 							<a class="page-link"
-								href="?revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.endPage + 1}">다음</a>
+								href="?revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.endPage + 1}&tabName=collection">Next</a>
 						</c:if>
 					</div>
 
