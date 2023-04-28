@@ -762,7 +762,7 @@ p.v-data {
        	$(document).ready(function() {
        		
        		//URL 파라미터 안 보이게
-			history.replaceState({}, null, location.pathname);
+			/* history.replaceState({}, null, location.pathname); */
        		
        		var pageNum = 1;
        		var endNum=0;
