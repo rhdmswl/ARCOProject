@@ -449,6 +449,9 @@ button {
 	<script type="text/javascript">
  		$(document).ready(function(){
  			
+ 			//URL 파라미터 안 보이게
+			history.replaceState({}, null, location.pathname);
+ 			
  			var formObj = $("form");
  			
  			$('button').on("click", function(e){

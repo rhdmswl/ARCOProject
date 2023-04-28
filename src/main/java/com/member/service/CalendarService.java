@@ -8,4 +8,6 @@ public interface CalendarService {
 	
 	public List<CalendarVO> calendarList(String userId);
 	
+	public int colorUpdate(CalendarVO calendar);
+	
 }

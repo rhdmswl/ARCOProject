@@ -34,6 +34,24 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public int findPw(MemberVO vo) throws Exception {
+		int result = dao.findPw(vo);
+		return result;
+	}
+	
+	@Override
+	public void findPwUpdate(MemberVO vo) throws Exception {
+		dao.findPwUpdate(vo);
+	}
+	
+	@Override
+	public String findId(MemberVO vo) throws Exception {
+		String result = dao.findId(vo);
+		return result;
+	}
+
+
+	@Override
 	public void memberUpdate(MemberVO vo) throws Exception {
 
 		dao.memberUpdate(vo);
@@ -62,13 +80,13 @@ public class MemberServiceImpl implements MemberService {
 	public void passUpdate(MemberVO login) throws Exception {
 		dao.passUpdate(login);
 	}
-
+	
 	@Override
 	public int idChk(MemberVO vo) throws Exception {
 		int result = dao.idChk(vo);
 		return result;
 	}
-	
+
 	@Override
 	public int nameChk(MemberVO vo) throws Exception {
 		int result = dao.nameChk(vo);
@@ -116,7 +134,7 @@ public class MemberServiceImpl implements MemberService {
 	public int countComments(String userId) throws Exception {
 		return dao.countComments(userId);
 	}
-	
+
 //  @Override
 //  public String getProfileImg(String userId) throws Exception {
 //      return dao.getProfileImg(userId);

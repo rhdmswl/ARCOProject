@@ -29,7 +29,7 @@
 	href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 
-<title>PASSWORD UPDATE</title>
+<title>FIND PASSWORD</title>
 <style type="text/css">
 .center {
 	text-align: center;
@@ -40,9 +40,28 @@ body {
 	background: #FFF
 }
 
+body::-webkit-scrollbar {
+	width: 8px; /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+	height: 5%; /* 스크롤바의 길이 */
+	background: black; /* 스크롤바의 색상 */
+	border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+	background: rgba(242, 240, 241); /*스크롤바 뒷 배경 색상*/
+}
+
 .card {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	position: relative;;
+	position: relative;
+	width: 500px;
+	position: relative;
+	right: 45px;
+	margin-bottom: 70px;
+	left:7%;
 }
 
 .card-title {
@@ -60,7 +79,7 @@ body {
 
 .form-control {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	width: 80%;
+	width: 60%;
 	height: 50px;
 	box-sizing: border-box;
 	margin-left: 5px;
@@ -79,8 +98,7 @@ body {
 	height: 40px;
 	line-height: 20px;
 	padding: 0;
-	margin-left: 50px;
-	margin-top: 20px;
+	bottom:40px;
 }
 
 .btn-secondary:hover {
@@ -112,8 +130,6 @@ body {
 	line-height: 20px;
 	font-size: 15px;
 	padding: 0;
-	margin-right: 50px;
-	margin-top: 20px;
 }
 
 .btn-primary:hover {
@@ -136,7 +152,6 @@ body {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	border: 0;
 	outline: none;
-	padding-left: 10px;
 	margin-bottom: 15px;
 }
 
@@ -150,101 +165,63 @@ body {
 	vertical-align: middle;
 }
 
-#passUpdateForm {
-	margin-left: 60px;
+.control-label, label {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	color: black;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.emailSelectBtn {
+	margin-left: 300px;
+	bottom: 45px;
+}
+
+.submitBtnGroup {
+	margin-top: 50px;
 }
 </style>
 
 </head>
 <script type="text/javascript">
-	$(document).ready(
-			function() {
-				// 비밀번호 유효성 검사
-				function validatePassword() {
-					var pwd1 = $("#newPass").val();
-					var pwd2 = $("#passCheck").val();
-					var pwdRegex = /^[a-zA-Z0-9!@#$%^&*()?_~]{8,16}$/;
-					var passwordChars = pwd1.split("");
-					var duplicateCount = 0;
+$(document).ready(function() {
+	  // 취소
+	  $(".cancel").on("click", function() {
+	    location.href = "login";
+	  });
 
-					if (!pwdRegex.test(pwd1)) {
-						$("#alert-danger").css('display', 'inline-block').text(
-								'비밀번호는 8~16자 이내의 영문, 숫자, 특수문자만 사용 가능합니다.');
-						return false;
-					}
+	  // 아이디 찾기 
+	  $('#find-Id-Btn').click(function() {
+	    //db
+	    const userName = $("#userName").val();
+	    const phone = $("#phone").val();
+	    console.log(userName);
+	    console.log(phone);
 
-					if (pwd1 != '' && pwd2 == '') {
-						$("#alert-danger").css('display', 'inline-block').text(
-								'비밀번호 확인을 입력해주세요.');
-						return false;
-					}
+	    $.ajax({
+	    	  url: "/member/findId",
+	    	  type: "post",
+	    	  dataType: "text",
+	    	  data: {
+	    	    "userName": $("#userName").val(),
+	    	    "phone": $("#phone").val()
+	    	  },
+	    	  success: function(data) {
+	    		  if (data.trim() !== "") {
+	    		    alert("아이디는 " + data + "입니다. 다시 로그인해주세요 !");
+	    		    location.href ="login";
+	    		  } else {
+	    		    alert("일치하는 정보가 없습니다.");
+	    		  }
+	    		}
 
-					if (pwd1 != "" || pwd2 != "") {
-						if (pwd1 == pwd2) {
-							$("#alert-success").css('display', 'inline-block');
-							$("#alert-danger").css('display', 'none');
-						} else {
-							$("#alert-success").css('display', 'none');
-							$("#alert-danger").css('display', 'inline-block')
-									.text('비밀번호가 일치하지 않습니다.');
-							return false;
-						}
-					}
+	    	  
+	    	});
 
-					for (var i = 0; i < passwordChars.length; i++) {
-						var charCount = 0;
-						for (var j = 0; j < passwordChars.length; j++) {
-							if (passwordChars[i] == passwordChars[j]) {
-								charCount++;
-							}
-						}
-						if (charCount > 2) {
-							duplicateCount++;
-						}
-					}
+	  });
+	});
 
-				
-
-					return true;
-				}
-
-				// 비밀번호 변경 버튼 클릭 이벤트
-				$("#submit").on("click", function() {
-					if (!validatePassword()) {
-						return false;
-					}
-
-					if ($("#newPass").val() == "") {
-						alert("비밀번호를 입력해주세요.");
-						$("#newPass").focus();
-						return false;
-					}
-
-					if ($("#passCheck").val() == "") {
-						alert("비밀번호 확인을 입력해주세요.");
-						$("#passCheck").focus();
-						return false;
-					}
-
-					var pwVal = $("#newPass").val();
-
-					if (pwVal.length < 8) {
-						alert("비밀번호는 최소 8자 이상 입력해주세요.");
-					} else {
-						$("#passUpdateForm").submit();
-						alert("비밀번호 변경이 완료 되었습니다. 다시 로그인 해주세요 !");
-					}
-				});
-
-				// 취소
-				$(".cancel").on("click", function() {
-					location.href = "/member/mypage";
-				});
-
-				$('.form-control').focusout(function() {
-					validatePassword();
-				});
-			});
+	
 </script>
 <body>
 	<section id="container">
@@ -256,37 +233,30 @@ body {
 				</div>
 				<div class="card">
 					<div class="card-header card-header-primary">
-						<h4 class="card-title center">비밀번호 변경</h4>
+						<h4 class="card-title center">아이디 찾기</h4>
 					</div>
 					<div class="card-body">
-						<form action="/member/passUpdate" method="post"
-							id="passUpdateForm">
-
+						<form action="/member/findId" method="post" id="findIdForm">
 							<div class="form-group has-feedback">
-								<label class="control-label" for="newPass">새 비밀번호</label><br>
-								<input class="form-control" type="password" id="newPass"
-									name="newPass" />
-
+								<label class="control-label" for="userName">닉네임</label> <br>
+								<input class="form-control" type="text" id="userName"
+									name="userName" />
 							</div>
 							<br>
-
+							<!-- email -->
 							<div class="form-group has-feedback">
-								<label class="control-label" for="passCheck">새 비밀번호 확인</label><br>
-								<input class="form-control" type="password" id="passCheck"
-									name="passCheck" /> <span id="alert-success"
-									style="display: none; color: #000000;">비밀번호가 일치합니다.</span> <span
-									id="alert-danger"
-									style="display: none; color: #d92742; font-weight: bold;">비밀번호가
-									일치하지 않습니다.</span>
+								<label class="control-label" for="phone">전화번호</label><br> <input
+									class="form-control" type="text" id="phone" name="phone" />
+								<div class="input-group-addon">
+									<button type="button" class="btn btn-primary emailSelectBtn"
+										id="find-Id-Btn">아이디 확인</button>
+								</div>
 							</div>
-
 						</form>
-						<div class="text-center">
-							<button class="btn btn-primary" type="button" id="submit">비밀번호
-								변경</button>
+						<div class="text-center submitBtnGroup">
+							
 							<button class="btn btn-secondary cancel" type="button">취소</button>
 						</div>
-
 					</div>
 				</div>
 			</div>
