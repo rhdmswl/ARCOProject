@@ -46,6 +46,14 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		sql.update("memberMapper.findPwUpdate", vo);
 	}
+	
+	@Override
+	public String findId(MemberVO vo) throws Exception {
+		String result = sql.selectOne("memberMapper.findId", vo);
+		
+		return result;
+		
+	}
 
 	@Override
 	public void memberUpdate(MemberVO vo) throws Exception {

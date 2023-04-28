@@ -38,6 +38,17 @@ public class MemberServiceImpl implements MemberService {
 		int result = dao.findPw(vo);
 		return result;
 	}
+	
+	@Override
+	public void findPwUpdate(MemberVO vo) throws Exception {
+		dao.findPwUpdate(vo);
+	}
+	
+	@Override
+	public String findId(MemberVO vo) throws Exception {
+		String result = dao.findId(vo);
+		return result;
+	}
 
 
 	@Override
@@ -70,11 +81,6 @@ public class MemberServiceImpl implements MemberService {
 		dao.passUpdate(login);
 	}
 	
-	@Override
-	public void findPwUpdate(MemberVO vo) throws Exception {
-		dao.findPwUpdate(vo);
-	}
-
 	@Override
 	public int idChk(MemberVO vo) throws Exception {
 		int result = dao.idChk(vo);
