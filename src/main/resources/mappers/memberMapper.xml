@@ -26,6 +26,7 @@
 		WHERE
 		USERID
 		= #{userId}
+
 		<!-- AND USERPASS = #{userPass} -->
 	</select>
 
@@ -39,24 +40,50 @@
 		WHERE USERID = #{userId}
 	</update>
 
+	<!-- 비밀번호 찾기 (아이디, 이메일 일치여부)-->
+	<select id="findPw" resultType="int"><!-- id 수정 필요 -->
+		SELECT COUNT(*) FROM MEMBER
+		WHERE USERID = #{userId} AND EMAIL =
+		#{email}
+	</select>
+
+	<!-- 임시 비밀번호 수정 -->
+	<update id="findPwUpdate" parameterType="com.member.vo.MemberVO">
+		UPDATE MEMBER SET
+		USERPASS
+		= #{userPass}
+		WHERE USERID = #{userId} AND EMAIL = #{email}
+	</update>
+	
+	<!-- 아이디 찾기 (닉네임, 전화번호 일치여부)-->
+	<select id="findId" resultType="String"><!-- id 수정 필요 -->
+		SELECT USERID FROM MEMBER
+		WHERE USERNAME = #{userName} AND PHONE=#{phone}
+	</select>
+	
+	
+
 	<update id="boardNickUpdate">
 		UPDATE post SET
 		post_writer = #{userName}
-		WHERE user_id = #{userId}
+		WHERE user_id
+		= #{userId}
 	</update>
-	
+
 	<update id="commentNickUpdate">
 		UPDATE comment SET
 		com_writer = #{userName}
-		WHERE com_writer_id = #{userId}
+		WHERE
+		com_writer_id = #{userId}
 	</update>
-	
+
 	<update id="reviewNickUpdate">
 		UPDATE collectionRev SET
 		nickName = #{userName}
-		WHERE userId = #{userId}
+		WHERE
+		userId = #{userId}
 	</update>
-	
+
 	<update id="mypageUpdate">
 		UPDATE MEMBER SET
 		<!-- USERPASS = #{userPass}, -->
@@ -116,7 +143,8 @@
 		resultType="com.member.vo.BoardVO">
 		SELECT * FROM post WHERE user_id = #{userId}
 		LIMIT
-		${start}, 12
+		${start},
+		12
 	</select>
 
 	<!-- 작성한 댓글 불러오기 (페이징 적용) -->
@@ -180,7 +208,8 @@
 	<!-- admin 회원 삭제 -->
 	<select id="deleteUser" resultType="int">
 		DELETE FROM MEMBER
-		WHERE USERID = #{userId}
+		WHERE
+		USERID = #{userId}
 	</select>
 
 	<!-- admin 한줄평 총 개수 -->
@@ -199,25 +228,25 @@
 		SELECT COUNT(*) FROM
 		comment
 	</select>
-	
+
 	<!-- 회원 탈퇴/삭제 시 해당 유저의 모든 한줄평 삭제 -->
 	<delete id="deleteReviewsByUserId">
 		DELETE FROM collectionRev
 		WHERE USERID = #{userId}
 	</delete>
-	
+
 	<!-- 회원 탈퇴/삭제 시 해당 유저의 모든 게시글 삭제 -->
 	<delete id="deletePostsByUserId">
 		DELETE FROM post
 		WHERE user_id = #{userId}
 	</delete>
-	
+
 	<!-- 회원 탈퇴/삭제 시 해당 유저의 모든 댓글 삭제 -->
 	<delete id="deleteCommentsByUserId">
 		DELETE FROM comment
 		WHERE com_writer_id = #{userId}
 	</delete>
-	
+
 	<insert id="insertImage" parameterType="com.member.vo.ImageVO">
 		INSERT INTO image
 		(file_name, content_type, image_data, user_id)
@@ -236,17 +265,11 @@
 	<!-- <select id="getProfileImg" resultType="string"> SELECT PROFILEIMG FROM 
 		MEMBER WHERE USERID = #{userId} </select> <update id="updateProfileImg"> 
 		UPDATE MEMBER SET PROFILEIMG = #{profileImg} WHERE USERID = #{userId} </update> -->
-	
+
 	<select id="calendarList" resultType="com.member.vo.CalendarVO">
 	<![CDATA[
 		select * from dibs where user_id=#{user_id}
 	]]>
 	</select>
-	
-	<update id="colorUpdate">
-		update dibs
-		set color=#{color}
-		where user_id=#{user_id} and seq=#{seq}
-	</update>
-	
+
 </mapper>

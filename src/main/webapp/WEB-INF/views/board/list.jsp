@@ -262,6 +262,10 @@ body::-webkit-scrollbar-track {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
 
+a{
+	color: #424242;
+}
+
 .vieweye {
 	width: 15px;
 	height: 15px;
@@ -520,8 +524,7 @@ body::-webkit-scrollbar-track {
 													</small>
 													</div>
 												</div>
-												<div><a class='move' href='<c:out value="${board.post_id}"/>'
-													style="color: #4c4c4d;"> 
+												<div class="move"><a href="${path}/board/get?brd_id=${board.brd_id}&post_id=${board.post_id}">
 													 <c:out value="${board.post_title}" />
 													 </a>
 												</div>
@@ -642,13 +645,6 @@ body::-webkit-scrollbar-track {
 								actionForm.submit();
 							});
 					
-					$(".move").on("click", function(e){
-					    e.preventDefault();
-					    actionForm.append("<input type='hidden' name='post_id' value='"+
-					            $(this).attr("href")+"'>");
-					    actionForm.attr("action", "/board/get");
-					    actionForm.submit();
-					});
 					
 					$(".regmov").on("click", function(e){
 					    e.preventDefault();
