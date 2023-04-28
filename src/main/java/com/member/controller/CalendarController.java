@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.member.service.CalendarService;
@@ -87,13 +88,10 @@ public class CalendarController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		ObjectMapper mapper = new ObjectMapper();
+		ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
 		CalendarVO calendar = (CalendarVO) mapper.readValue(filterJSON, new TypeReference<CalendarVO>() {});
 		
-		String color = calendar.getColor();
-		
 		calendar.setUser_id(vo.getUserId());
-		calendar.setColor(color);
 		
 		service.colorUpdate(calendar);
 		

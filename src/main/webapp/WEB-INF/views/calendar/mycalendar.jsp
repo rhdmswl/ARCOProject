@@ -199,17 +199,15 @@ body {
 		                    
 		                    $("#save_modal").click(function() {
 				    	        
-		                    	var color = {user_id:modal.data("user_id"), color:modalInputColor.val()};
-		                    	
 		                    	console.log("calendar color module --------------");
 
 		                    	var colorService = (function() {
-		                    	  function colorUpdate(color, callback, error) {
+		                    	  function colorUpdate(selectedEvent, callback, error) {
 		                    	    console.log("color update-------------");
 		                    	    $.ajax({
 		                    	      type: 'POST',
 		                    	      url: '/calendar/update',
-		                    	      data: JSON.stringify(color),
+		                    	      data: JSON.stringify(selectedEvent),
 		                    	      contentType: "application/json; charset=utf-8",
 		                    	      success: function(result, status, xhr) {
 		                    	        if (callback) {
@@ -228,7 +226,7 @@ body {
 		                    	  };
 		                    	})();
 		                    	
-		                    	colorService.colorUpdate(color, function(request,status,error){
+		                    	colorService.colorUpdate(selectedEvent, function(request,status,error){
 		    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		                    	});
 		 		               	
