@@ -20,6 +20,8 @@ public interface MemberService {
 	
 	public void findPwUpdate(MemberVO vo) throws Exception;
 	
+	public String findId(MemberVO vo) throws Exception;
+	
 	public void memberUpdate(MemberVO vo) throws Exception;
 	
 	public void mypageUpdate(MemberVO vo) throws Exception;

@@ -18,11 +18,13 @@
 <!-- Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 <style type="text/css">
-
 body {
 	margin-top: 20px;
 	background: #FFF
@@ -51,28 +53,29 @@ body {
 	height: 40px;
 	line-height: 20px;
 	padding: 0;
+	left: -5px;
+	bottom: 5px;
 }
 
 .btn-secondary:hover {
-    box-shadow: 1px 4px 3px 1px #dadce0;
+	box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
 .btn-secondary:before {
-    position: absolute;
-    /* content: ''; */
-    display: inline-block;
-    top: -180px;
-    left: 0px;
-    width: 30px;
-    height: 100%;
-    background-color: #fff;
+	position: absolute;
+	/* content: ''; */
+	display: inline-block;
+	top: -180px;
+	left: 0px;
+	width: 30px;
+	height: 100%;
+	background-color: #fff;
 }
 
 .btn-secondary:active {
-	  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
-            -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-   			inset -4px -4px 6px 0 rgba(242, 19, 120),
-    		inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+	box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3), -4px -4px 6px 0
+		rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(242, 19, 120),
+		inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
 }
 
 .btn-primary {
@@ -83,14 +86,48 @@ body {
 	line-height: 20px;
 	font-size: 15px;
 	padding: 0;
+	left: -5px;
+	bottom: 5px;
 }
 
 .btn-primary:hover {
-    box-shadow: 1px 4px 3px 1px #dadce0;
+	box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
 .text-center {
 	margin-top: 20px;
+}
+
+.btn-findId {
+  background-color: transparent;
+  color: #333;
+  border: none;
+  padding: 0;
+  margin-right: 10px;
+  font-size: 14px;
+  left:5px;
+  top:7px;
+}
+
+.btn-findPw {
+  background-color: transparent;
+  color: #333;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  left:2px;
+  top:7px;
+}
+
+.btn-divider {
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+  margin: 0 10px;
+  vertical-align: middle;
+ 
+  
 }
 
 </style>
@@ -98,17 +135,16 @@ body {
 </head>
 <body>
 	<div class="wrapper">
-	    <div class="container">
-	        <div class="row">
-	            <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
 					<div class="logo_area text-center">
 						<a href="/" class="yummy-logo"><img
 							src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 					</div>
 					<form name="homeForm" method="post" action="/member/login">
 						<div class="card card-login">
-							<div class="col-12">
-							</div>
+							<div class="col-12"></div>
 							<div class="card-header card-header-primary text-center">
 								<div class="card-title">로그인</div>
 							</div>
@@ -131,9 +167,14 @@ body {
 									<div class="text-center">
 										<button type="submit" class="btn btn-primary">로그인</button>
 										<button id="registerBtn" type="button"
-											class="btn btn-secondary">회원가입</button>
-											<button id="findPwBtn" type="button"
-											class="btn btn-secondary">비밀번호 찾기</button>
+											class="btn btn-secondary">회원가입</button><br>
+										<button id="findIdBtn" type="button" class="btn btn-findId">아이디
+											찾기</button>
+										<span class="btn-divider"></span>
+										<button id="findPwBtn" type="button" class="btn btn-findPw">비밀번호
+											찾기</button>
+
+
 									</div>
 								</c:if>
 								<c:if test="${member != null}">
@@ -174,6 +215,10 @@ body {
 			
 			$("#findPwBtn").on("click", function() {
 				location.href = "findPw";
+			})
+			
+			$("#findIdBtn").on("click", function() {
+				location.href = "findId";
 			})
 			
 			$("#adminBtn").on("click", function(){
