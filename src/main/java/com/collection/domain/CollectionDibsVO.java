@@ -13,5 +13,5 @@ public class CollectionDibsVO {
 	private String endDate;
 	private String userId;
 	private String imgUrl;
-
+	private String color;
 }
