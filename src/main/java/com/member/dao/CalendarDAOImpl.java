@@ -22,4 +22,10 @@ public class CalendarDAOImpl implements CalendarDAO {
 		
 	}
 
+	@Override
+	public int colorUpdate(CalendarVO calendar) {
+		
+		return sql.update("memberMapper.colorUpdate", calendar);
+	}
+
 }

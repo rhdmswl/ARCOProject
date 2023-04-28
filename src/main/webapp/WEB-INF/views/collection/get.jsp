@@ -397,6 +397,53 @@ p.v-data {
 	border: 1px solid #ccc;
 }
 
+.dibs {
+	margin-right: 15px;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 300;
+	left: 0;
+	top: 0;
+	width: 120%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	position: fixed;
+	left: 50%;
+	top: 20%;
+	transform: translate(-50%, -50%);
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border-radius: 10px;
+	width: 400px;
+	height: 170px;
+	box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.modal-footer {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	cursor: pointer;
+	height: 48px;
+	position: relative;
+	top: 30px;
+}
+
+.modaltext {
+	vertical-align: middle;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	position: relative;
+	top: 30px;
+}
 
 </style>
 
@@ -415,7 +462,7 @@ p.v-data {
 							<div class="single-post">
 								<!-- Post Thumb -->
 								<div class="post-thumb">
-									<img src="<c:out value="${collection.thumbnail}"/>" width="400"
+									<img src="<c:out value="${collection.imgUrl}"/>" width="400"
 										height="500" alt="">
 								</div>
 								<!-- Post Content -->
@@ -501,25 +548,52 @@ p.v-data {
 											<c:if test="${member.userId!=null}">
 												<c:if test="${dibs>=1}">
 													<div class="info">
-														<div class="infoBtn">
+														<div class="infoBtn dibs">
 															<button id='dibs' class="btn btn-secondary">찜 취소</button>
+														</div>
+														<div id="myModal" class="modal">
+															<!-- Modal content -->
+															<div class="modal-content">
+																<p style="text-align: center; line-height: 1.5;">
+																	<span class="modaltext" style="font-size: 13pt;">찜하기가 취소되었습니다 &#128064;</span>
+																</p>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default"
+																		id="close_modal">Close</button>
+																</div>
+															</div>
 														</div>
 													</div>
 												</c:if>
 												<c:if test="${dibs==0}">
 													<div class="info">
-														<div class="infoBtn">
+														<div class="infoBtn dibs">
 															<button id='dibs' class="btn btn-secondary">찜 하기</button>
+														</div>
+														<div id="myModal" class="modal">
+															<!-- Modal content -->
+															<div class="modal-content">
+																<p style="text-align: center; line-height: 1.5;">
+																	<span class="modaltext" style="font-size: 13pt;">캘린더에 추가되었습니다 &#128147;</span>
+																</p>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default"
+																		id="mypage_modal">
+																		<a class="mypage" href="/member/mypage">mypage</a>
+																	</button>
+																	<button type="button" class="btn btn-default"
+																		id="close_modal">Close</button>
+																</div>
+															</div>
 														</div>
 													</div>
 												</c:if>
 											</c:if>
-												</div>
-											</div>
-											
-								
-										
+										</div>
 									</div>
+
+
+								</div>
 									<!-- <img class="br-30 mb-15" src="img/blog-img/14.jpg" alt=""> -->
 								</div>
 							</div>
@@ -538,9 +612,7 @@ p.v-data {
 							<!-- Comment Area Start -->
 							<div class="comment_area section_padding_50 clearfix">
 							<h4 class="mb-30">Comments</h4>
-								<ul class="chat">
-								
-								</ul>
+								<ul class="chat"></ul>
 								<div class="panel-footer">
 									<%--   <div class="pull-rigth">
                                         <ul class="pagination">
@@ -591,9 +663,6 @@ p.v-data {
 										</div>
 										<button id='commentAdd' type="submit"
 											class="btn btn-secondary">입력 완료</button>
-										<div>	<span id="alert-danger2"
-									style="display: none; color: #d92742; font-weight: bold;"></span>
-							</div>
 											
 										</c:if>
 										<!-- 비 로그인 시 -->
@@ -694,16 +763,12 @@ p.v-data {
    				
    				/* 글자수 제한 기능 */
    			 $('#comment').on('keyup', function() {
-   				 //한줄평 쓰는 칸 눌렀을 때 입력버튼 권한주기
-   				 $('#commentAdd').attr('disabled', false);
-   			 
    		        $('#comment_cnt').html("("+$(this).val().length+" / 50)");
    		 
    		        if($(this).val().length > 50) {
    		            $(this).val($(this).val().substring(0, 50));
    		            $('#comment_cnt').html("(50 / 50)");
    		        }
-   		        
    		    });
    			}		 
             
@@ -742,29 +807,25 @@ p.v-data {
             					    str += "</div>";
             					    str += "<div class='revBox'>";
             					    str += "<div class='header'>";
-            					    str += "<h1 class='primary-font' style='display:inline;'>" + list[i].nickName + "&nbsp;&nbsp;&nbsp;&nbsp;</h1>";
+            					    str += "<div class='primary-font'>" + list[i].nickName + "</div>";
+            					    
             					    if (list[i].nickName == "${member.userName}"){
             					        str += "<small>";
-            					        str += "<a href='#" + formId + "' class='updatebtn' style='color:#A9A9A9;' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
-            					        str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"			       
-            					        str += "<a href='#" + formId + "' class='remove2' role='button' style='color:#FF1493;' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
+            					        str += "<a href='#" + formId + "' class='updatebtn' style='color:black;' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            					        str += "<a href='#" + formId + "' class='remove2' role='button' style='color:black;' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
             					        str += "</small>";
-            					        
-            					    }       					  
-            					    	    
-            					    str += "<small class='pull-right text-muted'>" + CollectionReviewService.displayTime(list[i].reviewDate) + "</small>";
-            					    str += "</div>"; // header 끝            					   
-            					    str += "<div id='review' style='font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>" + list[i].revComment + "</div>";
-            					    if("${member.role}" == "ROLE_ADMIN"){
-            					        str += "<a href='#" + formId + "' class='remove2' role='button' style='color:red;' aria-expanded='false' aria-controls='" + formId + "'>관리자 삭제</a>";
             					    }
+            					    
+            					    str += "<small class='pull-right text-muted'>" + CollectionReviewService.displayTime(list[i].reviewDate) + "</small>";
+            					    str += "</div>"; // header 끝
+            					    str += "<div id='review' style='font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>" + list[i].revComment + "</div>";
             					    str += "<form class='collapse' id='" + formId + "'>";
             					    str += "<div class='form-group'>";
-            					    
             					    str += "<textarea style='resize: none;' class='form-control reviewBox' id ='revComment' rows='3'></textarea>";
             					    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
             					    str += "</div>";
             					    str += "<div><button id='update' type='button' class='btn btn-secondary updateSuccess'>수정 완료</button></div>";
+            					    
             					    str += "</form>";
             					    str += "</div>";
             					    str += "</li>";
@@ -778,6 +839,8 @@ p.v-data {
             			 }); 
             		 } 
             		 
+            		 
+            		 
             
                      $(document).on("click",'#commentAdd' ,function(){
                     	 var review = { 
@@ -787,18 +850,9 @@ p.v-data {
                         		 revStar :  $(".starRev output b").text(),
                         		 userId : ('${member.userId}')
                         		 };
-                    	 //한줄평 안썼을 때 입력 못하게 함
-                    	 if($(comment).val().length == 0) {
-      						$("#comment").focus();
-     							$("#alert-danger2").css('display', 'inline-block')
-     				            .text('한줄평을 입력해주세요.');
-     							$('#commentAdd').attr('disabled', true);
-     							return false;
-     						 }
                          CollectionReviewService.add(review, function(result){alert(result);
                          
                          });
-                         
                          showList(1);
                      });
                      
@@ -858,7 +912,12 @@ p.v-data {
          						endDate:endDate,
          						imgUrl:imgUrl,
          				};
-                    	dibsService.addDibs(dibs, function(result){alert(result); window.location.reload();});
+                    	 $('#myModal').show();
+                    	dibsService.addDibs(dibs);
+                    	
+                    	$("#close_modal").click(function() {
+							$('#myModal').hide();
+						});
          			});
                      
                     /* 별점 구현 */
@@ -898,14 +957,13 @@ p.v-data {
                     	                }
                     	            }, 1000);
                     	        })
-                    	        
                     	        /* 별점 체크하지 않았을때 기본 1점으로 설정 */
                     	        .on("change", ".star-input>.starR", function(){
                     	            var $checked = $star.find(":checked");
                     	            var score = ($checked.length === 0) ? 1 : $checked.next().text();
                     	            setStar(score);
                     	        })
-                    	        .on("mouseover", ".revTextBox input", function(){
+                    	        .on("mouseover", ".star-input label", function(){
                     	            var score = $(this).text();
                     	            setStar(score);
                     	        })
@@ -918,7 +976,6 @@ p.v-data {
                     	            }
                     	        });
                     	};
-
 
                     	starRating();
                     	

@@ -20,4 +20,10 @@ public class CalendarServiceImpl implements CalendarService {
 		return dao.calendarList(userId);
 	}
 
+	@Override
+	public int colorUpdate(CalendarVO calendar) {
+		
+		return dao.colorUpdate(calendar);
+	}
+
 }

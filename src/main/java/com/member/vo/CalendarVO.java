@@ -10,4 +10,6 @@ public class CalendarVO {
 	private String end_date;
 	private String user_id;
 	private String imgUrl;
+	private String color;
 }
+

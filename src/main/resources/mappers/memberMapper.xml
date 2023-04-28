@@ -243,4 +243,10 @@
 	]]>
 	</select>
 	
+	<update id="colorUpdate">
+		update dibs
+		set color=#{color}
+		where user_id=#{user_id} and seq=#{seq}
+	</update>
+	
 </mapper>
