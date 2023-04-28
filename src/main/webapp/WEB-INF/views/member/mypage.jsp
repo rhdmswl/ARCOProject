@@ -337,7 +337,7 @@ $(document).ready(function() {
                 $(".page-item[data-type='" + type + "']").html(newPageItem.html());
 
                 // 새로 받아온 페이지에서 해당 타입의 목록 영역의 내용을 가져와 현재 페이지의 목록 영역에 넣어줌
-                var contentId = type === "review" ? "myReviews" : type === "post" ? "myPosts" : "myComments";
+                var contentId = type === "review" ? "myReviews" : type === "post" ? "myPosts" : type === "comment" ? "myComments"
                 var newContent = $(data).find("#" + contentId);
                 $("#" + contentId).html(newContent.html());
             },
@@ -511,7 +511,7 @@ function showContent(id) {
 					<div class="text-center page-item" data-type="review">
 						<c:if test="${collectionRevPageMaker.prev}">
 							<a class="page-link"
-								href="?page=${collectionRevPageMaker.startPage - 1}&tabName=collection">Prev</a>
+								href="/member/mypage?mypage_id=2&page=${collectionRevPageMaker.startPage - 1}&tabName=collection">Prev</a>
 						</c:if>
 						<c:forEach var="pageNum"
 							begin="${collectionRevPageMaker.startPage}"
@@ -522,13 +522,13 @@ function showContent(id) {
 								</c:when>
 								<c:otherwise>
 									<a class="page-link"
-										href="?revPage=${pageNum}&postPage=${postPage}&commentPage=${commentPage}&tabName=collection">${pageNum}</a>
+										href="/member/mypage?mypage_id=2&revPage=${pageNum}&postPage=${postPage}&commentPage=${commentPage}&tabName=collection">${pageNum}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${collectionRevPageMaker.next}">
 							<a class="page-link"
-								href="?revPage=${collectionRevPageMaker.endPage + 1}&postPage=${postPage}&commentPage=${commentPage}&tabName=collection">Next</a>
+								href="/member/mypage?mypage_id=2&revPage=${collectionRevPageMaker.endPage + 1}&postPage=${postPage}&commentPage=${commentPage}&tabName=collection">Next</a>
 						</c:if>
 					</div>
 					<!-- 게시글 목록 -->
@@ -558,7 +558,7 @@ function showContent(id) {
 					<!-- 게시글 페이징 -->
 					<div class="text-center page-item" data-type="post">
 						<c:if test="${postPageMaker.prev}">
-							<a class="page-link" href="?page=${postPageMaker.startPage - 1}&tabName=collection">Prev</a>
+							<a class="page-link" href="/member/mypage?mypage_id=2&page=${postPageMaker.startPage - 1}&tabName=collection">Prev</a>
 						</c:if>
 						<c:forEach var="pageNum" begin="${postPageMaker.startPage}"
 							end="${postPageMaker.endPage}" step="1">
@@ -568,13 +568,13 @@ function showContent(id) {
 								</c:when>
 								<c:otherwise>
 									<a class="page-link"
-										href="?revPage=${revPage}&postPage=${pageNum}&commentPage=${commentPage}&tabName=collection">${pageNum}</a>
+										href="/member/mypage?mypage_id=2&revPage=${revPage}&postPage=${pageNum}&commentPage=${commentPage}&tabName=collection">${pageNum}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${postPageMaker.next}">
 							<a class="page-link"
-								href="?revPage=${revPage}&postPage=${postPageMaker.endPage + 1}&commentPage=${commentPage}&tabName=collection">Next</a>
+								href="/member/mypage?mypage_id=2&revPage=${revPage}&postPage=${postPageMaker.endPage + 1}&commentPage=${commentPage}&tabName=collection">Next</a>
 						</c:if>
 					</div>
 					<!-- 댓글 목록 -->
@@ -605,7 +605,7 @@ function showContent(id) {
 					<div class="text-center page-item" data-type="comment">
 						<c:if test="${commentPageMaker.prev}">
 							<a class="page-link"
-								href="?page=${commentPageMaker.startPage - 1}&tabName=collection">Prev</a>
+								href="/member/mypage?mypage_id=2&page=${commentPageMaker.startPage - 1}&tabName=collection">Prev</a>
 						</c:if>
 						<c:forEach var="pageNum" begin="${commentPageMaker.startPage}"
 							end="${commentPageMaker.endPage}" step="1">
@@ -615,13 +615,13 @@ function showContent(id) {
 								</c:when>
 								<c:otherwise>
 									<a class="page-link"
-										href="?revPage=${revPage}&postPage=${postPage}&commentPage=${pageNum}&tabName=collection">${pageNum}</a>
+										href="/member/mypage?mypage_id=2&revPage=${revPage}&postPage=${postPage}&commentPage=${pageNum}&tabName=collection">${pageNum}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${commentPageMaker.next}">
 							<a class="page-link"
-								href="?revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.endPage + 1}&tabName=collection">Next</a>
+								href="/member/mypage?mypage_id=2&revPage=${revPage}&postPage=${postPage}&commentPage=${commentPageMaker.endPage + 1}&tabName=collection">Next</a>
 						</c:if>
 					</div>
 				</c:if>
