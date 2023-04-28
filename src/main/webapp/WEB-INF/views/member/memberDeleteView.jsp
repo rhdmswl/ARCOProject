@@ -36,6 +36,7 @@ body {
 	height: 40px;
 	line-height: 20px;
 	padding: 0;
+	left:15px;
 }
 
 .btn-secondary:hover {
@@ -68,6 +69,7 @@ body {
 	line-height: 20px;
 	font-size: 15px;
 	padding: 0;
+	left:15px;
 }
 
 .btn-primary:hover {
@@ -99,38 +101,21 @@ body {
 
 .delFormGroup {
 	position: relative;
-	left: 17%;
-	margin-bottom: 33px;
+	left: 25%;
+	margin-bottom: 40px;
 }
 
-.userPass {
-  width: 400px;
-  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-  font-size: 15px;
-  outline: none;
-  padding-left: 10px;
+/* 수정 칸 */
+.memberGroup {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	padding-left: 10px;
+	margin-bottom: 5px;
+	width:50%;
+	
 }
-
-.userId {
-  width: 400px;
-  height: 40px;
-  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-  font-size: 15px;
-  border: 0;
-  outline: none;
-  padding-left: 10px;
-}
-
-.userName {
-
-  height: 40px;
-  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-  font-size: 15px;
-  border: 0;
-  border-radius: 15px;
-  outline: none;
-  padding-left: 10px;
-
+.memberGroup[readonly] {
+	background-color: #f2f2f2;
 }
 
 </style>
@@ -162,6 +147,8 @@ body {
 						if(data==true){
 							if(confirm("회원탈퇴하시겠습니까?")){
 								$("#delForm").submit();
+								alert("탈퇴가 완료되었습니다.\n언제든 ARCO가 필요하시다면 다시 방문해주세요!\n다시 돌아오실 날만을 기다리고 있겠습니다. \uD83D\uDE22");
+
 							}
 						}else{
 							alert("비밀번호가 틀렸습니다.");
@@ -188,19 +175,19 @@ body {
 						<form class="delFormGroup" action="/member/memberDelete" method="post" id="delForm">
 							<div class="form-group has-feedback">
 								<label class="control-label" for="userId">아이디</label> 
-								<input class="form-control userId" type="text" id="userId" name="userId"
+								<input class="form-control memberGroup" type="text" id="userId" name="userId"
 									value="${member.userId}" readonly="readonly" />
 							</div>
 							<br>
 							<div class="form-group has-feedback">
 								<label class="control-label" for="userPass">패스워드</label> 
-								<input class="form-control userPass" type="password" id="userPass"
+								<input class="form-control memberGroup" type="password" id="userPass"
 									name="userPass" />
 							</div>
 							<br>
 							<div class="form-group has-feedback">
 								<label class="control-label" for="userName">닉네임</label> 
-								<input class="form-control userName" type="text" id="userName" name="userName"
+								<input class="form-control memberGroup" type="text" id="userName" name="userName"
 									value="${member.userName}" readonly="readonly" />
 							</div>
 						</form>

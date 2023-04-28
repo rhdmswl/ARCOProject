@@ -15,6 +15,15 @@ public class MemberVO {
 	private String confirmPass;
 	private String role;
 	// private String profileImg;
+	public MemberVO(String userId,String userPass,String userName,String phone, String email,String role)
+	{
+		this.userId = userId;
+		this.userPass = userPass;
+		this.userName = userName;
+		this.phone = phone;
+		this.email = email;		
+		this.role = role;
+	}
 
 	private List<CollectionReviewVO> collectionRevs;
 	private List<BoardVO> posts;

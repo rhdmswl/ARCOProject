@@ -132,6 +132,8 @@ body {
 										<button type="submit" class="btn btn-primary">로그인</button>
 										<button id="registerBtn" type="button"
 											class="btn btn-secondary">회원가입</button>
+											<button id="findPwBtn" type="button"
+											class="btn btn-secondary">비밀번호 찾기</button>
 									</div>
 								</c:if>
 								<c:if test="${member != null}">
@@ -163,11 +165,15 @@ body {
 				location.href = "logout";
 			})
 			$("#registerBtn").on("click", function() {
-				location.href = "register";
+				location.href = "privacypolicy";
 			})
 	
 			$("#mypageBtn").on("click", function() {
 				location.href = "mypage";
+			})
+			
+			$("#findPwBtn").on("click", function() {
+				location.href = "findPw";
 			})
 			
 			$("#adminBtn").on("click", function(){

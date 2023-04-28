@@ -17,9 +17,13 @@ public interface MemberDAO {
 	// 로그인
 	public MemberVO login(MemberVO vo) throws Exception;
 
+	// 비밀번호 찾기
+	public int findPw(MemberVO vo) throws Exception;
+
+	// 임시 패스워드 발급
+	public void findPwUpdate(MemberVO vo) throws Exception;
+
 	// 회원정보 수정
-	public void memberUpdate(MemberVO vo) throws Exception;
-	
 	public void mypageUpdate(MemberVO vo) throws Exception;
 
 	// 회원 탈퇴
@@ -28,14 +32,17 @@ public interface MemberDAO {
 	// 패스워드 체크
 	public int passChk(MemberVO vo) throws Exception;
 
-	//  패스워드 수정
+	// 패스워드 수정1
+	public void memberUpdate(MemberVO vo) throws Exception;
+
+	// 패스워드 수정2
 	public void passUpdate(MemberVO login) throws Exception;
 
 	// 아이디 중복체크
 	public int idChk(MemberVO vo) throws Exception;
-	
+
 	// 닉네임 중복체크
-		public int nameChk(MemberVO vo) throws Exception;
+	public int nameChk(MemberVO vo) throws Exception;
 
 	// public String getProfileImg(String userId) throws Exception;
 
@@ -55,19 +62,21 @@ public interface MemberDAO {
 //
 //	// 나의 댓글
 //	List<ReplyVO> getMemberComments(String userId) throws Exception;
-	
+
 	// 페이징이 적용된 나의 한줄평
 	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception;
+
 	// 페이징이 적용된 나의 게시글
 	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception;
+
 	// 페이징이 적용된 나의 댓글
 	public List<ReplyVO> getMemberCommentsWithPaging(String userId, Criteria cri) throws Exception;
 
 	// 각 글의 개수, PageMaker
 	public int countCollectionRevs(String userId) throws Exception;
+
 	public int countPosts(String userId) throws Exception;
+
 	public int countComments(String userId) throws Exception;
-
-
 
 }

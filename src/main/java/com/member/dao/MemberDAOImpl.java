@@ -22,7 +22,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Inject
 	SqlSession sql;
 
-	// 회원가입
+	
 	@Override
 	public void register(MemberVO vo) throws Exception {
 		sql.insert("memberMapper.register", vo);
@@ -32,6 +32,19 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO login(MemberVO vo) throws Exception {
 
 		return sql.selectOne("memberMapper.login", vo);
+	}
+	
+	
+	@Override
+	public int findPw(MemberVO vo) throws Exception {
+		int result = sql.selectOne("memberMapper.findPw", vo);
+		return result;
+	}
+	
+	@Override
+	public void findPwUpdate(MemberVO vo) throws Exception {
+		
+		sql.update("memberMapper.findPwUpdate", vo);
 	}
 
 	@Override
@@ -74,9 +87,10 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public void passUpdate(MemberVO login) throws Exception {
-		sql.update("memberMapper.passUpdate", login);
+	public void passUpdate(MemberVO vo) throws Exception {
+		sql.update("memberMapper.passUpdate", vo);
 	}
+	
 
 	@Override
 	public int idChk(MemberVO vo) throws Exception {
