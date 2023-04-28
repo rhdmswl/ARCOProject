@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Page</title>
+<title>MY PAGE</title>
 <link href="/css/material-dashboard.min.css" rel="stylesheet" />
 <link
 	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"

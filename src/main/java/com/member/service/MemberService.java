@@ -15,6 +15,10 @@ public interface MemberService {
 	public void register(MemberVO vo) throws Exception;
 	
 	public MemberVO login(MemberVO vo) throws Exception;
+
+	public int findPw(MemberVO vo) throws Exception;
+	
+	public void findPwUpdate(MemberVO vo) throws Exception;
 	
 	public void memberUpdate(MemberVO vo) throws Exception;
 	
