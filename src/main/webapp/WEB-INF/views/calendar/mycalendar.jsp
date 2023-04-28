@@ -57,41 +57,6 @@ body {
     border-radius: 5px;
 }
 
-.modal {
-	display: none;
-	position: fixed;
-	z-index: 300;
-	left: 0;
-	top: 0;
-	width: 120%;
-	height: 150%;
-	overflow: auto;
-	background-color: rgb(0, 0, 0);
-	background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-	position: fixed;
-	left: 50%;
-	top: 20%;
-	transform: translate(-50%, -50%);
-	background-color: #fefefe;
-	margin: 15% auto;
-	padding: 20px;
-	border-radius: 10px;
-	width: 400px;
-	height: 200px;
-	box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
-	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-}
-
-.modal-footer {
-	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	cursor: pointer;
-	height: 50px;
-	position: relative;
-	bottom: 15px;
-}
 
 </style>
 
@@ -102,33 +67,6 @@ body {
 		<div id='calendar'></div>
 	</div>
 
-	<div id="calendarModal" class="modal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<div class="modal-header" style="text-align: center; line-height: 1.5;">
-				<span class="modaltext" style="font-size: 13pt;">컬러 변경 &#128171;</span>
-			</div>
-			<div class="modal-body">
-				<form class="form-group">
-					<label for="color-picker">Color:</label>
-					<datalist id="colorlist">
-						<option value="#db4430" data-color="#db4430">#db4430</option>
-						<option value="#32a852" data-color="#32a852">#32a852</option>
-						<option value="#3630db" data-color="#3630db">#3630db</option>
-						<option value="#9730db" data-color="#9730db">#9730db</option>
-						<option value="#eb318e" data-color="#eb318e">#eb318e</option>
-					</datalist>
-					<input type="color" list="colorlist" id="event-color" name="colorlist" />
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" value="${calendar.color}"
-					id="save_modal">수정 완료</button>
-				<button type="button" class="btn btn-default" id="close_modal">Close</button>
-			</div>
-		</div>
-	</div>
 	<!-- End Modal -->
 	
 	<!-- <script type="text/javascript" src="/resources/js/calendar.js"></script> -->
@@ -139,16 +77,6 @@ body {
     	
 		   
 	   $(document).ready(function(){
-			
-		   var selectedEvent = null;
-		   var defaultColors = ["#db4430", "#32a852", "#3630db", "#9730db", "#eb318e"];
-		   var modal = $(".modal");
-		   var modalInputColor = modal.find("input[name='colorlist']");
-		   var save_modal = $("#save_modal");
-		
-		   var userId="${member.userId}";
-		   
-		   console.log("calendar color module --------------");
 		   
 	    	$(function(){
 	    		var request = $.ajax({
@@ -162,7 +90,7 @@ body {
 	    			var calendarE1 = document.getElementById('calendar');
 	    		
 		    		var calendar = new FullCalendar.Calendar(calendarE1, {
-			    		height: '600px',
+			    		height: '800px',
 			    		expandRows: true,
 			    		
 			    		headerToolbar: {
@@ -172,77 +100,13 @@ body {
 			    		},
 			    		initialView: 'dayGridMonth',	//초기 캘린더 화면
 			    		navLinks: false,				//날짜 선택하면 day나 week 캘린더로 링크
-			    		editable: true,				//수정 가능
+			    		editable: false,				//수정 가능
 			    		selectable: true,				//달력 일자 드래그 설정
 			    		dayMaxEvents: true,				//이벤트가 오버되면 높이 제한
 			    		eventLimit: true,				//이벤트가 많아지면 more 링크
 			    		locale: 'ko', 					//한국어 설정
 						events: data,
-						eventColor: defaultColors,
-						eventClick: function calendarService(info) {
-							selectedEvent = info.event;
-							
-							console.log(event.id);
-							
-							var modal = $("#calendarModal");
-							modal.show();
-							
-							// 모달창에 event의 현재 컬러 보여줌
-							var currentColor = selectedEvent.backgroundColor;
-							$("#event-color").val(currentColor);
-							
-							// 컬러 변경
-		                    $('#event-color').change(function () {
-		                        var color = $(this).val();
-		                        selectedEvent.setProp('backgroundColor', color);
-		                    });
-		                    
-		                    $("#save_modal").click(function() {
-				    	        
-		                    	console.log("calendar color module --------------");
-
-		                    	var colorService = (function() {
-		                    	  function colorUpdate(selectedEvent, callback, error) {
-		                    	    console.log("color update-------------");
-		                    	    $.ajax({
-		                    	      type: 'POST',
-		                    	      url: '/calendar/update',
-		                    	      data: JSON.stringify(selectedEvent),
-		                    	      contentType: "application/json; charset=utf-8",
-		                    	      success: function(result, status, xhr) {
-		                    	        if (callback) {
-		                    	          callback(result);
-		                    	        }
-		                    	      },
-		                    	      error: function(request,status,error){
-				    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		                    	        
-		                    	      }
-		                    	    });
-		                    	  }
-
-		                    	  return {
-		                    	    colorUpdate : colorUpdate
-		                    	  };
-		                    	})();
-		                    	
-		                    	colorService.colorUpdate(selectedEvent, function(request,status,error){
-		    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		                    	});
-		 		               	
-		                    		
-				    	    });
-				
-				    	    // modal close button
-				    	    $("#close_modal").click(function() {
-				    	        $('#calendarModal').hide();
-				    	    });
-						},
-						
-				        /* eventBackgroundColor: function(info) {
-				        	return eventColors[info.event.id] || info.event.backgroundColor || defaultColors[info.event._def.sourceId % defaultColors.length];
-				        } */
-				        					        
+						eventColor: '#de317c'
 		    		});
 						
 	    			calendar.render();

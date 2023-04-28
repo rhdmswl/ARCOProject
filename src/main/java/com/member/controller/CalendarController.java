@@ -77,31 +77,36 @@ public class CalendarController {
 	}
 	
 	
-	@RequestMapping(method = {RequestMethod.POST}, value="/update")
-	public String colorUpdate(@RequestBody String filterJSON, HttpServletRequest request, 
-			HttpServletResponse response, Model model, HttpSession session) throws Exception, IOException {
-		
-		MemberVO vo = (MemberVO) session.getAttribute("member");
-		
-		JSONObject obj = new JSONObject();
-		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
-		ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
-		CalendarVO calendar = (CalendarVO) mapper.readValue(filterJSON, new TypeReference<CalendarVO>() {});
-		
-		calendar.setUser_id(vo.getUserId());
-		
-		service.colorUpdate(calendar);
-		
-		log.info("user_id : " + vo.getUserId());
-		log.info("colorUpdate : " + calendar);
-		
-		out.print(obj);
-		
-		return null;
-		
-	}
+	/*
+	 * @RequestMapping(method = {RequestMethod.POST}, value="/update") public String
+	 * colorUpdate(@RequestBody String filterJSON, HttpServletRequest request,
+	 * HttpServletResponse response, Model model, HttpSession session) throws
+	 * Exception, IOException {
+	 * 
+	 * MemberVO vo = (MemberVO) session.getAttribute("member");
+	 * 
+	 * JSONObject obj = new JSONObject();
+	 * 
+	 * response.setContentType("text/html; charset=UTF-8"); PrintWriter out =
+	 * response.getWriter();
+	 * 
+	 * ObjectMapper mapper = new
+	 * ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
+	 * false); CalendarVO calendar = (CalendarVO) mapper.readValue(filterJSON, new
+	 * TypeReference<CalendarVO>() {});
+	 * 
+	 * calendar.setUser_id(vo.getUserId());
+	 * 
+	 * service.colorUpdate(calendar);
+	 * 
+	 * log.info("user_id : " + vo.getUserId()); log.info("colorUpdate : " +
+	 * calendar);
+	 * 
+	 * out.print(obj);
+	 * 
+	 * return null;
+	 * 
+	 * }
+	 */
 	
 }
