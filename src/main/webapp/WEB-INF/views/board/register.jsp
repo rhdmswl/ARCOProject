@@ -275,6 +275,9 @@ body::-webkit-scrollbar-track {
 	<script type="text/javascript">
  			$(document).ready(function(){
  			
+ 			//URL 파라미터 안 보이게
+ 			history.replaceState({}, null, location.pathname);	
+ 			
 			var formObj = $("form");
 			var brd_id = "${param.brd_id}";
 			var pageNum = "${cri.pageNum}";
