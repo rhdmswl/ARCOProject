@@ -56,15 +56,6 @@ public class CollectionReviewServiceImpl implements CollectionReviewService {
 	public int modify(CollectionReviewVO vo) {
 		log.info("modify....." + vo);
 		return mapper.update(vo);
-	}
-
-	/*
-	 * @Override public CollectionReviewPageDTO getListPage(Criteria cri, long seq)
-	 * { return new CollectionReviewPageDTO( mapper.getCountBySeq(seq),
-	 * mapper.getListWithPaging(cri, seq)); }
-	 */
-	
-	
-	
+	}		
 
 }
