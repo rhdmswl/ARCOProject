@@ -31,9 +31,6 @@ public class AdminController {
 	@Inject
 	AdminService service;
 	
-
-	
-	
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
 	 
@@ -50,6 +47,7 @@ public class AdminController {
 			@RequestParam(value="revPage", defaultValue="1") int revPage,
 	        @RequestParam(value="postPage", defaultValue="1") int postPage,
 	        @RequestParam(value="commentPage", defaultValue="1") int commentPage,
+	        @RequestParam(value = "admin_id", defaultValue = "1") int admin_id,
 	        Criteria criteria) throws Exception {
 		
 		Criteria memberCriteria = new Criteria(memberPage);
@@ -78,32 +76,10 @@ public class AdminController {
 	    model.addAttribute("postPageMaker", postPageMaker);
 	    model.addAttribute("commentPageMaker", commentPageMaker);
 	    
-//	    // 사용자 정보를 가져와서 모델에 추가
-//	    model.addAttribute("member", vo);
+	    // 페이징을 위한 admin 메뉴 탭 번호
+	    model.addAttribute("admin_id", admin_id);
 
 	    return "admin/admin";
-	    
-		
-//	    // 관리자용 회원 목록 조회
-//	    List<MemberVO> allMembers = service.listAllMembers(criteria);
-//	    model.addAttribute("allMembers", allMembers);
-//
-//	    // 관리자용 게시글 목록 조회
-//	    List<BoardVO> allPosts = service.listAllPosts(criteria);
-//	    model.addAttribute("allPosts", allPosts);
-//
-//	    // 관리자용 한줄평 목록 조회
-//	    List<CollectionReviewVO> allReviews = service.listAllReviews(criteria);
-//	    model.addAttribute("allReviews", allReviews);
-//
-//	    // 관리자용 댓글 목록 조회
-//	    List<ReplyVO> allComments = service.listAllComments(criteria);
-//	    model.addAttribute("allComments", allComments);
-//
-//	    // 페이징 처리
-//	    PageMaker pageMaker = new PageMaker(criteria, service.countPosts(null));
-//	    model.addAttribute("pageMaker", pageMaker);
-
 	  }
 
 
