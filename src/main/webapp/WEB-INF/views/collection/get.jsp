@@ -854,22 +854,26 @@ p.v-data {
             					    str += "</div>";
             					    str += "<div class='revBox'>";
             					    str += "<div class='header'>";
-            					    str += "<div class='primary-font'>" + list[i].nickName + "</div>";
+            					    str += "<h1 class='primary-font' style='display:inline;'>" + list[i].nickName + "&nbsp;&nbsp;&nbsp;&nbsp;</h1>";
             					    
             					    if (list[i].nickName == "${member.userName}"){
             					        str += "<small>";
-            					        str += "<a href='#" + formId + "' class='updatebtn' style='color:black;' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
-            					        str += "<a href='#" + formId + "' class='remove2' role='button' style='color:black;' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
+            					        str += "<a href='#" + formId + "' class='updatebtn' style='color:#A9A9A9;' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
+            					        str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"			       
+            					        str += "<a href='#" + formId + "' class='remove2' role='button' style='color:#FF1493;' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
             					        str += "</small>";
             					    }
+            					    
             					    
             					    str += "<small class='pull-right text-muted'>" + CollectionReviewService.displayTime(list[i].reviewDate) + "</small>";
             					    str += "</div>"; // header 끝
             					    str += "<div id='review' style='font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>" + list[i].revComment + "</div>";
+            					    if("${member.role}" == "ROLE_ADMIN"){
+            					        str += "<a href='#" + formId + "' class='remove2' role='button' style='color:red;' aria-expanded='false' aria-controls='" + formId + "'><small>관리자삭제</small></a>";
+            					    }
             					    str += "<form class='collapse' id='" + formId + "'>";
             					    str += "<div class='form-group'>";
             					    str += "<textarea style='resize: none;' class='form-control reviewBox' id ='revComment' rows='3'></textarea>";
-            					    /* str+= "                    <textarea style='resize: none;' class='form-control' id ='revStar' rows='1'></textarea>";  */
             					    str += "</div>";
             					    str += "<div><button id='update' type='button' class='btn btn-secondary updateSuccess'>수정 완료</button></div>";
             					    
