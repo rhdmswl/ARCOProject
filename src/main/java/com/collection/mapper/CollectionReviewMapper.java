@@ -10,7 +10,6 @@ import com.collection.domain.Criteria;
 
 public interface CollectionReviewMapper {
 
-	//@Select("select * from collectionRev where revSeq")
 	public List<CollectionReviewVO> getList();
 	
 	public CollectionReviewVO read(long revSeq);

@@ -249,14 +249,14 @@ a:hover {
 										<div class="titleText">Exhibition List</div>
 									</div>
 								</div>
-								<div class="col-lg-4 col-md-4 col-sm-6">
+								<div class="col-lg-4 col-md-8 col-sm-6">
 									<div class="product__page__filter">
-										
 										
 
 										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:130px; margin-left: 138px;" class="input-group searchForm">
+
 											
-											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:70px;" >
+											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:30px;" >
 												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
 												<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
 												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
@@ -266,8 +266,6 @@ a:hover {
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
 
 										</form>					 
-
-				 
 
 									</div>
 								</div>
@@ -413,8 +411,7 @@ a:hover {
 					let val = $("input[name='keyword']").val();
 					searchForm.find("input[name='keyword']").val(val);
 					searchForm.submit();
-					}
-					if(selectTag =="D"){
+					}else if(selectTag == "D"){
 						let val = $("input[name='date']").val();
 						searchForm.find("input[name='date']").val(val);
 						searchForm.submit();
