@@ -7,6 +7,7 @@ public class Criteria {
     private String userId;
     
     private int mypage_id;
+    private int admin_id;
 
     public Criteria() {
         this.page = 1;
@@ -66,4 +67,11 @@ public class Criteria {
         this.mypage_id = mypage_id;
     }
     
+    public int getAdmin_Id() {
+        return admin_id;
+    }
+
+    public void setAdmin_Id(int admin_id) {
+        this.admin_id = admin_id;
+    }
 }

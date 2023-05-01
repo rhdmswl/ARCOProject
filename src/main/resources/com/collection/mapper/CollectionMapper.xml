@@ -95,7 +95,7 @@
     <include refid="criteria"></include>
     )as collectionPaging
     where endDate >= now()     
-    <include refid="sort"></include>  limit #{pageNumForLimit},12
+    <include refid="sort"></include> limit #{pageNumForLimit},12
 
 	</select>
  	

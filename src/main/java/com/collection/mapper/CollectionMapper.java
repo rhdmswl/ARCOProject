@@ -10,6 +10,9 @@ public interface CollectionMapper {
 	
 	public List<CollectionVO> getCollectionList();
 	public CollectionVO getCollection(long seq);
+	public float getCollectionGpsX(long seq);
+	public float getCollectionGpsY(long seq);
+	public void updateAPI();
 	public void insertCollection(CollectionVO collection);
 	public int getTotalCount(Criteria cri);
 	public List<CollectionVO> getListWithPaging(Criteria cri);

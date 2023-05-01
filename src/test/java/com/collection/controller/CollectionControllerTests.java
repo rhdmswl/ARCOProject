@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -104,19 +107,21 @@ public class CollectionControllerTests {
 //				  JSONObject perforList = (JSONObject) msgBody.get("perforList");
 
 			JSONArray objArr = (JSONArray) msgBody.get("perforList");
-
+				
+			
 			for (int i = 0; i < objArr.size(); i++) {
 				JSONObject perfor = (JSONObject) objArr.get(i);
 				long seq = (long) perfor.get("seq");
 				String seq_ = String.valueOf(seq);
 				String title = (String) perfor.get("title");
-				String startDate_ = perfor.get("startDate").toString();
-				String endDate_ = perfor.get("endDate").toString();
+				String startDate_ = (String)perfor.get("startDate").toString();
+				String endDate_ = (String) perfor.get("endDate").toString();
 				String startDate = "";
 				String endDate = "";
-				startDate = startDate_.substring(0, 4) + "/" + startDate_.substring(4, 6) + "/"
-						+ startDate_.substring(6);
+				
+				startDate = startDate_.substring(0, 4) + "/" + startDate_.substring(4, 6) + "/" + startDate_.substring(6); 
 				endDate = endDate_.substring(0, 4) + "/" + endDate_.substring(4, 6) + "/" + endDate_.substring(6);
+				 
 				String realmName = (String) perfor.get("realmName");
 				String thumbnail = (String) perfor.get("thumbnail");
 				String gpsX_ = ((Object) perfor.get("gpsX")).toString();
