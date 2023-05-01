@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -492,14 +493,10 @@ function showContent(id) {
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table">
-										<tr>
-											<th>내용</th>
-											<th>작성일</th>
-										</tr>
 										<c:forEach var="rev" items="${collectionRev}">
 											<tr>
 												<td><a href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
-												<td>${rev.reviewDate}</td>
+												<td><fmt:formatDate value="${rev.reviewDate}" pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -540,14 +537,10 @@ function showContent(id) {
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table">
-										<tr>
-											<th>제목</th>
-											<th>작성일</th>
-										</tr>
 										<c:forEach var="post" items="${posts}">
 											<tr>
 												<td><a href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
-												<td>${post.post_regdate}</td>
+												<td><fmt:formatDate value="${post.post_regdate}" pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -579,21 +572,17 @@ function showContent(id) {
 					</div>
 					<!-- 댓글 목록 -->
 					<div id="myReviews" class="tab-content py-4" style="display: ${mypage_id == 2 ? 'block' : 'none'};">
-						<div class="card" style="width: 120%; text-align: left;">
+						<div class="card" style="width: 100%; text-align: left;">
 							<div class="card-header card-header-primary">
 								<div class="card-title">나의 댓글</div>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table">
-										<tr>
-											<th>내용</th>
-											<th>작성일</th>
-										</tr>
 										<c:forEach var="comment" items="${comments}">
 											<tr>
 												<td><a href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
-												<td>${comment.com_date}</td>
+												<td><fmt:formatDate value="${comment.com_date}" pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
 									</table>
