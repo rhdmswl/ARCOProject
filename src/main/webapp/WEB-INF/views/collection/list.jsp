@@ -254,7 +254,7 @@ a:hover {
 										
 										
 
-										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
+										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:130px; margin-left: 138px;" class="input-group searchForm">
 											
 											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:70px;" >
 												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
@@ -406,7 +406,7 @@ a:hover {
 				});
 				
 				
-				$("#searchForm searchButton").on("click", function(e){
+				$("#searchForm #searchButton").on("click", function(e){
 					e.preventDefault();
 					var selectTag = $("#chk option:selected").val();
 					if(selectTag =="T" || selectTag==""){
