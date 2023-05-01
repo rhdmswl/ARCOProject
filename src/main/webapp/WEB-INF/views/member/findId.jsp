@@ -61,7 +61,7 @@ body::-webkit-scrollbar-track {
 	position: relative;
 	right: 45px;
 	margin-bottom: 70px;
-	left:7%;
+	left: 7%;
 }
 
 .card-title {
@@ -98,7 +98,19 @@ body::-webkit-scrollbar-track {
 	height: 40px;
 	line-height: 20px;
 	padding: 0;
-	bottom:40px;
+	bottom: 40px;
+}
+
+.form-control#userName {
+	width: 230px;
+	margin-left: 30px;
+	margin-top: 7px;
+}
+
+.form-control#phone {
+	width: 230px;
+	margin-left: 20px;
+	margin-top: 7px;
 }
 
 .btn-secondary:hover {
@@ -172,8 +184,8 @@ body::-webkit-scrollbar-track {
 	font-size: 16px;
 }
 
-.emailSelectBtn {
-	margin-left: 300px;
+.findIdBtn {
+	margin-left: 340px;
 	bottom: 45px;
 }
 
@@ -184,44 +196,41 @@ body::-webkit-scrollbar-track {
 
 </head>
 <script type="text/javascript">
-$(document).ready(function() {
-	  // 취소
-	  $(".cancel").on("click", function() {
-	    location.href = "login";
-	  });
+	$(document).ready(function() {
+		// 취소
+		$(".cancel").on("click", function() {
+			location.href = "login";
+		});
 
-	  // 아이디 찾기 
-	  $('#find-Id-Btn').click(function() {
-	    //db
-	    const userName = $("#userName").val();
-	    const phone = $("#phone").val();
-	    console.log(userName);
-	    console.log(phone);
+		// 아이디 찾기 
+		$('#find-Id-Btn').click(function() {
+			//db
+			const userName = $("#userName").val();
+			const phone = $("#phone").val();
+			console.log(userName);
+			console.log(phone);
 
-	    $.ajax({
-	    	  url: "/member/findId",
-	    	  type: "post",
-	    	  dataType: "text",
-	    	  data: {
-	    	    "userName": $("#userName").val(),
-	    	    "phone": $("#phone").val()
-	    	  },
-	    	  success: function(data) {
-	    		  if (data.trim() !== "") {
-	    		    alert("아이디는 " + data + "입니다. 다시 로그인해주세요 !");
-	    		    location.href ="login";
-	    		  } else {
-	    		    alert("일치하는 정보가 없습니다.");
-	    		  }
-	    		}
+			$.ajax({
+				url : "/member/findId",
+				type : "post",
+				dataType : "text",
+				data : {
+					"userName" : $("#userName").val(),
+					"phone" : $("#phone").val()
+				},
+				success : function(data) {
+					if (data.trim() !== "") {
+						alert("아이디는 " + data + "입니다. 다시 로그인해주세요 !");
+						location.href = "login";
+					} else {
+						alert("일치하는 정보가 없습니다.");
+					}
+				}
 
-	    	  
-	    	});
+			});
 
-	  });
+		});
 	});
-
-	
 </script>
 <body>
 	<section id="container">
@@ -238,23 +247,22 @@ $(document).ready(function() {
 					<div class="card-body">
 						<form action="/member/findId" method="post" id="findIdForm">
 							<div class="form-group has-feedback">
-								<label class="control-label" for="userName">닉네임</label> <br>
-								<input class="form-control" type="text" id="userName"
-									name="userName" />
+								<label class="control-label" for="userName">닉네임</label> <input
+									class="form-control" type="text" id="userName" name="userName" />
 							</div>
 							<br>
 							<!-- email -->
 							<div class="form-group has-feedback">
-								<label class="control-label" for="phone">전화번호</label><br> <input
+								<label class="control-label" for="phone">전화번호</label><input
 									class="form-control" type="text" id="phone" name="phone" />
 								<div class="input-group-addon">
-									<button type="button" class="btn btn-primary emailSelectBtn"
+									<button type="button" class="btn btn-primary findIdBtn"
 										id="find-Id-Btn">아이디 확인</button>
 								</div>
 							</div>
 						</form>
 						<div class="text-center submitBtnGroup">
-							
+
 							<button class="btn btn-secondary cancel" type="button">취소</button>
 						</div>
 					</div>
