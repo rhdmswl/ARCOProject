@@ -244,7 +244,6 @@ li {
 	width: 100%;
 	height: 40px;
 	border-bottom: 1px solid #ebebeb;
-	margin: auto;
 }
 
 .top_header_area .top_social_bar {
@@ -401,7 +400,7 @@ position: absolute;
 
 	<!-- ****** Header Area Start ****** -->
 	<header class="header_area">
-		<div class="container">
+		<div class="container" style="margin-bottom: 30px;">
 			<div class="row">
 				<!-- Logo Area Start -->
 				<div class="col-12">
@@ -420,14 +419,14 @@ position: absolute;
 						<div class="navbar-collapse justify-content-center"
 							id="yummyfood-nav">
 							<ul class="navbar-nav" id="yummy-nav">
-								<li class="nav-item2"><a class="nav-link2" href="/">Home<span
+								<li class="nav-item2"><a class="nav-link2" style="text-decoration:none;" href="/">Home<span
 										class="sr-only">(current)</span></a></li>
-								<li class="nav-item2"><a class="nav-link2"
+								<li class="nav-item2"><a class="nav-link2" style="text-decoration:none;"
 									href="/collection/list">Exhibition</a></li>
-								<li class="nav-item2"><a class="nav-link2"
+								<li class="nav-item2"><a class="nav-link2" style="text-decoration:none;"
 									href="/board/list?pageNum=1&brd_id=4">Community</a></li>
-								<!-- <li class="nav-item2"><a class="nav-link2" href="#">About</a>
-								</li> -->
+								<li class="nav-item2"><a class="nav-link2" href="/about">About</a>
+								</li>
 							</ul>
 						</div>
 					</nav>

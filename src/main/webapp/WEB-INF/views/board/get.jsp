@@ -221,6 +221,8 @@ body::-webkit-scrollbar-track {
 	border-radius: 20px;
 	padding: 60px;
 	padding-bottom: 80px;
+	position: absolute;
+	left: 20px;
 }
 
 .post-content .fa {
