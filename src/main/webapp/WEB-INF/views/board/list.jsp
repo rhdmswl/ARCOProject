@@ -93,7 +93,8 @@ body::-webkit-scrollbar-track {
 
 .inbox .action_bar .btn, .inbox .action_bar .search {
 	position: relative;
-	left: 200px;
+	bottom: 30px;
+	left: 215px;
 }
 
 .table-bordered {
@@ -233,7 +234,8 @@ body::-webkit-scrollbar-track {
 	text-align: center;
 	height: 80px;
 	position: relative;
-	bottom: 20px;
+	bottom: 60px;
+	left: 17px;
 }
 
 .sidelist a {
@@ -334,6 +336,7 @@ a{
 	padding-right: 0px;
 	padding-left: 0px;
 	height: 100%;
+	margin-left: 30px;
 }
 
 .row .search {
@@ -411,12 +414,12 @@ a{
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 700;
 	font-size: 25px;
-	padding-top: 28px;
 	padding-bottom: 5px;
 }
 
-.boardName {
+.positionText .boardName {
 	float: left;
+	margin-left: 5px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -441,7 +444,7 @@ a{
 									<div class="col-lg-1 col-md-2 col-3"></div>
 									<div class="col-lg-5 col-md-4 col-6 searchBox">
 										<form id="searchForm" action="/board/list" method='get' style=" width:500px;" class="input-group search">
-											<select id="chk" class="form-control" name='type' style="width:150px;">
+											<select id="chk" class="form-control" name='type' style="width:150px; margin-right: 5px;">
 												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>SEARCH</option>
 												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
 												<option value="C" <c:out value="${pageMaker.cri.type eq 'C' ? 'selected' : ''}"/>>내용</option>
