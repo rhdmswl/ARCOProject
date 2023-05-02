@@ -36,6 +36,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
 	rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/btn1paf.css">
 
 
 <style>
@@ -56,6 +57,13 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-track {
 	background: rgba(242, 240, 241); /*스크롤바 뒷 배경 색상*/
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .titleText {
@@ -114,7 +122,7 @@ body::-webkit-scrollbar-track {
 }
 
 .welcome-single-slide .project_title {
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	color: #f21378;
 	background-color: black;
 	position: absolute;
@@ -305,9 +313,8 @@ body::-webkit-scrollbar-track {
 														</a>
 													</div>
 													<div class="post-title">
-														<a
-															href="/collection/get?seq=<c:out value="${collection.seq}"/>"
-															style="color: black; font-size: 20px; font-weight: 500;"><c:out
+														<a href="/collection/get?seq=<c:out value="${collection.seq}"/>"
+															style="color: black; font-size: 18px; font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif; font-weight: 500;"><c:out
 																value="${collection.title}" /></a>
 													</div>
 													<!-- Post Comment & Share Area -->
