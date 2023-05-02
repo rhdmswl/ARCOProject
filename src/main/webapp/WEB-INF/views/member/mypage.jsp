@@ -228,7 +228,10 @@ margin-bottom:-30px;
 
 .card {
 	margin-top: 10px;
+	
 }
+
+
 
 .memberGroup[readonly] {
 	background-color: #f2f2f2;
