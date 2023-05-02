@@ -317,19 +317,29 @@ body::-webkit-scrollbar-track {
 													<div class="post-comment-share-area d-flex">
 														<!-- Post Favourite -->
 														<div class="post-favourite">
-															<a href="#"><i class="fa fa-heart-o"
-																aria-hidden="true"></i> ${collection.dibCount }</a>
+
+															<i class="fa fa-heart-o" aria-hidden="true">
+																<c:out value="${collection.dibCount}"/>
+															</i>
+                              
 														</div>
+                            
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 														<!-- Post Comments -->
 														<div class="post-comments">
-															<a href="#"><i class="fa fa-comment-o"
-																aria-hidden="true"></i> ${collection.reviewCount }</a>
+                            
+															<i class="fa fa-comment-o" aria-hidden="true">
+																	<c:out value="${collection.reviewCount}"/>
+															</i>
+                              
 														</div>
+                            
 														<!-- Post Share -->
-														<div class="post-share">
-															<!-- <a href="#"><i class="fa fa-share-alt"
-																aria-hidden="true"></i></a> -->
-														</div>
+														<!-- <div class="post-share">
+															<a href="#"><i class="fa fa-share-alt"
+																aria-hidden="true"></i></a>
+														</div> -->
+                            
 													</div>
 												</div>
 

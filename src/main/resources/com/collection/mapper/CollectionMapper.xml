@@ -8,7 +8,7 @@
 	<insert id="insertCollection">
 		
 		insert into collection (seq, title, startDate, endDate, realmName, gpsX, gpsY, thumbnail, place, price, url, phone, placeAddr, area, imgUrl)
-		values (#{seq, jdbcType=BIGINT}, #{title, jdbcType=VARCHAR}, #{startDate, jdbcType=VARCHAR}, #{endDate, jdbcType=VARCHAR}, #{realmName, jdbcType=VARCHAR}, 
+		values (#{seq, jdbcType=BIGINT}, #{title, jdbcType=VARCHAR}, #{startDate, jdbcType=VARCHAR}, #{endDate, jdbcType=VARCHAR}, #{realmName, jdbcType=VARCHAR},  
 		#{gpsX, jdbcType=DOUBLE}, #{gpsY, jdbcType=DOUBLE}, #{thumbnail, jdbcType=VARCHAR}, #{place, jdbcType=VARCHAR}, #{price, jdbcType=VARCHAR},
 		#{url, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{placeAddr, jdbcType=VARCHAR}, #{area, jdbcType=VARCHAR}, #{imgUrl, jdbcType=VARCHAR}
 		
@@ -65,8 +65,8 @@
 			<when test='sort == "endDate"'>
 				 order by endDate asc
 			</when>
-			<when test='sort == "revViewCount"'>
-				 order by revViewCount desc
+			<when test='sort == "viewCount"'>
+				 order by viewCount desc
 			</when>
 			<when test='sort == "star"'>
 				 order by starAvg desc
@@ -89,7 +89,7 @@
 	<select id="getListWithPaging" resultType="com.collection.domain.CollectionVO">
 
     select * 
-    from(select seq, title, startDate, endDate, imgUrl, viewCount,reviewCount, thumbnail, starAvg from collection
+    from(select seq, title, startDate, endDate, imgUrl, viewCount,reviewCount, thumbnail, dibCount, starAvg from collection
     <include refid="criteria"></include>
     )as collectionPaging
     where endDate >= now()     
@@ -114,12 +114,23 @@
 		where seq = #{seq}
 	</update>
 	
+	<update id="dibCount">
+		
+		update collection cr
+		set cr.dibCount = (select count(title) from dibs where seq = #{seq})
+		where seq = #{seq}
+	
+	</update>
+	
+	
+	
 	<update id="starAvg">
 		UPDATE collection cr 
 		SET cr.starAvg = ROUND((SELECT SUM(rv.revStar) FROM collectionRev rv WHERE rv.seq = #{seq}) / 
                        (SELECT COUNT(*) FROM collectionRev WHERE seq = #{seq}), 1)
 		WHERE cr.seq = #{seq};
 	</update>
+	
 	
 	
 	<update id="updateAPI">

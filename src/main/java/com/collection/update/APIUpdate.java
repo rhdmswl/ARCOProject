@@ -169,8 +169,8 @@ public class APIUpdate {
 				
 				vo.setSeq(seq);
 				vo.setTitle(title);
-				vo.setStartDate(startDate_);
-				vo.setEndDate(endDate_);
+				vo.setStartDate(startDate);
+				vo.setEndDate(endDate);
 				vo.setRealmName(realmName);
 				vo.setThumbnail(thumbnail);
 				vo.setGpsX(gpsX);
