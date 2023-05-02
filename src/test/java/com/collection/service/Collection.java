@@ -33,8 +33,9 @@ public class Collection {
 		CollectionVO collection = new CollectionVO();
 		collection.setSeq(1234);
 		collection.setTitle("테스트");
-		collection.setStartDate("2023/04/05");
-		collection.setEndDate("2023/04/05");
+		/*
+		 * collection.setStartDate("2023/04/05"); collection.setEndDate("2023/04/05");
+		 */
 		collection.setPlace("테스트");
 		collection.setRealmName("테스트");
 		collection.setThumbnail("테스트");
