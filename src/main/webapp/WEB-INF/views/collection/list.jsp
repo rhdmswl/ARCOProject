@@ -58,6 +58,8 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
 	rel="stylesheet">
 
+<link rel="stylesheet" href="https://use.typekit.net/btn1paf.css">
+
 <!-- <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" >
 
@@ -81,6 +83,13 @@ body::-webkit-scrollbar-track {
     background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
 }
 
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 a {
 	background-color: #fff;
 	color : #fff;
@@ -92,8 +101,8 @@ a:hover {
 }
 
 .product__item__text {
-	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	margin-bottom: 50px;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
 
 .product__page__title {
@@ -216,7 +225,8 @@ a:hover {
 	position: relative;
 	margin-bottom: 100px;
 	margin-right: 5px;
-	left: 35%;
+	left: 38%;
+
 }
 
 .product__page__filter {
@@ -314,7 +324,7 @@ a:hover {
 											</div>
 										</div>
 										<div class="product__item__text">
-											<a style="color: black; font-weight: 700;" 
+											<a style="color: black; font-weight: 500; font-size:17px;" 
 											href="/collection/get?seq=<c:out value="${collection.seq}"/>">
 											<c:out value="${collection.title}" /></a>
 										</div>
