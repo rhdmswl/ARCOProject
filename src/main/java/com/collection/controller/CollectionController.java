@@ -34,12 +34,15 @@ public class CollectionController {
 		service.insert(collection);
 	}
 	
-	/*
-	 * @GetMapping("/index") public void index(Model model, Criteria cri) { int
-	 * total = service.getTotal(cri); log.info(total); log.info(cri);
-	 * cri.setpageNumForLimit(); model.addAttribute("list", service.getList(cri));
-	 * model.addAttribute("pageMaker", new PageDTO(cri, total)); }
-	 */
+	
+	@GetMapping("/index")
+	public void index(Model model, Criteria cri) { 
+		int total = service.getTotal(cri); log.info(total); 
+		log.info(cri);
+	    cri.setpageNumForLimit(); 
+	    model.addAttribute("list", service.getList(cri));
+	    model.addAttribute("pageMaker", new PageDTO(cri, total)); }
+	 
 	
 	@GetMapping("/get")
 	public void get(@RequestParam("seq") long seq, Model model,HttpSession session) {
