@@ -299,20 +299,6 @@ $(document).ready(function() {
     
 });
 
-function openTab(evt, tabName) {
-	var i, tabcontent, tablinks;
-	tabcontent = document.getElementsByClassName("tabcontent");
-	for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = "none";
-	}
-	tablinks = document.getElementsByClassName("tablinks");
-	for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].classList.remove("active");
-	}
-	document.getElementById(tabName).style.display = "block";
-	evt.currentTarget.classList.add("active");
-}
-
 function showContent(id) {
 	document.getElementById("allUsers").style.display = id === 1 ? "block" : "none";
     document.getElementById("allReviews").style.display = id === 2 ? "block" : "none";
@@ -330,22 +316,22 @@ function showContent(id) {
 					<a href="/" class="yummy-logo"><img
 						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 				</div>
-				
+				<br>
 				<ul class="list-unstyled active sideListGroup">
 						<li class="sidelist${admin_id == 1 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:21px; color:gray;"
-							href="/admin/admin?admin_id=1" onclick="showContent(1);">회원 목록</a>
+							<a class="nav-link" style="font-weight: 700; font-size:21px; color:#c4c4c4;"
+							href="/admin/admin?admin_id=1" onclick="showContent(1);">회원 관리</a>
 						</li>
 						<li class="sidelist${admin_id == 2 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:21px; color:gray;"
+							<a class="nav-link" style="font-weight: 700; font-size:21px; color:#c4c4c4;"
 							href="/admin/admin?admin_id=2" onclick="showContent(2);">한줄평 관리</a>
 						</li>
 						<li class="sidelist${admin_id == 3 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:21px; color:gray;"
+							<a class="nav-link" style="font-weight: 700; font-size:21px; color:#c4c4c4;"
 							href="/admin/admin?admin_id=3" onclick="showContent(3);">게시글 관리</a>
 						</li>
 						<li class="sidelist${admin_id == 4 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:21px; color:gray;"
+							<a class="nav-link" style="font-weight: 700; font-size:21px; color:#c4c4c4;"
 							href="/admin/admin?admin_id=4" onclick="showContent(4);">댓글 관리</a>
 						</li>
 					</ul>
@@ -362,7 +348,7 @@ function showContent(id) {
 									<table class="table">
 										<tr>
 											<th>아이디</th>
-											<th>이름</th>
+											<th>닉네임</th>
 											<th>이메일</th>
 											<th>회원 관리</th>
 										</tr>
