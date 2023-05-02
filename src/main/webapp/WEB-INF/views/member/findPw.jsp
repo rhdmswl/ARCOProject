@@ -61,7 +61,7 @@ body::-webkit-scrollbar-track {
 	position: relative;
 	right: 45px;
 	margin-bottom: 70px;
-	left:6%;
+	left: 6%;
 }
 
 .card-title {
@@ -71,7 +71,6 @@ body::-webkit-scrollbar-track {
 	color: #696969;
 	width: 100%;
 	text-align: center;
-	
 }
 
 .form-control::placeholder {
@@ -99,7 +98,7 @@ body::-webkit-scrollbar-track {
 	height: 40px;
 	line-height: 20px;
 	padding: 0;
-	bottom:40px;
+	bottom: 40px;
 }
 
 .btn-secondary:hover {
@@ -166,6 +165,18 @@ body::-webkit-scrollbar-track {
 	vertical-align: middle;
 }
 
+.form-control#userID {
+	width: 230px;
+	margin-left: 30px;
+}
+
+.form-control#email {
+	width: 230px;
+	margin-left: 30px;
+	margin-top: -15px;
+	margin-bottom: -20px;
+}
+
 .control-label, label {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	color: black;
@@ -174,8 +185,8 @@ body::-webkit-scrollbar-track {
 }
 
 .emailSelectBtn {
-	margin-left: 300px;
-	bottom: 45px;
+	margin-left: 330px;
+	bottom: 35px;
 }
 
 .submitBtnGroup {
@@ -185,68 +196,61 @@ body::-webkit-scrollbar-track {
 
 </head>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						// 취소
-						$(".cancel").on("click", function() {
-							location.href = "login";
-						})
-					
-						
-					// 비밀번호 찾기 인증메일 전송
+	$(document).ready(function() {
+		// 취소
+		$(".cancel").on("click", function() {
+			location.href = "login";
+		})
 
-						$('#find-Pw-Btn').click(function() {
-							//db
-							const userId = $("#userId").val();
-							const email = $("#email").val();
-							console.log(userId);
-							console.log(email);
+		// 비밀번호 찾기 인증메일 전송
 
-							$.ajax({
-								url : "/member/findPw",
-								type : "post",
-								dataType : "json",
-								data : {
-									"userId" : $("#userId").val(),
-									"email" : $("#email").val()
-								},
-								success : function(data) {
-									if (data == 1) {
-										alert(email +"로 임시비밀번호를 전송하겠습니다.");
-										send_email(userId,email);
-										//email로 임시비밀번호를 발송하는 함수를 넣어준다.
-									} else if (data == 0) {
-										alert("일치하는 정보가 없습니다.");
+		$('#find-Pw-Btn').click(function() {
+			//db
+			const userId = $("#userId").val();
+			const email = $("#email").val();
+			console.log(userId);
+			console.log(email);
 
-									}
-								}
-							});
-							
+			$.ajax({
+				url : "/member/findPw",
+				type : "post",
+				dataType : "json",
+				data : {
+					"userId" : $("#userId").val(),
+					"email" : $("#email").val()
+				},
+				success : function(data) {
+					if (data == 1) {
+						alert(email + "로 임시비밀번호를 전송하겠습니다.");
+						send_email(userId, email);
+						//email로 임시비밀번호를 발송하는 함수를 넣어준다.
+					} else if (data == 0) {
+						alert("일치하는 정보가 없습니다.");
 
-						}); // end send email
+					}
+				}
+			});
 
-			
-					});
-	
+		}); // end send email
+
+	});
+
 	function send_email(userId, email) {
 		//const email = email; // 이메일 주소값 얻어오기!
 		console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인 // 인증번호 입력하는곳 
 		$.ajax({
 			type : 'get',
-			url : '<c:url value="/member/findPwmailCheck?email=' + email + '&userId=' + userId + '"/>', // GET방식이라 Url 뒤에 email을 쓸 수 있음
+			url : '<c:url value="/member/findPwmailCheck?email=' + email
+					+ '&userId=' + userId + '"/>', // GET방식이라 Url 뒤에 email을 쓸 수 있음
 			success : function(data) {
 				console.log("data : " + data);
 				code = data;
 				alert('임시 비밀번호가 전송되었습니다. 다시 로그인해주세요 !');
 				location.href = "login";
-				
+
 			}
 		});
 	}
-
-
-	
 </script>
 <body>
 	<section id="container">
@@ -263,14 +267,13 @@ body::-webkit-scrollbar-track {
 					<div class="card-body">
 						<form action="/member/findPw" method="post" id="findPwForm">
 							<div class="form-group has-feedback">
-								<label class="control-label" for="userId">아이디</label> <br>
-								<input class="form-control" type="text" id="userId"
-									name="userId" />
+								<label class="control-label" for="userId">아이디</label> <input
+									class="form-control" type="text" id="userId" name="userId" />
 							</div>
 							<br>
 							<!-- email -->
 							<div class="form-group has-feedback">
-								<label class="control-label" for="email">이메일</label><br> <input
+								<label class="control-label" for="email">이메일</label> <input
 									class="form-control" type="text" id="email" name="email" />
 								<div class="input-group-addon">
 									<button type="button" class="btn btn-primary emailSelectBtn"
@@ -279,7 +282,7 @@ body::-webkit-scrollbar-track {
 							</div>
 						</form>
 						<div class="text-center submitBtnGroup">
-							
+
 							<button class="btn btn-secondary cancel" type="button">취소</button>
 						</div>
 					</div>

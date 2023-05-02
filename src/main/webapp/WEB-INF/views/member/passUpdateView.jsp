@@ -60,10 +60,23 @@ body {
 
 .form-control {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	width: 80%;
+	width: 250px;
 	height: 50px;
 	box-sizing: border-box;
 	margin-left: 5px;
+	padding: 5px 0 5px 10px;
+	border-radius: 4px;
+	border: 1px solid #d9d6d6;
+	color: #383838;
+	background-color: #ffffff;
+}
+
+.form-control#newPass {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	width: 250px;
+	height: 50px;
+	box-sizing: border-box;
+	margin-left: 33px;
 	padding: 5px 0 5px 10px;
 	border-radius: 4px;
 	border: 1px solid #d9d6d6;
@@ -79,7 +92,7 @@ body {
 	height: 40px;
 	line-height: 20px;
 	padding: 0;
-	margin-left: 50px;
+	margin-left: 45px;
 	margin-top: 20px;
 }
 
@@ -112,7 +125,7 @@ body {
 	line-height: 20px;
 	font-size: 15px;
 	padding: 0;
-	margin-right: 50px;
+	margin-right: -40px;
 	margin-top: 20px;
 }
 
@@ -152,6 +165,10 @@ body {
 
 #passUpdateForm {
 	margin-left: 60px;
+}
+
+.submitBtnGroup {
+	margin-left: 50px;
 }
 </style>
 
@@ -202,8 +219,6 @@ body {
 							duplicateCount++;
 						}
 					}
-
-				
 
 					return true;
 				}
@@ -263,16 +278,16 @@ body {
 							id="passUpdateForm">
 
 							<div class="form-group has-feedback">
-								<label class="control-label" for="newPass">새 비밀번호</label><br>
-								<input class="form-control" type="password" id="newPass"
+								<label class="control-label" for="newPass">새 비밀번호</label> <input
+									class="form-control" type="password" id="newPass"
 									name="newPass" />
 
 							</div>
 							<br>
 
 							<div class="form-group has-feedback">
-								<label class="control-label" for="passCheck">새 비밀번호 확인</label><br>
-								<input class="form-control" type="password" id="passCheck"
+								<label class="control-label" for="passCheck">새 비밀번호 확인</label> <input
+									class="form-control" type="password" id="passCheck"
 									name="passCheck" /> <span id="alert-success"
 									style="display: none; color: #000000;">비밀번호가 일치합니다.</span> <span
 									id="alert-danger"
@@ -281,7 +296,7 @@ body {
 							</div>
 
 						</form>
-						<div class="text-center">
+						<div class="text-center submitBtnGroup">
 							<button class="btn btn-primary" type="button" id="submit">비밀번호
 								변경</button>
 							<button class="btn btn-secondary cancel" type="button">취소</button>
