@@ -193,8 +193,6 @@ body::-webkit-scrollbar-track {
 	color: #7b809a;
 	padding: 0;
 	margin: 0 3px;
-	border: 2px solid #ccc;
-	border-radius: 50% !important;
 	width: 36px;
 	height: 36px;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
@@ -249,10 +247,6 @@ body::-webkit-scrollbar-track {
 	border: 3px solid #f21378;
 }
 
-.tabcontent {
-	display: none;
-	padding: 6px 12px;
-}
 </style>
 </head>
 
@@ -328,27 +322,27 @@ function showContent(id) {
 				<ul class="nav nav-tabs nav-fill" role="tablist">
 					<li class="nav-item"><a
 						class="nav-link ${admin_id == 1 ? 'active' : ''}"
-						style="font-weight: 700; font-size: 21px; color: #9e9e9e;"
+						style="font-weight: 700; font-size: 21px; color: #595959;"
 						href="/admin/admin?admin_id=1" onclick="showContent(1);"
 						role="tab">회원 관리</a></li>
 					<li class="nav-item"><a
 						class="nav-link ${admin_id == 2 ? 'active' : ''}"
-						style="font-weight: 700; font-size: 21px; color: #9e9e9e;"
+						style="font-weight: 700; font-size: 21px; color: #595959;"
 						href="/admin/admin?admin_id=2" onclick="showContent(2);"
 						role="tab">한줄평 관리</a></li>
 					<li class="nav-item"><a
 						class="nav-link ${admin_id == 3 ? 'active' : ''}"
-						style="font-weight: 700; font-size: 21px; color: #9e9e9e;"
+						style="font-weight: 700; font-size: 21px; color: #595959;"
 						href="/admin/admin?admin_id=3" onclick="showContent(3);"
 						role="tab">게시글 관리</a></li>
 					<li class="nav-item"><a
 						class="nav-link ${admin_id == 4 ? 'active' : ''}"
-						style="font-weight: 700; font-size: 21px; color: #9e9e9e;"
+						style="font-weight: 700; font-size: 21px; color: #595959;"
 						href="/admin/admin?admin_id=4" onclick="showContent(4);"
 						role="tab">댓글 관리</a></li>
 				</ul>
 
-				<div id="allUsers" class="tabcontent"
+				<div id="allUsers" class="tabcontent py-4"
 					style="display: ${admin_id == 1 ? 'block' : 'none'};">
 					<!-- 회원 목록 -->
 					<div class="d-flex justify-content-center">
@@ -367,9 +361,9 @@ function showContent(id) {
 										</tr>
 										<c:forEach var="user" items="${member}">
 											<tr>
-												<td>${user.userId}</td>
-												<td>${user.userName}</td>
-												<td>${user.email}</td>
+												<td style="font-size:15px;">${user.userId}</td>
+												<td style="font-size:15px;">${user.userName}</td>
+												<td style="font-size:15px;">${user.email}</td>
 												<td><button class="btn btn-danger btn-sm delete-btn"
 														data-user-id="${user.userId}">삭제</button></td>
 											</tr>
@@ -420,7 +414,7 @@ function showContent(id) {
 									<table class="table">
 										<c:forEach var="rev" items="${collectionRev}">
 											<tr>
-												<td><a href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
+												<td><a style="font-size:15px;" href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
 												<td><fmt:formatDate value="${rev.reviewDate}"
 														pattern="yyyy.MM.dd" /></td>
 											</tr>
@@ -469,7 +463,7 @@ function showContent(id) {
 									<table class="table">
 										<c:forEach var="post" items="${posts}">
 											<tr>
-												<td><a href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
+												<td><a style="font-size:15px;" href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
 												<td><fmt:formatDate value="${post.post_regdate}"
 														pattern="yyyy.MM.dd" /></td>
 											</tr>
@@ -518,7 +512,7 @@ function showContent(id) {
 									<table class="table">
 										<c:forEach var="comment" items="${comments}">
 											<tr>
-												<td><a href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
+												<td><a style="font-size:15px;" href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
 												<td><fmt:formatDate value="${comment.com_date}"
 														pattern="yyyy.MM.dd" /></td>
 											</tr>
