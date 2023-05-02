@@ -26,7 +26,8 @@ public class APIUpdate {
 	@Autowired
 	private CollectionService service;
 
-	@Scheduled(cron = "0 0 4 ? * MON *")
+	@Scheduled(cron = "0 0 4 ? * MON")
+	//@Scheduled(cron = "0 * * * * *")
 	public void updateAPI() throws IOException, ParseException {
 		System.out.println("스케쥴러 작동2");
 		
