@@ -39,7 +39,7 @@ body {
     margin: 0;
     font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
     font-weight: 600;
-    color: black;
+    color: #595959;
 }
 
 /* 일요일 날짜 빨간색 */
