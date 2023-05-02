@@ -8,8 +8,8 @@ import lombok.Data;
 public class CollectionVO {
 	private long seq;
 	private String title;
-	private Date startDate;
-	private Date endDate;
+	private String startDate;
+	private String endDate;
 	private String place;
 	private String realmName;
 	private String price;

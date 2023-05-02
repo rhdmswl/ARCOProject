@@ -12,7 +12,6 @@ public interface CollectionMapper {
 	public CollectionVO getCollection(long seq);
 	public float getCollectionGpsX(long seq);
 	public float getCollectionGpsY(long seq);
-	public void updateAPI();
 	public void insertCollection(CollectionVO collection);
 	public int getTotalCount(Criteria cri);
 	public List<CollectionVO> getListWithPaging(Criteria cri);
@@ -21,5 +20,6 @@ public interface CollectionMapper {
 	public void starAvg(long seq);
 	
 	
+	public void updateAPI(CollectionVO collection);
 	public List<BoardVO> getIndexList();
 }

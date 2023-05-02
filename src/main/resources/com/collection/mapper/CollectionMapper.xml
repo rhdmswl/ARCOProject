@@ -27,8 +27,6 @@
         placeAddr = #{placeAddr},
         area = #{area},
         imgUrl = #{imgUrl} -->
-		
-		
 		)
 		
 	</insert>
@@ -121,6 +119,25 @@
 		SET cr.starAvg = ROUND((SELECT SUM(rv.revStar) FROM collectionRev rv WHERE rv.seq = #{seq}) / 
                        (SELECT COUNT(*) FROM collectionRev WHERE seq = #{seq}), 1)
 		WHERE cr.seq = #{seq};
+	</update>
+	
+	
+	<update id="updateAPI">
+	
+	update collection 
+	set 
+	startDate = #{startDate},
+	endDate = #{endDate},
+	place = #{place},
+	price = #{price},
+	url = #{url},
+	gpsX = #{gpsX},
+	gpsY = #{gpsY},
+	phone = #{phone},
+	thumbnail = #{thumbnail}
+	
+	where seq = #{seq}
+	
 	</update>
 	
 
