@@ -288,19 +288,21 @@ body::-webkit-scrollbar-track {
 														<!-- Post Favourite -->
 														<div class="post-favourite">
 															<i class="fa fa-heart-o" aria-hidden="true">
-																<c:out value="${collection.reviewCount}"/>
+																<c:out value="${collection.dibCount}"/>
 															</i>
 														</div>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 														<!-- Post Comments -->
 														<div class="post-comments">
-															<a href="#"><i class="fa fa-comment-o"
-																aria-hidden="true"></i> 12</a>
+															<i class="fa fa-comment-o" aria-hidden="true">
+																	<c:out value="${collection.reviewCount}"/>
+															</i>
 														</div>
 														<!-- Post Share -->
-														<div class="post-share">
+														<!-- <div class="post-share">
 															<a href="#"><i class="fa fa-share-alt"
 																aria-hidden="true"></i></a>
-														</div>
+														</div> -->
 													</div>
 												</div>
 	

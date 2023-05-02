@@ -258,10 +258,9 @@ a:hover {
 											
 											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:30px;" >
 												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
-												<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
+												<option value="viewCount" <c:out value="${pageMaker.cri.sort eq 'viewCount' ? 'selected' : ''}"/>>조회순</option>
 												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
 											</select>
-											<%-- <input type='hidden' name="sort" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'> --%>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
 
@@ -354,6 +353,7 @@ a:hover {
 		<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 		<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
  		<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
+ 		<input type='hidden' name='sort' value='<c:out value="${pageMaker.cri.sort}"/>'>
 		<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
 	</form>
 	

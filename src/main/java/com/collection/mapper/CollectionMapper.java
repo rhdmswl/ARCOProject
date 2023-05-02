@@ -19,7 +19,7 @@ public interface CollectionMapper {
 	public void reviewCount(long seq);
 	public void starAvg(long seq);
 	
-	
+	public void dibCount(long seq);
 	public void updateAPI(CollectionVO collection);
 	public List<BoardVO> getIndexList();
 }
