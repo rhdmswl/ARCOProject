@@ -141,13 +141,13 @@ body::-webkit-scrollbar-track {
 }
 
 .post-thumb {
-	margin-bottom: 60px;
+	margin-bottom: 160px;
 	height: 460px;
 }
 
 .post-thumb img {
 	position: absolute;
-	left: 30%;
+	left: 180px;
 	top: 10px;
 }
 
@@ -156,6 +156,7 @@ body::-webkit-scrollbar-track {
 	font-size: 30px;
 	font-weight: 700;
 	color: #696969;
+	margin-left: 2px;
 }
 
 .post-date {
@@ -166,7 +167,7 @@ body::-webkit-scrollbar-track {
 .post-content {
 	position: relative;
 	top: 55%;
-	left: 20px;
+	left: 60px;
 	right: 30px;
 	background-color: #fff;
 	height: 600px;
@@ -204,7 +205,7 @@ body::-webkit-scrollbar-track {
 	justify-content: center;
 	color: #7b809a;
 	padding: 0;
-	border-radius: 50% !important;
+	border: 0;
 	width: 36px;
 	height: 36px;
 	font-size: .875rem;
@@ -212,6 +213,7 @@ body::-webkit-scrollbar-track {
 
 .page-link:hover {
 	color: #f21378;
+	background-color: #fff;
 }
 
 .page-item.active .page-link {
@@ -225,12 +227,12 @@ body::-webkit-scrollbar-track {
 	width: 36px;
 	height: 36px;
 	font-size: .875rem;
-	background-color: #ddd;
-	border-color: #ddd;
+	border: 0;
 }
 
 .page-item.active:hover {
 	color: #f21378;
+	background-color: #fff;
 }
 
 .card-header {
@@ -619,8 +621,8 @@ p.v-data {
 							<div class="single-post">
 								<!-- Post Thumb -->
 								<div class="post-thumb">
-									<img src="<c:out value="${collection.thumbnail}"/>" width="400"
-										height="500" alt="">
+									<img src="<c:out value="${collection.thumbnail}"/>" width="450"
+										height="550" alt="">
 								</div>
 								<!-- Post Content -->
 								<div class="post-content card-header">

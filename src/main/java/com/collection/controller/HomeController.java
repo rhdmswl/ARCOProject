@@ -33,4 +33,9 @@ public class HomeController {
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 		return "/index";
 	}
+	
+	@GetMapping("/about")
+	public String about() {
+		return "/team";
+	}
 }

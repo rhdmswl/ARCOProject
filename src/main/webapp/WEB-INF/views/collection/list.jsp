@@ -96,6 +96,12 @@ a:hover {
 	margin-bottom: 50px;
 }
 
+.product__page__title {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0;
+    margin-bottom: 5px;
+}
+
 #scrollUp2 {
 	bottom: 55px;
 	font-size: 14px;
@@ -113,6 +119,11 @@ a:hover {
 	font-size: 30px;
 	font-weight: 600;
 	color: black;
+	margin-top: 40px;
+}
+
+.col-lg-8 {
+	height: 100px;
 }
 
 /* 페이지 버튼 */
@@ -131,7 +142,7 @@ a:hover {
     justify-content: center;
     color: #7b809a;
     padding: 0;
-    border-radius: 50%!important;
+    border:0;
     width: 36px;
     height: 36px;
     font-size: .875rem;
@@ -140,6 +151,7 @@ a:hover {
 
 .page-link:hover {
 	color: #f21378;
+	background-color: #fff;
 }
 
 .page-item.active .page-link {
@@ -149,16 +161,15 @@ a:hover {
     color: #f21378;
     padding: 0;
     margin: 0 3px;
-    border-radius: 50%!important;
+    border : 0;
     width: 36px;
     height: 36px;
     font-size: .875rem;
-    background-color: #ddd;
-    border-color: #ddd;
 }
 
 .page-item.active:hover {
 	color: #f21378;
+	background-color: #fff;
 }
 
 .form-control {
@@ -180,7 +191,10 @@ a:hover {
 }
 
 .searchButton {
-	border: 4px solid #e9ecef;
+	border: 2px solid #e9ecef;
+	cursor: pointer;
+	width: 38px;
+	height: 38px;
 }
 
 .col-lg-1 col-md-2 col-3 {
@@ -192,17 +206,28 @@ a:hover {
 }
 
 .searchBox{
-	width: 800px; left: 8%;
-	}
+	width: 90%;
+	margin-left: 60px;
+	padding-right: 40px;
+	position: absolute;
+}
 
 .searchForm {
 	position: relative;
-	margin-left: 10px;
-	left: 25%;
+	margin-bottom: 100px;
+	margin-right: 5px;
+	left: 35%;
+}
+
+.product__page__filter {
+	position: absolute;
+	top: 43px;
+	right: 30%;
 }
 
 .sortForm {
 	margin-right: 0;
+	margin-top: 20px;
 	float: right;
 	padding-left: 10px;
 }
@@ -219,7 +244,6 @@ a:hover {
 						<div class="card action_bar">
 							<div class="body">
 								<div class="row clearfix">
-									<div class="col-lg-1 col-md-2 col-3"></div>
 									<div class="col-lg-12 col-md-4 col-6 searchBox">
 										<form id="searchForm" action="/collection/list" method='get' style="width:500px;" class="input-group searchForm" style = "border-radius: 4px;">
 											<select id="chk" class="form-control" name='type'>
@@ -259,7 +283,7 @@ a:hover {
 									<div class="product__page__filter">
 										
 
-										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:130px; margin-left: 138px;" class="input-group searchForm">
+										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:130px; margin-left: 138px; margin-bottom: 0px;" class="input-group searchForm">
 
 											
 											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:30px;" >
@@ -283,10 +307,9 @@ a:hover {
 										<div class="product__item__pic set-bg"
 											data-setbg="img/popular/popular-1.jpg">
 											<div>
-												<a
-													href="/collection/get?seq=<c:out value="${collection.seq}"/>">
+												<a href="/collection/get?seq=<c:out value="${collection.seq}"/>">
 													<img src="<c:out value="${collection.thumbnail}" />"
-													width="400" height="400">
+													width="350" height="400" style="margin-bottom: 30px;">
 												</a>
 											</div>
 										</div>
