@@ -1,7 +1,5 @@
 package com.collection.domain;
 
-import java.util.Date;
-
 import lombok.Data;
 
 @Data
@@ -21,6 +19,7 @@ public class CollectionVO {
 	private String placeAddr;
 	private String area;
 	private String thumbnail;
-	private long revViewCount;
+	private int viewCount;
+	private int reviewCount;
 	private double starAvg;
 }
