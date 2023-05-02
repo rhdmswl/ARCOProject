@@ -27,8 +27,6 @@
         placeAddr = #{placeAddr},
         area = #{area},
         imgUrl = #{imgUrl} -->
-		
-		
 		)
 		
 	</insert>
@@ -91,7 +89,7 @@
 	<select id="getListWithPaging" resultType="com.collection.domain.CollectionVO">
 
     select * 
-    from(select seq, title, startDate, endDate, imgUrl, revViewCount, thumbnail, starAvg from collection
+    from(select seq, title, startDate, endDate, imgUrl, viewCount,reviewCount, thumbnail, starAvg from collection
     <include refid="criteria"></include>
     )as collectionPaging
     where endDate >= now()     
@@ -106,7 +104,7 @@
 	
 	<update id="revViewCount">
 		update collection 
-		set revViewCount = revViewCount + 1
+		set viewCount = viewCount + 1
 		where seq = #{seq}
 	</update>
 	
@@ -121,6 +119,25 @@
 		SET cr.starAvg = ROUND((SELECT SUM(rv.revStar) FROM collectionRev rv WHERE rv.seq = #{seq}) / 
                        (SELECT COUNT(*) FROM collectionRev WHERE seq = #{seq}), 1)
 		WHERE cr.seq = #{seq};
+	</update>
+	
+	
+	<update id="updateAPI">
+	
+	update collection 
+	set 
+	startDate = #{startDate},
+	endDate = #{endDate},
+	place = #{place},
+	price = #{price},
+	url = #{url},
+	gpsX = #{gpsX},
+	gpsY = #{gpsY},
+	phone = #{phone},
+	thumbnail = #{thumbnail}
+	
+	where seq = #{seq}
+	
 	</update>
 	
 
