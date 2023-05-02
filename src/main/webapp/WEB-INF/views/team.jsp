@@ -57,7 +57,7 @@ body::-webkit-scrollbar-track {
 }
 
 .text {
-	margin-bottom: 10px;
+	margin-bottom: 0;
 	position: relative;
 	left: 100px;
 	width: 90%;
@@ -68,10 +68,10 @@ body::-webkit-scrollbar-track {
 	font-family: 'GmarketSansMedium';
 	font-size: 30px;
 	font-weight: 700;
-	margin-left: 100px;
+	margin-left: 60px;
 	margin-right: 50px;
 	margin-top: 0;
-	height: 650px;
+	height: 580px;
 	width: 41%;
 	float: left;
 }
@@ -86,14 +86,10 @@ body::-webkit-scrollbar-track {
 	left: 20px;
 }
 
-.secondText {
-	padding-top: 20px;
-}
-
 .secondImg {
 	float: left;
 	margin-top: 10px;
-	margin-left: 170px;
+	margin-left: 150px;
 	width: 35%;
 }
 
@@ -101,7 +97,7 @@ body::-webkit-scrollbar-track {
 	height: 900px;
 	width: 50%;
 	float: left;
-	padding-left: 140px;
+	padding-left: 120px;
 	font-family: 'GmarketSansMedium';
 	position: relative;
 	right: 10px;
@@ -142,24 +138,24 @@ body::-webkit-scrollbar-track {
 				Introduce of ARCO Project :
 			</div>
 			<div class="intro" style="font-family: 'GmarketSansMedium'; font-weight: 500; font-style:normal; color:black; font-size: 16px;">
-				6명의 팀원으로 결성된 저희 팀은 "Art Connection"을 현실화하기 위해<br/>
-				모두가 어우러질 수 있는 ARCO라는 공간을 만들었습니다.<br/>
+				6명의 팀원으로 결성된 저희 팀은 "Art Connection"을 현실화하기 위해
+				모두가 어우러질 수 있는 ARCO라는 공간을 만들었습니다.
 				<br/>
-				최근 COVID-19 팬데믹 사태가 점차 진정되면서 잠들어 있던 전시 업계도 깨어나<br/>
-				전시회를 참관하는 사람들도 다시 늘어나고 있습니다.<br/>
-				저희는 전시와 관련된 정보를 한 곳에서 모아 볼 수 있는 곳이 필요하다고 생각했고,<br/>
+				최근 COVID-19 팬데믹 사태가 점차 진정되면서 잠들어 있던 전시 업계도 깨어나
+				전시회를 참관하는 사람들도 다시 늘어나고 있습니다.
+				저희는 전시와 관련된 정보를 한 곳에서 모아 볼 수 있는 곳이 필요하다고 생각했고,
 				이러한 고민에서부터 ARCO 프로젝트가 탄생했습니다.<br/>
 				<br/>
 				저희가 이 프로젝트를 진행할 때 가장 중요시했던 것은<br/>
-				첫째, 방문해주신 분들의 입장에서 생각할 것,<br/>
-				둘째, 질적으로 좋은 정보를 제공할 것,<br/>
+				첫째, 방문해주신 분들의 입장에서 생각할 것<br/>
+				둘째, 질적으로 좋은 정보를 제공할 것<br/>
 				셋째, 편하게 서비스를 이용할 수 있도록 하는 것이었습니다.<br/>
 				<br/>
-				세 가지 포인트를 실현시키기 위해 저희가 선택한 방법은<br/>
-				전시 정보와 더불어 주변 주차장, 음식점, 카페와 같은 편의 시설을<br/>
-				함께 찾아볼 수 있도록 하여 검색의 편의성을 제공하고,<br/>
-				전시 정보나 리뷰, 개인적인 이야기 등을 공유할 수 있는 커뮤니티를 개설하여<br/>
-				소통과 공유의 장을 만드는 것이었습니다.<br/>
+				세 가지 포인트를 실현시키기 위해 저희가 선택한 방법은
+				전시 정보와 더불어 주변 주차장, 음식점, 카페와 같은 편의 시설을
+				함께 찾아볼 수 있도록 하여 검색의 편의성을 향상시키고,
+				전시 정보나 리뷰, 개인적인 이야기 등을 공유할 수 있는 커뮤니티를 개설하여
+				소통과 공유의 장을 만드는 것이었습니다.
 				<br/>
 				저희가 제공해드리고자 했던 것들이 여러분들에게 잘 전달되었길 바라며<br/>
 				부디 ARCO라는 공간이 작게나마 도움이 되었으면 합니다.<br/>
