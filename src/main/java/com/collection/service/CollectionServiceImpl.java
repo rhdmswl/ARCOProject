@@ -77,4 +77,11 @@ public class CollectionServiceImpl implements CollectionService {
 		return mapper.getIndexList();
 	}
 
+	@Override
+	public void deleteCollection() {
+		mapper.deleteCollection();
+	}
+
+	
+	
 }
