@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
@@ -321,31 +322,35 @@ position: absolute;
 	margin-bottom: 0;
 	padding: 35px 0 20px 0;
 	display: inline-block;
-	color: #232d37;
+	position: relative;
+	left: 20px;
 }
 
 .navbar.navbar-expand-lg {
 	padding: 0;
 	margin-bottom: 30px;
 	box-shadow: none;
+	margin-left: 5px;
+	position: relative;
+	left: 17px;
 }
 
-.navbar.navbar-expand-lg .navbar-nav .nav-link {
+.navbar.navbar-expand-lg .navbar-nav .nav-link2 {
 	padding: 25px 30px;
 	color: #232d37;
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 16px;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-weight: 700;
 }
 
-.navbar.navbar-expand-lg .navbar-nav .nav-link:hover, 
-.navbar.navbar-expand-lg .navbar-nav .active .nav-link {
+.navbar.navbar-expand-lg .navbar-nav .nav-link2:hover, 
+.navbar.navbar-expand-lg .navbar-nav .active .nav-link2 {
 	color: #f21378;
 }
 
 .welcomeMessage {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 600;
 	font-size: 15px;
 	position: relative;
@@ -415,14 +420,14 @@ position: absolute;
 						<div class="navbar-collapse justify-content-center"
 							id="yummyfood-nav">
 							<ul class="navbar-nav" id="yummy-nav">
-								<li class="nav-item"><a class="nav-link" href="/">Home<span
+								<li class="nav-item2"><a class="nav-link2" href="/">Home<span
 										class="sr-only">(current)</span></a></li>
-								<li class="nav-item"><a class="nav-link"
+								<li class="nav-item2"><a class="nav-link2"
 									href="/collection/list">Exhibition</a></li>
-								<li class="nav-item"><a class="nav-link"
+								<li class="nav-item2"><a class="nav-link2"
 									href="/board/list?pageNum=1&brd_id=4">Community</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">About</a>
-								</li>
+								<!-- <li class="nav-item2"><a class="nav-link2" href="#">About</a>
+								</li> -->
 							</ul>
 						</div>
 					</nav>

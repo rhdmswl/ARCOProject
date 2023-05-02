@@ -201,6 +201,20 @@ body::-webkit-scrollbar-track {
 .widget-49 .widget-49-meeting-action a {
 	text-transform: uppercase;
 }
+
+.navbar.navbar-expand-lg .navbar-nav .nav-link {
+	padding: 25px 30px;
+	color: #232d37;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+}
+
+.latestExhibi {
+	margin-left: 40px;
+}
+
 </style>
 
 
@@ -259,7 +273,7 @@ body::-webkit-scrollbar-track {
 	<section class="blog_area section_padding_0_80">
 		<div class="container">
 
-			<div class="row justify-content-center">
+			<div class="row justify-content-center latestExhibi">
 				<div class="col-12 col-lg-8">
 					<div class="section-title">
 						<div class="titleText" style="border-left: 7px solid #f21378; padding-left: 15px;">Latest Exhibition</div> 
