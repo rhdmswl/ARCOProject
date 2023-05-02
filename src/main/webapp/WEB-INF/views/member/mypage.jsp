@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -78,7 +78,7 @@ body::-webkit-scrollbar-track {
 	height: 40px;
 	line-height: 40px;
 	padding: 0;
-	bottom:-50px;
+	bottom: -50px;
 }
 
 .btn-secondary:hover {
@@ -94,7 +94,6 @@ body::-webkit-scrollbar-track {
 	width: 30px;
 	height: 100%;
 	background-color: #fff;
-	
 }
 
 .btn-secondary:active {
@@ -112,8 +111,9 @@ body::-webkit-scrollbar-track {
 	font-size: 15px;
 	padding: 0;
 }
-.btn-primary.ml-2{
-bottom:-50px;
+
+.btn-primary.ml-2 {
+	bottom: -50px;
 }
 
 .btn-primary:hover {
@@ -139,8 +139,9 @@ bottom:-50px;
 	position: relative;
 	left: 18%;
 }
-.col-md-6{
-margin-bottom:-30px;
+
+.col-md-6 {
+	margin-bottom: -30px;
 }
 
 /* 타이틀 폰트 */
@@ -175,8 +176,7 @@ margin-bottom:-30px;
 	border-radius: 10px;
 	padding-left: 10px;
 	margin-bottom: 5px;
-	width:80%;
-	
+	width: 80%;
 }
 
 .memberGroup2 {
@@ -185,7 +185,6 @@ margin-bottom:-30px;
 	border-radius: 10px;
 	padding-left: 10px;
 }
-
 
 .memberGroup[readonly] {
 	background-color: #f2f2f2;
@@ -233,24 +232,19 @@ margin-bottom:-30px;
 	color: #f21378;
 }
 
-
 .card {
 	margin-top: 10px;
-	
 }
-
-
 
 .memberGroup[readonly] {
 	background-color: #f2f2f2;
 }
 
-
 .sideListGroup {
 	list-style: none;
 	text-align: center;
 	display: flex;
-    justify-content: space-around;
+	justify-content: space-around;
 }
 
 .sidelist a {
@@ -266,7 +260,6 @@ margin-bottom:-30px;
 	flex-direction: column;
 	overflow: hidden;
 	font-size: 15px;
-	
 }
 
 .tab button {
@@ -291,18 +284,18 @@ margin-bottom:-30px;
 	padding: 6px 12px;
 }
 
-.row{
-margin-bottom:50px;
-}
-.submitGroup{
-margin-top:-50px;
+.row {
+	margin-bottom: 50px;
 }
 
-#alert-success2,
-#alert-danger2{
-font-size:15px;
-margin-left:7px;
-margin-top:-10px;
+.submitGroup {
+	margin-top: -50px;
+}
+
+#alert-success2, #alert-danger2 {
+	font-size: 15px;
+	margin-left: 7px;
+	margin-top: -10px;
 }
 </style>
 </head>
@@ -398,92 +391,101 @@ $(document).ready(function() {
 						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 				</div>
 				<br>
-				
-					<ul class="list-unstyled active sideListGroup">
-						<li class="sidelist${mypage_id == 1 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:22px; color:#c4c4c4;"
-							href="/member/mypage?mypage_id=1" onclick="showContent(1);">찜한 전시 일정</a>
-						</li>
-						<li class="sidelist${mypage_id == 2 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:22px; color:#c4c4c4;"
-							href="/member/mypage?mypage_id=2" onclick="showContent(2);">나의	 한줄평 / 게시글 / 댓글</a>
-						</li>
-						<li class="sidelist${mypage_id == 3 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:22px; color:#c4c4c4;"
-							href="/member/mypage?mypage_id=3" onclick="showContent(3);">나의 프로필</a>
-						</li>
-					</ul>
-					<br>
-					<div id="select" class="tabcontent" style="display: ${mypage_id == 1 ? 'block' : 'none'};">
-						<jsp:include page="/WEB-INF/views/calendar/mycalendar.jsp" />
+
+				<ul class="nav nav-tabs nav-fill" role="tablist">
+					<li class="nav-item"><a
+						class="nav-link ${mypage_id == 1 ? 'active' : ''}"
+						style="font-weight: 700; font-size: 22px; color: #9e9e9e;"
+						href="/member/mypage?mypage_id=1" onclick="showContent(1);"
+						role="tab">찜한 전시 일정</a></li>
+					<li class="nav-item"><a
+						class="nav-link ${mypage_id == 2 ? 'active' : ''}"
+						style="font-weight: 700; font-size: 22px; color: #9e9e9e;"
+						href="/member/mypage?mypage_id=2" onclick="showContent(2);"
+						role="tab">나의 한줄평 / 게시글 / 댓글</a></li>
+					<li class="nav-item"><a
+						class="nav-link ${mypage_id == 3 ? 'active' : ''}"
+						style="font-weight: 700; font-size: 22px; color: #9e9e9e;"
+						href="/member/mypage?mypage_id=3" onclick="showContent(3);"
+						role="tab">나의 프로필</a></li>
+				</ul>
+
+
+				<br>
+				<div id="select" class="tabcontent"
+					style="display: ${mypage_id == 1 ? 'block' : 'none'};">
+					<jsp:include page="/WEB-INF/views/calendar/mycalendar.jsp" />
+				</div>
+
+				<div class="tab-content py-4"
+					style="display: ${mypage_id == 3 ? 'block' : 'none'};">
+					<div class="profileTitleText">My Profile</div>
+					<div class="card active profileBox" id="profile">
+						<div class="mb-3"></div>
+						<form id="updateForm" action="/member/mypage" method="post"
+							style="text-align: left;">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="bmd-label-floating" for="userId">아이디</div>
+										<input type="text" id="userId" name="userId"
+											class="form-control memberGroup" value="${member.userId}"
+											readonly="readonly" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="bmd-label-floating" for="userName">닉네임</div>
+										<input type="text" id="userName" name="userName"
+											class="form-control memberGroup2" value="${member.userName}" />
+										<span id="alert-danger2"
+											style="display: none; color: #d92742; font-weight: bold;"></span>
+
+										<span id="alert-success2" style="display: none; color: green;"></span>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="bmd-label-floating" for="phone">전화번호</div>
+										<input type="text" id="phone" name="phone"
+											class="form-control memberGroup" value="${member.phone}"
+											readonly="readonly" />
+
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="bmd-label-floating" for="email">이메일</div>
+										<input type="text" id="email" name="email"
+											class="form-control memberGroup" value="${member.email}"
+											readonly="readonly" />
+									</div>
+								</div>
+							</div>
+							<div class="submitGroup">
+								<div class="col-md-12">
+									<div style="text-align: right;">
+										<button type="submit" id="submit" class="btn btn-primary ml-2">회원정보
+											수정</button>
+										<a href="/member/passUpdateView" class="btn btn-secondary">비밀번호
+											변경</a> <a href="/member/memberDeleteView"
+											class="btn btn-secondary">회원탈퇴</a>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
-					
-					<div class="tab-content py-4" style="display: ${mypage_id == 3 ? 'block' : 'none'};">
-						<div class="profileTitleText">My Profile</div>
-						<div class="card active profileBox" id="profile">
-							<div class="mb-3"></div>
-							<form id="updateForm" action="/member/mypage" method="post"
-								style="text-align: left;">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="userId">아이디</div>
-											<input type="text" id="userId" name="userId"
-												class="form-control memberGroup" value="${member.userId}"
-												readonly="readonly" />
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="userName">닉네임</div>
-											<input type="text" id="userName" name="userName"
-												class="form-control memberGroup2" value="${member.userName}" />
-												<span id="alert-danger2" style="display: none; color: #d92742; font-weight: bold;"></span>
 
-												<span id="alert-success2" style="display: none; color: green;"></span>
-											
-
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="phone">전화번호</div>
-											<input type="text" id="phone" name="phone"
-												class="form-control memberGroup" value="${member.phone}"
-												readonly="readonly" />
-
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="email">이메일</div>
-											<input type="text" id="email" name="email"
-												class="form-control memberGroup" value="${member.email}"
-												readonly="readonly" />
-										</div>
-									</div>
-								</div>
-								<div class="submitGroup">
-									<div class="col-md-12">
-										<div style="text-align: right;">
-											<button type="submit" id="submit"
-												class="btn btn-primary ml-2">회원정보 수정</button>
-											<a href="/member/passUpdateView" class="btn btn-secondary">비밀번호
-												변경</a>
-												<a href="/member/memberDeleteView" class="btn btn-secondary">회원탈퇴</a>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-				
 				</div>
 
 				<c:if test="${mypage_id == 2}">
 					<!-- 한줄평 목록 -->
-					<div id="myReviews" class="tab-content py-4" style="display: ${mypage_id == 2 ? 'block' : 'none'};">
+					<div id="myReviews" class="tab-content py-4"
+						style="display: ${mypage_id == 2 ? 'block' : 'none'};">
 						<div class="card" style="width: 100%; text-align: left;">
 							<div class="card-header card-header-primary">
 								<div class="card-title">나의 한줄평</div>
@@ -494,7 +496,8 @@ $(document).ready(function() {
 										<c:forEach var="rev" items="${collectionRev}">
 											<tr>
 												<td><a href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
-												<td><fmt:formatDate value="${rev.reviewDate}" pattern="yyyy.MM.dd" /></td>
+												<td><fmt:formatDate value="${rev.reviewDate}"
+														pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -527,7 +530,8 @@ $(document).ready(function() {
 						</c:if>
 					</div>
 					<!-- 게시글 목록 -->
-					<div id="myReviews" class="tab-content py-4" style="display: ${mypage_id == 2 ? 'block' : 'none'};">
+					<div id="myReviews" class="tab-content py-4"
+						style="display: ${mypage_id == 2 ? 'block' : 'none'};">
 						<div class="card" style="width: 100%; text-align: left;">
 							<div class="card-header card-header-primary">
 								<div class="card-title">나의 게시글</div>
@@ -538,7 +542,8 @@ $(document).ready(function() {
 										<c:forEach var="post" items="${posts}">
 											<tr>
 												<td><a href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
-												<td><fmt:formatDate value="${post.post_regdate}" pattern="yyyy.MM.dd" /></td>
+												<td><fmt:formatDate value="${post.post_regdate}"
+														pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -549,7 +554,8 @@ $(document).ready(function() {
 					<!-- 게시글 페이징 -->
 					<div class="text-center page-item" data-type="post">
 						<c:if test="${postPageMaker.prev}">
-							<a class="page-link" href="/member/mypage?mypage_id=2&page=${postPageMaker.startPage - 1}&tabName=collection">Prev</a>
+							<a class="page-link"
+								href="/member/mypage?mypage_id=2&page=${postPageMaker.startPage - 1}&tabName=collection">Prev</a>
 						</c:if>
 						<c:forEach var="pageNum" begin="${postPageMaker.startPage}"
 							end="${postPageMaker.endPage}" step="1">
@@ -569,7 +575,8 @@ $(document).ready(function() {
 						</c:if>
 					</div>
 					<!-- 댓글 목록 -->
-					<div id="myReviews" class="tab-content py-4" style="display: ${mypage_id == 2 ? 'block' : 'none'};">
+					<div id="myReviews" class="tab-content py-4"
+						style="display: ${mypage_id == 2 ? 'block' : 'none'};">
 						<div class="card" style="width: 100%; text-align: left;">
 							<div class="card-header card-header-primary">
 								<div class="card-title">나의 댓글</div>
@@ -580,7 +587,8 @@ $(document).ready(function() {
 										<c:forEach var="comment" items="${comments}">
 											<tr>
 												<td><a href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
-												<td><fmt:formatDate value="${comment.com_date}" pattern="yyyy.MM.dd" /></td>
+												<td><fmt:formatDate value="${comment.com_date}"
+														pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -612,7 +620,7 @@ $(document).ready(function() {
 						</c:if>
 					</div>
 				</c:if>
-				
+
 			</div>
 		</div>
 	</div>
