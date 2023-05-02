@@ -61,7 +61,8 @@
 
 body {
 	margin-top: 20px;
-	background: #FFF
+	background: #FFF;
+	margin-bottom: 70px;
 }
 
 body::-webkit-scrollbar {
@@ -113,37 +114,6 @@ body::-webkit-scrollbar-track {
 	background-color: #ffffff;
 }
 
-.btn-secondary {
-	width: 100px;
-	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	font-size: 15px;
-	box-shadow: none;
-	height: 40px;
-	line-height: 20px;
-	padding: 0;
-}
-
-.btn-secondary:hover {
-	box-shadow: 1px 4px 3px 1px #dadce0;
-}
-
-.btn-secondary:before {
-	position: absolute;
-	/* content: ''; */
-	display: inline-block;
-	top: -180px;
-	left: 0px;
-	width: 30px;
-	height: 100%;
-	background-color: #fff;
-}
-
-.btn-secondary:active {
-	box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3), -4px -4px 6px 0
-		rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(242, 19, 120),
-		inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
-}
-
 .btn-primary {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	box-shadow: none;
@@ -152,10 +122,13 @@ body::-webkit-scrollbar-track {
 	line-height: 20px;
 	font-size: 15px;
 	padding: 0;
+	background-color: #f21378;
+	color: white;
 }
 
 .btn-primary:hover {
-	box-shadow: 1px 4px 3px 1px #dadce0;
+	background-color: #f21378;
+    box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
 .btn-sm {

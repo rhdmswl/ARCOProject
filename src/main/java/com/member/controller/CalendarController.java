@@ -66,7 +66,6 @@ public class CalendarController {
 			hash.put("title", calendar.getTitle());
 			hash.put("start", calendar.getStart_date());
 			hash.put("end", calendar.getEnd_date());
-			hash.put("color", calendar.getColor());
 			jsonObj = new JSONObject(hash);
 			jsonArr.add(jsonObj);
 		}

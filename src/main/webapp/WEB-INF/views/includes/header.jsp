@@ -322,7 +322,8 @@ position: absolute;
 	margin-bottom: 0;
 	padding: 35px 0 20px 0;
 	display: inline-block;
-	color: #232d37;
+	position: relative;
+	left: 20px;
 }
 
 .navbar.navbar-expand-lg {
@@ -330,13 +331,15 @@ position: absolute;
 	margin-bottom: 30px;
 	box-shadow: none;
 	margin-left: 5px;
+	position: relative;
+	left: 17px;
 }
 
 .navbar.navbar-expand-lg .navbar-nav .nav-link {
 	padding: 25px 30px;
 	color: #232d37;
 	text-transform: uppercase;
-	font-size: 15px;
+	font-size: 16px;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-weight: 700;
 }
