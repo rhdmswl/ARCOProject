@@ -29,6 +29,11 @@ body {
 	font-size: 13px;
 }
 
+#calendar {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
 .fc .fc-toolbar-title {
     font-size: 1.75em;
     margin: 0;
@@ -72,7 +77,7 @@ body {
 	<!-- <script type="text/javascript" src="/resources/js/calendar.js"></script> -->
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>
+	<script src='../fullcalendar-6.1.6/dist/index.global.js'></script>
     <script>
     	
 		   
@@ -106,7 +111,8 @@ body {
 			    		eventLimit: true,				//이벤트가 많아지면 more 링크
 			    		locale: 'ko', 					//한국어 설정
 						events: data,
-						eventColor: '#de317c'
+						eventColor: '#242557'
+						
 		    		});
 						
 	    			calendar.render();

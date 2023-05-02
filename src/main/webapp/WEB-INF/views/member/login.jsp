@@ -53,7 +53,7 @@ body {
 	height: 40px;
 	line-height: 20px;
 	padding: 0;
-	left: -5px;
+	left: 5px;
 	bottom: 5px;
 }
 
@@ -99,6 +99,7 @@ body {
 }
 
 .btn-findId {
+  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
   background-color: transparent;
   color: #333;
   border: none;
@@ -110,6 +111,7 @@ body {
 }
 
 .btn-findPw {
+  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
   background-color: transparent;
   color: #333;
   border: none;
