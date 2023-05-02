@@ -16,12 +16,13 @@
 <link
 	href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	rel="stylesheet">
+
 	
 <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 	
 <style type="text/css">
 body {
@@ -59,7 +60,7 @@ body::-webkit-scrollbar-track {
 	color: #000;
 	background-color: #fff;
 	border: 1px solid #ccc;
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 500;
 	width: 80px;
 	text-align: center;
@@ -69,14 +70,14 @@ body::-webkit-scrollbar-track {
 	z-index: 1;
 	color: #555;
 	font-weight: 500;
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	background-color: #f1f1f1;
 	border-color: #ccc;
 }
 
 .page-link:focus, .page-link:hover {
 	color: #000;
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 500;
 	background-color: #f1f1f1;
 	border-color: #ccc;
@@ -164,19 +165,75 @@ body::-webkit-scrollbar-track {
 }
 
 .form-control {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
 
 .form-control::placeholder {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
 
 .writername {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	text-align: center;
 	position: relative;
 	bottom: 7px;
+}
 
+.btn-secondary {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	border-radius: 5px;
+	border: 0;
+	box-shadow: none;
+	width: 100px;
+	height: 40px;
+	line-height: 20px;
+	font-size: 15px;
+	padding: 0;
+	text-align: center;
+}
+
+.btn-secondary a {
+	position: absolute;
+	top:10px;
+	right: 36px;
+}
+
+.btn-secondary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.btn-secondary:before {
+    position: absolute;
+    /* content: ''; */
+    display: inline-block;
+    top: -180px;
+    left: 0px;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.btn-secondary:active {
+	box-shadow: none;
+}
+
+.btn-primary {
+	background-color: #f21378;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	border-radius: 5px;
+	border: 0;
+	box-shadow: none;
+	width: 100px;
+	height: 40px;
+	line-height: 20px;
+	font-size: 15px;
+	padding: 0;
+}
+
+.btn-primary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
 @media only screen and (max-width: 767px) {
@@ -214,7 +271,7 @@ body::-webkit-scrollbar-track {
 													<option value="3">전시</option>
 													<option value="2">자유</option>
 											</select></th>
-											<th><input class="form-control" name='post_title'
+											<th colspan='2'><input class="form-control" name='post_title'
 												value="제목을 입력해주세요" onfocus="this.value=''"></th>
 										</tr>
 										
@@ -222,33 +279,33 @@ body::-webkit-scrollbar-track {
 											
 											<th><div class="writername">작성자</div></th>
 											<th><input class="form-control" name='post_writer'
-												value="${member.userName}" readonly="readonly"></th>
-												<th><input class="form-control" name='user_id' type='hidden'
+												value="${member.userName}" readonly="readonly">
+												<input class="form-control" name='user_id' type='hidden'
 												value="${member.userId}"></th>
 										</tr>
 
 										<tr>
-											<th colspan='2'><textarea style="resize: none;"
-													class="form-control" rows="30" name='post_content'></textarea></th>
+											<th colspan='3'><textarea style="resize: none; height: 400px;"
+													class="form-control contentArea" rows="30" name='post_content'></textarea></th>
 										</tr>
 										<tr style="border-top: hidden;">
 											<td style="padding-left: 5 px; border-right: hidden;">
 												<div class="card m-t-5">
 													<div class="body">
 														<ul class="pagination pagination-primary m-b-0">
-															<li class="page-item">
-																<a class="page-link" href="/board/list?brd_id=${cri.brd_id}">목록</a>
+															<li class="btn-secondary">
+																<a style="text-decoration:none; color:white; font-weight: 600;" class="listbtn" href="/board/list?brd_id=${cri.brd_id}">목록</a>
 															</li>
 														</ul>
 													</div>
 												</div>
 											</td>
-											<td style="padding-right: 5 px;">
+											<td colspan='2' style="padding-right: 5 px;">
 												<div class="card m-t-5">
 													<div class="body">
 														<ul style="float: right;"
 															class="registerBtn pagination pagination-primary m-b-0">
-															<li class="page-item"><input style="cursor: pointer;" class="page-link" type="submit"
+															<li class="page-item btn-primary"><input style="cursor: pointer;" class="btn-primary" type="submit"
 																value="글 등록"></li>
 														</ul>
 													</div>

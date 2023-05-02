@@ -273,8 +273,6 @@ body::-webkit-scrollbar-track {
 	color: #555;
 }
 
-
-
 .media-body h5 {
 	font-size: 15px;
 	letter-spacing: 0px;
@@ -359,13 +357,11 @@ button {
 	float: right;
 }
 
-.commentBtnGroup .btn-11 {
-	font-family: 'Nanum Gothic', sans-serif;
-  	font-size: 13px;
-  	border: 1px solid #000;
-  	border-radius: 20px;
+.commentBtnGroup .btn-primary {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+  	font-size: 15px;
   	margin-left: 2px;
-  	width: 100px;
+  	width: 120px;
 	position: relative;
 	float: right;
 	bottom: 18px;
@@ -395,7 +391,7 @@ button {
 }
 
 .comContentList {
-	height: 50px;
+	height: 20px;
 	color: black;
 	font-weight: 500;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
@@ -404,6 +400,7 @@ button {
 .commentGroup {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	position: relative;
+	bottom: 20px;
 }
 
 .commentTitleText {
@@ -462,6 +459,7 @@ button {
 	line-height: 20px;
 	font-size: 15px;
 	padding: 0;
+	margin-right: 0;
 }
 
 .btn-primary:hover {
@@ -478,20 +476,9 @@ button {
 }
 
 .page-link {
-	display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #7b809a;
-    padding: 0;
-    margin: 0 3px;
-    border-radius: 50%!important;
-    width: 36px;
-    height: 36px;
-    font-size: .875rem;
-}
-
-.page-link:hover {
-	color: #f21378;
+	color: #000;
+	background-color: #fff;
+	border: 0;
 }
 
 .page-item.active .page-link {
@@ -506,11 +493,13 @@ button {
     height: 36px;
     font-size: .875rem;
     background-color: #ddd;
-    border-color: #ddd;
+    border: 0;
 }
 
-.page-item.active:hover {
-	color: #f21378;
+.page-link:focus, .page-link:hover {
+	color: #000;
+	background-color: #fff;
+	border : 0;
 }
 
 .comment-delete-btn {
@@ -569,7 +558,7 @@ button {
 
 						</ul>
 						<div class="postbox"
-							style="box-sizing: border-box; width: 100%;">
+							style="box-sizing: border-box; width: 100%; height: 180px;">
 							${content}
 						</div>
 
@@ -636,11 +625,10 @@ button {
 							<form role="form">
 								<div class="form-group">
 									<textarea id="com_writer" name="com_writer" readonly="readonly"
-										class="form-control" rows="1" style="resize: none; color:black;">${member.userName}</textarea>
+										class="form-control" rows="1" style="resize: none; color:black;">&nbsp;&nbsp;&nbsp;${member.userName}</textarea>
 									<textarea id="com_content" name="com_content"
-										class="form-control" rows="3" style="resize: none; color:black; border:1px solid #ccc;"></textarea>
+										class="form-control" rows="3" style="resize: none; color:black; border:1px solid #ccc; height: 80px;"></textarea>
 								</div>
-								<div></div>
 
 								<div id="comRegistBtnGroup" class="clearfix float-right">
 									<button id='Comment_regist' type="button"
@@ -666,7 +654,7 @@ button {
 		$(document).ready(function(){
 			
 			//URL 파라미터 안 보이게
-			history.replaceState({}, null, location.pathname);
+			/* history.replaceState({}, null, location.pathname); */
 			   
 			
 			window.addEventListener('popstate', function(event) {
@@ -808,10 +796,10 @@ button {
 					str+= "			<form class='collapse' id='" + form_id + "'>";
 			        str+= "  			<div class='form-group'>";
 			        str+= "  			<input type='hidden' id='com_id' name='com_id' value=''/>";
-			        str+= "    				<textarea style='resize: none; border:1px solid #ccc' class='form-control' id ='com_up_content' rows='3'></textarea>";
+			        str+= "    				<textarea style='resize: none; border:1px solid #ccc;' class='form-control' id ='com_up_content' rows='3'></textarea>";
 			        str+= "  			</div>";
 			        str+= "  			<div class='comBox'><div class='commentBtnGroup'>";
-			        str+= "  			<button id='Comment_update' type='button' class='btn btn-primary' >수정 완료</button></div></div>";
+			        str+= "  			<button id='Comment_update' style='width: 120px;' type='button' class='btn btn-primary' >수정 완료</button></div></div>";
 			        str+= "			</form>";
 			        str+=		"<br>";
                     str+=		"</div></li>";

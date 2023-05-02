@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
@@ -328,13 +329,14 @@ position: absolute;
 	padding: 0;
 	margin-bottom: 30px;
 	box-shadow: none;
+	margin-left: 5px;
 }
 
 .navbar.navbar-expand-lg .navbar-nav .nav-link {
 	padding: 25px 30px;
 	color: #232d37;
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 15px;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-weight: 700;
 }
@@ -345,7 +347,7 @@ position: absolute;
 }
 
 .welcomeMessage {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 600;
 	font-size: 15px;
 	position: relative;
@@ -421,8 +423,8 @@ position: absolute;
 									href="/collection/list">Exhibition</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="/board/list?pageNum=1&brd_id=4">Community</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">About</a>
-								</li>
+								<!-- <li class="nav-item"><a class="nav-link" href="#">About</a>
+								</li> -->
 							</ul>
 						</div>
 					</nav>
