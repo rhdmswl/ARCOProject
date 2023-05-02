@@ -69,8 +69,8 @@
 			<when test='sort == "endDate"'>
 				 order by endDate asc
 			</when>
-			<when test='sort == "revViewCount"'>
-				 order by revViewCount desc
+			<when test='sort == "viewCount"'>
+				 order by viewCount desc
 			</when>
 			<when test='sort == "star"'>
 				 order by starAvg desc
@@ -93,7 +93,7 @@
 	<select id="getListWithPaging" resultType="com.collection.domain.CollectionVO">
 
     select * 
-    from(select seq, title, startDate, endDate, imgUrl, viewCount,reviewCount, thumbnail, starAvg from collection
+    from(select seq, title, startDate, endDate, imgUrl, viewCount,reviewCount, thumbnail, dibCount, starAvg from collection
     <include refid="criteria"></include>
     )as collectionPaging
     where endDate >= now()     
@@ -118,12 +118,23 @@
 		where seq = #{seq}
 	</update>
 	
+	<update id="dibCount">
+		
+		update collection cr
+		set cr.dibCount = (select count(title) from dibs where seq = #{seq})
+		where seq = #{seq}
+	
+	</update>
+	
+	
+	
 	<update id="starAvg">
 		UPDATE collection cr 
 		SET cr.starAvg = ROUND((SELECT SUM(rv.revStar) FROM collectionRev rv WHERE rv.seq = #{seq}) / 
                        (SELECT COUNT(*) FROM collectionRev WHERE seq = #{seq}), 1)
 		WHERE cr.seq = #{seq};
 	</update>
+	
 	
 	
 	<update id="updateAPI">

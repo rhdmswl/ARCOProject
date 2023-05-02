@@ -43,11 +43,9 @@ body {
 .card {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	position: relative;
-	
+	width: 500px;
+	margin: 0 auto;
 }
-
-
-
 
 .card-title {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
@@ -73,6 +71,7 @@ body {
 	border: 1px solid #d9d6d6;
 	color: #383838;
 	background-color: #ffffff;
+
 }
 
 .form-control#newPass {
@@ -80,7 +79,7 @@ body {
 	width: 250px;
 	height: 50px;
 	box-sizing: border-box;
-	margin-left: 33px;
+	margin-left: 43px;
 	padding: 5px 0 5px 10px;
 	border-radius: 4px;
 	border: 1px solid #d9d6d6;
@@ -172,22 +171,31 @@ body {
 	
 }
 
-.submitBtnGroup {
-	margin-left: 50px;
-	
-}
-
 #alert-danger{
 	font-size: 15px;
-	margin-left:117px;
+	margin-left:107px;
 	
 	
 }
 
 #alert-success{
 	font-size: 15px;
-	margin-left:120px;
+	margin-left:107px;
 	
+}
+
+
+.control-label {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 19px;
+	font-weight: 700;
+	color: #696969;
+	margin-left:-40px;
+}
+
+.submitGroup {
+	margin-top: -10px;
+	margin-left:140px;
 }
 </style>
 
@@ -327,7 +335,7 @@ body {
 							</div>
 
 						</form>
-						<div class="text-center submitBtnGroup">
+						<div class="submitGroup">
 							<button class="btn btn-primary" type="button" id="submit">비밀번호
 								변경</button>
 							<button class="btn btn-secondary cancel" type="button">취소</button>
