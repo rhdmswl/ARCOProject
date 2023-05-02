@@ -342,14 +342,10 @@ button {
 }
 
 .custom-btn {
-	width: 130px;
-	height: 40px;
-	border: 1px solid #000;
 	border-radius: 20px;
 	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 14px;
 	font-weight: 500;
-	background: transparent;
 	cursor: pointer;
 	position: relative;
 	left: 50%;
@@ -357,32 +353,62 @@ button {
 	display: inline-block;
 }
 
-/* 11 */
-.btn-11 {
-	overflow: hidden;
-	transition: all 0.3s ease;
+.btn-secondary {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	border-radius: 5px;
+	border: 0;
+	box-shadow: none;
+	width: 100px;
+	height: 40px;
+	line-height: 20px;
+	font-size: 15px;
+	padding: 0;
+	text-align: center;
 }
 
-.btn-11:hover {
-	background: #000;
-	color: #fff;
-}
-
-.btn-11:before {
+.btn-secondary a {
 	position: absolute;
-	content: '';
-	display: inline-block;
-	top: -180px;
-	left: 0;
-	width: 30px;
-	height: 100%;
-	background-color: #fff;
+	top:10px;
+	right: 36px;
 }
 
-.btn-11:active {
-	box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3), -4px -4px 6px 0
-		rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
-		inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+.btn-secondary:hover {
+    box-shadow: 1px 4px 3px 1px #dadce0;
+}
+
+.btn-secondary:before {
+    position: absolute;
+    /* content: ''; */
+    display: inline-block;
+    top: -180px;
+    left: 0px;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.btn-secondary:active {
+	box-shadow: none;
+}
+
+.btn-primary {
+	background-color: #f21378;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	border-radius: 5px;
+	border: 0;
+	box-shadow: none;
+	width: 100px;
+	height: 40px;
+	line-height: 20px;
+	font-size: 15px;
+	padding: 0;
+}
+
+.btn-primary:hover {
+	background-color: #f21378;
+    box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
 
@@ -427,12 +453,12 @@ button {
 											value="${board.post_regdate}" /></a></li>
 							</ul>
 							<div class="postbox">
-								<textarea class="form-control" style="width:100%; height:400px;" name='post_content'><c:out value="${board.post_content}" /></textarea>
+								<textarea class="form-control" style="width:100%; height:400px; resize:none;" name='post_content'><c:out value="${board.post_content}" /></textarea>
 							</div>
 
 							<div class="frame">
-								<button type="submit" class="custom-btn btn-11" data-oper='modify'>수정 완료</button>
-								<button class="custom-btn btn-11 move2" data-oper='list'
+								<button type="submit" class="custom-btn btn-primary" data-oper='modify'>수정 완료</button>
+								<button class="custom-btn btn-secondary move2" data-oper='list'
 									onclick="location.href='/board/list?pageNum='+$('#pageNum').val()+'$brd_id='+$('#brd_id').val()">목록</button>
 							</div>
 						</div>
@@ -450,7 +476,7 @@ button {
  		$(document).ready(function(){
  			
  			//URL 파라미터 안 보이게
-			history.replaceState({}, null, location.pathname);
+			/* history.replaceState({}, null, location.pathname); */
  			
  			var formObj = $("form");
  			
