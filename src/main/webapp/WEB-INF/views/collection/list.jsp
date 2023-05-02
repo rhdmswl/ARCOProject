@@ -252,7 +252,7 @@ a:hover {
 							<div class="row">
 								<div class="col-lg-8 col-md-8 col-sm-6">
 									<div class="section-title">
-										<div class="titleText">Exhibition List</div>
+										<div class="titleText" style="border-left: 7px solid #f21378; padding-left: 15px;">Exhibition List</div> 
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-8 col-sm-6">

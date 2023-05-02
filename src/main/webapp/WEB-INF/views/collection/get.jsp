@@ -246,6 +246,8 @@ body::-webkit-scrollbar-track {
 
 .infoBox {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 18px;
+	color: #6B666A;
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
