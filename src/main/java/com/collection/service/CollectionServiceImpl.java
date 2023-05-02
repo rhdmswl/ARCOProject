@@ -61,8 +61,14 @@ public class CollectionServiceImpl implements CollectionService {
 
 	@Override
 	public void starAvg(long seq) {
-		log.info(log);
+		log.info(seq);
 		mapper.starAvg(seq);
+	}
+	
+	@Override
+	public void dibCount(long seq) {
+		log.info(seq);
+		mapper.dibCount(seq);
 	}
 
 	@Override
@@ -71,4 +77,11 @@ public class CollectionServiceImpl implements CollectionService {
 		return mapper.getIndexList();
 	}
 
+	@Override
+	public void deleteCollection() {
+		mapper.deleteCollection();
+	}
+
+	
+	
 }

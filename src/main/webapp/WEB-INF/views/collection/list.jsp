@@ -165,6 +165,7 @@ a:hover {
   padding: 5px 30px 5px 10px;
   border-radius: 4px;
   outline: 0 none;
+  width: 1000px;
   font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
 
@@ -179,7 +180,7 @@ a:hover {
 }
 
 .searchButton {
-	border: 2px solid #e9ecef;
+	border: 4px solid #e9ecef;
 }
 
 .col-lg-1 col-md-2 col-3 {
@@ -189,6 +190,10 @@ a:hover {
 .col-lg-5{
 	width: 600px;
 }
+
+.searchBox{
+	width: 800px; left: 8%;
+	}
 
 .searchForm {
 	position: relative;
@@ -215,13 +220,14 @@ a:hover {
 							<div class="body">
 								<div class="row clearfix">
 									<div class="col-lg-1 col-md-2 col-3"></div>
-									<div class="col-lg-5 col-md-4 col-6 searchBox">
-										<form id="searchForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
-											<select id="chk" class="form-control" name='type' style="width:70px;">
+									<div class="col-lg-12 col-md-4 col-6 searchBox">
+										<form id="searchForm" action="/collection/list" method='get' style="width:500px;" class="input-group searchForm" style = "border-radius: 4px;">
+											<select id="chk" class="form-control" name='type'>
 												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>SEARCH</option>
 												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
 												<option value="D" <c:out value="${pageMaker.cri.type eq 'D' ? 'selected' : ''}"/>>날짜</option>
 											</select>
+											&nbsp;
 											<ul class="chat">
 											
 											</ul>
@@ -246,7 +252,7 @@ a:hover {
 							<div class="row">
 								<div class="col-lg-8 col-md-8 col-sm-6">
 									<div class="section-title">
-										<div class="titleText">Exhibition List</div>
+										<div class="titleText" style="border-left: 7px solid #f21378; padding-left: 15px;">Exhibition List</div> 
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-8 col-sm-6">
@@ -258,10 +264,9 @@ a:hover {
 											
 											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:30px;" >
 												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
-												<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
+												<option value="viewCount" <c:out value="${pageMaker.cri.sort eq 'viewCount' ? 'selected' : ''}"/>>조회순</option>
 												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
 											</select>
-											<%-- <input type='hidden' name="sort" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'> --%>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
 
@@ -354,6 +359,7 @@ a:hover {
 		<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 		<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
  		<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
+ 		<input type='hidden' name='sort' value='<c:out value="${pageMaker.cri.sort}"/>'>
 		<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
 	</form>
 	
@@ -386,7 +392,7 @@ a:hover {
 				var searchForm = $("#searchForm");
 
 				var strDefault=''
-				strDefault+= "<input id='key' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
+				strDefault+= "<input id='key' type='text' name='keyword' class='form-control' style='width:300px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
 				searchUL.html(strDefault);
 				
 				$("#chk").change (function(e) {
@@ -394,10 +400,10 @@ a:hover {
 				    var str="";
 				    console.log(selectTag);
 				    if (selectTag=="T" || selectTag==""){
-				    str+= "<input id='' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
+				    str+= "<input id='' type='text' name='keyword' class='form-control' style='width:300px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
 				    }
 				    if (selectTag=="D"){
-				    str+= "<input id='' type='date' name='date' class='form-control' style='width:200px;' value='<c:out value='${pageMaker.cri.date}'/>'>";
+				    str+= "<input id='' type='date' name='date' class='form-control' style='width:300px;' value='<c:out value='${pageMaker.cri.date}'/>'>";
 					}
 
 					searchUL.html(str);

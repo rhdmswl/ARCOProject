@@ -141,13 +141,13 @@ body::-webkit-scrollbar-track {
 }
 
 .post-thumb {
-	margin-bottom: 55px;
+	margin-bottom: 60px;
 	height: 460px;
 }
 
 .post-thumb img {
 	position: absolute;
-	left: 22%;
+	left: 30%;
 	top: 10px;
 }
 
@@ -246,6 +246,8 @@ body::-webkit-scrollbar-track {
 
 .infoBox {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 18px;
+	color: #6B666A;
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
@@ -617,18 +619,14 @@ p.v-data {
 							<div class="single-post">
 								<!-- Post Thumb -->
 								<div class="post-thumb">
-									<img src="<c:out value="${collection.imgUrl}"/>" width="400"
+									<img src="<c:out value="${collection.thumbnail}"/>" width="400"
 										height="500" alt="">
 								</div>
 								<!-- Post Content -->
 								<div class="post-content card-header">
 									<div class="post-meta d-flex">
 										<div class="post-author-date-area d-flex">
-											<!-- Post Date -->
-											<div class="post-date">
-												<a href="#"><c:out value="${collection.startDate}"></c:out>
-													~ <c:out value="${collection.endDate}"></c:out></a>
-											</div>
+											
 										</div>
 										<!-- Post Comment & Share Area -->
 										<!-- 										<div class="post-comment-share-area d-flex">
@@ -663,11 +661,18 @@ p.v-data {
 										<div class="exhiInfoGroup">
 											<div class="info">
 												<div class="infoText">&#128198; 전시 기간</div>
+												
+												
 												<div class="infoBox">
+												
 													<c:out value="${collection.startDate}" />
-													-
+													<b>&nbsp;&nbsp;~</b>
+													<b>&nbsp;&nbsp;</b>
 													<c:out value="${collection.endDate}" />
+													
 												</div>
+												
+												
 											</div>
 											<div class="info">
 												<div class="infoText">&#128178; 가격</div>
@@ -818,7 +823,7 @@ p.v-data {
 											onClick="setStar(3)">⭐</span> <span class="starR"
 											onClick="setStar(4)">⭐</span> <span class="starR"
 											onClick="setStar(5)">⭐</span> <output for="star-input">
-												<b>&nbsp;&nbsp;1</b>점
+												&nbsp;&nbsp;<b>1</b>점
 											</output>
 										</span>
 									</div>
@@ -966,8 +971,8 @@ p.v-data {
    		        }
    		    });
    			}		 
-            
-            		 function showList(page){
+
+            function showList(page){
             			 pageNum=page;
             			 CollectionReviewService.getList({seq:seqValue,page: page|| 1 },
             				function(reviewCnt,list){

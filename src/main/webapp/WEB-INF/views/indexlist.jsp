@@ -25,7 +25,7 @@
 	width: 1200px;
 	display: inline-black;
 	vertical-align: middle;
-	padding-left: 50px;
+	padding-left: 90px;
 }
 
 .listFirst {
@@ -63,6 +63,7 @@
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	border-radius: 0px;
+	height: 293px;
 }
 
 .index-info {
@@ -138,6 +139,14 @@
 	font-weight: 500;
 }
 
+.btn-flash-border-secondary {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	position: relative;
+	top: 107px;
+}
+
 .boardlist-49 .boardlist-49-meeting-action a {
 	text-transform: uppercase;
 }
@@ -206,7 +215,7 @@
 							</c:forEach>
 							<div class="boardlist-49-meeting-action">
 								<a href="/board/list?pageNum=1&brd_id=4"
-									class="btn btn-sm btn-flash-border-primary" style="color:black;">더보기<img
+									class="btn btn-sm btn-flash-border-secondary" style="color:black;">더보기<img
 									class="moreImg" src="https://i.imgur.com/Pi8nidz.png"
 									width="30px"></a>
 							</div>

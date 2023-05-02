@@ -36,7 +36,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
 	rel="stylesheet">
-	
+
 
 <style>
 body {
@@ -45,27 +45,34 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 8px;  /* 스크롤바의 너비 */
+	width: 8px; /* 스크롤바의 너비 */
 }
 
 body::-webkit-scrollbar-thumb {
-    height: 30%; /* 스크롤바의 길이 */
-    background: black; /* 스크롤바의 색상 */ 
-    border-radius: 10px;
+	height: 30%; /* 스크롤바의 길이 */
+	background: black; /* 스크롤바의 색상 */
+	border-radius: 10px;
 }
 
 body::-webkit-scrollbar-track {
-    background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
+	background: rgba(242, 240, 241); /*스크롤바 뒷 배경 색상*/
+}
+
+.titleText {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 30px;
+	font-weight: 600;
+	color: black;
+	margin-bottom: 30px;
 }
 
 .fa-arrow-up:before {
-    content: none;
+	content: none;
 }
 
 .fa-arrow-up2:before {
-    content: "\f062";
+	content: "\f062";
 }
-
 
 #scrollUp2 {
 	bottom: 55px;
@@ -132,11 +139,10 @@ body::-webkit-scrollbar-track {
 	border-radius: 20px;
 }
 
-.post-comment-share-area {
-	margin-bottom: 20px;
+/* .post-comment-share-area {
+	margin-bottom: 30px;
 }
-
-
+ */
 .index-margin {
 	margin-bottom: 1.875rem;
 }
@@ -196,6 +202,19 @@ body::-webkit-scrollbar-track {
 	text-transform: uppercase;
 }
 
+.navbar.navbar-expand-lg .navbar-nav .nav-link {
+	padding: 25px 30px;
+	color: #232d37;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+}
+
+.latestExhibi {
+	margin-left: 40px;
+}
+
 </style>
 
 
@@ -212,7 +231,7 @@ body::-webkit-scrollbar-track {
 				<!-- Post Thumb -->
 				<a href="/collection/get?seq=<c:out value="${collection.seq}"/>">
 					<img src="<c:out value="${collection.thumbnail}"/>" width="200"
-						height="500" alt="">
+					height="500" alt="">
 				</a>
 				<!-- Overlay Text -->
 				<div class="project_title">
@@ -227,11 +246,11 @@ body::-webkit-scrollbar-track {
 			</div>
 		</c:forEach>
 	</section>
-	
+
 	<jsp:include page="/WEB-INF/views/indexlist.jsp" />
 
 	<!-- ****** Categories Area Start ****** -->
-<!-- 	<section class="categories_area clearfix" id="about">
+	<!-- 	<section class="categories_area clearfix" id="about">
 		<div class="comuContainer">
 			<div class="comu">
 				<ul class="list-unstyled active"
@@ -247,14 +266,22 @@ body::-webkit-scrollbar-track {
 		</div>
 	</section> -->
 	<!-- ****** Categories Area End ****** -->
-				
-						
-						
+
+
+
 	<!-- ****** Blog Area Start ****** -->
 	<section class="blog_area section_padding_0_80">
 		<div class="container">
-			<div class="row justify-content-center">
+
+			<div class="row justify-content-center latestExhibi">
 				<div class="col-12 col-lg-8">
+					<div class="section-title">
+						<div class="titleText" style="border-left: 7px solid #f21378; padding-left: 15px;">Latest Exhibition</div> 
+<!-- 						<p><span style="border-bottom: 12px solid #FAA8F0; padding: 0 0 0 0.2em; font-size: 20px;">Latest Exhibition</span></p>
+ -->						<!--<p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FF33E6; padding: 0.5em 0.6em; color: #4F484E;">Latest Exhibition</span></p> -->
+<!-- 						 <p><span style="border-radius: 5em; padding: 0.6em 1em; background: #F9F9F9; box-shadow: 1px 2px 10px rgba(0,0,0,0.2);  margin-left: 5px;">Latest Exhibition</span></p>-->
+<!-- 									<p><span style="border-radius: 5em; padding: 0.5em; background: #4F484E; color:#fff;">Latest Exhibition</span></p>	 -->							 
+ </div>
 					<div class="row">
 
 						<!-- Single Post -->
@@ -270,14 +297,17 @@ body::-webkit-scrollbar-track {
 											<div class="post-author-date-area d-flex">
 												<div class="postimage">
 													<div class="postImgGroup">
-														<a href="/collection/get?seq=<c:out value="${collection.seq}"/>">
+														<a
+															href="/collection/get?seq=<c:out value="${collection.seq}"/>">
 															<img class="postimgurl"
-																src="<c:out value="${collection.thumbnail}"/>" width="400"
-																height="400" alt="">
+															src="<c:out value="${collection.thumbnail}"/>"
+															width="400" height="400" alt="">
 														</a>
 													</div>
 													<div class="post-title">
-														<a href="/collection/get?seq=<c:out value="${collection.seq}"/>" style="color: black; font-weight: 700;"><c:out
+														<a
+															href="/collection/get?seq=<c:out value="${collection.seq}"/>"
+															style="color: black; font-size: 20px; font-weight: 500;"><c:out
 																value="${collection.title}" /></a>
 													</div>
 													<!-- Post Comment & Share Area -->
@@ -287,22 +317,32 @@ body::-webkit-scrollbar-track {
 													<div class="post-comment-share-area d-flex">
 														<!-- Post Favourite -->
 														<div class="post-favourite">
-															<a href="#"><i class="fa fa-heart-o"
-																aria-hidden="true"></i> 10</a>
+
+															<i class="fa fa-heart-o" aria-hidden="true">
+																<c:out value="${collection.dibCount}"/>
+															</i>
+                              
 														</div>
+                            
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 														<!-- Post Comments -->
 														<div class="post-comments">
-															<a href="#"><i class="fa fa-comment-o"
-																aria-hidden="true"></i> 12</a>
+                            
+															<i class="fa fa-comment-o" aria-hidden="true">
+																	<c:out value="${collection.reviewCount}"/>
+															</i>
+                              
 														</div>
+                            
 														<!-- Post Share -->
-														<div class="post-share">
+														<!-- <div class="post-share">
 															<a href="#"><i class="fa fa-share-alt"
 																aria-hidden="true"></i></a>
-														</div>
+														</div> -->
+                            
 													</div>
 												</div>
-	
+
 											</div>
 										</div>
 									</div>
@@ -314,7 +354,7 @@ body::-webkit-scrollbar-track {
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- ****** Blog Area End ****** -->
 
 
@@ -342,7 +382,7 @@ body::-webkit-scrollbar-track {
 	<script src="/js/others/plugins.js"></script>
 	<!-- Active JS -->
 	<script src="/js/active.js"></script>
-	
+
 	<script type="text/javascript"></script>
 
 </body>

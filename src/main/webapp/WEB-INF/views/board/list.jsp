@@ -62,7 +62,7 @@ body::-webkit-scrollbar-track {
 .page-link {
 	color: #000;
 	background-color: #fff;
-	border: 1px solid #ccc;
+	border: 0;
 }
 
 .page-item.active .page-link {
@@ -77,13 +77,13 @@ body::-webkit-scrollbar-track {
     height: 36px;
     font-size: .875rem;
     background-color: #ddd;
-    border-color: #ddd;
+    border: 0;
 }
 
 .page-link:focus, .page-link:hover {
 	color: #000;
-	background-color: #c7c7c7;
-	border-color: #ccc;
+	background-color: #fff;
+	border : 0;
 }
 
 .inbox .action_bar .delete_all {
@@ -92,8 +92,9 @@ body::-webkit-scrollbar-track {
 }
 
 .inbox .action_bar .btn, .inbox .action_bar .search {
-	margin-left: 200px;
-	margin-bottom: 15px;
+	position: relative;
+	bottom: 30px;
+	left: 215px;
 }
 
 .table-bordered {
@@ -231,6 +232,10 @@ body::-webkit-scrollbar-track {
 .sideListGroup {
 	list-style: none;
 	text-align: center;
+	height: 80px;
+	position: relative;
+	bottom: 60px;
+	left: 17px;
 }
 
 .sidelist a {
@@ -243,6 +248,23 @@ body::-webkit-scrollbar-track {
 	border-radius: 20px;
 }
 
+.infoListBtn {
+	/* background-color: #f54905; */
+	background-color: #e8adbf;
+	border: 0;
+}
+
+.exhiListBtn {
+	/* background-color : #7b19fc; */
+	background-color : #ba90c6;
+	border: 0;
+}
+
+.freeListBtn {
+	/* background-color : #1b47f7; */
+	background-color : #b0dbea;
+	border: 0;
+}
 
 .m-r-10 {
 	margin-left: 50px;
@@ -314,6 +336,7 @@ a{
 	padding-right: 0px;
 	padding-left: 0px;
 	height: 100%;
+	margin-left: 30px;
 }
 
 .row .search {
@@ -367,7 +390,8 @@ a{
 	background-color: #f21378;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 600;
-	border-radius: 0;
+	border-radius: 5px;
+	border: 0;
 	box-shadow: none;
 	width: 100px;
 	height: 40px;
@@ -383,18 +407,19 @@ a{
 
 .searchButton {
 	border: 2px solid #e9ecef;
+	cursor: pointer;
 }
 
 .positionText {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 700;
 	font-size: 25px;
-	padding-top: 28px;
 	padding-bottom: 5px;
 }
 
-.boardName {
+.positionText .boardName {
 	float: left;
+	margin-left: 5px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -419,7 +444,7 @@ a{
 									<div class="col-lg-1 col-md-2 col-3"></div>
 									<div class="col-lg-5 col-md-4 col-6 searchBox">
 										<form id="searchForm" action="/board/list" method='get' style=" width:500px;" class="input-group search">
-											<select id="chk" class="form-control" name='type' style="width:150px;">
+											<select id="chk" class="form-control" name='type' style="width:150px; margin-right: 5px;">
 												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>SEARCH</option>
 												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
 												<option value="C" <c:out value="${pageMaker.cri.type eq 'C' ? 'selected' : ''}"/>>내용</option>
@@ -445,14 +470,12 @@ a{
 					<ul class="list-unstyled active sideListGroup">
 						<li class="sidelist active"><a class="nav-link" style="font-weight: 700;"
 							href="/board/list?pageNum=1&brd_id=4">BEST</a></li>
-						<li class="sidelist active"><a class="nav-link" style="font-weight: 700;"
+						<li class="sidelist active infoListBtn"><a class="nav-link" style="font-weight: 700;"
 							href="/board/list?pageNum=1&brd_id=1">정보</a></li>
-							<li class="sidelist active"><a class="nav-link" style="font-weight: 700;"
+							<li class="sidelist active exhiListBtn"><a class="nav-link" style="font-weight: 700;"
 							href="/board/list?pageNum=1&brd_id=3">전시</a></li>
-						<li class="sidelist active"><a class="nav-link" style="font-weight: 700;"
+						<li class="sidelist active freeListBtn"><a class="nav-link" style="font-weight: 700;"
 							href="/board/list?pageNum=1&brd_id=2">자유</a></li>
-						
-							
 					</ul>
 					<!-- 현재 게시판 위치 표시 -->
 					<c:choose>
@@ -565,7 +588,7 @@ a{
 										<c:if test="${member.userId!=null && pageMaker.cri.brd_id!=4}"> 
 											<ul style="float: right;" class="regBtn">
 												<li class="pageitem"><button class="btn btn-primary regmov" 
-													style="width: 120px; text-align: center; border: 1px solid #ccc; border-radius: 20px;"
+													style="width: 120px; text-align: center; font-size: 15px"
 													>글 등록</button></li>
 											</ul>
 										</c:if>
