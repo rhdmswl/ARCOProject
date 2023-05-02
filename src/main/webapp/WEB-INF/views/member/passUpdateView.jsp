@@ -164,7 +164,7 @@ body {
 }
 
 #passUpdateForm {
-	margin-left: 60px;
+	margin-left: 40px;
 }
 
 .submitBtnGroup {
@@ -180,7 +180,7 @@ body {
 				function validatePassword() {
 					var pwd1 = $("#newPass").val();
 					var pwd2 = $("#passCheck").val();
-					var pwdRegex = /^[a-zA-Z0-9!@#$%^&*()?_~]{8,16}$/;
+					var var pwdRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()-=_+]{8,16}$/;
 					var passwordChars = pwd1.split("");
 					var duplicateCount = 0;
 
