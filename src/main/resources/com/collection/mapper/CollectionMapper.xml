@@ -6,30 +6,34 @@
 <mapper namespace="com.collection.mapper.CollectionMapper">
 	
 	<insert id="insertCollection">
-		
-		insert into collection (seq, title, startDate, endDate, realmName, gpsX, gpsY, thumbnail, place, price, url, phone, placeAddr, area, imgUrl)
+		insert into collection 
+		(seq, title, startDate, endDate, realmName, gpsX, gpsY, thumbnail, place, price, url, phone, placeAddr, area, imgUrl)
 		values (#{seq, jdbcType=BIGINT}, #{title, jdbcType=VARCHAR}, #{startDate, jdbcType=VARCHAR}, #{endDate, jdbcType=VARCHAR}, #{realmName, jdbcType=VARCHAR}, 
 		#{gpsX, jdbcType=DOUBLE}, #{gpsY, jdbcType=DOUBLE}, #{thumbnail, jdbcType=VARCHAR}, #{place, jdbcType=VARCHAR}, #{price, jdbcType=VARCHAR},
-		#{url, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{placeAddr, jdbcType=VARCHAR}, #{area, jdbcType=VARCHAR}, #{imgUrl, jdbcType=VARCHAR}
-		
-		<!-- ON DUPLICATE KEY UPDATE
+		#{url, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{placeAddr, jdbcType=VARCHAR}, #{area, jdbcType=VARCHAR}, #{imgUrl, jdbcType=VARCHAR})
+		ON DUPLICATE KEY UPDATE
         title = #{title},
         startDate = #{startDate},
-        endeDate = #{endDate},
+        endDate = #{endDate},
         realmName = #{realmName},
         gpsX = #{gpsX},
         gpsY = #{gpsY},
         thumbnail = #{thumbnail},
-        place = #{plcace},
+        place = #{place},
         url = #{url},
         price = #{price},
         phone = #{phone},
         placeAddr = #{placeAddr},
         area = #{area},
-        imgUrl = #{imgUrl} -->
-		)
-		
+        imgUrl = #{imgUrl}		
 	</insert>
+	
+	<delete id="deleteCollection">
+	<![CDATA[
+		delete from collection where endDate < CURDATE();
+		]]>
+	</delete>
+	
 	
 	<select id="getIndexList" resultType="com.arco.domain.BoardVO">
 	<![CDATA[

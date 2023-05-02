@@ -15,6 +15,7 @@ public interface CollectionService {
 	public int revViewCount(long seq);
 	public void reviewCount(long seq);
 	public void starAvg(long seq);
+	public void deleteCollection();
 
 	public List<BoardVO> getIndexList();
 	
