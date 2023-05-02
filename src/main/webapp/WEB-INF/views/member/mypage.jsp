@@ -59,6 +59,10 @@ body::-webkit-scrollbar-track {
 	background: rgba(242, 240, 241); /*스크롤바 뒷 배경 색상*/
 }
 
+.card {
+	margin-top: 10px;
+}
+
 /* 버튼 그룹 */
 .col-md-12 {
 	margin-top: 7px;
@@ -165,8 +169,6 @@ margin-bottom:-30px;
 	margin-bottom: 10px;
 }
 
-
-
 /* 수정 칸 */
 .memberGroup {
 	border: 1px solid #ccc;
@@ -180,6 +182,11 @@ margin-bottom:-30px;
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	padding-left: 10px;
+}
+
+
+.memberGroup[readonly] {
+	background-color: #f2f2f2;
 }
 
 .btn-sm {
@@ -222,14 +229,6 @@ margin-bottom:-30px;
 
 .page-item .page-link:hover {
 	color: #f21378;
-}
-
-.card {
-	margin-top: 10px;
-}
-
-.memberGroup[readonly] {
-	background-color: #f2f2f2;
 }
 
 .sideListGroup {
@@ -369,19 +368,6 @@ function fn_nameChk() {
         }
     });
 }
-function openTab(evt, tabName) {
-	var i, tabcontent, tablinks;
-	tabcontent = document.getElementsByClassName("tabcontent");
-	for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = "none";
-	}
-	tablinks = document.getElementsByClassName("tablinks");
-	for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].classList.remove("active");
-	}
-	document.getElementById(tabName).style.display = "block";
-	evt.currentTarget.classList.add("active");
-}
 
 function showContent(id) {
     var mypage_id = ${mypage_id};
@@ -392,6 +378,7 @@ function showContent(id) {
     document.getElementById("myComments").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
     document.getElementById("pagination").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
 }
+
 </script>
 
 <body onload="showContent(${mypage_id});">
@@ -402,22 +389,23 @@ function showContent(id) {
 					<a href="/" class="yummy-logo"><img
 						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 				</div>
+				<br>
 				
 					<ul class="list-unstyled active sideListGroup">
 						<li class="sidelist${mypage_id == 1 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:22px; color:gray;"
+							<a class="nav-link" style="font-weight: 700; font-size:22px; color:#c4c4c4;"
 							href="/member/mypage?mypage_id=1" onclick="showContent(1);">찜한 전시 일정</a>
 						</li>
 						<li class="sidelist${mypage_id == 2 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:22px; color:gray;"
-							href="/member/mypage?mypage_id=2" onclick="showContent(2);">나의	한줄평 / 게시글 / 댓글</a>
+							<a class="nav-link" style="font-weight: 700; font-size:22px; color:#c4c4c4;"
+							href="/member/mypage?mypage_id=2" onclick="showContent(2);">나의	 한줄평 / 게시글 / 댓글</a>
 						</li>
 						<li class="sidelist${mypage_id == 3 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:22px; color:gray;"
+							<a class="nav-link" style="font-weight: 700; font-size:22px; color:#c4c4c4;"
 							href="/member/mypage?mypage_id=3" onclick="showContent(3);">나의 프로필</a>
 						</li>
 					</ul>
-
+					<br>
 					<div id="select" class="tabcontent" style="display: ${mypage_id == 1 ? 'block' : 'none'};">
 						<jsp:include page="/WEB-INF/views/calendar/mycalendar.jsp" />
 					</div>
