@@ -165,6 +165,7 @@ a:hover {
   padding: 5px 30px 5px 10px;
   border-radius: 4px;
   outline: 0 none;
+  width: 1000px;
   font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 }
 
@@ -179,7 +180,7 @@ a:hover {
 }
 
 .searchButton {
-	border: 2px solid #e9ecef;
+	border: 4px solid #e9ecef;
 }
 
 .col-lg-1 col-md-2 col-3 {
@@ -189,6 +190,10 @@ a:hover {
 .col-lg-5{
 	width: 600px;
 }
+
+.searchBox{
+	width: 800px; left: 8%;
+	}
 
 .searchForm {
 	position: relative;
@@ -215,13 +220,14 @@ a:hover {
 							<div class="body">
 								<div class="row clearfix">
 									<div class="col-lg-1 col-md-2 col-3"></div>
-									<div class="col-lg-5 col-md-4 col-6 searchBox">
-										<form id="searchForm" action="/collection/list" method='get' style=" width:500px;" class="input-group searchForm">
-											<select id="chk" class="form-control" name='type' style="width:70px;">
+									<div class="col-lg-12 col-md-4 col-6 searchBox">
+										<form id="searchForm" action="/collection/list" method='get' style="width:500px;" class="input-group searchForm" style = "border-radius: 4px;">
+											<select id="chk" class="form-control" name='type'>
 												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>SEARCH</option>
 												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
 												<option value="D" <c:out value="${pageMaker.cri.type eq 'D' ? 'selected' : ''}"/>>날짜</option>
 											</select>
+											&nbsp;
 											<ul class="chat">
 											
 											</ul>
@@ -386,7 +392,7 @@ a:hover {
 				var searchForm = $("#searchForm");
 
 				var strDefault=''
-				strDefault+= "<input id='key' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
+				strDefault+= "<input id='key' type='text' name='keyword' class='form-control' style='width:300px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
 				searchUL.html(strDefault);
 				
 				$("#chk").change (function(e) {
@@ -394,10 +400,10 @@ a:hover {
 				    var str="";
 				    console.log(selectTag);
 				    if (selectTag=="T" || selectTag==""){
-				    str+= "<input id='' type='text' name='keyword' class='form-control' style='width:200px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
+				    str+= "<input id='' type='text' name='keyword' class='form-control' style='width:300px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
 				    }
 				    if (selectTag=="D"){
-				    str+= "<input id='' type='date' name='date' class='form-control' style='width:200px;' value='<c:out value='${pageMaker.cri.date}'/>'>";
+				    str+= "<input id='' type='date' name='date' class='form-control' style='width:300px;' value='<c:out value='${pageMaker.cri.date}'/>'>";
 					}
 
 					searchUL.html(str);
