@@ -489,7 +489,7 @@ p.v-data {
 							<div class="single-post">
 								<!-- Post Thumb -->
 								<div class="post-thumb">
-									<img src="<c:out value="${collection.imgUrl}"/>" width="400"
+									<img src="<c:out value="${collection.thumbnail}"/>" width="400"
 										height="500" alt="">
 								</div>
 								<!-- Post Content -->
@@ -535,11 +535,17 @@ p.v-data {
 										<div class="exhiInfoGroup">
 											<div class="info">
 												<div class="infoText">&#128198; 전시 기간</div>
+												
+												
 												<div class="infoBox">
+												
 													<c:out value="${collection.startDate}" />
 													-
 													<c:out value="${collection.endDate}" />
+													
 												</div>
+												
+												
 											</div>
 											<div class="info">
 												<div class="infoText">&#128178; 가격</div>
@@ -818,6 +824,14 @@ p.v-data {
    		        }
    		    });
    			}		 
+            
+            
+            		function dateModi(){
+            			var str=""
+            			str += ""
+            		}
+            
+            
             
             		 function showList(page){
             			 pageNum=page;
