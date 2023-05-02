@@ -58,6 +58,14 @@ body::-webkit-scrollbar-track {
     background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
 }
 
+.titleText {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 30px;
+	font-weight: 600;
+	color: black;
+	margin-bottom : 30px;
+}
+
 .fa-arrow-up:before {
     content: none;
 }
@@ -253,8 +261,12 @@ body::-webkit-scrollbar-track {
 	<!-- ****** Blog Area Start ****** -->
 	<section class="blog_area section_padding_0_80">
 		<div class="container">
+
 			<div class="row justify-content-center">
 				<div class="col-12 col-lg-8">
+					<div class="section-title">
+										<div class="titleText">Latest Exhibition</div>
+									</div>
 					<div class="row">
 
 						<!-- Single Post -->
@@ -266,6 +278,7 @@ body::-webkit-scrollbar-track {
 									style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
 									<!-- Post Content -->
 									<div class="post-content">
+									
 										<div class="post-meta d-flex">
 											<div class="post-author-date-area d-flex">
 												<div class="postimage">
@@ -284,23 +297,23 @@ body::-webkit-scrollbar-track {
 													<!-- <div class="post-thumb">
 					                               <img src="img/blog-img/2.jpg" alt="">
 					                            </div> -->
-													<div class="post-comment-share-area d-flex">
-														<!-- Post Favourite -->
+													<!-- <div class="post-comment-share-area d-flex">
+														Post Favourite
 														<div class="post-favourite">
 															<a href="#"><i class="fa fa-heart-o"
 																aria-hidden="true"></i> 10</a>
 														</div>
-														<!-- Post Comments -->
+														Post Comments
 														<div class="post-comments">
 															<a href="#"><i class="fa fa-comment-o"
 																aria-hidden="true"></i> 12</a>
 														</div>
-														<!-- Post Share -->
+														Post Share
 														<div class="post-share">
 															<a href="#"><i class="fa fa-share-alt"
 																aria-hidden="true"></i></a>
 														</div>
-													</div>
+													</div> -->
 												</div>
 	
 											</div>
