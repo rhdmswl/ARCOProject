@@ -43,11 +43,9 @@ body {
 .card {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	position: relative;
-	
+	width: 500px;
+	margin: 0 auto;
 }
-
-
-
 
 .card-title {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
@@ -169,11 +167,6 @@ body {
 
 #passUpdateForm {
 	margin-left: 60px;
-	
-}
-
-.submitBtnGroup {
-	margin-left: 50px;
 	
 }
 
@@ -327,7 +320,7 @@ body {
 							</div>
 
 						</form>
-						<div class="text-center submitBtnGroup">
+						<div class="text-center">
 							<button class="btn btn-primary" type="button" id="submit">비밀번호
 								변경</button>
 							<button class="btn btn-secondary cancel" type="button">취소</button>
