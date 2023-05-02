@@ -624,11 +624,7 @@ p.v-data {
 								<div class="post-content card-header">
 									<div class="post-meta d-flex">
 										<div class="post-author-date-area d-flex">
-											<!-- Post Date -->
-											<div class="post-date">
-												<a href="#"><c:out value="${collection.startDate}"></c:out>
-													~ <c:out value="${collection.endDate}"></c:out></a>
-											</div>
+											
 										</div>
 										<!-- Post Comment & Share Area -->
 										<!-- 										<div class="post-comment-share-area d-flex">
@@ -668,7 +664,8 @@ p.v-data {
 												<div class="infoBox">
 												
 													<c:out value="${collection.startDate}" />
-													-
+													<b>&nbsp;&nbsp;~</b>
+													<b>&nbsp;&nbsp;</b>
 													<c:out value="${collection.endDate}" />
 													
 												</div>
@@ -972,16 +969,8 @@ p.v-data {
    		        }
    		    });
    			}		 
-            
-            
-            		function dateModi(){
-            			var str=""
-            			str += ""
-            		}
-            
-            
-            
-            		 function showList(page){
+
+            function showList(page){
             			 pageNum=page;
             			 CollectionReviewService.getList({seq:seqValue,page: page|| 1 },
             				function(reviewCnt,list){

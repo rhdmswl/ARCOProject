@@ -89,7 +89,7 @@
 	<select id="getListWithPaging" resultType="com.collection.domain.CollectionVO">
 
     select * 
-    from(select seq, title, startDate, endDate, imgUrl, revViewCount, thumbnail, starAvg from collection
+    from(select seq, title, startDate, endDate, imgUrl, viewCount,reviewCount, thumbnail, starAvg from collection
     <include refid="criteria"></include>
     )as collectionPaging
     where endDate >= now()     
@@ -104,7 +104,7 @@
 	
 	<update id="revViewCount">
 		update collection 
-		set revViewCount = revViewCount + 1
+		set viewCount = viewCount + 1
 		where seq = #{seq}
 	</update>
 	
