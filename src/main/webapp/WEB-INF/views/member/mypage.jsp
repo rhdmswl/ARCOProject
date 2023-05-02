@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -59,6 +59,10 @@ body::-webkit-scrollbar-track {
 	background: rgba(242, 240, 241); /*스크롤바 뒷 배경 색상*/
 }
 
+.card {
+	margin-top: 10px;
+}
+
 /* 버튼 그룹 */
 .col-md-12 {
 	margin-top: 7px;
@@ -74,7 +78,7 @@ body::-webkit-scrollbar-track {
 	height: 40px;
 	line-height: 40px;
 	padding: 0;
-	bottom:-50px;
+	bottom: -50px;
 }
 
 .btn-secondary:hover {
@@ -90,7 +94,6 @@ body::-webkit-scrollbar-track {
 	width: 30px;
 	height: 100%;
 	background-color: #fff;
-	
 }
 
 .btn-secondary:active {
@@ -108,8 +111,9 @@ body::-webkit-scrollbar-track {
 	font-size: 15px;
 	padding: 0;
 }
-.btn-primary.ml-2{
-bottom:-50px;
+
+.btn-primary.ml-2 {
+	bottom: -50px;
 }
 
 .btn-primary:hover {
@@ -135,8 +139,9 @@ bottom:-50px;
 	position: relative;
 	left: 18%;
 }
-.col-md-6{
-margin-bottom:-30px;
+
+.col-md-6 {
+	margin-bottom: -30px;
 }
 
 /* 타이틀 폰트 */
@@ -165,21 +170,24 @@ margin-bottom:-30px;
 	margin-bottom: 10px;
 }
 
-
-
 /* 수정 칸 */
 .memberGroup {
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	padding-left: 10px;
 	margin-bottom: 5px;
+	width: 80%;
 }
 
 .memberGroup2 {
-	width: 200px;
+	width: 80%;
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	padding-left: 10px;
+}
+
+.memberGroup[readonly] {
+	background-color: #f2f2f2;
 }
 
 .btn-sm {
@@ -211,8 +219,6 @@ margin-bottom:-30px;
 	color: #7b809a;
 	padding: 0;
 	margin: 0 3px;
-	border: 2px solid #ccc;
-	border-radius: 50% !important;
 	width: 36px;
 	height: 36px;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
@@ -236,7 +242,7 @@ margin-bottom:-30px;
 	list-style: none;
 	text-align: center;
 	display: flex;
-    justify-content: space-around;
+	justify-content: space-around;
 }
 
 .sidelist a {
@@ -252,7 +258,6 @@ margin-bottom:-30px;
 	flex-direction: column;
 	overflow: hidden;
 	font-size: 15px;
-	
 }
 
 .tab button {
@@ -276,30 +281,80 @@ margin-bottom:-30px;
 	display: none;
 	padding: 6px 12px;
 }
+
+.row {
+	margin-bottom: 50px;
+}
+
+.submitGroup {
+	margin-top: -50px;
+}
+
+#alert-success2, #alert-danger2 {
+	font-size: 15px;
+	margin-left: 7px;
+	margin-top: -10px;
+}
 </style>
 </head>
 <script type="text/javascript">
 $(document).ready(function() {
 
-    $('.form-control').focusout(function() {
-        var userName = $("#userName").val();
-        var nameRegex = /^[a-zA-Z가-힣0-9]{2,8}$/;
-        var numRegex = /^[0-9]{2,10}$/;
-        var spaceRegex = /\s/;
+	$('.form-control.memberGroup2').focusout(function() {
+		 var userName = $("#userName").val();
+		    var nameRegex = /^[a-zA-Z가-힣0-9]{2,10}$/;
+		    var numRegex = /^[0-9]{2,10}$/;
+		    var spaceRegex = /\s/;
 
-        if (spaceRegex.test(userName)) {
-            $("#alert-danger2").css('display', 'inline-block').text('닉네임에는 공백을 입력할 수 없습니다.');
-            return false;
-        } else if (!nameRegex.test(userName)) {
-            $("#alert-danger2").css('display', 'inline-block').text('닉네임은 2자~8자 이하의 영문, 한글, 숫자만 사용 가능합니다.');
-            return false;
-        } else if (numRegex.test(userName)) {
-            $("#alert-danger2").css('display', 'inline-block').text('닉네임에는 숫자만 입력할 수 없습니다.');
-            return false;
-        } else {
-            $("#alert-danger2").css('display', 'none');
-        }
-    });
+		    if (spaceRegex.test(userName)) {
+		        $("#alert-danger2").css('display', 'inline-block')
+		            .text('닉네임에는 공백을 입력할 수 없습니다.');
+		        $("#alert-success2").css('display', 'none');
+		        $('#submit').attr('disabled', true);
+		        return false;
+		    } else if (!nameRegex.test(userName)) {
+		        $("#alert-danger2").css('display', 'inline-block')
+		            .text('닉네임은 2자~10자 이하의 영문, 한글, 숫자만 사용가능합니다.');
+		        $("#alert-success2").css('display', 'none');
+		        $('#submit').attr('disabled', true);
+		        return false;
+		    } else if (numRegex.test(userName)) {
+		        $("#alert-danger2").css('display', 'inline-block')
+		            .text('닉네임에는 숫자만 입력할 수 없습니다.');
+		        $("#alert-success2").css('display', 'none');
+		        $('#submit').attr('disabled', true);
+		        return false;
+		    } else {
+		        $("#alert-danger2").css('display', 'none');
+		    }
+
+		    $.ajax({
+		        url: "/member/nameChk",
+		        type: "post",
+		        dataType: "json",
+		        data: {
+		            "userName": $("#userName").val()
+		        },
+		        success: function(data) {
+		        	if (data == 1) {						        		
+		                $("#alert-danger2").css('display', 'inline-block')
+		                    .text('중복된 닉네임입니다. 다시 입력해주세요.');
+		                $("#alert-success2").css('display', 'none');
+		                $('#submit').attr('disabled', true);
+		               
+		               
+		            } else if (data == 0) {
+		                $("#alert-success2").css('display', 'inline-block')
+		                    .text('사용 가능한 닉네임입니다.');
+		                $("#alert-danger2").css('display', 'none');
+		                $('#submit').attr('disabled', false);
+		               
+		               
+		            }
+		        }
+		    });
+		});
+
 
     $("#submit").on("click", function() {
         var nameChkVal = $("#nameChk").val();
@@ -308,10 +363,7 @@ $(document).ready(function() {
         if (usernameVal.length < 2 || usernameVal.length > 8) {
             alert("닉네임은 2자 이상 8자 이하로 입력해주세요.");
             return false;
-        } else if (nameChkVal !== "Y") {
-            alert("중복확인을 해주세요.");
-            return false;
-        } else if (usernameVal.indexOf("관리자") === 0) {
+        }  else if (usernameVal.indexOf("관리자") === 0) {
             alert("이 닉네임은 사용하실 수 없습니다.");
             return false;
         
@@ -322,76 +374,10 @@ $(document).ready(function() {
             }
         }
     });
-    
-    $(".page-item a.page-link").on("click", function (event) {
-        event.preventDefault();
-        var type = $(this).closest(".page-item").data("type");
-        var url = $(this).attr("href");
-
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function (data) {
-                // 여기서 data는 새로 받아온 HTML 페이지
-                // 새로 받아온 페이지에서 페이징 영역의 내용을 가져와 현재 페이지의 페이징 영역에 넣어줌
-                var newPageItem = $(data).find(".page-item[data-type='" + type + "']");
-                $(".page-item[data-type='" + type + "']").html(newPageItem.html());
-
-                // 새로 받아온 페이지에서 해당 타입의 목록 영역의 내용을 가져와 현재 페이지의 목록 영역에 넣어줌
-                var contentId = type === "review" ? "myReviews" : type === "post" ? "myPosts" : type === "comment" ? "myComments"
-                var newContent = $(data).find("#" + contentId);
-                $("#" + contentId).html(newContent.html());
-            },
-            error: function (xhr, status, error) {
-                console.log("페이징 오류: " + error);
-            }
-        });
-    });
 
 });
+   
 
-function fn_nameChk() {
-    $.ajax({
-        url: "/member/nameChk",
-        type: "post",
-        dataType: "json",
-        data: {
-            "userName": $("#userName").val()
-        },
-        success: function(data) {
-            if (data == 1) {
-                alert("중복된 닉네임입니다.");
-                $("#nameChk").val("D");
-            } else if (data == 0) {
-                $("#nameChk").val("Y");
-                alert("사용 가능한 닉네임입니다.");
-            }
-        }
-    });
-}
-function openTab(evt, tabName) {
-	var i, tabcontent, tablinks;
-	tabcontent = document.getElementsByClassName("tabcontent");
-	for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = "none";
-	}
-	tablinks = document.getElementsByClassName("tablinks");
-	for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].classList.remove("active");
-	}
-	document.getElementById(tabName).style.display = "block";
-	evt.currentTarget.classList.add("active");
-}
-
-function showContent(id) {
-    var mypage_id = ${mypage_id};
-    document.getElementById("select").style.display = (id === 1 && mypage_id === 1) ? "block" : "none";
-    document.getElementById("profile").style.display = (id === 3 && mypage_id === 3) ? "block" : "none";
-    document.getElementById("myReviews").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
-    document.getElementById("myPosts").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
-    document.getElementById("myComments").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
-    document.getElementById("pagination").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
-}
 </script>
 
 <body onload="showContent(${mypage_id});">
@@ -402,90 +388,102 @@ function showContent(id) {
 					<a href="/" class="yummy-logo"><img
 						src="https://i.imgur.com/evlOrzY.png" width="400"></a>
 				</div>
-				
-					<ul class="list-unstyled active sideListGroup">
-						<li class="sidelist${mypage_id == 1 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:22px; color:gray;"
-							href="/member/mypage?mypage_id=1" onclick="showContent(1);">찜한 전시 일정</a>
-						</li>
-						<li class="sidelist${mypage_id == 2 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:22px; color:gray;"
-							href="/member/mypage?mypage_id=2" onclick="showContent(2);">나의	한줄평 / 게시글 / 댓글</a>
-						</li>
-						<li class="sidelist${mypage_id == 3 ? ' active' : ''}">
-							<a class="nav-link" style="font-weight: 700; font-size:22px; color:gray;"
-							href="/member/mypage?mypage_id=3" onclick="showContent(3);">나의 프로필</a>
-						</li>
-					</ul>
+				<br>
 
-					<div id="select" class="tabcontent" style="display: ${mypage_id == 1 ? 'block' : 'none'};">
-						<jsp:include page="/WEB-INF/views/calendar/mycalendar.jsp" />
+				<ul class="nav nav-tabs nav-fill" role="tablist">
+					<li class="nav-item"><a
+						class="nav-link ${mypage_id == 1 ? 'active' : ''}"
+						style="font-weight: 700; font-size: 22px; color: #595959;"
+						href="/member/mypage?mypage_id=1" onclick="showContent(1);"
+						role="tab">찜한 전시 일정</a></li>
+					<li class="nav-item"><a
+						class="nav-link ${mypage_id == 2 ? 'active' : ''}"
+						style="font-weight: 700; font-size: 22px; color: #595959;"
+						href="/member/mypage?mypage_id=2" onclick="showContent(2);"
+						role="tab">나의 한줄평 / 게시글 / 댓글</a></li>
+					<li class="nav-item"><a
+						class="nav-link ${mypage_id == 3 ? 'active' : ''}"
+						style="font-weight: 700; font-size: 22px; color: #595959;"
+						href="/member/mypage?mypage_id=3" onclick="showContent(3);"
+						role="tab">나의 프로필</a></li>
+				</ul>
+
+
+				<br>
+				<div id="select" class="tabcontent"
+					style="display: ${mypage_id == 1 ? 'block' : 'none'};">
+					<jsp:include page="/WEB-INF/views/calendar/mycalendar.jsp" />
+				</div>
+
+				<div class="tab-content py-4"
+					style="display: ${mypage_id == 3 ? 'block' : 'none'};">
+					<div class="profileTitleText">My Profile</div>
+					<div class="card active profileBox" id="profile">
+						<div class="mb-3"></div>
+						<form id="updateForm" action="/member/mypage" method="post"
+							style="text-align: left;">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="bmd-label-floating" for="userId">아이디</div>
+										<input type="text" id="userId" name="userId"
+											class="form-control memberGroup" value="${member.userId}"
+											readonly="readonly" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="bmd-label-floating" for="userName">닉네임</div>
+										<input type="text" id="userName" name="userName"
+											class="form-control memberGroup2" value="${member.userName}" />
+										<span id="alert-danger2"
+											style="display: none; color: #d92742; font-weight: bold;"></span>
+
+										<span id="alert-success2" style="display: none; color: green;"></span>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="bmd-label-floating" for="phone">전화번호</div>
+										<input type="text" id="phone" name="phone"
+											class="form-control memberGroup" value="${member.phone}"
+											readonly="readonly" />
+
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="bmd-label-floating" for="email">이메일</div>
+										<input type="text" id="email" name="email"
+											class="form-control memberGroup" value="${member.email}"
+											readonly="readonly" />
+									</div>
+								</div>
+							</div>
+							<div class="submitGroup">
+								<div class="col-md-12">
+									<div style="text-align: right;">
+										<button type="submit" id="submit" class="btn btn-primary ml-2">회원정보
+											수정</button>
+										<a href="/member/passUpdateView" class="btn btn-secondary">비밀번호
+											변경</a> <a href="/member/memberDeleteView"
+											class="btn btn-secondary">회원탈퇴</a>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
-					
-					<div class="tab-content py-4" style="display: ${mypage_id == 3 ? 'block' : 'none'};">
-						<div class="profileTitleText">My Profile</div>
-						<div class="card active profileBox" id="profile">
-							<div class="mb-3"></div>
-							<form id="updateForm" action="/member/mypage" method="post"
-								style="text-align: left;">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="userId">아이디</div>
-											<input type="text" id="userId" name="userId"
-												class="form-control memberGroup" value="${member.userId}"
-												readonly="readonly" />
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="userName">닉네임</div>
-											<input type="text" id="userName" name="userName"
-												class="form-control memberGroup2" value="${member.userName}" />
-											<button class="btn btn-primary btn-sm" type="button"
-												id="nameChk" onclick="fn_nameChk();" value="N">중복확인</button>
 
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="phone">전화번호</div>
-											<input type="text" id="phone" name="phone"
-												class="form-control memberGroup" value="${member.phone}"
-												readonly="readonly" />
-
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="bmd-label-floating" for="email">이메일</div>
-											<input type="text" id="email" name="email"
-												class="form-control memberGroup" value="${member.email}"
-												readonly="readonly" />
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<div style="text-align: right;">
-											<button type="submit" id="submit"
-												class="btn btn-primary ml-2">회원정보 수정</button>
-											<a href="/member/passUpdateView" class="btn btn-secondary">비밀번호
-												변경</a>
-												<a href="/member/memberDeleteView" class="btn btn-secondary">회원탈퇴</a>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-				
 				</div>
 
 				<c:if test="${mypage_id == 2}">
 					<!-- 한줄평 목록 -->
-					<div id="myReviews" class="tab-content py-4" style="display: ${mypage_id == 2 ? 'block' : 'none'};">
+					<div id="myReviews" class="tab-content py-4"
+						style="display: ${mypage_id == 2 ? 'block' : 'none'};">
 						<div class="card" style="width: 100%; text-align: left;">
 							<div class="card-header card-header-primary">
 								<div class="card-title">나의 한줄평</div>
@@ -495,8 +493,9 @@ function showContent(id) {
 									<table class="table">
 										<c:forEach var="rev" items="${collectionRev}">
 											<tr>
-												<td><a href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
-												<td><fmt:formatDate value="${rev.reviewDate}" pattern="yyyy.MM.dd" /></td>
+												<td><a style="font-size:15px;" href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
+												<td><fmt:formatDate value="${rev.reviewDate}"
+														pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -529,7 +528,8 @@ function showContent(id) {
 						</c:if>
 					</div>
 					<!-- 게시글 목록 -->
-					<div id="myReviews" class="tab-content py-4" style="display: ${mypage_id == 2 ? 'block' : 'none'};">
+					<div id="myReviews" class="tab-content py-4"
+						style="display: ${mypage_id == 2 ? 'block' : 'none'};">
 						<div class="card" style="width: 100%; text-align: left;">
 							<div class="card-header card-header-primary">
 								<div class="card-title">나의 게시글</div>
@@ -539,8 +539,9 @@ function showContent(id) {
 									<table class="table">
 										<c:forEach var="post" items="${posts}">
 											<tr>
-												<td><a href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
-												<td><fmt:formatDate value="${post.post_regdate}" pattern="yyyy.MM.dd" /></td>
+												<td><a style="font-size:15px;" href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
+												<td><fmt:formatDate value="${post.post_regdate}"
+														pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -551,7 +552,8 @@ function showContent(id) {
 					<!-- 게시글 페이징 -->
 					<div class="text-center page-item" data-type="post">
 						<c:if test="${postPageMaker.prev}">
-							<a class="page-link" href="/member/mypage?mypage_id=2&page=${postPageMaker.startPage - 1}&tabName=collection">Prev</a>
+							<a class="page-link"
+								href="/member/mypage?mypage_id=2&page=${postPageMaker.startPage - 1}&tabName=collection">Prev</a>
 						</c:if>
 						<c:forEach var="pageNum" begin="${postPageMaker.startPage}"
 							end="${postPageMaker.endPage}" step="1">
@@ -571,7 +573,8 @@ function showContent(id) {
 						</c:if>
 					</div>
 					<!-- 댓글 목록 -->
-					<div id="myReviews" class="tab-content py-4" style="display: ${mypage_id == 2 ? 'block' : 'none'};">
+					<div id="myReviews" class="tab-content py-4"
+						style="display: ${mypage_id == 2 ? 'block' : 'none'};">
 						<div class="card" style="width: 100%; text-align: left;">
 							<div class="card-header card-header-primary">
 								<div class="card-title">나의 댓글</div>
@@ -581,8 +584,9 @@ function showContent(id) {
 									<table class="table">
 										<c:forEach var="comment" items="${comments}">
 											<tr>
-												<td><a href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
-												<td><fmt:formatDate value="${comment.com_date}" pattern="yyyy.MM.dd" /></td>
+												<td><a style="font-size:15px;" href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
+												<td><fmt:formatDate value="${comment.com_date}"
+														pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -614,7 +618,7 @@ function showContent(id) {
 						</c:if>
 					</div>
 				</c:if>
-				
+
 			</div>
 		</div>
 	</div>

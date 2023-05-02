@@ -141,13 +141,13 @@ body::-webkit-scrollbar-track {
 }
 
 .post-thumb {
-	margin-bottom: 55px;
+	margin-bottom: 60px;
 	height: 460px;
 }
 
 .post-thumb img {
 	position: absolute;
-	left: 22%;
+	left: 30%;
 	top: 10px;
 }
 
@@ -246,6 +246,8 @@ body::-webkit-scrollbar-track {
 
 .infoBox {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 18px;
+	color: #6B666A;
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
@@ -821,7 +823,7 @@ p.v-data {
 											onClick="setStar(3)">⭐</span> <span class="starR"
 											onClick="setStar(4)">⭐</span> <span class="starR"
 											onClick="setStar(5)">⭐</span> <output for="star-input">
-												<b>&nbsp;&nbsp;1</b>점
+												&nbsp;&nbsp;<b>1</b>점
 											</output>
 										</span>
 									</div>

@@ -42,7 +42,9 @@ body {
 
 .card {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	position: relative;;
+	position: relative;
+	width: 500px;
+	margin: 0 auto;
 }
 
 .card-title {
@@ -69,6 +71,7 @@ body {
 	border: 1px solid #d9d6d6;
 	color: #383838;
 	background-color: #ffffff;
+
 }
 
 .form-control#newPass {
@@ -76,7 +79,7 @@ body {
 	width: 250px;
 	height: 50px;
 	box-sizing: border-box;
-	margin-left: 33px;
+	margin-left: 43px;
 	padding: 5px 0 5px 10px;
 	border-radius: 4px;
 	border: 1px solid #d9d6d6;
@@ -165,10 +168,34 @@ body {
 
 #passUpdateForm {
 	margin-left: 60px;
+	
 }
 
-.submitBtnGroup {
-	margin-left: 50px;
+#alert-danger{
+	font-size: 15px;
+	margin-left:107px;
+	
+	
+}
+
+#alert-success{
+	font-size: 15px;
+	margin-left:107px;
+	
+}
+
+
+.control-label {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-size: 19px;
+	font-weight: 700;
+	color: #696969;
+	margin-left:-40px;
+}
+
+.submitGroup {
+	margin-top: -10px;
+	margin-left:140px;
 }
 </style>
 
@@ -180,13 +207,23 @@ body {
 				function validatePassword() {
 					var pwd1 = $("#newPass").val();
 					var pwd2 = $("#passCheck").val();
-					var pwdRegex = /^[a-zA-Z0-9!@#$%^&*()?_~]{8,16}$/;
+					var pwdRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()-=_+]{8,16}$/;
 					var passwordChars = pwd1.split("");
 					var duplicateCount = 0;
+					
+					if (pwd1 == '' || pwd1.includes(' ')) { // 공백이 있는 경우
+					    $("#alert-danger").css('display', 'inline-block').text('비밀번호는 공백 없이 입력해주세요.');
+					    return false;
+					}
+					
+					if (/^\d+$/.test(pwd1)) { // 숫자만 입력한 경우
+					    $("#alert-danger").css('display', 'inline-block').text('비밀번호에는 숫자만 사용하실 수 없습니다.');
+					    return false;
+					}
 
 					if (!pwdRegex.test(pwd1)) {
 						$("#alert-danger").css('display', 'inline-block').text(
-								'비밀번호는 8~16자 이내의 영문, 숫자, 특수문자만 사용 가능합니다.');
+								'8~16자 이내의 영문, 숫자, 특수문자만 가능합니다.');
 						return false;
 					}
 
@@ -246,9 +283,11 @@ body {
 					if (pwVal.length < 8) {
 						alert("비밀번호는 최소 8자 이상 입력해주세요.");
 					} else {
+						if(confirm("비밀번호를 변경하시겠습니까?")){
 						$("#passUpdateForm").submit();
 						alert("비밀번호 변경이 완료 되었습니다. 다시 로그인 해주세요 !");
 					}
+				}
 				});
 
 				// 취소
@@ -289,14 +328,14 @@ body {
 								<label class="control-label" for="passCheck">새 비밀번호 확인</label> <input
 									class="form-control" type="password" id="passCheck"
 									name="passCheck" /> <span id="alert-success"
-									style="display: none; color: #000000;">비밀번호가 일치합니다.</span> <span
+									style="display: none; color: green;">비밀번호가 일치합니다.</span> <span
 									id="alert-danger"
 									style="display: none; color: #d92742; font-weight: bold;">비밀번호가
 									일치하지 않습니다.</span>
 							</div>
 
 						</form>
-						<div class="text-center submitBtnGroup">
+						<div class="submitGroup">
 							<button class="btn btn-primary" type="button" id="submit">비밀번호
 								변경</button>
 							<button class="btn btn-secondary cancel" type="button">취소</button>

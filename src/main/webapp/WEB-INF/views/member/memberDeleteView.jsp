@@ -83,6 +83,8 @@ body {
 
 .card {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	width: 550px;
+	margin: 0 auto;
 }
 
 .card .card-header {
@@ -121,7 +123,7 @@ body {
 
 .delFormGroup {
 	position: relative;
-	left: 25%;
+	left: 15%;
 	margin-bottom: 40px;
 	width: 550px;
 }
@@ -139,9 +141,6 @@ body {
 	background-color: #f2f2f2;
 }
 
-.submitBtnGroup {
-	margin-left: 15px;
-}
 </style>
 
 
@@ -216,7 +215,7 @@ body {
 									name="userName" value="${member.userName}" readonly="readonly" />
 							</div>
 						</form>
-						<div class="text-center submitBtnGroup">
+						<div class="text-center">
 							<button class="btn btn-secondary" type="button" id="submit">회원탈퇴</button>
 							<button class="btn btn-primary cancel" type="button">취소</button>
 						</div>
