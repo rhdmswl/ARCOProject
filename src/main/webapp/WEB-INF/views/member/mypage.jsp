@@ -175,10 +175,12 @@ margin-bottom:-30px;
 	border-radius: 10px;
 	padding-left: 10px;
 	margin-bottom: 5px;
+	width:80%;
+	
 }
 
 .memberGroup2 {
-	width: 200px;
+	width: 80%;
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	padding-left: 10px;
@@ -231,6 +233,19 @@ margin-bottom:-30px;
 	color: #f21378;
 }
 
+
+.card {
+	margin-top: 10px;
+	
+}
+
+
+
+.memberGroup[readonly] {
+	background-color: #f2f2f2;
+}
+
+
 .sideListGroup {
 	list-style: none;
 	text-align: center;
@@ -275,30 +290,80 @@ margin-bottom:-30px;
 	display: none;
 	padding: 6px 12px;
 }
+
+.row{
+margin-bottom:50px;
+}
+.submitGroup{
+margin-top:-50px;
+}
+
+#alert-success2,
+#alert-danger2{
+font-size:15px;
+margin-left:7px;
+margin-top:-10px;
+}
 </style>
 </head>
 <script type="text/javascript">
 $(document).ready(function() {
 
-    $('.form-control').focusout(function() {
-        var userName = $("#userName").val();
-        var nameRegex = /^[a-zA-Z가-힣0-9]{2,8}$/;
-        var numRegex = /^[0-9]{2,10}$/;
-        var spaceRegex = /\s/;
+	$('.form-control.memberGroup2').focusout(function() {
+		 var userName = $("#userName").val();
+		    var nameRegex = /^[a-zA-Z가-힣0-9]{2,10}$/;
+		    var numRegex = /^[0-9]{2,10}$/;
+		    var spaceRegex = /\s/;
 
-        if (spaceRegex.test(userName)) {
-            $("#alert-danger2").css('display', 'inline-block').text('닉네임에는 공백을 입력할 수 없습니다.');
-            return false;
-        } else if (!nameRegex.test(userName)) {
-            $("#alert-danger2").css('display', 'inline-block').text('닉네임은 2자~8자 이하의 영문, 한글, 숫자만 사용 가능합니다.');
-            return false;
-        } else if (numRegex.test(userName)) {
-            $("#alert-danger2").css('display', 'inline-block').text('닉네임에는 숫자만 입력할 수 없습니다.');
-            return false;
-        } else {
-            $("#alert-danger2").css('display', 'none');
-        }
-    });
+		    if (spaceRegex.test(userName)) {
+		        $("#alert-danger2").css('display', 'inline-block')
+		            .text('닉네임에는 공백을 입력할 수 없습니다.');
+		        $("#alert-success2").css('display', 'none');
+		        $('#submit').attr('disabled', true);
+		        return false;
+		    } else if (!nameRegex.test(userName)) {
+		        $("#alert-danger2").css('display', 'inline-block')
+		            .text('닉네임은 2자~10자 이하의 영문, 한글, 숫자만 사용가능합니다.');
+		        $("#alert-success2").css('display', 'none');
+		        $('#submit').attr('disabled', true);
+		        return false;
+		    } else if (numRegex.test(userName)) {
+		        $("#alert-danger2").css('display', 'inline-block')
+		            .text('닉네임에는 숫자만 입력할 수 없습니다.');
+		        $("#alert-success2").css('display', 'none');
+		        $('#submit').attr('disabled', true);
+		        return false;
+		    } else {
+		        $("#alert-danger2").css('display', 'none');
+		    }
+
+		    $.ajax({
+		        url: "/member/nameChk",
+		        type: "post",
+		        dataType: "json",
+		        data: {
+		            "userName": $("#userName").val()
+		        },
+		        success: function(data) {
+		        	if (data == 1) {						        		
+		                $("#alert-danger2").css('display', 'inline-block')
+		                    .text('중복된 닉네임입니다. 다시 입력해주세요.');
+		                $("#alert-success2").css('display', 'none');
+		                $('#submit').attr('disabled', true);
+		               
+		               
+		            } else if (data == 0) {
+		                $("#alert-success2").css('display', 'inline-block')
+		                    .text('사용 가능한 닉네임입니다.');
+		                $("#alert-danger2").css('display', 'none');
+		                $('#submit').attr('disabled', false);
+		               
+		               
+		            }
+		        }
+		    });
+		});
+
 
     $("#submit").on("click", function() {
         var nameChkVal = $("#nameChk").val();
@@ -307,10 +372,7 @@ $(document).ready(function() {
         if (usernameVal.length < 2 || usernameVal.length > 8) {
             alert("닉네임은 2자 이상 8자 이하로 입력해주세요.");
             return false;
-        } else if (nameChkVal !== "Y") {
-            alert("중복확인을 해주세요.");
-            return false;
-        } else if (usernameVal.indexOf("관리자") === 0) {
+        }  else if (usernameVal.indexOf("관리자") === 0) {
             alert("이 닉네임은 사용하실 수 없습니다.");
             return false;
         
@@ -323,36 +385,7 @@ $(document).ready(function() {
     });
 
 });
-
-function fn_nameChk() {
-    $.ajax({
-        url: "/member/nameChk",
-        type: "post",
-        dataType: "json",
-        data: {
-            "userName": $("#userName").val()
-        },
-        success: function(data) {
-            if (data == 1) {
-                alert("중복된 닉네임입니다.");
-                $("#nameChk").val("D");
-            } else if (data == 0) {
-                $("#nameChk").val("Y");
-                alert("사용 가능한 닉네임입니다.");
-            }
-        }
-    });
-}
-
-function showContent(id) {
-    var mypage_id = ${mypage_id};
-    document.getElementById("select").style.display = (id === 1 && mypage_id === 1) ? "block" : "none";
-    document.getElementById("profile").style.display = (id === 3 && mypage_id === 3) ? "block" : "none";
-    document.getElementById("myReviews").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
-    document.getElementById("myPosts").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
-    document.getElementById("myComments").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
-    document.getElementById("pagination").style.display = (id === 2 && mypage_id === 2) ? "block" : "none";
-}
+   
 
 </script>
 
@@ -405,8 +438,10 @@ function showContent(id) {
 											<div class="bmd-label-floating" for="userName">닉네임</div>
 											<input type="text" id="userName" name="userName"
 												class="form-control memberGroup2" value="${member.userName}" />
-											<button class="btn btn-primary btn-sm" type="button"
-												id="nameChk" onclick="fn_nameChk();" value="N">중복확인</button>
+												<span id="alert-danger2" style="display: none; color: #d92742; font-weight: bold;"></span>
+
+												<span id="alert-success2" style="display: none; color: green;"></span>
+											
 
 										</div>
 									</div>
@@ -430,7 +465,7 @@ function showContent(id) {
 										</div>
 									</div>
 								</div>
-								<div class="row">
+								<div class="submitGroup">
 									<div class="col-md-12">
 										<div style="text-align: right;">
 											<button type="submit" id="submit"

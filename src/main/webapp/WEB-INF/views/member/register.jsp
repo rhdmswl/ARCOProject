@@ -237,76 +237,124 @@ body::-webkit-scrollbar-track {
 
 .submitBtnGroup {
 	margin-top: 50px;
-	margin-left: -170px;
+	margin-left: -140px;
+}
+
+#alert-success{
+	font-size: 15px;
+	margin-left:20px;
+	
+}
+
+#alert-success1{
+	font-size: 15px;
+	margin-left:20px;
+	
+}
+
+#alert-success2{
+	font-size: 15px;
+	margin-left:20px;
+	
+}
+
+
+#alert-danger{
+	font-size: 15px;
+	margin-left:117px;
+	
+}
+
+#alert-danger1 {
+	font-size: 15px;
+	margin-left:117px;
+	
+}
+
+#alert-danger2 {
+	font-size: 15px;
+	margin-left:120px;
+	
+}
+
+#alert-danger3 {
+	font-size: 15px;
+	margin-left:120px;
+	
 }
 </style>
 
 </head>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						// 취소
-						$(".cancel").on("click", function() {
-							location.href = "/";
-						})
-					$('.form-control').focusout(function() {
-    var userId = $("#userId").val();
-    var idRegex = /^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]{4,10}$/;
-    var spaceRegex = /\s/;
+	
+	
+							$(document)
+									.ready(
+											function() {
+												// 취소
+												$(".cancel").on("click", function() {
+													location.href = "/";
+												})
+												
+												
+							//아이디					
+											$('.form-control').focusout(function() {
+						    var userId = $("#userId").val();
+						    var idRegex = /^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]{4,10}$/;
+						    var spaceRegex = /\s/;
+						
+						    if (spaceRegex.test(userId)) {
+						        $("#alert-danger1").css('display', 'inline-block').text('아이디에는 공백을 입력할 수 없습니다.');
+						        $("#alert-success1").css('display', 'none');
+						        $('#submit').attr('disabled', true);
+						        
+						        return false;
+						    } else if (!idRegex.test(userId)) {
+						        $("#alert-danger1").css('display', 'inline-block').text('아이디는 영문과 숫자 조합이며 4자이상 10자 이하이어야 합니다.');
+						        $("#alert-success1").css('display', 'none');
+						        $('#submit').attr('disabled', true);
+						        
+						        return false;
+						    } else if (/^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/.test(userId)) {
+						        $("#alert-danger1").css('display', 'inline-block').text('아이디에는 한글만 입력할 수 없습니다.');
+						        $("#alert-success1").css('display', 'none');
+						        $('#submit').attr('disabled', true);
+						        
+						        return false;
+						    } else {
+						        $("#alert-danger1").css('display', 'none');
+						        
+						        
+						    }
+						    
+						    $.ajax({
+						        url : "/member/idChk",
+						        type : "post",
+						        dataType : "json",
+						        data : {
+						            "userId" : $("#userId").val()
+						        },
+						        success : function(data) {
+						            if (data == 1) {
+						            	 $("#alert-danger1").css('display', 'inline-block').text('중복된 아이디입니다. 다시 입력해주세요.');
+						            	 $("#alert-success1").css('display', 'none');
+						            	 $('#submit').attr('disabled', true);
+						            	 
+						               
+						            } else if (data == 0) {
+						                
+						            	 $("#alert-success1").css('display', 'inline-block').text('사용가능한 아이디입니다.');
+						            	 $("#alert-danger1").css('display', 'none');
+						            	 $('#submit').attr('disabled', false);
+						            	 
+						                
+						            }
+						        }
+						    });
+						});
 
-    if (spaceRegex.test(userId)) {
-        $("#alert-danger1").css('display', 'inline-block').text('아이디에는 공백을 입력할 수 없습니다.');
-        $("#alert-success1").css('display', 'none');
-        $('#submit').attr('disabled', true);
-        
-        return false;
-    } else if (!idRegex.test(userId)) {
-        $("#alert-danger1").css('display', 'inline-block').text('아이디는 영문과 숫자 조합이며 4자이상 10자 이하이어야 합니다.');
-        $("#alert-success1").css('display', 'none');
-        $('#submit').attr('disabled', true);
-        
-        return false;
-    } else if (/^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/.test(userId)) {
-        $("#alert-danger1").css('display', 'inline-block').text('아이디에는 한글만 입력할 수 없습니다.');
-        $("#alert-success1").css('display', 'none');
-        $('#submit').attr('disabled', true);
-        
-        return false;
-    } else {
-        $("#alert-danger1").css('display', 'none');
-        
-        
-    }
-    
-    $.ajax({
-        url : "/member/idChk",
-        type : "post",
-        dataType : "json",
-        data : {
-            "userId" : $("#userId").val()
-        },
-        success : function(data) {
-            if (data == 1) {
-            	 $("#alert-danger1").css('display', 'inline-block').text('중복된 아이디입니다. 다시 입력해주세요.');
-            	 $("#alert-success1").css('display', 'none');
-            	 $('#submit').attr('disabled', true);
-            	 
-               
-            } else if (data == 0) {
-                
-            	 $("#alert-success1").css('display', 'inline-block').text('사용가능한 아이디입니다.');
-            	 $("#alert-danger1").css('display', 'none');
-            	 $('#submit').attr('disabled', false);
-            	 
-                
-            }
-        }
-    });
-});
 
-
-
+						//비밀번호
 						$('.form-control').focusout(function() {
 						    var pwd1 = $("#userPass").val();
 						    var pwd2 = $("#passCheck").val();
@@ -345,7 +393,7 @@ body::-webkit-scrollbar-track {
 						});
 
 
-
+						//닉네임
 						$('.form-control').focusout(function() {
 						    var userName = $("#userName").val();
 						    var nameRegex = /^[a-zA-Z가-힣0-9]{2,10}$/;
@@ -403,7 +451,7 @@ body::-webkit-scrollbar-track {
 
 
 
-
+						//전화번호	
 						$('.form-control').focusout(
 								function() {
 									var phone = $("#phone").val();
@@ -420,6 +468,8 @@ body::-webkit-scrollbar-track {
 									}
 								});
 
+						
+						//이메일 
 						$('#mail-Check-Btn').click(function() {
 							const email = $('#email').val() // 이메일 주소값 얻어오기!
 							console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
@@ -467,6 +517,8 @@ body::-webkit-scrollbar-track {
 							    $('#submit').attr('disabled', true);
 							  }
 							});
+						
+						
 						$("#submit")
 								.on(
 										"click",
@@ -579,23 +631,7 @@ body::-webkit-scrollbar-track {
 
 												  return true;
 												}
-											
-										/* 	function isValidPassword(password) {
-												  let consecutiveCount = 1;
-												  for (let i = 1; i < password.length; i++) {
-												    if (password[i] === password[i - 1]) {
-												      consecutiveCount++;
-												      if (consecutiveCount >= 3) {
-												        return false;
-												      }
-												    } else {
-												      consecutiveCount = 1;
-												    }
-												  }
-												  return true;
-												} */
-
-
+								
 										});
 					});
 
