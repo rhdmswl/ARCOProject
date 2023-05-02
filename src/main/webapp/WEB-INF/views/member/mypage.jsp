@@ -321,31 +321,6 @@ $(document).ready(function() {
             }
         }
     });
-    
-    $(".page-item a.page-link").on("click", function (event) {
-        event.preventDefault();
-        var type = $(this).closest(".page-item").data("type");
-        var url = $(this).attr("href");
-
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function (data) {
-                // 여기서 data는 새로 받아온 HTML 페이지
-                // 새로 받아온 페이지에서 페이징 영역의 내용을 가져와 현재 페이지의 페이징 영역에 넣어줌
-                var newPageItem = $(data).find(".page-item[data-type='" + type + "']");
-                $(".page-item[data-type='" + type + "']").html(newPageItem.html());
-
-                // 새로 받아온 페이지에서 해당 타입의 목록 영역의 내용을 가져와 현재 페이지의 목록 영역에 넣어줌
-                var contentId = type === "review" ? "myReviews" : type === "post" ? "myPosts" : type === "comment" ? "myComments"
-                var newContent = $(data).find("#" + contentId);
-                $("#" + contentId).html(newContent.html());
-            },
-            error: function (xhr, status, error) {
-                console.log("페이징 오류: " + error);
-            }
-        });
-    });
 
 });
 
