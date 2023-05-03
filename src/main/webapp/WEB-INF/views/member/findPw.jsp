@@ -230,7 +230,7 @@ body::-webkit-scrollbar-track {
 	position: relative;
     bottom: -30px;
     right: 50%;
-    transform: translateX(50%); /* 추가됨 */
+    transform: translateX(50%);
 }
 
 .modaltext {

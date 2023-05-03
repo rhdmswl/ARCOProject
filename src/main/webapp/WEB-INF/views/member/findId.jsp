@@ -211,10 +211,10 @@ body::-webkit-scrollbar-track {
 .modal-content {
 	position: fixed;
 	left: 50%;
-	top: 20%;
+	top: 50%;
 	transform: translate(-50%, -50%);
 	background-color: #fefefe;
-	margin: 15% auto;
+	margin: auto;
 	padding: 20px;
 	border-radius: 10px;
 	width: 400px;
@@ -228,16 +228,18 @@ body::-webkit-scrollbar-track {
 	cursor: pointer;
 	height: 48px;
 	position: relative;
-	top: 30px;
-	right: -30px;
+	bottom: -30px;
+	right: 50%;
+	transform: translateX(50%);
 }
 
 .modaltext {
-	vertical-align: middle;
+	vertical-align: text-bottom;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 500;
 	position: relative;
 	top: 30px;
+	transform: translate(-50%, -50%);
 }
 </style>
 
