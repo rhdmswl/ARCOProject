@@ -1,24 +1,25 @@
 console.log("reivew module......");
 var CollectionReviewService = (function(){
-function add(review, collback, error){
-console.log("review.........");
-$.ajax({
-			type: 'post',
-			url: '/review/new',
-			data : JSON.stringify(review),
-			contentType : "application/json; charset=utf-8",
-			success: function(result, status, xhr) {
-				if(callback) {
-					callback(result);
-				}
-			},
-			error : function(xhr, status, er){
-				if(error) {
-					error(er);
-				}
+
+		function add(review, callback, error){
+		console.log("review.........");
+		$.ajax({
+					type: 'post',
+					url: '/review/new',
+					data : JSON.stringify(review),
+					contentType : "application/json; charset=utf-8",
+					success: function(result, status, xhr) {
+						if(callback) {
+							callback(result);
+						}
+					},
+					error : function(xhr, status, er){
+						if(error) {
+							error(er);
+						}
+					}
+				})
 			}
-		})
-	}
 	// end add
 	
 		function getList(param, callback, error) {
@@ -42,9 +43,10 @@ $.ajax({
 		$.ajax( {
 			type: 'delete',
 			url : '/review/' + revSeq,
-			success : function(deleteResult, status, xhr) {
+			dataType: 'text',
+			success : function(result, status, xhr) {
 				if(callback) {
-					callback(deleteResult);
+					callback(result);
 				}
 			},
 			error : function(xhr, status, er) {
@@ -54,6 +56,7 @@ $.ajax({
 			}
 		});
 	}
+	
 	
 	function update(CollectionRev, callback, error) {
 
@@ -115,12 +118,12 @@ $.ajax({
 			}
 	};
 	
-	return{
-	add:add,
-	getList:getList,
-	remove:remove,
-	update:update,
-	get:get,
-	displayTime:displayTime
+	return {
+		add:add,
+		getList:getList,
+		remove:remove,
+		update:update,
+		get:get,
+		displayTime:displayTime
 	};
 })();
