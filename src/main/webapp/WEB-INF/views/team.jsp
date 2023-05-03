@@ -113,11 +113,15 @@ body::-webkit-scrollbar-track {
 .goeunji, .kimyonghyun, .kimminhoe, .kimsanho, .parkjunghyun, .jeonjisoo {
 	font-weight: 700;
 	font-size: 18px;
-	margin-top: 20px;
+	margin-top: 30px;
 }
 
 .memCont {
 	margin-bottom: 3px;
+}
+
+.memGroup {
+	margin-top: 45px;
 }
 
 </style>
@@ -170,35 +174,37 @@ body::-webkit-scrollbar-track {
 				<p class="memberList">
 					ARCO Team Project Member
 				</p>
-				<div class="mem-1">
-					<div class="goeunji">고은지 (Team Leader)</div>
-					<p class="memCont">전시 파트 구현</p>
-					<a href="#"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
-				</div>
-				<div class="mem-2">
-					<div class="kimyonghyun">김용현</div>
-					<p class="memCont">전시 파트 구현</p>
-					<a href="#"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
-				</div>
-				<div class="mem-3">
-					<div class="kimminhoe">김민회</div>
-					<p class="memCont">커뮤니티 파트 구현, 배포</p>
-					<a href="https://github.com/mine7272/"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
-				</div>
-				<div class="mem-4">
-					<div class="kimsanho">김산호</div>
-					<p class="memCont">커뮤니티 파트 구현, 프론트엔드&UI</p>
-					<a href="https://github.com/sanho00"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
-				</div>
-				<div class="mem-5">
-					<div class="parkjunghyun">박정현</div>
-					<p class="memCont">회원 파트 구현</p>
-					<a href="https://github.com/junghyun-jacky"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
-				</div>
-				<div class="mem-6">
-					<div class="jeonjisoo">전지수</div>
-					<p class="memCont">회원 파트 구현</p>
-					<a href="https://github.com/JEONJISU0913"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
+				<div class="memGroup">
+					<div class="mem-1">
+						<div class="goeunji">고은지 (Team Leader)</div>
+						<p class="memCont">전시 파트 구현</p>
+						<a href="#"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
+					</div>
+					<div class="mem-2">
+						<div class="kimyonghyun">김용현</div>
+						<p class="memCont">전시 파트 구현</p>
+						<a href="https://github.com/KimMonkey2945"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
+					</div>
+					<div class="mem-3">
+						<div class="kimminhoe">김민회</div>
+						<p class="memCont">커뮤니티 파트 구현, 배포</p>
+						<a href="https://github.com/mine7272/"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
+					</div>
+					<div class="mem-4">
+						<div class="kimsanho">김산호</div>
+						<p class="memCont">커뮤니티 파트 구현, 프론트엔드&UI, Jira 관리</p>
+						<a href="https://github.com/sanho00"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
+					</div>
+					<div class="mem-5">
+						<div class="parkjunghyun">박정현</div>
+						<p class="memCont">회원 파트 구현, Notion 관리</p>
+						<a href="https://github.com/junghyun-jacky"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
+					</div>
+					<div class="mem-6">
+						<div class="jeonjisoo">전지수</div>
+						<p class="memCont">회원 파트 구현</p>
+						<a href="https://github.com/JEONJISU0913"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
+					</div>
 				</div>
 			</div>
 		</div>
