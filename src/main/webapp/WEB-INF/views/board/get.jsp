@@ -221,7 +221,7 @@ body::-webkit-scrollbar-track {
 	border-radius: 20px;
 	padding: 60px;
 	padding-bottom: 80px;
-	position: absolute;
+	position: relative;
 	left: 20px;
 }
 
@@ -511,6 +511,10 @@ button {
 .likeBox {
 	text-align: center;
 	line-height: 10px;
+}
+
+.likeBtn {
+	margin-right: 10px;
 }
 
 .likeBtnText {
