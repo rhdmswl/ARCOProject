@@ -191,49 +191,98 @@ body::-webkit-scrollbar-track {
 
 .submitBtnGroup {
 	margin-top: 10px;
-	position: relative;
+	position: relative;	
 	top: 20px;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 300;
+	left: 0;
+	top: 0;
+	width: 120%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	position: fixed;
+	left: 50%;
+	top: 20%;
+	transform: translate(-50%, -50%);
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border-radius: 10px;
+	width: 400px;
+	height: 170px;
+	box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.modal-footer {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	cursor: pointer;
+	height: 48px;
+	position: relative;
+	top: 30px;
+	right: -30px;
+}
+
+.modaltext {
+	vertical-align: middle;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	position: relative;
+	top: 30px;
 }
 </style>
 
 </head>
 <script type="text/javascript">
-	$(document).ready(function() {
-		// 취소
-		$(".cancel").on("click", function() {
-			location.href = "login";
-		});
+$(document).ready(function() {
+    $(".cancel").on("click", function() {
+        location.href = "login";
+    });
 
-		// 아이디 찾기 
-		$('#find-Id-Btn').click(function() {
-			//db
-			const userName = $("#userName").val();
-			const phone = $("#phone").val();
-			console.log(userName);
-			console.log(phone);
+    // 아이디 찾기 
+    $('#find-Id-Btn').click(function() {
+        const userName = $("#userName").val();
+        const phone = $("#phone").val();
+        console.log(userName);
+        console.log(phone);
 
-			$.ajax({
-				url : "/member/findId",
-				type : "post",
-				dataType : "text",
-				data : {
-					"userName" : $("#userName").val(),
-					"phone" : $("#phone").val()
-				},
-				success : function(data) {
-					if (data.trim() !== "") {
-						alert("아이디는 " + data + "입니다. 다시 로그인해주세요 !");
-						location.href = "login";
-					} else {
-						alert("일치하는 정보가 없습니다.");
-					}
-				}
+        $.ajax({
+            url : "/member/findId",
+            type : "post",
+            dataType : "text",
+            data : {
+                "userName" : $("#userName").val(),
+                "phone" : $("#phone").val()
+            },
+            success : function(data) {
+                if (data.trim() !== "") {
+                    $("#modal-text").text("아이디는 " + data + "입니다. 다시 로그인해주세요 !");
+                    $('#myModal').show();
+                } else {
+                    $("#modal-text").text("일치하는 정보가 없습니다.");
+                    $('#myModal').show();
+                }
+            }
+        });
+    });
 
-			});
-
-		});
-	});
+    // 모달창 닫기 이벤트
+    $("#close_modal").click(function() {
+        $('#myModal').hide();
+        location.href = "/member/login";
+    });
+});
 </script>
+
 <body>
 	<section id="container">
 		<div class="row justify-content-center">
@@ -272,7 +321,18 @@ body::-webkit-scrollbar-track {
 			</div>
 		</div>
 	</section>
-
+	
+	<!-- modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p style="text-align: center; line-height: 1.5;">
+                <span id="modal-text" class="modaltext"></span>
+            </p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="close_modal">Close</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
