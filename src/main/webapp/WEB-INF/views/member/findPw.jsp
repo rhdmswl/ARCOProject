@@ -59,8 +59,8 @@ body::-webkit-scrollbar-track {
 	position: relative;
 	width: 500px;
 	position: relative;
-	right: 25px;	
-	margin-bottom: 70px;	
+	right: 25px;
+	margin-bottom: 70px;
 	padding-left: 10px;
 }
 

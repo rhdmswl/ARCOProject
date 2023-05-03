@@ -496,10 +496,11 @@ button {
     font-size: .875rem;
     background-color: #ddd;
     border: 0;
+    box-shadow: none;
 }
 
 .page-link:focus, .page-link:hover {
-	color: #000;
+	color: #f21378;
 	background-color: #fff;
 	border : 0;
 }
@@ -631,7 +632,7 @@ button {
 							<form role="form">
 								<div class="form-group">
 									<textarea id="com_writer" name="com_writer" readonly="readonly"
-										class="form-control" rows="1" style="resize: none; color:black;">&nbsp;&nbsp;&nbsp;${member.userName}</textarea>
+										class="form-control" rows="1" style="padding-left:10px; resize: none; color:black;">${member.userName}</textarea>
 									<textarea id="com_content" name="com_content"
 										class="form-control" rows="3" style="resize: none; color:black; border:1px solid #ccc; height: 80px;"></textarea>
 								</div>
@@ -720,7 +721,8 @@ button {
 			});
 			
 			// 페이징
-			function showReplyPage(com_cnt){
+			function showReplyPage(com_cnt,pageNum){
+				console.log("paging pageNum : "+pageNum);
 				endNum=Math.ceil(pageNum/10.0)*10;
 				
 				var startNum=endNum-9;
@@ -738,16 +740,26 @@ button {
 				var str="<ul class='pagination pull-right pageItemGroup'>";
 				
 				if(prev){
-					str+= "<li class='page-item'><a class='page=link' href='"+(startNum-1)+"'>Previous</a></li>";
+					str+= "<li class='page-item'><a class='page-link' href='"+(startNum-1)+"'>Previous</a></li>";
 				}
 				
 				for(var i = startNum; i<=endNum; i++){
-					var active=pageNum==i?"active":"";
+					var active=""
+					console.log("==============");
+					console.log("page Num : "+pageNum);
+					console.log("i : "+i);
+					if (pageNum==i)
+						{active="active"
+						}
+					else {
+						active=""
+					}
+					console.log(active+i);
 					str+="<li class='page-item"+active+"'><a class='page-link' href='"+i+"'>"+i+"<a></li>";
 				}
 				
 				if(next){
-					str+= "<li class='page-item'><a class='page=link' href='"+(endNum+1)+"'>Next</a></li>";
+					str+= "<li class='page-item'><a class='page-link' href='"+(endNum+1)+"'>Next</a></li>";
 				}
 				
 				str+="</ul></div>";
@@ -783,7 +795,7 @@ button {
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
-					str+= "    <div><div class='header'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
+					str+= "<div><div class='header'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
 					if (list[i].com_writer_id=="${member.userId}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
@@ -812,7 +824,7 @@ button {
 					}
 				replyUL.html(str);
 
-				showReplyPage(com_cnt);
+				showReplyPage(com_cnt,page);
 				document.getElementById("com_id").value=com_id;
 				});
 			}
@@ -836,6 +848,12 @@ button {
 			
 
 			$('#Comment_regist').on("click",function(e) {
+				if (($('#com_content').val())=="")
+					{
+					alert('내용을 입력해주세요!');
+					return;
+					}
+				
 				var reply={
 						com_content:$('#com_content').val().replace(/\n/g,"<br>"),
 						com_writer:$('#com_writer').val(),
@@ -869,7 +887,7 @@ button {
 			    var com_id = $(this).closest("li").data("com-id");
 			    replyService.remove(com_id, function(result){
 			        alert(result);
-			        showList(1);
+			        location.reload();
 			    });
 			});
 			

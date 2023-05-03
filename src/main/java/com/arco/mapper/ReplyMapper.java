@@ -18,5 +18,6 @@ public interface ReplyMapper {
 	          @Param("post_id") Long post_id);
 	
 	public int getCountByComId(Long com_id);
+	public void deleteWithBoard(Long post_id);
 	
 }

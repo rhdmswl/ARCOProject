@@ -508,6 +508,7 @@ p.v-data {
 }
 
 .position {
+	margin-top: 20px;
 	margin-left: 30px;
 	margin-bottom: 20px;
 }
@@ -522,18 +523,24 @@ p.v-data {
 	background: #fff;
 	overflow: hidden;
 	z-index: 2;
+	height: 60px;
 }
 
 #category li {
 	float: left;
 	list-style: none;
-	width: 50px;
-	height: 50px;
+	width: 55px;
+	height: 60px;
 	border-right: 1px solid #acacac;
 	padding: 6px 0;
+	padding-left: 11px;
+	padding-right: 11px;
 	margin: 7px 0 10px 0;
 	text-align: center;
 	cursor: pointer;
+	position: relative;
+	bottom:6px;
+	right: 0px;
 }
 
 #category li.on {
@@ -542,8 +549,6 @@ p.v-data {
 
 #category li:hover {
 	background: #ffe6e6;
-	border-left: 1px solid #acacac;
-	margin-left: -1px;
 }
 
 #category li:last-child {
@@ -814,12 +819,9 @@ p.v-data {
 								<div id="map"
 									style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 								<ul id="category">
-									<li id="PK6" data-order="0"><span class="parking"></span>
-										주차장</li>
-									<li id="FD6" data-order="1"><span class="bab"></span> 음식점
-									</li>
-									<li id="CE7" data-order="2"><span class="cafe"></span> 카페
-									</li>
+									<li id="PK6" data-order="0"><span class="parking"></span>주차장</li>
+									<li id="FD6" data-order="1"><span class="bab"></span>음식점</li>
+									<li id="CE7" data-order="2"><span class="cafe"></span>카페</li>
 								</ul>
 								<!-- 길찾기로 이동 -->
 								<div class="mapNavi" style="margin-bottom: 40px;">
