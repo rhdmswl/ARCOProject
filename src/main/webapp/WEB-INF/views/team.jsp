@@ -178,7 +178,7 @@ body::-webkit-scrollbar-track {
 					<div class="mem-1">
 						<div class="goeunji">고은지 (Team Leader)</div>
 						<p class="memCont">전시 파트 구현</p>
-						<a href="#"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
+						<a href="https://github.com/rhdmswl"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
 					</div>
 					<div class="mem-2">
 						<div class="kimyonghyun">김용현</div>
