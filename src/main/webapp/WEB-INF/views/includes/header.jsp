@@ -425,7 +425,7 @@ position: absolute;
 									href="/collection/list">Exhibition</a></li>
 								<li class="nav-item2"><a class="nav-link2" style="text-decoration:none;"
 									href="/board/list?pageNum=1&brd_id=4">Community</a></li>
-								<li class="nav-item2"><a class="nav-link2" href="/about">About</a>
+								<li class="nav-item2"><a class="nav-link2" style="text-decoration:none;" href="/about">About</a>
 								</li>
 							</ul>
 						</div>
