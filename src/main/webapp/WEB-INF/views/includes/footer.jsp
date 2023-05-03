@@ -65,14 +65,14 @@
 	font-size: 14px;
 	color: #969696;
 	position: absolute;
-	top: 70px;
+	top: 90px;
 	margin-left: 20px;
 }
 
 .linkIcon {
 	width: 100%;
 	position: absolute;
-	top: 140px;
+	top: 70px;
 	padding-left: 20px;
 	margin-top: 5px;
 }
@@ -98,18 +98,16 @@
 				</div>
 				<!-- Copywrite Text -->
 				<div class="copy_right_text footerText">
-					<p class="memberList">
-						Team Member: 고은지, 김민회, 김산호, 김용현, 박정현, 전지수 | 
-						Inquiry: Github or Notion | 
-						<br/>It's a MultiCampus final project, and all right reserved our team.
-						<br/>If you have any questions, please feel free to contact us.
-					</p>
 					<div class="linkIcon">
 						<a href="https://github.com/rhdmswl/ARCOProject.git " target="_blank">
 							<img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
 						<a href="https://butternut-saturday-78b.notion.site/2-cf3fb9406b27433189c14aba503970c5" target="_blank">
 							<img src="https://i.imgur.com/Fd6YQVm.png" width="25px"></a>
 					</div>
+					<p class="memberList">
+						<br/>It's a MultiCampus final project and all right reserved our team.
+						<br/>If you have any questions, please feel free to contact us.
+					</p>
 				</div>
 			</div>
 	</div>

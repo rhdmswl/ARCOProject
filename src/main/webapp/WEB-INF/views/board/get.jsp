@@ -496,10 +496,11 @@ button {
     font-size: .875rem;
     background-color: #ddd;
     border: 0;
+    box-shadow: none;
 }
 
 .page-link:focus, .page-link:hover {
-	color: #000;
+	color: #f21378;
 	background-color: #fff;
 	border : 0;
 }
@@ -631,7 +632,7 @@ button {
 							<form role="form">
 								<div class="form-group">
 									<textarea id="com_writer" name="com_writer" readonly="readonly"
-										class="form-control" rows="1" style="resize: none; color:black;">&nbsp;&nbsp;&nbsp;${member.userName}</textarea>
+										class="form-control" rows="1" style="padding-left:10px; resize: none; color:black;">${member.userName}</textarea>
 									<textarea id="com_content" name="com_content"
 										class="form-control" rows="3" style="resize: none; color:black; border:1px solid #ccc; height: 80px;"></textarea>
 								</div>
@@ -739,7 +740,7 @@ button {
 				var str="<ul class='pagination pull-right pageItemGroup'>";
 				
 				if(prev){
-					str+= "<li class='page-item'><a class='page=link' href='"+(startNum-1)+"'>Previous</a></li>";
+					str+= "<li class='page-item'><a class='page-link' href='"+(startNum-1)+"'>Previous</a></li>";
 				}
 				
 				for(var i = startNum; i<=endNum; i++){
@@ -758,7 +759,7 @@ button {
 				}
 				
 				if(next){
-					str+= "<li class='page-item'><a class='page=link' href='"+(endNum+1)+"'>Next</a></li>";
+					str+= "<li class='page-item'><a class='page-link' href='"+(endNum+1)+"'>Next</a></li>";
 				}
 				
 				str+="</ul></div>";
