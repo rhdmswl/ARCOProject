@@ -18,24 +18,25 @@
 	margin-top: 130px;
 	margin-bottom: 80px;
 	display: table;
-	max-width: 65%;
+
 }
 
 .indexrow {
-	width: 1200px;
 	display: inline-black;
 	vertical-align: middle;
-	padding-left: 90px;
+	padding-left: 50px;
 }
 
 .listFirst {
 	float: left;
-	margin-right: 150px;
+	margin-right: 170px;
+	padding-right: 70px;
 }
 
 .listSecond {
 	float: left;
-	margin-right: 150px;
+	margin-right: 170px;
+	padding-left: 20px;
 }
 
 
