@@ -9,6 +9,7 @@ import com.arco.domain.BoardVO;
 import com.arco.domain.Criteria;
 import com.arco.domain.LikeVO;
 import com.arco.mapper.BoardMapper;
+import com.arco.mapper.ReplyMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -20,6 +21,9 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
 	private BoardMapper mapper;
+	
+	@Autowired
+	private ReplyMapper replyMapper;
 	
 	@Override
 	public void register(BoardVO board) {  //글 등록
@@ -116,6 +120,11 @@ public class BoardServiceImpl implements BoardService {
 		log.info("get Best Board");
 		return mapper.getBest();
 
+	}
+
+	@Override
+	public void removeComment(Long post_id) {
+		replyMapper.deleteWithBoard(post_id);
 	}
 	
 }

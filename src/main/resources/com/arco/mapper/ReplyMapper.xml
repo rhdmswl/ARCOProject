@@ -20,6 +20,10 @@
 		delete from comment where com_id=#{com_id}
 	</delete>
 
+	<delete id="deleteWithBoard">
+		delete from comment where post_id=#{post_id}
+	</delete>
+	
 	<update id="update">
 		update comment set com_content=#{com_content} where com_id=#{com_id}
 	</update>

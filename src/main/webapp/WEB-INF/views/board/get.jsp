@@ -783,7 +783,7 @@ button {
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
-					str+= "    <div><div class='header'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
+					str+= "<div><div class='header'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
 					if (list[i].com_writer_id=="${member.userId}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
@@ -836,6 +836,12 @@ button {
 			
 
 			$('#Comment_regist').on("click",function(e) {
+				if (($('#com_content').val())=="")
+					{
+					alert('내용을 입력해주세요!');
+					return;
+					}
+				
 				var reply={
 						com_content:$('#com_content').val().replace(/\n/g,"<br>"),
 						com_writer:$('#com_writer').val(),
@@ -869,7 +875,7 @@ button {
 			    var com_id = $(this).closest("li").data("com-id");
 			    replyService.remove(com_id, function(result){
 			        alert(result);
-			        showList(1);
+			        location.reload();
 			    });
 			});
 			

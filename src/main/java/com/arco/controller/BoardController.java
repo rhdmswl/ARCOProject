@@ -131,6 +131,7 @@ public class BoardController {
 	public String remove(@RequestParam("post_id") Long post_id,@ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		log.info("remove..." + post_id);
 		if (service.remove(post_id)) {
+			service.removeComment(post_id);
 			rttr.addFlashAttribute("result", "succes");
 		}
 		rttr.addAttribute("pageNum", cri.getPageNum());
