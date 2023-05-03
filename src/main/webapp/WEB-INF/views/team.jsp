@@ -183,7 +183,7 @@ body::-webkit-scrollbar-track {
 				<div class="mem-3">
 					<div class="kimminhoe">김민회</div>
 					<p class="memCont">커뮤니티 파트 구현, 배포</p>
-					<a href="#"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
+					<a href="https://github.com/mine7272/"><img src="https://i.imgur.com/3YPRZtJ.png" width="25px"></a>
 				</div>
 				<div class="mem-4">
 					<div class="kimsanho">김산호</div>
