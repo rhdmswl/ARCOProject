@@ -31,6 +31,8 @@ public interface BoardService {
 
 	public List<BoardVO> getBest();
 
+	public void removeComment(Long post_id);
+
 	
 	
 }
