@@ -26,7 +26,7 @@
 <link href="/style.css" rel="stylesheet">
 
 <!-- Responsive CSS -->
-<link href="/css/responsive/responsive.css" rel="stylesheet">
+<!-- <link href="/css/responsive/responsive.css" rel="stylesheet"> -->
 
 <!-- <script src="/js/material-dashboard.min.js"></script> -->
 <link rel="stylesheet" href="/css/material-dashboard.min.css">
@@ -59,6 +59,10 @@ body {
 	background: #FFF;
 }
 
+html {
+	max-width: 100%;
+}
+
 body::-webkit-scrollbar {
 	width: 8px; /* 스크롤바의 너비 */
 }
@@ -83,6 +87,9 @@ body::-webkit-scrollbar-track {
 	line-height: 30px;
 	border-radius: 50%;
 	margin-right: -15px;
+	position: absolute;
+	left: 50%;
+
 }
 
 .section_padding_80 {
@@ -137,17 +144,20 @@ body::-webkit-scrollbar-track {
 }
 
 .single_blog_area ul li {
-	padding-left: 0px;
+	padding-left: 60px;
+	width: 700px;
+	position: relative;
+	right: 5px;
 }
 
 .post-thumb {
-	margin-bottom: 60px;
+	margin-bottom: 160px;
 	height: 460px;
 }
 
 .post-thumb img {
 	position: absolute;
-	left: 30%;
+	left: 230px;
 	top: 10px;
 }
 
@@ -156,6 +166,7 @@ body::-webkit-scrollbar-track {
 	font-size: 30px;
 	font-weight: 700;
 	color: #696969;
+	margin-left: 2px;
 }
 
 .post-date {
@@ -166,7 +177,7 @@ body::-webkit-scrollbar-track {
 .post-content {
 	position: relative;
 	top: 55%;
-	left: 20px;
+	left: 60px;
 	right: 30px;
 	background-color: #fff;
 	height: 600px;
@@ -194,7 +205,7 @@ body::-webkit-scrollbar-track {
 }
 
 /* 페이지 버튼 */
-.page-item {
+.  {
 	margin-left: 4px;
 }
 
@@ -202,35 +213,40 @@ body::-webkit-scrollbar-track {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #7b809a;
+	color: black;
 	padding: 0;
-	border-radius: 50% !important;
+	border: 0;
 	width: 36px;
 	height: 36px;
 	font-size: .875rem;
-}
-
-.page-link:hover {
-	color: #f21378;
+	float: right;
 }
 
 .page-item.active .page-link {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #f21378;
+	color: black;
 	padding: 0;
 	margin: 0 3px;
-	border-radius: 50% !important;
-	width: 36px;
+	margin-right: 30px;
+	background-color: #fff;
+	width: 34px;
 	height: 36px;
 	font-size: .875rem;
-	background-color: #ddd;
-	border-color: #ddd;
+	border: 0;
+	box-shadow: none;
 }
+
+.page-link:hover {
+	color: #f21378;
+	background-color: #fff;
+}
+
 
 .page-item.active:hover {
 	color: #f21378;
+	background-color: #fff;
 }
 
 .card-header {
@@ -274,7 +290,7 @@ body::-webkit-scrollbar-track {
 
 .leave-comment-area {
 	position: relative;
-	left: auto;
+	left: 27%;
 	margin-top: 5px;
 	margin-bottom: 15px;
 }
@@ -285,6 +301,7 @@ body::-webkit-scrollbar-track {
 
 .revBox {
 	height: auto;
+	margin-top: 10px;
 }
 
 .primary-font {
@@ -302,6 +319,13 @@ body::-webkit-scrollbar-track {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 600;
 	font-size: 23px;
+	color: black;
+	width: 270px;
+	margin-top: 50px;
+}
+
+.commText {
+	margin-left: 93px;
 }
 
 .revContentInput {
@@ -388,7 +412,9 @@ p.v-data {
 
 .jb-division-line {
 	border-top: 1px solid #ccc;
-	margin: 20px 0px;
+	margin-top: 20px;
+	margin-left: 38px;
+	width: 680px;
 }
 
 .mapsize {
@@ -454,14 +480,36 @@ p.v-data {
 .map_wrap, .map_wrap * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-size: 12px;
+}
+
+.mapNavi {
+	width: 80%;
+	height: 50px;
+}
+
+.navigator {
+	position: absolute;
+	left: 82%;
+	bottom: 20px;
+	margin-right: 40px;
+	z-index: 2;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 600;
+	font-size: 15px;
 }
 
 .map_wrap {
 	position: relative;
+	left: 30px;
 	width: 100%;
 	height: 500px;
+}
+
+.position {
+	margin-left: 30px;
+	margin-bottom: 20px;
 }
 
 #category {
@@ -619,8 +667,8 @@ p.v-data {
 							<div class="single-post">
 								<!-- Post Thumb -->
 								<div class="post-thumb">
-									<img src="<c:out value="${collection.thumbnail}"/>" width="400"
-										height="500" alt="">
+									<img src="<c:out value="${collection.thumbnail}"/>" width="450"
+										height="550" alt="">
 								</div>
 								<!-- Post Content -->
 								<div class="post-content card-header">
@@ -761,7 +809,7 @@ p.v-data {
 						</div>
 						<div class="mapsize"
 							style="position: static; margin-bottom: 40px;">
-							<div class="infoText">&#128205; 위치 보기</div>
+							<div class="infoText position">&#128205; 위치 보기</div>
 							<div class="map_wrap">
 								<div id="map"
 									style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
@@ -773,21 +821,20 @@ p.v-data {
 									<li id="CE7" data-order="2"><span class="cafe"></span> 카페
 									</li>
 								</ul>
+								<!-- 길찾기로 이동 -->
+								<div class="mapNavi" style="margin-bottom: 40px;">
+									<a href="https://map.kakao.com/link/to/<c:out value="${collection.place}"/>,<c:out value="${collection.gpsY}"/>,<c:out value="${collection.gpsX}"/>">
+										<button class="btn btn-secondary navigator">길 안내</button>
+									</a>
+								</div>
 							</div>
 						</div>
 
-						<!-- 길찾기로 이동 -->
-						<div style="position: margin-bottom: 40px;">
-							<a
-								href="https://map.kakao.com/link/to/<c:out value="${collection.place}"/>,<c:out value="${collection.gpsY}"/>,<c:out value="${collection.gpsX}"/>">
-								<button class="btn btn-secondary">길 안내</button>
-							</a>
-						</div>
 
 
 						<!-- Comment Area Start -->
 						<div class="comment_area section_padding_50 clearfix">
-							<h4 class="mb-30">Comments</h4>
+							<h4 class="mb-30 commText">Comments</h4>
 							<ul class="chat"></ul>
 							<div class="panel-footer">
 								<%--   <div class="pull-rigth">
