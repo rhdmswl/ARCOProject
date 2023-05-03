@@ -398,6 +398,7 @@ a{
 	line-height: 20px;
 	font-size: 15px;
 	padding: 0;
+	cursor: pointer;
 }
 
 .card .btn-primary:hover {
@@ -445,7 +446,6 @@ a{
 									<div class="col-lg-5 col-md-4 col-6 searchBox">
 										<form id="searchForm" action="/board/list" method='get' style=" width:500px;" class="input-group search">
 											<select id="chk" class="form-control" name='type' style="width:150px; margin-right: 5px;">
-												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>SEARCH</option>
 												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
 												<option value="C" <c:out value="${pageMaker.cri.type eq 'C' ? 'selected' : ''}"/>>내용</option>
 												<option value="W" <c:out value="${pageMaker.cri.type eq 'W' ? 'selected' : ''}"/>>작성자</option>

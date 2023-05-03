@@ -59,9 +59,9 @@ body::-webkit-scrollbar-track {
 	position: relative;
 	width: 500px;
 	position: relative;
-	right: 45px;
+	right: 25px;
 	margin-bottom: 70px;
-	left: 6%;
+	padding-left: 10px;
 }
 
 .card-title {
@@ -190,7 +190,9 @@ body::-webkit-scrollbar-track {
 }
 
 .submitBtnGroup {
-	margin-top: 50px;
+	margin-top: 10px;
+	position: relative;
+	top: 20px;
 }
 </style>
 

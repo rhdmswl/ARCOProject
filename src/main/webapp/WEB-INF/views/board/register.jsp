@@ -233,6 +233,7 @@ body::-webkit-scrollbar-track {
 }
 
 .btn-primary:hover {
+	background-color: #f21378;
     box-shadow: 1px 4px 3px 1px #dadce0;
 }
 
