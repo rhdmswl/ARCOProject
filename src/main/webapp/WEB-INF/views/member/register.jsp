@@ -59,7 +59,7 @@ body::-webkit-scrollbar-track {
 	position: relative;
 	width: 700px;
 	position: relative;
-	right: 45px;
+	right: 27%;
 	margin-bottom: 70px;
 }
 
@@ -69,7 +69,7 @@ body::-webkit-scrollbar-track {
 	width: 700px;
 	position: relative;
 	right: 45px;
-	margin-bottom: 70px;
+	margin-bottom: 40px;
 	left: 75px;
 }
 

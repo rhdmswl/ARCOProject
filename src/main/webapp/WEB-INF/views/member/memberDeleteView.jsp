@@ -34,6 +34,20 @@ body {
 	background: #FFF
 }
 
+body::-webkit-scrollbar {
+	width: 8px; /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+	height: 5%; /* 스크롤바의 길이 */
+	background: black; /* 스크롤바의 색상 */
+	border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+	background: rgba(242, 240, 241); /*스크롤바 뒷 배경 색상*/
+}
+
 .btn-secondary {
 	width: 100px;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
@@ -123,7 +137,7 @@ body {
 
 .delFormGroup {
 	position: relative;
-	left: 15%;
+	left: 12%;
 	margin-bottom: 40px;
 	width: 550px;
 }
@@ -139,6 +153,11 @@ body {
 
 .memberGroup[readonly] {
 	background-color: #f2f2f2;
+}
+
+.btnGroup {
+	position: relative;
+	right: 10px;
 }
 
 </style>
@@ -215,7 +234,7 @@ body {
 									name="userName" value="${member.userName}" readonly="readonly" />
 							</div>
 						</form>
-						<div class="text-center">
+						<div class="text-center btnGroup">
 							<button class="btn btn-secondary" type="button" id="submit">회원탈퇴</button>
 							<button class="btn btn-primary cancel" type="button">취소</button>
 						</div>
