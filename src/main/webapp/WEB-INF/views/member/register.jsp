@@ -240,47 +240,48 @@ body::-webkit-scrollbar-track {
 	margin-left: -140px;
 }
 
-#alert-success{
+#alert-success {
 	font-size: 15px;
-	margin-left:20px;
-	
+	margin-left: 20px;
 }
 
-#alert-success1{
+#alert-success1 {
 	font-size: 15px;
-	margin-left:20px;
-	
+	margin-left: 20px;
 }
 
-#alert-success2{
+#alert-success2 {
 	font-size: 15px;
-	margin-left:20px;
-	
+	margin-left: 20px;
 }
 
-
-#alert-danger{
+#alert-danger {
 	font-size: 15px;
-	margin-left:117px;
-	
+	margin-left: 117px;
 }
 
 #alert-danger1 {
 	font-size: 15px;
-	margin-left:117px;
-	
+	margin-left: 117px;
 }
 
 #alert-danger2 {
 	font-size: 15px;
-	margin-left:120px;
-	
+	margin-left: 120px;
 }
 
 #alert-danger3 {
 	font-size: 15px;
-	margin-left:120px;
-	
+	margin-left: 120px;
+}
+
+#mail-check-warn1 {
+	font-size: 15px;
+	margin-left: 120px;
+}
+#mail-check-warn2 {
+	font-size: 15px;
+	margin-left: 20px;
 }
 </style>
 
@@ -491,30 +492,33 @@ body::-webkit-scrollbar-track {
 						// blur -> focus가 벗어나는 경우 발생
 						$('.mail-check-input').blur(function () {
 							const inputCode = $(this).val();
-							const $resultMsg = $('#mail-check-warn');
+							const $resultMsg1 = $('#mail-check-warn1');
+							const $resultMsg2 = $('#mail-check-warn2');
 							
 							   // 유효성 검사 - 숫자 6자리
 							   const regex = /^[0-9]{6}$/;
 							   if(!regex.test(inputCode)) {
-							      $resultMsg.html('인증번호는 숫자 6자리여야 합니다.');
-							      $resultMsg.css('color', 'red');
+							      $resultMsg1.html('인증번호는 숫자 6자리여야 합니다.');
+							      $resultMsg1.css({'color': '#d92742','font-weight': 'bold'});
 							      $('#submit').attr('disabled', true);
 							      return;
 							   }
 							   
 							if(inputCode === code){
-								$resultMsg.html('인증번호가 일치합니다.');
-								$resultMsg.css('color','green');
+								$resultMsg2.html('인증번호가 일치합니다.');
+								$resultMsg2.css('color','green');
 								$('#mail-Check-Btn').attr('disabled',true);
 								$('#email').attr('readonly',true);
 								// 회원가입 버튼 활성화
 							    $('#submit').attr('disabled', false);
+							    $resultMsg1.html(''); // $resultMsg1 메시지 초기화
 							
 							  } else {
-							    $resultMsg.html('인증번호가 일치하지 않습니다.');
-							    $resultMsg.css('color', 'red');
+							    $resultMsg1.html('인증번호가 일치하지 않습니다.');
+							    $resultMsg1.css({'color': '#d92742','font-weight': 'bold'});
 							    // 회원가입 버튼 비활성화
 							    $('#submit').attr('disabled', true);
+							    $resultMsg2.html(''); // $resultMsg2 메시지 초기화
 							  }
 							});
 						
@@ -709,8 +713,10 @@ body::-webkit-scrollbar-track {
 									<input class="form-control mail-check-input" id=verifyCode
 										name=verifyCode placeholder="인증번호 6자리를 입력해주세요!"
 										disabled="disabled" maxlength="6">
+										 
+										 <span id="mail-check-warn2"></span>
 								</div>
-								<span id="mail-check-warn"></span>
+										 <span id="mail-check-warn1"></span>
 
 							</div>
 

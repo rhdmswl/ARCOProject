@@ -192,7 +192,8 @@ body {
 								</c:if>
 
 								<c:if test="${not empty msg}">
-									<p style="color: red;">로그인 실패! ${msg}</p>
+									<p style="color: #d92742; font-weight: bold; margin-left: 20px;">로그인 실패! ${msg}</p>
+
 								</c:if>
 							</div>
 						</div>
