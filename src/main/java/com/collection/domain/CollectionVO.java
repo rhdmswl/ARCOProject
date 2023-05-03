@@ -22,4 +22,5 @@ public class CollectionVO {
 	private int viewCount;
 	private int reviewCount;
 	private double starAvg;
+	private int dibCount;
 }

@@ -35,13 +35,13 @@ public class CollectionController {
 	}
 	
 	
-	@GetMapping("/index")
-	public void index(Model model, Criteria cri) { 
-		int total = service.getTotal(cri); log.info(total); 
-		log.info(cri);
-	    cri.setpageNumForLimit(); 
-	    model.addAttribute("list", service.getList(cri));
-	    model.addAttribute("pageMaker", new PageDTO(cri, total)); }
+	/*
+	 * @GetMapping("/index") public void index(Model model, Criteria cri) { int
+	 * total = service.getTotal(cri); log.info(total); log.info(cri);
+	 * cri.setpageNumForLimit(); service.dibCount(cri.getSeq());
+	 * model.addAttribute("list", service.getList(cri));
+	 * model.addAttribute("pageMaker", new PageDTO(cri, total)); }
+	 */
 	 
 	
 	@GetMapping("/get")
@@ -61,6 +61,7 @@ public class CollectionController {
 		service.revViewCount(seq);
 		service.reviewCount(seq);
 		service.starAvg(seq);
+		service.dibCount(seq);
 	}
 	
 	@GetMapping("/list")
@@ -75,3 +76,5 @@ public class CollectionController {
 	}
 	
 }
+
+

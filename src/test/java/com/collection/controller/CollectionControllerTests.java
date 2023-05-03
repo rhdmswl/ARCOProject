@@ -71,7 +71,7 @@ public class CollectionControllerTests {
 //		urlBuilder.append("&" + URLEncoder.encode("CallBackURI", "UTF-8") + "="  + URLEncoder.encode("", "UTF-8")); /* Optional 필드 */
 		urlBuilder.append("&" + URLEncoder.encode("MsgBody", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
 		urlBuilder.append("&" + URLEncoder.encode("from", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
-		urlBuilder.append("&" + URLEncoder.encode("to", "UTF-8") + "=" + URLEncoder.encode("20241231", "UTF-8")); /**/
+		urlBuilder.append("&" + URLEncoder.encode("to", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /**/
 		urlBuilder.append("&" + URLEncoder.encode("cPage", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /**/
 		urlBuilder.append("&" + URLEncoder.encode("rows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /* 3~100 */
 
@@ -91,7 +91,8 @@ public class CollectionControllerTests {
 		while ((line = rd.readLine()) != null) {
 			sb.append(line);
 		}
-
+		
+		
 		org.json.JSONObject json = XML.toJSONObject(sb.toString());
 
 		String result = json.toString();

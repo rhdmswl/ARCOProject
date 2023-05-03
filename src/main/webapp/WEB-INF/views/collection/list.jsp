@@ -58,6 +58,8 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
 	rel="stylesheet">
 
+<link rel="stylesheet" href="https://use.typekit.net/btn1paf.css">
+
 <!-- <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" >
 
@@ -81,6 +83,13 @@ body::-webkit-scrollbar-track {
     background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
 }
 
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 a {
 	background-color: #fff;
 	color : #fff;
@@ -92,8 +101,14 @@ a:hover {
 }
 
 .product__item__text {
-	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	margin-bottom: 50px;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.product__page__title {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0;
+    margin-bottom: 5px;
 }
 
 #scrollUp2 {
@@ -113,6 +128,11 @@ a:hover {
 	font-size: 30px;
 	font-weight: 600;
 	color: black;
+	margin-top: 40px;
+}
+
+.col-lg-8 {
+	height: 100px;
 }
 
 /* 페이지 버튼 */
@@ -131,7 +151,7 @@ a:hover {
     justify-content: center;
     color: #7b809a;
     padding: 0;
-    border-radius: 50%!important;
+    border:0;
     width: 36px;
     height: 36px;
     font-size: .875rem;
@@ -140,6 +160,7 @@ a:hover {
 
 .page-link:hover {
 	color: #f21378;
+	background-color: #fff;
 }
 
 .page-item.active .page-link {
@@ -149,16 +170,15 @@ a:hover {
     color: #f21378;
     padding: 0;
     margin: 0 3px;
-    border-radius: 50%!important;
+    border : 0;
     width: 36px;
     height: 36px;
     font-size: .875rem;
-    background-color: #ddd;
-    border-color: #ddd;
 }
 
 .page-item.active:hover {
 	color: #f21378;
+	background-color: #fff;
 }
 
 .form-control {
@@ -180,7 +200,10 @@ a:hover {
 }
 
 .searchButton {
-	border: 4px solid #e9ecef;
+	border: 2px solid #e9ecef;
+	cursor: pointer;
+	width: 38px;
+	height: 38px;
 }
 
 .col-lg-1 col-md-2 col-3 {
@@ -192,17 +215,29 @@ a:hover {
 }
 
 .searchBox{
-	width: 800px; left: 8%;
-	}
+	width: 90%;
+	margin-left: 60px;
+	padding-right: 40px;
+	position: absolute;
+}
 
 .searchForm {
 	position: relative;
-	margin-left: 10px;
-	left: 25%;
+	margin-bottom: 100px;
+	margin-right: 5px;
+	left: 38%;
+
+}
+
+.product__page__filter {
+	position: absolute;
+	top: 43px;
+	right: 30%;
 }
 
 .sortForm {
 	margin-right: 0;
+	margin-top: 20px;
 	float: right;
 	padding-left: 10px;
 }
@@ -219,7 +254,6 @@ a:hover {
 						<div class="card action_bar">
 							<div class="body">
 								<div class="row clearfix">
-									<div class="col-lg-1 col-md-2 col-3"></div>
 									<div class="col-lg-12 col-md-4 col-6 searchBox">
 										<form id="searchForm" action="/collection/list" method='get' style="width:500px;" class="input-group searchForm" style = "border-radius: 4px;">
 											<select id="chk" class="form-control" name='type'>
@@ -252,22 +286,21 @@ a:hover {
 							<div class="row">
 								<div class="col-lg-8 col-md-8 col-sm-6">
 									<div class="section-title">
-										<div class="titleText">Exhibition List</div>
+										<div class="titleText" style="border-left: 7px solid #f21378; padding-left: 15px;">Exhibition List</div> 
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-8 col-sm-6">
 									<div class="product__page__filter">
 										
 
-										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:130px; margin-left: 138px;" class="input-group searchForm">
+										<form id="sortForm" name = "sortForm" action="/collection/list" method='get' style=" width:130px; margin-left: 138px; margin-bottom: 0px;" class="input-group searchForm">
 
 											
 											<select id="sortSelect" onchange="f_changeFunc(this)" class="form-control" name='sort' style="width:30px;" >
 												<option value="endDate" <c:out value="${pageMaker.cri.sort eq 'endDate' ? 'selected' : ''}"/>>종료일순</option>
-												<option value="revViewCount" <c:out value="${pageMaker.cri.sort eq 'revViewCount' ? 'selected' : ''}"/>>조회순</option>
+												<option value="viewCount" <c:out value="${pageMaker.cri.sort eq 'viewCount' ? 'selected' : ''}"/>>조회순</option>
 												<option value="star" <c:out value="${pageMaker.cri.sort eq 'star' ? 'selected' : ''}"/>>별점순</option>
 											</select>
-											<%-- <input type='hidden' name="sort" class="form-control" style="width:200px;" value='<c:out value="${pageMaker.cri.sort}"/>'> --%>
 											<input type='hidden' name="pageNum" value="${pageMaker.cri.pageNum}">
 											<input type='hidden' name='seq' value='${pageMaker.cri.seq}'>
 
@@ -284,15 +317,14 @@ a:hover {
 										<div class="product__item__pic set-bg"
 											data-setbg="img/popular/popular-1.jpg">
 											<div>
-												<a
-													href="/collection/get?seq=<c:out value="${collection.seq}"/>">
+												<a href="/collection/get?seq=<c:out value="${collection.seq}"/>">
 													<img src="<c:out value="${collection.thumbnail}" />"
-													width="400" height="400">
+													width="350" height="400" style="margin-bottom: 30px;">
 												</a>
 											</div>
 										</div>
 										<div class="product__item__text">
-											<a style="color: black; font-weight: 700;" 
+											<a style="color: black; font-weight: 500; font-size:17px;" 
 											href="/collection/get?seq=<c:out value="${collection.seq}"/>">
 											<c:out value="${collection.title}" /></a>
 										</div>
@@ -360,6 +392,7 @@ a:hover {
 		<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 		<input type='hidden' name='pageNumForLimit' value='${pageMaker.cri.pageNumForLimit}'>
  		<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
+ 		<input type='hidden' name='sort' value='<c:out value="${pageMaker.cri.sort}"/>'>
 		<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
 	</form>
 	
