@@ -204,7 +204,7 @@ body {
 							</div>
 							<br>
 							<div class="form-group has-feedback">
-								<label class="control-label" for="userPass">패스워드</label> <input
+								<label class="control-label" for="userPass">비밀번호</label> <input
 									class="form-control memberGroup" type="password" id="userPass"
 									name="userPass" />
 							</div>
