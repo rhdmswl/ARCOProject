@@ -257,8 +257,7 @@ a:hover {
 									<div class="col-lg-12 col-md-4 col-6 searchBox">
 										<form id="searchForm" action="/collection/list" method='get' style="width:500px;" class="input-group searchForm" style = "border-radius: 4px;">
 											<select id="chk" class="form-control" name='type'>
-												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>SEARCH</option>
-												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
+												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/> selected>제목</option>
 												<option value="D" <c:out value="${pageMaker.cri.type eq 'D' ? 'selected' : ''}"/>>날짜</option>
 											</select>
 											&nbsp;
@@ -432,7 +431,7 @@ a:hover {
 					var selectTag = $("#chk option:selected").val();
 				    var str="";
 				    console.log(selectTag);
-				    if (selectTag=="T" || selectTag==""){
+				    if (selectTag=="T"){
 				    str+= "<input id='' type='text' name='keyword' class='form-control' style='width:300px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
 				    }
 				    if (selectTag=="D"){
