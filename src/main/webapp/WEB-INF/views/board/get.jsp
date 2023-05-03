@@ -720,7 +720,8 @@ button {
 			});
 			
 			// 페이징
-			function showReplyPage(com_cnt){
+			function showReplyPage(com_cnt,pageNum){
+				console.log("paging pageNum : "+pageNum);
 				endNum=Math.ceil(pageNum/10.0)*10;
 				
 				var startNum=endNum-9;
@@ -742,7 +743,17 @@ button {
 				}
 				
 				for(var i = startNum; i<=endNum; i++){
-					var active=pageNum==i?"active":"";
+					var active=""
+					console.log("==============");
+					console.log("page Num : "+pageNum);
+					console.log("i : "+i);
+					if (pageNum==i)
+						{active="active"
+						}
+					else {
+						active=""
+					}
+					console.log(active+i);
 					str+="<li class='page-item"+active+"'><a class='page-link' href='"+i+"'>"+i+"<a></li>";
 				}
 				
@@ -812,7 +823,7 @@ button {
 					}
 				replyUL.html(str);
 
-				showReplyPage(com_cnt);
+				showReplyPage(com_cnt,page);
 				document.getElementById("com_id").value=com_id;
 				});
 			}
