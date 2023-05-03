@@ -1019,7 +1019,21 @@ p.v-data {
    		            $('#comment_cnt').html("(50 / 50)");
    		        }
    		    });
-		 
+   				
+   			/* 수정 글자수 제한 기능 */
+   			$(document).on('keyup', '#revComment', function() {
+				 //한줄평 쓰는 칸 눌렀을 때 입력버튼 권한주기
+   				$('#update').attr('disabled', false);
+   		        $('#update_cnt').html("("+$(this).val().length+" / 50)");
+   		 
+   		        if($(this).val().length > 50) {
+   		            $(this).val($(this).val().substring(0, 50));
+   		            $('#update_cnt').html("(50 / 50)");
+   		        }
+   		    });
+   			
+   			 
+   			
 
             function showList(page){
             	
@@ -1067,7 +1081,6 @@ p.v-data {
             					        str += "</small>";
             					    }
             					    
-            					    
             					    str += "<small class='pull-right text-muted'>" + CollectionReviewService.displayTime(list[i].reviewDate) + "</small>";
             					    str += "</div>"; // header 끝
             					    str += "<div id='review' style='font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;' class='collapse multi-collapse-id show'>" + list[i].revComment + "</div>";
@@ -1077,15 +1090,13 @@ p.v-data {
             					    str += "<form class='collapse' id='" + formId + "'>";
             					    str += "<div class='form-group'>";
             					    str += "<textarea style='resize: none;' class='form-control reviewBox' id ='revComment' rows='3'></textarea>";
-            					    str += "</div>";
-            					    str += "<div><button id='update' type='button' class='btn btn-secondary updateSuccess'>수정 완료</button></div>";
-            					    
+									str += "<div id='update_cnt'>(0 / 50)</div></div>"
+            					    str += "<button id='update' type='button' class='btn btn-secondary updateSuccess'>수정 완료</button>";
+            					    str += "<div><span id='alert-danger' style='display: none; color: #d92742; font-weight: bold;'></span></div>";
             					    str += "</form>";
             					    str += "</div>";
             					    str += "</li>";
             					    str += "<div class='jb-division-line'></div>";
-            					    
-            					    
             					} 
             				   reviewUL.html(str);
             				   console.log("showList page : " +pageNum);
@@ -1142,6 +1153,13 @@ p.v-data {
                              "revSeq" : revSeqValue,
                              "revComment" : $("#" + formId+ ' textarea[id=revComment]').val(),
                          }; 
+                         if($("#" + formId+ ' textarea[id=revComment]').val().length == 0) {
+                             $("#revComment").focus();
+                                $("#alert-danger").css('display', 'inline-block')
+                                .text('한줄평을 입력해주세요.');
+                                $('#update').attr('disabled', true);
+                                return false;
+                             }
                         CollectionReviewService.update(review, function(result){
 /*                         	swal('수정완료!', '한줄평이 수정되었습니다.', 'success');  */
                         	showList(1);});
