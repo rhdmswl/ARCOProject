@@ -44,6 +44,12 @@
 		post_content=#{post_content}
 		where post_id = #{post_id}
 	</update>
+	
+	<update id="moveBoard">
+		update post
+		set brd_id=#{brd_id}
+		where post_id=#{post_id}
+	</update>
 
 	<sql id="criteria">
 			<choose>

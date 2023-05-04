@@ -33,6 +33,9 @@ public interface BoardService {
 
 	public void removeComment(Long post_id);
 
+	public void moveBoard(BoardVO board);
+
+
 	
 	
 }

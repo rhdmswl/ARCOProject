@@ -138,4 +138,16 @@ public class BoardController {
 		rttr.addAttribute("brd_id", cri.getBrd_id());
 		return "redirect:/board/list";
 	}
+	
+	@PostMapping("/moveboard")
+	public String moveboard(BoardVO board,@RequestParam("moveBoardId") Integer moveBoardId,@RequestParam("postId") Long postId, RedirectAttributes rttr) {
+		board.setBrd_id(moveBoardId);
+		board.setPost_id(postId);
+		log.info("moveBoard:" + board);
+		service.moveBoard(board);
+
+		rttr.addAttribute("brd_id", board.getBrd_id());
+		
+		return "redirect:/board/list";
+	}
 }
