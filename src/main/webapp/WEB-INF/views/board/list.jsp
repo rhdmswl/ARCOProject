@@ -294,6 +294,13 @@ a{
 	margin-left: 10px;
 }
 
+.adminCheck {
+	width: 15px;
+	height: 15px;
+	margin-right: 2px;
+	
+}
+
 .smalltext {
 	height: 20px;
 	width: 300px;
@@ -525,7 +532,7 @@ a{
 														<small class="float-left text-muted"><c:out value="${board.post_id}" /></small>
 													</c:if>
 													<!-- 베스트 게시판 일 시, 글 순번 대신 글 카테고리 표시  끝-->
-													<div class="m-r-10"><c:out value="${board.post_writer}" /></div> 
+													<div class="m-r-10"><c:if test="${board.user_id=='admin'}"><img class="adminCheck" src= "https://i.imgur.com/FZiEX2I.png"></c:if><c:out value="${board.post_writer}" /></div> 
 													<div class="smalltext">
 													<small class="float-right text-muted">
 														<div class="regidate"><fmt:formatDate pattern="yyyy-MM-dd"
