@@ -174,6 +174,7 @@ a:hover {
     width: 36px;
     height: 36px;
     font-size: .875rem;
+    background-color: #fff;
 }
 
 .page-item.active:hover {
@@ -216,7 +217,7 @@ a:hover {
 
 .searchBox{
 	width: 90%;
-	margin-left: 60px;
+	margin-left: 10px;
 	padding-right: 40px;
 	position: absolute;
 }
@@ -257,8 +258,7 @@ a:hover {
 									<div class="col-lg-12 col-md-4 col-6 searchBox">
 										<form id="searchForm" action="/collection/list" method='get' style="width:500px;" class="input-group searchForm" style = "border-radius: 4px;">
 											<select id="chk" class="form-control" name='type'>
-												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>SEARCH</option>
-												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
+												<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/> selected>제목</option>
 												<option value="D" <c:out value="${pageMaker.cri.type eq 'D' ? 'selected' : ''}"/>>날짜</option>
 											</select>
 											&nbsp;
@@ -339,14 +339,14 @@ a:hover {
 											<div class="body">
 												<ul class="pagination pagination-primary m-b-0">
 													<c:if test="${pageMaker.prev}">
-														<li class="paginate_button previous"><a
+														<li class="page-item previous"><a
 															class="page-link" href="${pageMaker.startPage-1}">Previous</a></li>
 													</c:if>
 													<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-														<li class="paginate_button"><a class="page-link move2" href="${num}">${num}</a></li>
+														<li class="page-item ${pageMaker.cri.pageNum == num ? "active":"" }"><a class="page-link move2" href="${num}">${num}</a></li>
 													</c:forEach>
 													<c:if test="${pageMaker.next}">
-														<li class="paginate_button next"><a class="page-link" href="${pageMaker.endPage +1}">Next</a></li>
+														<li class="page-item next"><a class="page-link" href="${pageMaker.endPage +1}">Next</a></li>
 													</c:if>
 												</ul>
 											</div>
@@ -432,7 +432,7 @@ a:hover {
 					var selectTag = $("#chk option:selected").val();
 				    var str="";
 				    console.log(selectTag);
-				    if (selectTag=="T" || selectTag==""){
+				    if (selectTag=="T"){
 				    str+= "<input id='' type='text' name='keyword' class='form-control' style='width:300px;' placeholder='검색어를 입력해주세요.' value='<c:out value='${pageMaker.cri.keyword}'/>'>";
 				    }
 				    if (selectTag=="D"){
@@ -461,7 +461,7 @@ a:hover {
 				
 				var actionForm = $("#actionForm");
 				
-				$(".paginate_button a").on("click", function(e) {
+				$(".page-item a").on("click", function(e) {
 							e.preventDefault();
 							console.log('click');
 							actionForm.find("input[name='pageNum']").val($(this).attr("href"));

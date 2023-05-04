@@ -29,7 +29,7 @@
 	href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 
-<title>FIND PASSWORD</title>
+<title>FIND ID</title>
 <style type="text/css">
 .center {
 	text-align: center;
@@ -55,14 +55,14 @@ body::-webkit-scrollbar-track {
 }
 
 .card {
-	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	position: relative;
-	width: 500px;
-	position: relative;
-	right: 25px;
-	margin-bottom: 50px;
-	padding-left: 5px;
+    font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+    position: relative;
+    width: 500px;
+    margin: 0 auto; /* 중앙 정렬 */
+    margin-bottom: 50px;
+    padding-left: 5px;
 }
+
 
 .card-title {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;

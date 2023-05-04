@@ -44,6 +44,10 @@ body {
 	z-index: auto;
 }
 
+.allGroup {
+	max-width: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Noto Sans KR', sans-serif;
 	font-weight: 700;
@@ -56,7 +60,7 @@ p {
 	font-size: 16px;
 }
 
-.section_padding_100 {
+/* .section_padding_100 {
 	padding-top: 100px;
 	padding-bottom: 100px;
 }
@@ -185,7 +189,7 @@ img {
 
 .ml-100 {
 	margin-left: 100px;
-}
+} */
 
 ul, ol {
 	margin: 0;
@@ -204,7 +208,7 @@ a, a:hover, a:focus, a:active {
 li {
 	list-style: none;
 }
-
+/* 
 .heading_text>p {
 	font-size: 16px;
 }
@@ -219,9 +223,9 @@ li {
 	font-size: 90px;
 	font-weight: 100;
 	margin: 0;
-}
+} */
 
-.font-shadow-into-light {
+/* .font-shadow-into-light {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -238,7 +242,7 @@ li {
 .yummy-table-cell {
 	display: table-cell;
 	vertical-align: middle;
-}
+} */
 
 .top_header_area {
 	width: 100%;
@@ -246,7 +250,7 @@ li {
 	border-bottom: 1px solid #ebebeb;
 }
 
-.top_header_area .top_social_bar {
+/* .top_header_area .top_social_bar {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -254,17 +258,29 @@ li {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-}
+} */
 
 .top_header_area .signup-search-area { /* 로그인, 회원 가입 위치 */
 	height: 40px;
+	width: 100%;
 	position: relative;
 	z-index: 3;
-	left: 700px;
+	/* right: 300px; */
 	bottom: 10px;
+	margin: 0;
 }
-.top_header_area .signup-search-area .logRegGroup{
-	left:100px;
+
+.col2-sm-6 {
+	width: 100%;
+}
+
+.logRegGroup {
+	float: right;
+	width: 500px;
+	height: 40px;
+	position: absolute;
+	left: 50%;
+	bottom: 20px;
 }
 
 .top_header_area .signup-search-area a {
@@ -279,17 +295,23 @@ li {
 	padding-right: 15px;
 	padding-bottom: 5px;
 	padding-top: 5px;
+	position: relative;
+	left: 70%;
+	top: 25px;
 }
 
-.top_header_area .signup-search-area .register a {
+.top_header_area .signup-search-area .register {
 	color: #222;
 	border-right: 0;
+	position: relative;
+	left: 70%;
+	top: 25px;
 }
 
 .top_header_area .signup-search-area .mypage {
-position: absolute;
-	top: 7px;
-	right: 85px;
+	position: absolute;
+	left: 70%;
+	top: 30px;
 	margin-right: 6px;
 	padding-right: 12px;
 	padding-bottom: 3px;
@@ -298,18 +320,18 @@ position: absolute;
 
 .top_header_area .signup-search-area .logout {
 	position: absolute;
-	top: 7px;
-	right: 85px;
+	left: 85%;
+	top: 30px;
 	margin-right: -65px;
 	padding-right: 12px;
 	padding-bottom: 3px;
 	padding-top: 3px;
-	
 }
+
 .top_header_area .signup-search-area .admin {
-	position: absolute;
-	top: 10px;
-	right: -70px;
+	position: relative;
+	left: 98%;
+	top: 31px;
 	color: #222;
 	border-right: 0;
 }
@@ -352,10 +374,12 @@ position: absolute;
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 600;
 	font-size: 15px;
-	position: relative;
-	top: 0px;
-	right: 180px;
+	position: absolute;
+	top: 30px;
+	left: 35%;
 	color: black;
+	width: 200px;
+	margin-right: 0;
 }
 
 </style>
@@ -363,15 +387,15 @@ position: absolute;
 </head>
 
 <body>
-
+<div class="allGroup">
 	<!-- ****** Top Header Area Start ****** -->
 	<div class="top_header_area">
 		<div class="container">
 			<div class="row">
 				<!--  Login Register Area -->
-				<div class="col-7 col-sm-6">
-					<div class="signup-search-area d-flex align-items-center justify-content-end">
-						<div class="login_register_area d-flex">
+				<div class="col2-sm-6">
+					<div class="signup-search-area align-items-center justify-content-end">
+						<div class="login_register_area">
 							<div class="logRegGroup">
 								<c:if test="${member == null}">
 									<a class="login" href="/member/login">Login</a>									
@@ -379,11 +403,9 @@ position: absolute;
 								</c:if>
 								<c:if test="${member != null}">
 								<c:if test="${member.role == 'ROLE_ADMIN'}">
-								<a class="admin" href="/admin/admin">Admin Page</a>	
-										
-									</c:if>
-									
-										<div class="welcomeMessage">${member.userName}님 환영합니다 &#128075;</div>
+								<a class="admin" href="/admin/admin">Admin Page</a>		
+								</c:if>
+									<div class="welcomeMessage">${member.userName}님 환영합니다 &#128075;</div>
 									<a class="mypage" href="/member/mypage">My Page</a>									
 									<a class="logout" href="/member/logout">Logout</a>								
 								</c:if>
@@ -434,5 +456,6 @@ position: absolute;
 			</div>
 		</div>
 	</header>
+	</div>
 	</body>
 	

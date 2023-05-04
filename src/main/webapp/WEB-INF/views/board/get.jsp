@@ -47,6 +47,55 @@ body::-webkit-scrollbar-track {
     background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
 }
 
+.adminCheck {
+	width: 15px;
+	height: 15px;
+	margin-right: 2px;
+	
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 300;
+	left: 0;
+	top: 0;
+	width: 120%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+	position: fixed;
+	left: 50%;
+	top: 20%;
+	transform: translate(-50%, -50%);
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border-radius: 10px;
+	width: 400px;
+	height: 170px;
+	box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.modal-footer {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	cursor: pointer;
+	height: 48px;
+	position: relative;
+	top: 30px;
+}
+
+.modaltext {
+	vertical-align: middle;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	position: relative;
+	top: 30px;
+}
 .entry-card {
 	-webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
 	-moz-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
@@ -516,6 +565,9 @@ button {
 
 .likeBtn {
 	margin-right: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: auto;
 }
 
 .likeBtnText {
@@ -528,6 +580,11 @@ button {
 	height: 13px;
 	padding-left: 9px;
 	display: inline-block;
+}
+
+.moveBoardBtn {
+	width: 80px;
+	height: 30px;
 }
 
 
@@ -565,10 +622,11 @@ button {
 
 						</ul>
 						<div class="postbox"
-							style="box-sizing: border-box; width: 100%; height: 180px;">
+							style="box-sizing: border-box; width: 100%; padding-bottom: 100px;">
 							${content}
 						</div>
 
+						<c:if test="${member.userId!=null}">
 						<div class="frame" style="background-color:none;">
 							<button id='like' data-oper='like' class="btn btn-primary likeBtn">
 								<div class="likeBox">
@@ -576,10 +634,35 @@ button {
 									<div class="recBtnCount">${board.post_rec_count}</div>
 								</div>
 							</button>
-								<!-- <button id='like' style="border:none; background-color:none;" data-oper='like' 
-										class="custom-btn btn-11"><img id="heartImg" src="https://i.imgur.com/6io8NDW.png"></button> -->
 						</div>
-
+						</c:if>
+						<c:if test="${member.userId==null}">
+							<div class="frame" style="background-color:none;">
+							<button id='loginLike' class="btn btn-primary likeBtn">
+									<div class="likeBox">
+										<div class="likeBtnText">추천</div>
+										<div class="recBtnCount">${board.post_rec_count}</div>
+									</div>
+								</button>
+							
+							<div id="myModal" class="modal">
+								<!-- Modal content -->
+								<div class="modal-content">
+									<p style="text-align: center; line-height: 1.5;">
+										<span class="modaltext" style="font-size: 13pt;">로그인 후 입력해주세요!</span>
+									</p>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											id="mypage_modal">
+											<a class="login" href="/member/login">login</a>
+										</button>
+										<button type="button" class="btn btn-default"
+											id="close_modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:if>
 
 						<div class="frame">
 							<c:if test="${member.userId==board.user_id}">
@@ -592,6 +675,9 @@ button {
 							<c:if test="${member.role=='ROLE_ADMIN'}">
 								<button class="btn btn-primary" data-oper='remove'>관리자 삭제</button>
 							</c:if>
+						</div>
+						
+						<div class="frame">
 							<form id='operForm_modi' action="/board/modify" method="get">
 								<input type='hidden' id='post_id' name='post_id'
 									value='<c:out value="${board.post_id}"/>'> <input
@@ -609,6 +695,22 @@ button {
 									value='<c:out value="${cri.brd_id}"/>'>
 							</form>
 						</div>
+						
+						<div class="frame">
+							<c:if test="${member.role=='ROLE_ADMIN'}">
+								<form id='operForm_remo' action="/board/moveboard" method="post">
+									<select class="chk" name='moveBoardId' id="moveBoardId" style="width: 75px; height: 28px; margin-left: 30px;">
+										<option value="1">정보</option>
+										<option value="3">전시</option>
+										<option value="2">자유</option>
+									</select>
+									<input type='hidden' id='postId' name='postId'
+									value='<c:out value="${board.post_id}"/>'>
+								<button class="btn btn-secondary moveBoardBtn" data-oper='moveBoard'>이동</button>
+								</form>
+							</c:if>
+						</div>
+						
 
 
 						<hr class="mb40">
@@ -795,7 +897,12 @@ button {
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
-					str+= "<div><div class='header'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
+					if (list[i].com_writer_id=='admin'){
+					str+= "<div><div class='header'><img class='adminCheck' src= 'https://i.imgur.com/FZiEX2I.png'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
+					}
+					else{
+						str+= "<div><div class='header'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
+					}
 					if (list[i].com_writer_id=="${member.userId}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
@@ -834,9 +941,13 @@ button {
 				operForm_modi.attr("action", "/board/modify").submit();
 			});
 			
+			$("button[data-oper='moveBoard']").on("click", function(e){
+				operForm_modi.attr("action", "/board/moveBoard").submit();
+			});
+			
 			$("button[data-oper='list']").on("click", function(e){
 				operForm_modi.find('#post_id').remove();
-				operForm_modi.attr("action", "/board/list")
+				operForm_modi.attr("action", "/board/list?")
 				operForm_modi.submit();
 			});
 			
@@ -860,7 +971,7 @@ button {
 						com_writer_id:('${member.userId}'),
 						post_id:post_idValue
 				};
-				replyService.add(reply, function(result){alert(result); showList(endNum);} );
+				replyService.add(reply, function(result){showList(endNum);} );
 				document.getElementById("com_content").value='';
 			});
 			
@@ -902,6 +1013,14 @@ button {
 				PageNum=targetPageNum;
 				console.log("PageNum : "+PageNum);
 				showList(PageNum);
+			});
+			$('#loginLike').on("click",function(e) {
+				$('#myModal').show();
+        	
+        		$("#close_modal").click(function() {
+					$('#myModal').hide();
+					window.location.reload();
+				});
 			});
 		});
 	</script>

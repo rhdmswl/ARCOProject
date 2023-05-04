@@ -37,12 +37,12 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@700;800&display=swap"
 	rel="stylesheet">
-<!-- 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css"> -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 <!-- star -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
 <!-- map -->
 <script type="text/javascript"
@@ -144,10 +144,9 @@ body::-webkit-scrollbar-track {
 }
 
 .single_blog_area ul li {
-	padding-left: 60px;
-	width: 700px;
 	position: relative;
 	right: 5px;
+	padding-left: 1px;
 }
 
 .post-thumb {
@@ -226,12 +225,12 @@ body::-webkit-scrollbar-track {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: black;
+	color: #f21378;
 	padding: 0;
 	margin: 0 3px;
-	margin-right: 30px;
+	margin-right: 15px;
 	background-color: #fff;
-	width: 34px;
+	width: 20px;
 	height: 36px;
 	font-size: .875rem;
 	border: 0;
@@ -290,7 +289,7 @@ body::-webkit-scrollbar-track {
 
 .leave-comment-area {
 	position: relative;
-	left: 27%;
+	left: 16%;
 	margin-top: 5px;
 	margin-bottom: 15px;
 }
@@ -325,7 +324,7 @@ body::-webkit-scrollbar-track {
 }
 
 .commText {
-	margin-left: 93px;
+	margin-left: 30px;
 }
 
 .revContentInput {
@@ -339,7 +338,7 @@ body::-webkit-scrollbar-track {
 }
 
 .revTextBox {
-	width: 400px;
+	width: 580px;
 }
 
 div.rating-wrapper {
@@ -413,8 +412,9 @@ p.v-data {
 .jb-division-line {
 	border-top: 1px solid #ccc;
 	margin-top: 20px;
-	margin-left: 38px;
-	width: 680px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	width: 101%;
 }
 
 .mapsize {
@@ -655,6 +655,22 @@ p.v-data {
 	font-size: 11px;
 	margin-top: 0;
 }
+
+.hr-dotted {
+  border : 1px;
+  border-top: 5px dotted red;
+}
+.hr-dashed {
+  border : 0px;
+  width : 90%;
+  border-top: 5px dashed red;
+  margin : 0 auto;
+}
+
+.hr-solid {
+  border : 1px;
+  border-top: 5px solid red;
+}
 </style>
 
 </head>
@@ -851,8 +867,9 @@ p.v-data {
                                         </div> --%>
 								<!-- end Pagination -->
 							</div>
-
+	<br><br>
 							<!-- 리뷰 남기기 -->
+							
 							<div class="leave-comment-area section_padding_50 clearfix">
 								<div class="comment-form">
 									<div class="mb-30">한줄평을 남겨주세요 &#128173;</div>
@@ -867,11 +884,11 @@ p.v-data {
 									<!-- 별점기능 -->
 									<div class="form-group starRev" id="star">
 										<span class="star-input"> <span class="starR on"
-											onClick="setStar(1)">⭐</span> <span class="starR"
-											onClick="setStar(2)">⭐</span> <span class="starR"
-											onClick="setStar(3)">⭐</span> <span class="starR"
-											onClick="setStar(4)">⭐</span> <span class="starR"
-											onClick="setStar(5)">⭐</span> <output for="star-input">
+											onClick="setStar">⭐</span> <span class="starR"
+											onClick="setStar">⭐</span> <span class="starR"
+											onClick="setStar">⭐</span> <span class="starR"
+											onClick="setStar">⭐</span> <span class="starR"
+											onClick="setStar">⭐</span> <output for="star-input">
 												&nbsp;&nbsp;<b>1</b>점
 											</output>
 										</span>
@@ -954,12 +971,13 @@ p.v-data {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
 		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
 		crossorigin="anonymous"></script>
-
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<!-- <script src="/js/active.js"></script> -->
 	<script type="text/javascript" src="/js/review.js"></script>
 	<script type="text/javascript" src="/js/dibs.js"></script>
 	<script>
        	$(document).ready(function() {
+
        		
        		//URL 파라미터 안 보이게
 			/* history.replaceState({}, null, location.pathname); */
@@ -1004,9 +1022,10 @@ p.v-data {
    					str+= "<li class='page-item'><a class='page-link' href='"+(endNum+1) + "'>Next</a></li>";
    				}
    				str += "</ul></div>";
-   				console.log("함수끝"+str);
+   				/* console.log("함수끝"+str); */
    				
    				reviewPageFooter.html(str);
+            }
    				
    				/* 글자수 제한 기능 */
    			 $('#comment').on('keyup', function() {
@@ -1019,9 +1038,25 @@ p.v-data {
    		            $('#comment_cnt').html("(50 / 50)");
    		        }
    		    });
-   			}		 
+   				
+   			/* 수정 글자수 제한 기능 */
+   			$(document).on('keyup', '#revComment', function() {
+				 //한줄평 쓰는 칸 눌렀을 때 입력버튼 권한주기
+   				$('#update').attr('disabled', false);
+   		        $('#update_cnt').html("("+$(this).val().length+" / 50)");
+   		 
+   		        if($(this).val().length > 50) {
+   		            $(this).val($(this).val().substring(0, 50));
+   		            $('#update_cnt').html("(50 / 50)");
+   		        }
+   		    });
+   			
+   			 
+   			
 
             function showList(page){
+            	
+            	
             			 pageNum=page;
             			 CollectionReviewService.getList({seq:seqValue,page: page|| 1 },
             				function(reviewCnt,list){
@@ -1029,14 +1064,13 @@ p.v-data {
             				   var str="";
             				   if(page==-1) {
             				    	pageNum=Math.ceil(com_cnt/10.0);
-            				    	
             				    	showList(pageNum);
             				    	return;
             				   }
             				   
-            				   if(list==null || list.length ==0) {
-            					   return;
-            				   } 
+            				  /* if(list==null || list.length ==0) {
+            					  return;
+            				   } */
             				   
             				   for(var i=0, len = list.length || 0; i < len; i++){
             					    var revSeqValue = list[i].revSeq;
@@ -1061,11 +1095,10 @@ p.v-data {
             					    if (list[i].nickName == "${member.userName}"){
             					        str += "<small>";
             					        str += "<a href='#" + formId + "' class='updatebtn' style='color:#A9A9A9;' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + formId + "'>수정</a>";
-            					        str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"			       
+	           					        str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"	       
             					        str += "<a href='#" + formId + "' class='remove2' role='button' style='color:#FF1493;' aria-expanded='false' aria-controls='" + formId + "'>삭제</a>";
             					        str += "</small>";
             					    }
-            					    
             					    
             					    str += "<small class='pull-right text-muted'>" + CollectionReviewService.displayTime(list[i].reviewDate) + "</small>";
             					    str += "</div>"; // header 끝
@@ -1076,15 +1109,13 @@ p.v-data {
             					    str += "<form class='collapse' id='" + formId + "'>";
             					    str += "<div class='form-group'>";
             					    str += "<textarea style='resize: none;' class='form-control reviewBox' id ='revComment' rows='3'></textarea>";
-            					    str += "</div>";
-            					    str += "<div><button id='update' type='button' class='btn btn-secondary updateSuccess'>수정 완료</button></div>";
-            					    
+									str += "<div id='update_cnt'>(0 / 50)</div></div>"
+            					    str += "<button id='update' type='button' class='btn btn-secondary updateSuccess'>수정 완료</button>";
+            					    str += "<div><span id='alert-danger' style='display: none; color: #d92742; font-weight: bold;'></span></div>";
             					    str += "</form>";
             					    str += "</div>";
             					    str += "</li>";
             					    str += "<div class='jb-division-line'></div>";
-            					    
-            					    
             					} 
             				   reviewUL.html(str);
             				   console.log("showList page : " +pageNum);
@@ -1111,19 +1142,21 @@ p.v-data {
      							$('#commentAdd').attr('disabled', true);
      							return false;
      						 }
-                         CollectionReviewService.add(review, function(result){alert(result);
-                         
-                         });
+                         CollectionReviewService.add(review, function(result){
+                       	/* swal('등록성공!', '한줄평이 등록되었습니다.', 'success'); */
                          showList(1);
+                         });
+
+                       
                      });
                      
-                     $(document).on("click",'.remove2',function(){
-                    	 var revSeqValue = $(this).closest("li").data("revSeq");
-                        CollectionReviewService.remove(revSeqValue, function(result){
-                        	alert(result);
-                        	});
-                        showList(1);
-                     });
+                     $(document).on("click", ".remove2", function() {
+                    	    var revSeqValue = $(this).closest("li").data("revSeq");
+                    	    CollectionReviewService.remove(revSeqValue, function(result) {
+  /*                   	    	swal('삭제완료!', '한줄평이 삭제되었습니다.', 'error'); */
+                    	        showList(1);
+                    	    });
+                    	});
                      
                      $(document).on('click','.updatebtn',function(){
                          var formId = $(this).closest('form').attr('id'); 
@@ -1133,13 +1166,22 @@ p.v-data {
                      $(document).on('click','#update',function(){
                         var formId = $(this).closest('form').attr('id');
                         var revSeqValue = $(this).closest("li").data("revSeq");
+
                         console.log(formId);
                          var review={
                              "revSeq" : revSeqValue,
-                             "revComment" : $("#" + formId+ ' textarea[id=revComment]').val(), 
-                             "revStar" : $('#' + formId + ' textarea[id="revStar"]').val()
+                             "revComment" : $("#" + formId+ ' textarea[id=revComment]').val(),
                          }; 
-                        CollectionReviewService.update(review, function(result){alert(result); showList(1);});
+                         if($("#" + formId+ ' textarea[id=revComment]').val().length == 0) {
+                             $("#revComment").focus();
+                                $("#alert-danger").css('display', 'inline-block')
+                                .text('한줄평을 입력해주세요.');
+                                $('#update').attr('disabled', true);
+                                return false;
+                             }
+                        CollectionReviewService.update(review, function(result){
+/*                         	swal('수정완료!', '한줄평이 수정되었습니다.', 'success');  */
+                        	showList(1);});
 
                      });
                      
@@ -1181,67 +1223,71 @@ p.v-data {
 							window.location.reload();
 						});
          			});
-                     
-                    /* 별점 구현 */
-                    //setStar로 선택된 별점 값 score에 저장
-                     $('.starRev span.starR').click(function(){
-                    	    $(this).parent().children('span').removeClass('on');
-                    	    $(this).addClass('on').prevAll('span').addClass('on');
-                    	    var score = $(this).next().text();
-                    	    setStar(score);
-                    	    return false;
-                    	});
+       	});
+       	
+       	
+        /* 별점 구현 */
+        //setStar로 선택된 별점 값 score에 저장
+         $('.starRev span.starR').click(function(){
+        	    $(this).parent().children('span').removeClass('on');
+        	    $(this).addClass('on').prevAll('span').addClass('on');
+        	    var score = $(this).next().text();
+        	    setStar(score);
+        	    return false;
+        	});
 
-                    	function setStar(starIndex) {
-                    	    // 클릭한 별까지 on 클래스 추가
-                    	    $(".starRev .starR").slice(0, starIndex).addClass("on");
+        	function setStar(starIndex) {
+        	    // 클릭한 별까지 on 클래스 추가
+        	    $(".starRev .starR").slice(0, starIndex).addClass("on");
 
-                    	    // 클릭한 별의 개수를 계산
-                    	    var numSelectedStars = $(".starRev .on").length;
+        	    // 클릭한 별의 개수를 계산
+        	    var numSelectedStars = $(".starRev .on").length;
 
-                    	    // 계산한 개수를 output에 출력
-                    	    $(".starRev output b").text(numSelectedStars);
-                    	}
+        	    // 계산한 개수를 output에 출력
+        	    $(".starRev output b").text(numSelectedStars);
+        	}
 
-                    	var starRating = function() {
-                    	    var $star = $(".star-input"),
-                    	        $result = $star.find("output>b");
-                    	    //별점 클릭될때 어떻게 변하는지 나타내는 코드
-                    	    $(document)
-                    	        .on("focusin", ".star-input>.input", function(){
-                    	            $(this).addClass("focus");
-                    	        })
-                    	        .on("focusout", ".star-input>.input", function(){
-                    	            var $this = $(this);
-                    	            setTimeout(function(){
-                    	                if($this.find(":focus").length === 0){
-                    	                    $this.removeClass("focus");
-                    	                }
-                    	            }, 1000);
-                    	        })
-                    	        /* 별점 체크하지 않았을때 기본 1점으로 설정 */
-                    	        .on("change", ".star-input>.starR", function(){
-                    	            var $checked = $star.find(":checked");
-                    	            var score = ($checked.length === 0) ? 1 : $checked.next().text();
-                    	            setStar(score);
-                    	        })
-                    	       .on("mouseover", ".revTextBox input", function(){
-                    	            var score = $(this).text();
-                    	            setStar(score);
-                    	        })
-                    	        .on("mouseleave", ".star-input>.starR", function(){
-                    	            var $checked = $star.find(":checked");
-                    	            if($checked.length === 0){
-                    	                setStar(1);
-                    	            } else {
-                    	                setStar($checked.next().text());
-                    	            }
-                    	        });
-                    	};
+        	var starRating = function() {
+        	    var $star = $(".star-input"),
+        	        $result = $star.find("output>b");
+        	    //별점 클릭될때 어떻게 변하는지 나타내는 코드
+        	    $(document)
+        	        .on("focusin", ".star-input>.input", function(){
+        	            $(this).addClass("focus");
+        	        })
+        	        .on("focusout", ".star-input>.input", function(){
+        	            var $this = $(this);
+        	            setTimeout(function(){
+        	                if($this.find(":focus").length === 0){
+        	                    $this.removeClass("focus");
+        	                }
+        	            }, 1000);
+        	        })
+        	        /* 별점 체크하지 않았을때 기본 1점으로 설정 */
+        	        .on("change", ".star-input>.starR", function(){
+        	            var $checked = $star.find(":checked");
+        	            var score = ($checked.length === 0) ? 1 : $checked.next().text();
+        	            setStar(score);
+        	        })
+        	       .on("mouseover", ".revTextBox input", function(){
+        	            var score = $(this).text();
+        	            setStar(score);
+        	        })
+        	        .on("mouseleave", ".star-input>.starR", function(){
+        	            var $checked = $star.find(":checked");
+        	            if($checked.length === 0){
+        	                setStar(1);
+        	            } else {
+        	                setStar($checked.next().text());
+        	            }
+        	        });
+        	};
 
-                    	starRating();
-                    	
-                    	
+        	starRating();
+       	
+       	
+       	
+       	
                    /* 지도 코드 */
                     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                         mapOption = { 
@@ -1446,7 +1492,7 @@ p.v-data {
                     
 
                     /* map end */
-});
+
                     	
 										
 </script>

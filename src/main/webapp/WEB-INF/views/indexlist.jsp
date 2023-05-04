@@ -18,24 +18,25 @@
 	margin-top: 130px;
 	margin-bottom: 80px;
 	display: table;
-	max-width: 65%;
+
 }
 
 .indexrow {
-	width: 1200px;
 	display: inline-black;
 	vertical-align: middle;
-	padding-left: 90px;
+	padding-left: 50px;
 }
 
 .listFirst {
 	float: left;
-	margin-right: 150px;
+	margin-right: 170px;
+	padding-right: 70px;
 }
 
 .listSecond {
 	float: left;
-	margin-right: 150px;
+	margin-right: 170px;
+	padding-left: 20px;
 }
 
 
@@ -159,6 +160,12 @@
 	bottom: 2px;
 }
 
+.morePosi {
+	position: absolute;
+	bottom: 107px;
+	left: 384px;
+}
+
 </style>
 </head>
 <body>
@@ -213,7 +220,7 @@
 									</tr>
 								</table>
 							</c:forEach>
-							<div class="boardlist-49-meeting-action">
+							<div class="boardlist-49-meeting-action morePosi">
 								<a href="/board/list?pageNum=1&brd_id=4"
 									class="btn btn-sm btn-flash-border-secondary" style="color:black;">더보기<img
 									class="moreImg" src="https://i.imgur.com/Pi8nidz.png"

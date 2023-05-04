@@ -58,8 +58,7 @@ body::-webkit-scrollbar-track {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	position: relative;
 	width: 500px;
-	position: relative;
-	right: 25px;
+	margin: 0 auto;
 	margin-bottom: 70px;
 	padding-left: 10px;
 }
@@ -191,7 +190,7 @@ body::-webkit-scrollbar-track {
 
 .submitBtnGroup {
 	margin-top: 10px;
-	position: relative;	
+	position: relative;
 	top: 20px;
 }
 
@@ -228,9 +227,9 @@ body::-webkit-scrollbar-track {
 	cursor: pointer;
 	height: 48px;
 	position: relative;
-    bottom: -30px;
-    right: 50%;
-    transform: translateX(50%);
+	bottom: -30px;
+	right: 50%;
+	transform: translateX(50%);
 }
 
 .modaltext {
@@ -343,18 +342,18 @@ body::-webkit-scrollbar-track {
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <p style="text-align: center; line-height: 1.5;">
-                <span id="modal-text" class="modaltext"></span>
-            </p>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="close_modal">Close</button>
-            </div>
-        </div>
-    </div>
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<p style="text-align: center; line-height: 1.5;">
+				<span id="modal-text" class="modaltext"></span>
+			</p>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" id="close_modal">Close</button>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
