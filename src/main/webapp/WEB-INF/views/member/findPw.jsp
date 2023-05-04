@@ -58,8 +58,7 @@ body::-webkit-scrollbar-track {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	position: relative;
 	width: 500px;
-	position: relative;
-	right: 25px;
+	margin: 0 auto;
 	margin-bottom: 70px;
 	padding-left: 10px;
 }
@@ -194,6 +193,53 @@ body::-webkit-scrollbar-track {
 	position: relative;
 	top: 20px;
 }
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 300;
+	left: 0;
+	top: 0;
+	width: 120%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border-radius: 10px;
+	width: 400px;
+	height: 160px;
+	box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.modal-footer {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	cursor: pointer;
+	height: 48px;
+	position: relative;
+	bottom: -30px;
+	right: 50%;
+	transform: translateX(50%);
+}
+
+.modaltext {
+	vertical-align: text-bottom;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	position: relative;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
 </style>
 
 </head>
@@ -205,7 +251,6 @@ body::-webkit-scrollbar-track {
 		})
 
 		// 비밀번호 찾기 인증메일 전송
-
 		$('#find-Pw-Btn').click(function() {
 			//db
 			const userId = $("#userId").val();
@@ -222,24 +267,29 @@ body::-webkit-scrollbar-track {
 					"email" : $("#email").val()
 				},
 				success : function(data) {
-					if (data == 1) {
-						alert(email + "로 임시비밀번호를 전송하겠습니다.");
-						send_email(userId, email);
-						//email로 임시비밀번호를 발송하는 함수를 넣어준다.
-					} else if (data == 0) {
-						alert("일치하는 정보가 없습니다.");
-
-					}
+				    if (data == 1) {
+				        $("#modal-text").text("해당 이메일로 임시비밀번호를 전송합니다.");
+				        $('#myModal').show();
+				        send_email(userId, email);
+				    } else if (data == 0) {
+				        $("#modal-text").text("일치하는 정보가 없습니다.");
+				        $('#myModal').show();
+				    }
 				}
 			});
 
 		}); // end send email
 
+		// 모달창 닫기 이벤트
+		$("#close_modal").click(function() {
+			$('#myModal').hide();
+		});
+
 	});
 
 	function send_email(userId, email) {
 		//const email = email; // 이메일 주소값 얻어오기!
-		console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인 // 인증번호 입력하는곳 
+		console.log('완성된 이메일 : ' + email); // 인증번호 입력하는곳 
 		$.ajax({
 			type : 'get',
 			url : '<c:url value="/member/findPwmailCheck?email=' + email
@@ -247,13 +297,13 @@ body::-webkit-scrollbar-track {
 			success : function(data) {
 				console.log("data : " + data);
 				code = data;
-				alert('임시 비밀번호가 전송되었습니다. 다시 로그인해주세요 !');
 				location.href = "login";
 
 			}
 		});
 	}
 </script>
+
 <body>
 	<section id="container">
 		<div class="row justify-content-center">
@@ -293,6 +343,17 @@ body::-webkit-scrollbar-track {
 		</div>
 	</section>
 
+	<!-- modal -->
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<p style="text-align: center; line-height: 1.5;">
+				<span id="modal-text" class="modaltext"></span>
+			</p>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" id="close_modal">Close</button>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

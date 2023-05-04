@@ -44,6 +44,12 @@
 		post_content=#{post_content}
 		where post_id = #{post_id}
 	</update>
+	
+	<update id="moveBoard">
+		update post
+		set brd_id=#{brd_id}
+		where post_id=#{post_id}
+	</update>
 
 	<sql id="criteria">
 			<choose>
@@ -92,7 +98,7 @@
 	<select id="getListWithPaging" resultType="com.arco.domain.BoardVO">
 		SELECT *
 		FROM (
-			SELECT post_id, post_title, post_writer, post_content, post_regdate, post_view_count, brd_id, post_com_count,post_rec_count
+			SELECT post_id, post_title, post_writer, post_content, post_regdate, post_view_count, brd_id, post_com_count,post_rec_count,user_id
 			FROM post
 		<include refid="criteria"></include>
 		) as post_paging

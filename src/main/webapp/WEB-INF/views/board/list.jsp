@@ -66,17 +66,9 @@ body::-webkit-scrollbar-track {
 }
 
 .page-item.active .page-link {
-	display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 2;
     color: #f21378;
-    padding: 0;
-    margin: 0 3px;
-    border-radius: 50%!important;
-    width: 36px;
-    height: 36px;
-    font-size: .875rem;
-    background-color: #ddd;
+    background-color: #fff;
     border: 0;
 }
 
@@ -302,6 +294,13 @@ a{
 	margin-left: 10px;
 }
 
+.adminCheck {
+	width: 15px;
+	height: 15px;
+	margin-right: 2px;
+	
+}
+
 .smalltext {
 	height: 20px;
 	width: 300px;
@@ -316,20 +315,32 @@ a{
 .smalltext .viewgroup {
 	position: absolute;
 	float: left;
-	right: 175px;
+	left: 71%;
+	width: auto;
+	margin-right: auto;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .smalltext .commentCountGroup {
 	position: absolute;
-	right: 130px;
+	left: 78%;
 	float: left;
+	width: auto;
+	margin-right: auto;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .smalltext .likeCountGroup {
 	position: absolute;
-	right: 80px;
+	left: 85%;
 	width: 50px;
 	height: 20px;
+	width: auto;
+	margin-right: auto;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .col-md-12 col-lg-12 col-xl-12 {
@@ -533,7 +544,7 @@ a{
 														<small class="float-left text-muted"><c:out value="${board.post_id}" /></small>
 													</c:if>
 													<!-- 베스트 게시판 일 시, 글 순번 대신 글 카테고리 표시  끝-->
-													<div class="m-r-10"><c:out value="${board.post_writer}" /></div> 
+													<div class="m-r-10"><c:if test="${board.user_id=='admin'}"><img class="adminCheck" src= "https://i.imgur.com/FZiEX2I.png"></c:if><c:out value="${board.post_writer}" /></div> 
 													<div class="smalltext">
 													<small class="float-right text-muted">
 														<div class="regidate"><fmt:formatDate pattern="yyyy-MM-dd"
@@ -566,16 +577,16 @@ a{
 										<div class="body">
 											<ul class="pagination pagination-primary m-b-0">
 												<c:if test="${pageMaker.prev}">
-													<li class="paginate_button previous"><a
+													<li class="page-item previous"><a
 														class="page-link" href="${pageMaker.startPage-1}">Prev</a></li>
 												</c:if>
 												<c:forEach var="num" begin="${pageMaker.startPage}"
 													end="${pageMaker.endPage}">
-													<li class="paginate_button"><a class="page-link move2"
+													<li class="page-item ${pageMaker.cri.pageNum == num ? "active":"" }"><a class="page-link move2"
 														href="${num}">${num}</a></li>
 												</c:forEach>
 												<c:if test="${pageMaker.next}">
-													<li class="paginate_button next"><a class="page-link"
+													<li class="page-item next"><a class="page-link"
 														href="${pageMaker.endPage +1}">Next</a></li>
 												</c:if>
 											</ul>
@@ -658,7 +669,7 @@ a{
 					});
 					var actionForm = $("#actionForm");
 					
-					$(".paginate_button a").on(
+					$(".page-item a").on(
 							"click",
 							function(e) {
 								e.preventDefault();
@@ -666,6 +677,7 @@ a{
 								actionForm.find("input[name='pageNum']").val(
 										$(this).attr("href"));
 								actionForm.submit();
+								
 							});
 					
 					
@@ -699,6 +711,8 @@ a{
 						$('#sidelist').removeClass();
 						$(this).addClass('on');
 					});
+					
+					
 				});
 		
 	</script>
