@@ -55,13 +55,13 @@ body::-webkit-scrollbar-track {
 }
 
 .card {
-	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-	position: relative;
-	width: 700px;
-	position: relative;
-	right: 27%;
-	margin-bottom: 70px;
+    font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+    width: 700px;
+    margin-left:-40px;
+    margin-bottom: 70px;
+    
 }
+
 
 .card-body {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
