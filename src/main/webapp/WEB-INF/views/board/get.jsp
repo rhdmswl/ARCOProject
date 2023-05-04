@@ -47,6 +47,13 @@ body::-webkit-scrollbar-track {
     background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
 }
 
+.adminCheck {
+	width: 15px;
+	height: 15px;
+	margin-right: 2px;
+	
+}
+
 .modal {
 	display: none;
 	position: fixed;
@@ -882,7 +889,12 @@ button {
 				    var form_id = "comment-form-" + com_id;  // 폼의 고유한 ID 생성
 				    
 					str+= "<li class='left cleafix' data-com-id='" + com_id + "'>";
-					str+= "<div><div class='header'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
+					if (list[i].com_writer_id=='admin'){
+					str+= "<div><div class='header'><img class='adminCheck' src= 'https://i.imgur.com/FZiEX2I.png'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
+					}
+					else{
+						str+= "<div><div class='header'><strong class='primary-font'>"+list[i].com_writer+"</strong>";
+					}
 					if (list[i].com_writer_id=="${member.userId}"){
 					str+= "         <small>"	;
 					str+= "        	<a href='#" + form_id + "' class='comment-edit-btn' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='" + form_id + "'>수정</a>";
