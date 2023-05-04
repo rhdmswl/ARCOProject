@@ -27,7 +27,8 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <title>PASSWORD UPDATE</title>
 <style type="text/css">
@@ -188,8 +189,6 @@ body::-webkit-scrollbar-track {
 #alert-danger{
 	font-size: 15px;
 	margin-left:107px;
-	
-	
 }
 
 #alert-success{
@@ -197,7 +196,6 @@ body::-webkit-scrollbar-track {
 	margin-left:107px;
 	
 }
-
 
 .control-label {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
@@ -211,108 +209,187 @@ body::-webkit-scrollbar-track {
 	margin-top: -10px;
 	margin-left: 123px;
 }
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 300;
+	left: 0;
+	top: 0;
+	width: 120%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border-radius: 10px;
+	width: 400px;
+	height: 170px;
+	box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.modal-footer {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	cursor: pointer;
+	height: 48px;
+	position: relative;
+	bottom: -30px;
+	right: 50%;
+	transform: translateX(50%);
+}
+
+.modaltext {
+	vertical-align: text-bottom;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	position: relative;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
 </style>
 
 </head>
 <script type="text/javascript">
 	$(document).ready(
-			function() {
-				// 비밀번호 유효성 검사
-				function validatePassword() {
-					var pwd1 = $("#newPass").val();
-					var pwd2 = $("#passCheck").val();
-					var pwdRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()-=_+]{8,16}$/;
-					var passwordChars = pwd1.split("");
-					var duplicateCount = 0;
-					
-					if (pwd1 == '' || pwd1.includes(' ')) { // 공백이 있는 경우
-					    $("#alert-danger").css('display', 'inline-block').text('비밀번호는 공백 없이 입력해주세요.');
-					    return false;
-					}
-					
-					if (/^\d+$/.test(pwd1)) { // 숫자만 입력한 경우
-					    $("#alert-danger").css('display', 'inline-block').text('비밀번호에는 숫자만 사용하실 수 없습니다.');
-					    return false;
-					}
+		function() {
+			
+			// modal function
+		    function showModalAlert(message) {
+		        $("#modal-alert-text").text(message);
+		        $("#modal-alert").css("display", "block");
+		    }
+			
+		    function showModalConfirm(message, callback) {
+		        $("#modal-confirm-text").text(message);
+		        $("#modal-confirm").css("display", "block");
+		        $("#modal-confirm-ok").off().on("click", function () {
+		            $("#modal-confirm").css("display", "none");
+		            callback(true);
+		        });
+		        $("#modal-confirm-cancel").off().on("click", function () {
+		            $("#modal-confirm").css("display", "none");
+		            callback(false);
+		        });
+		    }
 
-					if (!pwdRegex.test(pwd1)) {
-						$("#alert-danger").css('display', 'inline-block').text(
-								'8~16자 이내의 영문, 숫자, 특수문자만 가능합니다.');
-						return false;
-					}
-
-					if (pwd1 != '' && pwd2 == '') {
-						$("#alert-danger").css('display', 'inline-block').text(
-								'비밀번호 확인을 입력해주세요.');
-						return false;
-					}
-
-					if (pwd1 != "" || pwd2 != "") {
-						if (pwd1 == pwd2) {
-							$("#alert-success").css('display', 'inline-block');
-							$("#alert-danger").css('display', 'none');
-						} else {
-							$("#alert-success").css('display', 'none');
-							$("#alert-danger").css('display', 'inline-block')
-									.text('비밀번호가 일치하지 않습니다.');
-							return false;
-						}
-					}
-
-					for (var i = 0; i < passwordChars.length; i++) {
-						var charCount = 0;
-						for (var j = 0; j < passwordChars.length; j++) {
-							if (passwordChars[i] == passwordChars[j]) {
-								charCount++;
-							}
-						}
-						if (charCount > 2) {
-							duplicateCount++;
-						}
-					}
-
-					return true;
+		    // modal close event
+		    $("#modal-alert-ok").on("click", function () {
+		        $("#modal-alert").css("display", "none");
+		    });
+		    
+		    $("#modal-confirm-ok, #modal-confirm-cancel").on("click", function () {
+		        $("#modal-confirm").css("display", "none");
+		    });
+			
+			// 비밀번호 유효성 검사
+			function validatePassword() {
+				var pwd1 = $("#newPass").val();
+				var pwd2 = $("#passCheck").val();
+				var pwdRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()-=_+]{8,16}$/;
+				var passwordChars = pwd1.split("");
+				var duplicateCount = 0;
+				
+				if (pwd1 == '' || pwd1.includes(' ')) { // 공백이 있는 경우
+				    $("#alert-danger").css('display', 'inline-block').text('비밀번호는 공백 없이 입력해주세요.');
+				    return false;
+				}
+				
+				if (/^\d+$/.test(pwd1)) { // 숫자만 입력한 경우
+				    $("#alert-danger").css('display', 'inline-block').text('비밀번호에는 숫자만 사용하실 수 없습니다.');
+				    return false;
 				}
 
-				// 비밀번호 변경 버튼 클릭 이벤트
-				$("#submit").on("click", function() {
-					if (!validatePassword()) {
-						return false;
-					}
+				if (!pwdRegex.test(pwd1)) {
+					$("#alert-danger").css('display', 'inline-block').text(
+							'8~16자 이내의 영문, 숫자, 특수문자만 가능합니다.');
+					return false;
+				}
 
-					if ($("#newPass").val() == "") {
-						alert("비밀번호를 입력해주세요.");
-						$("#newPass").focus();
-						return false;
-					}
+				if (pwd1 != '' && pwd2 == '') {
+					$("#alert-danger").css('display', 'inline-block').text(
+							'비밀번호 확인을 입력해주세요.');
+					return false;
+				}
 
-					if ($("#passCheck").val() == "") {
-						alert("비밀번호 확인을 입력해주세요.");
-						$("#passCheck").focus();
-						return false;
-					}
-
-					var pwVal = $("#newPass").val();
-
-					if (pwVal.length < 8) {
-						alert("비밀번호는 최소 8자 이상 입력해주세요.");
+				if (pwd1 != "" || pwd2 != "") {
+					if (pwd1 == pwd2) {
+						$("#alert-success").css('display', 'inline-block');
+						$("#alert-danger").css('display', 'none');
 					} else {
-						if(confirm("비밀번호를 변경하시겠습니까?")){
-						$("#passUpdateForm").submit();
-						alert("비밀번호 변경이 완료 되었습니다. 다시 로그인 해주세요 !");
+						$("#alert-success").css('display', 'none');
+						$("#alert-danger").css('display', 'inline-block')
+								.text('비밀번호가 일치하지 않습니다.');
+						return false;
 					}
 				}
-				});
 
-				// 취소
-				$(".cancel").on("click", function() {
-					location.href = "/member/mypage";
-				});
+				for (var i = 0; i < passwordChars.length; i++) {
+					var charCount = 0;
+					for (var j = 0; j < passwordChars.length; j++) {
+						if (passwordChars[i] == passwordChars[j]) {
+							charCount++;
+						}
+					}
+					if (charCount > 2) {
+						duplicateCount++;
+					}
+				}
 
-				$('.form-control').focusout(function() {
-					validatePassword();
-				});
+				return true;
+			}
+			
+			// 비밀번호 변경 버튼 클릭 이벤트
+			$("#submit").on("click", function() {
+				if (!validatePassword()) {
+					return false;
+				}
+
+				if ($("#newPass").val() == "") {
+			        showModalAlert("비밀번호를 입력해주세요.");
+			        $("#newPass").focus();
+			        return false;
+			    }
+
+			    if ($("#passCheck").val() == "") {
+			        showModalAlert("비밀번호 확인을 입력해주세요.");
+			        $("#passCheck").focus();
+			        return false;
+			    }
+
+			    var pwVal = $("#newPass").val();
+
+			    if (pwVal.length < 8) {
+			        showModalAlert("비밀번호는 최소 8자 이상 입력해주세요.");
+			    } else {
+			        showModalConfirm("비밀번호를 변경하시겠습니까?", function (result) {
+			            if (result) {
+			                $("#passUpdateForm").submit();
+			                showModalAlert("비밀번호 변경이 완료 되었습니다. 다시 로그인 해주세요 !");
+			            }
+			        });
+			    }
 			});
+
+			// 취소
+			$(".cancel").on("click", function() {
+				location.href = "/member/mypage";
+			});
+
+			$('.form-control').focusout(function() {
+				validatePassword();
+			});
+		});
 </script>
 <body>
 	<section id="container">
@@ -360,7 +437,31 @@ body::-webkit-scrollbar-track {
 			</div>
 		</div>
 	</section>
-
+	
+	<!-- start modal -->
+	<div id="modal-alert" class="modal">
+	    <div class="modal-content">
+	        <p style="text-align: center; line-height: 1.5;">
+                <span class="modaltext" id="modal-alert-text"></span>
+            </p>
+	        <div class="modal-footer">
+	            <button class="btn btn-default" id="modal-alert-ok">확인</button>
+	        </div>
+	    </div>
+	</div>
+	
+	<div id="modal-confirm" class="modal">
+	    <div class="modal-content">
+	    	<p style="text-align: center; line-height: 1.5;">
+                <span class="modaltext" id="modal-confirm-text"></span>
+            </p>
+	        <div class="modal-footer">
+	            <button class="btn btn-default" id="modal-confirm-cancel">취소</button>
+	            <button class="btn btn-default" id="modal-confirm-ok">확인</button>
+	        </div>
+	    </div>
+	</div>
+	<!-- end modal -->
 </body>
 
 </html>
