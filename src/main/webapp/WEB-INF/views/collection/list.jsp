@@ -174,6 +174,7 @@ a:hover {
     width: 36px;
     height: 36px;
     font-size: .875rem;
+    background-color: #fff;
 }
 
 .page-item.active:hover {
@@ -338,14 +339,14 @@ a:hover {
 											<div class="body">
 												<ul class="pagination pagination-primary m-b-0">
 													<c:if test="${pageMaker.prev}">
-														<li class="paginate_button previous"><a
+														<li class="page-item previous"><a
 															class="page-link" href="${pageMaker.startPage-1}">Previous</a></li>
 													</c:if>
 													<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-														<li class="paginate_button"><a class="page-link move2" href="${num}">${num}</a></li>
+														<li class="page-item ${pageMaker.cri.pageNum == num ? "active":"" }"><a class="page-link move2" href="${num}">${num}</a></li>
 													</c:forEach>
 													<c:if test="${pageMaker.next}">
-														<li class="paginate_button next"><a class="page-link" href="${pageMaker.endPage +1}">Next</a></li>
+														<li class="page-item next"><a class="page-link" href="${pageMaker.endPage +1}">Next</a></li>
 													</c:if>
 												</ul>
 											</div>
@@ -460,7 +461,7 @@ a:hover {
 				
 				var actionForm = $("#actionForm");
 				
-				$(".paginate_button a").on("click", function(e) {
+				$(".page-item a").on("click", function(e) {
 							e.preventDefault();
 							console.log('click');
 							actionForm.find("input[name='pageNum']").val($(this).attr("href"));
