@@ -565,7 +565,7 @@ button {
 
 						</ul>
 						<div class="postbox"
-							style="box-sizing: border-box; width: 100%; height: 180px;">
+							style="box-sizing: border-box; width: 100%; padding-bottom: 100px;">
 							${content}
 						</div>
 
@@ -860,7 +860,7 @@ button {
 						com_writer_id:('${member.userId}'),
 						post_id:post_idValue
 				};
-				replyService.add(reply, function(result){alert(result); showList(endNum);} );
+				replyService.add(reply, function(result){showList(endNum);} );
 				document.getElementById("com_content").value='';
 			});
 			
