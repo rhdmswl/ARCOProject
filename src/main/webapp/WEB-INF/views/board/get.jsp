@@ -592,6 +592,21 @@ button {
 							<c:if test="${member.role=='ROLE_ADMIN'}">
 								<button class="btn btn-primary" data-oper='remove'>관리자 삭제</button>
 							</c:if>
+						</div>
+						<div class="frame">
+							<c:if test="${member.role=='ROLE_ADMIN'}">
+								<form id='operForm_remo' action="/board/moveboard" method="post">
+									<select class="chk" name='moveBoardId' id="moveBoardId">
+										<option value="1">정보</option>
+										<option value="3">전시</option>
+										<option value="2">자유</option>
+									</select>
+									<input type='hidden' id='postId' name='postId'
+									value='<c:out value="${board.post_id}"/>'>
+								<button class="btn btn-primary" data-oper='moveBoard'>이동</button>
+								</form>
+							</c:if>
+							
 							<form id='operForm_modi' action="/board/modify" method="get">
 								<input type='hidden' id='post_id' name='post_id'
 									value='<c:out value="${board.post_id}"/>'> <input
@@ -834,9 +849,13 @@ button {
 				operForm_modi.attr("action", "/board/modify").submit();
 			});
 			
+			$("button[data-oper='moveBoard']").on("click", function(e){
+				operForm_modi.attr("action", "/board/moveBoard").submit();
+			});
+			
 			$("button[data-oper='list']").on("click", function(e){
 				operForm_modi.find('#post_id').remove();
-				operForm_modi.attr("action", "/board/list")
+				operForm_modi.attr("action", "/board/list?")
 				operForm_modi.submit();
 			});
 			

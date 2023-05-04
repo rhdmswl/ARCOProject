@@ -126,5 +126,11 @@ public class BoardServiceImpl implements BoardService {
 	public void removeComment(Long post_id) {
 		replyMapper.deleteWithBoard(post_id);
 	}
+
+	@Override
+	public void moveBoard(BoardVO board) {
+		mapper.moveBoard(board);
+		
+	}
 	
 }

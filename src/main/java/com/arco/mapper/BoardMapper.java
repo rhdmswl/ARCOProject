@@ -39,4 +39,6 @@ public interface BoardMapper {
 
 	public List<BoardVO> getBest();
 
+	public void moveBoard(BoardVO board);
+
 }
