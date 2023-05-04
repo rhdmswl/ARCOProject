@@ -254,7 +254,7 @@ body::-webkit-scrollbar-track {
 $(document).ready(function() {
 	
     // 삭제 버튼 클릭 시
-    $('.delete-btn').click(function() {
+    $('body').on('click', '.delete-btn', function() {
         var userId = $(this).data('user-id');
         if (confirm(userId + ' 님을 삭제하시겠습니까?')) {
             // 삭제 요청 보내기
