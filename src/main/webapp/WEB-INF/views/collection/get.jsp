@@ -290,7 +290,7 @@ body::-webkit-scrollbar-track {
 
 .leave-comment-area {
 	position: relative;
-	left: 27%;
+	left: 16%;
 	margin-top: 5px;
 	margin-bottom: 15px;
 }
@@ -339,7 +339,7 @@ body::-webkit-scrollbar-track {
 }
 
 .revTextBox {
-	width: 400px;
+	width: 580px;
 }
 
 div.rating-wrapper {
@@ -655,6 +655,22 @@ p.v-data {
 	font-size: 11px;
 	margin-top: 0;
 }
+
+.hr-dotted {
+  border : 1px;
+  border-top: 5px dotted red;
+}
+.hr-dashed {
+  border : 0px;
+  width : 90%;
+  border-top: 5px dashed red;
+  margin : 0 auto;
+}
+
+.hr-solid {
+  border : 1px;
+  border-top: 5px solid red;
+}
 </style>
 
 </head>
@@ -851,8 +867,9 @@ p.v-data {
                                         </div> --%>
 								<!-- end Pagination -->
 							</div>
-
+	<br><br>
 							<!-- 리뷰 남기기 -->
+							
 							<div class="leave-comment-area section_padding_50 clearfix">
 								<div class="comment-form">
 									<div class="mb-30">한줄평을 남겨주세요 &#128173;</div>
