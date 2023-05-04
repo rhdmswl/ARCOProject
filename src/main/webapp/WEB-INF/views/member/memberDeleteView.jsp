@@ -160,47 +160,137 @@ body::-webkit-scrollbar-track {
 	right: 10px;
 }
 
-</style>
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 300;
+	left: 0;
+	top: 0;
+	width: 120%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
 
+.modal-content {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border-radius: 10px;
+	width: 400px;
+	height: 170px;
+	box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.modal-footer {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	cursor: pointer;
+	height: 60px;
+	position: relative;
+	bottom: -25px;
+	right: 50%;
+	transform: translateX(50%);
+}
+
+.modaltext {
+	vertical-align: text-bottom;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	position: relative;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+</style>
 
 </head>
 <script type="text/javascript">
-		$(document).ready(function(){
-			// 취소
-			$(".cancel").on("click", function(){
-				
-				location.href = "/member/mypage";
-						    
-			})
-		
-			$("#submit").on("click", function(){
-				if($("#userPass").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#userPass").focus();
-					return false;
-				}
-				$.ajax({
-					url : "/member/passChk",
-					type : "POST",
-					dataType : "json",
-					data : $("#delForm").serializeArray(),
-					success: function(data){
-						
-						if(data==true){
-							if(confirm("회원탈퇴하시겠습니까?")){
-								$("#delForm").submit();
-								alert("탈퇴가 완료되었습니다.\n언제든 ARCO가 필요하시다면 다시 방문해주세요!\n다시 돌아오실 날만을 기다리고 있겠습니다. \uD83D\uDE22");
-
-							}
-						}else{
-							alert("비밀번호가 틀렸습니다.");
-							return;
-						}
-					}
-				})				
-			});
+	
+	$(document).ready(function(){
+		// 취소
+		$(".cancel").on("click", function(){
+			location.href = "/member/mypage";						    
 		})
-	</script>
+		
+		// modal function
+	    function showModalAlert(message, callback) {
+	        $("#modal-alert-text").text(message);
+	        $("#modal-alert").fadeIn();
+
+	        if (callback) {
+	            $("#modal-alert-ok").off("click");
+	            $("#modal-alert-ok").on("click", function() {
+	                $("#modal-alert").fadeOut();
+	                callback();
+	            });
+	        } else {
+	            $("#modal-alert-ok").off("click");
+	            $("#modal-alert-ok").on("click", function() {
+	                $("#modal-alert").fadeOut();
+	            });
+	        }
+	    }
+	
+	    function showModalConfirm(message, callback) {
+	        $("#modal-confirm-text").text(message);
+	        $("#modal-confirm").fadeIn();
+	
+	        $("#modal-confirm-ok").off("click");
+	        $("#modal-confirm-ok").on("click", function() {
+	            $("#modal-confirm").fadeOut();
+	            callback(true);
+	        });
+	
+	        $("#modal-confirm-cancel").off("click");
+	        $("#modal-confirm-cancel").on("click", function() {
+	            $("#modal-confirm").fadeOut();
+	            callback(false);
+	        });
+	    }
+	
+	    $("#submit").on("click", function(){
+	        if($("#userPass").val()==""){
+	            showModalAlert("비밀번호를 입력해주세요.", null);
+	            $("#userPass").focus();
+	            return false;
+	        }
+	        $.ajax({
+	            url : "/member/passChk",
+	            type : "POST",
+	            dataType : "json",
+	            data : $("#delForm").serializeArray(),
+	            success: function(data){
+	                if(data==true){
+	                    showModalConfirm("회원탈퇴하시겠습니까?", function(result) {
+	                        if (result) {
+	                            showModalAlert("탈퇴가 완료되었습니다.\n 언제든 ARCO가 필요하다면 다시 방문해주세요 \uD83D\uDE22", function() {
+	                                $("#delForm").submit();
+	                            });
+	                        }
+	                    });
+	                } else {
+	                    showModalAlert("비밀번호가 틀렸습니다.", null);
+	                    return;
+	                }
+	            }
+	        });                
+	    });
+		
+        $("#modal-alert-ok").on("click", function() {
+            $("#modal-alert").fadeOut();
+        });
+
+        $("#modal-confirm-cancel").on("click", function() {
+            $("#modal-confirm").fadeOut();
+        });
+        
+	});
+</script>
 <body>
 	<section id="container">
 		<div class="row justify-content-center">
@@ -249,6 +339,30 @@ body::-webkit-scrollbar-track {
 		</div>
 	</section>
 
+	<!-- start modal -->
+	<div id="modal-alert" class="modal">
+	    <div class="modal-content">
+	        <p style="text-align: center; line-height: 1.5;">
+                <span class="modaltext" id="modal-alert-text"></span>
+            </p>
+	        <div class="modal-footer">
+	            <button class="btn btn-default" id="modal-alert-ok">확인</button>
+	        </div>
+	    </div>
+	</div>
+	
+	<div id="modal-confirm" class="modal">
+	    <div class="modal-content">
+	    	<p style="text-align: center; line-height: 1.5;">
+                <span class="modaltext" id="modal-confirm-text"></span>
+            </p>
+	        <div class="modal-footer">
+	            <button class="btn btn-default" id="modal-confirm-cancel">취소</button>
+	            <button class="btn btn-default" id="modal-confirm-ok">확인</button>
+	        </div>
+	    </div>
+	</div>
+	<!-- end modal -->
 </body>
 
 </html>

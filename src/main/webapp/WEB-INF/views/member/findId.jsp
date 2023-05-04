@@ -238,7 +238,7 @@ body::-webkit-scrollbar-track {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
 	font-weight: 500;
 	position: relative;
-	top: 30px;
+	top: 50%;
 	transform: translate(-50%, -50%);
 }
 </style>
