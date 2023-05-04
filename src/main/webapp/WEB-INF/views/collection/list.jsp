@@ -216,7 +216,7 @@ a:hover {
 
 .searchBox{
 	width: 90%;
-	margin-left: 60px;
+	margin-left: 10px;
 	padding-right: 40px;
 	position: absolute;
 }
