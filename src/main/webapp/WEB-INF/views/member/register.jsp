@@ -483,6 +483,10 @@ body::-webkit-scrollbar-track {
 									console.log("data : " +  data);
 									checkInput.attr('disabled',false);
 									code =data;
+									if(!email){
+										alert('이메일을 입력해주세요.');
+										return;
+									}
 									alert('인증번호가 전송되었습니다.')
 								}			
 							}); // end ajax
