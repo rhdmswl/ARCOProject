@@ -66,17 +66,9 @@ body::-webkit-scrollbar-track {
 }
 
 .page-item.active .page-link {
-	display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 2;
     color: #f21378;
-    padding: 0;
-    margin: 0 3px;
-    border-radius: 50%!important;
-    width: 36px;
-    height: 36px;
-    font-size: .875rem;
-    background-color: #ddd;
+    background-color: #fff;
     border: 0;
 }
 
@@ -566,16 +558,16 @@ a{
 										<div class="body">
 											<ul class="pagination pagination-primary m-b-0">
 												<c:if test="${pageMaker.prev}">
-													<li class="paginate_button previous"><a
+													<li class="page-item previous"><a
 														class="page-link" href="${pageMaker.startPage-1}">Prev</a></li>
 												</c:if>
 												<c:forEach var="num" begin="${pageMaker.startPage}"
 													end="${pageMaker.endPage}">
-													<li class="paginate_button"><a class="page-link move2"
+													<li class="page-item ${pageMaker.cri.pageNum == num ? "active":"" }"><a class="page-link move2"
 														href="${num}">${num}</a></li>
 												</c:forEach>
 												<c:if test="${pageMaker.next}">
-													<li class="paginate_button next"><a class="page-link"
+													<li class="page-item next"><a class="page-link"
 														href="${pageMaker.endPage +1}">Next</a></li>
 												</c:if>
 											</ul>
@@ -658,7 +650,7 @@ a{
 					});
 					var actionForm = $("#actionForm");
 					
-					$(".paginate_button a").on(
+					$(".page-item a").on(
 							"click",
 							function(e) {
 								e.preventDefault();
@@ -666,6 +658,7 @@ a{
 								actionForm.find("input[name='pageNum']").val(
 										$(this).attr("href"));
 								actionForm.submit();
+								
 							});
 					
 					
@@ -699,6 +692,8 @@ a{
 						$('#sidelist').removeClass();
 						$(this).addClass('on');
 					});
+					
+					
 				});
 		
 	</script>
