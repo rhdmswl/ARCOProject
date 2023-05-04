@@ -516,6 +516,9 @@ button {
 
 .likeBtn {
 	margin-right: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: auto;
 }
 
 .likeBtnText {
@@ -528,6 +531,11 @@ button {
 	height: 13px;
 	padding-left: 9px;
 	display: inline-block;
+}
+
+.moveBoardBtn {
+	width: 80px;
+	height: 30px;
 }
 
 
@@ -616,14 +624,14 @@ button {
 						<div class="frame">
 							<c:if test="${member.role=='ROLE_ADMIN'}">
 								<form id='operForm_remo' action="/board/moveboard" method="post">
-									<select class="chk" name='moveBoardId' id="moveBoardId">
+									<select class="chk" name='moveBoardId' id="moveBoardId" style="width: 75px; height: 28px; margin-left: 30px;">
 										<option value="1">정보</option>
 										<option value="3">전시</option>
 										<option value="2">자유</option>
 									</select>
 									<input type='hidden' id='postId' name='postId'
 									value='<c:out value="${board.post_id}"/>'>
-								<button class="btn btn-primary" data-oper='moveBoard'>이동</button>
+								<button class="btn btn-secondary moveBoardBtn" data-oper='moveBoard'>이동</button>
 								</form>
 							</c:if>
 						</div>

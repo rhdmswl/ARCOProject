@@ -160,6 +160,12 @@
 	bottom: 2px;
 }
 
+.morePosi {
+	position: absolute;
+	bottom: 107px;
+	left: 384px;
+}
+
 </style>
 </head>
 <body>
@@ -214,7 +220,7 @@
 									</tr>
 								</table>
 							</c:forEach>
-							<div class="boardlist-49-meeting-action">
+							<div class="boardlist-49-meeting-action morePosi">
 								<a href="/board/list?pageNum=1&brd_id=4"
 									class="btn btn-sm btn-flash-border-secondary" style="color:black;">더보기<img
 									class="moreImg" src="https://i.imgur.com/Pi8nidz.png"

@@ -144,10 +144,9 @@ body::-webkit-scrollbar-track {
 }
 
 .single_blog_area ul li {
-	padding-left: 60px;
-	width: 700px;
 	position: relative;
 	right: 5px;
+	padding-left: 1px;
 }
 
 .post-thumb {
@@ -226,12 +225,12 @@ body::-webkit-scrollbar-track {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: black;
+	color: #f21378;
 	padding: 0;
 	margin: 0 3px;
-	margin-right: 30px;
+	margin-right: 15px;
 	background-color: #fff;
-	width: 34px;
+	width: 20px;
 	height: 36px;
 	font-size: .875rem;
 	border: 0;
@@ -325,7 +324,7 @@ body::-webkit-scrollbar-track {
 }
 
 .commText {
-	margin-left: 93px;
+	margin-left: 30px;
 }
 
 .revContentInput {
@@ -413,8 +412,9 @@ p.v-data {
 .jb-division-line {
 	border-top: 1px solid #ccc;
 	margin-top: 20px;
-	margin-left: 38px;
-	width: 680px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	width: 101%;
 }
 
 .mapsize {

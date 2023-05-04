@@ -308,20 +308,32 @@ a{
 .smalltext .viewgroup {
 	position: absolute;
 	float: left;
-	right: 175px;
+	left: 71%;
+	width: auto;
+	margin-right: auto;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .smalltext .commentCountGroup {
 	position: absolute;
-	right: 130px;
+	left: 78%;
 	float: left;
+	width: auto;
+	margin-right: auto;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .smalltext .likeCountGroup {
 	position: absolute;
-	right: 80px;
+	left: 85%;
 	width: 50px;
 	height: 20px;
+	width: auto;
+	margin-right: auto;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .col-md-12 col-lg-12 col-xl-12 {
