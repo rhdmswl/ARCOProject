@@ -47,6 +47,48 @@ body::-webkit-scrollbar-track {
     background: rgba(242, 240, 241);  /*스크롤바 뒷 배경 색상*/
 }
 
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 300;
+	left: 0;
+	top: 0;
+	width: 120%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+	position: fixed;
+	left: 50%;
+	top: 20%;
+	transform: translate(-50%, -50%);
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border-radius: 10px;
+	width: 400px;
+	height: 170px;
+	box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+}
+
+.modal-footer {
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	cursor: pointer;
+	height: 48px;
+	position: relative;
+	top: 30px;
+}
+
+.modaltext {
+	vertical-align: middle;
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+	position: relative;
+	top: 30px;
+}
 .entry-card {
 	-webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
 	-moz-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
@@ -569,6 +611,7 @@ button {
 							${content}
 						</div>
 
+						<c:if test="${member.userId!=null}">
 						<div class="frame" style="background-color:none;">
 							<button id='like' data-oper='like' class="btn btn-primary likeBtn">
 								<div class="likeBox">
@@ -576,10 +619,35 @@ button {
 									<div class="recBtnCount">${board.post_rec_count}</div>
 								</div>
 							</button>
-								<!-- <button id='like' style="border:none; background-color:none;" data-oper='like' 
-										class="custom-btn btn-11"><img id="heartImg" src="https://i.imgur.com/6io8NDW.png"></button> -->
 						</div>
-
+						</c:if>
+						<c:if test="${member.userId==null}">
+							<div class="frame" style="background-color:none;">
+							<button id='loginLike' class="btn btn-primary likeBtn">
+									<div class="likeBox">
+										<div class="likeBtnText">추천</div>
+										<div class="recBtnCount">${board.post_rec_count}</div>
+									</div>
+								</button>
+							
+							<div id="myModal" class="modal">
+								<!-- Modal content -->
+								<div class="modal-content">
+									<p style="text-align: center; line-height: 1.5;">
+										<span class="modaltext" style="font-size: 13pt;">로그인 후 입력해주세요!</span>
+									</p>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											id="mypage_modal">
+											<a class="login" href="/member/login">login</a>
+										</button>
+										<button type="button" class="btn btn-default"
+											id="close_modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:if>
 
 						<div class="frame">
 							<c:if test="${member.userId==board.user_id}">
@@ -925,6 +993,14 @@ button {
 				PageNum=targetPageNum;
 				console.log("PageNum : "+PageNum);
 				showList(PageNum);
+			});
+			$('#loginLike').on("click",function(e) {
+				$('#myModal').show();
+        	
+        		$("#close_modal").click(function() {
+					$('#myModal').hide();
+					window.location.reload();
+				});
 			});
 		});
 	</script>
