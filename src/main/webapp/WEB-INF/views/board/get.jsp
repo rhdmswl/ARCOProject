@@ -689,10 +689,12 @@ button {
 							<form id='operForm_remo' action="/board/remove" method="post">
 								<input type='hidden' id='post_id' name='post_id'
 									value='<c:out value="${board.post_id}"/>'> <input
-									type='hidden' id='post_id' name='pageNum'
+									type='hidden' id='brd_id' name='pageNum'
 									value='<c:out value="${cri.pageNum}"/>'> <input
-									type='hidden' id='post_id' name='brd_id'
-									value='<c:out value="${cri.brd_id}"/>'>
+									type='hidden' id='brd_id' name='brd_id'
+									value='<c:out value="${board.brd_id}"/>'>
+									<input type='hidden' name='role'
+									value='<c:out value="${member.role}"/>'>
 							</form>
 						</div>
 						
@@ -913,7 +915,7 @@ button {
 					}
 					else if ("${member.role}"=="ROLE_ADMIN"){
 						str+= "         <small>"	;
-						str+= "        	<a href='#" + form_id + "' class='comment-delete-btn' role='button' aria-expanded='false' aria-controls='" + form_id + "'>삭제</a>";
+						str+= "        	<a href='#" + form_id + "' class='admin-comment-delete-btn' role='button' aria-expanded='false' aria-controls='" + form_id + "'>삭제</a>";
 						str+= "         </small>"	;
 					}
 					str+= "         <small class='pull-right text-muted'>" + replyService.displayTime(list[i].com_date)+"</small></div>";
@@ -999,6 +1001,15 @@ button {
 			    replyService.remove(com_id, function(result){
 			        alert(result);
 			        location.reload();
+			    });
+			});
+			
+			$(document).on('click', '.admin-comment-delete-btn', function(){
+			    var com_id = $(this).closest("li").data("com-id");
+			    replyService.remove(com_id, function(result){
+			        alert(result);
+			        showList(1);
+			        //location.replace("https://arco.today/admin/admin?admin_id=4");
 			    });
 			});
 			

@@ -134,27 +134,24 @@
 	<select id="getMemberCollectionRevsWithPaging"
 		resultType="com.member.vo.CollectionReviewVO">
 		SELECT * FROM collectionRev WHERE userId = #{userId}
+		ORDER BY reviewDate DESC
 		LIMIT ${start}, 12
-		<!-- SELECT *, collection.seq AS collectionSeq FROM collectionRev JOIN 
-			collection ON collectionRev.seq = collection.seq WHERE userId = #{userId} 
-			LIMIT ${start}, 12 -->
 	</select>
 
 	<!-- 작성한 게시글 불러오기 (페이징 적용) -->
 	<select id="getMemberPostsWithPaging"
 		resultType="com.member.vo.BoardVO">
 		SELECT * FROM post WHERE user_id = #{userId}
-		LIMIT
-		${start},
-		12
+		ORDER BY post_regdate DESC
+		LIMIT ${start}, 12
 	</select>
 
 	<!-- 작성한 댓글 불러오기 (페이징 적용) -->
 	<select id="getMemberCommentsWithPaging"
 		resultType="com.member.vo.ReplyVO">
 		SELECT * FROM comment WHERE com_writer_id = #{userId}
-		LIMIT
-		${start}, 12
+		ORDER BY com_date DESC
+		LIMIT ${start}, 12
 	</select>
 
 	<!-- 작성한 한줄평 총 개수 -->
@@ -185,19 +182,21 @@
 	<select id="listAllReviews"
 		resultType="com.member.vo.CollectionReviewVO">
 		SELECT * FROM collectionRev
+		ORDER BY reviewDate DESC
 		LIMIT ${start}, 12
 	</select>
 
 	<!-- all 게시글 불러오기 (페이징 적용) -->
 	<select id="listAllPosts" resultType="com.member.vo.BoardVO">
 		SELECT * FROM post
-		LIMIT
-		${start}, 12
+		ORDER BY post_regdate DESC
+		LIMIT ${start}, 12
 	</select>
 
 	<!-- all 댓글 불러오기 (페이징 적용) -->
 	<select id="listAllComments" resultType="com.member.vo.ReplyVO">
 		SELECT * FROM comment
+		ORDER BY com_date DESC
 		LIMIT ${start}, 12
 	</select>
 
