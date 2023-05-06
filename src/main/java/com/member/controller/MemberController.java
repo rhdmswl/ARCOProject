@@ -251,6 +251,14 @@ public class MemberController {
 		int result = service.nameChk(vo);
 		return result;
 	}
+	
+	// 이메일 중복 체크
+	@ResponseBody
+	@RequestMapping(value = "/emailChk", method = RequestMethod.POST)
+	public int emailChk(MemberVO vo) throws Exception {
+		int result = service.emailChk(vo);
+		return result;
+	}
 
 	@RequestMapping(value = "/getProfileImg", method = RequestMethod.GET)
 	public void getProfileImg(String userId, HttpServletResponse response) throws Exception {
@@ -324,9 +332,9 @@ public class MemberController {
 		// 아이디 찾기 post
 		@ResponseBody
 		@RequestMapping(value = "/findId", method = RequestMethod.POST)
-		public String findId(String userName, String phone) throws Exception {
+		public String findId(String phone, String email) throws Exception {
 			
-			MemberVO vo = new MemberVO("","",userName,phone,"","");
+			MemberVO vo = new MemberVO("","","",phone,email,"");
 			String result = service.findId(vo);
 			
 			return result;

@@ -111,6 +111,12 @@ public class MemberDAOImpl implements MemberDAO {
 		int result = sql.selectOne("memberMapper.nameChk", vo);
 		return result;
 	}
+	
+	@Override
+	public int emailChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne("memberMapper.emailChk", vo);
+		return result;
+	}
 
 //	@Override
 //  public String getProfileImg(String userId) throws Exception {

@@ -46,6 +46,9 @@ public interface MemberDAO {
 
 	// 닉네임 중복체크
 	public int nameChk(MemberVO vo) throws Exception;
+	
+	// 이메일 중복체크
+	public int emailChk(MemberVO vo) throws Exception;
 
 	// public String getProfileImg(String userId) throws Exception;
 
@@ -81,5 +84,7 @@ public interface MemberDAO {
 	public int countPosts(String userId) throws Exception;
 
 	public int countComments(String userId) throws Exception;
+
+	
 
 }

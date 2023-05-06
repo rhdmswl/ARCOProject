@@ -55,13 +55,11 @@ body::-webkit-scrollbar-track {
 }
 
 .card {
-    font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-    width: 700px;
-    margin-left:-40px;
-    margin-bottom: 70px;
-    
+	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+	width: 700px;
+	margin-left: -40px;
+	margin-bottom: 70px;
 }
-
 
 .card-body {
 	font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
@@ -136,9 +134,10 @@ body::-webkit-scrollbar-track {
 }
 
 .form-control#verifyCode {
-	width: 250px;
-	margin-left: 120px;
-	margin-top: -12px;
+  width: 250px;
+  margin-left: -767px;
+  margin-top: 100px;
+ 
 }
 
 .btn-secondary {
@@ -231,12 +230,14 @@ body::-webkit-scrollbar-track {
 }
 
 .emailSelectBtn {
-	margin-left: 393px;
-	bottom: 36px;
+	position: absolute;
+	left: 400px;
+	bottom: -30px;
 }
 
+
 .submitBtnGroup {
-	margin-top: 50px;
+	margin-top: 150px;
 	margin-left: -140px;
 }
 
@@ -253,6 +254,12 @@ body::-webkit-scrollbar-track {
 #alert-success2 {
 	font-size: 15px;
 	margin-left: 20px;
+}
+
+#alert-success4 {
+	font-size: 15px;
+	margin-left: 120px;
+	margin-top:10px;
 }
 
 #alert-danger {
@@ -273,16 +280,59 @@ body::-webkit-scrollbar-track {
 #alert-danger3 {
 	font-size: 15px;
 	margin-left: 120px;
+	
+}
+
+#alert-danger4 {
+	font-size: 15px;
+	margin-left: 120px;
+	margin-top:10px;
 }
 
 #mail-check-warn1 {
 	font-size: 15px;
 	margin-left: 120px;
 }
+
 #mail-check-warn2 {
 	font-size: 15px;
 	margin-left: 20px;
 }
+
+.form-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.form-group.has-feedback{
+  height: 45px;
+}
+
+.form-control-feedback,
+.mail-check-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  pointer-events: none;
+}
+
+#alert-danger1,
+#alert-success1,
+#alert-danger2,
+#alert-success2,
+#alert-danger3,
+#alert-success3{
+  display: block;
+  margin-top: 5px;
+}
+
+
 </style>
 
 </head>
@@ -304,6 +354,14 @@ body::-webkit-scrollbar-track {
 						    var idRegex = /^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]{4,10}$/;
 						    var spaceRegex = /\s/;
 						
+						    if (userId.startsWith("admin")) { // 아이디가 'admin'으로 시작하는 경우
+						        $("#alert-danger1").css('display', 'inline-block').text('사용할 수 없는 아이디입니다.');
+						        $("#alert-success1").css('display', 'none');
+						        $('#submit').attr('disabled', true);
+						        return false;
+						    }
+						    
+						    
 						    if (spaceRegex.test(userId)) {
 						        $("#alert-danger1").css('display', 'inline-block').text('아이디에는 공백을 입력할 수 없습니다.');
 						        $("#alert-success1").css('display', 'none');
@@ -316,11 +374,10 @@ body::-webkit-scrollbar-track {
 						        $('#submit').attr('disabled', true);
 						        
 						        return false;
-						    } else if (/^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/.test(userId)) {
-						        $("#alert-danger1").css('display', 'inline-block').text('아이디에는 한글만 입력할 수 없습니다.');
+						    } else if (!/^[a-zA-Z0-9]+$/.test(userId)) {
+						        $("#alert-danger1").css('display', 'inline-block').text('아이디는 영문 대소문자와 숫자만 사용 가능합니다.');
 						        $("#alert-success1").css('display', 'none');
 						        $('#submit').attr('disabled', true);
-						        
 						        return false;
 						    } else {
 						        $("#alert-danger1").css('display', 'none');
@@ -400,6 +457,7 @@ body::-webkit-scrollbar-track {
 						    var nameRegex = /^[a-zA-Z가-힣0-9]{2,10}$/;
 						    var numRegex = /^[0-9]{2,10}$/;
 						    var spaceRegex = /\s/;
+						    var adminRegex = /(관리자|어드민)/;
 
 						    if (spaceRegex.test(userName)) {
 						        $("#alert-danger2").css('display', 'inline-block')
@@ -407,7 +465,13 @@ body::-webkit-scrollbar-track {
 						        $("#alert-success2").css('display', 'none');
 						        $('#submit').attr('disabled', true);
 						        return false;
-						    } else if (!nameRegex.test(userName)) {
+						    }else if (adminRegex.test(userName)) {
+						        $("#alert-danger2").css('display', 'inline-block')
+						        .text('사용하실 수 없는 닉네임 입니다.');
+						    $("#alert-success2").css('display', 'none');
+						    $('#submit').attr('disabled', true);
+						    return false;
+						} else if (!nameRegex.test(userName)) {
 						        $("#alert-danger2").css('display', 'inline-block')
 						            .text('닉네임은 2자~10자 이하의 영문, 한글, 숫자만 사용가능합니다.');
 						        $("#alert-success2").css('display', 'none');
@@ -468,6 +532,45 @@ body::-webkit-scrollbar-track {
 												'none');
 									}
 								});
+						
+						//이메일
+						$('.form-control').focusout(function() {
+					    var email = $("#email").val();
+					    var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+					
+					    if (!emailRegex.test(email)) {
+					        $("#alert-danger4").css('display', 'inline-block').text('유효하지 않은 이메일 주소입니다.');
+					        return false;
+					    } else {
+					        $("#alert-danger4").css('display', 'none');
+					    }
+					    $.ajax({
+					        url: "/member/emailChk",
+					        type: "post",
+					        dataType: "json",
+					        data: {
+					            "email": $("#email").val()
+					        },
+					        success: function(data) {
+					        	if (data == 1) {						        		
+					                $("#alert-danger4").css('display', 'inline-block')
+					                    .text('중복된 이메일입니다. 다시 입력해주세요.');
+					                $("#alert-success4").css('display', 'none');
+					                $('#mail-Check-Btn').attr('disabled', true);
+					               
+					               
+					            } else if (data == 0) {
+					                $("#alert-success4").css('display', 'inline-block')
+					                    .text('사용 가능한 이메일입니다.');
+					                $("#alert-danger4").css('display', 'none');
+					                $('#mail-Check-Btn').attr('disabled', false);
+					               
+					               
+					            }
+					        }
+					    });
+					});
+
 
 						
 						//이메일 
@@ -475,7 +578,7 @@ body::-webkit-scrollbar-track {
 							const email = $('#email').val() // 이메일 주소값 얻어오기!
 							console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
 							const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
-							
+						   
 							$.ajax({
 								type : 'get',
 								url : '<c:url value ="/member/mailCheck?email="/>'+email, // GET방식이라 Url 뒤에 email을 쓸 수 있음
@@ -582,6 +685,8 @@ body::-webkit-scrollbar-track {
 													|| usernameVal == ""
 													|| verifyCodeVal == "" ) {
 												alert("공백없이 모두 입력해주세요.");
+											} else if (idVal.toLowerCase().startsWith("admin")) {
+												  alert("아이디가 admin으로 시작하는 아이디는 사용할 수 없습니다. 다른 아이디를 입력해주세요.");
 											} else if (pwVal.length < 8) {
 												alert("비밀번호는 8자~16자 이내로 입력해주세요.");
 											} else if (pwVal != pwConfirmVal) {
@@ -595,6 +700,8 @@ body::-webkit-scrollbar-track {
 												alert("유효한 전화번호를 입력해주세요.");
 											}  else if (!isValidUsername(usernameVal)) {
 												alert("닉네임은 2자 이상 8자 이하의 한글, 영문, 숫자만 입력해주세요.");
+											} else if (usernameVal.toLowerCase().includes("관리자")) {
+												alert("닉네임에는 관리자를 포함시킬 수 없습니다. 다른 닉네임을 입력해주세요.");
 											} else if (idVal.length < 4 || idVal.length > 10 || !isValidId(idVal)) {
 												  alert("아이디는 4자 이상 10자 이하의 영문, 숫자만 입력 가능합니다. 다시 입력해주세요.");
 											}	else {
@@ -708,19 +815,24 @@ body::-webkit-scrollbar-track {
 							<!-- email -->
 							<div class="form-group has-feedback">
 								<label class="control-label-email" for="email">이메일</label> <input
-									class="form-control" type="text" id="email" name="email" />
-								<div class="input-group-addon">
+									class="form-control" type="text" id="email" name="email" /> <span
+									id="alert-danger4"
+									style="display: none; color: #d92742; font-weight: bold;"></span>
+
+								<span id="alert-success4" style="display: none; color: green;"></span>
+								
+								
+								
 									<button type="button" class="btn btn-primary emailSelectBtn"
 										id="mail-Check-Btn">본인인증</button>
-								</div>
+								
 								<div class="mail-check-box">
 									<input class="form-control mail-check-input" id=verifyCode
 										name=verifyCode placeholder="인증번호 6자리를 입력해주세요!"
-										disabled="disabled" maxlength="6">
-										 
-										 <span id="mail-check-warn2"></span>
+										disabled="disabled" maxlength="6"> <span
+										id="mail-check-warn2"></span>
 								</div>
-										 <span id="mail-check-warn1"></span>
+								<span id="mail-check-warn1"></span>
 
 							</div>
 
