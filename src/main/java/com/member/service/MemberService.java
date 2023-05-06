@@ -36,6 +36,8 @@ public interface MemberService {
 	
 	public int nameChk(MemberVO vo) throws Exception;
 	
+	public int emailChk(MemberVO vo) throws Exception;
+	
 //	public String getProfileImg(String userId) throws Exception;
 //	
 //	public void updateProfileImg(MemberVO vo) throws Exception;
@@ -59,6 +61,8 @@ public interface MemberService {
 	public int countCollectionRevs(String userId) throws Exception;
 	public int countPosts(String userId) throws Exception;
 	public int countComments(String userId) throws Exception;
+
+	
 
 	
 

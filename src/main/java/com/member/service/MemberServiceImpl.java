@@ -92,6 +92,12 @@ public class MemberServiceImpl implements MemberService {
 		int result = dao.nameChk(vo);
 		return result;
 	}
+	
+	@Override
+	public int emailChk(MemberVO vo) throws Exception {
+		int result = dao.emailChk(vo);
+		return result;
+	}
 
 	@Override
 	public void updateProfileImg(ImageVO imageVO) {
