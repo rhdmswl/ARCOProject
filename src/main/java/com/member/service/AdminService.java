@@ -12,7 +12,7 @@ public interface AdminService {
 	
 	public void deleteUser(String userId) throws Exception;
 	 
-	// admin
+	// admin Criteria List
 	public List<MemberVO> listAllMembers(Criteria criteria);
 	public List<CollectionReviewVO> listAllReviews(Criteria criteria);
 	public List<BoardVO> listAllPosts(Criteria criteria);
@@ -23,7 +23,5 @@ public interface AdminService {
 	public int countAllCollectionRevs() throws Exception;
 	public int countAllPosts() throws Exception;
 	public int countAllComments() throws Exception;
-
-		
 
 }

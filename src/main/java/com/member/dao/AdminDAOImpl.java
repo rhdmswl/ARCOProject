@@ -14,6 +14,7 @@ import com.member.vo.CollectionReviewVO;
 import com.member.vo.Criteria;
 import com.member.vo.MemberVO;
 import com.member.vo.ReplyVO;
+
 @Repository
 public class AdminDAOImpl implements AdminDAO {
 	
@@ -31,7 +32,7 @@ public class AdminDAOImpl implements AdminDAO {
 		 sql.delete("memberMapper.deleteUser", userId);
 	}
 	
-	// admin
+	// admin Criteria
     @Override
     public List<MemberVO> listAllMembers(Criteria criteria) {
     	Map<String, Object> paramMap = new HashMap<>();

@@ -14,9 +14,8 @@ public class MemberVO {
 	private String newPass;
 	private String confirmPass;
 	private String role;
-	// private String profileImg;
-	public MemberVO(String userId,String userPass,String userName,String phone, String email,String role)
-	{
+
+	public MemberVO(String userId,String userPass,String userName,String phone, String email,String role) {
 		this.userId = userId;
 		this.userPass = userPass;
 		this.userName = userName;
@@ -24,13 +23,6 @@ public class MemberVO {
 		this.email = email;		
 		this.role = role;
 	}
-	
-
-	
-
-	
-
-
 
 	private List<CollectionReviewVO> collectionRevs;
 	private List<BoardVO> posts;

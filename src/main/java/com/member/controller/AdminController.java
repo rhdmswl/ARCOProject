@@ -26,23 +26,14 @@ import com.member.vo.PageMaker;
 @RequestMapping("/admin/*")
 public class AdminController {
 
-	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-
 	@Inject
 	AdminService service;
 	
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
-	 
-	
-//	// 관리자화면
-//	@RequestMapping(value = "/index", method = RequestMethod.GET)
-//	public void getIndex() throws Exception {
-//		logger.info("get index");
-//	}
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	  public String admin(Model model, HttpSession session,
+	public String admin(Model model, HttpSession session,
 			@RequestParam(value="memberPage", defaultValue="1") int memberPage,
 			@RequestParam(value="revPage", defaultValue="1") int revPage,
 	        @RequestParam(value="postPage", defaultValue="1") int postPage,
@@ -80,10 +71,9 @@ public class AdminController {
 	    model.addAttribute("admin_id", admin_id);
 
 	    return "admin/admin";
-	  }
+	}
 
-
-		// 회원 삭제 post
+	// 회원 삭제 post
 	@RequestMapping(value = "/admin", method = RequestMethod.POST)
 	public @ResponseBody String deleteUser(@RequestParam("userId") String userId, HttpSession session) throws Exception {
 	    // 해당 유저 삭제하기
@@ -98,7 +88,5 @@ public class AdminController {
 
 	    return "success";
 	}
-
-
 
 }
