@@ -299,7 +299,7 @@ body::-webkit-scrollbar-track {
 												
 												
 							//아이디					
-											$('.form-control').focusout(function() {
+							$('.form-control').focusout(function() {
 						    var userId = $("#userId").val();
 						    var idRegex = /^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]{4,10}$/;
 						    var spaceRegex = /\s/;
@@ -527,120 +527,117 @@ body::-webkit-scrollbar-track {
 							});
 						
 						
-						$("#submit")
-								.on(
-										"click",
-										function() {
-											if ($("#userId").val() == "") {
-												alert("아이디를 입력해주세요.");
-												$("#userId").focus();
-												return false;
-											}
+						$("#submit").on("click", function() {
+								if ($("#userId").val() == "") {
+									alert("아이디를 입력해주세요.");
+									$("#userId").focus();
+									return false;
+								}
 
-											if ($("#userPass").val() == "") {
-												alert("비밀번호를 입력해주세요.");
-												$("#userPass").focus();
-												return false;
-											}
-											if ($("#passCheck").val() == "") {
-												alert("비밀번호확인을 입력해주세요.");
-												$("#passCheck").focus();
-												return false;
-											}
-											if ($("#userName").val() == "") {
-												alert("닉네임을 입력해주세요.");
-												$("#userName").focus();
-												return false;
-											}
+								if ($("#userPass").val() == "") {
+									alert("비밀번호를 입력해주세요.");
+									$("#userPass").focus();
+									return false;
+								}
+								if ($("#passCheck").val() == "") {
+									alert("비밀번호확인을 입력해주세요.");
+									$("#passCheck").focus();
+									return false;
+								}
+								if ($("#userName").val() == "") {
+									alert("닉네임을 입력해주세요.");
+									$("#userName").focus();
+									return false;
+								}
 
-											if ($("#phone").val() == "") {
-												alert("전화번호를 입력해주세요.");
-												$("#phone").focus();
-												return false;
-											}
-											if ($("#email").val() == "") {
-												alert("이메일을 입력해주세요.");
-												$("#email").focus();
-												return false;
-											}
+								if ($("#phone").val() == "") {
+									alert("전화번호를 입력해주세요.");
+									$("#phone").focus();
+									return false;
+								}
+								if ($("#email").val() == "") {
+									alert("이메일을 입력해주세요.");
+									$("#email").focus();
+									return false;
+								}
 
-											var idVal = $("#userId").val();
-											var pwVal = $("#userPass").val();
-											var pwConfirmVal = $("#passCheck").val();
-											var emailVal = $("#email").val();
-											var phoneVal = $("#phone").val();
-											var usernameVal = $("#userName")
-													.val();
-											var verifyCodeVal = $("#verifyCode").val();
-											
-										
-										
-											 if (pwVal == ""
-												 	|| pwConfirmVal == ""
-													|| emailVal == ""
-													|| phoneVal == ""
-													|| usernameVal == ""
-													|| verifyCodeVal == "" ) {
-												alert("공백없이 모두 입력해주세요.");
-											} else if (pwVal.length < 8) {
-												alert("비밀번호는 8자~16자 이내로 입력해주세요.");
-											} else if (pwVal != pwConfirmVal) {
-												  alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
-											} else if (/^[0-9]+$/.test(pwVal)) {
-												  alert("비밀번호에 숫자만 입력할 수 없습니다. 다시 입력해주세요.");
-												  return false;
-												} else if (!isValidEmail(emailVal)) {
-												alert("유효한 이메일 주소를 입력해주세요.");
-											} else if (!isValidPhone(phoneVal)) {
-												alert("유효한 전화번호를 입력해주세요.");
-											}  else if (!isValidUsername(usernameVal)) {
-												alert("닉네임은 2자 이상 8자 이하의 한글, 영문, 숫자만 입력해주세요.");
-											} else if (idVal.length < 4 || idVal.length > 10 || !isValidId(idVal)) {
-												  alert("아이디는 4자 이상 10자 이하의 영문, 숫자만 입력 가능합니다. 다시 입력해주세요.");
-											}	else {
-												
-												$("#regForm").submit();
-												alert("회원가입이 완료되었습니다. ARCO에 오신걸 환영합니다 !");
-												
-											}
-										
-
-											function isValidEmail(email) {
-
-												var emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-												return emailRegEx.test(email);
-											}
-
-											function isValidPhone(phone) {
-
-												var phoneRegEx = /^\d{10,11}$/;
-												return phoneRegEx.test(phone);
-											}
-											 function isValidId(id) {
-												 
-												  var regExp = /^[a-z0-9_-]{4,10}$/;
-												  return regExp.test(id);
-												}
- 
-
-											function isValidUsername(username) {
-												  var usernameRegEx = /^[a-zA-Z가-힣\d]{2,10}$/;
-												  var containsAlphabetOrKorean = /[a-zA-Z가-힣]/.test(username);
-												  var containsDigit = /\d/.test(username);
-												  var containsSpace = /\s/.test(username);
-
-												  if (!usernameRegEx.test(username)) {
-												    return false;
-												  }
-
-												  if (!containsAlphabetOrKorean || containsSpace) {
-												    return false;
-												  }
-
-												  return true;
-												}
+								var idVal = $("#userId").val();
+								var pwVal = $("#userPass").val();
+								var pwConfirmVal = $("#passCheck").val();
+								var emailVal = $("#email").val();
+								var phoneVal = $("#phone").val();
+								var usernameVal = $("#userName")
+										.val();
+								var verifyCodeVal = $("#verifyCode").val();
 								
-										});
+							
+							
+								 if (pwVal == ""
+									 	|| pwConfirmVal == ""
+										|| emailVal == ""
+										|| phoneVal == ""
+										|| usernameVal == ""
+										|| verifyCodeVal == "" ) {
+									alert("공백없이 모두 입력해주세요.");
+								} else if (pwVal.length < 8) {
+									alert("비밀번호는 8자~16자 이내로 입력해주세요.");
+								} else if (pwVal != pwConfirmVal) {
+									  alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+								} else if (/^[0-9]+$/.test(pwVal)) {
+									  alert("비밀번호에 숫자만 입력할 수 없습니다. 다시 입력해주세요.");
+									  return false;
+									} else if (!isValidEmail(emailVal)) {
+									alert("유효한 이메일 주소를 입력해주세요.");
+								} else if (!isValidPhone(phoneVal)) {
+									alert("유효한 전화번호를 입력해주세요.");
+								}  else if (!isValidUsername(usernameVal)) {
+									alert("닉네임은 2자 이상 8자 이하의 한글, 영문, 숫자만 입력해주세요.");
+								} else if (idVal.length < 4 || idVal.length > 10 || !isValidId(idVal)) {
+									  alert("아이디는 4자 이상 10자 이하의 영문, 숫자만 입력 가능합니다. 다시 입력해주세요.");
+								}	else {
+									
+									$("#regForm").submit();
+									alert("회원가입이 완료되었습니다. ARCO에 오신걸 환영합니다 !");
+									
+								}
+							
+
+								function isValidEmail(email) {
+
+									var emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+									return emailRegEx.test(email);
+								}
+
+								function isValidPhone(phone) {
+
+									var phoneRegEx = /^\d{10,11}$/;
+									return phoneRegEx.test(phone);
+								}
+								 function isValidId(id) {
+									 
+									  var regExp = /^[a-z0-9_-]{4,10}$/;
+									  return regExp.test(id);
+									}
+
+
+								function isValidUsername(username) {
+									  var usernameRegEx = /^[a-zA-Z가-힣\d]{2,10}$/;
+									  var containsAlphabetOrKorean = /[a-zA-Z가-힣]/.test(username);
+									  var containsDigit = /\d/.test(username);
+									  var containsSpace = /\s/.test(username);
+
+									  if (!usernameRegEx.test(username)) {
+									    return false;
+									  }
+
+									  if (!containsAlphabetOrKorean || containsSpace) {
+									    return false;
+									  }
+
+									  return true;
+									}
+					
+							});
 					});
 
 

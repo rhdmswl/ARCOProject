@@ -10,7 +10,6 @@ import com.member.dao.MemberDAO;
 import com.member.vo.BoardVO;
 import com.member.vo.CollectionReviewVO;
 import com.member.vo.Criteria;
-import com.member.vo.ImageVO;
 import com.member.vo.MemberVO;
 import com.member.vo.PageMaker;
 import com.member.vo.ReplyVO;
@@ -23,9 +22,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void register(MemberVO vo) throws Exception {
-
 		dao.register(vo);
-
 	}
 
 	@Override
@@ -50,19 +47,14 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
-
 	@Override
 	public void memberUpdate(MemberVO vo) throws Exception {
-
 		dao.memberUpdate(vo);
-
 	}
 
 	@Override
 	public void mypageUpdate(MemberVO vo) throws Exception {
-
 		dao.mypageUpdate(vo);
-
 	}
 
 	@Override
@@ -91,16 +83,6 @@ public class MemberServiceImpl implements MemberService {
 	public int nameChk(MemberVO vo) throws Exception {
 		int result = dao.nameChk(vo);
 		return result;
-	}
-
-	@Override
-	public void updateProfileImg(ImageVO imageVO) {
-		dao.insertImage(imageVO);
-	}
-
-	@Override
-	public ImageVO getProfileImg(String userId) {
-		return dao.selectImageByUserId(userId);
 	}
 
 	// 페이징 적용
@@ -134,15 +116,5 @@ public class MemberServiceImpl implements MemberService {
 	public int countComments(String userId) throws Exception {
 		return dao.countComments(userId);
 	}
-
-//  @Override
-//  public String getProfileImg(String userId) throws Exception {
-//      return dao.getProfileImg(userId);
-//  }
-//  
-//  @Override
-//  public void updateProfileImg(MemberVO vo) throws Exception {
-//      dao.updateProfileImg(vo);
-//  }
 
 }

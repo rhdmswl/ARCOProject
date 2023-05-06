@@ -5,7 +5,6 @@ import java.util.List;
 import com.member.vo.BoardVO;
 import com.member.vo.CollectionReviewVO;
 import com.member.vo.Criteria;
-import com.member.vo.ImageVO;
 import com.member.vo.MemberVO;
 import com.member.vo.PageMaker;
 import com.member.vo.ReplyVO;
@@ -36,20 +35,6 @@ public interface MemberService {
 	
 	public int nameChk(MemberVO vo) throws Exception;
 	
-//	public String getProfileImg(String userId) throws Exception;
-//	
-//	public void updateProfileImg(MemberVO vo) throws Exception;
-	
-	public void updateProfileImg(ImageVO imageVO);
-	
-	public ImageVO getProfileImg(String userId);
-	
-//	List<CollectionReviewVO> getMemberCollectionRevs(String userId) throws Exception;
-//
-//	List<BoardVO> getMemberPosts(String userId) throws Exception;
-//
-//	List<ReplyVO> getMemberComments(String userId) throws Exception;
-	
 	// 페이징이 적용된 메소드
 	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception;
 	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception;
@@ -59,9 +44,5 @@ public interface MemberService {
 	public int countCollectionRevs(String userId) throws Exception;
 	public int countPosts(String userId) throws Exception;
 	public int countComments(String userId) throws Exception;
-
-	
-
-	
 
 }

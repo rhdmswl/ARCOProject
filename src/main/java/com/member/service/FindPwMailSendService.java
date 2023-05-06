@@ -16,6 +16,7 @@ import com.member.vo.MemberVO;
 
 @Component
 public class FindPwMailSendService {
+	
 	@Autowired
 	private JavaMailSenderImpl mailSender;
 	
@@ -41,10 +42,8 @@ public class FindPwMailSendService {
 	    System.out.println("인증번호 : " + checkNum);
 	    authNumber = checkNum;
 	}
-
 	
-	
-	//이메일 보낼 양식
+	// 이메일 보낼 양식
 	public String findPwEmail(String userId, String email) throws Exception {
 		makeRandomNumber();
 		System.out.println(userId);
@@ -53,10 +52,10 @@ public class FindPwMailSendService {
 		System.out.println("newpwd : "+pwd);
 		
 		MemberVO vo = new MemberVO(userId,pwd,"","",email,"");
-		//vo => 기존 아이디 기존 이메일 새로 생긴 pwd
+		// vo => 기존 아이디 기존 이메일 새로 생긴 pwd
 		service.findPwUpdate(vo);
 		
-		String setFrom = ".com"; // email-config에 설정한 자신의 이메일 주소를 입력 
+		String setFrom = ".com"; // email-context에 설정한 자신의 이메일 주소를 입력 
 		String toMail = email;
 		String title = "ARCO 임시비밀번호 발급 이메일 입니다."; // 이메일 제목 
 		String content = 
@@ -76,7 +75,7 @@ public class FindPwMailSendService {
 		return authNumber;
 	}
 	
-	//이메일 전송 메소드
+	// 이메일 전송 메소드
 	public void mailSend(String setFrom, String toMail, String title, String content) { 
 		MimeMessage message = mailSender.createMimeMessage();
 		// true 매개값을 전달하면 multipart 형식의 메세지 전달이 가능. 문자 인코딩 설정도 가능.

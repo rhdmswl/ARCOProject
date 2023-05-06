@@ -5,7 +5,6 @@ import java.util.List;
 import com.member.vo.BoardVO;
 import com.member.vo.CollectionReviewVO;
 import com.member.vo.Criteria;
-import com.member.vo.ImageVO;
 import com.member.vo.MemberVO;
 import com.member.vo.ReplyVO;
 
@@ -46,25 +45,6 @@ public interface MemberDAO {
 
 	// 닉네임 중복체크
 	public int nameChk(MemberVO vo) throws Exception;
-
-	// public String getProfileImg(String userId) throws Exception;
-
-	// public void updateProfileImg(MemberVO vo) throws Exception;
-
-	// 프로필 이미지 등록
-	public void insertImage(ImageVO imageVO);
-
-	// 프로필 이미지 조회
-	public ImageVO selectImageByUserId(String userId);
-
-//	// 나의 한줄평
-//	List<CollectionReviewVO> getMemberCollectionRevs(String userId) throws Exception;
-//
-//	// 나의 게시글
-//	List<BoardVO> getMemberPosts(String userId) throws Exception;
-//
-//	// 나의 댓글
-//	List<ReplyVO> getMemberComments(String userId) throws Exception;
 
 	// 페이징이 적용된 나의 한줄평
 	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception;
