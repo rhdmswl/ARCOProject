@@ -60,137 +60,6 @@ p {
 	font-size: 16px;
 }
 
-/* .section_padding_100 {
-	padding-top: 100px;
-	padding-bottom: 100px;
-}
-
-.section_padding_100_70 {
-	padding-top: 100px;
-	padding-bottom: 70px;
-}
-
-.section_padding_50 {
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-
-.section_padding_50_20 {
-	padding-top: 50px;
-	padding-bottom: 20px;
-}
-
-.section_padding_150 {
-	padding-top: 150px;
-	padding-bottom: 150px;
-}
-
-.section_padding_200 {
-	padding-top: 200px;
-	padding-bottom: 200px;
-}
-
-.section_padding_80 {
-	margin-top: 80px;
-	margin-bottom: 80px;
-}
-
-.section_padding_80_50 {
-	padding-top: 80px;
-	padding-bottom: 50px;
-}
-
-.section_padding_30_80 {
-	padding-top: 30px;
-	padding-bottom: 80px;
-}
-
-.section_padding_80_0 {
-	padding-top: 80px;
-	padding-bottom: 0;
-}
-
-.section_padding_0_80 {
-	padding-top: 0;
-	padding-bottom: 80px;
-}
-
-img {
-	max-width: 100%;
-}
-
-.mt-15 {
-	margin-top: 15px;
-}
-
-.mt-30 {
-	margin-top: 30px;
-}
-
-.mt-40 {
-	margin-top: 40px;
-}
-
-.mt-50 {
-	margin-top: 50px;
-}
-
-.mt-100 {
-	margin-top: 100px;
-}
-
-.mt-150 {
-	margin-top: 150px;
-}
-
-.mr-15 {
-	margin-right: 15px;
-}
-
-.mr-30 {
-	margin-right: 30px;
-}
-
-.mr-50 {
-	margin-right: 50px;
-}
-
-.mr-100 {
-	margin-right: 100px;
-}
-
-.mb-15 {
-	margin-bottom: 15px;
-}
-
-.mb-30 {
-	margin-bottom: 30px;
-}
-
-.mb-50 {
-	margin-bottom: 50px;
-}
-
-.mb-100 {
-	margin-bottom: 100px;
-}
-
-.ml-15 {
-	margin-left: 15px;
-}
-
-.ml-30 {
-	margin-left: 30px;
-}
-
-.ml-50 {
-	margin-left: 50px;
-}
-
-.ml-100 {
-	margin-left: 100px;
-} */
-
 ul, ol {
 	margin: 0;
 	padding: 0;
@@ -208,57 +77,12 @@ a, a:hover, a:focus, a:active {
 li {
 	list-style: none;
 }
-/* 
-.heading_text>p {
-	font-size: 16px;
-}
-
-.heading_text>h2 {
-	font-weight: 500;
-	color: #333;
-}
-
-.heading_text>h3 {
-	color: #b4b4b4;
-	font-size: 90px;
-	font-weight: 100;
-	margin: 0;
-} */
-
-/* .font-shadow-into-light {
-	font-family: 'Noto Sans KR', sans-serif;
-}
-
-.yummy-table {
-	display: table;
-	height: 100%;
-	left: 0;
-	position: relative;
-	top: 0;
-	width: 100%;
-	z-index: 2;
-}
-
-.yummy-table-cell {
-	display: table-cell;
-	vertical-align: middle;
-} */
 
 .top_header_area {
 	width: 100%;
 	height: 40px;
 	border-bottom: 1px solid #ebebeb;
 }
-
-/* .top_header_area .top_social_bar {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	height: 40px;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-} */
 
 .top_header_area .signup-search-area { /* 로그인, 회원 가입 위치 */
 	height: 40px;

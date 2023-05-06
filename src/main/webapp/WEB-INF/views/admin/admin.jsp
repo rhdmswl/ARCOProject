@@ -246,7 +246,6 @@ body::-webkit-scrollbar-track {
 	border-color: #f21378;
 	border: 3px solid #f21378;
 }
-
 </style>
 </head>
 
@@ -254,7 +253,7 @@ body::-webkit-scrollbar-track {
 $(document).ready(function() {
 	
     // 삭제 버튼 클릭 시
-    $('.delete-btn').click(function() {
+    $('body').on('click', '.delete-btn', function() {
         var userId = $(this).data('user-id');
         if (confirm(userId + ' 님을 삭제하시겠습니까?')) {
             // 삭제 요청 보내기
@@ -361,11 +360,13 @@ function showContent(id) {
 										</tr>
 										<c:forEach var="user" items="${member}">
 											<tr>
-												<td style="font-size:15px;">${user.userId}</td>
-												<td style="font-size:15px;">${user.userName}</td>
-												<td style="font-size:15px;">${user.email}</td>
-												<td><button class="btn btn-danger btn-sm delete-btn"
-														data-user-id="${user.userId}">삭제</button></td>
+												<td style="font-size: 15px;">${user.userId}</td>
+												<td style="font-size: 15px;">${user.userName}</td>
+												<td style="font-size: 15px;">${user.email}</td>
+												<td><c:if test="${user.userId ne 'admin'}">
+														<button class="btn btn-danger btn-sm delete-btn"
+															data-user-id="${user.userId}">삭제</button>
+													</c:if></td>
 											</tr>
 										</c:forEach>
 
@@ -414,7 +415,8 @@ function showContent(id) {
 									<table class="table">
 										<c:forEach var="rev" items="${collectionRev}">
 											<tr>
-												<td><a style="font-size:15px;" href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
+												<td><a style="font-size: 15px;"
+													href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
 												<td><fmt:formatDate value="${rev.reviewDate}"
 														pattern="yyyy.MM.dd" /></td>
 											</tr>
@@ -463,7 +465,8 @@ function showContent(id) {
 									<table class="table">
 										<c:forEach var="post" items="${posts}">
 											<tr>
-												<td><a style="font-size:15px;" href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
+												<td><a style="font-size: 15px;"
+													href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
 												<td><fmt:formatDate value="${post.post_regdate}"
 														pattern="yyyy.MM.dd" /></td>
 											</tr>
@@ -512,7 +515,8 @@ function showContent(id) {
 									<table class="table">
 										<c:forEach var="comment" items="${comments}">
 											<tr>
-												<td><a style="font-size:15px;" href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
+												<td><a style="font-size: 15px;"
+													href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
 												<td><fmt:formatDate value="${comment.com_date}"
 														pattern="yyyy.MM.dd" /></td>
 											</tr>

@@ -12,6 +12,7 @@ import com.member.vo.CollectionReviewVO;
 import com.member.vo.Criteria;
 import com.member.vo.MemberVO;
 import com.member.vo.ReplyVO;
+
 @Service
 public class AdminServiceImpl implements AdminService {
 	
@@ -23,7 +24,7 @@ public class AdminServiceImpl implements AdminService {
 		dao.deleteUser(userId);
 	}
 	
-	// admin
+	// admin Criteria List
 	@Override
 	public List<MemberVO> listAllMembers(Criteria criteria) {
 	  return dao.listAllMembers(criteria);
@@ -44,6 +45,7 @@ public class AdminServiceImpl implements AdminService {
 	  return dao.listAllComments(criteria);
 	}
 
+    // admin PageMaker
     @Override
 	public int countAllMembers() throws Exception {
 		return dao.countAllMembers();

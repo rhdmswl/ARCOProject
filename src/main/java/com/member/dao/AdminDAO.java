@@ -13,7 +13,7 @@ public interface AdminDAO {
 	//회원 삭제
 	public void deleteUser(String userId) throws Exception;
 	
-	// admin
+	// admin Criteria
 	public List<MemberVO> listAllMembers(Criteria criteria);
 	public List<CollectionReviewVO> listAllReviews(Criteria criteria);
 	public List<BoardVO> listAllPosts(Criteria criteria);

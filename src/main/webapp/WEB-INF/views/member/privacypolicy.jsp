@@ -16,7 +16,6 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 
-
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -33,7 +32,6 @@
 	href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
 
 <title>개인정보처리방침</title>
-<!-- 제공해주신 스타일 및 스크립트 추가 생략 -->
 
 <style type="text/css">
 .center {

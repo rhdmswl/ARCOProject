@@ -1,14 +1,11 @@
 package com.member.controller;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.member.service.FindPwMailSendService;
@@ -27,7 +23,6 @@ import com.member.service.MailSendService;
 import com.member.service.MemberService;
 import com.member.vo.CollectionReviewVO;
 import com.member.vo.Criteria;
-import com.member.vo.ImageVO;
 import com.member.vo.MemberVO;
 import com.member.vo.PageMaker;
 
@@ -135,7 +130,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	// mypage - 나의 글 보기 (페이징 적용)
+	// mypage get - 나의 글 보기 (페이징 적용)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String myPage(Model model, HttpSession session,
 			@RequestParam(value = "revPage", defaultValue = "1") int revPage,
@@ -183,7 +178,7 @@ public class MemberController {
 		return "member/mypage";
 	}
 
-	// 회원정보 수정 post
+	// mypage post - 회원정보 수정
 	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
 	public String registerUpdate(MemberVO vo, HttpSession session, RedirectAttributes rttr, Model model)
 			throws Exception {
@@ -196,7 +191,7 @@ public class MemberController {
 	}
 
 	
-	// 패스워드 체크
+	// 패스워드 체크 post
 	@ResponseBody
 	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
 	public boolean passChk(MemberVO vo) throws Exception {
@@ -236,7 +231,7 @@ public class MemberController {
 		return "member/login";
 	}
 
-	// 아이디 중복 체크
+	// 아이디 중복 체크 post
 	@ResponseBody
 	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
 	public int idChk(MemberVO vo) throws Exception {
@@ -244,44 +239,23 @@ public class MemberController {
 		return result;
 	}
 
-	// 닉네임 중복 체크
+	// 닉네임 중복 체크 post
 	@ResponseBody
 	@RequestMapping(value = "/nameChk", method = RequestMethod.POST)
 	public int nameChk(MemberVO vo) throws Exception {
 		int result = service.nameChk(vo);
 		return result;
 	}
-
-	@RequestMapping(value = "/getProfileImg", method = RequestMethod.GET)
-	public void getProfileImg(String userId, HttpServletResponse response) throws Exception {
-
-		ImageVO imageVO = service.getProfileImg(userId);
-		if (imageVO != null) {
-			response.setContentType(imageVO.getContent_type());
-			try (InputStream in = new ByteArrayInputStream(imageVO.getImage_data())) {
-				IOUtils.copy(in, response.getOutputStream());
-			}
-		}
+	
+	// 이메일 중복 체크
+	@ResponseBody
+	@RequestMapping(value = "/emailChk", method = RequestMethod.POST)
+	public int emailChk(MemberVO vo) throws Exception {
+		int result = service.emailChk(vo);
+		return result;
 	}
 
-	@RequestMapping(value = "/updateProfileImg", method = RequestMethod.POST)
-	public String updateProfileImg(MemberVO vo, MultipartFile file, HttpSession session) throws Exception {
-		String profileImg = file.getOriginalFilename();
-		String contentType = file.getContentType();
-		byte[] imageData = file.getBytes();
-
-		ImageVO imageVO = new ImageVO();
-		imageVO.setFile_name(profileImg);
-		imageVO.setContent_type(contentType);
-		imageVO.setImage_data(imageData);
-		imageVO.setUser_id(vo.getUserId());
-
-		service.updateProfileImg(imageVO);
-
-		return "redirect:/";
-	}
-
-	// 이메일 인증
+	// 이메일 인증 get
 	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public String mailCheck(String email) {
@@ -290,7 +264,7 @@ public class MemberController {
 		return mailService.joinEmail(email);
 	}
 
-	// 비밀번호 찾기 이메일 인증
+	// 비밀번호 찾기 이메일 인증 get
 	@RequestMapping(value = "/findPwmailCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public String findPwmailCheck(String userId, String email) throws Exception {
@@ -311,26 +285,25 @@ public class MemberController {
 	public int findPw(MemberVO vo) throws Exception {
 
 		int result = service.findPw(vo);
-
+		
 		return result;
 	}
 	
 	// 아이디 찾기 get
-		@RequestMapping(value = "/findId", method = RequestMethod.GET)
-		public String findIdView() throws Exception {
-			return "member/findId";
-		}
+  @RequestMapping(value = "/findId", method = RequestMethod.GET)
+	public String findIdView() throws Exception {
+		return "member/findId";
+	}
 
-		// 아이디 찾기 post
-		@ResponseBody
-		@RequestMapping(value = "/findId", method = RequestMethod.POST)
-		public String findId(String userName, String phone) throws Exception {
+	// 아이디 찾기 post
+	@ResponseBody
+	@RequestMapping(value = "/findId", method = RequestMethod.POST)
+	public String findId(String phone, String email) throws Exception {
 			
-			MemberVO vo = new MemberVO("","",userName,phone,"","");
-			String result = service.findId(vo);
+		MemberVO vo = new MemberVO("","","",phone,email,"");
+		String result = service.findId(vo);
 			
-			return result;
-		}
-
+		return result;
+	}
 
 }

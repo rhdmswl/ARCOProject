@@ -26,10 +26,7 @@
 		WHERE
 		USERID
 		= #{userId}
-
-		<!-- AND USERPASS = #{userPass} -->
 	</select>
-
 
 	<!-- 회원정보 수정 -->
 	<update id="memberUpdate">
@@ -55,13 +52,11 @@
 		WHERE USERID = #{userId} AND EMAIL = #{email}
 	</update>
 	
-	<!-- 아이디 찾기 (닉네임, 전화번호 일치여부)-->
+	<!-- 아이디 찾기 (이메일, 전화번호 일치여부)-->
 	<select id="findId" resultType="String"><!-- id 수정 필요 -->
 		SELECT USERID FROM MEMBER
-		WHERE USERNAME = #{userName} AND PHONE=#{phone}
+		WHERE PHONE=#{phone} AND EMAIL = #{email} 
 	</select>
-	
-	
 
 	<update id="boardNickUpdate">
 		UPDATE post SET
@@ -126,6 +121,13 @@
 		SELECT COUNT(*) FROM MEMBER
 		WHERE
 		USERNAME = #{userName}
+	</select>
+	
+	<!-- 이메일 중복 체크 -->
+	<select id="emailChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE
+		EMAIL = #{email}
 	</select>
 
 	<!-- 작성한 한줄평 불러오기 (페이징 적용) -->
@@ -246,25 +248,6 @@
 		DELETE FROM comment
 		WHERE com_writer_id = #{userId}
 	</delete>
-
-	<insert id="insertImage" parameterType="com.member.vo.ImageVO">
-		INSERT INTO image
-		(file_name, content_type, image_data, user_id)
-		VALUES (#{file_name},
-		#{content_type}, #{image_data}, #{user_id})
-	</insert>
-
-	<select id="selectImageByUserId" parameterType="string"
-		resultType="com.member.vo.ImageVO">
-		SELECT file_name, content_type, image_data
-		FROM image
-		WHERE
-		user_id = #{userId}
-	</select>
-
-	<!-- <select id="getProfileImg" resultType="string"> SELECT PROFILEIMG FROM 
-		MEMBER WHERE USERID = #{userId} </select> <update id="updateProfileImg"> 
-		UPDATE MEMBER SET PROFILEIMG = #{profileImg} WHERE USERID = #{userId} </update> -->
 
 	<select id="calendarList" resultType="com.member.vo.CalendarVO">
 	<![CDATA[

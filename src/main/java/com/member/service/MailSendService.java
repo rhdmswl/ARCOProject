@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Component
 public class MailSendService {
+	
 	@Autowired
 	private JavaMailSenderImpl mailSender;
 	
@@ -27,11 +28,10 @@ public class MailSendService {
 		authNumber = checkNum;
 	}
 	
-	
-	//이메일 보낼 양식
+	// 이메일 보낼 양식
 	public String joinEmail(String email) {
 		makeRandomNumber();
-		String setFrom = ".com"; // email-config에 설정한 자신의 이메일 주소를 입력 
+		String setFrom = ".com"; // email-context에 설정한 자신의 이메일 주소를 입력 
 		String toMail = email;
 		String title = "ARCO 회원 가입 인증 이메일 입니다."; // 이메일 제목 
 		String content = 
@@ -51,7 +51,7 @@ public class MailSendService {
 		return Integer.toString(authNumber);
 	}
 	
-	//이메일 전송 메소드
+	// 이메일 전송 메소드
 	public void mailSend(String setFrom, String toMail, String title, String content) { 
 		MimeMessage message = mailSender.createMimeMessage();
 		// true 매개값을 전달하면 multipart 형식의 메세지 전달이 가능. 문자 인코딩 설정도 가능.
