@@ -34,7 +34,9 @@ public interface MemberService {
 	public int idChk(MemberVO vo) throws Exception;
 	
 	public int nameChk(MemberVO vo) throws Exception;
-	
+
+	public int emailChk(MemberVO vo) throws Exception;
+
 	// 페이징이 적용된 메소드
 	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception;
 	public List<BoardVO> getMemberPostsWithPaging(String userId, Criteria cri) throws Exception;

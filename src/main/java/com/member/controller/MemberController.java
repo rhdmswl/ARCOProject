@@ -246,6 +246,14 @@ public class MemberController {
 		int result = service.nameChk(vo);
 		return result;
 	}
+	
+	// 이메일 중복 체크
+	@ResponseBody
+	@RequestMapping(value = "/emailChk", method = RequestMethod.POST)
+	public int emailChk(MemberVO vo) throws Exception {
+		int result = service.emailChk(vo);
+		return result;
+	}
 
 	// 이메일 인증 get
 	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
@@ -282,7 +290,7 @@ public class MemberController {
 	}
 	
 	// 아이디 찾기 get
-	@RequestMapping(value = "/findId", method = RequestMethod.GET)
+  @RequestMapping(value = "/findId", method = RequestMethod.GET)
 	public String findIdView() throws Exception {
 		return "member/findId";
 	}
@@ -290,11 +298,11 @@ public class MemberController {
 	// 아이디 찾기 post
 	@ResponseBody
 	@RequestMapping(value = "/findId", method = RequestMethod.POST)
-	public String findId(String userName, String phone) throws Exception {
-		
-		MemberVO vo = new MemberVO("","",userName,phone,"","");
+	public String findId(String phone, String email) throws Exception {
+			
+		MemberVO vo = new MemberVO("","","",phone,email,"");
 		String result = service.findId(vo);
-		
+			
 		return result;
 	}
 

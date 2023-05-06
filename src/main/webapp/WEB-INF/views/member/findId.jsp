@@ -101,9 +101,9 @@ body::-webkit-scrollbar-track {
 	bottom: 40px;
 }
 
-.form-control#userName {
+.form-control#email {
 	width: 230px;
-	margin-left: 30px;
+	margin-left: 35px;
 	margin-top: 7px;
 }
 
@@ -252,18 +252,20 @@ $(document).ready(function() {
 
     // 아이디 찾기 
     $('#find-Id-Btn').click(function() {
-        const userName = $("#userName").val();
+    
         const phone = $("#phone").val();
-        console.log(userName);
+        const email = $("#email").val();
+      
         console.log(phone);
+        console.log(email);
 
         $.ajax({
             url : "/member/findId",
             type : "post",
             dataType : "text",
             data : {
-                "userName" : $("#userName").val(),
-                "phone" : $("#phone").val()
+                "phone" : $("#phone").val(),
+                "email" : $("#email").val()
             },
             success : function(data) {
                 if (data.trim() !== "") {
@@ -300,14 +302,14 @@ $(document).ready(function() {
 					<div class="card-body">
 						<form action="/member/findId" method="post" id="findIdForm">
 							<div class="form-group has-feedback">
-								<label class="control-label" for="userName">닉네임</label> <input
-									class="form-control" type="text" id="userName" name="userName" />
+								<label class="control-label" for="phone">전화번호</label><input
+									class="form-control" type="text" id="phone" name="phone" />
 							</div>
 							<br>
 							<!-- email -->
 							<div class="form-group has-feedback">
-								<label class="control-label" for="phone">전화번호</label><input
-									class="form-control" type="text" id="phone" name="phone" />
+								<label class="control-label" for="email">이메일</label><input
+									class="form-control" type="text" id="email" name="email" />
 								<div class="input-group-addon">
 									<button type="button" class="btn btn-primary findIdBtn"
 										id="find-Id-Btn">아이디 확인</button>

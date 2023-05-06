@@ -103,7 +103,13 @@ public class MemberDAOImpl implements MemberDAO {
 		int result = sql.selectOne("memberMapper.nameChk", vo);
 		return result;
 	}
-	
+
+	@Override
+	public int emailChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne("memberMapper.emailChk", vo);
+		return result;
+	}
+
     // 페이징이 적용된 메소드
     @Override
     public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception {

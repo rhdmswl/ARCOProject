@@ -45,6 +45,9 @@ public interface MemberDAO {
 
 	// 닉네임 중복체크
 	public int nameChk(MemberVO vo) throws Exception;
+	
+	// 이메일 중복체크
+	public int emailChk(MemberVO vo) throws Exception;
 
 	// 페이징이 적용된 나의 한줄평
 	public List<CollectionReviewVO> getMemberCollectionRevsWithPaging(String userId, Criteria cri) throws Exception;
@@ -61,5 +64,7 @@ public interface MemberDAO {
 	public int countPosts(String userId) throws Exception;
 
 	public int countComments(String userId) throws Exception;
+
+	
 
 }
