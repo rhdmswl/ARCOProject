@@ -135,8 +135,8 @@ body::-webkit-scrollbar-track {
 
 .form-control#verifyCode {
   width: 250px;
-  margin-left: -767px;
-  margin-top: 100px;
+  margin-left: 117px;
+  margin-top: 40px;
  
 }
 
@@ -231,13 +231,13 @@ body::-webkit-scrollbar-track {
 
 .emailSelectBtn {
 	position: absolute;
-	left: 400px;
-	bottom: -30px;
+	left: 430px;
+	bottom: 220px;
 }
 
 
 .submitBtnGroup {
-	margin-top: 150px;
+	margin-top: 70px;
 	margin-left: -140px;
 }
 
@@ -297,40 +297,10 @@ body::-webkit-scrollbar-track {
 #mail-check-warn2 {
 	font-size: 15px;
 	margin-left: 20px;
+	margin-top:40px;
 }
 
-.form-group {
-  position: relative;
-  margin-bottom: 15px;
-}
 
-.form-group.has-feedback{
-  height: 45px;
-}
-
-.form-control-feedback,
-.mail-check-box {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  display: block;
-  width: 34px;
-  height: 34px;
-  line-height: 34px;
-  text-align: center;
-  pointer-events: none;
-}
-
-#alert-danger1,
-#alert-success1,
-#alert-danger2,
-#alert-success2,
-#alert-danger3,
-#alert-success3{
-  display: block;
-  margin-top: 5px;
-}
 
 </style>
 
@@ -602,6 +572,7 @@ body::-webkit-scrollbar-track {
 							      $resultMsg1.html('인증번호는 숫자 6자리여야 합니다.');
 							      $resultMsg1.css({'color': '#d92742','font-weight': 'bold'});
 							      $('#submit').attr('disabled', true);
+							      $resultMsg2.html(''); // $resultMsg2 메시지 초기화
 							      return;
 							   }
 							   

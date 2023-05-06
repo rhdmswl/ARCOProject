@@ -360,8 +360,8 @@ $(document).ready(function() {
         var nameChkVal = $("#nameChk").val();
         var usernameVal = $("#userName").val();
 
-        if (usernameVal.length < 2 || usernameVal.length > 8) {
-            alert("닉네임은 2자 이상 8자 이하로 입력해주세요.");
+        if (usernameVal.length < 2 || usernameVal.length > 10) {
+            alert("닉네임은 2자 이상 10자 이하로 입력해주세요.");
             return false;
         }  else if (usernameVal.indexOf("관리자") === 0) {
             alert("이 닉네임은 사용하실 수 없습니다.");
