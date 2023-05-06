@@ -135,7 +135,7 @@ li {
 .top_header_area .signup-search-area .mypage {
 	position: absolute;
 	left: 70%;
-	top: 30px;
+	top: 25px;
 	margin-right: 6px;
 	padding-right: 12px;
 	padding-bottom: 3px;
@@ -145,7 +145,7 @@ li {
 .top_header_area .signup-search-area .logout {
 	position: absolute;
 	left: 85%;
-	top: 30px;
+	top: 25px;
 	margin-right: -65px;
 	padding-right: 12px;
 	padding-bottom: 3px;
@@ -155,7 +155,7 @@ li {
 .top_header_area .signup-search-area .admin {
 	position: relative;
 	left: 98%;
-	top: 31px;
+	top: 26px;
 	color: #222;
 	border-right: 0;
 }
@@ -199,10 +199,10 @@ li {
 	font-weight: 600;
 	font-size: 15px;
 	position: absolute;
-	top: 30px;
-	left: 35%;
+	top: 28px;
+	right: 34%;
 	color: black;
-	width: 200px;
+	width: auto;
 	margin-right: 0;
 }
 
