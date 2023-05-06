@@ -134,10 +134,9 @@ body::-webkit-scrollbar-track {
 }
 
 .form-control#verifyCode {
-  width: 250px;
-  margin-left: 117px;
-  margin-top: 40px;
- 
+	width: 250px;
+	margin-left: 117px;
+	margin-top: 45px;
 }
 
 .btn-secondary {
@@ -231,13 +230,12 @@ body::-webkit-scrollbar-track {
 
 .emailSelectBtn {
 	position: absolute;
-	left: 430px;
-	bottom: 220px;
+	left: 410px;
+	bottom: -25px;
 }
 
-
 .submitBtnGroup {
-	margin-top: 70px;
+	margin-top: 100px;
 	margin-left: -140px;
 }
 
@@ -259,7 +257,7 @@ body::-webkit-scrollbar-track {
 #alert-success4 {
 	font-size: 15px;
 	margin-left: 120px;
-	margin-top:10px;
+	margin-top: 10px;
 }
 
 #alert-danger {
@@ -280,13 +278,12 @@ body::-webkit-scrollbar-track {
 #alert-danger3 {
 	font-size: 15px;
 	margin-left: 120px;
-	
 }
 
 #alert-danger4 {
 	font-size: 15px;
 	margin-left: 120px;
-	margin-top:10px;
+	margin-top: 10px;
 }
 
 #mail-check-warn1 {
@@ -296,12 +293,36 @@ body::-webkit-scrollbar-track {
 
 #mail-check-warn2 {
 	font-size: 15px;
-	margin-left: 20px;
-	margin-top:40px;
+	margin-left: 5px;
 }
 
+.form-group {
+	position: relative;
+	margin-bottom: 15px;
+}
 
+.form-group.has-feedback {
+	height: 45px;
+}
 
+.form-control-feedback, .mail-check-box {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 2;
+	display: block;
+	width: 34px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	pointer-events: none;
+}
+
+#alert-danger1, #alert-success1, #alert-danger2, #alert-success2,
+	#alert-danger3, #alert-success3, #alert-success3, #alert-success3 {
+	display: block;
+	margin-top: 5px;
+}
 </style>
 
 </head>
@@ -370,7 +391,7 @@ body::-webkit-scrollbar-track {
 						                
 						            	 $("#alert-success1").css('display', 'inline-block').text('사용가능한 아이디입니다.');
 						            	 $("#alert-danger1").css('display', 'none');
-						            	 $('#submit').attr('disabled', false);
+						            	 //$('#submit').attr('disabled', false);
 						            	 
 						                
 						            }
@@ -471,7 +492,7 @@ body::-webkit-scrollbar-track {
 						                $("#alert-success2").css('display', 'inline-block')
 						                    .text('사용 가능한 닉네임입니다.');
 						                $("#alert-danger2").css('display', 'none');
-						                $('#submit').attr('disabled', false);
+						                //$('#submit').attr('disabled', false);
 						               
 						               
 						            }
@@ -573,6 +594,8 @@ body::-webkit-scrollbar-track {
 							      $resultMsg1.css({'color': '#d92742','font-weight': 'bold'});
 							      $('#submit').attr('disabled', true);
 							      $resultMsg2.html(''); // $resultMsg2 메시지 초기화
+							      
+							     
 							      return;
 							   }
 							   
@@ -581,16 +604,17 @@ body::-webkit-scrollbar-track {
 								$resultMsg2.css('color','green');
 								$('#mail-Check-Btn').attr('disabled',true);
 								$('#email').attr('readonly',true);
-								// 회원가입 버튼 활성화
-							    $('#submit').attr('disabled', false);
 							    $resultMsg1.html(''); // $resultMsg1 메시지 초기화
+							    $('#submit').attr('disabled', false);
+							   
 							
 							  } else {
 							    $resultMsg1.html('인증번호가 일치하지 않습니다.');
 							    $resultMsg1.css({'color': '#d92742','font-weight': 'bold'});
-							    // 회원가입 버튼 비활성화
-							    $('#submit').attr('disabled', true);
 							    $resultMsg2.html(''); // $resultMsg2 메시지 초기화
+							    //$('#submit').attr('disabled', true);
+							    
+							    
 							  }
 							});
 						
@@ -633,42 +657,54 @@ body::-webkit-scrollbar-track {
 								var pwConfirmVal = $("#passCheck").val();
 								var emailVal = $("#email").val();
 								var phoneVal = $("#phone").val();
-								var usernameVal = $("#userName")
-										.val();
+								var usernameVal = $("#userName").val();
 								var verifyCodeVal = $("#verifyCode").val();
+								var isValidForm = true;
 
-											 if (pwVal == ""
-												 	|| pwConfirmVal == ""
-													|| emailVal == ""
-													|| phoneVal == ""
-													|| usernameVal == ""
-													|| verifyCodeVal == "" ) {
-												alert("공백없이 모두 입력해주세요.");
-											} else if (idVal.toLowerCase().startsWith("admin")) {
-												  alert("아이디가 admin으로 시작하는 아이디는 사용할 수 없습니다. 다른 아이디를 입력해주세요.");
-											} else if (pwVal.length < 8) {
-												alert("비밀번호는 8자~16자 이내로 입력해주세요.");
-											} else if (pwVal != pwConfirmVal) {
-												  alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
-											} else if (/^[0-9]+$/.test(pwVal)) {
-												  alert("비밀번호에 숫자만 입력할 수 없습니다. 다시 입력해주세요.");
-												  return false;
-												} else if (!isValidEmail(emailVal)) {
-												alert("유효한 이메일 주소를 입력해주세요.");
-											} else if (!isValidPhone(phoneVal)) {
-												alert("유효한 전화번호를 입력해주세요.");
-											}  else if (!isValidUsername(usernameVal)) {
-												alert("닉네임은 2자 이상 8자 이하의 한글, 영문, 숫자만 입력해주세요.");
-											} else if (usernameVal.toLowerCase().includes("관리자")) {
-												alert("닉네임에는 관리자를 포함시킬 수 없습니다. 다른 닉네임을 입력해주세요.");
-											} else if (idVal.length < 4 || idVal.length > 10 || !isValidId(idVal)) {
-												  alert("아이디는 4자 이상 10자 이하의 영문, 숫자만 입력 가능합니다. 다시 입력해주세요.");
-											}	else {
-												
-												$("#regForm").submit();
-												alert("회원가입이 완료되었습니다. ARCO에 오신걸 환영합니다 !");
-												
-											}
+								if (pwVal == "" || pwConfirmVal == "" || emailVal == "" || phoneVal == "" || usernameVal == "" || verifyCodeVal == "") {
+								    alert("공백없이 모두 입력해주세요.");
+								    isValidForm = false;
+								} else if (idVal.toLowerCase().startsWith("admin")) {
+								    alert("아이디가 admin으로 시작하는 아이디는 사용할 수 없습니다. 다른 아이디를 입력해주세요.");
+								    isValidForm = false;
+								} else if (pwVal.length < 8) {
+								    alert("비밀번호는 8자~16자 이내로 입력해주세요.");
+								    isValidForm = false;
+								} else if (pwVal != pwConfirmVal) {
+								    alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+								    isValidForm = false;
+								} else if (/^[0-9]+$/.test(pwVal)) {
+								    alert("비밀번호에 숫자만 입력할 수 없습니다. 다시 입력해주세요.");
+								    isValidForm = false;
+								} else if (!isValidEmail(emailVal)) {
+								    alert("유효한 이메일 주소를 입력해주세요.");
+								    isValidForm = false;
+								} else if (verifyCodeVal.length < 6) {
+								    alert("인증번호는 6자리로 입력해주세요.");
+								    isValidForm = false;
+								} else if (!isValidPhone(phoneVal)) {
+								    alert("유효한 전화번호를 입력해주세요.");
+								    isValidForm = false;
+								} else if (!isValidUsername(usernameVal)) {
+								    alert("닉네임은 2자 이상 10자 이하의 한글, 영문, 숫자만 입력해주세요.");
+								    isValidForm = false;
+								} else if (usernameVal.toLowerCase().includes("관리자")) {
+								    alert("닉네임에는 관리자를 포함시킬 수 없습니다. 다른 닉네임을 입력해주세요.");
+								    isValidForm = false;
+								} else if (idVal.length < 4 || idVal.length > 10 || !isValidId(idVal)) {
+								    alert("아이디는 4자 이상 10자 이하의 영문, 숫자만 입력 가능합니다. 다시 입력해주세요.");
+								    isValidForm = false;
+								}
+
+								if (isValidForm) {
+								    $("#regForm").submit();
+								    alert("회원가입이 완료되었습니다. ARCO에 오신걸 환영합니다 !");
+								} else {
+								    $("#submitBtn").attr("disabled", true);
+								}
+
+
+
 										
 
 											function isValidEmail(email) {
@@ -705,70 +741,11 @@ body::-webkit-scrollbar-track {
 
 												  return true;
 												}
+											function isValidVerificationCode(code) {
+											    var verificationCodeRegEx = /^\d{6}$/;
+											    return verificationCodeRegEx.test(code);
+											}
 
-								 if (pwVal == ""
-									 	|| pwConfirmVal == ""
-										|| emailVal == ""
-										|| phoneVal == ""
-										|| usernameVal == ""
-										|| verifyCodeVal == "" ) {
-									alert("공백없이 모두 입력해주세요.");
-								} else if (pwVal.length < 8) {
-									alert("비밀번호는 8자~16자 이내로 입력해주세요.");
-								} else if (pwVal != pwConfirmVal) {
-									  alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
-								} else if (/^[0-9]+$/.test(pwVal)) {
-									  alert("비밀번호에 숫자만 입력할 수 없습니다. 다시 입력해주세요.");
-									  return false;
-									} else if (!isValidEmail(emailVal)) {
-									alert("유효한 이메일 주소를 입력해주세요.");
-								} else if (!isValidPhone(phoneVal)) {
-									alert("유효한 전화번호를 입력해주세요.");
-								}  else if (!isValidUsername(usernameVal)) {
-									alert("닉네임은 2자 이상 8자 이하의 한글, 영문, 숫자만 입력해주세요.");
-								} else if (idVal.length < 4 || idVal.length > 10 || !isValidId(idVal)) {
-									  alert("아이디는 4자 이상 10자 이하의 영문, 숫자만 입력 가능합니다. 다시 입력해주세요.");
-								}	else {
-									
-									$("#regForm").submit();
-									alert("회원가입이 완료되었습니다. ARCO에 오신걸 환영합니다 !");
-									
-								}
-							
-
-								function isValidEmail(email) {
-
-									var emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-									return emailRegEx.test(email);
-								}
-
-								function isValidPhone(phone) {
-
-									var phoneRegEx = /^\d{10,11}$/;
-									return phoneRegEx.test(phone);
-								}
-								 function isValidId(id) {
-									 
-									  var regExp = /^[a-z0-9_-]{4,10}$/;
-									  return regExp.test(id);
-									}
-
-								function isValidUsername(username) {
-									  var usernameRegEx = /^[a-zA-Z가-힣\d]{2,10}$/;
-									  var containsAlphabetOrKorean = /[a-zA-Z가-힣]/.test(username);
-									  var containsDigit = /\d/.test(username);
-									  var containsSpace = /\s/.test(username);
-
-									  if (!usernameRegEx.test(username)) {
-									    return false;
-									  }
-
-									  if (!containsAlphabetOrKorean || containsSpace) {
-									    return false;
-									  }
-
-									  return true;
-									}
 					
 							});
 					});
@@ -842,16 +819,22 @@ body::-webkit-scrollbar-track {
 
 								<span id="alert-success4" style="display: none; color: green;"></span>
 
-									<button type="button" class="btn btn-primary emailSelectBtn"
-										id="mail-Check-Btn">본인인증</button>
-								
-								<div class="mail-check-box">
-									<input class="form-control mail-check-input" id=verifyCode
-										name=verifyCode placeholder="인증번호 6자리를 입력해주세요!"
-										disabled="disabled" maxlength="6"> <span
-										id="mail-check-warn2"></span>
+								<button type="button" class="btn btn-primary emailSelectBtn"
+									id="mail-Check-Btn">본인인증</button>
+
+
+							</div>
+							<div class="form-group has-feedback">
+
+
+								<input class="form-control mail-check-input" id=verifyCode
+									name=verifyCode placeholder="인증번호 6자리를 입력해주세요!"
+									disabled="disabled" maxlength="6" />
+
+
+								<div>
+									<span id="mail-check-warn1"></span> <span id="mail-check-warn2"></span>
 								</div>
-								<span id="mail-check-warn1"></span>
 
 							</div>
 
