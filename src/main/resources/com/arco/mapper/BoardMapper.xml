@@ -53,46 +53,76 @@
 
 	<sql id="criteria">
 			<choose>
-					<when test="type=='T'.toString()">
+					<when test="type=='T'.toString() and brd_id!=4">
 						where brd_id=#{brd_id}
 						and post_title like concat('%', #{keyword}, '%')
 					</when>
-					<when test="type=='W'.toString()">
+					<when test="type=='W'.toString() and brd_id!=4">
 						where brd_id=#{brd_id}
 						and post_writer like concat('%', #{keyword}, '%')
 					</when>
-					<when test="type=='C'.toString()">
+					<when test="type=='C'.toString() and brd_id!=4">
 						where brd_id=#{brd_id}
 						and post_content like concat('%', #{keyword}, '%')
 					</when>
-					<when test="type=='TC'.toString()">
+					<when test="type=='TC'.toString() and brd_id!=4">
 						where brd_id=#{brd_id}
 						and post_title like concat('%', #{keyword}, '%')
 						or post_content like concat('%', #{keyword}, '%')
 					</when>
-					<when test="type=='TW'.toString()">
+					<when test="type=='TW'.toString() and brd_id!=4">
 						where brd_id=#{brd_id}
 						and post_title like concat('%', #{keyword}, '%')
 						or post_writer like concat('%', #{keyword}, '%')
 					</when>
-					<when test="type=='TCW'.toString()">
+					<when test="type=='TCW'.toString() and brd_id!=4">
 						where brd_id=#{brd_id}
 						and post_title like concat('%', #{keyword}, '%')
 						or post_content like concat('%', #{keyword}, '%')
 						or post_writer like concat('%', #{keyword}, '%')
 					</when>
-					<otherwise>
-						<choose><!-- 추천 게시판이 아닐 경우 모든 게시판 표시 -->
+					<when test="type=='T'.toString() and brd_id==4">
+						where post_rec_count >=10
+						and post_title like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='W'.toString() and brd_id==4">
+						where post_rec_count >=10
+						and post_writer like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='C'.toString() and brd_id==4">
+						where post_rec_count >=10
+						and post_content like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TC'.toString() and brd_id==4">
+						where post_rec_count >=10
+						and post_title like concat('%', #{keyword}, '%')
+						or post_content like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TW'.toString() and brd_id==4">
+						where post_rec_count >=10
+						and post_title like concat('%', #{keyword}, '%')
+						or post_writer like concat('%', #{keyword}, '%')
+					</when>
+					<when test="type=='TCW'.toString() and brd_id==4">
+						where post_rec_count >=10
+						and post_title like concat('%', #{keyword}, '%')
+						or post_content like concat('%', #{keyword}, '%')
+						or post_writer like concat('%', #{keyword}, '%')
+					</when>
+				<otherwise>
+					<choose><!-- 추천 게시판이 아닐 경우 모든 게시판 표시 -->
 						<when test="brd_id!=4">
 							where brd_id=#{brd_id} 
 						</when>
 						<otherwise><!-- 추천 게시판일 경우 추천수 10 이상 -->
 							where post_rec_count >=10
 						</otherwise>
-						</choose>
-					</otherwise>
+					</choose>
+				</otherwise>
 			</choose>
 	</sql>
+	
+	
 	
 	
 	<select id="getListWithPaging" resultType="com.arco.domain.BoardVO">

@@ -128,8 +128,9 @@ public class BoardController {
 	}
 
 	@PostMapping("/remove")
-	public String remove(@RequestParam("post_id") Long post_id,@ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+	public String remove(@RequestParam("role") String role,@RequestParam("post_id") Long post_id,@ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		log.info("remove..." + post_id);
+		System.out.println(role);
 		if (service.remove(post_id)) {
 			service.removeComment(post_id);
 			rttr.addFlashAttribute("result", "succes");
