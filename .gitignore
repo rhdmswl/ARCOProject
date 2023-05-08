@@ -1,5 +1,6 @@
 mybatis-config.xml
 lecture
+db.properties
 target
 pom.properties
 MANIFEST.MF
@@ -17,7 +18,7 @@ local.properties
 .recommenders
 # External tool builders
 .externalToolBuilders/
-# Locally stored “Eclipse launch configurations”
+# Locally stored ?�Eclipse launch configurations??
 *.launch
 # PyDev specific (Python IDE for Eclipse)
 *.pydevproject
