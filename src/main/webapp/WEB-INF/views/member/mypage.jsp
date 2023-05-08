@@ -493,9 +493,11 @@ $(document).ready(function() {
 									<table class="table">
 										<c:forEach var="rev" items="${collectionRev}">
 											<tr>
-												<td><a style="font-size:15px;" href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
-												<td><fmt:formatDate value="${rev.reviewDate}"
-														pattern="yyyy.MM.dd" /></td>
+												<td><a style="font-size: 15px;"
+													href="/collection/get?seq=${rev.seq}">${rev.revComment}</a></td>
+												<td style="text-align: right;"><fmt:formatDate
+														value="${rev.reviewDate}" pattern="yyyy.MM.dd" /></td>
+
 											</tr>
 										</c:forEach>
 									</table>
@@ -539,8 +541,9 @@ $(document).ready(function() {
 									<table class="table">
 										<c:forEach var="post" items="${posts}">
 											<tr>
-												<td><a style="font-size:15px;" href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
-												<td><fmt:formatDate value="${post.post_regdate}"
+												<td><a style="font-size: 15px;"
+													href="/board/get?post_id=${post.post_id}">${post.post_title}</a></td>
+												<td style="text-align: right;"><fmt:formatDate value="${post.post_regdate}"
 														pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
@@ -584,8 +587,9 @@ $(document).ready(function() {
 									<table class="table">
 										<c:forEach var="comment" items="${comments}">
 											<tr>
-												<td><a style="font-size:15px;" href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
-												<td><fmt:formatDate value="${comment.com_date}"
+												<td><a style="font-size: 15px;"
+													href="/board/get?post_id=${comment.post_id}">${comment.com_content}</a></td>
+												<td style="text-align: right;"><fmt:formatDate value="${comment.com_date}"
 														pattern="yyyy.MM.dd" /></td>
 											</tr>
 										</c:forEach>
