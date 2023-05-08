@@ -384,6 +384,34 @@
 </div>
 </details>
 
+<details>
+<summary> DB 비밀번호 암호화 </summary>
+<div markdown="1">
+
+- ISSUE <br>
+  Context initialization failed 무한오류 및 DB에 비밀번호가 암호화가 되지 않는 문제 발생
+
+- SOLVE <br>
+  bcryptPasswordEncoder 빈 등록, controller에 의존성 주입 후,  encode() 메서드를 호출하여 비밀번호를 매개값으로 넣어준 뒤 인코딩한다.
+인코딩된 값을 String타입으로 저장해 DB에 암호화가 되는 것을 확인하고, matches() 메서드를 사용하여 입력받은 비밀번호를 다시 암호화 하지 않고
+내부적으로 이미 저장돼있는 security방식의 암호화 키를 복호화하여 비교해주고 일치하면 true, 일치하지않다면 false로 확인 결과를 논리값으로 반환해주면서 문제 해결
+
+</div>
+</details>
+
+<details>
+<summary> 관리자 권한 </summary>
+<div markdown="1">
+
+- ISSUE <br>
+  role에 따른 권한 부여 방식, 로그인한 계정에 따라 페이지 접근 문제 발생
+
+- SOLVE <br>
+  기존 테이블에 role칼럼을 추가하고 default값으로 ROLE_USER 설정. 관리자계정을 임의로 ROLE_ADMIN으로 수정 후 Interceptor를 사용하여 로그인 여부를 체크하고 로그인하지 않은 사용자는 로그인 페이지로 redirect할 수 있고, 일반 회원이 관리자페이지로 접근 시도를 하게 되면 메인화면으로 redirect할 수 있도록 코드 수정
+
+</div>
+</details>
+
 </div>
   
 </div>
