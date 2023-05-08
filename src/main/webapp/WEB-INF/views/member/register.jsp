@@ -568,7 +568,7 @@ body::-webkit-scrollbar-track {
 								type : 'get',
 								url : '<c:url value ="/member/mailCheck?email="/>'+email, // GET방식이라 Url 뒤에 email을 쓸 수 있음
 								success : function (data) {
-									console.log("data : " +  data);
+									//console.log("data : " +  data);
 									checkInput.attr('disabled',false);
 									code =data;
 									if(!email){
@@ -612,7 +612,7 @@ body::-webkit-scrollbar-track {
 							    $resultMsg1.html('인증번호가 일치하지 않습니다.');
 							    $resultMsg1.css({'color': '#d92742','font-weight': 'bold'});
 							    $resultMsg2.html(''); // $resultMsg2 메시지 초기화
-							    //$('#submit').attr('disabled', true);
+							    $('#submit').attr('disabled', true);
 							    
 							    
 							  }
