@@ -356,7 +356,32 @@
   -> 파라미터로 추가하는 방식이 아닌 postId와 brdId를 직접 주소로 넘겨 이동하는 방식으로 수정
 </div>
 </details>
-  
+
+<details>
+<summary> JavaMailSenderImpl 활용 </summary>
+<div markdown="1">
+- 회원가입 - 이메일 인증 
+    - 회원가입 시 이메일 인증을 구현하여 무분별한 회원가입을 방지함. email-context.xml로 bean을 등록한 후 스프링의 JavaMailSenderImpl 클래스를 활용해 MailSendService 클래스를 제작함. Random 클래스를 활용해 난수를 발생시키고 이메일 양식을 정한 후 이메일을 전송하는 로직으로 구현.
+- 비밀번호 찾기 - 임시 비밀번호 발급
+    - 비밀번호 찾기에서 임시 비밀번호를 이메일로 전송해주는 기능 구현. FindPwMailSendService 클래스를 제작하여 문자와 숫자로 이뤄진 임시 비밀번호를 해당 유저의 이메일로 전송함.
+
+</div>
+</details>
+
+
+<details>
+<summary> 마이페이지 메뉴별 영역 및 페이징 오류 해결 </summary>
+<div markdown="1">
+
+- ISSUE
+  기존에는 나의 한줄평/게시글/댓글 메뉴 내부에 각각 한줄평, 게시글, 댓글에 대한 페이지 구분이 없었음. 이때 나의 한줄평/게시글/댓글 에서 한줄평이나   게시글 등 각 영역의 페이징 버튼을 클릭 시 화면이 새로고침되어 최초로 돌아가는 문제 발생.
+
+- SOLVE
+  나의 한줄평/게시글/댓글에 id 값을 주어 mypage_id를 1, 2, 3으로 구분. javascript로 function showSection을 제작하여 mypage_id에 따른 각각의     섹션에 해당하는 내용이 보이도록 수정. 이를 통해 페이징이 제대로 작동하고 각 영역에 해당하는 내용이 제대로 보이도록 하여 이슈 해결.
+
+</div>
+</details>
+
 </div>
   
 </div>
