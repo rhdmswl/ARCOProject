@@ -278,7 +278,7 @@
 <summary> 공공데이터 API </summary>
 <div markdown="1">
 
-- ISSUE
+- ISSUE <br>
   공공데이터 API를 가져오는 과정에서 필요한 정보를 못 불러 오는 문제 발생(가격, 티켓 URL 등 여러가지 데이터가 제외되어 있음)
 
 - SOLVE
@@ -293,7 +293,7 @@
 <summary> API dataformatexception </summary>
 <div markdown="1">
 
-- ISSUE
+- ISSUE <br>
   API를 DB에 넣는 과정에서 dataformatexception 발생
 
 - SOLVE
@@ -308,7 +308,7 @@
 <summary> Date 400에러 </summary>
 <div markdown="1">
 
-- ISSUE
+- ISSUE <br>
   검색 부분에서 date 검색 시 400에러 발생
 
 - SOLVE
@@ -322,7 +322,7 @@
 <summary> AWS의 메모리 부족 </summary>
 <div markdown="1">
 
-- ISSUE
+- ISSUE <br>
   AWS Free Tier의 메모리가 1GB 밖에 되지않아, 웹 배포를 진행시 메모리가 부족하여 2~3일 이후 서버가 다운되는 현상 발생
 
 - SOLVE
@@ -336,10 +336,10 @@
 <summary> Database에서의 max connection </summary>
 <div markdown="1">
 
-- ISSUE
+- ISSUE <br>
   AWS RDS를 사용 중, max connection 오류 발생. 다수의 인원이 개발을 하며 DB에 접근한 후, 연결을 종료 시키지 않아 접속이 누적되고 있었음
 
-- SOLVE
+- SOLVE <br>
   hikari에서 maxlifetime을 줄여주고, AWS RDS 에서 max connection 제한을 최대한 늘려줌
 </div>
 </details>
@@ -348,7 +348,7 @@
 <summary> 커뮤니티에서 뒤로가기 시 파라미터 누적 </summary>
 <div markdown="1">
 
-- ISSUE
+- ISSUE <br>
   CRUD 기능 구현 중, 게시글 상세 조회 후 뒤로가기 진행 시, 파라미터가 누적되어 다른 게시글 상세로 이동하면 이전의 게시글로 이동하는 오류 발생
 
 - SOLVE
@@ -360,10 +360,12 @@
 <details>
 <summary> JavaMailSenderImpl 활용 </summary>
 <div markdown="1">
-- 회원가입 - 이메일 인증 
-    - 회원가입 시 이메일 인증을 구현하여 무분별한 회원가입을 방지함. email-context.xml로 bean을 등록한 후 스프링의 JavaMailSenderImpl 클래스를 활용해 MailSendService 클래스를 제작함. Random 클래스를 활용해 난수를 발생시키고 이메일 양식을 정한 후 이메일을 전송하는 로직으로 구현.
-- 비밀번호 찾기 - 임시 비밀번호 발급
-    - 비밀번호 찾기에서 임시 비밀번호를 이메일로 전송해주는 기능 구현. FindPwMailSendService 클래스를 제작하여 문자와 숫자로 이뤄진 임시 비밀번호를 해당 유저의 이메일로 전송함.
+
+- 회원가입 (이메일 인증) <br>
+  회원가입 시 이메일 인증을 구현하여 무분별한 회원가입을 방지함. email-context.xml로 bean을 등록한 후 스프링의 JavaMailSenderImpl 클래스를 활용해 MailSendService 클래스를 제작함. Random 클래스를 활용해 난수를 발생시키고 이메일 양식을 정한 후 이메일을 전송하는 로직으로 구현. <br>
+  
+- 비밀번호 찾기 (임시 비밀번호 발급) <br>
+  비밀번호 찾기에서 임시 비밀번호를 이메일로 전송해주는 기능 구현. FindPwMailSendService 클래스를 제작하여 문자와 숫자로 이뤄진 임시 비밀번호를 해당 유저의 이메일로 전송함.
 
 </div>
 </details>
@@ -373,10 +375,10 @@
 <summary> 마이페이지 메뉴별 영역 및 페이징 오류 해결 </summary>
 <div markdown="1">
 
-- ISSUE
+- ISSUE <br>
   기존에는 나의 한줄평/게시글/댓글 메뉴 내부에 각각 한줄평, 게시글, 댓글에 대한 페이지 구분이 없었음. 이때 나의 한줄평/게시글/댓글 에서 한줄평이나   게시글 등 각 영역의 페이징 버튼을 클릭 시 화면이 새로고침되어 최초로 돌아가는 문제 발생.
 
-- SOLVE
+- SOLVE <br>
   나의 한줄평/게시글/댓글에 id 값을 주어 mypage_id를 1, 2, 3으로 구분. javascript로 function showSection을 제작하여 mypage_id에 따른 각각의     섹션에 해당하는 내용이 보이도록 수정. 이를 통해 페이징이 제대로 작동하고 각 영역에 해당하는 내용이 제대로 보이도록 하여 이슈 해결.
 
 </div>
