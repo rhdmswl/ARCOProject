@@ -7,11 +7,12 @@
 # 📌목차
 
 1. [📄프로젝트 설명](#-프로젝트-설명)
-2. [💻기술 스택](#-기술-스택)
-3. [👥멤버 구성 및 역할](#-멤버-구성-및-역할)
-4. [🏗️ERD](#%EF%B8%8F-erd)
-5. [💬기능 명세서](#-기능-명세서)
-6. [⚠️트러블 슈팅](#%EF%B8%8F-트러블-슈팅)
+2. [👥멤버 구성 및 역할](#-멤버-구성-및-역할)
+3. [💻기술 스택](#-기술-스택)
+4. [💡브랜치 전략 및 커밋 컨벤션](#-브랜치-전략-및-커밋-컨벤션)
+5. [🏗️ERD](#%EF%B8%8F-erd)
+6. [💬기능 명세서](#-기능-명세서)
+7. [⚠️트러블 슈팅](#%EF%B8%8F-트러블-슈팅)
   
 </div>
 <br>
@@ -39,6 +40,7 @@
 <img src="https://i.imgur.com/cf5j6rw.png" width="600">
   
 <br><br><br>
+
 
 # 💻 기술 스택
 
@@ -71,7 +73,64 @@
 ![github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&181717=white)
 
 <br><br><br>
-  
+
+
+# 💡 브랜치 전략 및 커밋 컨벤션
+
+<details>
+<summary>🧷 Git Workflow</summary>
+
+<br>
+
+#### main → develop → 기능별 브랜치 or 본인 이름의 브랜치
+
+<div align="left">
+
+1. 각자 생성한 브랜치에서 작업하며 Add - Commit - Push - Pull Request(develop 브랜치로) 과정을 밟는다.
+2. Pull Request가 작성되면 작성자 이외의 다른 팀원들이 체크 한다. (팀으로 작업한다면 팀 내에서 체크한다)
+3. 체크가 완료되면 develop Branch로 merge 한다.
+4. 다른 팀원들은 merge된 작업물을 pull하고 다시 각자 맡은 작업을 이어나간다.
+
+</div>
+</details>
+<br>
+<details>
+<summary>🧷 Commit Convention</summary>
+<br>
+
+| 태그 이름 | 설명                                 |
+| ---------- | -------------------------------------------------------------------- |
+| [Feat]   | 새로운 기능 구현                           |
+| [Fix]   | 버그, 오류 수정                           |
+| [Hotfix]  | issue나 QA에서 급한 버그 수정                    |
+| [Docs]   | 문서 수정                              |
+| [Test]   | 테스트 코드 추가 및 업데이트                     |
+| [Chore]  | 코드 수정, 내부 파일 수정                      |
+| [Del]   | 불필요한 코드 삭제                          |
+| [Refactor] | 전면 수정                              |
+| [Merge]  | 다른 브랜치를 merge 할 때 사용                    |
+| [Add]   | Feat 이외의 부수적인 코드 추가, 라이브러리 추가, 새로운 파일 생성 시 |
+| [Style]   | 코드 포맷 변경, 세미 콜론 누락, 코드 수정이 없는 경우     |
+| [Design]  | CSS 등 사용자 UI 디자인 변경                    |
+| [Rename]  | 파일 이름 변경 시 사용                        |
+| [Move]   | 프로젝트 내 파일이나 코드의 이동                   |
+<br>
+
+#### [커밋 메시지 작성 양식]
+지라이슈번호 [태그이름] 제목 (한칸 띄우기) 본문(생략 가능)
+
+#### [커밋 메시지 예시]
+DOS-1 [Feat] 회원 가입 기능 구현
+SMS, 이메일 중복확인 API 개발
+
+<br>
+
+</details>
+
+
+<br><br><br>
+
+
 # 🏗️ ERD
   
 <img src="https://i.imgur.com/SBAB9f9.png" width="600">
