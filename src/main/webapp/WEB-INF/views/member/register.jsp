@@ -538,16 +538,14 @@ body::-webkit-scrollbar-track {
 					        },
 					        success: function(data) {
 					        	if (data == 1) {						        		
-					                $("#alert-danger4").css('display', 'inline-block')
-					                    .text('중복된 이메일입니다. 다시 입력해주세요.');
-					                $("#alert-success4").css('display', 'none');
+					                //$("#alert-danger4").css('display', 'inline-block').text('중복된 이메일입니다. 다시 입력해주세요.');
+					                //$("#alert-success4").css('display', 'none');
 					                $('#mail-Check-Btn').attr('disabled', true);
 					               
 					               
 					            } else if (data == 0) {
-					                $("#alert-success4").css('display', 'inline-block')
-					                    .text('사용 가능한 이메일입니다.');
-					                $("#alert-danger4").css('display', 'none');
+					               // $("#alert-success4").css('display', 'inline-block')					                    .text('사용 가능한 이메일입니다.');
+					               // $("#alert-danger4").css('display', 'none');
 					                $('#mail-Check-Btn').attr('disabled', false);
 					               
 					               
