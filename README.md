@@ -461,7 +461,7 @@ SMS, 이메일 중복확인 API 개발
 <details>
 <summary> 관리자 권한 </summary>
 <div markdown="1">
-
+ 
 - ISSUE <br>
   role에 따른 권한 부여 방식, 로그인한 계정에 따라 페이지 접근 문제 발생
 
